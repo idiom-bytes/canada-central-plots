@@ -90,18 +90,18 @@
 
   <div class="page">
     <div class="content">
-      <h1 class="page-title">Provincial Employment: Public vs Private Sectors</h1>
+      <h1 class="page-title">Canadian Employment by Sector</h1>
       <p class="page-subtitle" id="subtitle">Loading data...</p>
 
       <div class="controls-bar">
         <div class="control-group">
           <label>Sector:</label>
           <select id="sector" class="form-select" onchange="update()">
-            <option value="both">Both Sectors</option>
-            <option value="private" selected>Private Only</option>
+            <option value="both" selected>Both Sectors</option>
+            <option value="private">Private Only</option>
             <option value="public">Public Only</option>
           </select>
-          <label class="trend-toggle">Show trend lines<input type="checkbox" id="trendChk" onchange="toggleTrend()"></label>
+          <label class="trend-toggle">Show trend lines <input type="checkbox" id="trendChk" onchange="toggleTrend()" checked></label>
         </div>
         <div class="control-group">
           <label>View:</label>
@@ -125,9 +125,9 @@
         <input type="range" id="rangeEnd" min="0" max="600" value="600" oninput="onRangeChange()">
         <div class="range-quick">
           <button onclick="setRange('5Y')">5Y</button>
-          <button class="active" onclick="setRange('10Y')">10Y</button>
+          <button onclick="setRange('10Y')">10Y</button>
           <button onclick="setRange('20Y')">20Y</button>
-          <button onclick="setRange('All')">All</button>
+          <button class="active" onclick="setRange('All')">All</button>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
     ];
 
     let provincialData = {}, allDates = [], chart = null;
-    let view = 'indexed', showTrend = false;
+    let view = 'indexed', showTrend = true;
     let rangeStartIdx = 0, rangeEndIdx = 0;
     let provinceKeys = [];
 
@@ -175,10 +175,10 @@
       provincialData = raw.provinces;
       provinceKeys = Object.keys(provincialData);
 
-      // Default range: last 10 years (120 months)
+      // Default range: all data
       const total = allDates.length;
       rangeEndIdx = total - 1;
-      rangeStartIdx = Math.max(0, total - 120);
+      rangeStartIdx = 0;
 
       // Setup sliders
       const sStart = document.getElementById('rangeStart');
@@ -212,8 +212,7 @@
 
       provinceKeys.forEach((k, idx) => {
         const chip = document.createElement('span');
-        chip.className = 'chip on';
-        if (k === 'Canada') chip.classList.add('chip-canada');
+        chip.className = k === 'Canada' ? 'chip on chip-canada' : 'chip';
         chip.dataset.prov = k;
         chip.textContent = k;
         const c = colors[idx % colors.length];
@@ -247,8 +246,8 @@
       const s = allDates[rangeStartIdx] || allDates[0];
       const e = allDates[rangeEndIdx] || allDates[allDates.length-1];
       document.getElementById('rangeLabel').textContent = fmt(s) + ' — ' + fmt(e);
-      document.getElementById('subtitle').textContent =
-        `Monthly employment data by province (${fmt(s)} - ${fmt(e)}). Source: Statistics Canada LFS Table 14-10-0288-01.`;
+      document.getElementById('subtitle').innerHTML =
+        `Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410028801" target="_blank" rel="noopener" style="color:inherit">Statistics Canada, Table 14-10-0288-01</a>`;
     }
 
     function setRange(preset) {
