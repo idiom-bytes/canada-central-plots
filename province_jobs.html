@@ -422,14 +422,15 @@
                 label: ctx => {
                   const v = ctx.parsed.y;
                   if (v == null) return null;
-                  let text = ' ' + ctx.dataset.label + ': ' + v;
+                  const unit = view === 'mom' ? 'pp' : view === 'share' ? 'pp' : view === 'absolute' ? 'k' : '';
+                  let text = ' ' + ctx.dataset.label + ': ' + v + (view === 'absolute' ? 'k' : '');
                   // If trend is on, show delta from trend
                   if (showTrend) {
                     const trendLabel = ctx.dataset.label + ' (trend)';
                     const trendDs = chart.data.datasets.find(d => d.label === trendLabel);
                     if (trendDs && trendDs.data[ctx.dataIndex] != null) {
                       const delta = (v - trendDs.data[ctx.dataIndex]).toFixed(1);
-                      text += ` (${delta >= 0 ? '+' : ''}${delta} vs trend)`;
+                      text += ` (${delta >= 0 ? '+' : ''}${delta}${unit} vs trend)`;
                     }
                   }
                   return text;
