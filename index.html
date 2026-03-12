@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canada Central | Plots</title>
+  <title>Canada Central | Statistics</title>
   <style>
     :root {
-      --color-burgundy: #6B3838;
-      --color-teal: #3A5F6F;
-      --color-tan: #C49A6C;
-      --color-purple: #7C5A9D;
       --color-cream: #F0ECE3;
       --color-cream-dark: #E8E2D5;
       --color-beige: #D8D1C2;
@@ -18,15 +14,16 @@
       --color-text-primary: #2D2D2D;
       --color-text-secondary: #5A5A5A;
       --color-text-tertiary: #8A8A8A;
-      --color-success: #4A7A4A;
-      --color-warning: #C47A3F;
-      --color-error: #A13F3F;
-      --color-info: #3A5F6F;
-      --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+      --color-teal: #3A5F6F;
       --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
-      --radius-sm: 0.25rem;
       --radius-md: 0.5rem;
       --radius-lg: 0.75rem;
+      /* Vertical accent colors */
+      --v-fiscal: #4A6FA5;
+      --v-economy: #3D7A4A;
+      --v-housing: #C4763C;
+      --v-crime: #A63D40;
+      --v-demographics: #7C5A9D;
     }
     html,body{height:100%;margin:0}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
@@ -45,30 +42,39 @@
     @media(min-width:640px){.hero-title{font-size:2.75rem}}
     .hero-desc{font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.7;margin:0}
     @media(min-width:640px){.hero-desc{font-size:1.0625rem}}
+    /* Category nav */
+    .category-nav{max-width:960px;margin:0 auto;padding:0 1.5rem;width:100%;box-sizing:border-box;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem}
+    @media(min-width:640px){.category-nav{padding:0 2rem;margin-bottom:2rem}}
+    .cat-pill{padding:6px 14px;border-radius:9999px;font-size:0.75rem;font-weight:600;cursor:pointer;border:2px solid;background:transparent;transition:all .15s;text-decoration:none}
+    .cat-pill:hover{transform:translateY(-1px)}
+    .cat-pill.active{color:#fff !important}
     /* Cards section */
     .cards-section{max-width:960px;margin:0 auto;padding:0 1.5rem 2.5rem;width:100%;box-sizing:border-box}
     @media(min-width:640px){.cards-section{padding:0 2rem 3rem}}
+    /* Category group */
+    .category-group{margin-bottom:2rem}
+    .category-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--color-beige)}
+    .category-icon{font-size:1.25rem}
+    .category-name{font-size:1rem;font-weight:700;letter-spacing:0.02em}
+    .category-count{font-size:0.6875rem;font-weight:600;color:var(--color-text-tertiary);margin-left:auto}
     .cards-stack{display:flex;flex-direction:column;gap:1.25rem}
     @media(min-width:640px){.cards-stack{gap:1.5rem}}
     /* Card */
-    .plot-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);text-decoration:none;color:inherit;transition:transform .15s, box-shadow .15s;overflow:hidden;display:flex;flex-direction:column}
+    .plot-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);text-decoration:none;color:inherit;transition:transform .15s, box-shadow .15s;overflow:hidden;display:flex;flex-direction:column;border-left:4px solid transparent}
     @media(min-width:768px){.plot-card{flex-direction:row}}
     .plot-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.12)}
-    .card-content{padding:1.5rem;display:flex;flex-direction:column;justify-content:center;flex:1}
-    @media(min-width:768px){.card-content{padding:2rem}}
-    .card-subtitle{font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 0.5rem}
-    .card-title{font-size:1.25rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.625rem;line-height:1.3}
-    @media(min-width:640px){.card-title{font-size:1.5rem}}
-    .card-desc{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.6;margin:0}
-    .card-visual{background:var(--color-cream);padding:1.5rem;display:flex;align-items:center;justify-content:center;min-height:120px}
-    @media(min-width:768px){.card-visual{min-width:260px;max-width:300px;min-height:0}}
+    .card-content{padding:1.25rem 1.5rem;display:flex;flex-direction:column;justify-content:center;flex:1}
+    @media(min-width:768px){.card-content{padding:1.5rem 2rem}}
+    .card-category{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 0.375rem;display:flex;align-items:center;gap:4px}
+    .card-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.5rem;line-height:1.3}
+    @media(min-width:640px){.card-title{font-size:1.375rem}}
+    .card-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0}
+    .card-visual{background:var(--color-cream);padding:1.25rem;display:flex;align-items:center;justify-content:center;min-height:100px}
+    @media(min-width:768px){.card-visual{min-width:220px;max-width:260px;min-height:0}}
     .card-visual-stat{text-align:center}
-    .stat-value{font-size:2.5rem;font-weight:800;color:var(--color-text-primary);line-height:1.1;margin:0 0 0.25rem}
-    @media(min-width:640px){.stat-value{font-size:3rem}}
-    .stat-label{font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-tertiary)}
-    /* Alternating card direction */
-    .plot-card:nth-child(even) .card-visual{order:-1}
-    @media(max-width:767px){.plot-card:nth-child(even) .card-visual{order:0}}
+    .stat-value{font-size:2rem;font-weight:800;color:var(--color-text-primary);line-height:1.1;margin:0 0 0.25rem}
+    @media(min-width:640px){.stat-value{font-size:2.5rem}}
+    .stat-label{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-tertiary)}
   </style>
 </head>
 <body>
@@ -76,61 +82,198 @@
     <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
-      <a class="active" href="index.html">Plots</a>
+      <a class="active" href="index.html">Statistics</a>
     </div>
   </nav>
 
   <div class="hero">
-    <h1 class="hero-title">Canada Central Plots</h1>
-    <p class="hero-desc">Interactive data visualizations for Canadian economic indicators. Transforming public fiscal and employment data into clear, accessible charts.</p>
+    <h1 class="hero-title">Canadian Statistics</h1>
+    <p class="hero-desc">Interactive data visualizations across fiscal, economic, housing, crime, and demographic indicators. Federal and provincial data, all from official government sources.</p>
+  </div>
+
+  <!-- Category quick-nav pills -->
+  <div class="category-nav">
+    <a class="cat-pill" href="#fiscal" style="border-color:var(--v-fiscal);color:var(--v-fiscal)">Fiscal</a>
+    <a class="cat-pill" href="#economy" style="border-color:var(--v-economy);color:var(--v-economy)">Economy</a>
+    <a class="cat-pill" href="#housing" style="border-color:var(--v-housing);color:var(--v-housing)">Housing</a>
+    <a class="cat-pill" href="#crime" style="border-color:var(--v-crime);color:var(--v-crime)">Crime</a>
+    <a class="cat-pill" href="#demographics" style="border-color:var(--v-demographics);color:var(--v-demographics)">Demographics</a>
   </div>
 
   <div class="cards-section">
-    <div class="cards-stack">
 
-      <a class="plot-card" href="employment.html">
-        <div class="card-content">
-          <span class="card-subtitle">Statistics Canada</span>
-          <h2 class="card-title">Employment by Sector</h2>
-          <p class="card-desc">Monthly public vs. private sector employment across all provinces and territories, with month-over-month change and indexed views.</p>
-        </div>
-        <div class="card-visual">
-          <div class="card-visual-stat">
-            <div class="stat-value">588</div>
-            <div class="stat-label">months of data</div>
+    <!-- FISCAL -->
+    <div class="category-group" id="fiscal">
+      <div class="category-header">
+        <span class="category-icon">📊</span>
+        <span class="category-name" style="color:var(--v-fiscal)">Fiscal</span>
+        <span class="category-count">3 dashboards</span>
+      </div>
+      <div class="cards-stack">
+
+        <a class="plot-card" href="deficit.html" style="border-left-color:var(--v-fiscal)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-fiscal)">📊 Fiscal</span>
+            <h2 class="card-title">Government Deficit / Surplus</h2>
+            <p class="card-desc">Annual budgetary balance — how much more or less a government spent than it collected. A flow measure of fiscal performance.</p>
           </div>
-        </div>
-      </a>
-
-      <a class="plot-card" href="deficit.html">
-        <div class="card-content">
-          <span class="card-subtitle">Dept. of Finance</span>
-          <h2 class="card-title">Government Deficit / Surplus</h2>
-          <p class="card-desc">The annual budgetary balance: how much more or less a government spent than it collected in a single fiscal year. A flow measure of fiscal performance.</p>
-        </div>
-        <div class="card-visual">
-          <div class="card-visual-stat">
-            <div class="stat-value">59</div>
-            <div class="stat-label">fiscal years</div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">59</div>
+              <div class="stat-label">fiscal years</div>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
 
-      <a class="plot-card" href="net_debt.html">
-        <div class="card-content">
-          <span class="card-subtitle">Dept. of Finance</span>
-          <h2 class="card-title">Government Net Debt</h2>
-          <p class="card-desc">Total liabilities minus financial assets, showing the accumulated stock of debt on the balance sheet. The standard measure of long-term fiscal health.</p>
-        </div>
-        <div class="card-visual">
-          <div class="card-visual-stat">
-            <div class="stat-value">$1.4T</div>
-            <div class="stat-label">federal net debt</div>
+        <a class="plot-card" href="net_debt.html" style="border-left-color:var(--v-fiscal)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-fiscal)">📉 Fiscal</span>
+            <h2 class="card-title">Government Net Debt</h2>
+            <p class="card-desc">Total liabilities minus financial assets — the accumulated stock of debt on the balance sheet. The standard measure of long-term fiscal health.</p>
           </div>
-        </div>
-      </a>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">$1.4T</div>
+              <div class="stat-label">federal net debt</div>
+            </div>
+          </div>
+        </a>
 
+        <a class="plot-card" href="revenue_spending.html" style="border-left-color:var(--v-fiscal)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-fiscal)">💰 Fiscal</span>
+            <h2 class="card-title">Revenue & Spending</h2>
+            <p class="card-desc">Total government revenue vs expenditure side-by-side. Toggle between revenue, spending, comparison, and balance views.</p>
+          </div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">18</div>
+              <div class="stat-label">years of data</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
     </div>
+
+    <!-- ECONOMY -->
+    <div class="category-group" id="economy">
+      <div class="category-header">
+        <span class="category-icon">🏭</span>
+        <span class="category-name" style="color:var(--v-economy)">Economy</span>
+        <span class="category-count">2 dashboards</span>
+      </div>
+      <div class="cards-stack">
+
+        <a class="plot-card" href="gdp_per_capita.html" style="border-left-color:var(--v-economy)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-economy)">🏭 Economy</span>
+            <h2 class="card-title">GDP Per Capita</h2>
+            <p class="card-desc">Real GDP per capita by province in chained 2017 dollars, measuring economic productivity and living standards over 44 years.</p>
+          </div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">$74.9K</div>
+              <div class="stat-label">Alberta (highest)</div>
+            </div>
+          </div>
+        </a>
+
+        <a class="plot-card" href="employment.html" style="border-left-color:var(--v-economy)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-economy)">👷 Economy</span>
+            <h2 class="card-title">Employment by Sector</h2>
+            <p class="card-desc">Monthly public vs. private sector employment across all provinces and territories, with month-over-month change and indexed views.</p>
+          </div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">588</div>
+              <div class="stat-label">months of data</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- HOUSING -->
+    <div class="category-group" id="housing">
+      <div class="category-header">
+        <span class="category-icon">🏠</span>
+        <span class="category-name" style="color:var(--v-housing)">Housing</span>
+        <span class="category-count">1 dashboard</span>
+      </div>
+      <div class="cards-stack">
+
+        <a class="plot-card" href="housing.html" style="border-left-color:var(--v-housing)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-housing)">🏠 Housing</span>
+            <h2 class="card-title">Housing Starts & Price Index</h2>
+            <p class="card-desc">Annual housing starts and new housing price trends. Toggle between construction activity and price trajectory to see the supply-demand picture.</p>
+          </div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">40</div>
+              <div class="stat-label">years of data</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CRIME -->
+    <div class="category-group" id="crime">
+      <div class="category-header">
+        <span class="category-icon">🔴</span>
+        <span class="category-name" style="color:var(--v-crime)">Crime & Public Safety</span>
+        <span class="category-count">1 dashboard</span>
+      </div>
+      <div class="cards-stack">
+
+        <a class="plot-card" href="crime_severity.html" style="border-left-color:var(--v-crime)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-crime)">🔴 Crime</span>
+            <h2 class="card-title">Crime Severity Index</h2>
+            <p class="card-desc">Police-reported crime severity by province, weighted by offence seriousness. Indexed to 100 for Canada in 2006, tracking 27 years of trends.</p>
+          </div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">153.9</div>
+              <div class="stat-label">Saskatchewan (highest)</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- DEMOGRAPHICS -->
+    <div class="category-group" id="demographics">
+      <div class="category-header">
+        <span class="category-icon">👥</span>
+        <span class="category-name" style="color:var(--v-demographics)">Demographics</span>
+        <span class="category-count">1 dashboard</span>
+      </div>
+      <div class="cards-stack">
+
+        <a class="plot-card" href="population_growth.html" style="border-left-color:var(--v-demographics)">
+          <div class="card-content">
+            <span class="card-category" style="color:var(--v-demographics)">👥 Demographics</span>
+            <h2 class="card-title">Population Growth</h2>
+            <p class="card-desc">Annual population growth rates for all provinces, tracking demographic shifts from interprovincial migration, immigration, and natural increase.</p>
+          </div>
+          <div class="card-visual">
+            <div class="card-visual-stat">
+              <div class="stat-value">54</div>
+              <div class="stat-label">years of data</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </body>
 </html>
