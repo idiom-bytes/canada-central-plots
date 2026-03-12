@@ -1,0 +1,6 @@
+# Raw data downloads (large CSVs)
+pipeline/lake/
+
+# Python
+__pycache__/
+*.pyc
