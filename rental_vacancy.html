@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rental Vacancy Rate | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--color-teal:#3A5F6F;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
+    .entities{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+    .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s,background .15s}
+    @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
+    .chip.on{opacity:1}
+    .chip.chip-national{border-width:3px;font-weight:800;font-size:0.75rem;letter-spacing:0.02em}
+    @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid #C4763C;min-height:350px;position:relative;padding:20px}
+    canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+    .table-section{margin-top:1.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);white-space:nowrap}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table .positive{color:#4A7A4A}
+    .data-table .negative{color:#A13F3F}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a class="active" href="index.html">Statistics</a>
+    </div>
+  </nav>
+  <div class="page">
+    <div class="content">
+      <h1 class="page-title">Rental Vacancy Rate by Province</h1>
+      <p class="page-subtitle">Source: CMHC / Statistics Canada</p>
+      <p class="page-desc">The rental vacancy rate measures the percentage of purpose-built rental apartments that are unoccupied. A healthy vacancy rate is typically 3-5% — below 3% indicates a tight market with upward pressure on rents, while above 5% suggests softer demand. Canada's vacancy rate hit historic lows in 2023 as immigration surged beyond housing supply capacity.</p>
+      <div class="entities" id="entities"></div>
+      <div class="chart-card"><canvas id="chart"></canvas></div>
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Historical Data</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table" id="dataTable"></table></div>
+      </div>
+    </div>
+  </div>
+<script>
+const ALL_DATA = {"years":["1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"entities":{"Canada":[3.3,4.4,4.8,4.8,4.6,4.3,4.3,4.1,3.4,2.6,1.5,1.1,1.7,2.3,2.8,2.8,2.6,2.7,2.2,2.9,2.7,2.2,2.6,2.7,2.7,3.3,3.4,2.7,2.2,2.1,3.4,3.4,1.9,1.6,2.4,3.3],"Ontario":[1.4,2.2,3.1,3.2,3.1,3.3,4,3.8,3.7,2.8,2.1,1.9,2.3,2.8,3.4,3.4,3.4,3.4,3.2,4,3.4,2.4,2.6,2.9,2.3,2.7,2.4,2,2.2,2.3,2.7,2.3,1.7,1.9,2.9,3.3],"Quebec":[6.8,7.5,7.3,7,7.4,7.2,6.9,7.2,6.3,5.3,3.4,2.2,1.9,1.8,2.1,2.4,2.5,2.6,2.1,2.5,3,2.9,3.7,4,5.1,6,6.2,5,3.2,2.2,2.3,1.8,1.2,1.2,1.8,3.1],"British Columbia":[0.6,1.5,1.6,1.5,1.4,2.3,3.8,3.3,4.5,3.7,1.9,1.2,1.7,1.6,1.4,1.6,1.1,0.8,0.9,3.1,3.3,3.2,3.2,2.4,1.6,0.7,0.6,0.5,1.2,1.5,1.9,1.1,1.4,1.2,2.3,4],"Alberta":[1.9,3,4.8,6.2,7,6.9,4.5,2.5,1.2,2.5,1.3,1,2.2,3.8,4.7,3,0.8,1.5,2.2,5,3.8,2.5,1.5,1.2,1.5,4.8,7,6.6,4.6,4.3,6.8,6.2,3.5,1.9,4,4.5],"Manitoba":[6.4,6.6,6.1,5.8,5.6,5.3,5.9,5.8,3.9,2.8,2,1.4,1.1,1.3,1.1,1.6,1.3,1.4,0.9,1.1,0.8,1.1,1.7,2.5,2.6,2.8,2.8,2.9,2.9,3,3.8,5,2.7,1.8,1.7,2.8],"Saskatchewan":[6.2,5.8,4,3.1,2.5,1.5,1.2,1.2,1.2,1.1,1.5,2.5,2.8,3.2,4.5,3.8,3.2,1.1,1.1,1.2,1.8,1.6,1.8,2.3,3.2,5.9,7.9,8.3,8,6.8,6.7,5.8,3.2,1.6,2.2,3],"Nova Scotia":[3.6,5,5.9,6.5,7.3,7.8,8.6,8.2,5.5,3.6,3.5,2.9,2.7,2.3,2.9,3.3,3,3,3.4,2.8,2.6,2.4,3,3.2,3.7,3.3,2.6,2.2,1.5,1,1.7,1,0.9,0.9,2,2.5],"New Brunswick":[3.3,4.6,6.4,6.6,7.6,8.6,7.6,6.8,7,4.6,2.7,3.9,4.2,3.8,5.3,5.6,6,4.3,2.4,3.5,4.2,5,8.1,10.3,8.6,7.3,6.7,4.2,3,2.5,2.7,1.7,1.5,1.5,2.8,2.6],"Newfoundland & Labrador":[1.6,7.3,5.7,9.1,6.9,11.1,16,17.4,16.3,9.3,3.8,2.2,2.5,1.7,2.3,4.3,4.6,2.3,0.5,0.5,1.1,1,2.7,3.1,3.7,4.2,8.5,6.7,6.2,7.1,7.6,2.8,2.4,1,1.9,1.6],"Prince Edward Island":[null,null,null,null,null,null,10.4,10.1,11.6,6.8,6.1,7.3,6.5,4.3,3.5,5,8.7,3.2,4.2,1.7,1.1,1.1,1.2,3,3.1,7.6,4,3,1.1,1.1,1.5,1.1,0.8,3.7,1,4.2]}};
+
+let chart=null,selectedEntity='Canada';
+const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A'};
+const entityOrder=['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island'];
+
+function init(){buildChips();update()}
+function buildChips(){const c=document.getElementById('entities');entityOrder.forEach(n=>{if(!ALL_DATA.entities[n])return;const ch=document.createElement('span');const col=entityColors[n]||'#666';ch.className='chip'+(n==='Canada'?' chip-national':'')+(n===selectedEntity?' on':'');ch.dataset.entity=n;ch.style.borderColor=col;ch.style.color=col;if(n===selectedEntity){ch.style.background=col;ch.style.color='#fff'}ch.textContent=n;ch.onclick=()=>selectEntity(n);c.appendChild(ch)})}
+function selectEntity(n){selectedEntity=n;document.querySelectorAll('#entities .chip').forEach(c=>{const s=c.dataset.entity===n;const col=entityColors[c.dataset.entity]||'#666';c.classList.toggle('on',s);if(s){c.style.background=col;c.style.color='#fff'}else{c.style.background='';c.style.color=col}});update()}
+
+function update(){
+  const vals=ALL_DATA.entities[selectedEntity],natVals=ALL_DATA.entities['Canada'],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
+  if(chart)chart.destroy();
+  const ctx=document.getElementById('chart').getContext('2d');
+  const datasets=[{label:selectedEntity,data:vals,backgroundColor:color+'B3',borderColor:color,borderWidth:1,borderRadius:2}];
+  if(selectedEntity!=='Canada')datasets.push({label:'National Average',data:natVals,type:'line',borderColor:'#2D2D2D',borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false,order:-1});
+  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:selectedEntity!=='Canada',position:'top',labels:{boxWidth:15,font:{size:10},color:'#5A5A5A'}},title:{display:true,text:selectedEntity+' — Rental Vacancy Rate',color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;return v!=null?' '+c.dataset.label+': '+v.toFixed(1)+'%':null}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A',callback:v=>v+'%'},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:'Vacancy Rate (%)',font:{size:11},color:'#5A5A5A'}}}}});
+  buildTable(labels,vals,natVals);
+}
+
+function buildTable(labels,vals,natVals){
+  document.getElementById('tableTitle').textContent=selectedEntity+' — Rental Vacancy Rate';
+  const t=document.getElementById('dataTable'),sd=selectedEntity!=='Canada';
+  let h='<thead><tr><th>Year</th><th class="num">Vacancy %</th>';
+  if(sd)h+='<th class="num">vs National</th>';
+  h+='</tr></thead><tbody>';
+  for(let i=labels.length-1;i>=0;i--){
+    const v=vals[i];h+='<tr><td>'+labels[i]+'</td><td class="num">'+(v!=null?v.toFixed(1)+'%':'—')+'</td>';
+    if(sd&&v!=null&&natVals[i]!=null){const d=(v-natVals[i]).toFixed(1);const cls=parseFloat(d)>=0?'positive':'negative';const s=parseFloat(d)>=0?'+':'';h+='<td class="num '+cls+'">'+s+d+'%</td>'}
+    else if(sd)h+='<td class="num">—</td>';
+    h+='</tr>';
+  }
+  h+='</tbody>';t.innerHTML=h;
+}
+
+function copyTable(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>c.textContent.trim()).join('\t'))});navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=event.target;b.textContent='Copied';b.classList.add('copied');setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000)})}
+function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_rental_vacancy.csv';a.click()}
+init();
+</script>
+</body>
+</html>
