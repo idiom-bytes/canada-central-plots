@@ -85,7 +85,7 @@
     <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
-      <a class="active" href="index.html">Plots</a>
+      <a class="active" href="../index.html">Plots</a>
     </div>
   </nav>
 
@@ -161,7 +161,7 @@
     async function loadData() {
       let raw;
       try {
-        const resp = await fetch('data/employment.json');
+        const resp = await fetch('../data/employment.json');
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         raw = await resp.json();
       } catch (e) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Housing Affordability Index | Canada Central</title>
+  <title>Rental Vacancy Rate | Canada Central</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root{--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--color-teal:#3A5F6F;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
@@ -33,7 +33,6 @@
     @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
     .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid #C4763C;min-height:350px;position:relative;padding:20px}
     canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
-    .ref-line{font-size:0.6875rem;color:var(--color-text-tertiary);margin-top:8px;text-align:center}
     .table-section{margin-top:1.5rem}
     .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
     .table-title{font-size:1.125rem;font-weight:700;margin:0}
@@ -58,17 +57,16 @@
     <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
-      <a class="active" href="index.html">Statistics</a>
+      <a class="active" href="../index.html">Statistics</a>
     </div>
   </nav>
   <div class="page">
     <div class="content">
-      <h1 class="page-title">Housing Affordability Index</h1>
-      <p class="page-subtitle">Source: StatCan Table 18-10-0205 (NHPI) &amp; Table 14-10-0064 (Wages)</p>
-      <p class="page-desc">How fast are new home prices growing relative to wages? This index measures the ratio of housing price growth to wage growth, both indexed to 100 in the year 2000. A value above 100 means prices have grown faster than wages (less affordable). Below 100 means wages have outpaced prices (more affordable). Manitoba's index at 154 means prices have grown 54% faster than wages since 2000.</p>
+      <h1 class="page-title">Rental Vacancy Rate by Province</h1>
+      <p class="page-subtitle">Source: CMHC / Statistics Canada</p>
+      <p class="page-desc">The rental vacancy rate measures the percentage of purpose-built rental apartments that are unoccupied. A healthy vacancy rate is typically 3-5% — below 3% indicates a tight market with upward pressure on rents, while above 5% suggests softer demand. Canada's vacancy rate hit historic lows in 2023 as immigration surged beyond housing supply capacity.</p>
       <div class="entities" id="entities"></div>
       <div class="chart-card"><canvas id="chart"></canvas></div>
-      <p class="ref-line">Baseline = 100 (year 2000). Above 100 = less affordable. Below 100 = more affordable.</p>
       <div class="table-section">
         <div class="table-header">
           <h2 class="table-title" id="tableTitle">Historical Data</h2>
@@ -82,7 +80,7 @@
     </div>
   </div>
 <script>
-const ALL_DATA = {"years":["1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"entities":{"Canada":[103.0,102.0,100.0,100.0,100.2,101.2,105.1,109.9,110.1,116.5,121.6,120.3,114.7,114.0,114.7,115.9,115.0,115.2,113.3,114.0,116.3,114.6,111.2,106.4,113.0,118.5,112.3,107.5,103.3],"Ontario":[99.8,100.0,100.8,100.0,100.5,101.8,104.6,108.9,109.6,110.9,110.6,111.5,108.0,108.7,111.6,113.1,115.0,116.0,114.2,117.4,123.7,122.7,117.5,111.3,121.8,124.1,116.5,111.5,105.0],"Quebec":[99.7,98.4,98.5,100.0,100.6,104.5,110.7,114.9,117.1,119.5,120.4,123.8,122.3,124.2,125.1,123.7,122.4,120.1,117.6,117.5,114.9,116.2,113.4,110.9,124.1,128.4,124.9,120.8,119.0],"British Columbia":[115.7,106.4,101.2,100.0,100.7,99.4,100.5,105.8,109.2,112.3,116.1,113.9,102.7,102.4,101.9,100.9,96.2,94.9,91.3,95.5,97.8,99.4,94.9,89.9,97.2,99.6,92.1,88.0,85.1],"Alberta":[98.6,103.1,103.3,100.0,99.1,100.9,106.4,109.0,106.5,137.7,157.8,151.1,132.4,129.2,129.1,123.6,121.6,125.7,121.7,121.0,120.9,117.7,114.0,104.9,114.2,125.7,123.1,122.4,119.5],"Manitoba":[101.2,102.1,99.8,100.0,100.1,98.9,102.5,103.4,110.1,115.7,122.9,130.0,126.7,131.5,134.0,138.0,142.2,140.6,138.2,139.3,140.3,140.7,140.5,133.8,151.0,170.3,159.0,154.6,154.3],"Saskatchewan":[100.1,101.6,99.9,100.0,96.9,97.3,97.2,101.3,104.4,106.3,133.3,151.4,145.3,144.9,143.3,142.6,139.8,136.1,135.0,129.3,125.9,123.9,121.4,111.0,117.4,121.5,117.8,113.4,115.3],"Nova Scotia":[102.3,101.7,103.0,100.0,101.2,102.8,103.4,103.5,103.7,104.5,103.7,110.9,106.6,103.8,104.3,104.8,103.3,101.2,100.1,97.9,97.9,97.0,96.6,93.4,101.0,99.7,94.4,89.6,88.6],"New Brunswick":[110.2,105.3,104.4,100.0,99.0,98.2,99.8,99.1,101.0,100.5,96.4,93.3,92.7,91.0,89.8,88.2,86.5,84.9,83.7,81.3,80.8,80.8,78.2,77.1,79.0,79.5,76.5,73.8,71.4],"Newfoundland & Labrador":[105.4,104.9,103.5,100.0,100.2,101.9,102.0,106.1,108.6,106.8,107.8,121.4,128.1,129.8,127.5,120.9,120.0,112.0,118.7,120.5,113.0,110.5,108.3,102.5,105.1,103.0,99.2,96.0,95.8],"Prince Edward Island":[106.4,102.6,100.6,100.0,94.7,93.8,91.1,90.5,94.5,91.3,91.0,85.9,86.2,80.3,79.7,77.4,77.2,73.9,72.3,72.1,68.7,68.4,67.4,64.2,71.7,70.6,66.6,64.0,61.8]}};
+const ALL_DATA = {"years":["1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"entities":{"Canada":[3.3,4.4,4.8,4.8,4.6,4.3,4.3,4.1,3.4,2.6,1.5,1.1,1.7,2.3,2.8,2.8,2.6,2.7,2.2,2.9,2.7,2.2,2.6,2.7,2.7,3.3,3.4,2.7,2.2,2.1,3.4,3.4,1.9,1.6,2.4,3.3],"Ontario":[1.4,2.2,3.1,3.2,3.1,3.3,4,3.8,3.7,2.8,2.1,1.9,2.3,2.8,3.4,3.4,3.4,3.4,3.2,4,3.4,2.4,2.6,2.9,2.3,2.7,2.4,2,2.2,2.3,2.7,2.3,1.7,1.9,2.9,3.3],"Quebec":[6.8,7.5,7.3,7,7.4,7.2,6.9,7.2,6.3,5.3,3.4,2.2,1.9,1.8,2.1,2.4,2.5,2.6,2.1,2.5,3,2.9,3.7,4,5.1,6,6.2,5,3.2,2.2,2.3,1.8,1.2,1.2,1.8,3.1],"British Columbia":[0.6,1.5,1.6,1.5,1.4,2.3,3.8,3.3,4.5,3.7,1.9,1.2,1.7,1.6,1.4,1.6,1.1,0.8,0.9,3.1,3.3,3.2,3.2,2.4,1.6,0.7,0.6,0.5,1.2,1.5,1.9,1.1,1.4,1.2,2.3,4],"Alberta":[1.9,3,4.8,6.2,7,6.9,4.5,2.5,1.2,2.5,1.3,1,2.2,3.8,4.7,3,0.8,1.5,2.2,5,3.8,2.5,1.5,1.2,1.5,4.8,7,6.6,4.6,4.3,6.8,6.2,3.5,1.9,4,4.5],"Manitoba":[6.4,6.6,6.1,5.8,5.6,5.3,5.9,5.8,3.9,2.8,2,1.4,1.1,1.3,1.1,1.6,1.3,1.4,0.9,1.1,0.8,1.1,1.7,2.5,2.6,2.8,2.8,2.9,2.9,3,3.8,5,2.7,1.8,1.7,2.8],"Saskatchewan":[6.2,5.8,4,3.1,2.5,1.5,1.2,1.2,1.2,1.1,1.5,2.5,2.8,3.2,4.5,3.8,3.2,1.1,1.1,1.2,1.8,1.6,1.8,2.3,3.2,5.9,7.9,8.3,8,6.8,6.7,5.8,3.2,1.6,2.2,3],"Nova Scotia":[3.6,5,5.9,6.5,7.3,7.8,8.6,8.2,5.5,3.6,3.5,2.9,2.7,2.3,2.9,3.3,3,3,3.4,2.8,2.6,2.4,3,3.2,3.7,3.3,2.6,2.2,1.5,1,1.7,1,0.9,0.9,2,2.5],"New Brunswick":[3.3,4.6,6.4,6.6,7.6,8.6,7.6,6.8,7,4.6,2.7,3.9,4.2,3.8,5.3,5.6,6,4.3,2.4,3.5,4.2,5,8.1,10.3,8.6,7.3,6.7,4.2,3,2.5,2.7,1.7,1.5,1.5,2.8,2.6],"Newfoundland & Labrador":[1.6,7.3,5.7,9.1,6.9,11.1,16,17.4,16.3,9.3,3.8,2.2,2.5,1.7,2.3,4.3,4.6,2.3,0.5,0.5,1.1,1,2.7,3.1,3.7,4.2,8.5,6.7,6.2,7.1,7.6,2.8,2.4,1,1.9,1.6],"Prince Edward Island":[null,null,null,null,null,null,10.4,10.1,11.6,6.8,6.1,7.3,6.5,4.3,3.5,5,8.7,3.2,4.2,1.7,1.1,1.1,1.2,3,3.1,7.6,4,3,1.1,1.1,1.5,1.1,0.8,3.7,1,4.2]}};
 
 let chart=null,selectedEntity='Canada';
 const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A'};
@@ -96,40 +94,21 @@ function update(){
   const vals=ALL_DATA.entities[selectedEntity],natVals=ALL_DATA.entities['Canada'],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
   if(chart)chart.destroy();
   const ctx=document.getElementById('chart').getContext('2d');
-
-  const bgColors=vals.map(v=>{
-    if(v==null)return'transparent';
-    return v>100?'rgba(180,60,60,0.6)':'rgba(60,140,80,0.6)';
-  });
-  const borderCols=vals.map(v=>{
-    if(v==null)return'transparent';
-    return v>100?'rgba(180,60,60,1)':'rgba(60,140,80,1)';
-  });
-
-  const datasets=[{label:selectedEntity,data:vals,backgroundColor:bgColors,borderColor:borderCols,borderWidth:1,borderRadius:2}];
-
-  // Baseline reference at 100
-  datasets.push({label:'Baseline (2000)',data:new Array(labels.length).fill(100),type:'line',borderColor:'rgba(0,0,0,0.3)',borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false,order:-2});
-
-  if(selectedEntity!=='Canada')datasets.push({label:'National Index',data:natVals,type:'line',borderColor:'#2D2D2D',borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false,order:-1});
-
-  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'top',labels:{boxWidth:15,font:{size:10},color:'#5A5A5A',filter:i=>i.text!=='Baseline (2000)'}},title:{display:true,text:selectedEntity+' — Housing Affordability Index (2000 = 100)',color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;if(v==null)return null;return' '+c.dataset.label+': '+v.toFixed(1)+(v>100?' (less affordable)':' (more affordable)')}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A'},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:'Affordability Index',font:{size:11},color:'#5A5A5A'}}}}});
+  const datasets=[{label:selectedEntity,data:vals,backgroundColor:color+'B3',borderColor:color,borderWidth:1,borderRadius:2}];
+  if(selectedEntity!=='Canada')datasets.push({label:'National Average',data:natVals,type:'line',borderColor:'#2D2D2D',borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false,order:-1});
+  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:selectedEntity!=='Canada',position:'top',labels:{boxWidth:15,font:{size:10},color:'#5A5A5A'}},title:{display:true,text:selectedEntity+' — Rental Vacancy Rate',color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;return v!=null?' '+c.dataset.label+': '+v.toFixed(1)+'%':null}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A',callback:v=>v+'%'},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:'Vacancy Rate (%)',font:{size:11},color:'#5A5A5A'}}}}});
   buildTable(labels,vals,natVals);
 }
 
 function buildTable(labels,vals,natVals){
-  document.getElementById('tableTitle').textContent=selectedEntity+' — Housing Affordability Index';
+  document.getElementById('tableTitle').textContent=selectedEntity+' — Rental Vacancy Rate';
   const t=document.getElementById('dataTable'),sd=selectedEntity!=='Canada';
-  let h='<thead><tr><th>Year</th><th class="num">Index</th><th class="num">Status</th>';
+  let h='<thead><tr><th>Year</th><th class="num">Vacancy %</th>';
   if(sd)h+='<th class="num">vs National</th>';
   h+='</tr></thead><tbody>';
   for(let i=labels.length-1;i>=0;i--){
-    const v=vals[i];
-    if(v==null){h+='<tr><td>'+labels[i]+'</td><td class="num">—</td><td class="num">—</td>';if(sd)h+='<td class="num">—</td>';h+='</tr>';continue}
-    const cls=v>100?'negative':'positive';
-    const status=v>100?'Less affordable':'More affordable';
-    h+='<tr><td>'+labels[i]+'</td><td class="num">'+v.toFixed(1)+'</td><td class="num '+cls+'">'+status+'</td>';
-    if(sd&&natVals[i]!=null){const d=(v-natVals[i]).toFixed(1);const dc=parseFloat(d)>0?'negative':'positive';const s=parseFloat(d)>=0?'+':'';h+='<td class="num '+dc+'">'+s+d+'</td>'}
+    const v=vals[i];h+='<tr><td>'+labels[i]+'</td><td class="num">'+(v!=null?v.toFixed(1)+'%':'—')+'</td>';
+    if(sd&&v!=null&&natVals[i]!=null){const d=(v-natVals[i]).toFixed(1);const cls=parseFloat(d)>=0?'positive':'negative';const s=parseFloat(d)>=0?'+':'';h+='<td class="num '+cls+'">'+s+d+'%</td>'}
     else if(sd)h+='<td class="num">—</td>';
     h+='</tr>';
   }
@@ -137,7 +116,7 @@ function buildTable(labels,vals,natVals){
 }
 
 function copyTable(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>c.textContent.trim()).join('\t'))});navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=event.target;b.textContent='Copied';b.classList.add('copied');setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000)})}
-function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_housing_affordability.csv';a.click()}
+function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_rental_vacancy.csv';a.click()}
 init();
 </script>
 </body>

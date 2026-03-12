@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GDP Per Capita | Canada Central</title>
+  <title>Crime Severity Index | Canada Central</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
@@ -49,7 +49,6 @@
     @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
     .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--color-text-secondary);min-height:350px;position:relative;padding:20px}
     canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
-    /* Table */
     .table-section{margin-top:1.5rem}
     .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
     .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
@@ -65,8 +64,8 @@
     .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
     .data-table tr:last-child td{border-bottom:none}
     .data-table tr:hover td{background:var(--color-cream)}
-    .data-table .above{color:#4A7A4A}
-    .data-table .below{color:#A13F3F}
+    .data-table .above{color:#A13F3F}
+    .data-table .below{color:#4A7A4A}
   </style>
 </head>
 <body>
@@ -74,15 +73,15 @@
     <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
-      <a class="active" href="index.html">Plots</a>
+      <a class="active" href="../index.html">Plots</a>
     </div>
   </nav>
 
   <div class="page">
     <div class="content">
-      <h1 class="page-title">GDP Per Capita by Province</h1>
-      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610022201" target="_blank" rel="noopener">Statistics Canada, Table 36-10-0222-01</a> &amp; <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501" target="_blank" rel="noopener">Table 17-10-0005-01</a></p>
-      <p class="page-desc">Real GDP per capita measures the total economic output of a region divided by its population, adjusted for inflation (chained 2017 dollars). It is the standard measure of economic productivity and living standards. Higher GDP per capita generally means more economic activity per person, though it does not capture how that wealth is distributed. Resource-rich provinces like Alberta and Saskatchewan consistently outperform, while Atlantic provinces trail the national average. Comparing provinces over time reveals whether the gap is widening or closing.</p>
+      <h1 class="page-title">Crime Severity Index by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510002601" target="_blank" rel="noopener">Statistics Canada, Table 35-10-0026-01</a></p>
+      <p class="page-desc">The Crime Severity Index (CSI) measures the overall volume and severity of police-reported crime. Unlike simple crime rates that count all offences equally, the CSI assigns higher weights to more serious crimes. The index is benchmarked to 100 in 2006 for Canada as a whole. A value above 100 means crime severity is higher than the 2006 national baseline; below 100 means it is lower. The CSI captures both changes in the number of crimes and shifts in the types of crimes being committed.</p>
 
       <div class="entities" id="entities"></div>
 
@@ -106,7 +105,7 @@
   </div>
 
 <script>
-  const ALL_DATA = {"years":["1981","1982","1983","1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"entities":{"Canada":[37275,35668,36222,37998,39436,39874,40955,42210,42429,41879,40496,40376,40996,42372,43061,43333,44741,46098,48076,50078,50465,51418,51878,52986,54172,55040,55626,55574,53340,54381,55543,55908,56609,57656,57591,57534,58575,59326,59581,55969,58971,60615,60103,59529],"Newfoundland & Labrador":[26649,26879,27531,28331,28986,29203,30361,31923,33031,33137,33165,32477,32946,34566,36123,34894,35857,38406,41198,43853,45414,53002,56583,56296,58239,61004,68084,66730,59438,62042,63379,60458,63546,62685,61908,62692,63595,62142,64735,61706,62301,61153,58487,59155],"Prince Edward Island":[23569,23570,25595,25790,25576,26612,27246,27713,28321,28320,28251,28992,29075,30389,32087,32806,33139,34476,35845,36741,36168,37828,38461,39598,40828,41982,41740,41856,41766,42056,42281,42572,43462,43464,43910,44162,45352,45357,46357,43991,46579,47488,47049,47199],"Nova Scotia":[26273,27333,27555,29362,30659,31186,31992,32251,32765,32218,31661,31905,31923,31782,32121,32038,33296,34558,36303,37381,38565,40112,40437,40664,41200,41519,42173,42971,43019,44004,44203,43817,43827,44349,44663,45103,45490,45815,46717,43989,46294,47521,47311,47451],"New Brunswick":[25958,26054,27693,28091,29011,30904,32376,32368,32227,31685,31363,31685,32642,33248,34339,34637,34944,36236,38501,39308,40065,41995,43039,44131,44562,45628,46070,46334,45476,46190,46157,45516,45385,45414,45677,45798,46730,47006,47215,45177,47131,47099,46739,46467],"Quebec":[32518,31147,31611,32938,33851,34123,35175,36289,35933,35760,34502,34416,34969,36391,37035,37356,38264,39385,41581,43223,43745,44686,44956,45775,46170,46419,47180,47682,46809,47229,47662,47856,48201,48735,49000,49487,50486,51299,52154,49286,52731,54495,53951,53812],"Ontario":[37889,36242,37588,40335,41811,42679,43807,44863,45139,43597,41589,41585,41715,43458,44325,44508,46060,47568,50246,52611,52609,53524,53452,54306,55433,55873,55856,55340,53147,54142,54923,55106,55379,56327,57324,57822,58599,59471,59683,56244,59333,60666,60230,59276],"Manitoba":[32769,31704,31530,33522,35323,35199,35522,35203,36044,37028,35655,35813,35686,36907,36734,37517,39077,40775,41169,42733,43034,43577,43892,44609,45665,47126,48093,49502,48986,49684,50356,51228,52118,52608,52591,52519,53408,53706,53652,51077,51366,53029,53011,52480],"Saskatchewan":[40078,38656,38959,39652,40329,42313,42555,41116,42172,45861,46443,44333,47028,48738,49055,50296,52512,54811,55022,56844,56782,56788,59406,62193,64075,63202,64917,67294,62633,64525,67024,67077,70434,71006,69767,68897,69952,70567,69764,66611,64847,70724,71009,70921],"Alberta":[52851,49815,49056,51456,54963,52789,53578,57336,57203,57356,56620,56124,59699,62226,63341,63913,66957,68576,68165,71119,71003,71000,72200,74911,76262,78746,78016,77472,71525,74010,77630,78909,81176,83797,79354,75785,78412,78966,77899,70953,74256,77198,76145,74907],"British Columbia":[40546,37291,37164,36997,39233,39222,41008,42355,42574,41964,41080,41064,41799,41634,41581,41573,42154,42296,43459,45123,45012,46535,47334,48826,50760,52431,53455,53112,51127,51937,53065,53515,53952,55011,55508,55936,57209,58192,58669,56138,59878,61224,61143,60131]}};
+  const ALL_DATA = {"years":["1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"entities":{"Canada":[118.84,111.24,106.73,105.3,104.14,106.84,104.11,101.33,100.0,95.28,90.57,87.77,82.94,77.61,75.51,68.92,66.9,70.39,72.01,73.6,75.6,79.72,73.92,74.87,78.77,81.2,77.89],"Newfoundland & Labrador":[76.38,69.22,70.12,69.07,71.38,74.44,79.33,78.56,73.13,75.32,71.08,71.46,78.65,71.85,68.0,68.47,62.36,65.78,69.53,63.34,64.5,71.34,68.83,76.87,82.13,87.74,89.25],"Prince Edward Island":[73.31,78.99,76.33,75.35,85.18,91.03,81.95,76.84,71.79,64.06,68.67,66.35,66.36,67.26,73.6,65.31,55.75,50.63,49.36,46.09,54.65,64.94,58.01,57.13,61.89,73.87,72.59],"Nova Scotia":[105.4,104.62,95.26,92.53,93.91,101.44,106.73,102.1,101.14,91.93,84.15,83.99,83.62,79.48,76.88,70.06,66.79,63.26,62.31,66.14,65.33,66.03,71.62,71.6,74.81,74.41,75.45],"New Brunswick":[89.98,90.04,84.83,83.44,84.55,87.79,87.92,79.52,74.21,70.8,71.75,70.68,69.16,66.21,68.03,60.04,56.02,62.41,61.56,68.75,72.99,80.22,83.33,87.44,87.44,87.78,84.53],"Quebec":[112.68,104.3,101.78,96.59,93.54,92.93,90.34,89.92,91.0,84.68,83.04,81.47,75.99,73.35,70.69,62.67,57.66,56.95,56.62,57.86,56.63,55.91,51.75,56.79,60.33,62.4,63.01],"Ontario":[100.72,92.31,89.04,86.54,84.54,83.15,78.2,76.96,78.57,74.5,70.94,69.3,65.58,61.17,59.04,52.58,49.93,51.05,53.29,56.32,60.32,60.87,55.41,56.04,58.83,61.54,60.69],"Manitoba":[154.49,152.61,149.52,152.5,148.31,161.32,163.36,156.7,155.91,150.75,129.88,137.65,127.31,115.99,114.46,100.7,96.68,106.29,115.38,119.04,126.17,139.64,125.89,128.62,146.76,146.74,141.24],"Saskatchewan":[176.2,167.26,169.43,176.37,175.74,199.53,192.29,181.35,170.51,164.7,152.54,149.5,148.15,143.62,138.8,126.54,125.04,138.33,151.44,143.55,141.42,150.68,144.06,149.99,156.58,162.17,153.85],"Alberta":[122.5,118.79,111.29,114.81,116.27,124.83,124.08,121.93,115.6,114.4,112.0,105.59,98.18,87.52,86.13,85.31,87.55,104.49,106.0,112.16,113.81,120.34,109.01,101.55,105.23,104.87,95.63],"British Columbia":[166.91,155.76,144.65,146.64,148.1,154.69,153.38,146.31,139.79,132.42,121.81,111.85,104.13,96.7,94.53,87.71,90.18,92.65,91.69,87.06,88.65,103.95,97.02,96.44,100.34,104.26,92.98]}};
 
   let chart = null;
   let selectedEntity = 'Canada';
@@ -175,12 +174,9 @@
   }
 
   function update() {
-    const entityValues = ALL_DATA.entities[selectedEntity];
+    const values = ALL_DATA.entities[selectedEntity];
     const nationalValues = ALL_DATA.entities['Canada'];
-
     const labels = ALL_DATA.years;
-    const values = entityValues;
-
     const color = entityColors[selectedEntity] || '#2D2D2D';
 
     if (chart) chart.destroy();
@@ -196,7 +192,6 @@
       borderRadius: 2
     }];
 
-    // Show national average as a line when viewing a province
     if (selectedEntity !== 'Canada') {
       datasets.push({
         label: 'National Average',
@@ -226,7 +221,7 @@
           },
           title: {
             display: true,
-            text: selectedEntity + ' — Real GDP Per Capita (2017 CAD)',
+            text: selectedEntity + ' — Crime Severity Index (2006 = 100)',
             color: '#2D2D2D',
             font: { size: 13, weight: 600 }
           },
@@ -235,7 +230,7 @@
               label: ctx => {
                 const v = ctx.parsed.y;
                 if (v == null) return null;
-                return ' ' + ctx.dataset.label + ': $' + v.toLocaleString();
+                return ' ' + ctx.dataset.label + ': ' + v.toFixed(1);
               }
             }
           }
@@ -248,12 +243,12 @@
           y: {
             ticks: {
               font: { size: 10 }, color: '#8A8A8A',
-              callback: v => '$' + (v / 1000).toFixed(0) + 'K'
+              callback: v => v.toFixed(0)
             },
             grid: { color: 'rgba(0,0,0,0.06)' },
             title: {
               display: true,
-              text: 'Chained 2017 CAD',
+              text: 'CSI (2006 = 100 for Canada)',
               font: { size: 11 },
               color: '#5A5A5A'
             }
@@ -269,19 +264,17 @@
     document.getElementById('tableTitle').textContent = selectedEntity + ' Historical Data';
     const table = document.getElementById('dataTable');
     const showDiff = selectedEntity !== 'Canada';
-    let html = '<thead><tr><th>Year</th><th class="num">GDP/Capita</th>';
+    let html = '<thead><tr><th>Year</th><th class="num">CSI</th>';
     if (showDiff) html += '<th class="num">vs National</th>';
     html += '</tr></thead><tbody>';
     for (let i = labels.length - 1; i >= 0; i--) {
       const v = values[i];
-      const fmt = '$' + v.toLocaleString();
-      html += '<tr><td>' + labels[i] + '</td><td class="num">' + fmt + '</td>';
+      html += '<tr><td>' + labels[i] + '</td><td class="num">' + v.toFixed(1) + '</td>';
       if (showDiff) {
         const diff = v - nationalValues[i];
-        const pct = ((diff / nationalValues[i]) * 100).toFixed(1);
         const cls = diff >= 0 ? 'above' : 'below';
         const sign = diff >= 0 ? '+' : '';
-        html += '<td class="num ' + cls + '">' + sign + pct + '%</td>';
+        html += '<td class="num ' + cls + '">' + sign + diff.toFixed(1) + '</td>';
       }
       html += '</tr>';
     }
@@ -316,7 +309,7 @@
     const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_gdp_per_capita.csv';
+    a.download = selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_crime_severity.csv';
     a.click();
   }
 

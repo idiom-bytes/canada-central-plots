@@ -61,22 +61,21 @@
     <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
-      <a class="active" href="index.html">Statistics</a>
+      <a class="active" href="../index.html">Statistics</a>
     </div>
   </nav>
 
   <div class="page">
     <div class="content">
-      <h1 class="page-title">Housing Supply & Prices by Province</h1>
-      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3410013501" target="_blank" rel="noopener">CMHC Table 34-10-0135</a> &amp; <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810020501" target="_blank" rel="noopener">StatCan Table 18-10-0205</a></p>
-      <p class="page-desc">Housing starts per 10,000 population measures new construction activity normalized by population size, making provinces directly comparable regardless of size. Alberta consistently builds at nearly double the national rate, while Ontario has fallen to the lowest per-capita starts in the country. The New Housing Price Index (NHPI, Dec 2016 = 100) tracks price trends for new homes.</p>
+      <h1 class="page-title">Housing Starts by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3410013501" target="_blank" rel="noopener">CMHC Table 34-10-0135</a></p>
+      <p class="page-desc">Housing starts per 10,000 population measures new construction activity normalized by population size, making provinces directly comparable regardless of size. Alberta consistently builds at nearly double the national rate, while Ontario has fallen to the lowest per-capita starts in the country. Toggle between per-capita and raw totals.</p>
 
       <div class="entities" id="entities"></div>
 
       <div class="view-toggle">
         <button class="view-btn active" data-view="startsPer10K" onclick="setView('startsPer10K')">Starts per 10K Pop</button>
         <button class="view-btn" data-view="startsRaw" onclick="setView('startsRaw')">Total Starts</button>
-        <button class="view-btn" data-view="priceIndex" onclick="setView('priceIndex')">Price Index</button>
       </div>
 
       <div class="chart-card">
@@ -115,8 +114,7 @@
 
   const viewConfig = {
     startsPer10K: { title: 'Housing Starts per 10,000 Population', yLabel: 'Starts per 10K', chartType: 'bar', fmt: v => v != null ? v.toFixed(1) : '—', tooltip: v => v.toFixed(1) + ' per 10K' },
-    startsRaw: { title: 'Total Annual Housing Starts', yLabel: 'Housing Starts', chartType: 'bar', fmt: v => v != null ? v.toLocaleString('en-CA') : '—', tooltip: v => v.toLocaleString('en-CA') + ' units' },
-    priceIndex: { title: 'New Housing Price Index (Dec 2016 = 100)', yLabel: 'Price Index', chartType: 'line', fmt: v => v != null ? v.toFixed(1) : '—', tooltip: v => v.toFixed(1) }
+    startsRaw: { title: 'Total Annual Housing Starts', yLabel: 'Housing Starts', chartType: 'bar', fmt: v => v != null ? v.toLocaleString('en-CA') : '—', tooltip: v => v.toLocaleString('en-CA') + ' units' }
   };
 
   function init() { buildChips(); update(); }
