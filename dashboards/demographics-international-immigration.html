@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Immigration | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--color-teal:#3A5F6F;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
+    .entities{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+    .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s,background .15s}
+    @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
+    .chip.on{opacity:1}
+    .chip.chip-national{border-width:3px;font-weight:800;font-size:0.75rem;letter-spacing:0.02em}
+    @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
+    .view-toggle{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+    .view-btn{padding:6px 14px;border-radius:0.5rem;font-size:0.75rem;font-weight:600;cursor:pointer;border:1px solid #C8C0B0;background:#D8D1C2;color:#2D2D2D;transition:all .15s}
+    .view-btn:hover{background:#C8C0B0}
+    .view-btn.active{background:#2D2D2D;color:#FEFEFE;border-color:#2D2D2D}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid #7C5A9D;min-height:350px;position:relative;padding:20px}
+    canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+    .table-section{margin-top:1.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);white-space:nowrap}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table .positive{color:#4A7A4A}
+    .data-table .negative{color:#A13F3F}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a class="active" href="../index.html">Statistics</a>
+    </div>
+  </nav>
+  <div class="page">
+    <div class="content">
+      <h1 class="page-title">International Immigration by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710001401" target="_blank" rel="noopener">Statistics Canada, Table 17-10-0014-01</a></p>
+      <p class="page-desc">Annual international immigrants arriving in each province. The per-capita view (per 1,000 population) reveals that smaller provinces like Manitoba, New Brunswick, and PEI receive proportionally high immigration relative to their size. Ontario receives ~40% of all immigrants in raw numbers but is closer to the national average per capita.</p>
+      <div class="entities" id="entities"></div>
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="per1K" onclick="setView('per1K')">Per 1,000 Pop</button>
+        <button class="view-btn" data-view="raw" onclick="setView('raw')">Total Immigrants</button>
+      </div>
+      <div class="chart-card"><canvas id="chart"></canvas></div>
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Historical Data</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table" id="dataTable"></table></div>
+      </div>
+    </div>
+  </div>
+<script>
+const ALL_DATA = {"years":["1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"raw":{"Canada":[99343,152031,161534,191516,216424,232776,254856,256754,224395,212875,226061,216034,174184,189971,227429,250638,229049,221349,235859,262246,251649,236763,247262,252218,280739,248735,257825,259046,260308,271867,296385,286537,321054,341174,184594,406046,437612,471817,483654,310584],"Ontario":[49735,84781,88930,104638,114770,120075,139247,134996,117635,115944,119719,117716,92346,104165,133502,148654,133590,119733,125107,140530,125899,111332,110904,106876,118124,99457,99121,103567,95778,103630,109919,112041,137469,153384,82956,199304,185005,206863,205887,134530],"Quebec":[19476,26846,25588,33946,41043,51947,48838,44977,28094,27228,29806,27934,26626,29179,32502,37604,37581,39560,44252,43315,44682,45206,45204,49500,53998,51724,55024,51978,50245,49030,53242,52381,51124,40566,25233,50275,68721,52808,59440,46775],"British Columbia":[12556,18898,23131,25292,29140,32382,37037,45969,49146,44603,52025,47848,35990,36106,37413,38484,34057,35233,37030,44770,42096,38982,44006,41447,44195,34787,36235,36213,35170,35731,38089,38465,44854,50228,28482,69472,61229,70828,63126,40681],"Alberta":[9673,11974,14007,16173,19087,17061,17798,18578,18021,14360,13889,12833,11198,12089,14349,16406,14782,15837,16480,19407,20717,20866,24209,27024,32657,30964,36092,36632,42523,47234,49256,42120,42014,43717,22970,39391,49535,57588,66394,39200],"Manitoba":[3749,4782,4998,6122,6669,5661,5101,4860,4137,3605,3928,3715,3004,3725,4647,4592,4615,6503,7427,8097,10049,10960,11229,13523,15814,15974,13331,13121,16234,14898,16828,14639,15225,18868,8608,16576,21673,24918,24703,14785],"Saskatchewan":[1861,2118,2201,2143,2385,2458,2529,2398,2260,1949,1819,1737,1572,1726,1891,1703,1667,1668,1945,2119,2726,3516,4835,6890,7615,8956,11175,10678,11828,12522,14880,14686,15508,15871,7426,10951,21679,25175,23164,11462],"Nova Scotia":[1093,1225,1298,1474,1572,1500,2362,3022,3471,3589,3225,2837,2056,1609,1605,1698,1419,1474,1774,1929,2586,2530,2651,2388,2397,2136,2336,2527,2670,3420,5511,4516,5983,7595,3521,9168,12650,11807,14287,7510],"New Brunswick":[641,641,675,902,855,689,756,708,627,644,718,663,729,662,761,798,705,666,796,1091,1646,1643,1856,1914,2125,1967,2212,2020,2837,2578,4717,3660,4609,6004,2888,5315,10227,11450,15492,8893],"Newfoundland & Labrador":[274,455,410,466,553,639,789,803,565,575,585,418,401,423,417,392,404,359,579,497,508,546,627,606,715,685,733,833,899,1119,1200,1183,1527,1857,898,2049,3495,5486,5755,3939],"Prince Edward Island":[168,159,152,158,176,151,151,163,162,166,154,145,136,137,188,134,107,154,310,330,565,992,1454,1759,2593,1739,1102,1000,1630,1190,2313,2343,2127,2447,1292,2613,2668,3618,3979,1813]},"per1K":{"Canada":[3.81,5.75,6.03,7.02,7.82,8.3,8.98,8.95,7.74,7.26,7.63,7.22,5.78,6.25,7.41,8.08,7.3,7.0,7.38,8.13,7.73,7.2,7.44,7.5,8.26,7.24,7.43,7.38,7.35,7.61,8.21,7.84,8.66,9.07,4.85,10.62,11.24,11.78,11.72,7.46],"Ontario":[5.27,8.8,9.04,10.36,11.15,11.51,13.17,12.63,10.87,10.59,10.8,10.48,8.12,9.05,11.43,12.49,11.05,9.78,10.1,11.22,9.94,8.72,8.61,8.22,8.99,7.5,7.4,7.66,7.03,7.56,7.92,7.96,9.6,10.52,5.62,13.43,12.21,13.23,12.75,8.27],"Quebec":[2.9,3.96,3.74,4.9,5.87,7.35,6.87,6.28,3.91,3.77,4.11,3.84,3.65,3.98,4.42,5.08,5.05,5.28,5.87,5.71,5.85,5.88,5.82,6.31,6.81,6.46,6.83,6.41,6.17,6.0,6.47,6.32,6.1,4.78,2.95,5.87,7.93,5.99,6.61,5.16],"British Columbia":[4.18,6.2,7.43,7.91,8.85,9.6,10.68,12.88,13.37,11.81,13.43,12.12,9.04,9.0,9.26,9.44,8.31,8.54,8.91,10.67,9.92,9.08,10.12,9.4,9.9,7.72,7.93,7.81,7.46,7.5,7.84,7.8,8.93,9.83,5.5,13.29,11.43,12.84,11.13,7.14],"Alberta":[3.98,4.91,5.7,6.47,7.49,6.58,6.76,6.97,6.67,5.25,5.0,4.53,3.86,4.09,4.78,5.36,4.72,4.98,5.09,5.84,6.06,5.94,6.73,7.35,8.75,8.17,9.32,9.21,10.42,11.38,11.74,9.94,9.79,10.04,5.21,8.89,10.98,12.28,13.52,7.79],"Manitoba":[3.43,4.35,4.53,5.55,6.03,5.1,4.58,4.35,3.68,3.19,3.46,3.27,2.64,3.26,4.05,3.99,3.99,5.59,6.33,6.87,8.49,9.21,9.37,11.19,12.95,12.95,10.67,10.39,12.71,11.52,12.81,10.97,11.26,13.77,6.24,11.91,15.33,17.15,16.56,9.79],"Saskatchewan":[1.81,2.05,2.14,2.1,2.37,2.45,2.52,2.38,2.24,1.92,1.79,1.71,1.55,1.7,1.88,1.7,1.67,1.67,1.95,2.13,2.75,3.51,4.75,6.66,7.24,8.4,10.32,9.72,10.64,11.16,13.1,12.8,13.41,13.63,6.36,9.38,18.39,20.8,18.56,9.05],"Nova Scotia":[1.23,1.37,1.45,1.63,1.73,1.64,2.57,3.27,3.74,3.87,3.46,3.04,2.21,1.72,1.72,1.82,1.52,1.57,1.89,2.06,2.76,2.71,2.83,2.55,2.54,2.26,2.48,2.69,2.85,3.65,5.84,4.74,6.22,7.78,3.56,9.17,12.35,11.21,13.19,6.87],"New Brunswick":[0.88,0.88,0.92,1.23,1.16,0.92,1.01,0.95,0.84,0.86,0.95,0.88,0.97,0.88,1.01,1.06,0.94,0.89,1.06,1.46,2.21,2.2,2.49,2.55,2.82,2.6,2.92,2.66,3.74,3.4,6.18,4.77,5.98,7.72,3.69,6.72,12.64,13.78,18.05,10.23],"Newfoundland & Labrador":[0.48,0.79,0.71,0.81,0.96,1.1,1.36,1.38,0.98,1.01,1.05,0.76,0.74,0.79,0.79,0.75,0.78,0.69,1.12,0.97,0.99,1.07,1.23,1.17,1.37,1.3,1.39,1.58,1.7,2.12,2.27,2.23,2.89,3.52,1.7,3.89,6.58,10.18,10.52,7.16],"Prince Edward Island":[1.31,1.24,1.18,1.21,1.35,1.16,1.15,1.23,1.21,1.23,1.13,1.07,1.0,1.01,1.38,0.98,0.78,1.12,2.25,2.39,4.1,7.2,10.48,12.58,18.31,12.08,7.63,6.95,11.31,8.23,15.75,15.65,13.97,15.71,8.12,16.12,15.96,20.82,22.14,9.93]}};
+
+let chart=null,selectedEntity='Canada',currentView='per1K';
+const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A'};
+const entityOrder=['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island'];
+
+function init(){buildChips();update()}
+function buildChips(){const c=document.getElementById('entities');entityOrder.forEach(n=>{if(!ALL_DATA.raw[n])return;const ch=document.createElement('span');const col=entityColors[n]||'#666';ch.className='chip'+(n==='Canada'?' chip-national':'')+(n===selectedEntity?' on':'');ch.dataset.entity=n;ch.style.borderColor=col;ch.style.color=col;if(n===selectedEntity){ch.style.background=col;ch.style.color='#fff'}ch.textContent=n;ch.onclick=()=>selectEntity(n);c.appendChild(ch)})}
+function selectEntity(n){selectedEntity=n;document.querySelectorAll('#entities .chip').forEach(c=>{const s=c.dataset.entity===n;const col=entityColors[c.dataset.entity]||'#666';c.classList.toggle('on',s);if(s){c.style.background=col;c.style.color='#fff'}else{c.style.background='';c.style.color=col}});update()}
+function setView(v){currentView=v;document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===v));update()}
+
+function update(){
+  const isPerCap=currentView==='per1K';
+  const dataSet=ALL_DATA[currentView];
+  const vals=dataSet[selectedEntity],natVals=dataSet['Canada'],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
+  const yLabel=isPerCap?'Per 1,000 Population':'Immigrants';
+  const title=selectedEntity+(isPerCap?' — Immigration Rate (per 1,000)':' — Total International Immigrants');
+
+  if(chart)chart.destroy();
+  const ctx=document.getElementById('chart').getContext('2d');
+  const datasets=[{label:selectedEntity,data:vals,backgroundColor:color+'B3',borderColor:color,borderWidth:1,borderRadius:2}];
+  if(selectedEntity!=='Canada')datasets.push({label:'National Average',data:natVals,type:'line',borderColor:'#2D2D2D',borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false,order:-1});
+
+  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:selectedEntity!=='Canada',position:'top',labels:{boxWidth:15,font:{size:10},color:'#5A5A5A'}},title:{display:true,text:title,color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;if(v==null)return null;return isPerCap?' '+c.dataset.label+': '+v.toFixed(2)+' per 1K':' '+c.dataset.label+': '+v.toLocaleString('en-CA')}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A',callback:v=>isPerCap?v.toFixed(1):(v>=1000?(v/1000).toFixed(0)+'K':v)},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:yLabel,font:{size:11},color:'#5A5A5A'}}}}});
+  buildTable(labels,vals,natVals,isPerCap);
+}
+
+function buildTable(labels,vals,natVals,isPerCap){
+  document.getElementById('tableTitle').textContent=selectedEntity+(isPerCap?' — Immigration per 1,000':' — Total Immigrants');
+  const t=document.getElementById('dataTable'),sd=selectedEntity!=='Canada';
+  let h='<thead><tr><th>Year</th><th class="num">'+(isPerCap?'Per 1K':'Immigrants')+'</th>';
+  if(sd)h+='<th class="num">vs National</th>';
+  h+='</tr></thead><tbody>';
+  for(let i=labels.length-1;i>=0;i--){
+    const v=vals[i];
+    h+='<tr><td>'+labels[i]+'</td><td class="num">'+(v!=null?(isPerCap?v.toFixed(2):v.toLocaleString('en-CA')):'—')+'</td>';
+    if(sd&&v!=null&&natVals[i]!=null){
+      if(isPerCap){const d=(v-natVals[i]).toFixed(2);const cls=parseFloat(d)>=0?'positive':'negative';const s=parseFloat(d)>=0?'+':'';h+='<td class="num '+cls+'">'+s+d+'</td>'}
+      else{const pct=((v/natVals[i])*100).toFixed(1);h+='<td class="num">'+pct+'% of national</td>'}
+    }else if(sd)h+='<td class="num">—</td>';
+    h+='</tr>';
+  }
+  h+='</tbody>';t.innerHTML=h;
+}
+
+function copyTable(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>c.textContent.trim()).join('\t'))});navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=event.target;b.textContent='Copied';b.classList.add('copied');setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000)})}
+function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_immigration.csv';a.click()}
+init();
+</script>
+</body>
+</html>
