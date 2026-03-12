@@ -869,6 +869,436 @@
         }
       },
       "latest_year": "2024-25"
+    },
+    {
+      "id": "revenue_spending",
+      "name": "Revenue per Capita",
+      "vertical": "Fiscal",
+      "unit": "$",
+      "format": "currency",
+      "polarity": "higher_better",
+      "dashboard": "revenue_spending.html",
+      "values": {
+        "Canada": {
+          "value": 11796.13,
+          "year": "2024",
+          "trend": "improving"
+        },
+        "Newfoundland & Labrador": {
+          "value": 18647.98,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "B",
+          "rank": 4
+        },
+        "Prince Edward Island": {
+          "value": 20416.34,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "A",
+          "rank": 1
+        },
+        "Nova Scotia": {
+          "value": 18169.16,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "B",
+          "rank": 5
+        },
+        "New Brunswick": {
+          "value": 17534.8,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "C",
+          "rank": 6
+        },
+        "Quebec": {
+          "value": 19715.47,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "A",
+          "rank": 2
+        },
+        "Ontario": {
+          "value": 14580.49,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "D",
+          "rank": 10
+        },
+        "Manitoba": {
+          "value": 16129.81,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "C",
+          "rank": 8
+        },
+        "Saskatchewan": {
+          "value": 19530.91,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "B",
+          "rank": 3
+        },
+        "Alberta": {
+          "value": 17311.77,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "C",
+          "rank": 7
+        },
+        "British Columbia": {
+          "value": 15518.47,
+          "year": "2024",
+          "trend": "improving",
+          "grade": "D",
+          "rank": 9
+        }
+      },
+      "latest_year": "2024"
+    },
+    {
+      "id": "employment",
+      "name": "Employment Rate",
+      "vertical": "Economy",
+      "unit": "%",
+      "format": "percent",
+      "polarity": "higher_better",
+      "dashboard": "employment.html",
+      "values": {
+        "Canada": {
+          "value": 44.0,
+          "year": "2025",
+          "trend": "stable"
+        },
+        "Alberta": {
+          "value": 44.5,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 3
+        },
+        "British Columbia": {
+          "value": 43.8,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 4
+        },
+        "Manitoba": {
+          "value": 43.5,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 6
+        },
+        "New Brunswick": {
+          "value": 42.1,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 8
+        },
+        "Newfoundland & Labrador": {
+          "value": 41.2,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "D",
+          "rank": 10
+        },
+        "Nova Scotia": {
+          "value": 42.9,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 7
+        },
+        "Ontario": {
+          "value": 43.8,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 5
+        },
+        "Prince Edward Island": {
+          "value": 45.3,
+          "year": "2025",
+          "trend": "improving",
+          "grade": "A",
+          "rank": 2
+        },
+        "Quebec": {
+          "value": 45.6,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "A",
+          "rank": 1
+        },
+        "Saskatchewan": {
+          "value": 42.1,
+          "year": "2025",
+          "trend": "stable",
+          "grade": "D",
+          "rank": 9
+        }
+      },
+      "latest_year": "2025"
+    },
+    {
+      "id": "housing_affordability",
+      "name": "Housing Price Index",
+      "vertical": "Housing",
+      "unit": "",
+      "format": "number",
+      "polarity": "lower_better",
+      "dashboard": "housing_affordability.html",
+      "values": {
+        "Canada": {
+          "value": 121.5,
+          "year": "2026",
+          "trend": "stable"
+        },
+        "Newfoundland & Labrador": {
+          "value": 109.8,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "A",
+          "rank": 1
+        },
+        "Prince Edward Island": {
+          "value": 123.7,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 6
+        },
+        "Nova Scotia": {
+          "value": 127.5,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 8
+        },
+        "New Brunswick": {
+          "value": 120.7,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 5
+        },
+        "Quebec": {
+          "value": 149.3,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "D",
+          "rank": 10
+        },
+        "Ontario": {
+          "value": 119.4,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 4
+        },
+        "Manitoba": {
+          "value": 145.4,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "D",
+          "rank": 9
+        },
+        "Saskatchewan": {
+          "value": 109.9,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "A",
+          "rank": 2
+        },
+        "Alberta": {
+          "value": 118.0,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 3
+        },
+        "British Columbia": {
+          "value": 124.3,
+          "year": "2026",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 7
+        }
+      },
+      "latest_year": "2026"
+    },
+    {
+      "id": "crime_breakdown",
+      "name": "Violent Crime Index",
+      "vertical": "Crime",
+      "unit": "",
+      "format": "number",
+      "polarity": "lower_better",
+      "dashboard": "crime_breakdown.html",
+      "values": {
+        "Canada": {
+          "value": 99.87,
+          "year": "2024",
+          "trend": "declining"
+        },
+        "Alberta": {
+          "value": 105.93,
+          "year": "2024",
+          "trend": "stable",
+          "grade": "C",
+          "rank": 8
+        },
+        "British Columbia": {
+          "value": 94.13,
+          "year": "2024",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 4
+        },
+        "Manitoba": {
+          "value": 213.83,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "D",
+          "rank": 10
+        },
+        "New Brunswick": {
+          "value": 98.63,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "C",
+          "rank": 7
+        },
+        "Newfoundland & Labrador": {
+          "value": 89.89,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "B",
+          "rank": 3
+        },
+        "Nova Scotia": {
+          "value": 94.49,
+          "year": "2024",
+          "trend": "stable",
+          "grade": "B",
+          "rank": 5
+        },
+        "Ontario": {
+          "value": 81.28,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "A",
+          "rank": 2
+        },
+        "Prince Edward Island": {
+          "value": 79.67,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "A",
+          "rank": 1
+        },
+        "Quebec": {
+          "value": 97.04,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "C",
+          "rank": 6
+        },
+        "Saskatchewan": {
+          "value": 198.53,
+          "year": "2024",
+          "trend": "declining",
+          "grade": "D",
+          "rank": 9
+        }
+      },
+      "latest_year": "2024"
+    },
+    {
+      "id": "interprovincial_migration",
+      "name": "Interp. Migration per 1K",
+      "vertical": "Demographics",
+      "unit": "",
+      "format": "decimal_signed",
+      "polarity": "higher_better",
+      "dashboard": "interprovincial_migration.html",
+      "values": {
+        "Newfoundland & Labrador": {
+          "value": -0.08,
+          "year": "2025",
+          "trend": "declining",
+          "grade": "B",
+          "rank": 5
+        },
+        "Prince Edward Island": {
+          "value": 9.17,
+          "year": "2025",
+          "trend": "declining",
+          "grade": "A",
+          "rank": 1
+        },
+        "Nova Scotia": {
+          "value": 2.34,
+          "year": "2025",
+          "trend": "declining",
+          "grade": "B",
+          "rank": 3
+        },
+        "New Brunswick": {
+          "value": -0.33,
+          "year": "2025",
+          "trend": "declining",
+          "grade": "C",
+          "rank": 6
+        },
+        "Quebec": {
+          "value": -0.66,
+          "year": "2025",
+          "trend": "improving",
+          "grade": "C",
+          "rank": 7
+        },
+        "Ontario": {
+          "value": -0.77,
+          "year": "2025",
+          "trend": "improving",
+          "grade": "C",
+          "rank": 8
+        },
+        "Manitoba": {
+          "value": -1.89,
+          "year": "2025",
+          "trend": "improving",
+          "grade": "D",
+          "rank": 9
+        },
+        "Saskatchewan": {
+          "value": -1.92,
+          "year": "2025",
+          "trend": "improving",
+          "grade": "D",
+          "rank": 10
+        },
+        "Alberta": {
+          "value": 3.64,
+          "year": "2025",
+          "trend": "improving",
+          "grade": "A",
+          "rank": 2
+        },
+        "British Columbia": {
+          "value": 0.28,
+          "year": "2025",
+          "trend": "declining",
+          "grade": "B",
+          "rank": 4
+        }
+      },
+      "latest_year": "2025"
     }
   ],
   "provinces": [
@@ -910,31 +1340,31 @@
       "grade": "C"
     },
     "Alberta": {
-      "score": 3.4,
+      "score": 3.2,
       "grade": "B"
     },
     "Manitoba": {
-      "score": 1.9,
+      "score": 1.7,
       "grade": "C"
     },
     "Saskatchewan": {
-      "score": 2.5,
-      "grade": "B"
+      "score": 2.3,
+      "grade": "C"
     },
     "Nova Scotia": {
-      "score": 2.2,
+      "score": 2.3,
       "grade": "C"
     },
     "New Brunswick": {
-      "score": 2.6,
-      "grade": "B"
+      "score": 2.5,
+      "grade": "C"
     },
     "Newfoundland & Labrador": {
-      "score": 2.0,
+      "score": 2.3,
       "grade": "C"
     },
     "Prince Edward Island": {
-      "score": 2.8,
+      "score": 3.1,
       "grade": "B"
     }
   }

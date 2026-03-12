@@ -268,6 +268,82 @@ def main():
         "lower_better", "net_debt.html", ndebt_pc
     ))
 
+    # 11. Revenue per Capita (Fiscal #3)
+    rev = load_json("government_revenue.json")
+    rev_nested = get_latest_values_nested(rev, 7)
+    # Revenue is in millions $, map Federal->Canada
+    rev_remapped = {}
+    for name, pairs in rev_nested.items():
+        display = "Canada" if name == "Federal" else name
+        rev_remapped[display] = [(y, v * 1_000_000) for y, v in pairs]
+    rev_pc = compute_per_capita(rev_remapped, pop_data, multiplier=1)
+    metrics.append(build_metric(
+        "Revenue per Capita", "Fiscal", "$", "currency",
+        "higher_better", "revenue_spending.html", rev_pc
+    ))
+
+    # 12. Employment Rate (Economy #3)
+    # employment.json: {dates: [...], provinces: {name: {private: [...], public: [...]}}}
+    emp = load_json("employment.json")
+    emp_dates = emp["dates"]
+    pop_lookup_all = {}
+    for pname in list(emp["provinces"].keys()):
+        mapped = "Newfoundland & Labrador" if pname == NL_ALT else pname
+        if mapped in pop_data:
+            pop_lookup_all[pname] = {e["year"]: e["value"] for e in pop_data[mapped]}
+    emp_vals = {}
+    # Compute annual average total employment / population * 100
+    for pname, pdata in emp["provinces"].items():
+        mapped = "Newfoundland & Labrador" if pname == NL_ALT else pname
+        if pname not in pop_lookup_all:
+            continue
+        annual = {}
+        for i, dt in enumerate(emp_dates):
+            yr = int(dt.split("-")[0])
+            if yr not in annual:
+                annual[yr] = []
+            total = (pdata["private"][i] or 0) + (pdata["public"][i] or 0)
+            annual[yr].append(total)
+        pairs = []
+        for yr in sorted(annual.keys()):
+            if yr in pop_lookup_all[pname] and len(annual[yr]) >= 6:
+                avg_emp = sum(annual[yr]) / len(annual[yr]) * 1000  # thousands -> persons
+                rate = avg_emp / pop_lookup_all[pname][yr] * 100
+                pairs.append((yr, round(rate, 1)))
+        emp_vals[mapped] = pairs[-7:]
+    metrics.append(build_metric(
+        "Employment Rate", "Economy", "%", "percent",
+        "higher_better", "employment.html", emp_vals
+    ))
+
+    # 13. Housing Price Index (Housing #3)
+    nhpi = load_json("new_housing_price_index.json")
+    nhpi_vals = get_latest_values_nested(nhpi, 7)
+    metrics.append(build_metric(
+        "Housing Price Index", "Housing", "", "number",
+        "lower_better", "housing_affordability.html", nhpi_vals
+    ))
+
+    # 14. Violent Crime Severity Index (Crime #3)
+    crime_bd = load_json("crime_breakdown.json")
+    violent_vals = get_latest_values_nested(crime_bd["violent"], 7)
+    metrics.append(build_metric(
+        "Violent Crime Index", "Crime", "", "number",
+        "lower_better", "crime_breakdown.html", violent_vals
+    ))
+
+    # 15. Interprovincial Migration per 1K Pop (Demographics #3)
+    interp = load_json("interprovincial_migration.json")
+    interp_nested = get_latest_values_nested(interp, 7)
+    interp_pc = compute_per_capita(
+        {name: pairs for name, pairs in interp_nested.items()},
+        pop_data, multiplier=1000
+    )
+    metrics.append(build_metric(
+        "Interp. Migration per 1K", "Demographics", "", "decimal_signed",
+        "higher_better", "interprovincial_migration.html", interp_pc
+    ))
+
     # Compute composite scores
     composites = {}
     grade_to_num = {"A": 4, "B": 3, "C": 2, "D": 1}
