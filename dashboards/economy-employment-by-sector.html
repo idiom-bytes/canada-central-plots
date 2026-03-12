@@ -161,7 +161,7 @@
     async function loadData() {
       let raw;
       try {
-        const resp = await fetch('../data/employment.json');
+        const resp = await fetch('../data/economy-employment.json');
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         raw = await resp.json();
       } catch (e) {
