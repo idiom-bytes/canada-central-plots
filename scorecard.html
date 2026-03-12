@@ -44,12 +44,12 @@
     .rank-bar-fill{height:100%;border-radius:2px;transition:width .5s ease}
 
     /* Heat map section */
-    .heatmap-section{max-width:1100px;margin:1.5rem auto 2rem;padding:0 1rem;width:100%;overflow-x:auto}
+    .heatmap-section{max-width:1100px;margin:1.5rem auto 2rem;padding:0 1rem;width:100%}
     .heatmap-section h2{font-size:0.8125rem;font-weight:700;color:var(--color-text-secondary);margin:0 0 0.75rem;text-transform:uppercase;letter-spacing:0.05em}
 
-    .heatmap{border-collapse:separate;border-spacing:0;width:100%;min-width:820px;background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden}
+    .heatmap{border-collapse:separate;border-spacing:0;width:100%;background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden}
     .heatmap th,.heatmap td{padding:0;text-align:center;border-bottom:1px solid var(--color-cream-dark)}
-    .heatmap thead th{padding:8px 4px;font-size:0.6875rem;font-weight:700;color:var(--color-text-secondary);background:var(--color-cream);position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;white-space:nowrap}
+    .heatmap thead th{padding:8px 4px;font-size:0.6875rem;font-weight:700;color:var(--color-text-secondary);background:var(--color-cream);cursor:pointer;user-select:none;white-space:nowrap}
     .heatmap thead th:hover{background:var(--color-beige)}
     .heatmap thead th.col-highlight{background:var(--color-beige-dark);color:var(--color-text-primary)}
     .heatmap thead th:first-child{text-align:left;padding-left:12px;min-width:160px;cursor:default}
@@ -127,9 +127,7 @@
 
   <section class="heatmap-section">
     <h2>Metric Breakdown</h2>
-    <div style="overflow-x:auto">
-      <table class="heatmap" id="heatmap"></table>
-    </div>
+    <table class="heatmap" id="heatmap"></table>
   </section>
 
   <div class="tooltip" id="tooltip"></div>
