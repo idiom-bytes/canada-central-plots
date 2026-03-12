@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interprovincial Migration | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--color-teal:#3A5F6F;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
+    .entities{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+    .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s,background .15s}
+    @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
+    .chip.on{opacity:1}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid #7C5A9D;min-height:350px;position:relative;padding:20px}
+    canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+    .table-section{margin-top:1.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);white-space:nowrap}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table .positive{color:#4A7A4A}
+    .data-table .negative{color:#A13F3F}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a class="active" href="index.html">Statistics</a>
+    </div>
+  </nav>
+  <div class="page">
+    <div class="content">
+      <h1 class="page-title">Interprovincial Migration by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710004501" target="_blank" rel="noopener">Statistics Canada, Table 17-10-0045-01</a></p>
+      <p class="page-desc">Net interprovincial migration — the number of Canadians moving to a province minus those leaving. Positive values mean a province is gaining residents from other provinces; negative means it's losing them. Alberta has been the #1 destination since 2020, while Ontario has been losing residents to other provinces despite strong international immigration.</p>
+      <div class="entities" id="entities"></div>
+      <div class="chart-card"><canvas id="chart"></canvas></div>
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Historical Data</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table" id="dataTable"></table></div>
+      </div>
+    </div>
+  </div>
+<script>
+const ALL_DATA = {"years":["1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"entities":{"Ontario":[-15097,-10014,-13305,-12538,-4501,-1657,-1695,6815,11383,18250,23120,11452,4040,-4587,-9329,-13454,-21928,-13161,-15016,-9156,-3759,-5558,-12900,-11923,-14066,-1802,15868,11042,9665,4673,-2589,-25198,-33096,-34554,-33526,-12529],"Quebec":[-9001,-12281,-9835,-7400,-10283,-10203,-15342,-17585,-14452,-11622,-11158,-7063,-3096,-288,-3052,-7109,-11765,-12590,-9668,-4170,-4286,-5644,-8969,-13273,-14419,-14082,-10589,-5901,-5913,-3135,-4548,-4372,-8612,-8948,-3234,-5976],"British Columbia":[39285,34243,38968,36829,33835,23204,17624,1683,-18016,-12398,-14939,-7280,-4456,3384,7558,6928,12490,16608,10628,9643,6203,1033,-4264,2143,15631,22464,23549,15341,12522,13866,19327,30921,11183,900,-1922,1574],"Alberta":[10494,5562,919,-2653,-2670,4180,14395,31272,38450,18818,23499,23096,19040,9266,20461,42263,45475,13058,17414,1757,2006,15923,35595,36023,28695,7160,-18115,-10457,-1336,-1228,-5214,-6441,25129,43712,37589,18318],"Manitoba":[-8487,-7473,-6355,-5217,-4049,-3303,-3814,-6623,-3297,-2447,-4178,-4552,-4095,-2233,-3803,-8637,-7302,-3433,-3903,-2533,-2550,-4218,-3981,-6072,-6883,-5818,-5378,-5570,-7408,-8618,-4567,-6242,-7666,-10271,-5970,-2853],"Saskatchewan":[-16057,-9406,-7579,-4563,-3900,-3301,-2034,-2794,-2000,-7084,-8323,-8421,-7315,-4661,-6237,-9565,-3849,5230,3128,1700,1598,757,1480,-577,-2650,-4674,-5475,-6836,-8967,-10531,-9262,-9210,-6647,-6073,-2906,-2427],"Nova Scotia":[-279,801,393,-1112,-2617,-1932,-1044,-2127,-1373,847,-1413,-1993,-799,1032,-2090,-3074,-4101,-2483,-1226,349,263,-1667,-3160,-2904,-2189,-1203,1338,3370,3303,4541,5077,10857,9745,8293,6187,2554],"New Brunswick":[1067,-51,-1075,-521,-487,-899,-882,-1966,-2853,-689,-1739,-1922,-339,-944,-846,-2619,-4148,-732,-824,201,459,-992,-3070,-2853,-3250,-1970,-707,579,491,2038,2366,6365,6844,4936,2861,-290],"Newfoundland & Labrador":[-1634,-1043,-2362,-3332,-6025,-6456,-7617,-8396,-7829,-3892,-4813,-3603,-3079,-1114,-2425,-4499,-4119,-1839,-184,2465,174,690,189,160,50,259,-507,-1885,-2850,-2163,-1512,1387,1723,734,437,-46],"Prince Edward Island":[-291,-338,231,507,697,367,409,-279,-13,217,-56,286,99,145,-237,-234,-753,-658,-349,-256,-108,-324,-920,-724,-919,-334,16,317,493,557,922,1933,1397,1271,484,1675]}};
+
+let chart=null,selectedEntity='Alberta';
+const entityColors={'Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A'};
+const entityOrder=['Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island'];
+
+function init(){buildChips();update()}
+function buildChips(){const c=document.getElementById('entities');entityOrder.forEach(n=>{if(!ALL_DATA.entities[n])return;const ch=document.createElement('span');const col=entityColors[n]||'#666';ch.className='chip'+(n===selectedEntity?' on':'');ch.dataset.entity=n;ch.style.borderColor=col;ch.style.color=col;if(n===selectedEntity){ch.style.background=col;ch.style.color='#fff'}ch.textContent=n;ch.onclick=()=>selectEntity(n);c.appendChild(ch)})}
+function selectEntity(n){selectedEntity=n;document.querySelectorAll('#entities .chip').forEach(c=>{const s=c.dataset.entity===n;const col=entityColors[c.dataset.entity]||'#666';c.classList.toggle('on',s);if(s){c.style.background=col;c.style.color='#fff'}else{c.style.background='';c.style.color=col}});update()}
+
+function fmtNum(v){if(v==null)return'—';const abs=Math.abs(v).toLocaleString();return(v>=0?'+':'-')+abs+' persons'}
+
+function update(){
+  const vals=ALL_DATA.entities[selectedEntity],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
+  if(chart)chart.destroy();
+  const ctx=document.getElementById('chart').getContext('2d');
+  const bgColors=vals.map(v=>v>=0?color+'B3':'rgba(180, 60, 60, 0.7)');
+  const borderColors=vals.map(v=>v>=0?color:'rgba(180, 60, 60, 1)');
+  const datasets=[{label:selectedEntity,data:vals,backgroundColor:bgColors,borderColor:borderColors,borderWidth:1,borderRadius:2}];
+  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},title:{display:true,text:selectedEntity+' — Net Interprovincial Migration',color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;return v!=null?' '+fmtNum(v):null}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A',callback:v=>{const abs=Math.abs(v);if(abs>=1000)return(v<0?'-':'')+(abs/1000).toFixed(0)+'K';return v}},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:'Net Migration (persons)',font:{size:11},color:'#5A5A5A'}}}}});
+  buildTable(labels,vals);
+}
+
+function buildTable(labels,vals){
+  document.getElementById('tableTitle').textContent=selectedEntity+' — Net Interprovincial Migration';
+  const t=document.getElementById('dataTable');
+  let h='<thead><tr><th>Year</th><th class="num">Net Migration</th></tr></thead><tbody>';
+  for(let i=labels.length-1;i>=0;i--){
+    const v=vals[i];
+    const cls=v>=0?'positive':'negative';
+    const sign=v>=0?'+':'';
+    const display=v!=null?sign+v.toLocaleString():'—';
+    h+='<tr><td>'+labels[i]+'</td><td class="num '+cls+'">'+display+' persons</td></tr>';
+  }
+  h+='</tbody>';t.innerHTML=h;
+}
+
+function copyTable(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>c.textContent.trim()).join('\t'))});navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=event.target;b.textContent='Copied';b.classList.add('copied');setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000)})}
+function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_interprovincial_migration.csv';a.click()}
+init();
+</script>
+</body>
+</html>
