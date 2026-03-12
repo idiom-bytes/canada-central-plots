@@ -1,0 +1,3344 @@
+{
+  "version": 2,
+  "methodology": {
+    "layer_1": "Peer rank among 10 provinces (A=rank 1-2, B=3-5, C=6-8, D=9-10)",
+    "layer_2": "Historical trajectory \u2014 EMA(3y) vs EMA(10y) trend + 20y percentile",
+    "layer_3": "National health \u2014 Canada 10y growth rate sets grade ceiling",
+    "weights": {
+      "peer_rank": 0.4,
+      "trend": 0.3,
+      "historical_percentile": 0.3
+    },
+    "ceiling_rules": {
+      "strong (>15%)": "A",
+      "moderate (5-15%)": "A",
+      "stagnant (-5% to 5%)": "B",
+      "declining (<-5%)": "C"
+    }
+  },
+  "metrics": [
+    {
+      "id": "deficit_per_capita",
+      "name": "Deficit per Capita",
+      "vertical": "fiscal",
+      "unit": "$",
+      "invert": true,
+      "dashboard": "dashboards/fiscal-deficit-per-capita.html",
+      "canada": {
+        "value": -880.95,
+        "trend": {
+          "grade": "A",
+          "ema_3": -1379.69,
+          "ema_10": -1621.52,
+          "direction": "strong_up",
+          "pct_change": 14.9
+        }
+      },
+      "national_health": {
+        "grade": "A",
+        "ceiling": "A",
+        "growth_10y": -5576.2,
+        "growth_20y": -2027.3,
+        "status": "strong"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": -1296.04,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": -871.42,
+            "ema_10": -390.01,
+            "direction": "strong_down",
+            "pct_change": -123.4
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": -1296.04,
+            "max": 928.85,
+            "current": -1296.04
+          },
+          "adjusted_grade": "A"
+        },
+        "Alberta": {
+          "value": 1694.84,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 1259.47,
+            "ema_10": 57.66,
+            "direction": "strong_up",
+            "pct_change": 2084.2
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 14.299999999999997,
+            "min": -3847.99,
+            "max": 2619.03,
+            "current": 1694.84
+          },
+          "adjusted_grade": "D"
+        },
+        "Saskatchewan": {
+          "value": -200.34,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": -14.75,
+            "ema_10": -130.82,
+            "direction": "strong_up",
+            "pct_change": 88.7
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 73.0,
+            "min": -1354.47,
+            "max": 2919.3,
+            "current": -200.34
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": -770.7,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": -778.29,
+            "ema_10": -592.94,
+            "direction": "strong_down",
+            "pct_change": -31.3
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 61.9,
+            "min": -1536.08,
+            "max": 470.81,
+            "current": -770.7
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": -67.51,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": -134.99,
+            "ema_10": -338.56,
+            "direction": "strong_up",
+            "pct_change": 60.1
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 12.900000000000006,
+            "min": -1481.66,
+            "max": 141.37,
+            "current": -67.51
+          },
+          "adjusted_grade": "D"
+        },
+        "Quebec": {
+          "value": -574.73,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": -486.53,
+            "ema_10": -180.04,
+            "direction": "strong_down",
+            "pct_change": -170.2
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 93.5,
+            "min": -679.01,
+            "max": 914.52,
+            "current": -574.73
+          },
+          "adjusted_grade": "A"
+        },
+        "New Brunswick": {
+          "value": -116.51,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 323.99,
+            "ema_10": 294.91,
+            "direction": "up",
+            "pct_change": 9.9
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 62.4,
+            "min": -933.39,
+            "max": 1236.29,
+            "current": -116.51
+          },
+          "adjusted_grade": "C"
+        },
+        "Nova Scotia": {
+          "value": 240.13,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 180.39,
+            "ema_10": 87.19,
+            "direction": "strong_up",
+            "pct_change": 106.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 28.599999999999994,
+            "min": -723.55,
+            "max": 626.23,
+            "current": 240.13
+          },
+          "adjusted_grade": "D"
+        },
+        "Prince Edward Island": {
+          "value": -890.33,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": -416.64,
+            "ema_10": -112.28,
+            "direction": "strong_down",
+            "pct_change": -271.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": -890.33,
+            "max": 493.42,
+            "current": -890.33
+          },
+          "adjusted_grade": "A"
+        },
+        "Newfoundland & Labrador": {
+          "value": -548.58,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "D",
+            "ema_3": -524.99,
+            "ema_10": -626.22,
+            "direction": "strong_up",
+            "pct_change": 16.2
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 58.6,
+            "min": -4182.85,
+            "max": 4593.71,
+            "current": -548.58
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "net_debt_per_capita",
+      "name": "Net Debt per Capita",
+      "vertical": "fiscal",
+      "unit": "$",
+      "invert": true,
+      "dashboard": "dashboards/fiscal-net-debt-per-capita.html",
+      "canada": {
+        "value": 33773.91,
+        "trend": {
+          "grade": "A",
+          "ema_3": 33086.07,
+          "ema_10": 28204.96,
+          "direction": "strong_up",
+          "pct_change": 17.3
+        }
+      },
+      "national_health": {
+        "grade": "D",
+        "ceiling": "C",
+        "growth_10y": 70.8,
+        "growth_20y": 96.3,
+        "status": "declining"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 15395.56,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "D",
+            "ema_3": 13603.22,
+            "ema_10": 10971.85,
+            "direction": "strong_up",
+            "pct_change": 24.0
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 5565.15,
+            "max": 15395.56,
+            "current": 15395.56
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 6995.27,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "D",
+            "ema_3": 8434.12,
+            "ema_10": 6835.72,
+            "direction": "strong_up",
+            "pct_change": 23.4
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 27.900000000000006,
+            "min": -9975.35,
+            "max": 13576.87,
+            "current": 6995.27
+          },
+          "adjusted_grade": "C"
+        },
+        "Saskatchewan": {
+          "value": 12525.36,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "D",
+            "ema_3": 12282.66,
+            "ema_10": 10758.21,
+            "direction": "strong_up",
+            "pct_change": 14.2
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 7.5,
+            "min": 3440.31,
+            "max": 13265.27,
+            "current": 12525.36
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": 23630.43,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 22584.56,
+            "ema_10": 19834.02,
+            "direction": "strong_up",
+            "pct_change": 13.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 8878.08,
+            "max": 23630.43,
+            "current": 23630.43
+          },
+          "adjusted_grade": "D"
+        },
+        "Ontario": {
+          "value": 26451.25,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 26214.34,
+            "ema_10": 24242.3,
+            "direction": "up",
+            "pct_change": 8.1
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 12370.13,
+            "max": 26451.25,
+            "current": 26451.25
+          },
+          "adjusted_grade": "D"
+        },
+        "Quebec": {
+          "value": 26253.2,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 25224.1,
+            "ema_10": 23614.7,
+            "direction": "up",
+            "pct_change": 6.8
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 13779.66,
+            "max": 26253.2,
+            "current": 26253.2
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 14295.82,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "B",
+            "ema_3": 14723.14,
+            "ema_10": 15649.54,
+            "direction": "down",
+            "pct_change": -5.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 44.6,
+            "min": 8999.21,
+            "max": 18560.14,
+            "current": 14295.82
+          },
+          "adjusted_grade": "C"
+        },
+        "Nova Scotia": {
+          "value": 19246.95,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 18422.58,
+            "ema_10": 16982.76,
+            "direction": "up",
+            "pct_change": 8.5
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 12960.29,
+            "max": 19246.95,
+            "current": 19246.95
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 16860.59,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 15868.72,
+            "ema_10": 14715.95,
+            "direction": "up",
+            "pct_change": 7.8
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 9501.77,
+            "max": 16860.59,
+            "current": 16860.59
+          },
+          "adjusted_grade": "C"
+        },
+        "Newfoundland & Labrador": {
+          "value": 33719.23,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 32751.21,
+            "ema_10": 29102.47,
+            "direction": "strong_up",
+            "pct_change": 12.5
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 14934.61,
+            "max": 33719.23,
+            "current": 33719.23
+          },
+          "adjusted_grade": "D"
+        }
+      }
+    },
+    {
+      "id": "revenue_per_capita",
+      "name": "Revenue per Capita",
+      "vertical": "fiscal",
+      "unit": "$",
+      "invert": false,
+      "dashboard": "dashboards/fiscal-revenue-and-spending.html",
+      "canada": {
+        "value": 11796.13,
+        "trend": {
+          "grade": "A",
+          "ema_3": 11408.8,
+          "ema_10": 10029.37,
+          "direction": "strong_up",
+          "pct_change": 13.8
+        }
+      },
+      "national_health": {
+        "grade": "A",
+        "ceiling": "A",
+        "growth_10y": 51.9,
+        "growth_20y": 57.6,
+        "status": "strong"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 15518.47,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": 15096.75,
+            "ema_10": 13346.49,
+            "direction": "strong_up",
+            "pct_change": 13.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 8635.05,
+            "max": 15518.47,
+            "current": 15518.47
+          },
+          "adjusted_grade": "B"
+        },
+        "Alberta": {
+          "value": 17311.77,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 16549.14,
+            "ema_10": 14236.43,
+            "direction": "strong_up",
+            "pct_change": 16.2
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 95.4,
+            "min": 10287.01,
+            "max": 17647.85,
+            "current": 17311.77
+          },
+          "adjusted_grade": "B"
+        },
+        "Saskatchewan": {
+          "value": 19530.91,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 18535.6,
+            "ema_10": 16412.72,
+            "direction": "strong_up",
+            "pct_change": 12.9
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 12505.91,
+            "max": 19530.91,
+            "current": 19530.91
+          },
+          "adjusted_grade": "A"
+        },
+        "Manitoba": {
+          "value": 16129.81,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 15430.93,
+            "ema_10": 14014.99,
+            "direction": "strong_up",
+            "pct_change": 10.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 10756.27,
+            "max": 16129.81,
+            "current": 16129.81
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": 14580.49,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": 14045.27,
+            "ema_10": 12506.77,
+            "direction": "strong_up",
+            "pct_change": 12.3
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 8509.43,
+            "max": 14580.49,
+            "current": 14580.49
+          },
+          "adjusted_grade": "B"
+        },
+        "Quebec": {
+          "value": 19715.47,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 19130.64,
+            "ema_10": 17092.83,
+            "direction": "strong_up",
+            "pct_change": 11.9
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 11170.12,
+            "max": 19715.47,
+            "current": 19715.47
+          },
+          "adjusted_grade": "A"
+        },
+        "New Brunswick": {
+          "value": 17534.8,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 16995.77,
+            "ema_10": 15233.93,
+            "direction": "strong_up",
+            "pct_change": 11.6
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 10553.64,
+            "max": 17534.8,
+            "current": 17534.8
+          },
+          "adjusted_grade": "B"
+        },
+        "Nova Scotia": {
+          "value": 18169.16,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 17177.91,
+            "ema_10": 15093.13,
+            "direction": "strong_up",
+            "pct_change": 13.8
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 10290.17,
+            "max": 18169.16,
+            "current": 18169.16
+          },
+          "adjusted_grade": "A"
+        },
+        "Prince Edward Island": {
+          "value": 20416.34,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 19919.58,
+            "ema_10": 17671.83,
+            "direction": "strong_up",
+            "pct_change": 12.7
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 81.8,
+            "min": 10885.27,
+            "max": 22541.87,
+            "current": 20416.34
+          },
+          "adjusted_grade": "A"
+        },
+        "Newfoundland & Labrador": {
+          "value": 18647.98,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "B",
+            "ema_3": 17851.56,
+            "ema_10": 16384.35,
+            "direction": "up",
+            "pct_change": 9.0
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 13038.09,
+            "max": 18647.98,
+            "current": 18647.98
+          },
+          "adjusted_grade": "B"
+        }
+      }
+    },
+    {
+      "id": "gdp_per_capita",
+      "name": "GDP per Capita",
+      "vertical": "economy",
+      "unit": "$",
+      "invert": false,
+      "dashboard": "dashboards/economy-gdp-per-capita.html",
+      "canada": {
+        "value": 59529,
+        "trend": {
+          "grade": "C",
+          "ema_3": 59649.21,
+          "ema_10": 58601.11,
+          "direction": "stable",
+          "pct_change": 1.8
+        }
+      },
+      "national_health": {
+        "grade": "C",
+        "ceiling": "B",
+        "growth_10y": 3.2,
+        "growth_20y": 12.3,
+        "status": "stagnant"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 60131,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "B",
+            "ema_3": 60312.17,
+            "ema_10": 58378.86,
+            "direction": "up",
+            "pct_change": 3.3
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 89.6,
+            "min": 50760,
+            "max": 61224,
+            "current": 60131
+          },
+          "adjusted_grade": "B"
+        },
+        "Alberta": {
+          "value": 74907,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 75443.32,
+            "ema_10": 76085.59,
+            "direction": "stable",
+            "pct_change": -0.8
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 30.8,
+            "min": 70953,
+            "max": 83797,
+            "current": 74907
+          },
+          "adjusted_grade": "B"
+        },
+        "Saskatchewan": {
+          "value": 70921,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 70373.17,
+            "ema_10": 69034.97,
+            "direction": "stable",
+            "pct_change": 1.9
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 98.9,
+            "min": 62633,
+            "max": 71009,
+            "current": 70921
+          },
+          "adjusted_grade": "B"
+        },
+        "Manitoba": {
+          "value": 52480,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 52599.1,
+            "ema_10": 52179.65,
+            "direction": "stable",
+            "pct_change": 0.8
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 84.8,
+            "min": 45665,
+            "max": 53706,
+            "current": 52480
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": 59276,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 59594.08,
+            "ema_10": 58613.88,
+            "direction": "stable",
+            "pct_change": 1.7
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 81.5,
+            "min": 53147,
+            "max": 60666,
+            "current": 59276
+          },
+          "adjusted_grade": "B"
+        },
+        "Quebec": {
+          "value": 53812,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "B",
+            "ema_3": 53646.09,
+            "ema_10": 51827.7,
+            "direction": "up",
+            "pct_change": 3.5
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 91.8,
+            "min": 46170,
+            "max": 54495,
+            "current": 53812
+          },
+          "adjusted_grade": "B"
+        },
+        "New Brunswick": {
+          "value": 46467,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 46629.09,
+            "ema_10": 46365.51,
+            "direction": "stable",
+            "pct_change": 0.6
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 71.8,
+            "min": 44562,
+            "max": 47215,
+            "current": 46467
+          },
+          "adjusted_grade": "C"
+        },
+        "Nova Scotia": {
+          "value": 47451,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 47201.74,
+            "ema_10": 46015.83,
+            "direction": "stable",
+            "pct_change": 2.6
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 98.9,
+            "min": 41200,
+            "max": 47521,
+            "current": 47451
+          },
+          "adjusted_grade": "B"
+        },
+        "Prince Edward Island": {
+          "value": 47199,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 47010.79,
+            "ema_10": 45698.97,
+            "direction": "stable",
+            "pct_change": 2.9
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 95.7,
+            "min": 40828,
+            "max": 47488,
+            "current": 47199
+          },
+          "adjusted_grade": "C"
+        },
+        "Newfoundland & Labrador": {
+          "value": 59155,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 59654.95,
+            "ema_10": 60932.64,
+            "direction": "stable",
+            "pct_change": -2.1
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 9.3,
+            "min": 58239,
+            "max": 68084,
+            "current": 59155
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "median_wages",
+      "name": "Median Weekly Wages",
+      "vertical": "economy",
+      "unit": "$",
+      "invert": false,
+      "dashboard": "dashboards/economy-median-weekly-wages.html",
+      "canada": {
+        "value": 1152.0,
+        "trend": {
+          "grade": "A",
+          "ema_3": 1105.64,
+          "ema_10": 997.24,
+          "direction": "strong_up",
+          "pct_change": 10.9
+        }
+      },
+      "national_health": {
+        "grade": "A",
+        "ceiling": "A",
+        "growth_10y": 35.4,
+        "growth_20y": 71.2,
+        "status": "strong"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 1200.0,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1153.03,
+            "ema_10": 1038.68,
+            "direction": "strong_up",
+            "pct_change": 11.0
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 749.25,
+            "max": 1200.0,
+            "current": 1200.0
+          },
+          "adjusted_grade": "A"
+        },
+        "Alberta": {
+          "value": 1249.88,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "B",
+            "ema_3": 1219.21,
+            "ema_10": 1135.13,
+            "direction": "up",
+            "pct_change": 7.4
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 756.0,
+            "max": 1249.88,
+            "current": 1249.88
+          },
+          "adjusted_grade": "A"
+        },
+        "Saskatchewan": {
+          "value": 1111.13,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "B",
+            "ema_3": 1079.86,
+            "ema_10": 993.05,
+            "direction": "up",
+            "pct_change": 8.7
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 615.38,
+            "max": 1111.13,
+            "current": 1111.13
+          },
+          "adjusted_grade": "B"
+        },
+        "Manitoba": {
+          "value": 1050.0,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "B",
+            "ema_3": 1008.45,
+            "ema_10": 918.15,
+            "direction": "up",
+            "pct_change": 9.8
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 615.2,
+            "max": 1050.0,
+            "current": 1050.0
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": 1184.4,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1145.49,
+            "ema_10": 1036.71,
+            "direction": "strong_up",
+            "pct_change": 10.5
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 720.0,
+            "max": 1184.4,
+            "current": 1184.4
+          },
+          "adjusted_grade": "A"
+        },
+        "Quebec": {
+          "value": 1050.0,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1007.48,
+            "ema_10": 905.87,
+            "direction": "strong_up",
+            "pct_change": 11.2
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 617.1,
+            "max": 1050.0,
+            "current": 1050.0
+          },
+          "adjusted_grade": "B"
+        },
+        "New Brunswick": {
+          "value": 1000.0,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": 967.78,
+            "ema_10": 868.5,
+            "direction": "strong_up",
+            "pct_change": 11.4
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 600.0,
+            "max": 1000.0,
+            "current": 1000.0
+          },
+          "adjusted_grade": "B"
+        },
+        "Nova Scotia": {
+          "value": 1038.38,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": 983.15,
+            "ema_10": 878.99,
+            "direction": "strong_up",
+            "pct_change": 11.8
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 576.0,
+            "max": 1038.38,
+            "current": 1038.38
+          },
+          "adjusted_grade": "B"
+        },
+        "Prince Edward Island": {
+          "value": 1040.0,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 994.07,
+            "ema_10": 884.44,
+            "direction": "strong_up",
+            "pct_change": 12.4
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 567.38,
+            "max": 1040.0,
+            "current": 1040.0
+          },
+          "adjusted_grade": "B"
+        },
+        "Newfoundland & Labrador": {
+          "value": 1050.0,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1021.38,
+            "ema_10": 916.2,
+            "direction": "strong_up",
+            "pct_change": 11.5
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 576.8,
+            "max": 1050.0,
+            "current": 1050.0
+          },
+          "adjusted_grade": "B"
+        }
+      }
+    },
+    {
+      "id": "employment_rate",
+      "name": "Employment Rate",
+      "vertical": "economy",
+      "unit": "per 1K",
+      "invert": false,
+      "dashboard": "dashboards/economy-employment-by-sector.html",
+      "canada": {
+        "value": 439.8,
+        "trend": {
+          "grade": "C",
+          "ema_3": 438.29,
+          "ema_10": 432.07,
+          "direction": "stable",
+          "pct_change": 1.4
+        }
+      },
+      "national_health": {
+        "grade": "C",
+        "ceiling": "B",
+        "growth_10y": 3.3,
+        "growth_20y": 4.2,
+        "status": "stagnant"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 437.4,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 435.41,
+            "ema_10": 428.76,
+            "direction": "stable",
+            "pct_change": 1.6
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 99.2,
+            "min": 401.2,
+            "max": 437.7,
+            "current": 437.4
+          },
+          "adjusted_grade": "B"
+        },
+        "Alberta": {
+          "value": 445.1,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 443.43,
+            "ema_10": 442.34,
+            "direction": "stable",
+            "pct_change": 0.2
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 56.2,
+            "min": 404.6,
+            "max": 476.6,
+            "current": 445.1
+          },
+          "adjusted_grade": "B"
+        },
+        "Saskatchewan": {
+          "value": 420.9,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 418.51,
+            "ema_10": 412.33,
+            "direction": "stable",
+            "pct_change": 1.5
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 387.4,
+            "max": 420.9,
+            "current": 420.9
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": 434.5,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 433.61,
+            "ema_10": 426.98,
+            "direction": "stable",
+            "pct_change": 1.6
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 93.4,
+            "min": 397.8,
+            "max": 437.1,
+            "current": 434.5
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": 437.9,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 437.4,
+            "ema_10": 432.11,
+            "direction": "stable",
+            "pct_change": 1.2
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 85.6,
+            "min": 402.8,
+            "max": 443.8,
+            "current": 437.9
+          },
+          "adjusted_grade": "B"
+        },
+        "Quebec": {
+          "value": 456.2,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 453.21,
+            "ema_10": 443.17,
+            "direction": "stable",
+            "pct_change": 2.3
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 416.3,
+            "max": 456.2,
+            "current": 456.2
+          },
+          "adjusted_grade": "B"
+        },
+        "New Brunswick": {
+          "value": 421.6,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 420.67,
+            "ema_10": 416.69,
+            "direction": "stable",
+            "pct_change": 1.0
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 82.7,
+            "min": 396.8,
+            "max": 426.8,
+            "current": 421.6
+          },
+          "adjusted_grade": "B"
+        },
+        "Nova Scotia": {
+          "value": 429.0,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 428.11,
+            "ema_10": 420.81,
+            "direction": "stable",
+            "pct_change": 1.7
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 87.6,
+            "min": 397.1,
+            "max": 433.5,
+            "current": 429.0
+          },
+          "adjusted_grade": "B"
+        },
+        "Prince Edward Island": {
+          "value": 453.9,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 450.88,
+            "ema_10": 439.46,
+            "direction": "stable",
+            "pct_change": 2.6
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 99.8,
+            "min": 413.9,
+            "max": 454.0,
+            "current": 453.9
+          },
+          "adjusted_grade": "B"
+        },
+        "Newfoundland & Labrador": {
+          "value": 412.6,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 410.82,
+            "ema_10": 403.05,
+            "direction": "stable",
+            "pct_change": 1.9
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 92.8,
+            "min": 366.5,
+            "max": 416.2,
+            "current": 412.6
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "housing_starts",
+      "name": "Housing Starts per 10K",
+      "vertical": "housing",
+      "unit": "starts",
+      "invert": false,
+      "dashboard": "dashboards/housing-starts-by-province.html",
+      "canada": {
+        "value": 62.2,
+        "trend": {
+          "grade": "C",
+          "ema_3": 61.67,
+          "ema_10": 60.85,
+          "direction": "stable",
+          "pct_change": 1.3
+        }
+      },
+      "national_health": {
+        "grade": "B",
+        "ceiling": "A",
+        "growth_10y": 13.5,
+        "growth_20y": -11.0,
+        "status": "moderate"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 77.6,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 81.2,
+            "ema_10": 80.98,
+            "direction": "stable",
+            "pct_change": 0.3
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 74.7,
+            "min": 36.5,
+            "max": 91.5,
+            "current": 77.6
+          },
+          "adjusted_grade": "B"
+        },
+        "Alberta": {
+          "value": 109.1,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 97.68,
+            "ema_10": 83.85,
+            "direction": "strong_up",
+            "pct_change": 16.5
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 61.6,
+            "min": 54.5,
+            "max": 143.1,
+            "current": 109.1
+          },
+          "adjusted_grade": "A"
+        },
+        "Saskatchewan": {
+          "value": 48.5,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "B",
+            "ema_3": 41.9,
+            "ema_10": 40.16,
+            "direction": "up",
+            "pct_change": 4.3
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 38.9,
+            "min": 20.8,
+            "max": 92.0,
+            "current": 48.5
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": 52.3,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 51.33,
+            "ema_10": 51.28,
+            "direction": "stable",
+            "pct_change": 0.1
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 72.4,
+            "min": 34.5,
+            "max": 59.1,
+            "current": 52.3
+          },
+          "adjusted_grade": "C"
+        },
+        "Ontario": {
+          "value": 40.2,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 46.5,
+            "ema_10": 52.13,
+            "direction": "strong_down",
+            "pct_change": -10.8
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 5.3,
+            "min": 38.7,
+            "max": 67.1,
+            "current": 40.2
+          },
+          "adjusted_grade": "D"
+        },
+        "Quebec": {
+          "value": 66.1,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 60.55,
+            "ema_10": 58.94,
+            "direction": "stable",
+            "pct_change": 2.7
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 62.9,
+            "min": 44.1,
+            "max": 79.1,
+            "current": 66.1
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 87.2,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 74.77,
+            "ema_10": 56.6,
+            "direction": "strong_up",
+            "pct_change": 32.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 24.1,
+            "max": 87.2,
+            "current": 87.2
+          },
+          "adjusted_grade": "A"
+        },
+        "Nova Scotia": {
+          "value": 89.3,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 77.06,
+            "ema_10": 61.74,
+            "direction": "strong_up",
+            "pct_change": 24.8
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 32.6,
+            "max": 89.3,
+            "current": 89.3
+          },
+          "adjusted_grade": "A"
+        },
+        "Prince Edward Island": {
+          "value": 96.8,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 89.97,
+            "ema_10": 77.48,
+            "direction": "strong_up",
+            "pct_change": 16.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 35.5,
+            "max": 96.8,
+            "current": 96.8
+          },
+          "adjusted_grade": "A"
+        },
+        "Newfoundland & Labrador": {
+          "value": 28.5,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 26.97,
+            "ema_10": 27.58,
+            "direction": "stable",
+            "pct_change": -2.2
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 23.6,
+            "min": 14.5,
+            "max": 73.8,
+            "current": 28.5
+          },
+          "adjusted_grade": "D"
+        }
+      }
+    },
+    {
+      "id": "housing_price_index",
+      "name": "Housing Price Index",
+      "vertical": "housing",
+      "unit": "index",
+      "invert": true,
+      "dashboard": "dashboards/housing-new-price-index.html",
+      "canada": {
+        "value": 121.5,
+        "trend": {
+          "grade": "B",
+          "ema_3": 122.31,
+          "ema_10": 115.21,
+          "direction": "up",
+          "pct_change": 6.2
+        }
+      },
+      "national_health": {
+        "grade": "D",
+        "ceiling": "C",
+        "growth_10y": 23.2,
+        "growth_20y": 53.8,
+        "status": "declining"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 124.3,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 125.01,
+            "ema_10": 118.31,
+            "direction": "up",
+            "pct_change": 5.7
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 10.299999999999997,
+            "min": 93.9,
+            "max": 127.8,
+            "current": 124.3
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 118.0,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 118.26,
+            "ema_10": 110.82,
+            "direction": "up",
+            "pct_change": 6.7
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 9.700000000000003,
+            "min": 92.0,
+            "max": 120.8,
+            "current": 118.0
+          },
+          "adjusted_grade": "C"
+        },
+        "Saskatchewan": {
+          "value": 109.9,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 108.19,
+            "ema_10": 103.03,
+            "direction": "up",
+            "pct_change": 5.0
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 73.7,
+            "max": 109.9,
+            "current": 109.9
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": 145.4,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 142.94,
+            "ema_10": 127.57,
+            "direction": "strong_up",
+            "pct_change": 12.0
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 69.7,
+            "max": 145.4,
+            "current": 145.4
+          },
+          "adjusted_grade": "D"
+        },
+        "Ontario": {
+          "value": 119.4,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 121.06,
+            "ema_10": 114.78,
+            "direction": "up",
+            "pct_change": 5.5
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 14.799999999999997,
+            "min": 76.1,
+            "max": 126.9,
+            "current": 119.4
+          },
+          "adjusted_grade": "C"
+        },
+        "Quebec": {
+          "value": 149.3,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 146.08,
+            "ema_10": 130.54,
+            "direction": "strong_up",
+            "pct_change": 11.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 83.7,
+            "max": 149.3,
+            "current": 149.3
+          },
+          "adjusted_grade": "D"
+        },
+        "New Brunswick": {
+          "value": 120.7,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 120.03,
+            "ema_10": 113.23,
+            "direction": "up",
+            "pct_change": 6.0
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 90.8,
+            "max": 120.7,
+            "current": 120.7
+          },
+          "adjusted_grade": "C"
+        },
+        "Nova Scotia": {
+          "value": 127.5,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 125.36,
+            "ema_10": 115.97,
+            "direction": "up",
+            "pct_change": 8.1
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 83.4,
+            "max": 127.5,
+            "current": 127.5
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 123.7,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 122.84,
+            "ema_10": 115.67,
+            "direction": "up",
+            "pct_change": 6.2
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 97.5,
+            "max": 123.7,
+            "current": 123.7
+          },
+          "adjusted_grade": "C"
+        },
+        "Newfoundland & Labrador": {
+          "value": 109.8,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 108.66,
+            "ema_10": 103.65,
+            "direction": "up",
+            "pct_change": 4.8
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 66.0,
+            "max": 109.8,
+            "current": 109.8
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "rental_vacancy",
+      "name": "Rental Vacancy Rate",
+      "vertical": "housing",
+      "unit": "%",
+      "invert": false,
+      "dashboard": "dashboards/housing-rental-vacancy-rate.html",
+      "canada": {
+        "value": 3.3,
+        "trend": {
+          "grade": "B",
+          "ema_3": 2.76,
+          "ema_10": 2.63,
+          "direction": "up",
+          "pct_change": 5.3
+        }
+      },
+      "national_health": {
+        "grade": "C",
+        "ceiling": "B",
+        "growth_10y": 0.0,
+        "growth_20y": 17.9,
+        "status": "stagnant"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 4.0,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 2.9,
+            "ema_10": 2.01,
+            "direction": "strong_up",
+            "pct_change": 44.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": 0.5,
+            "max": 4.0,
+            "current": 4.0
+          },
+          "adjusted_grade": "B"
+        },
+        "Alberta": {
+          "value": 4.5,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 4.08,
+            "ema_10": 4.21,
+            "direction": "down",
+            "pct_change": -3.0
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 59.7,
+            "min": 0.8,
+            "max": 7.0,
+            "current": 4.5
+          },
+          "adjusted_grade": "B"
+        },
+        "Saskatchewan": {
+          "value": 3.0,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 2.85,
+            "ema_10": 3.96,
+            "direction": "strong_down",
+            "pct_change": -28.1
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 26.4,
+            "min": 1.1,
+            "max": 8.3,
+            "current": 3.0
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": 2.8,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 2.48,
+            "ema_10": 2.66,
+            "direction": "down",
+            "pct_change": -6.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 47.6,
+            "min": 0.8,
+            "max": 5.0,
+            "current": 2.8
+          },
+          "adjusted_grade": "C"
+        },
+        "Ontario": {
+          "value": 3.3,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 2.87,
+            "ema_10": 2.55,
+            "direction": "strong_up",
+            "pct_change": 12.5
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 69.6,
+            "min": 1.7,
+            "max": 4.0,
+            "current": 3.3
+          },
+          "adjusted_grade": "B"
+        },
+        "Quebec": {
+          "value": 3.1,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 2.37,
+            "ema_10": 2.57,
+            "direction": "down",
+            "pct_change": -7.7
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 38.0,
+            "min": 1.2,
+            "max": 6.2,
+            "current": 3.1
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 2.6,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 2.43,
+            "ema_10": 3.06,
+            "direction": "strong_down",
+            "pct_change": -20.6
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 12.5,
+            "min": 1.5,
+            "max": 10.3,
+            "current": 2.6
+          },
+          "adjusted_grade": "D"
+        },
+        "Nova Scotia": {
+          "value": 2.5,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "B",
+            "ema_3": 2.0,
+            "ema_10": 1.86,
+            "direction": "up",
+            "pct_change": 7.7
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 57.1,
+            "min": 0.9,
+            "max": 3.7,
+            "current": 2.5
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 4.2,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 2.95,
+            "ema_10": 2.5,
+            "direction": "strong_up",
+            "pct_change": 18.1
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 43.0,
+            "min": 0.8,
+            "max": 8.7,
+            "current": 4.2
+          },
+          "adjusted_grade": "B"
+        },
+        "Newfoundland & Labrador": {
+          "value": 1.6,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 1.86,
+            "ema_10": 3.25,
+            "direction": "strong_down",
+            "pct_change": -42.7
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 13.8,
+            "min": 0.5,
+            "max": 8.5,
+            "current": 1.6
+          },
+          "adjusted_grade": "D"
+        }
+      }
+    },
+    {
+      "id": "crime_severity",
+      "name": "Crime Severity Index",
+      "vertical": "crime",
+      "unit": "index",
+      "invert": true,
+      "dashboard": "dashboards/crime-severity-index.html",
+      "canada": {
+        "value": 77.89,
+        "trend": {
+          "grade": "C",
+          "ema_3": 78.48,
+          "ema_10": 77.86,
+          "direction": "stable",
+          "pct_change": 0.8
+        }
+      },
+      "national_health": {
+        "grade": "D",
+        "ceiling": "C",
+        "growth_10y": 16.4,
+        "growth_20y": -25.2,
+        "status": "declining"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 92.98,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 97.17,
+            "ema_10": 98.62,
+            "direction": "stable",
+            "pct_change": -1.5
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 90.0,
+            "min": 87.06,
+            "max": 146.31,
+            "current": 92.98
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 95.63,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "B",
+            "ema_3": 100.54,
+            "ema_10": 104.21,
+            "direction": "down",
+            "pct_change": -3.5
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 71.8,
+            "min": 85.31,
+            "max": 121.93,
+            "current": 95.63
+          },
+          "adjusted_grade": "C"
+        },
+        "Saskatchewan": {
+          "value": 153.85,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 155.49,
+            "ema_10": 151.35,
+            "direction": "stable",
+            "pct_change": 2.7
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 48.8,
+            "min": 125.04,
+            "max": 181.35,
+            "current": 153.85
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": 141.24,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 141.69,
+            "ema_10": 133.82,
+            "direction": "up",
+            "pct_change": 5.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 25.799999999999997,
+            "min": 96.68,
+            "max": 156.7,
+            "current": 141.24
+          },
+          "adjusted_grade": "C"
+        },
+        "Ontario": {
+          "value": 60.69,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 60.17,
+            "ema_10": 59.45,
+            "direction": "stable",
+            "pct_change": 1.2
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 62.4,
+            "min": 49.93,
+            "max": 78.57,
+            "current": 60.69
+          },
+          "adjusted_grade": "C"
+        },
+        "Quebec": {
+          "value": 63.01,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 61.58,
+            "ema_10": 61.22,
+            "direction": "stable",
+            "pct_change": 0.6
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 71.3,
+            "min": 51.75,
+            "max": 91.0,
+            "current": 63.01
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 84.53,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 85.54,
+            "ema_10": 80.25,
+            "direction": "up",
+            "pct_change": 6.6
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 10.200000000000003,
+            "min": 56.02,
+            "max": 87.78,
+            "current": 84.53
+          },
+          "adjusted_grade": "C"
+        },
+        "Nova Scotia": {
+          "value": 75.45,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 74.44,
+            "ema_10": 72.87,
+            "direction": "stable",
+            "pct_change": 2.2
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 67.0,
+            "min": 62.31,
+            "max": 102.1,
+            "current": 75.45
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 72.59,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 69.71,
+            "ema_10": 63.9,
+            "direction": "up",
+            "pct_change": 9.1
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 13.799999999999997,
+            "min": 46.09,
+            "max": 76.84,
+            "current": 72.59
+          },
+          "adjusted_grade": "C"
+        },
+        "Newfoundland & Labrador": {
+          "value": 89.25,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 85.91,
+            "ema_10": 77.6,
+            "direction": "strong_up",
+            "pct_change": 10.7
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 62.36,
+            "max": 89.25,
+            "current": 89.25
+          },
+          "adjusted_grade": "D"
+        }
+      }
+    },
+    {
+      "id": "violent_csi",
+      "name": "Violent CSI",
+      "vertical": "crime",
+      "unit": "index",
+      "invert": true,
+      "dashboard": "dashboards/crime-violent-vs-nonviolent.html",
+      "canada": {
+        "value": 99.87,
+        "trend": {
+          "grade": "B",
+          "ema_3": 98.81,
+          "ema_10": 92.4,
+          "direction": "up",
+          "pct_change": 6.9
+        }
+      },
+      "national_health": {
+        "grade": "D",
+        "ceiling": "C",
+        "growth_10y": 41.2,
+        "growth_20y": 4.0,
+        "status": "declining"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 94.13,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 95.49,
+            "ema_10": 92.72,
+            "direction": "stable",
+            "pct_change": 3.0
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 56.5,
+            "min": 73.51,
+            "max": 120.93,
+            "current": 94.13
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 105.93,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 110.31,
+            "ema_10": 107.14,
+            "direction": "stable",
+            "pct_change": 3.0
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 35.5,
+            "min": 85.33,
+            "max": 117.29,
+            "current": 105.93
+          },
+          "adjusted_grade": "C"
+        },
+        "Saskatchewan": {
+          "value": 198.53,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 197.8,
+            "ema_10": 179.06,
+            "direction": "strong_up",
+            "pct_change": 10.5
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 8.299999999999997,
+            "min": 122.87,
+            "max": 205.4,
+            "current": 198.53
+          },
+          "adjusted_grade": "D"
+        },
+        "Manitoba": {
+          "value": 213.83,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 210.34,
+            "ema_10": 188.86,
+            "direction": "strong_up",
+            "pct_change": 11.4
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 5.400000000000006,
+            "min": 127.9,
+            "max": 218.73,
+            "current": 213.83
+          },
+          "adjusted_grade": "D"
+        },
+        "Ontario": {
+          "value": 81.28,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 79.4,
+            "ema_10": 75.19,
+            "direction": "up",
+            "pct_change": 5.6
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 18.700000000000003,
+            "min": 57.86,
+            "max": 86.66,
+            "current": 81.28
+          },
+          "adjusted_grade": "C"
+        },
+        "Quebec": {
+          "value": 97.04,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 92.87,
+            "ema_10": 83.78,
+            "direction": "strong_up",
+            "pct_change": 10.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 63.88,
+            "max": 97.04,
+            "current": 97.04
+          },
+          "adjusted_grade": "D"
+        },
+        "New Brunswick": {
+          "value": 98.63,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 96.32,
+            "ema_10": 86.04,
+            "direction": "strong_up",
+            "pct_change": 11.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 57.55,
+            "max": 98.63,
+            "current": 98.63
+          },
+          "adjusted_grade": "D"
+        },
+        "Nova Scotia": {
+          "value": 94.49,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 95.56,
+            "ema_10": 90.66,
+            "direction": "up",
+            "pct_change": 5.4
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 30.700000000000003,
+            "min": 66.93,
+            "max": 106.69,
+            "current": 94.49
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 79.67,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "D",
+            "ema_3": 75.29,
+            "ema_10": 62.88,
+            "direction": "strong_up",
+            "pct_change": 19.7
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 36.87,
+            "max": 79.67,
+            "current": 79.67
+          },
+          "adjusted_grade": "C"
+        },
+        "Newfoundland & Labrador": {
+          "value": 89.89,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 92.81,
+            "ema_10": 84.48,
+            "direction": "up",
+            "pct_change": 9.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 23.799999999999997,
+            "min": 58.02,
+            "max": 99.82,
+            "current": 89.89
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "homicide_rate",
+      "name": "Homicide Rate",
+      "vertical": "crime",
+      "unit": "per 100K",
+      "invert": true,
+      "dashboard": "dashboards/crime-homicide-rate.html",
+      "canada": {
+        "value": 1.91,
+        "trend": {
+          "grade": "C",
+          "ema_3": 1.99,
+          "ema_10": 1.93,
+          "direction": "stable",
+          "pct_change": 2.7
+        }
+      },
+      "national_health": {
+        "grade": "D",
+        "ceiling": "C",
+        "growth_10y": 29.1,
+        "growth_20y": -2.6,
+        "status": "declining"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 1.63,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "B",
+            "ema_3": 2.0,
+            "ema_10": 2.11,
+            "direction": "down",
+            "pct_change": -5.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 96.2,
+            "min": 1.58,
+            "max": 2.89,
+            "current": 1.63
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 2.0,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "B",
+            "ema_3": 2.3,
+            "ema_10": 2.5,
+            "direction": "down",
+            "pct_change": -8.3
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 94.7,
+            "min": 1.93,
+            "max": 3.25,
+            "current": 2.0
+          },
+          "adjusted_grade": "C"
+        },
+        "Saskatchewan": {
+          "value": 5.24,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "C",
+            "ema_3": 5.29,
+            "ema_10": 4.82,
+            "direction": "up",
+            "pct_change": 9.8
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 23.599999999999994,
+            "min": 2.16,
+            "max": 6.19,
+            "current": 5.24
+          },
+          "adjusted_grade": "D"
+        },
+        "Manitoba": {
+          "value": 6.29,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 5.79,
+            "ema_10": 5.0,
+            "direction": "strong_up",
+            "pct_change": 15.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 2.5999999999999943,
+            "min": 3.27,
+            "max": 6.37,
+            "current": 6.29
+          },
+          "adjusted_grade": "D"
+        },
+        "Ontario": {
+          "value": 1.75,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 1.78,
+            "ema_10": 1.69,
+            "direction": "up",
+            "pct_change": 5.0
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 24.099999999999994,
+            "min": 1.15,
+            "max": 1.94,
+            "current": 1.75
+          },
+          "adjusted_grade": "C"
+        },
+        "Quebec": {
+          "value": 1.07,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 1.12,
+            "ema_10": 1.1,
+            "direction": "stable",
+            "pct_change": 2.0
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 50.9,
+            "min": 0.81,
+            "max": 1.34,
+            "current": 1.07
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 2.11,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 1.76,
+            "ema_10": 1.6,
+            "direction": "strong_up",
+            "pct_change": 10.1
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 4.5,
+            "min": 0.4,
+            "max": 2.19,
+            "current": 2.11
+          },
+          "adjusted_grade": "D"
+        },
+        "Nova Scotia": {
+          "value": 2.32,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 2.03,
+            "ema_10": 1.89,
+            "direction": "up",
+            "pct_change": 7.5
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 45.4,
+            "min": 0.61,
+            "max": 3.74,
+            "current": 2.32
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 1.12,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "D",
+            "ema_3": 0.79,
+            "ema_10": 0.67,
+            "direction": "strong_up",
+            "pct_change": 17.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 46.2,
+            "min": 0.0,
+            "max": 2.08,
+            "current": 1.12
+          },
+          "adjusted_grade": "C"
+        },
+        "Newfoundland & Labrador": {
+          "value": 0.73,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "C",
+            "ema_3": 0.95,
+            "ema_10": 0.93,
+            "direction": "stable",
+            "pct_change": 2.5
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 72.3,
+            "min": 0.19,
+            "max": 2.14,
+            "current": 0.73
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "pop_growth",
+      "name": "Population Growth",
+      "vertical": "demographics",
+      "unit": "%",
+      "invert": false,
+      "dashboard": "dashboards/demographics-population-growth.html",
+      "canada": {
+        "value": 0.94,
+        "trend": {
+          "grade": "B",
+          "ema_3": 1.75,
+          "ema_10": 1.62,
+          "direction": "up",
+          "pct_change": 7.9
+        }
+      },
+      "national_health": {
+        "grade": "A",
+        "ceiling": "A",
+        "growth_10y": 23.7,
+        "growth_20y": -1.1,
+        "status": "strong"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 0.47,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "D",
+            "ema_3": 1.54,
+            "ema_10": 1.74,
+            "direction": "strong_down",
+            "pct_change": -11.4
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 0.0,
+            "min": 0.47,
+            "max": 2.92,
+            "current": 0.47
+          },
+          "adjusted_grade": "D"
+        },
+        "Alberta": {
+          "value": 2.45,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 3.06,
+            "ema_10": 2.42,
+            "direction": "strong_up",
+            "pct_change": 26.3
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 45.8,
+            "min": 0.55,
+            "max": 4.7,
+            "current": 2.45
+          },
+          "adjusted_grade": "B"
+        },
+        "Saskatchewan": {
+          "value": 1.53,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1.95,
+            "ema_10": 1.47,
+            "direction": "strong_up",
+            "pct_change": 32.9
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 51.1,
+            "min": -0.12,
+            "max": 3.11,
+            "current": 1.53
+          },
+          "adjusted_grade": "B"
+        },
+        "Manitoba": {
+          "value": 1.18,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1.77,
+            "ema_10": 1.6,
+            "direction": "strong_up",
+            "pct_change": 10.7
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 30.9,
+            "min": 0.45,
+            "max": 2.81,
+            "current": 1.18
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": 0.7,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "C",
+            "ema_3": 1.76,
+            "ema_10": 1.72,
+            "direction": "stable",
+            "pct_change": 1.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 5.5,
+            "min": 0.55,
+            "max": 3.28,
+            "current": 0.7
+          },
+          "adjusted_grade": "C"
+        },
+        "Quebec": {
+          "value": 0.7,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "B",
+            "ema_3": 1.17,
+            "ema_10": 1.07,
+            "direction": "up",
+            "pct_change": 9.4
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 26.6,
+            "min": 0.24,
+            "max": 1.97,
+            "current": 0.7
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 1.33,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 2.02,
+            "ema_10": 1.54,
+            "direction": "strong_up",
+            "pct_change": 31.3
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 46.1,
+            "min": -0.33,
+            "max": 3.27,
+            "current": 1.33
+          },
+          "adjusted_grade": "B"
+        },
+        "Nova Scotia": {
+          "value": 0.97,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 1.77,
+            "ema_10": 1.54,
+            "direction": "strong_up",
+            "pct_change": 15.2
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 41.7,
+            "min": -0.36,
+            "max": 2.83,
+            "current": 0.97
+          },
+          "adjusted_grade": "B"
+        },
+        "Prince Edward Island": {
+          "value": 1.64,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "B",
+            "ema_3": 2.49,
+            "ema_10": 2.27,
+            "direction": "up",
+            "pct_change": 9.7
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 46.5,
+            "min": -0.33,
+            "max": 3.91,
+            "current": 1.64
+          },
+          "adjusted_grade": "B"
+        },
+        "Newfoundland & Labrador": {
+          "value": 0.56,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": 0.88,
+            "ema_10": 0.58,
+            "direction": "strong_up",
+            "pct_change": 51.6
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 57.7,
+            "min": -0.72,
+            "max": 1.5,
+            "current": 0.56
+          },
+          "adjusted_grade": "C"
+        }
+      }
+    },
+    {
+      "id": "immigration",
+      "name": "Immigration per 1K",
+      "vertical": "demographics",
+      "unit": "per 1K",
+      "invert": false,
+      "dashboard": "dashboards/demographics-international-immigration.html",
+      "canada": {
+        "value": 10.55,
+        "trend": {
+          "grade": "A",
+          "ema_3": 10.92,
+          "ema_10": 9.76,
+          "direction": "strong_up",
+          "pct_change": 11.9
+        }
+      },
+      "national_health": {
+        "grade": "A",
+        "ceiling": "A",
+        "growth_10y": 55.1,
+        "growth_20y": 37.7,
+        "status": "strong"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 9.91,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "B",
+            "ema_3": 10.85,
+            "ema_10": 10.25,
+            "direction": "up",
+            "pct_change": 5.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 35.2,
+            "min": 6.64,
+            "max": 15.92,
+            "current": 9.91
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 11.85,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 11.84,
+            "ema_10": 10.55,
+            "direction": "strong_up",
+            "pct_change": 12.2
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 75.4,
+            "min": 5.45,
+            "max": 13.94,
+            "current": 11.85
+          },
+          "adjusted_grade": "A"
+        },
+        "Saskatchewan": {
+          "value": 14.58,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 16.5,
+            "ema_10": 14.13,
+            "direction": "strong_up",
+            "pct_change": 16.8
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 62.1,
+            "min": 2.13,
+            "max": 22.17,
+            "current": 14.58
+          },
+          "adjusted_grade": "B"
+        },
+        "Manitoba": {
+          "value": 14.36,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 15.04,
+            "ema_10": 13.43,
+            "direction": "strong_up",
+            "pct_change": 12.0
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 65.1,
+            "min": 7.38,
+            "max": 18.11,
+            "current": 14.36
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": 11.8,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 12.17,
+            "ema_10": 10.9,
+            "direction": "strong_up",
+            "pct_change": 11.6
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 59.7,
+            "min": 6.59,
+            "max": 15.32,
+            "current": 11.8
+          },
+          "adjusted_grade": "B"
+        },
+        "Quebec": {
+          "value": 6.41,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "B",
+            "ema_3": 6.44,
+            "ema_10": 6.13,
+            "direction": "up",
+            "pct_change": 5.1
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 70.7,
+            "min": 3.93,
+            "max": 7.44,
+            "current": 6.41
+          },
+          "adjusted_grade": "C"
+        },
+        "New Brunswick": {
+          "value": 14.6,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 14.47,
+            "ema_10": 10.05,
+            "direction": "strong_up",
+            "pct_change": 44.0
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 78.8,
+            "min": 1.85,
+            "max": 18.02,
+            "current": 14.6
+          },
+          "adjusted_grade": "A"
+        },
+        "Nova Scotia": {
+          "value": 10.14,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 11.01,
+            "ema_10": 8.64,
+            "direction": "strong_up",
+            "pct_change": 27.4
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 67.8,
+            "min": 2.34,
+            "max": 13.84,
+            "current": 10.14
+          },
+          "adjusted_grade": "B"
+        },
+        "Prince Edward Island": {
+          "value": 15.82,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 18.2,
+            "ema_10": 15.9,
+            "direction": "strong_up",
+            "pct_change": 14.5
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 62.2,
+            "min": 2.55,
+            "max": 23.87,
+            "current": 15.82
+          },
+          "adjusted_grade": "A"
+        },
+        "Newfoundland & Labrador": {
+          "value": 10.01,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": 9.21,
+            "ema_10": 6.0,
+            "direction": "strong_up",
+            "pct_change": 53.5
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 99.6,
+            "min": 0.88,
+            "max": 10.05,
+            "current": 10.01
+          },
+          "adjusted_grade": "B"
+        }
+      }
+    },
+    {
+      "id": "interp_migration",
+      "name": "Interprovincial Migration per 1K",
+      "vertical": "demographics",
+      "unit": "per 1K",
+      "invert": false,
+      "dashboard": "dashboards/demographics-interprovincial-migration.html",
+      "canada": {
+        "value": null,
+        "trend": {}
+      },
+      "national_health": {
+        "grade": "B",
+        "ceiling": "A",
+        "growth_10y": null,
+        "growth_20y": null,
+        "status": "no_national_data"
+      },
+      "provinces": {
+        "British Columbia": {
+          "value": 0.34,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "D",
+            "ema_3": 0.51,
+            "ema_10": 1.76,
+            "direction": "strong_down",
+            "pct_change": -70.9
+          },
+          "historical": {
+            "grade": "D",
+            "percentile": 18.7,
+            "min": -0.95,
+            "max": 5.94,
+            "current": 0.34
+          },
+          "adjusted_grade": "C"
+        },
+        "Alberta": {
+          "value": 3.68,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 5.23,
+            "ema_10": 3.84,
+            "direction": "strong_up",
+            "pct_change": 36.1
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 44.7,
+            "min": -4.25,
+            "max": 13.51,
+            "current": 3.68
+          },
+          "adjusted_grade": "B"
+        },
+        "Saskatchewan": {
+          "value": -1.9,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": -3.01,
+            "ema_10": -4.43,
+            "direction": "strong_up",
+            "pct_change": 32.2
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 50.1,
+            "min": -9.06,
+            "max": 5.23,
+            "current": -1.9
+          },
+          "adjusted_grade": "C"
+        },
+        "Manitoba": {
+          "value": -1.87,
+          "peer_grade": "D",
+          "trend": {
+            "grade": "A",
+            "ema_3": -3.42,
+            "ema_10": -4.32,
+            "direction": "strong_up",
+            "pct_change": 20.8
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 100.0,
+            "min": -6.99,
+            "max": -1.87,
+            "current": -1.87
+          },
+          "adjusted_grade": "B"
+        },
+        "Ontario": {
+          "value": -0.77,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": -1.38,
+            "ema_10": -1.07,
+            "direction": "strong_down",
+            "pct_change": -28.6
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 43.5,
+            "min": -2.23,
+            "max": 1.13,
+            "current": -0.77
+          },
+          "adjusted_grade": "C"
+        },
+        "Quebec": {
+          "value": -0.66,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "A",
+            "ema_3": -0.65,
+            "ema_10": -0.77,
+            "direction": "strong_up",
+            "pct_change": 16.1
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 78.9,
+            "min": -1.78,
+            "max": -0.36,
+            "current": -0.66
+          },
+          "adjusted_grade": "B"
+        },
+        "New Brunswick": {
+          "value": -0.33,
+          "peer_grade": "C",
+          "trend": {
+            "grade": "D",
+            "ema_3": 2.29,
+            "ema_10": 2.72,
+            "direction": "strong_down",
+            "pct_change": -15.9
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 37.0,
+            "min": -5.47,
+            "max": 8.42,
+            "current": -0.33
+          },
+          "adjusted_grade": "C"
+        },
+        "Nova Scotia": {
+          "value": 2.24,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "C",
+            "ema_3": 4.64,
+            "ema_10": 4.76,
+            "direction": "stable",
+            "pct_change": -2.4
+          },
+          "historical": {
+            "grade": "C",
+            "percentile": 43.2,
+            "min": -4.34,
+            "max": 10.88,
+            "current": 2.24
+          },
+          "adjusted_grade": "C"
+        },
+        "Prince Edward Island": {
+          "value": 9.27,
+          "peer_grade": "A",
+          "trend": {
+            "grade": "A",
+            "ema_3": 7.31,
+            "ema_10": 5.22,
+            "direction": "strong_up",
+            "pct_change": 40.2
+          },
+          "historical": {
+            "grade": "A",
+            "percentile": 84.4,
+            "min": -6.33,
+            "max": 12.16,
+            "current": 9.27
+          },
+          "adjusted_grade": "A"
+        },
+        "Newfoundland & Labrador": {
+          "value": 0.1,
+          "peer_grade": "B",
+          "trend": {
+            "grade": "A",
+            "ema_3": 0.62,
+            "ema_10": -0.06,
+            "direction": "strong_up",
+            "pct_change": 1198.9
+          },
+          "historical": {
+            "grade": "B",
+            "percentile": 64.1,
+            "min": -8.22,
+            "max": 4.75,
+            "current": 0.1
+          },
+          "adjusted_grade": "B"
+        }
+      }
+    }
+  ],
+  "composites": {
+    "British Columbia": {
+      "adjusted_score": 2.53,
+      "adjusted_grade": "B",
+      "peer_score": 2.6,
+      "peer_grade": "B"
+    },
+    "Alberta": {
+      "adjusted_score": 2.73,
+      "adjusted_grade": "B",
+      "peer_score": 3.07,
+      "peer_grade": "B"
+    },
+    "Saskatchewan": {
+      "adjusted_score": 2.27,
+      "adjusted_grade": "C",
+      "peer_score": 2.33,
+      "peer_grade": "C"
+    },
+    "Manitoba": {
+      "adjusted_score": 2.27,
+      "adjusted_grade": "C",
+      "peer_score": 1.93,
+      "peer_grade": "C"
+    },
+    "Ontario": {
+      "adjusted_score": 2.27,
+      "adjusted_grade": "C",
+      "peer_score": 2.47,
+      "peer_grade": "C"
+    },
+    "Quebec": {
+      "adjusted_score": 2.4,
+      "adjusted_grade": "C",
+      "peer_score": 2.53,
+      "peer_grade": "B"
+    },
+    "New Brunswick": {
+      "adjusted_score": 2.33,
+      "adjusted_grade": "C",
+      "peer_score": 2.33,
+      "peer_grade": "C"
+    },
+    "Nova Scotia": {
+      "adjusted_score": 2.53,
+      "adjusted_grade": "B",
+      "peer_score": 2.13,
+      "peer_grade": "C"
+    },
+    "Prince Edward Island": {
+      "adjusted_score": 2.93,
+      "adjusted_grade": "B",
+      "peer_score": 3.33,
+      "peer_grade": "B"
+    },
+    "Newfoundland & Labrador": {
+      "adjusted_score": 2.0,
+      "adjusted_grade": "C",
+      "peer_score": 2.27,
+      "peer_grade": "C"
+    }
+  },
+  "provinces": [
+    "British Columbia",
+    "Alberta",
+    "Saskatchewan",
+    "Manitoba",
+    "Ontario",
+    "Quebec",
+    "New Brunswick",
+    "Nova Scotia",
+    "Prince Edward Island",
+    "Newfoundland & Labrador"
+  ]
+}

@@ -32,8 +32,12 @@ fi
 python3 pipeline/transform.py
 echo ""
 
-# Step 3: Compute scorecard
+# Step 3: Compute scorecard (v1)
 python3 pipeline/scorecard.py
+echo ""
+
+# Step 4: Compute scorecard v2 (benchmarked)
+python3 pipeline/scorecard_v2.py
 echo ""
 
 echo "======================================="
