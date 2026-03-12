@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Housing Starts & Price Index | Canada Central</title>
+  <title>Housing Supply & Prices | Canada Central</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root{--color-burgundy:#6B3838;--color-teal:#3A5F6F;--color-tan:#C49A6C;--color-purple:#7C5A9D;--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
@@ -31,7 +31,7 @@
     .chip.on{opacity:1}
     .chip.chip-national{border-width:3px;font-weight:800;font-size:0.75rem;letter-spacing:0.02em}
     @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
-    .view-toggle{display:flex;gap:4px;margin-bottom:12px}
+    .view-toggle{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
     .view-btn{padding:6px 14px;border-radius:var(--radius-md);font-size:0.75rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
     .view-btn:hover{background:var(--color-beige-dark)}
     .view-btn.active{background:var(--color-text-primary);color:var(--color-white);border-color:var(--color-text-primary)}
@@ -61,20 +61,21 @@
     <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
-      <a class="active" href="index.html">Plots</a>
+      <a class="active" href="index.html">Statistics</a>
     </div>
   </nav>
 
   <div class="page">
     <div class="content">
-      <h1 class="page-title">Housing Starts & New Housing Price Index</h1>
-      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3410013501" target="_blank" rel="noopener">StatCan Table 34-10-0135 (CMHC)</a> &amp; <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810020501" target="_blank" rel="noopener">Table 18-10-0205 (NHPI)</a></p>
-      <p class="page-desc">Housing starts measure the number of new residential construction projects begun each year — the primary indicator of housing supply response to demand. The New Housing Price Index (NHPI) tracks price changes for new homes (Dec 2016 = 100). Together, these metrics reveal whether provinces are building enough to keep pace with population growth and demand, or falling behind.</p>
+      <h1 class="page-title">Housing Supply & Prices by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3410013501" target="_blank" rel="noopener">CMHC Table 34-10-0135</a> &amp; <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810020501" target="_blank" rel="noopener">StatCan Table 18-10-0205</a></p>
+      <p class="page-desc">Housing starts per 10,000 population measures new construction activity normalized by population size, making provinces directly comparable regardless of size. Alberta consistently builds at nearly double the national rate, while Ontario has fallen to the lowest per-capita starts in the country. The New Housing Price Index (NHPI, Dec 2016 = 100) tracks price trends for new homes.</p>
 
       <div class="entities" id="entities"></div>
 
       <div class="view-toggle">
-        <button class="view-btn active" data-view="starts" onclick="setView('starts')">Housing Starts</button>
+        <button class="view-btn active" data-view="startsPer10K" onclick="setView('startsPer10K')">Starts per 10K Pop</button>
+        <button class="view-btn" data-view="startsRaw" onclick="setView('startsRaw')">Total Starts</button>
         <button class="view-btn" data-view="priceIndex" onclick="setView('priceIndex')">Price Index</button>
       </div>
 
@@ -98,11 +99,11 @@
   </div>
 
 <script>
-  const ALL_DATA = {"years":["1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"starts":{"Canada":[199785,245986,222562,215382,181630,156197,168271,155443,154057,110933,124713,147040,137439,149968,151653,162733,205034,218426,233431,225481,227395,228343,211056,149081,189930,193950,214827,187923,189329,195535,197915,219763,212843,208685,217880,271198,261849,240267,245367,259028],"Newfoundland & Labrador":[2883,2682,3168,3536,3245,2836,2271,2405,2243,1712,2034,1696,1450,1371,1459,1788,2419,2692,2870,2498,2234,2649,3261,3057,3606,3488,3885,2862,2119,1697,1398,1400,1096,945,763,1021,1379,978,1672,1568],"Prince Edward Island":[1110,933,1151,815,762,553,644,645,669,422,554,470,524,616,710,675,775,814,919,862,738,750,712,877,756,940,941,636,511,558,556,911,1089,1504,1240,1260,1318,1139,1694,1769],"Nova Scotia":[7571,6460,5478,5359,5560,5173,4673,4282,4748,4168,4059,3813,3137,4250,4432,4092,4970,5096,4717,4775,4896,4750,3982,3438,4309,4644,4522,3919,3056,3825,3767,3984,4786,4719,4865,5975,5714,7159,7381,9760],"New Brunswick":[4045,3716,3621,3681,2683,2872,3310,3693,3203,2300,2722,2702,2447,2776,3079,3462,3862,4489,3947,3959,4085,4242,4274,3521,4101,3452,3299,2843,2276,1995,1838,2324,2328,2935,3483,3829,4680,4547,6169,7587],"Quebec":[60348,74179,58062,49058,48070,44654,38228,34015,34154,21885,23220,25896,23138,25742,24695,27682,42452,50289,58448,50910,47877,48553,47901,43403,51363,48387,47367,37758,38810,37926,38935,46495,46874,47967,54066,67810,57107,38912,48713,59864],"Ontario":[81470,105213,99924,93337,62649,52794,55772,45140,46645,35818,43062,54072,53830,67235,71521,73282,83597,85180,85114,78795,73417,68123,75076,50370,60433,67821,76742,61085,59134,70156,74952,79123,78742,68985,81305,99566,96080,89297,74573,65376],"Manitoba":[7699,8174,5455,4084,3297,1950,2310,2425,3197,1963,2318,2612,2895,3133,2560,2963,3617,4206,4440,4731,5028,5738,5537,4174,5888,6083,7242,7465,6220,5501,5318,7501,7376,6946,7314,8023,8095,7104,7191,7903],"Saskatchewan":[5510,4895,3856,1906,1417,998,1869,1880,2098,1702,2438,2757,2965,3089,2513,2381,2963,3315,3781,3437,3715,6007,6828,3866,5907,7031,9968,8290,8257,5149,4775,4904,3610,2427,3087,4172,4211,4619,4319,6150],"Alberta":[8462,10790,11360,14712,17227,12492,18573,18151,17692,13906,16665,23671,27122,25447,26266,29174,38754,36171,36270,40847,48962,48336,29164,20298,27088,25704,33396,36011,40590,37282,24533,29457,26085,27325,24023,31935,36544,36022,47827,54858],"British Columbia":[20687,28944,30487,38894,36720,31875,40621,42807,39408,27057,27641,29351,19931,16309,14418,17234,21625,26174,32925,34667,36443,39195,34321,16077,26479,26400,27465,27054,28356,31446,41843,43664,40857,44932,37734,47607,46721,50490,45828,44193]},"priceIndex":{"Canada":[41.8,47.5,52.4,59.4,60.3,56.1,56.1,56.8,56.9,56.3,55.2,55.6,56.1,56.6,57.9,59.5,61.9,64.9,68.5,71.9,79.0,85.1,88.0,86.0,87.8,89.7,91.9,93.5,94.9,96.2,98.6,102.2,103.2,103.2,105.3,116.2,125.1,124.8,124.7,123.3],"Newfoundland & Labrador":[39.2,41.2,42.1,44.4,46.0,49.3,49.7,49.8,49.9,50.0,49.5,48.4,47.8,48.0,49.0,50.1,52.2,54.5,57.4,60.6,62.9,66.0,79.0,88.0,93.2,97.0,97.2,98.9,99.8,100.0,100.1,99.3,98.7,97.5,98.1,102.1,105.1,106.3,106.6,109.5],"Prince Edward Island":[null,null,null,null,null,null,null,null,null,83.0,82.7,82.6,81.9,83.3,84.8,85.8,86.3,87.3,90.4,94.2,96.3,97.5,98.8,99.7,98.1,99.9,100.1,100.6,99.5,99.6,100.0,100.1,100.3,101.1,103.4,117.1,121.8,122.6,122.6,123.1],"Nova Scotia":[51.0,52.7,54.7,55.7,55.9,55.7,56.4,58.0,59.7,61.4,61.9,60.4,60.9,62.9,64.9,66.7,69.1,72.0,73.5,75.5,78.8,83.4,90.0,91.0,91.8,93.4,95.4,97.8,98.2,98.9,99.3,100.6,101.6,102.4,106.1,116.2,120.8,121.3,121.1,126.7],"New Brunswick":[72.2,75.7,77.9,80.6,81.8,82.5,83.3,83.2,83.4,83.2,82.4,79.7,77.9,78.3,78.1,78.1,79.8,82.1,83.7,87.1,90.0,90.8,93.1,96.1,97.6,98.2,98.1,98.4,98.3,98.1,98.8,100.4,101.1,101.6,103.4,111.1,118.9,119.5,119.9,120.7],"Quebec":[40.0,45.6,49.9,51.8,53.3,53.8,54.0,54.3,54.5,54.9,54.7,54.6,54.9,56.0,57.9,60.6,64.1,68.9,73.3,76.9,80.3,83.7,87.8,90.6,93.4,95.9,97.5,98.5,98.8,99.0,99.7,100.6,102.5,105.5,112.1,128.4,140.6,142.0,142.8,146.5],"Ontario":[39.6,47.7,54.3,63.9,63.1,56.3,54.5,53.6,53.4,53.4,52.9,54.0,55.3,56.2,58.0,59.8,62.0,64.7,68.4,71.5,74.2,76.1,78.8,78.9,80.8,83.7,87.1,88.9,90.4,92.7,97.2,103.3,104.4,104.8,107.6,119.2,126.9,126.1,124.4,121.8],"Manitoba":[35.8,37.9,38.3,38.1,38.9,38.8,38.8,40.2,41.5,42.1,42.5,43.1,43.5,44.2,45.4,46.2,47.4,49.2,52.5,56.9,62.3,69.7,76.8,78.7,82.5,86.4,90.1,94.5,96.0,97.1,98.9,102.0,103.9,104.7,106.8,122.6,141.7,141.1,139.9,143.8],"Saskatchewan":[30.6,31.8,32.3,32.7,33.0,33.3,34.1,35.7,36.6,37.4,38.0,39.0,40.2,41.1,41.9,43.1,44.1,45.9,48.7,51.6,56.2,73.7,90.8,89.6,93.1,95.8,98.7,100.6,102.6,101.8,100.2,99.6,98.4,96.9,95.1,100.6,105.8,105.0,104.9,108.7],"Alberta":[27.0,28.1,30.0,32.3,36.8,36.6,36.8,38.0,38.7,38.7,38.9,40.8,43.5,45.3,46.3,47.3,50.1,52.8,55.5,59.3,82.0,100.4,101.0,92.0,92.5,92.9,94.1,96.6,100.0,100.7,100.1,100.0,99.6,98.1,97.2,103.9,116.4,117.5,120.8,120.1],"British Columbia":[66.8,69.3,73.1,84.0,88.9,83.1,90.0,96.5,95.8,90.6,85.0,82.3,78.1,74.9,74.0,74.5,76.5,79.3,83.5,87.5,93.2,99.2,101.3,94.7,97.1,96.7,96.0,94.9,93.9,94.6,98.9,104.4,107.9,106.6,108.1,119.9,127.8,127.2,127.2,125.9]}};
+  const ALL_DATA = {"years":["1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"startsPer10K":{"Canada":[76.5,93.0,83.1,79.0,65.6,55.7,59.3,54.2,53.1,37.9,42.1,49.2,45.6,49.3,49.4,52.5,65.4,69.0,73.1,69.9,69.8,69.4,63.5,44.3,55.9,56.5,61.9,53.6,53.4,54.8,54.8,60.1,57.4,55.5,57.3,70.9,67.2,60.0,59.5,62.2],"Newfoundland & Labrador":[50.0,46.6,55.1,61.3,56.2,48.9,39.1,41.5,39.0,30.2,36.3,30.8,26.9,25.7,27.6,34.3,46.6,51.9,55.5,48.6,43.8,52.0,63.7,59.2,69.1,66.4,73.8,54.3,40.1,32.1,26.4,26.4,20.7,17.9,14.5,19.4,26.0,18.2,30.6,28.5],"Prince Edward Island":[86.4,72.5,89.0,62.6,58.4,42.4,49.2,48.8,50.1,31.4,40.8,34.5,38.6,45.2,52.0,49.4,56.6,59.3,66.7,62.4,53.5,54.5,51.3,62.7,53.4,65.3,65.2,44.2,35.5,38.6,37.9,60.8,71.5,96.5,77.9,77.7,78.8,65.6,94.3,96.8],"Nova Scotia":[85.2,72.3,61.1,59.3,61.1,56.5,50.8,46.3,51.2,44.9,43.6,40.9,33.7,45.5,47.5,43.9,53.1,54.3,50.2,50.9,52.2,50.8,42.5,36.6,45.7,49.2,47.9,41.7,32.6,40.8,39.9,41.8,49.7,48.4,49.2,59.8,55.8,68.0,68.2,89.3],"New Brunswick":[55.8,51.1,49.6,50.1,36.2,38.5,44.2,49.3,42.7,30.6,36.2,35.9,32.6,37.0,41.0,46.2,51.5,59.9,52.7,52.9,54.8,56.9,57.2,46.9,54.5,45.7,43.5,37.5,30.0,26.3,24.1,30.3,30.2,37.8,44.5,48.4,57.9,54.7,71.9,87.2],"Quebec":[90.0,109.4,84.9,70.8,68.7,63.2,53.8,47.5,47.5,30.3,32.0,35.6,31.7,35.2,33.6,37.4,57.0,67.2,77.6,67.2,62.7,63.1,61.7,55.3,64.8,60.4,58.8,46.6,47.6,46.4,47.3,56.1,55.9,56.5,63.2,79.1,65.9,44.1,54.2,66.1],"Ontario":[86.3,109.2,101.6,92.4,60.8,50.6,52.8,42.2,43.1,32.7,38.9,48.2,47.4,58.4,61.2,61.6,69.1,69.6,68.7,62.9,58.0,53.4,58.3,38.7,46.0,51.1,57.3,45.2,43.4,51.2,54.0,56.2,55.0,47.3,55.1,67.1,63.4,57.1,46.2,40.2],"Manitoba":[70.5,74.4,49.5,37.0,29.8,17.6,20.8,21.7,28.5,17.4,20.4,23.0,25.5,27.4,22.3,25.7,31.3,36.1,37.8,40.2,42.5,48.2,46.2,34.5,48.2,49.3,58.0,59.1,48.7,42.5,40.5,56.2,54.5,50.7,53.0,57.6,57.3,48.9,48.2,52.3],"Saskatchewan":[53.6,47.4,37.5,18.7,14.1,10.0,18.6,18.7,20.8,16.8,23.9,27.1,29.1,30.4,24.9,23.8,29.7,33.3,37.9,34.6,37.4,59.9,67.1,37.4,56.2,66.0,92.0,75.4,74.3,45.9,42.1,42.7,31.2,20.8,26.4,35.7,35.7,38.2,34.6,48.5],"Alberta":[34.8,44.2,46.2,58.9,67.6,48.2,70.5,68.1,65.5,50.9,60.1,83.6,93.6,86.2,87.4,95.4,123.9,113.6,112.0,123.0,143.1,137.5,81.1,55.2,72.6,67.9,86.3,90.5,99.5,89.8,58.5,69.5,60.8,62.7,54.5,72.1,81.0,76.8,97.4,109.1],"British Columbia":[68.9,94.9,97.9,121.7,111.5,94.5,117.1,120.0,107.2,71.6,71.3,74.3,50.0,40.7,35.7,42.3,52.7,63.5,79.2,82.6,85.9,91.3,78.9,36.5,59.3,58.6,60.1,58.4,60.2,66.0,86.1,88.5,81.4,87.9,72.9,91.1,87.2,91.5,80.8,77.6]},"startsRaw":{"Canada":[199785,245986,222562,215382,181630,156197,168271,155443,154057,110933,124713,147040,137439,149968,151653,162733,205034,218426,233431,225481,227395,228343,211056,149081,189930,193950,214827,187923,189329,195535,197915,219763,212843,208685,217880,271198,261849,240267,245367,259028],"Newfoundland & Labrador":[2883,2682,3168,3536,3245,2836,2271,2405,2243,1712,2034,1696,1450,1371,1459,1788,2419,2692,2870,2498,2234,2649,3261,3057,3606,3488,3885,2862,2119,1697,1398,1400,1096,945,763,1021,1379,978,1672,1568],"Prince Edward Island":[1110,933,1151,815,762,553,644,645,669,422,554,470,524,616,710,675,775,814,919,862,738,750,712,877,756,940,941,636,511,558,556,911,1089,1504,1240,1260,1318,1139,1694,1769],"Nova Scotia":[7571,6460,5478,5359,5560,5173,4673,4282,4748,4168,4059,3813,3137,4250,4432,4092,4970,5096,4717,4775,4896,4750,3982,3438,4309,4644,4522,3919,3056,3825,3767,3984,4786,4719,4865,5975,5714,7159,7381,9760],"New Brunswick":[4045,3716,3621,3681,2683,2872,3310,3693,3203,2300,2722,2702,2447,2776,3079,3462,3862,4489,3947,3959,4085,4242,4274,3521,4101,3452,3299,2843,2276,1995,1838,2324,2328,2935,3483,3829,4680,4547,6169,7587],"Quebec":[60348,74179,58062,49058,48070,44654,38228,34015,34154,21885,23220,25896,23138,25742,24695,27682,42452,50289,58448,50910,47877,48553,47901,43403,51363,48387,47367,37758,38810,37926,38935,46495,46874,47967,54066,67810,57107,38912,48713,59864],"Ontario":[81470,105213,99924,93337,62649,52794,55772,45140,46645,35818,43062,54072,53830,67235,71521,73282,83597,85180,85114,78795,73417,68123,75076,50370,60433,67821,76742,61085,59134,70156,74952,79123,78742,68985,81305,99566,96080,89297,74573,65376],"Manitoba":[7699,8174,5455,4084,3297,1950,2310,2425,3197,1963,2318,2612,2895,3133,2560,2963,3617,4206,4440,4731,5028,5738,5537,4174,5888,6083,7242,7465,6220,5501,5318,7501,7376,6946,7314,8023,8095,7104,7191,7903],"Saskatchewan":[5510,4895,3856,1906,1417,998,1869,1880,2098,1702,2438,2757,2965,3089,2513,2381,2963,3315,3781,3437,3715,6007,6828,3866,5907,7031,9968,8290,8257,5149,4775,4904,3610,2427,3087,4172,4211,4619,4319,6150],"Alberta":[8462,10790,11360,14712,17227,12492,18573,18151,17692,13906,16665,23671,27122,25447,26266,29174,38754,36171,36270,40847,48962,48336,29164,20298,27088,25704,33396,36011,40590,37282,24533,29457,26085,27325,24023,31935,36544,36022,47827,54858],"British Columbia":[20687,28944,30487,38894,36720,31875,40621,42807,39408,27057,27641,29351,19931,16309,14418,17234,21625,26174,32925,34667,36443,39195,34321,16077,26479,26400,27465,27054,28356,31446,41843,43664,40857,44932,37734,47607,46721,50490,45828,44193]},"priceIndex":{"Canada":[41.8,47.5,52.4,59.4,60.3,56.1,56.1,56.8,56.9,56.3,55.2,55.6,56.1,56.6,57.9,59.5,61.9,64.9,68.5,71.9,79.0,85.1,88.0,86.0,87.8,89.7,91.9,93.5,94.9,96.2,98.6,102.2,103.2,103.2,105.3,116.2,125.1,124.8,124.7,123.3],"Newfoundland & Labrador":[39.2,41.2,42.1,44.4,46.0,49.3,49.7,49.8,49.9,50.0,49.5,48.4,47.8,48.0,49.0,50.1,52.2,54.5,57.4,60.6,62.9,66.0,79.0,88.0,93.2,97.0,97.2,98.9,99.8,100.0,100.1,99.3,98.7,97.5,98.1,102.1,105.1,106.3,106.6,109.5],"Prince Edward Island":[null,null,null,null,null,null,null,null,null,83.0,82.7,82.6,81.9,83.3,84.8,85.8,86.3,87.3,90.4,94.2,96.3,97.5,98.8,99.7,98.1,99.9,100.1,100.6,99.5,99.6,100.0,100.1,100.3,101.1,103.4,117.1,121.8,122.6,122.6,123.1],"Nova Scotia":[51.0,52.7,54.7,55.7,55.9,55.7,56.4,58.0,59.7,61.4,61.9,60.4,60.9,62.9,64.9,66.7,69.1,72.0,73.5,75.5,78.8,83.4,90.0,91.0,91.8,93.4,95.4,97.8,98.2,98.9,99.3,100.6,101.6,102.4,106.1,116.2,120.8,121.3,121.1,126.7],"New Brunswick":[72.2,75.7,77.9,80.6,81.8,82.5,83.3,83.2,83.4,83.2,82.4,79.7,77.9,78.3,78.1,78.1,79.8,82.1,83.7,87.1,90.0,90.8,93.1,96.1,97.6,98.2,98.1,98.4,98.3,98.1,98.8,100.4,101.1,101.6,103.4,111.1,118.9,119.5,119.9,120.7],"Quebec":[40.0,45.6,49.9,51.8,53.3,53.8,54.0,54.3,54.5,54.9,54.7,54.6,54.9,56.0,57.9,60.6,64.1,68.9,73.3,76.9,80.3,83.7,87.8,90.6,93.4,95.9,97.5,98.5,98.8,99.0,99.7,100.6,102.5,105.5,112.1,128.4,140.6,142.0,142.8,146.5],"Ontario":[39.6,47.7,54.3,63.9,63.1,56.3,54.5,53.6,53.4,53.4,52.9,54.0,55.3,56.2,58.0,59.8,62.0,64.7,68.4,71.5,74.2,76.1,78.8,78.9,80.8,83.7,87.1,88.9,90.4,92.7,97.2,103.3,104.4,104.8,107.6,119.2,126.9,126.1,124.4,121.8],"Manitoba":[35.8,37.9,38.3,38.1,38.9,38.8,38.8,40.2,41.5,42.1,42.5,43.1,43.5,44.2,45.4,46.2,47.4,49.2,52.5,56.9,62.3,69.7,76.8,78.7,82.5,86.4,90.1,94.5,96.0,97.1,98.9,102.0,103.9,104.7,106.8,122.6,141.7,141.1,139.9,143.8],"Saskatchewan":[30.6,31.8,32.3,32.7,33.0,33.3,34.1,35.7,36.6,37.4,38.0,39.0,40.2,41.1,41.9,43.1,44.1,45.9,48.7,51.6,56.2,73.7,90.8,89.6,93.1,95.8,98.7,100.6,102.6,101.8,100.2,99.6,98.4,96.9,95.1,100.6,105.8,105.0,104.9,108.7],"Alberta":[27.0,28.1,30.0,32.3,36.8,36.6,36.8,38.0,38.7,38.7,38.9,40.8,43.5,45.3,46.3,47.3,50.1,52.8,55.5,59.3,82.0,100.4,101.0,92.0,92.5,92.9,94.1,96.6,100.0,100.7,100.1,100.0,99.6,98.1,97.2,103.9,116.4,117.5,120.8,120.1],"British Columbia":[66.8,69.3,73.1,84.0,88.9,83.1,90.0,96.5,95.8,90.6,85.0,82.3,78.1,74.9,74.0,74.5,76.5,79.3,83.5,87.5,93.2,99.2,101.3,94.7,97.1,96.7,96.0,94.9,93.9,94.6,98.9,104.4,107.9,106.6,108.1,119.9,127.8,127.2,127.2,125.9]}};
 
   let chart = null;
   let selectedEntity = 'Canada';
-  let currentView = 'starts';
+  let currentView = 'startsPer10K';
 
   const entityColors = {
     'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D',
@@ -112,12 +113,18 @@
 
   const entityOrder = ['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island'];
 
+  const viewConfig = {
+    startsPer10K: { title: 'Housing Starts per 10,000 Population', yLabel: 'Starts per 10K', chartType: 'bar', fmt: v => v != null ? v.toFixed(1) : '—', tooltip: v => v.toFixed(1) + ' per 10K' },
+    startsRaw: { title: 'Total Annual Housing Starts', yLabel: 'Housing Starts', chartType: 'bar', fmt: v => v != null ? v.toLocaleString('en-CA') : '—', tooltip: v => v.toLocaleString('en-CA') + ' units' },
+    priceIndex: { title: 'New Housing Price Index (Dec 2016 = 100)', yLabel: 'Price Index', chartType: 'line', fmt: v => v != null ? v.toFixed(1) : '—', tooltip: v => v.toFixed(1) }
+  };
+
   function init() { buildChips(); update(); }
 
   function buildChips() {
     const container = document.getElementById('entities');
     entityOrder.forEach(name => {
-      if (!ALL_DATA.starts[name]) return;
+      if (!ALL_DATA.startsPer10K[name]) return;
       const chip = document.createElement('span');
       const color = entityColors[name] || '#666';
       const isNational = name === 'Canada';
@@ -150,23 +157,13 @@
     update();
   }
 
-  function formatNum(v) {
-    if (v == null) return '—';
-    if (currentView === 'priceIndex') return v.toFixed(1);
-    if (v >= 1000) return v.toLocaleString('en-CA');
-    return v.toString();
-  }
-
   function update() {
+    const cfg = viewConfig[currentView];
     const dataSet = ALL_DATA[currentView];
     const values = dataSet[selectedEntity];
     const nationalValues = dataSet['Canada'];
     const labels = ALL_DATA.years;
     const color = entityColors[selectedEntity] || '#2D2D2D';
-
-    const isStarts = currentView === 'starts';
-    const chartTitle = selectedEntity + (isStarts ? ' — Annual Housing Starts' : ' — New Housing Price Index (Dec 2016 = 100)');
-    const yLabel = isStarts ? 'Housing Starts' : 'Price Index';
 
     if (chart) chart.destroy();
     const ctx = document.getElementById('chart').getContext('2d');
@@ -176,8 +173,12 @@
       data: values,
       backgroundColor: color + 'B3',
       borderColor: color,
-      borderWidth: 1,
-      borderRadius: 2
+      borderWidth: cfg.chartType === 'line' ? 2.5 : 1,
+      borderRadius: cfg.chartType === 'bar' ? 2 : 0,
+      tension: cfg.chartType === 'line' ? 0.3 : 0,
+      pointRadius: cfg.chartType === 'line' ? 0 : undefined,
+      pointHoverRadius: cfg.chartType === 'line' ? 4 : undefined,
+      fill: false
     }];
 
     if (selectedEntity !== 'Canada') {
@@ -195,7 +196,7 @@
     }
 
     chart = new Chart(ctx, {
-      type: isStarts ? 'bar' : 'line',
+      type: cfg.chartType,
       data: { labels, datasets },
       options: {
         responsive: true,
@@ -209,7 +210,7 @@
           },
           title: {
             display: true,
-            text: chartTitle,
+            text: selectedEntity + ' — ' + cfg.title,
             color: '#2D2D2D',
             font: { size: 13, weight: 600 }
           },
@@ -218,8 +219,7 @@
               label: ctx => {
                 const v = ctx.parsed.y;
                 if (v == null) return null;
-                if (isStarts) return ' ' + ctx.dataset.label + ': ' + v.toLocaleString('en-CA') + ' units';
-                return ' ' + ctx.dataset.label + ': ' + v.toFixed(1);
+                return ' ' + ctx.dataset.label + ': ' + cfg.tooltip(v);
               }
             }
           }
@@ -229,42 +229,36 @@
           y: {
             ticks: {
               font: { size: 10 }, color: '#8A8A8A',
-              callback: v => isStarts ? (v >= 1000 ? (v/1000).toFixed(0) + 'K' : v) : v.toFixed(0)
+              callback: v => currentView === 'startsRaw' ? (v >= 1000 ? (v/1000).toFixed(0) + 'K' : v) : v.toFixed(0)
             },
             grid: { color: 'rgba(0,0,0,0.06)' },
-            title: { display: true, text: yLabel, font: { size: 11 }, color: '#5A5A5A' }
+            title: { display: true, text: cfg.yLabel, font: { size: 11 }, color: '#5A5A5A' }
           }
-        },
-        ...(currentView === 'line' ? {} : {}),
-        elements: currentView === 'priceIndex' ? {
-          line: { tension: 0.3, borderWidth: 2.5 },
-          point: { radius: 0, hoverRadius: 4 }
-        } : {}
+        }
       }
     });
 
-    buildTable(labels, values, nationalValues);
+    buildTable(labels, values, nationalValues, cfg);
   }
 
-  function buildTable(labels, values, nationalValues) {
-    const isStarts = currentView === 'starts';
-    document.getElementById('tableTitle').textContent = selectedEntity + (isStarts ? ' — Housing Starts' : ' — Price Index');
+  function buildTable(labels, values, nationalValues, cfg) {
+    document.getElementById('tableTitle').textContent = selectedEntity + ' — ' + cfg.title;
     const table = document.getElementById('dataTable');
     const showDiff = selectedEntity !== 'Canada';
-    let html = '<thead><tr><th>Year</th><th class="num">' + (isStarts ? 'Starts' : 'Index') + '</th>';
+    let html = '<thead><tr><th>Year</th><th class="num">' + cfg.yLabel + '</th>';
     if (showDiff) html += '<th class="num">vs National</th>';
     html += '</tr></thead><tbody>';
     for (let i = labels.length - 1; i >= 0; i--) {
       const v = values[i];
-      html += '<tr><td>' + labels[i] + '</td><td class="num">' + formatNum(v) + '</td>';
+      html += '<tr><td>' + labels[i] + '</td><td class="num">' + cfg.fmt(v) + '</td>';
       if (showDiff && v != null && nationalValues[i] != null) {
-        if (isStarts) {
+        if (currentView === 'startsRaw') {
           const pct = ((v / nationalValues[i]) * 100).toFixed(1);
           html += '<td class="num">' + pct + '% of national</td>';
         } else {
           const diff = (v - nationalValues[i]).toFixed(1);
-          const cls = diff >= 0 ? 'positive' : 'negative';
-          const sign = diff >= 0 ? '+' : '';
+          const cls = parseFloat(diff) >= 0 ? 'positive' : 'negative';
+          const sign = parseFloat(diff) >= 0 ? '+' : '';
           html += '<td class="num ' + cls + '">' + sign + diff + '</td>';
         }
       } else if (showDiff) {
