@@ -50,9 +50,8 @@
 
     /* Rankings */
     .rankings{max-width:1100px;margin:1.25rem auto;padding:0 1rem;width:100%}
-    .rankings-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;gap:1rem}
-    .rankings h2{font-size:0.8125rem;font-weight:700;color:var(--color-text-secondary);margin:0;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap}
-    .rankings-context{font-size:0.6875rem;color:var(--color-text-tertiary);max-width:550px;text-align:right;line-height:1.4}
+    .rankings h2{font-size:0.8125rem;font-weight:700;color:var(--color-text-secondary);margin:0 0 0.5rem;text-transform:uppercase;letter-spacing:0.05em}
+    .rankings-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;background:var(--color-white);border-radius:var(--radius-md);padding:0.875rem 1.25rem;box-shadow:var(--shadow-card);border-left:3px solid var(--color-teal)}
     .rank-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));gap:0.75rem}
     @media(min-width:768px){.rank-grid{grid-template-columns:repeat(5, 1fr)}}
     .rank-card{background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);padding:1rem;display:flex;flex-direction:column;align-items:center;gap:0.25rem;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s;cursor:pointer}
@@ -78,8 +77,20 @@
     .heatmap thead th:first-child:hover{background:var(--color-cream)}
     .heatmap thead th.th-health{font-weight:800;min-width:72px}
 
-    .heatmap .vertical-row td{background:var(--color-cream);padding:6px 12px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--color-beige);text-align:left}
-    .heatmap .metric-name{text-align:left;padding:8px 12px;font-size:0.75rem;font-weight:600;color:var(--color-text-primary);background:var(--color-white);white-space:nowrap;min-width:180px}
+    /* Vertical section headers with gradient */
+    .heatmap .vertical-row td{
+      padding:8px 14px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+      border-bottom:2px solid var(--color-beige);text-align:left;color:#fff;
+    }
+
+    /* Metric rows get a subtle left accent */
+    .heatmap .metric-name{text-align:left;padding:8px 12px 8px 14px;font-size:0.75rem;font-weight:600;color:var(--color-text-primary);white-space:nowrap;min-width:180px;position:relative}
+    .heatmap .metric-name::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+    .heatmap tr[data-vertical="fiscal"] .metric-name::before{background:var(--v-fiscal)}
+    .heatmap tr[data-vertical="economy"] .metric-name::before{background:var(--v-economy)}
+    .heatmap tr[data-vertical="housing"] .metric-name::before{background:var(--v-housing)}
+    .heatmap tr[data-vertical="crime"] .metric-name::before{background:var(--v-crime)}
+    .heatmap tr[data-vertical="demographics"] .metric-name::before{background:var(--v-demographics)}
     .heatmap .metric-name a{color:inherit;text-decoration:none;border-bottom:1px dashed var(--color-beige-dark)}
     .heatmap .metric-name a:hover{color:var(--color-teal);border-color:var(--color-teal)}
 
@@ -99,8 +110,9 @@
     .heatmap td.cell-health{font-weight:700;font-size:0.6875rem;min-width:72px}
     .heatmap td.cell-health .health-label{display:block;font-size:0.5rem;color:inherit;font-weight:600;margin-top:1px;opacity:0.7}
 
-    .heatmap .composite-row td{border-top:2px solid var(--color-beige-dark);border-bottom:none;padding:10px 4px;font-weight:800;font-size:0.8125rem}
+    .heatmap .composite-row td{border-top:3px solid var(--color-beige-dark);border-bottom:none;padding:10px 4px;font-weight:800;font-size:0.8125rem}
     .heatmap .composite-row .metric-name{font-size:0.8125rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em}
+    .heatmap .composite-row .metric-name::before{display:none}
 
     .legend{max-width:1100px;margin:0 auto 1rem;padding:0 1rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.75rem;color:var(--color-text-secondary);align-items:center}
     .legend-item{display:flex;align-items:center;gap:4px}
@@ -184,14 +196,20 @@ const ABBREV = {
   'Alberta':'AB','Manitoba':'MB','Saskatchewan':'SK','Nova Scotia':'NS',
   'New Brunswick':'NB','Newfoundland & Labrador':'NL','Prince Edward Island':'PE'
 };
+const VERTICAL_COLORS_RAW = {
+  fiscal:'#4A6FA5',economy:'#3D7A4A',housing:'#C4763C',
+  crime:'#A63D40',demographics:'#7C5A9D'
+};
 const VERTICAL_COLORS = {
   fiscal:'var(--v-fiscal)',economy:'var(--v-economy)',housing:'var(--v-housing)',
   crime:'var(--v-crime)',demographics:'var(--v-demographics)'
 };
 const VERTICAL_ICONS = {fiscal:'&#128176;',economy:'&#128200;',housing:'&#127968;',crime:'&#128275;',demographics:'&#128101;'};
+const VERTICAL_LABELS = {fiscal:'Fiscal',economy:'Economy',housing:'Housing',crime:'Crime',demographics:'Demographics'};
 const VERTICAL_ORDER = ['fiscal','economy','housing','crime','demographics'];
 const GRADE_COLORS = {A:'var(--grade-a)',B:'var(--grade-b)',C:'var(--grade-c)',D:'var(--grade-d)'};
 const GRADE_VALUES = {A:4,B:3,C:2,D:1};
+const VALUE_GRADES = {4:'A',3:'B',2:'C',1:'D'};
 const HEALTH_GRADE = {strong:'A',moderate:'B',stagnant:'C',declining:'D',no_data:'B',insufficient_data:'B'};
 const HEALTH_LABELS = {strong:'Strong',moderate:'Moderate',stagnant:'Stagnant',declining:'Declining',no_data:'N/A',insufficient_data:'N/A'};
 
@@ -210,7 +228,7 @@ function getGrade(m, prov) {
 function getCompositeKey() { return currentView === 'adjusted' ? 'adjusted' : 'peer'; }
 
 function formatVal(val, unit) {
-  if (val == null) return '—';
+  if (val == null) return '\u2014';
   if (unit === '$') return '$' + Math.round(val).toLocaleString();
   if (unit === '%') return val.toFixed(1) + '%';
   if (unit === 'index') return val.toFixed(1);
@@ -249,6 +267,21 @@ document.addEventListener('click', e => {
   render();
 });
 
+// Compute composite national health for the current snapshot
+function computeCompositeHealth(snap) {
+  if (!snap) return {grade:'B',count:0,strong:0,moderate:0,stagnant:0,declining:0};
+  let counts = {strong:0,moderate:0,stagnant:0,declining:0};
+  let total = 0;
+  snap.metrics.forEach(m => {
+    const s = (m.national_health||{}).status;
+    if (s && counts[s] !== undefined) { counts[s]++; total++; }
+  });
+  // Weighted: strong=4, moderate=3, stagnant=2, declining=1
+  const score = total > 0 ? (counts.strong*4 + counts.moderate*3 + counts.stagnant*2 + counts.declining*1) / total : 2;
+  const rounded = Math.max(1, Math.min(4, Math.round(score)));
+  return {grade: VALUE_GRADES[rounded], score: Math.round(score*100)/100, ...counts, total};
+}
+
 function buildRankings() {
   const snap = getSnap();
   if (!snap) { document.getElementById('rankings').innerHTML = '<p style="text-align:center;color:var(--color-text-tertiary)">No data for year ' + currentYear + '</p>'; return; }
@@ -261,14 +294,17 @@ function buildRankings() {
     return {prov:p, score:c[key+'_score'], grade:c[key+'_grade'], peer_score:c.peer_score};
   }).sort((a,b) => b.score - a.score);
 
-  let ctx = '';
+  let desc = '';
   if (currentView === 'adjusted') {
-    ctx = 'Composite of 3 layers: peer rank at ' + currentYear + ' (40%), historical trend using EMA (30%), and 20-year percentile position (30%). National health caps grades when Canada is stagnating or declining in a metric.';
+    desc = `Each province's composite grade for <strong>${currentYear}</strong> is built from three layers. <strong>Layer 1 (40%)</strong>: peer rank — where it places among the 10 provinces by raw value. <strong>Layer 2 (30%)</strong>: historical trajectory — is the province's EMA(3-year) above or below its EMA(10-year), signaling improvement or decline? Plus its current value as a percentile in its own 20-year range. <strong>Layer 3</strong>: national health cap — if Canada itself has been stagnating or declining in a metric over 10 years, no province can score above B or C in that metric, because being the best in a worsening national context isn't truly an A.`;
   } else {
-    ctx = 'Pure peer ranking at ' + currentYear + '. Each metric grades provinces 1-10 by value. No trajectory or national context applied.';
+    desc = `Pure snapshot ranking for <strong>${currentYear}</strong>. Each metric grades provinces 1 through 10 by their raw value that year. Rank 1-2 = A, 3-5 = B, 6-8 = C, 9-10 = D. No historical trajectory, no national health context — just who had the best and worst numbers.`;
   }
 
-  let html = '<div class="rankings-header"><h2>Overall Rankings — ' + currentYear + '</h2><div class="rankings-context">' + ctx + '</div></div><div class="rank-grid">';
+  let html = '<h2>Overall Rankings \u2014 ' + currentYear + '</h2>';
+  html += '<div class="rankings-desc">' + desc + '</div>';
+  html += '<div class="rank-grid">';
+
   ranked.forEach((item, i) => {
     const {prov, score, grade} = item;
     const color = GRADE_COLORS[grade];
@@ -277,15 +313,15 @@ function buildRankings() {
     let changeHtml = '';
     if (currentView === 'adjusted') {
       const diff = score - item.peer_score;
-      if (diff > 0.05) changeHtml = `<span class="rank-change" style="color:var(--grade-a)">+${diff.toFixed(1)} vs peer</span>`;
-      else if (diff < -0.05) changeHtml = `<span class="rank-change" style="color:var(--grade-d)">${diff.toFixed(1)} vs peer</span>`;
+      if (diff > 0.05) changeHtml = `<span class="rank-change" style="color:var(--grade-a)">\u25B2 +${diff.toFixed(1)} vs peer</span>`;
+      else if (diff < -0.05) changeHtml = `<span class="rank-change" style="color:var(--grade-d)">\u25BC ${diff.toFixed(1)} vs peer</span>`;
     }
 
     html += `<div class="rank-card${highlightedProv===prov?' highlighted':''}" data-prov="${prov}" onclick="toggleHighlight('${prov}')">
       <span class="rank-position">#${i+1}</span>
       <span class="rank-grade" style="color:${color}">${grade}</span>
       ${changeHtml}
-      <span class="rank-province">${ABBREV[prov]} — ${prov}</span>
+      <span class="rank-province">${ABBREV[prov]} \u2014 ${prov}</span>
       <span class="rank-score">${score}/4.0</span>
       <div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${color}"></div></div>
     </div>`;
@@ -313,15 +349,19 @@ function buildHeatmap() {
   VERTICAL_ORDER.forEach(vert => {
     const metrics = grouped[vert] || [];
     if (!metrics.length) return;
-    const label = vert.charAt(0).toUpperCase() + vert.slice(1);
-    html += `<tr class="vertical-row"><td colspan="${colOrder.length+2}" style="color:${VERTICAL_COLORS[vert]}">${VERTICAL_ICONS[vert]} ${label}</td></tr>`;
+    const label = VERTICAL_LABELS[vert];
+    const color = VERTICAL_COLORS_RAW[vert];
+
+    // Gradient header: solid vertical color on left fading to a lighter tint on right
+    html += `<tr class="vertical-row"><td colspan="${colOrder.length+2}" style="background:linear-gradient(90deg, ${color} 0%, ${color}18 100%);color:#fff">${VERTICAL_ICONS[vert]} ${label}</td></tr>`;
 
     metrics.forEach(m => {
-      html += '<tr><td class="metric-name"><a href="' + m.dashboard + '">' + m.name + '</a></td>';
+      html += `<tr data-vertical="${vert}">`;
+      html += '<td class="metric-name"><a href="' + m.dashboard + '">' + m.name + '</a></td>';
 
       const h = m.national_health || {};
       const hG = HEALTH_GRADE[h.status] || 'B';
-      const hL = HEALTH_LABELS[h.status] || '—';
+      const hL = HEALTH_LABELS[h.status] || '\u2014';
       const gr = h.growth_10y != null ? (h.growth_10y>0?'+':'') + h.growth_10y + '%' : '';
       html += `<td class="cell cell-health grade-${hG.toLowerCase()}" data-metric="${m.name}" data-health="1">
         <span class="grade">${hG}</span>
@@ -330,14 +370,14 @@ function buildHeatmap() {
 
       colOrder.forEach(prov => {
         const pd = m.provinces[prov];
-        if (!pd) { html += '<td class="cell">—</td>'; return; }
+        if (!pd) { html += '<td class="cell">\u2014</td>'; return; }
         const grade = getGrade(m, prov);
-        if (!grade) { html += '<td class="cell">—</td>'; return; }
+        if (!grade) { html += '<td class="cell">\u2014</td>'; return; }
 
         let sub = '';
         if (currentView === 'adjusted' && pd.peer_grade !== pd.adjusted_grade) {
           const up = GRADE_VALUES[pd.adjusted_grade] > GRADE_VALUES[pd.peer_grade];
-          sub = `<span class="cell-sub ${up?'up':'down'}">${pd.peer_grade}&#8594;${pd.adjusted_grade}</span>`;
+          sub = `<span class="cell-sub ${up?'up':'down'}">${pd.peer_grade}\u2192${pd.adjusted_grade}</span>`;
         }
 
         const hl = highlightedProv === prov ? ' col-highlight' : '';
@@ -351,20 +391,27 @@ function buildHeatmap() {
     });
   });
 
-  html += `<tr class="composite-row"><td class="metric-name">COMPOSITE</td><td class="cell cell-health"></td>`;
+  // Composite row — with health composite
+  const ch = computeCompositeHealth(snap);
+  html += `<tr class="composite-row"><td class="metric-name">COMPOSITE</td>`;
+  html += `<td class="cell cell-health grade-${ch.grade.toLowerCase()}" data-metric="Composite Health" data-health="1">
+    <span class="grade">${ch.grade}</span>
+    <span class="health-label">${ch.score}/4</span>
+  </td>`;
+
   colOrder.forEach(prov => {
     const c = snap.composites[prov];
-    if (!c) { html += '<td class="cell">—</td>'; return; }
+    if (!c) { html += '<td class="cell">\u2014</td>'; return; }
     const score = c[key+'_score'], grade = c[key+'_grade'];
-    let ch = '';
+    let sub = '';
     if (currentView === 'adjusted') {
       const diff = score - c.peer_score;
-      if (Math.abs(diff) > 0.05) ch = `<span class="cell-sub ${diff>0?'up':'down'}">${diff>0?'+':''}${diff.toFixed(1)}</span>`;
+      if (Math.abs(diff) > 0.05) sub = `<span class="cell-sub ${diff>0?'up':'down'}">${diff>0?'+':''}${diff.toFixed(1)}</span>`;
     }
     const hl = highlightedProv === prov ? ' col-highlight' : '';
     html += `<td class="cell grade-${grade.toLowerCase()}${hl}" data-prov="${prov}" style="font-size:1rem">
       <span class="grade" style="font-size:1.125rem">${grade}</span>
-      <span class="cell-value">${score}/4</span>${ch}</td>`;
+      <span class="cell-value">${score}/4</span>${sub}</td>`;
   });
   html += '</tr></tbody>';
   table.innerHTML = html;
@@ -383,14 +430,24 @@ document.addEventListener('mouseover', e => {
   if (!snap) return;
 
   if (cell.dataset.health) {
+    // Composite health tooltip
+    if (cell.dataset.metric === 'Composite Health') {
+      const ch = computeCompositeHealth(snap);
+      tooltip.innerHTML = `<div class="tt-metric">National Health \u2014 Overall</div>
+        <div class="tt-value">${ch.grade} (${ch.score}/4.0)</div>
+        <div class="tt-detail">Strong: ${ch.strong} / Moderate: ${ch.moderate} / Stagnant: ${ch.stagnant} / Declining: ${ch.declining}</div>
+        <div class="tt-detail">Average health across all ${ch.total} metrics at ${currentYear}</div>`;
+      tooltip.classList.add('show');
+      return;
+    }
     const m = snap.metrics.find(x => x.name === cell.dataset.metric);
     if (!m) return;
     const h = m.national_health;
     const gr = h.growth_10y != null ? (h.growth_10y>0?'+':'') + h.growth_10y + '%' : 'N/A';
-    tooltip.innerHTML = `<div class="tt-metric">National Health — ${m.name}</div>
+    tooltip.innerHTML = `<div class="tt-metric">National Health \u2014 ${m.name}</div>
       <div class="tt-value">${HEALTH_LABELS[h.status]||'?'} (${gr} over 10y)</div>
-      <div class="tt-detail">How has this metric changed nationally over 10 years?</div>
-      <div class="tt-detail">Grade ceiling: ${h.ceiling} — ${h.ceiling==='A'?'no cap applied':'provinces capped at '+h.ceiling+' maximum'}</div>
+      <div class="tt-detail">How Canada's national value changed over the 10 years ending at ${currentYear}.</div>
+      <div class="tt-detail">Grade ceiling: ${h.ceiling} \u2014 ${h.ceiling==='A'?'no cap applied':'provinces capped at '+h.ceiling+' maximum'}</div>
       ${m.invert?'<div class="tt-detail" style="color:#888">Lower values = better for this metric</div>':''}`;
     tooltip.classList.add('show');
     return;
@@ -406,7 +463,7 @@ document.addEventListener('mouseover', e => {
     <div class="tt-value">${ABBREV[prov]}: ${formatVal(pd.value, m.unit)}</div>
     <div class="tt-detail">Peer rank: ${pd.peer_grade}`;
   if (pd.adjusted_grade && pd.adjusted_grade !== pd.peer_grade)
-    html += ` → Adjusted: ${pd.adjusted_grade}`;
+    html += ` \u2192 Adjusted: ${pd.adjusted_grade}`;
   html += '</div>';
   if (pd.trend && pd.trend.direction)
     html += `<div class="tt-detail">Trend: ${pd.trend.direction} (${pd.trend.pct_change||0}%)</div>`;
