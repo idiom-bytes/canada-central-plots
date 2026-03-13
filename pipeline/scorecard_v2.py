@@ -20,7 +20,7 @@ from config import DATA_DIR, PROVINCES_ORDERED
 
 PROVINCES = [p for p in PROVINCES_ORDERED if p != "Canada"]
 
-# Minimum provinces with data to include a metric in a year's snapshot
+# Minimum provinces/territories with data to include a metric in a year's snapshot
 MIN_PROVINCES = 7
 # Minimum years of history before we start scoring
 MIN_HISTORY = 5
@@ -98,12 +98,7 @@ def extract_timeseries(mdef: dict, raw: dict, entity: str,
     fmt = mdef["format"]
     per_cap = mdef.get("per_capita")
 
-    if entity == "Canada" and mdef.get("canada_key") == "Federal":
-        lookup = "Federal"
-    elif mdef.get("canada_key") == "Federal" and entity != "Canada":
-        lookup = entity
-    else:
-        lookup = entity
+    lookup = entity
 
     if fmt == "employment":
         return get_timeseries_employment(employment_data, entity, pop_data)
@@ -160,13 +155,15 @@ def compute_peer_grade(province_values: dict[str, float], invert: bool) -> dict[
         key=lambda x: x[1],
         reverse=not invert,
     )
+    n = len(ranked)
     grades = {}
     for rank, (province, _) in enumerate(ranked, 1):
-        if rank <= 2:
+        pct = rank / n if n > 0 else 1
+        if pct <= 0.2:
             grades[province] = "A"
-        elif rank <= 5:
+        elif pct <= 0.5:
             grades[province] = "B"
-        elif rank <= 8:
+        elif pct <= 0.8:
             grades[province] = "C"
         else:
             grades[province] = "D"
@@ -285,15 +282,15 @@ def adjusted_grade(peer: str, trend: str, percentile: str, ceiling: str) -> str:
 METRIC_DEFS = [
     {"id": "deficit_pc", "name": "Deficit per Capita", "vertical": "fiscal",
      "file": "fiscal-deficit.json", "unit": "$", "invert": True,
-     "format": "yearlist", "canada_key": "Federal", "per_capita": "billion",
+     "format": "yearlist", "canada_key": "Canada", "per_capita": "billion",
      "dashboard": "dashboards/fiscal-deficit-per-capita.html"},
     {"id": "net_debt_pc", "name": "Net Debt per Capita", "vertical": "fiscal",
      "file": "fiscal-net-debt.json", "unit": "$", "invert": True,
-     "format": "yearlist", "canada_key": "Federal", "per_capita": "billion",
+     "format": "yearlist", "canada_key": "Canada", "per_capita": "billion",
      "dashboard": "dashboards/fiscal-net-debt-per-capita.html"},
     {"id": "revenue_pc", "name": "Revenue per Capita", "vertical": "fiscal",
      "file": "fiscal-government-revenue.json", "unit": "$", "invert": False,
-     "format": "nested", "canada_key": "Federal", "per_capita": "million",
+     "format": "nested", "canada_key": "Canada", "per_capita": "million",
      "dashboard": "dashboards/fiscal-revenue-and-spending.html"},
     {"id": "gdp_pc", "name": "GDP per Capita", "vertical": "economy",
      "file": "economy-gdp-per-capita.json", "unit": "$", "invert": False,
@@ -532,7 +529,7 @@ def main():
             for m in METRIC_DEFS
         ],
         "methodology": {
-            "layer_1": "Peer rank among provinces at year t (A=top 2, B=3-5, C=6-8, D=9-10)",
+            "layer_1": "Peer rank among provinces/territories at year t (top 20%=A, 20-50%=B, 50-80%=C, bottom 20%=D)",
             "layer_2": "Historical trajectory: EMA(3y) vs EMA(10y) trend + 20y percentile, all ending at year t",
             "layer_3": "National health: Canada's 10y growth rate ending at year t sets grade ceiling",
             "weights": {"peer_rank": 0.4, "trend": 0.3, "historical_percentile": 0.3},

@@ -40,7 +40,11 @@ echo ""
 python3 pipeline/scorecard_v2.py
 echo ""
 
+# Step 5: Inject data into dashboard HTML files
+python3 pipeline/build_dashboards.py
+echo ""
+
 echo "======================================="
 echo "  Pipeline complete!"
-echo "  Output: data/*.json"
+echo "  Output: data/*.json + dashboards/*.html"
 echo "======================================="

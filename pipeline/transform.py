@@ -13,7 +13,7 @@ import sys
 from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import LAKE_DIR, DATA_DIR, PROVINCE_CANONICAL, PROVINCES_ORDERED
+from config import LAKE_DIR, DATA_DIR, PROVINCE_CANONICAL, PROVINCES_ORDERED, FISCAL_ENTITY_NAME
 
 
 # ---------------------------------------------------------------------------
@@ -535,9 +535,9 @@ def transform_government_revenue_spending():
         geo_raw = row["GEO"]
 
         # For federal: GEO="Canada", Level="Federal general government"
-        # For provinces: GEO=province, Level="Provincial and territorial general governments"
+        # For provinces/territories: GEO=province, Level="Provincial and territorial general governments"
         if level == "Federal general government" and geo_raw.strip() == "Canada":
-            geo = "Federal"
+            geo = FISCAL_ENTITY_NAME  # "Canada"
         elif level == "Provincial and territorial general governments":
             geo = normalize_geo(geo_raw)
             if not geo or geo == "Canada":
@@ -560,8 +560,7 @@ def transform_government_revenue_spending():
     for geo_set, filename in [(revenue, "fiscal-government-revenue.json"),
                                (spending, "fiscal-government-spending.json")]:
         result = {}
-        all_geos = ["Federal"] + [g for g in PROVINCES_ORDERED if g != "Canada"]
-        for geo in all_geos:
+        for geo in PROVINCES_ORDERED:
             if geo in geo_set:
                 years = sorted(geo_set[geo].keys())
                 result[geo] = [{"year": y, "value": geo_set[geo][y]} for y in years]

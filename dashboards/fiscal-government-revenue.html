@@ -25,7 +25,8 @@
     @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
     .page-subtitle a{color:inherit}
     .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
-    .entities{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+    .entities{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
     .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s,background .15s}
     @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
     .chip.on{opacity:1}
@@ -50,16 +51,20 @@
     .data-table tr:hover td{background:var(--color-cream)}
     .data-table .positive{color:#4A7A4A}
     .data-table .negative{color:#A13F3F}
+  
+    .chip-nodata { opacity: 0.45; border-style: dashed !important; }
+    .no-data-msg { text-align: center; padding: 3rem 1rem; color: var(--color-text-tertiary, #8A8A8A); font-size: 1.1rem; }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
-    <div class="navbar-links">
-      <a href="https://canada-central.com">Home</a>
-      <a class="active" href="../index.html">Statistics</a>
-    </div>
-  </nav>
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a class="active" href="../index.html">Statistics</a>
+    <a href="../scorecard-v2.html">Scorecard</a>
+  </div>
+</nav>
   <div class="page">
     <div class="content">
       <h1 class="page-title">Government Revenue per Capita by Province</h1>
@@ -80,17 +85,17 @@
     </div>
   </div>
 <script>
-const ALL_DATA = {"years":["2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"entities":{"Canada":[7483,7248,6729,6757,7155,7270,7459,7767,8053,8119,8545,9093,9054,8956,10705,11268,11506,11796],"Ontario":[8509,8568,8527,9122,9027,9365,9551,9887,10500,10939,11364,11648,11596,11758,12930,13685,14045,14580],"Quebec":[11170,11258,11341,11671,12221,12531,13052,13562,13960,14308,14873,15802,16430,16747,18143,18938,19023,19715],"British Columbia":[8920,9192,8635,9391,9388,9680,9839,10365,10605,11242,11591,11977,12490,12188,14157,15347,15109,15518],"Alberta":[11485,12830,10287,10981,11676,11510,12101,12896,10950,10329,11214,11576,11893,11154,13705,17648,16477,17312],"Manitoba":[10756,11006,10964,11172,11123,11430,11742,11859,12095,12354,12613,12744,13452,13841,14276,14705,15187,16130],"Saskatchewan":[13146,14955,12506,12986,13247,13986,13850,13961,13396,12710,13419,14346,14912,15204,16362,18412,18088,19531],"Nova Scotia":[10290,10775,11048,11136,11299,11658,11944,12226,12649,12800,13150,13463,13919,14254,15326,16046,17045,18169],"New Brunswick":[10554,10907,10946,11389,11419,11300,11500,11938,12210,12836,13583,14045,14502,15294,15695,16607,17023,17535],"Newfoundland & Labrador":[13038,14729,14142,15889,16832,15045,14682,14552,13101,13707,14777,14237,15342,16233,16873,17135,17445,18648],"Prince Edward Island":[10885,11453,12776,12757,11979,12298,13130,13082,13219,14296,15100,15296,16490,17670,18090,22542,18885,20416]}};
-
+const ALL_DATA = {"years":["2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"entities":{"Canada":[246104,240976,226301,229780,245703,252380,261667,275229,287521,293186,312261,337092,340589,340571,409340,438882,460790,486736],"Ontario":[108624,110389,110838,119836,119724,125416,129046,134638,143947,151791,159995,166871,169001,173568,191911,207405,219560,235399],"Quebec":[85925,87380,88959,92548,97828,100996,105836,110500,114135,117681,123340,132528,139380,143207,155526,164195,167812,177350],"British Columbia":[38274,39980,38085,41934,42280,44244,45604,48847,50539,54650,57191,60135,63836,63088,73992,82243,83333,88007],"Alberta":[40359,46134,37846,40981,44226,44568,48145,52632,45443,43336,47517,49691,51798,49160,60735,79640,77252,84984],"Manitoba":[12794,13183,13250,13638,13718,14277,14835,15149,15646,16235,16835,17238,18430,19103,19871,20785,22070,24068],"Saskatchewan":[13173,15215,12941,13654,14117,15147,15219,15525,15033,14432,15396,16587,17361,17749,19106,21704,21891,24372],"Nova Scotia":[9623,10085,10366,10492,10667,10995,11225,11465,11857,12070,12521,12952,13582,14100,15325,16432,17948,19673],"New Brunswick":[7867,8146,8209,8576,8628,8567,8720,9057,9270,9798,10414,10822,11274,11982,12412,13433,14148,15050],"Newfoundland & Labrador":[6637,7535,7308,8294,8836,7917,7737,7683,6922,7259,7828,7523,8095,8553,8893,9103,9399,10198],"Prince Edward Island":[1499,1589,1787,1807,1724,1776,1890,1885,1912,2100,2261,2329,2569,2813,2933,3769,3281,3669],"Northwest Territories":[1375,1459,1564,1597,1615,1657,1676,1983,2063,2169,2243,2344,2464,2389,2516,2587,2736,2927],"Yukon":[773,886,975,1084,1139,1122,1203,1173,1176,1228,1267,1346,1481,1683,1696,1777,1940,2108],"Nunavut":[1103,1235,1310,1386,1472,1556,1648,1674,1723,1783,1824,2117,2066,2247,2275,2321,2509,2723]}};
 let chart=null,selectedEntity='Canada';
-const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A'};
-const entityOrder=['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island'];
+const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A','Northwest Territories':'#5A7D6F','Yukon':'#8B7355','Nunavut':'#6B8E8E'};
+const entityOrder=['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island','Northwest Territories','Yukon','Nunavut'];
 
 function init(){buildChips();update()}
-function buildChips(){const c=document.getElementById('entities');entityOrder.forEach(n=>{if(!ALL_DATA.entities[n])return;const ch=document.createElement('span');const col=entityColors[n]||'#666';ch.className='chip'+(n==='Canada'?' chip-national':'')+(n===selectedEntity?' on':'');ch.dataset.entity=n;ch.style.borderColor=col;ch.style.color=col;if(n===selectedEntity){ch.style.background=col;ch.style.color='#fff'}ch.textContent=n;ch.onclick=()=>selectEntity(n);c.appendChild(ch)})}
+function buildChips(){const container=document.getElementById('entities');const territories=new Set(['Northwest Territories','Yukon','Nunavut']);const row1=document.createElement('div');row1.className='chip-row';const row2=document.createElement('div');row2.className='chip-row';entityOrder.forEach(name=>{const _noData=!ALL_DATA.entities||!ALL_DATA.entities[name];const chip=document.createElement('span');const color=entityColors[name]||'#666';const isNational=name==='Canada';chip.className='chip'+(isNational?' chip-national':'')+(_noData?' chip-nodata':'')+(name===selectedEntity?' on':'');chip.dataset.entity=name;chip.style.borderColor=color;chip.style.color=color;if(name===selectedEntity){chip.style.background=color;chip.style.color='#fff'}chip.textContent=name;chip.onclick=()=>selectEntity(name);if(isNational||territories.has(name)){row1.appendChild(chip)}else{row2.appendChild(chip)}});container.appendChild(row1);container.appendChild(row2)}
 function selectEntity(n){selectedEntity=n;document.querySelectorAll('#entities .chip').forEach(c=>{const s=c.dataset.entity===n;const col=entityColors[c.dataset.entity]||'#666';c.classList.toggle('on',s);if(s){c.style.background=col;c.style.color='#fff'}else{c.style.background='';c.style.color=col}});update()}
 
 function update(){
+  if(!ALL_DATA.entities[selectedEntity]){document.getElementById('chart').style.display='none';let msg=document.getElementById('noDataMsg');if(!msg){msg=document.createElement('div');msg.id='noDataMsg';msg.className='no-data-msg';document.getElementById('chart').parentNode.insertBefore(msg,document.getElementById('chart'))}msg.style.display='block';msg.textContent='No data available for '+selectedEntity;const tb=document.getElementById('dataTable');if(tb)tb.innerHTML='';return}document.getElementById('chart').style.display='';let ndm=document.getElementById('noDataMsg');if(ndm)ndm.style.display='none';
   const vals=ALL_DATA.entities[selectedEntity],natVals=ALL_DATA.entities['Canada'],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
   if(chart)chart.destroy();
   const ctx=document.getElementById('chart').getContext('2d');

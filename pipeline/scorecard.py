@@ -67,19 +67,22 @@ def compute_trend(values_recent: list[float], values_prior: list[float]) -> str:
 
 
 def assign_grades(province_values: dict[str, float], invert: bool = False) -> dict[str, str]:
-    """Assign grades based on ranking. invert=True means lower is better."""
+    """Assign grades based on ranking. invert=True means lower is better.
+    Dynamically adjusts thresholds based on how many entities have data."""
     ranked = sorted(
         [(p, v) for p, v in province_values.items() if v is not None],
         key=lambda x: x[1],
         reverse=not invert,
     )
+    n = len(ranked)
     grades = {}
     for rank, (province, _) in enumerate(ranked, 1):
-        if rank <= 2:
+        pct = rank / n if n > 0 else 1
+        if pct <= 0.2:
             grades[province] = "A"
-        elif rank <= 5:
+        elif pct <= 0.5:
             grades[province] = "B"
-        elif rank <= 8:
+        elif pct <= 0.8:
             grades[province] = "C"
         else:
             grades[province] = "D"
@@ -108,6 +111,8 @@ def build_metric(
     provinces_data = {}
     for p in PROVINCES:
         val = province_values.get(p)
+        if val is None:
+            continue  # Skip provinces/territories with no data for this metric
         provinces_data[p] = {
             "value": val,
             "grade": grades.get(p, "C"),
@@ -156,21 +161,17 @@ def main():
 
     # --- FISCAL ---
     # 1. Deficit per capita (invert: lower deficit = better)
-    def fiscal_entity(name):
-        return "Federal" if name == "Canada" else name
-
     deficit_pc = {}
     deficit_trends = {}
     BILLION = 1_000_000_000
     for p in PROVINCES:
-        fe = fiscal_entity(p)
-        recent = get_latest_value_yearlist(deficit, fe, 3)
-        prior = get_latest_value_yearlist(deficit, fe, 5)
+        recent = get_latest_value_yearlist(deficit, p, 3)
+        prior = get_latest_value_yearlist(deficit, p, 5)
         if recent and p in pop_latest:
             deficit_pc[p] = round(recent[0] * BILLION / pop_latest[p], 2)
             deficit_trends[p] = compute_trend(recent, prior[3:] if len(prior) >= 5 else prior[len(recent):])
 
-    canada_def_recent = get_latest_value_yearlist(deficit, "Federal", 1)
+    canada_def_recent = get_latest_value_yearlist(deficit, "Canada", 1)
     canada_deficit = round(canada_def_recent[0] * BILLION / pop_latest.get("Canada", 1), 2) if canada_def_recent else None
 
     metrics.append(build_metric("Deficit per Capita", "fiscal", deficit_pc, canada_deficit, invert=True, unit="$", trends=deficit_trends))
@@ -179,14 +180,13 @@ def main():
     debt_pc = {}
     debt_trends = {}
     for p in PROVINCES:
-        fe = fiscal_entity(p)
-        recent = get_latest_value_yearlist(net_debt, fe, 3)
-        prior = get_latest_value_yearlist(net_debt, fe, 5)
+        recent = get_latest_value_yearlist(net_debt, p, 3)
+        prior = get_latest_value_yearlist(net_debt, p, 5)
         if recent and p in pop_latest:
             debt_pc[p] = round(recent[0] * BILLION / pop_latest[p], 2)
             debt_trends[p] = compute_trend(recent, prior[3:] if len(prior) >= 5 else prior[len(recent):])
 
-    canada_debt_recent = get_latest_value_yearlist(net_debt, "Federal", 1)
+    canada_debt_recent = get_latest_value_yearlist(net_debt, "Canada", 1)
     canada_debt = round(canada_debt_recent[0] * BILLION / pop_latest.get("Canada", 1), 2) if canada_debt_recent else None
 
     metrics.append(build_metric("Net Debt per Capita", "fiscal", debt_pc, canada_debt, invert=True, unit="$", trends=debt_trends))
@@ -196,14 +196,13 @@ def main():
     rev_pc = {}
     rev_trends = {}
     for p in PROVINCES:
-        fe = fiscal_entity(p)
-        recent = get_latest_value_nested(gov_revenue, fe, 3)
-        prior = get_latest_value_nested(gov_revenue, fe, 5)
+        recent = get_latest_value_nested(gov_revenue, p, 3)
+        prior = get_latest_value_nested(gov_revenue, p, 5)
         if recent and p in pop_latest:
             rev_pc[p] = round(recent[0] * MILLION / pop_latest[p], 2)
             rev_trends[p] = compute_trend(recent, prior[3:] if len(prior) >= 5 else prior[len(recent):])
 
-    canada_rev = get_latest_value_nested(gov_revenue, "Federal", 1)
+    canada_rev = get_latest_value_nested(gov_revenue, "Canada", 1)
     canada_rev_pc = round(canada_rev[0] * MILLION / pop_latest.get("Canada", 1), 2) if canada_rev else None
 
     metrics.append(build_metric("Revenue per Capita", "fiscal", rev_pc, canada_rev_pc, invert=False, unit="$", trends=rev_trends))

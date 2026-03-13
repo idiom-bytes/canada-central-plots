@@ -20,24 +20,36 @@ PROVINCE_CANONICAL = {
     "Saskatchewan": "Saskatchewan",
     "Alberta": "Alberta",
     "British Columbia": "British Columbia",
+    "Yukon": "Yukon",
+    "Northwest Territories": "Northwest Territories",
+    "Nunavut": "Nunavut",
 }
 
-PROVINCES_ORDERED = [
-    "Canada",
-    "British Columbia",
-    "Alberta",
-    "Saskatchewan",
-    "Manitoba",
+PROVINCES = [
     "Ontario",
     "Quebec",
-    "New Brunswick",
+    "British Columbia",
+    "Alberta",
+    "Manitoba",
+    "Saskatchewan",
     "Nova Scotia",
-    "Prince Edward Island",
+    "New Brunswick",
     "Newfoundland & Labrador",
+    "Prince Edward Island",
 ]
 
-# For fiscal data that uses "Federal" instead of "Canada"
-FISCAL_ENTITY_NAME = "Federal"
+TERRITORIES = [
+    "Northwest Territories",
+    "Yukon",
+    "Nunavut",
+]
+
+# Canonical ordering: Canada first, then provinces (by population), then territories
+PROVINCES_ORDERED = ["Canada"] + PROVINCES + TERRITORIES
+
+# Legacy: fiscal data files historically used "Federal" for the national entity.
+# We now normalize to "Canada" everywhere.
+FISCAL_ENTITY_NAME = "Canada"
 
 # StatCan bulk CSV download URL pattern
 STATCAN_URL = "https://www150.statcan.gc.ca/n1/tbl/csv/{table_id}-eng.zip"
