@@ -386,11 +386,17 @@ function buildProvCard(item, snap, cls, showMetrics) {
     html += `<div class="profile-metrics">`;
     snap.metrics.forEach(m => {
       const pd = m.provinces[item.prov];
-      if (!pd) return;
-      const g = currentView === 'adjusted' ? pd.adjusted_grade : pd.peer_grade;
-      if (!g) return;
-      const gc = GRADE_COLORS[g] || 'var(--color-text-tertiary)';
       const vc = VERTICAL_COLORS_RAW[m.vertical] || '#888';
+      if (!pd) {
+        html += `<div class="profile-metric" data-metric="${m.name}" style="opacity:0.35"><span class="profile-metric-dot" style="background:${vc}"></span><span class="profile-metric-name">${m.name}</span><span class="profile-metric-grade" style="color:var(--color-text-tertiary)">\u2014</span><span class="profile-metric-val">\u2014</span></div>`;
+        return;
+      }
+      const g = currentView === 'adjusted' ? pd.adjusted_grade : pd.peer_grade;
+      if (!g) {
+        html += `<div class="profile-metric" data-metric="${m.name}" style="opacity:0.35"><span class="profile-metric-dot" style="background:${vc}"></span><span class="profile-metric-name">${m.name}</span><span class="profile-metric-grade" style="color:var(--color-text-tertiary)">\u2014</span><span class="profile-metric-val">\u2014</span></div>`;
+        return;
+      }
+      const gc = GRADE_COLORS[g] || 'var(--color-text-tertiary)';
       const val = formatVal(pd.value, m.unit || '');
       html += `<div class="profile-metric" data-metric="${m.name}"><span class="profile-metric-dot" style="background:${vc}"></span><span class="profile-metric-name">${m.name}</span><span class="profile-metric-grade" style="color:${gc}">${g}</span><span class="profile-metric-val">${val}</span></div>`;
     });
