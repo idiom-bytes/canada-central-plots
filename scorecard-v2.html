@@ -73,9 +73,8 @@
     .prov-card-border{position:absolute;inset:0;border-radius:12px;pointer-events:none;z-index:2}
 
     /* Card header — colored banner */
-    .prov-card-header{padding:0.75rem 1rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+    .prov-card-header{padding:0.75rem 1rem;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
     .prov-card-header-name{font-size:0.8125rem;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
-    .prov-card-header-type{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.75)}
 
     /* Card body */
     .prov-card-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:1rem;position:relative;z-index:1}
@@ -85,7 +84,7 @@
     .prov-card-bar-fill{height:100%;border-radius:3px}
 
     /* Card footer — rank badge */
-    .prov-card-footer{padding:0.5rem 1rem;display:flex;align-items:center;justify-content:center;gap:6px;border-top:1px solid rgba(0,0,0,0.06)}
+    .prov-card-footer{padding:0.5rem 1rem;display:flex;align-items:center;justify-content:center;gap:6px;border-top:1px solid rgba(0,0,0,0.06);margin-top:auto}
     .prov-card-medal{font-size:1.25rem;line-height:1}
     .prov-card-rank-text{font-size:0.75rem;font-weight:800}
 
@@ -94,7 +93,6 @@
     .prov-card.featured{z-index:3;box-shadow:0 8px 32px rgba(0,0,0,0.15),0 0 0 2px rgba(0,0,0,0.08)}
     .prov-card .prov-card-header{padding:0.75rem 1rem}
     .prov-card .prov-card-header-name{font-size:0.9375rem}
-    .prov-card .prov-card-header-type{font-size:0.5625rem}
     .prov-card .prov-card-body{padding:0.625rem 1rem 0.75rem}
     .prov-card .prov-card-grade{font-size:4rem}
     .prov-card .prov-card-score{font-size:0.875rem;color:var(--color-text-secondary)}
@@ -361,9 +359,6 @@ function buildProvCard(item, snap, cls, showMetrics) {
   const color = GRADE_COLORS[item.grade];
   const pct = ((item.score / 4) * 100).toFixed(0);
   const medal = MEDALS[item.rank] || '';
-  const isTerr = TERRITORIES.has(item.prov);
-  const typeLabel = isTerr ? 'Territory' : 'Province';
-
   let changeHtml = '';
   if (currentView === 'adjusted') {
     const diff = item.score - item.peer_score;
@@ -377,7 +372,6 @@ function buildProvCard(item, snap, cls, showMetrics) {
   // Header
   html += `<div class="prov-card-header" style="background:${theme.grad}">`;
   html += `<span class="prov-card-header-name">${item.prov}</span>`;
-  html += `<span class="prov-card-header-type">${typeLabel}</span>`;
   html += `</div>`;
 
   // Body
