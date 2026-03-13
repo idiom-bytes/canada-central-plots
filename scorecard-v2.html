@@ -233,7 +233,7 @@
 
   <section class="heatmap-section">
     <div class="heatmap-section-header">
-      <h2>Metric Breakdown</h2>
+      <h2>Provincial Breakdown</h2>
       <span class="heatmap-subtitle">Click a column header to highlight &middot; Hover cells for details</span>
     </div>
     <table class="heatmap" id="heatmap"></table>
@@ -367,7 +367,9 @@ function buildProvCard(item, snap, cls, showMetrics) {
     else if (diff < -0.05) changeHtml = `<span class="prov-card-change" style="color:var(--grade-d)">\u25BC${diff.toFixed(1)}</span>`;
   }
 
-  let html = `<div class="prov-card ${cls}" data-prov="${item.prov}" style="background:${theme.body}">`;
+  const click = cls !== 'featured' ? ` onclick="selectRankByProv('${item.prov}')"` : '';
+  const cur = cls !== 'featured' ? 'cursor:pointer;' : '';
+  let html = `<div class="prov-card ${cls}" data-prov="${item.prov}"${click} style="${cur}background:${theme.body}">`;
   html += `<div class="prov-card-border" style="border:3px solid ${theme.border}"></div>`;
 
   // Header
