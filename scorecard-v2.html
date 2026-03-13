@@ -112,27 +112,29 @@
     .profile-metric-grade{font-weight:800;min-width:14px;text-align:center}
     .profile-metric-val{font-weight:600;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;min-width:50px;text-align:right;font-size:0.625rem}
 
-    /* Side cards */
-    .prov-card.side{width:220px;flex-shrink:0;z-index:1;box-shadow:0 4px 16px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04);opacity:0.7}
-    .prov-card.side:hover{opacity:0.9;transform:translateY(-2px)}
+    /* Side cards — same structure, slightly scaled down */
+    .prov-card.side{width:300px;flex-shrink:0;z-index:1;box-shadow:0 4px 16px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04);opacity:0.55;transform:scale(0.92)}
+    .prov-card.side:hover{opacity:0.85;transform:scale(0.94) translateY(-2px)}
+    @media(max-width:1100px){.prov-card.side{width:240px;transform:scale(0.88)}.prov-card.side:hover{transform:scale(0.9) translateY(-2px)}}
     @media(max-width:900px){.prov-card.side{display:none}}
-    .prov-card.side .prov-card-header{padding:0.625rem 0.875rem}
-    .prov-card.side .prov-card-header-name{font-size:0.75rem}
-    .prov-card.side .prov-card-body{padding:0.625rem 0.875rem 0.5rem}
-    .prov-card.side .prov-card-grade{font-size:3rem}
-    .prov-card.side .prov-card-score{font-size:0.75rem;color:var(--color-text-secondary)}
-    .prov-card.side .prov-card-bar{height:4px}
-    .prov-card.side .prov-card-footer{padding:0.375rem 0.875rem}
-    .prov-card.side .prov-card-medal{font-size:1rem}
-    .prov-card.side .prov-card-rank-text{font-size:0.6875rem}
-    .prov-card.side .side-metrics{width:100%;display:flex;flex-direction:column;gap:1px;margin-top:0.25rem}
-    .side-metric{display:flex;align-items:center;gap:4px;padding:2px 4px;font-size:0.5625rem}
-    .side-metric-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0}
-    .side-metric-name{flex:1;color:var(--color-text-tertiary);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .side-metric-grade{font-weight:800;min-width:12px;text-align:center}
+    .prov-card.side .prov-card-header{padding:0.625rem 1rem}
+    .prov-card.side .prov-card-header-name{font-size:0.875rem}
+    .prov-card.side .prov-card-body{padding:0.625rem 1rem 0.5rem}
+    .prov-card.side .prov-card-grade{font-size:3.5rem}
+    .prov-card.side .prov-card-score{font-size:0.8125rem;color:var(--color-text-secondary)}
+    .prov-card.side .prov-card-bar{height:5px}
+    .prov-card.side .prov-card-footer{padding:0.5rem 1rem}
+    .prov-card.side .prov-card-medal{font-size:1.125rem}
+    .prov-card.side .prov-card-rank-text{font-size:0.75rem}
+    .prov-card.side .profile-metrics{gap:1px}
+    .prov-card.side .profile-metric{padding:3px 5px;font-size:0.5625rem}
+    .prov-card.side .profile-metric-dot{width:4px;height:4px}
+    .prov-card.side .profile-metric-val{font-size:0.5625rem;min-width:40px}
+    .prov-card.side .profile-metric-grade{font-size:0.5625rem;min-width:12px}
 
-    /* Card spacer for when there's no side card */
-    .card-spacer{width:220px;flex-shrink:0}
+    /* Card spacer — matches side card width */
+    .card-spacer{width:300px;flex-shrink:0}
+    @media(max-width:1100px){.card-spacer{width:240px}}
     @media(max-width:900px){.card-spacer{display:none}}
 
     /* Heatmap */
@@ -408,8 +410,7 @@ function buildProvCard(item, snap, cls, showMetrics) {
 
   // Metrics
   if (showMetrics && snap && snap.metrics) {
-    const metricCls = cls === 'featured' ? 'profile-metrics' : 'side-metrics';
-    html += `<div class="${metricCls}">`;
+    html += `<div class="profile-metrics">`;
     snap.metrics.forEach(m => {
       const pd = m.provinces[item.prov];
       if (!pd) return;
@@ -417,12 +418,8 @@ function buildProvCard(item, snap, cls, showMetrics) {
       if (!g) return;
       const gc = GRADE_COLORS[g] || 'var(--color-text-tertiary)';
       const vc = VERTICAL_COLORS_RAW[m.vertical] || '#888';
-      if (cls === 'featured') {
-        const val = formatVal(pd.value, m.unit || '');
-        html += `<div class="profile-metric"><span class="profile-metric-dot" style="background:${vc}"></span><span class="profile-metric-name">${m.name}</span><span class="profile-metric-grade" style="color:${gc}">${g}</span><span class="profile-metric-val">${val}</span></div>`;
-      } else {
-        html += `<div class="side-metric"><span class="side-metric-dot" style="background:${vc}"></span><span class="side-metric-name">${m.name}</span><span class="side-metric-grade" style="color:${gc}">${g}</span></div>`;
-      }
+      const val = formatVal(pd.value, m.unit || '');
+      html += `<div class="profile-metric"><span class="profile-metric-dot" style="background:${vc}"></span><span class="profile-metric-name">${m.name}</span><span class="profile-metric-grade" style="color:${gc}">${g}</span><span class="profile-metric-val">${val}</span></div>`;
     });
     html += '</div>';
   }
@@ -480,31 +477,26 @@ function buildRankings() {
   });
   html += '</div>';
 
-  // Carousel
+  // Carousel — always show 3 cards, wrapping at edges
   html += '<div class="card-carousel">';
+  const n = rankedCache.length;
+  const leftIdx = (selectedRankIdx - 1 + n) % n;
+  const rightIdx = (selectedRankIdx + 1) % n;
 
   // Left arrow
   html += `<button class="carousel-arrow${selectedRankIdx>0?'':' disabled'}" onclick="selectRank(${selectedRankIdx-1})">\u2190</button>`;
 
-  // Left side card
-  if (selectedRankIdx > 0) {
-    html += buildProvCard(rankedCache[selectedRankIdx - 1], snap, 'side', true);
-  } else {
-    html += '<div class="card-spacer"></div>';
-  }
+  // Left side card (previous rank, or last if we're at #1)
+  html += buildProvCard(rankedCache[leftIdx], snap, 'side', true);
 
   // Featured center card
   html += buildProvCard(rankedCache[selectedRankIdx], snap, 'featured', true);
 
-  // Right side card
-  if (selectedRankIdx < rankedCache.length - 1) {
-    html += buildProvCard(rankedCache[selectedRankIdx + 1], snap, 'side', true);
-  } else {
-    html += '<div class="card-spacer"></div>';
-  }
+  // Right side card (next rank, or first if we're at last)
+  html += buildProvCard(rankedCache[rightIdx], snap, 'side', true);
 
   // Right arrow
-  html += `<button class="carousel-arrow${selectedRankIdx<rankedCache.length-1?'':' disabled'}" onclick="selectRank(${selectedRankIdx+1})">\u2192</button>`;
+  html += `<button class="carousel-arrow${selectedRankIdx<n-1?'':' disabled'}" onclick="selectRank(${selectedRankIdx+1})">\u2192</button>`;
 
   html += '</div>';
   container.innerHTML = html;
