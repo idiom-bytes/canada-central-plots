@@ -63,7 +63,7 @@
     .rank-strip-item.no-data{opacity:0.35;pointer-events:none;border-style:dashed}
 
     /* Card carousel */
-    .card-carousel{position:relative;display:flex;align-items:stretch;justify-content:center;gap:1rem;margin-bottom:1rem;padding:0.5rem 0}
+    .card-carousel{position:relative;display:flex;align-items:stretch;justify-content:center;gap:0.75rem;margin-bottom:1rem;padding:0.5rem 0}
     .carousel-arrow{width:36px;height:36px;border-radius:50%;border:1px solid var(--color-beige);background:var(--color-white);color:var(--color-text-secondary);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;box-shadow:var(--shadow-card);z-index:5;align-self:center}
     .carousel-arrow:hover{background:var(--color-cream-dark);color:var(--color-text-primary)}
     .carousel-arrow.disabled{opacity:0.2;pointer-events:none}
@@ -89,19 +89,19 @@
     .prov-card-medal{font-size:1.25rem;line-height:1}
     .prov-card-rank-text{font-size:0.75rem;font-weight:800}
 
-    /* Main featured card */
-    .prov-card.featured{width:360px;flex-shrink:0;z-index:3;box-shadow:0 12px 40px rgba(0,0,0,0.15),0 0 0 1px rgba(0,0,0,0.05)}
-    @media(min-width:640px){.prov-card.featured{width:400px}}
-    .prov-card.featured .prov-card-header{padding:1rem 1.25rem}
-    .prov-card.featured .prov-card-header-name{font-size:1.125rem}
-    .prov-card.featured .prov-card-header-type{font-size:0.625rem}
-    .prov-card.featured .prov-card-body{padding:0.75rem 1.25rem 1rem}
-    .prov-card.featured .prov-card-grade{font-size:5.5rem}
-    .prov-card.featured .prov-card-score{font-size:1rem;color:var(--color-text-secondary)}
-    .prov-card.featured .prov-card-change{font-size:0.8125rem;font-weight:700}
-    .prov-card.featured .prov-card-footer{padding:0.625rem 1.25rem}
-    .prov-card.featured .prov-card-medal{font-size:1.5rem}
-    .prov-card.featured .prov-card-rank-text{font-size:0.875rem}
+    /* All cards — uniform size */
+    .prov-card.featured,.prov-card.side{flex:1;min-width:0;max-width:340px;box-shadow:0 4px 16px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)}
+    .prov-card.featured{z-index:3;box-shadow:0 8px 32px rgba(0,0,0,0.15),0 0 0 2px rgba(0,0,0,0.08)}
+    .prov-card .prov-card-header{padding:0.75rem 1rem}
+    .prov-card .prov-card-header-name{font-size:0.9375rem}
+    .prov-card .prov-card-header-type{font-size:0.5625rem}
+    .prov-card .prov-card-body{padding:0.625rem 1rem 0.75rem}
+    .prov-card .prov-card-grade{font-size:4rem}
+    .prov-card .prov-card-score{font-size:0.875rem;color:var(--color-text-secondary)}
+    .prov-card .prov-card-change{font-size:0.75rem;font-weight:700}
+    .prov-card .prov-card-footer{padding:0.5rem 1rem}
+    .prov-card .prov-card-medal{font-size:1.25rem}
+    .prov-card .prov-card-rank-text{font-size:0.75rem}
 
     /* Metric breakdown inside featured card */
     .profile-metrics{width:100%;display:flex;flex-direction:column;gap:1px;margin-top:0.25rem}
@@ -112,30 +112,9 @@
     .profile-metric-grade{font-weight:800;min-width:14px;text-align:center}
     .profile-metric-val{font-weight:600;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;min-width:50px;text-align:right;font-size:0.625rem}
 
-    /* Side cards — same structure, slightly scaled down */
-    .prov-card.side{width:300px;flex-shrink:0;z-index:1;box-shadow:0 4px 16px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04);opacity:0.55;transform:scale(0.92)}
-    .prov-card.side:hover{opacity:0.85;transform:scale(0.94) translateY(-2px)}
-    @media(max-width:1100px){.prov-card.side{width:240px;transform:scale(0.88)}.prov-card.side:hover{transform:scale(0.9) translateY(-2px)}}
-    @media(max-width:900px){.prov-card.side{display:none}}
-    .prov-card.side .prov-card-header{padding:0.625rem 1rem}
-    .prov-card.side .prov-card-header-name{font-size:0.875rem}
-    .prov-card.side .prov-card-body{padding:0.625rem 1rem 0.5rem}
-    .prov-card.side .prov-card-grade{font-size:3.5rem}
-    .prov-card.side .prov-card-score{font-size:0.8125rem;color:var(--color-text-secondary)}
-    .prov-card.side .prov-card-bar{height:5px}
-    .prov-card.side .prov-card-footer{padding:0.5rem 1rem}
-    .prov-card.side .prov-card-medal{font-size:1.125rem}
-    .prov-card.side .prov-card-rank-text{font-size:0.75rem}
-    .prov-card.side .profile-metrics{gap:1px}
-    .prov-card.side .profile-metric{padding:3px 5px;font-size:0.5625rem}
-    .prov-card.side .profile-metric-dot{width:4px;height:4px}
-    .prov-card.side .profile-metric-val{font-size:0.5625rem;min-width:40px}
-    .prov-card.side .profile-metric-grade{font-size:0.5625rem;min-width:12px}
-
-    /* Card spacer — matches side card width */
-    .card-spacer{width:300px;flex-shrink:0}
-    @media(max-width:1100px){.card-spacer{width:240px}}
-    @media(max-width:900px){.card-spacer{display:none}}
+    /* Side cards — same size, just dimmed */
+    .prov-card.side{opacity:0.6;z-index:1}
+    .prov-card.side:hover{opacity:0.85}
 
     /* Heatmap */
     .heatmap-section{max-width:1100px;margin:1.5rem auto 0;padding:0 1rem 3rem;width:100%}
@@ -477,26 +456,25 @@ function buildRankings() {
   });
   html += '</div>';
 
-  // Carousel — always show 3 cards, wrapping at edges
+  // Carousel — show 3 consecutive cards, no wrapping
   html += '<div class="card-carousel">';
   const n = rankedCache.length;
-  const leftIdx = (selectedRankIdx - 1 + n) % n;
-  const rightIdx = (selectedRankIdx + 1) % n;
 
-  // Left arrow
-  html += `<button class="carousel-arrow${selectedRankIdx>0?'':' disabled'}" onclick="selectRank(${selectedRankIdx-1})">\u2190</button>`;
+  // The "window" of 3: clamp so we always show 3 consecutive
+  let startIdx = selectedRankIdx;
+  if (startIdx + 3 > n) startIdx = Math.max(0, n - 3);
 
-  // Left side card (previous rank, or last if we're at #1)
-  html += buildProvCard(rankedCache[leftIdx], snap, 'side', true);
+  // Left arrow — shift window left
+  html += `<button class="carousel-arrow${startIdx>0?'':' disabled'}" onclick="selectRank(${startIdx-1})">\u2190</button>`;
 
-  // Featured center card
-  html += buildProvCard(rankedCache[selectedRankIdx], snap, 'featured', true);
+  // 3 cards side by side, all same size
+  for (let i = startIdx; i < startIdx + 3 && i < n; i++) {
+    const isFeatured = i === selectedRankIdx;
+    html += buildProvCard(rankedCache[i], snap, isFeatured ? 'featured' : 'side', true);
+  }
 
-  // Right side card (next rank, or first if we're at last)
-  html += buildProvCard(rankedCache[rightIdx], snap, 'side', true);
-
-  // Right arrow
-  html += `<button class="carousel-arrow${selectedRankIdx<n-1?'':' disabled'}" onclick="selectRank(${selectedRankIdx+1})">\u2192</button>`;
+  // Right arrow — shift window right
+  html += `<button class="carousel-arrow${startIdx+3<n?'':' disabled'}" onclick="selectRank(${startIdx+3})">\u2192</button>`;
 
   html += '</div>';
   container.innerHTML = html;
