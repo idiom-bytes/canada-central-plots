@@ -69,7 +69,7 @@
     .carousel-arrow.disabled{opacity:0.2;pointer-events:none}
 
     /* Province trading card — shared base */
-    .prov-card{border-radius:12px;display:flex;flex-direction:column;overflow:hidden;position:relative;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer}
+    .prov-card{border-radius:12px;display:flex;flex-direction:column;overflow:hidden;position:relative;transition:all .3s cubic-bezier(.4,0,.2,1)}
     .prov-card-border{position:absolute;inset:0;border-radius:12px;pointer-events:none;z-index:2}
 
     /* Card header — colored banner */
@@ -112,9 +112,8 @@
     .profile-metric-grade{font-weight:800;min-width:14px;text-align:center}
     .profile-metric-val{font-weight:600;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;min-width:50px;text-align:right;font-size:0.625rem}
 
-    /* Side cards — same size, just dimmed */
-    .prov-card.side{opacity:0.6;z-index:1}
-    .prov-card.side:hover{opacity:0.85}
+    /* Side cards — same size, no dimming */
+    .prov-card.side{z-index:1}
 
     /* Heatmap */
     .heatmap-section{max-width:1100px;margin:1.5rem auto 0;padding:0 1rem 3rem;width:100%}
@@ -372,7 +371,7 @@ function buildProvCard(item, snap, cls, showMetrics) {
     else if (diff < -0.05) changeHtml = `<span class="prov-card-change" style="color:var(--grade-d)">\u25BC${diff.toFixed(1)}</span>`;
   }
 
-  let html = `<div class="prov-card ${cls}" data-prov="${item.prov}" onclick="selectRankByProv('${item.prov}')" style="background:${theme.body}">`;
+  let html = `<div class="prov-card ${cls}" data-prov="${item.prov}" style="background:${theme.body}">`;
   html += `<div class="prov-card-border" style="border:3px solid ${theme.border}"></div>`;
 
   // Header
