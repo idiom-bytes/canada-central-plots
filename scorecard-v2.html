@@ -343,7 +343,8 @@ function computeCompositeHealth(snap) {
   return {grade: VALUE_GRADES[rounded], score: Math.round(score*100)/100, ...counts, total};
 }
 
-let selectedRankIdx = 0;
+let selectedRankIdx = 0;  // controls the carousel window position
+let focusedRankIdx = 0;   // controls golden glow (which card is "selected")
 let rankedCache = [];
 
 // Grade-based card color schemes (header gradient, body bg, border, bar bg)
@@ -367,9 +368,8 @@ function buildProvCard(item, snap, cls, showMetrics) {
     else if (diff < -0.05) changeHtml = `<span class="prov-card-change" style="color:var(--grade-d)">\u25BC${diff.toFixed(1)}</span>`;
   }
 
-  const click = cls !== 'featured' ? ` onclick="selectRankByProv('${item.prov}')"` : '';
-  const cur = cls !== 'featured' ? 'cursor:pointer;' : '';
-  let html = `<div class="prov-card ${cls}" data-prov="${item.prov}"${click} style="${cur}background:${theme.body}">`;
+  const click = ` onclick="focusCard('${item.prov}')"`;
+  let html = `<div class="prov-card ${cls}" data-prov="${item.prov}"${click} style="cursor:pointer;background:${theme.body}">`;
   html += `<div class="prov-card-border" style="border:3px solid ${theme.border}"></div>`;
 
   // Header
@@ -447,7 +447,7 @@ function buildRankings() {
   html += '<div class="rank-strip">';
   rankedCache.forEach((item, i) => {
     const medal = MEDALS[item.rank] || '';
-    const active = i === selectedRankIdx ? ' active' : '';
+    const active = i === focusedRankIdx ? ' active' : '';
     html += `<div class="rank-strip-item${active}" onclick="selectRank(${i})">`;
     if (medal) html += `<span class="strip-medal">${medal}</span>`;
     html += `<span class="strip-rank">#${item.rank}</span> ${ABBREV[item.prov]}`;
@@ -471,7 +471,7 @@ function buildRankings() {
 
   // 3 cards side by side, all same size
   for (let i = startIdx; i < startIdx + 3 && i < n; i++) {
-    const isFeatured = i === selectedRankIdx;
+    const isFeatured = i === focusedRankIdx;
     html += buildProvCard(rankedCache[i], snap, isFeatured ? 'featured' : 'side', true);
   }
 
@@ -485,14 +485,23 @@ function buildRankings() {
 function selectRank(idx) {
   if (idx < 0 || idx >= rankedCache.length) return;
   selectedRankIdx = idx;
+  focusedRankIdx = idx;
   highlightedProv = rankedCache[idx].prov;
   buildRankings();
   buildHeatmap();
 }
 
-function selectRankByProv(prov) {
+function focusCard(prov) {
   const idx = rankedCache.findIndex(r => r.prov === prov);
-  if (idx >= 0) selectRank(idx);
+  if (idx < 0) return;
+  focusedRankIdx = idx;
+  highlightedProv = prov;
+  buildRankings();
+  buildHeatmap();
+}
+
+function selectRankByProv(prov) {
+  selectRank(rankedCache.findIndex(r => r.prov === prov));
 }
 
 function buildHeatmap() {
@@ -600,10 +609,15 @@ function buildHeatmap() {
 }
 
 function toggleHighlight(prov) {
-  // Sync with carousel
   const idx = rankedCache.findIndex(r => r.prov === prov);
-  if (idx >= 0) { selectedRankIdx = idx; highlightedProv = prov; }
-  else { highlightedProv = highlightedProv===prov?null:prov; }
+  if (idx >= 0) {
+    // Move window so this province is visible, then focus it
+    selectedRankIdx = idx;
+    focusedRankIdx = idx;
+    highlightedProv = prov;
+  } else {
+    highlightedProv = highlightedProv===prov?null:prov;
+  }
   render();
 }
 
