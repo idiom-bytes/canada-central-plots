@@ -1,0 +1,665 @@
+{
+  "national_trend": [
+    {
+      "year": 2011,
+      "value": 12.3
+    },
+    {
+      "year": 2012,
+      "value": 12.6
+    },
+    {
+      "year": 2013,
+      "value": 12.5
+    },
+    {
+      "year": 2014,
+      "value": 12.0
+    },
+    {
+      "year": 2015,
+      "value": 12.4
+    },
+    {
+      "year": 2016,
+      "value": 12.2
+    },
+    {
+      "year": 2017,
+      "value": 12.5
+    },
+    {
+      "year": 2018,
+      "value": 16.8
+    },
+    {
+      "year": 2019,
+      "value": 15.9
+    },
+    {
+      "year": 2020,
+      "value": 15.7
+    },
+    {
+      "year": 2021,
+      "value": 18.4
+    },
+    {
+      "year": 2022,
+      "value": 22.9
+    },
+    {
+      "year": 2023,
+      "value": 25.5
+    }
+  ],
+  "provincial": {
+    "Canada": [
+      {
+        "year": 2018,
+        "value": 16.8
+      },
+      {
+        "year": 2019,
+        "value": 15.9
+      },
+      {
+        "year": 2020,
+        "value": 15.7
+      },
+      {
+        "year": 2021,
+        "value": 18.4
+      },
+      {
+        "year": 2022,
+        "value": 22.9
+      },
+      {
+        "year": 2023,
+        "value": 25.5
+      }
+    ],
+    "Newfoundland & Labrador": [
+      {
+        "year": 2018,
+        "value": 18.9
+      },
+      {
+        "year": 2019,
+        "value": 17.7
+      },
+      {
+        "year": 2020,
+        "value": 17.5
+      },
+      {
+        "year": 2021,
+        "value": 22.5
+      },
+      {
+        "year": 2022,
+        "value": 26.0
+      },
+      {
+        "year": 2023,
+        "value": 30.1
+      }
+    ],
+    "Prince Edward Island": [
+      {
+        "year": 2018,
+        "value": 17.3
+      },
+      {
+        "year": 2019,
+        "value": 18.6
+      },
+      {
+        "year": 2020,
+        "value": 16.5
+      },
+      {
+        "year": 2021,
+        "value": 23.6
+      },
+      {
+        "year": 2022,
+        "value": 28.6
+      },
+      {
+        "year": 2023,
+        "value": 24.6
+      }
+    ],
+    "Nova Scotia": [
+      {
+        "year": 2018,
+        "value": 20.9
+      },
+      {
+        "year": 2019,
+        "value": 18.0
+      },
+      {
+        "year": 2020,
+        "value": 17.7
+      },
+      {
+        "year": 2021,
+        "value": 22.0
+      },
+      {
+        "year": 2022,
+        "value": 28.9
+      },
+      {
+        "year": 2023,
+        "value": 29.3
+      }
+    ],
+    "New Brunswick": [
+      {
+        "year": 2018,
+        "value": 17.8
+      },
+      {
+        "year": 2019,
+        "value": 15.7
+      },
+      {
+        "year": 2020,
+        "value": 18.4
+      },
+      {
+        "year": 2021,
+        "value": 22.7
+      },
+      {
+        "year": 2022,
+        "value": 25.6
+      },
+      {
+        "year": 2023,
+        "value": 29.5
+      }
+    ],
+    "Quebec": [
+      {
+        "year": 2018,
+        "value": 14.4
+      },
+      {
+        "year": 2019,
+        "value": 10.9
+      },
+      {
+        "year": 2020,
+        "value": 12.7
+      },
+      {
+        "year": 2021,
+        "value": 14.7
+      },
+      {
+        "year": 2022,
+        "value": 15.7
+      },
+      {
+        "year": 2023,
+        "value": 19.8
+      }
+    ],
+    "Ontario": [
+      {
+        "year": 2018,
+        "value": 17.0
+      },
+      {
+        "year": 2019,
+        "value": 17.3
+      },
+      {
+        "year": 2020,
+        "value": 16.1
+      },
+      {
+        "year": 2021,
+        "value": 19.2
+      },
+      {
+        "year": 2022,
+        "value": 24.5
+      },
+      {
+        "year": 2023,
+        "value": 26.4
+      }
+    ],
+    "Manitoba": [
+      {
+        "year": 2018,
+        "value": 19.1
+      },
+      {
+        "year": 2019,
+        "value": 18.2
+      },
+      {
+        "year": 2020,
+        "value": 17.1
+      },
+      {
+        "year": 2021,
+        "value": 19.6
+      },
+      {
+        "year": 2022,
+        "value": 26.8
+      },
+      {
+        "year": 2023,
+        "value": 25.6
+      }
+    ],
+    "Saskatchewan": [
+      {
+        "year": 2018,
+        "value": 17.2
+      },
+      {
+        "year": 2019,
+        "value": 17.7
+      },
+      {
+        "year": 2020,
+        "value": 18.5
+      },
+      {
+        "year": 2021,
+        "value": 20.3
+      },
+      {
+        "year": 2022,
+        "value": 28.0
+      },
+      {
+        "year": 2023,
+        "value": 30.6
+      }
+    ],
+    "Alberta": [
+      {
+        "year": 2018,
+        "value": 19.2
+      },
+      {
+        "year": 2019,
+        "value": 18.5
+      },
+      {
+        "year": 2020,
+        "value": 19.7
+      },
+      {
+        "year": 2021,
+        "value": 21.8
+      },
+      {
+        "year": 2022,
+        "value": 27.4
+      },
+      {
+        "year": 2023,
+        "value": 30.9
+      }
+    ],
+    "British Columbia": [
+      {
+        "year": 2018,
+        "value": 16.2
+      },
+      {
+        "year": 2019,
+        "value": 16.2
+      },
+      {
+        "year": 2020,
+        "value": 14.6
+      },
+      {
+        "year": 2021,
+        "value": 16.8
+      },
+      {
+        "year": 2022,
+        "value": 21.8
+      },
+      {
+        "year": 2023,
+        "value": 24.4
+      }
+    ],
+    "Nunavut": [
+      {
+        "year": 2017,
+        "value": 57.0
+      },
+      {
+        "year": 2018,
+        "value": 57.0
+      },
+      {
+        "year": 2021,
+        "value": 46.1
+      },
+      {
+        "year": 2022,
+        "value": 46.1
+      },
+      {
+        "year": 2023,
+        "value": 58.1
+      }
+    ],
+    "Northwest Territories": [
+      {
+        "year": 2017,
+        "value": 21.8
+      },
+      {
+        "year": 2021,
+        "value": 22.2
+      },
+      {
+        "year": 2022,
+        "value": 22.2
+      },
+      {
+        "year": 2023,
+        "value": 34.2
+      }
+    ],
+    "Yukon": [
+      {
+        "year": 2017,
+        "value": 15.2
+      },
+      {
+        "year": 2021,
+        "value": 12.8
+      },
+      {
+        "year": 2022,
+        "value": 12.8
+      },
+      {
+        "year": 2023,
+        "value": 21.8
+      }
+    ]
+  },
+  "severity": [
+    {
+      "year": 2018,
+      "marginal": 5.2,
+      "moderate": 8.0,
+      "severe": 3.6
+    },
+    {
+      "year": 2019,
+      "marginal": 5.1,
+      "moderate": 7.6,
+      "severe": 3.2
+    },
+    {
+      "year": 2020,
+      "marginal": 4.6,
+      "moderate": 7.6,
+      "severe": 3.6
+    },
+    {
+      "year": 2021,
+      "marginal": 5.6,
+      "moderate": 8.9,
+      "severe": 4.0
+    },
+    {
+      "year": 2022,
+      "marginal": 6.0,
+      "moderate": 10.9,
+      "severe": 6.0
+    },
+    {
+      "year": 2023,
+      "marginal": 6.4,
+      "moderate": 12.4,
+      "severe": 6.7
+    }
+  ],
+  "demographics": {
+    "All persons": {
+      "label": "All Canadians",
+      "value": 25.5
+    },
+    "Persons under 18 years": {
+      "label": "Children (under 18)",
+      "value": 32.9
+    },
+    "Persons 18 to 64 years": {
+      "label": "Working age (18-64)",
+      "value": 27.1
+    },
+    "Persons 65 years and over": {
+      "label": "Seniors (65+)",
+      "value": 12.6
+    },
+    "Visible minority population": {
+      "label": "All visible minorities",
+      "value": 32.2
+    },
+    "South Asian": {
+      "label": "South Asian",
+      "value": 27.1
+    },
+    "Chinese": {
+      "label": "Chinese",
+      "value": 21.3
+    },
+    "Black": {
+      "label": "Black Canadians",
+      "value": 46.7
+    },
+    "Filipino": {
+      "label": "Filipino",
+      "value": 37.2
+    },
+    "Arab": {
+      "label": "Arab",
+      "value": 31.6
+    },
+    "Latin American": {
+      "label": "Latin American",
+      "value": 37.4
+    },
+    "Indigenous population": {
+      "label": "Indigenous peoples",
+      "value": 39.9
+    },
+    "Not a visible minority nor Indigenous": {
+      "label": "White / non-minority",
+      "value": 21.6
+    },
+    "Recent immigrants (10 years or less) aged 15 years and over": {
+      "label": "Recent immigrants (<10 yrs)",
+      "value": 34.4
+    },
+    "Persons aged 15 years and over born in Canada": {
+      "label": "Canadian-born",
+      "value": 22.1
+    }
+  },
+  "food_bank_visits": {
+    "national_trend": [
+      {
+        "year": 2016,
+        "value": 863000
+      },
+      {
+        "year": 2017,
+        "value": 890000
+      },
+      {
+        "year": 2018,
+        "value": 950000
+      },
+      {
+        "year": 2019,
+        "value": 1086280
+      },
+      {
+        "year": 2021,
+        "value": 1272580
+      },
+      {
+        "year": 2022,
+        "value": 1465721
+      },
+      {
+        "year": 2023,
+        "value": 1935911
+      },
+      {
+        "year": 2024,
+        "value": 2059636
+      },
+      {
+        "year": 2025,
+        "value": 2166000
+      }
+    ],
+    "provincial_2025": [
+      {
+        "province": "Ontario",
+        "visits": 763756,
+        "children": 228689,
+        "change_since_2019": 124.9
+      },
+      {
+        "province": "Quebec",
+        "visits": 746411,
+        "children": 260419,
+        "change_since_2019": 116.2
+      },
+      {
+        "province": "British Columbia",
+        "visits": 223340,
+        "children": 68053,
+        "change_since_2019": 79.1
+      },
+      {
+        "province": "Alberta",
+        "visits": 210541,
+        "children": 75968,
+        "change_since_2019": 134.4
+      },
+      {
+        "province": "Manitoba",
+        "visits": 64975,
+        "children": 25047,
+        "change_since_2019": 97.0
+      },
+      {
+        "province": "Saskatchewan",
+        "visits": 55310,
+        "children": 20906,
+        "change_since_2019": 48.6
+      },
+      {
+        "province": "Nova Scotia",
+        "visits": 43421,
+        "children": 14023,
+        "change_since_2019": 69.4
+      },
+      {
+        "province": "New Brunswick",
+        "visits": 32343,
+        "children": 10781,
+        "change_since_2019": 45.3
+      },
+      {
+        "province": "Newfoundland & Labrador",
+        "visits": 15422,
+        "children": 4700,
+        "change_since_2019": 44.1
+      },
+      {
+        "province": "Prince Edward Island",
+        "visits": 5350,
+        "children": 1757,
+        "change_since_2019": 80.8
+      },
+      {
+        "province": "Territories",
+        "visits": 4897,
+        "children": 1428,
+        "change_since_2019": null
+      }
+    ],
+    "demographics_2025": {
+      "children_pct": 33,
+      "employed_pct": 19.4,
+      "newcomers_pct": 34,
+      "social_assistance_pct": 40,
+      "seniors_pct": 8.3,
+      "market_rent_pct": 70.4
+    }
+  },
+  "children_provincial_2023": {
+    "Canada": 32.9,
+    "Newfoundland & Labrador": 39.9,
+    "Prince Edward Island": 31.2,
+    "Nova Scotia": 38.0,
+    "New Brunswick": 39.9,
+    "Quebec": 27.5,
+    "Ontario": 33.3,
+    "Manitoba": 30.1,
+    "Saskatchewan": 38.1,
+    "Alberta": 38.0,
+    "British Columbia": 32.6
+  },
+  "benchmarks": {
+    "healthcare_cost_per_person": {
+      "food_secure": 1605,
+      "marginal": 2161,
+      "moderate": 2806,
+      "severe": 3930,
+      "source": "PROOF / ICES"
+    },
+    "housing_burden": {
+      "lowest_income_pct_on_housing_2025": 66,
+      "lowest_income_pct_on_housing_2021": 49,
+      "source": "Statistics Canada / PROOF"
+    },
+    "food_bank_coverage": {
+      "food_insecure_total": 10000000,
+      "food_bank_users": 1200000,
+      "coverage_pct": 12,
+      "note": "Only 12% of food-insecure Canadians actually use food banks"
+    },
+    "lone_parent_2024": {
+      "female_lone_parent_pct": 52.1,
+      "source": "PROOF 2024"
+    }
+  },
+  "metadata": {
+    "title": "A Nation That Can't Feed Its Children",
+    "last_updated": "2025",
+    "sources": [
+      "Statistics Canada, Table 13-10-0835-01 (CCHS)",
+      "Statistics Canada, Table 13-10-0385-01 (CCHS)",
+      "PROOF - Food Insecurity Policy Research, University of Toronto",
+      "Food Banks Canada, HungerCount 2025"
+    ]
+  }
+}
