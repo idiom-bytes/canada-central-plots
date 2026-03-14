@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancelled Resource Projects | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-burgundy: #6B3838;
+      --color-teal: #3A5F6F;
+      --color-tan: #C49A6C;
+      --color-purple: #7C5A9D;
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --accent: #8B2E2E;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem;max-width:900px}
+
+    /* Hero stats */
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat .big{font-size:2rem;font-weight:800;color:var(--accent);line-height:1.2}
+    @media(min-width:640px){.hero-stat .big{font-size:2.5rem}}
+    .hero-stat .label{font-size:0.75rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;margin-top:4px}
+
+    /* Chart cards */
+    .chart-row{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1.5rem}
+    @media(min-width:900px){.chart-row{grid-template-columns:1fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative}
+    .chart-card.full{grid-column:1/-1}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 12px;color:var(--color-text-primary)}
+    .chart-wrap{position:relative;height:300px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+
+    /* View toggle */
+    .view-toggle{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+    .view-btn{padding:5px 14px;border-radius:9999px;font-size:0.6875rem;font-weight:600;cursor:pointer;border:2px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);transition:all .15s}
+    .view-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    /* Accountability section */
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .accountability h3{font-size:1.0625rem;font-weight:700;color:var(--accent);margin:0 0 0.75rem}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#fde8e8;border-color:#f5c6c6;color:#8B2E2E}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+
+    /* Quote */
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+
+    /* Project table */
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table td.reason{font-size:0.75rem}
+    .reason-govt{color:#8B2E2E;font-weight:600}
+    .reason-market{color:var(--color-text-tertiary)}
+    .reason-multi{color:#92400e}
+    .type-badge{display:inline-block;padding:1px 8px;border-radius:9999px;font-size:0.625rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase}
+    .type-lng{background:#e0f2fe;color:#0369a1}
+    .type-pipeline{background:#fef3cd;color:#92400e}
+    .type-oilsands{background:#2D2D2D;color:#fff}
+    .type-other{background:var(--color-cream);color:var(--color-text-secondary)}
+
+    /* Dashboard navigation */
+    .dash-nav{max-width:1400px;margin:0 auto 0.75rem;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:0;padding:6px 0;border-bottom:1px solid var(--color-beige)}
+    .dash-nav-left{justify-self:end;padding-right:12px}
+    .dash-nav-right{justify-self:start;padding-left:12px}
+    .dash-nav-center{display:flex;align-items:center;gap:8px;justify-content:center}
+    .dash-nav-btn{padding:4px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;text-decoration:none;color:var(--color-white);white-space:nowrap;display:inline-flex;align-items:center;gap:4px;transition:transform .15s,box-shadow .15s}
+    .dash-nav-btn:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+    .dash-nav-btn.disabled{opacity:0.15;pointer-events:none}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="../index.html">Plots</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+
+      <h1 class="page-title">Systematic Economic Dereliction</h1>
+      <p class="page-subtitle">Source: Public reporting, government filings, company announcements &middot; 31 cancelled or shelved major resource projects (2007&ndash;2024)</p>
+      <p class="page-desc">Canada has cancelled or shelved at least 31 major resource projects since 2007 &mdash; pipelines, LNG terminals, and oil sands developments worth an estimated <strong>$348 billion</strong> in direct capital investment. Analysts estimate the total economic impact &mdash; including jobs, tax revenue, supply chain activity, and lost export markets &mdash; at <strong>$670 billion</strong>. These are not small ventures. They are nation-building infrastructure projects that would have diversified Canada's energy exports beyond the United States. Instead, they were killed by a combination of regulatory paralysis, political intervention, and bureaucratic indifference. The result: Canada remains almost entirely dependent on a single energy customer &mdash; the same country now threatening tariffs.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="big" id="statTotal">$348B</div>
+          <div class="label">Direct investment cancelled</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big" style="color:#5A5A5A">$670B</div>
+          <div class="label">Est. total economic impact</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">31</div>
+          <div class="label">Projects cancelled or shelved</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">17 yrs</div>
+          <div class="label">Of regulatory dysfunction</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big" id="statGovt">10+</div>
+          <div class="label">Killed by government action</div>
+        </div>
+      </div>
+
+      <!-- Accountability Section -->
+      <div class="accountability">
+        <h3>Who is responsible?</h3>
+        <p>The projects on this page were not killed by a single cause. But in case after case, the same institutions and actors appear. When international investors cite "regulatory uncertainty" as the reason for abandoning a $36-billion project, that is not a market failure &mdash; it is a governance failure.</p>
+
+        <p><strong>Federal Government</strong> <span class="entity-tag govt">10+ projects</span><br>
+        The single largest factor. Through regulatory delays (Mackenzie Valley: estimated 22 months, actual 7 years), tanker bans (Northern Gateway), environmental assessment rejections (Energie Saguenay), and refusal to provide funding (Goldboro LNG). When Germany's chancellor asked PM Trudeau about LNG exports to Europe, Trudeau replied he saw "no business case" &mdash; while the U.S. happily shipped Canadian gas as American LNG.</p>
+
+        <div class="quote-block">
+          "Our initial estimate for the regulatory process was somewhere between 22 and 24 months. We filed for regulatory approval in October 2004 and we received final regulatory approval in 2011. I'll leave it up to you to decide if that is a reasonable amount of time."
+          <span class="attr">&mdash; Imperial Oil official, on the Mackenzie Valley Pipeline</span>
+        </div>
+
+        <p><strong>Prime Minister (Justin Trudeau)</strong> <span class="entity-tag person">Direct intervention</span><br>
+        Personally killed the Northern Gateway pipeline in 2016 by declaring a tanker ban near the "Great Bear Rainforest" &mdash; a name invented by environmental groups at a restaurant in San Francisco. Told Germany there was "no business case" for Canadian LNG exports to Europe.</p>
+
+        <p><strong>Minister of Environment (Steven Guilbeault)</strong> <span class="entity-tag person">Final authority</span><br>
+        Delivered the killing blow to Energie Saguenay: "The negative effects the project would have on the environment are in no way justifiable." This triggered a $20.12-billion international damage claim against Canada.</p>
+
+        <p><strong>National Energy Board / Impact Assessment Agency</strong> <span class="entity-tag govt">Systemic delays</span><br>
+        The regulatory apparatus meant to evaluate projects instead became the mechanism that destroyed them. Multi-year reviews, shifting requirements, and expanding scope turned the approval process into a war of attrition that no private investor could survive.</p>
+
+        <div class="quote-block">
+          "They kept getting held up... All levels of government were trying to squeeze more money out of them. A more effective, streamlined approval process would have seen Petronas make a final investment decision three years earlier, when LNG prices were much higher."
+          <span class="attr">&mdash; Mike Rose, CEO of Tourmaline Oil (Canada's largest natural gas producer), on Pacific NorthWest LNG's $36B cancellation</span>
+        </div>
+
+        <p><strong>Provincial Governments</strong> <span class="entity-tag govt">Quebec, New Brunswick</span><br>
+        Quebec pulled support from Energie Saguenay and court-challenged Energy East. New Brunswick imposed a fracking moratorium. These provinces blocked projects that would have generated employment and tax revenue for their own residents.</p>
+      </div>
+
+      <!-- View Toggles -->
+      <div class="view-toggle">
+        <button class="view-btn on" onclick="setView('timeline')">Timeline</button>
+        <button class="view-btn" onclick="setView('type')">By Type</button>
+        <button class="view-btn" onclick="setView('reason')">By Reason</button>
+        <button class="view-btn" onclick="setView('province')">By Province</button>
+      </div>
+
+      <!-- Charts -->
+      <div class="chart-card full">
+        <h3 id="chartTitle">Cumulative Value of Cancelled Projects ($B)</h3>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+      </div>
+
+      <!-- Project Table -->
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title">All 31 Cancelled Projects</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const PROJECTS = [{"name":"Keltic LNG","type":"LNG","province":"Nova Scotia","year_proposed":2007,"year_cancelled":2012,"value_billions":4.3,"reason_category":"Market Conditions","responsible_entities":[],"description":"LNG import facility and plastic pellet manufacturing plant.","cancellation_detail":"Won provincial approval in 2007 but never proceeded; all approvals expired."},{"name":"Corridor Resources Shale Gas","type":"Other","province":"New Brunswick","year_proposed":2011,"year_cancelled":2014,"value_billions":0.07,"reason_category":"Political Intervention","responsible_entities":["New Brunswick Government"],"description":"Shale-gas production from reserves in New Brunswick.","cancellation_detail":"NB government imposed fracking moratorium in 2014, still in effect."},{"name":"Dunkirk Oil Sands","type":"Oil Sands","province":"Alberta","year_proposed":2014,"year_cancelled":2014,"value_billions":2.4,"reason_category":"Market Conditions","responsible_entities":[],"description":"Koch brothers SAGD project, 60,000 barrels/day.","cancellation_detail":"Proposed and abandoned in the same year."},{"name":"Kitsault LNG","type":"LNG","province":"British Columbia","year_proposed":2013,"year_cancelled":2014,"value_billions":10.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"LNG export terminal at Kitsault, BC.","cancellation_detail":"Failed to find pipeline partner; no updates since 2014."},{"name":"Carmon Creek Oil Sands","type":"Oil Sands","province":"Alberta","year_proposed":2013,"year_cancelled":2015,"value_billions":2.0,"reason_category":"Multiple Factors","responsible_entities":["Federal Government"],"description":"Shell project, 80,000 barrels/day.","cancellation_detail":"Shell cited lack of pipelines to coastal waters and high costs. Took $2B write-down."},{"name":"Stewart LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2014,"value_billions":30.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"LNG terminal near Stewart, northern BC, 30M tonnes/year.","cancellation_detail":"No updates since 2014."},{"name":"Watson Island LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2014,"value_billions":0.25,"reason_category":"Market Conditions","responsible_entities":[],"description":"LNG terminal at Prince Rupert, 1M tonnes/year.","cancellation_detail":"No updates since 2014; website went offline."},{"name":"Discovery LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2015,"value_billions":null,"reason_category":"Market Conditions","responsible_entities":[],"description":"20M tonne/year LNG at Campbell River, Vancouver Island.","cancellation_detail":"Developer still seeking partners as of 2018; no updates since 2015."},{"name":"Orca LNG","type":"LNG","province":"British Columbia","year_proposed":2015,"year_cancelled":2015,"value_billions":15.8,"reason_category":"Market Conditions","responsible_entities":[],"description":"24M tonne/year LNG near Prince Rupert.","cancellation_detail":"Received NEB export licence but no news since 2015."},{"name":"New Times Energy LNG","type":"LNG","province":"British Columbia","year_proposed":2015,"year_cancelled":2016,"value_billions":null,"reason_category":"Market Conditions","responsible_entities":[],"description":"12M tonne/year LNG terminal at Prince Rupert.","cancellation_detail":"Export licence approved by Ottawa in 2016 but no further progress."},{"name":"Northern Gateway Pipeline","type":"Pipeline","province":"Multi-Province","year_proposed":2008,"year_cancelled":2016,"value_billions":7.9,"reason_category":"Political Intervention","responsible_entities":["Justin Trudeau","Federal Government"],"description":"Enbridge pipeline from Alberta to BC coast for Asian exports.","cancellation_detail":"Trudeau declared tanker ban near 'Great Bear Rainforest' in 2016."},{"name":"Muskwa Oil Sands","type":"Oil Sands","province":"Alberta","year_proposed":2012,"year_cancelled":2016,"value_billions":0.8,"reason_category":"Regulatory Delays","responsible_entities":["Federal Government"],"description":"Koch brothers project, 10,000 barrels/day.","cancellation_detail":"Developer cited 'regulatory uncertainty.'"},{"name":"Douglas Channel LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2016,"value_billions":0.4,"reason_category":"Market Conditions","responsible_entities":[],"description":"$400M floating LNG terminal near Kitimat.","cancellation_detail":"AltaGas cited global LNG surplus and low prices."},{"name":"Triton LNG","type":"LNG","province":"British Columbia","year_proposed":2013,"year_cancelled":2016,"value_billions":null,"reason_category":"Market Conditions","responsible_entities":[],"description":"2.3M tonne/year LNG near Kitimat.","cancellation_detail":"Shelved simultaneously with Douglas Channel LNG."},{"name":"Energy East Pipeline","type":"Pipeline","province":"Multi-Province","year_proposed":2013,"year_cancelled":2017,"value_billions":15.7,"reason_category":"Multiple Factors","responsible_entities":["Federal Government","Quebec Government","National Energy Board"],"description":"$15.7B pipeline from Alberta/Saskatchewan to Quebec/NB refineries.","cancellation_detail":"TC Energy cited regulatory delays after spending $1B. Quebec challenged in court."},{"name":"Mackenzie Valley Pipeline","type":"Pipeline","province":"Northwest Territories","year_proposed":1974,"year_cancelled":2017,"value_billions":16.2,"reason_category":"Regulatory Delays","responsible_entities":["Federal Government","National Energy Board"],"description":"1,220km pipeline from Beaufort Sea to northern Alberta.","cancellation_detail":"Regulatory estimate: 22 months. Actual: 7 years. Costs doubled from $8B to $16.2B."},{"name":"Prince Rupert LNG","type":"LNG","province":"British Columbia","year_proposed":2012,"year_cancelled":2017,"value_billions":11.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"$11B LNG terminal on Ridley Island, 21M tonnes/year.","cancellation_detail":"Shell shelved in 2017; also killed $9.6B Westcoast Connector pipeline."},{"name":"Westcoast Connector Pipeline","type":"Pipeline","province":"British Columbia","year_proposed":2012,"year_cancelled":2017,"value_billions":9.6,"reason_category":"Market Conditions","responsible_entities":[],"description":"$9.6B, 850km gas pipeline from NE BC to Ridley Island.","cancellation_detail":"Cancelled when Shell shelved Prince Rupert LNG."},{"name":"Pacific NorthWest LNG","type":"LNG","province":"British Columbia","year_proposed":2013,"year_cancelled":2017,"value_billions":36.0,"reason_category":"Multiple Factors","responsible_entities":["Federal Government"],"description":"$36B LNG export plant on Lelu Island, 20.5M tonnes/year.","cancellation_detail":"Petronas cited market conditions; Tourmaline CEO blamed 'government dithering.'"},{"name":"Aurora LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2017,"value_billions":28.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"$28B LNG terminal on Digby Island, 24M tonnes/year.","cancellation_detail":"Partners ditched the plan citing economics."},{"name":"WCC LNG","type":"LNG","province":"British Columbia","year_proposed":2015,"year_cancelled":2018,"value_billions":25.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"$25B LNG export facility at Prince Rupert, 30M tonnes/year.","cancellation_detail":"ExxonMobil and Imperial Oil scrapped without explanation."},{"name":"Grassy Point LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2018,"value_billions":10.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"$10B LNG facility north of Prince Rupert, 20M tonnes/year.","cancellation_detail":"Woodside shelved to focus on Kitimat LNG (which also later died)."},{"name":"Aspen Oil Sands","type":"Oil Sands","province":"Alberta","year_proposed":2013,"year_cancelled":2019,"value_billions":7.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"Imperial Oil project, 150,000 barrels/day.","cancellation_detail":"$7B project put on hold in 2019."},{"name":"Kwispaa LNG","type":"LNG","province":"British Columbia","year_proposed":2014,"year_cancelled":2019,"value_billions":18.0,"reason_category":"Multiple Factors","responsible_entities":["Federal Government"],"description":"$18B LNG plant near Bamfield, Vancouver Island.","cancellation_detail":"Steelhead stopped work 2019; Ottawa terminated environmental assessment 2022."},{"name":"Frontier Oil Sands","type":"Oil Sands","province":"Alberta","year_proposed":2012,"year_cancelled":2020,"value_billions":20.6,"reason_category":"Multiple Factors","responsible_entities":["Federal Government"],"description":"Teck's $20.6B mining project, 260,000 barrels/day.","cancellation_detail":"Teck gave up after years of regulatory and political uncertainty."},{"name":"Kitimat LNG","type":"LNG","province":"British Columbia","year_proposed":2018,"year_cancelled":2021,"value_billions":30.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"$30B LNG plant at Kitimat, 10M tonnes/year.","cancellation_detail":"Chevron failed to find a buyer; both partners shelved in 2021."},{"name":"Goldboro LNG","type":"LNG","province":"Nova Scotia","year_proposed":2011,"year_cancelled":2021,"value_billions":13.0,"reason_category":"Multiple Factors","responsible_entities":["Federal Government"],"description":"$13B LNG plant on Nova Scotia's east shore, 10M tonnes/year to Europe.","cancellation_detail":"Failed to win $925M in federal funding."},{"name":"Keystone XL Pipeline","type":"Pipeline","province":"Multi-Province","year_proposed":2008,"year_cancelled":2021,"value_billions":8.0,"reason_category":"Foreign Government","responsible_entities":["Joe Biden","U.S. Government"],"description":"$8B pipeline from Alberta to Nebraska and U.S. Gulf Coast.","cancellation_detail":"Biden revoked permit on day one citing 'climate crisis.' Alberta had invested $1.5B."},{"name":"Energie Saguenay LNG","type":"LNG","province":"Quebec","year_proposed":2015,"year_cancelled":2022,"value_billions":20.0,"reason_category":"Political Intervention","responsible_entities":["Steven Guilbeault","Quebec Government","Justin Trudeau","Federal Government"],"description":"$20B LNG plant at Saguenay, 10.5M tonnes/year for Europe.","cancellation_detail":"Quebec pulled support; Guilbeault rejected it; Trudeau said 'no business case' for LNG to Europe. Triggered $20.12B damage claim."},{"name":"Bear Head LNG","type":"LNG","province":"Nova Scotia","year_proposed":2014,"year_cancelled":2023,"value_billions":5.0,"reason_category":"Market Conditions","responsible_entities":[],"description":"$5B LNG export plant on Strait of Canso, 12M tonnes/year to Europe.","cancellation_detail":"Pivoted to hydrogen production in 2023."},{"name":"Port Edward LNG","type":"LNG","province":"British Columbia","year_proposed":2019,"year_cancelled":2024,"value_billions":0.45,"reason_category":"Market Conditions","responsible_entities":[],"description":"$450M small-scale LNG project east of Port Edward, BC.","cancellation_detail":"Scrapped in 2024."}];
+
+let chart = null;
+let currentView = 'timeline';
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('on', b.textContent.toLowerCase().replace(/\s/g,'') === v));
+  updateChart();
+}
+
+function updateChart() {
+  if (chart) chart.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const title = document.getElementById('chartTitle');
+
+  if (currentView === 'timeline') {
+    title.textContent = 'Cumulative Value of Cancelled Projects ($B)';
+    // Build cumulative timeline
+    const years = [];
+    const cumValues = [];
+    const yearCounts = [];
+    const byYear = {};
+    PROJECTS.forEach(p => {
+      const y = p.year_cancelled;
+      if (!byYear[y]) byYear[y] = {value: 0, count: 0};
+      byYear[y].value += (p.value_billions || 0);
+      byYear[y].count += 1;
+    });
+    const allYears = Object.keys(byYear).map(Number).sort();
+    let cum = 0;
+    allYears.forEach(y => {
+      cum += byYear[y].value;
+      years.push(y);
+      cumValues.push(Math.round(cum * 10) / 10);
+      yearCounts.push(byYear[y].count);
+    });
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: years,
+        datasets: [{
+          label: 'Cumulative Value ($B)',
+          data: cumValues,
+          backgroundColor: 'rgba(139, 46, 46, 0.7)',
+          borderColor: '#8B2E2E',
+          borderWidth: 1,
+          borderRadius: 3
+        },{
+          label: 'Projects Cancelled',
+          data: yearCounts,
+          type: 'line',
+          borderColor: '#C49A6C',
+          backgroundColor: 'rgba(196,154,108,0.3)',
+          fill: true,
+          tension: 0.3,
+          yAxisID: 'y1',
+          pointRadius: 4,
+          pointBackgroundColor: '#C49A6C'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: true, position: 'top', labels: {font: {size: 11}}}},
+        scales: {
+          y: {title: {display: true, text: 'Cumulative Value ($B)', font: {size: 11}}, beginAtZero: true},
+          y1: {position: 'right', title: {display: true, text: '# Projects Cancelled', font: {size: 11}}, beginAtZero: true, grid: {display: false}},
+          x: {title: {display: true, text: 'Year Cancelled / Shelved', font: {size: 11}}}
+        }
+      }
+    });
+  } else if (currentView === 'type') {
+    title.textContent = 'Cancelled Projects by Type';
+    const types = {};
+    PROJECTS.forEach(p => {
+      if (!types[p.type]) types[p.type] = {count: 0, value: 0};
+      types[p.type].count += 1;
+      types[p.type].value += (p.value_billions || 0);
+    });
+    const labels = Object.keys(types).sort((a,b) => types[b].value - types[a].value);
+    const typeColors = {LNG: '#0369a1', Pipeline: '#92400e', 'Oil Sands': '#2D2D2D', Other: '#8A8A8A'};
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Total Value ($B)',
+          data: labels.map(l => Math.round(types[l].value * 10) / 10),
+          backgroundColor: labels.map(l => typeColors[l] || '#666'),
+          borderRadius: 4
+        },{
+          label: '# Projects',
+          data: labels.map(l => types[l].count),
+          type: 'line',
+          borderColor: '#C49A6C',
+          pointRadius: 6,
+          pointBackgroundColor: '#C49A6C',
+          yAxisID: 'y1'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: true, position: 'top', labels: {font: {size: 11}}}},
+        scales: {
+          y: {title: {display: true, text: 'Total Value ($B)', font: {size: 11}}, beginAtZero: true},
+          y1: {position: 'right', title: {display: true, text: '# Projects', font: {size: 11}}, beginAtZero: true, grid: {display: false}},
+          x: {}
+        }
+      }
+    });
+  } else if (currentView === 'reason') {
+    title.textContent = 'Cancelled Projects by Reason';
+    const reasons = {};
+    PROJECTS.forEach(p => {
+      if (!reasons[p.reason_category]) reasons[p.reason_category] = {count: 0, value: 0};
+      reasons[p.reason_category].count += 1;
+      reasons[p.reason_category].value += (p.value_billions || 0);
+    });
+    const labels = Object.keys(reasons).sort((a,b) => reasons[b].count - reasons[a].count);
+    const rColors = {'Market Conditions': '#5A5A5A', 'Multiple Factors': '#92400e', 'Political Intervention': '#8B2E2E', 'Regulatory Delays': '#A63D40', 'Foreign Government': '#3A5F6F', 'Other': '#8A8A8A'};
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '# Projects',
+          data: labels.map(l => reasons[l].count),
+          backgroundColor: labels.map(l => rColors[l] || '#666'),
+          borderRadius: 4
+        },{
+          label: 'Total Value ($B)',
+          data: labels.map(l => Math.round(reasons[l].value * 10) / 10),
+          type: 'line',
+          borderColor: '#C49A6C',
+          pointRadius: 6,
+          pointBackgroundColor: '#C49A6C',
+          yAxisID: 'y1'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: true, position: 'top', labels: {font: {size: 11}}}},
+        scales: {
+          y: {title: {display: true, text: '# Projects', font: {size: 11}}, beginAtZero: true},
+          y1: {position: 'right', title: {display: true, text: 'Total Value ($B)', font: {size: 11}}, beginAtZero: true, grid: {display: false}},
+          x: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+  } else if (currentView === 'province') {
+    title.textContent = 'Cancelled Projects by Province';
+    const provs = {};
+    PROJECTS.forEach(p => {
+      if (!provs[p.province]) provs[p.province] = {count: 0, value: 0};
+      provs[p.province].count += 1;
+      provs[p.province].value += (p.value_billions || 0);
+    });
+    const labels = Object.keys(provs).sort((a,b) => provs[b].count - provs[a].count);
+    const pColors = {'British Columbia': '#7C5A9D', Alberta: '#C49A6C', 'Multi-Province': '#2D2D2D', 'Nova Scotia': '#5B7FA5', 'New Brunswick': '#A05A5A', Quebec: '#3A5F6F', 'Northwest Territories': '#5A7D6F'};
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '# Projects',
+          data: labels.map(l => provs[l].count),
+          backgroundColor: labels.map(l => pColors[l] || '#666'),
+          borderRadius: 4
+        },{
+          label: 'Total Value ($B)',
+          data: labels.map(l => Math.round(provs[l].value * 10) / 10),
+          type: 'line',
+          borderColor: '#8B2E2E',
+          pointRadius: 6,
+          pointBackgroundColor: '#8B2E2E',
+          yAxisID: 'y1'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: true, position: 'top', labels: {font: {size: 11}}}},
+        scales: {
+          y: {title: {display: true, text: '# Projects', font: {size: 11}}, beginAtZero: true},
+          y1: {position: 'right', title: {display: true, text: 'Total Value ($B)', font: {size: 11}}, beginAtZero: true, grid: {display: false}},
+          x: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+  }
+}
+
+function buildTable() {
+  const table = document.getElementById('dataTable');
+  const MULTIPLIER = 670 / 263.85;
+  let html = '<thead><tr><th>Project</th><th>Type</th><th>Province</th><th>Proposed</th><th>Cancelled</th><th class="num">Value ($B)</th><th class="num">Est. Impact ($B)</th><th>Reason</th><th>Detail</th></tr></thead><tbody>';
+
+  const sorted = [...PROJECTS].sort((a,b) => b.year_cancelled - a.year_cancelled || (b.value_billions||0) - (a.value_billions||0));
+
+  sorted.forEach(p => {
+    const typeClass = p.type === 'LNG' ? 'type-lng' : p.type === 'Pipeline' ? 'type-pipeline' : p.type === 'Oil Sands' ? 'type-oilsands' : 'type-other';
+    const reasonClass = (p.reason_category === 'Political Intervention' || p.reason_category === 'Regulatory Delays') ? 'reason-govt' : p.reason_category === 'Multiple Factors' ? 'reason-multi' : 'reason-market';
+    const val = p.value_billions !== null ? '$' + p.value_billions.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1}) + 'B' : '&mdash;';
+    const entities = p.responsible_entities.length > 0 ? '<br><span style="font-size:0.625rem;color:#8B2E2E">' + p.responsible_entities.join(', ') + '</span>' : '';
+
+    html += '<tr>';
+    html += '<td><strong>' + p.name + '</strong><br><span style="font-size:0.6875rem;color:#5A5A5A">' + p.description + '</span></td>';
+    html += '<td><span class="type-badge ' + typeClass + '">' + p.type + '</span></td>';
+    html += '<td>' + p.province + '</td>';
+    html += '<td class="num">' + p.year_proposed + '</td>';
+    html += '<td class="num">' + p.year_cancelled + '</td>';
+    html += '<td class="num">' + val + '</td>';
+    const impact = p.value_billions !== null ? '$' + (p.value_billions * MULTIPLIER).toFixed(1) + 'B' : '&mdash;';
+    html += '<td class="num" style="color:var(--color-text-tertiary)">' + impact + '</td>';
+    html += '<td class="reason"><span class="' + reasonClass + '">' + p.reason_category + '</span>' + entities + '</td>';
+    html += '<td style="font-size:0.75rem;max-width:250px">' + p.cancellation_detail + '</td>';
+    html += '</tr>';
+  });
+
+  // Total rows
+  const totalDirect = PROJECTS.reduce((s, p) => s + (p.value_billions || 0), 0);
+  const withValue = PROJECTS.filter(p => p.value_billions !== null).length;
+  html += '</tbody><tfoot>';
+  html += '<tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)">';
+  html += '<td colspan="5" style="text-align:right;padding-right:1rem;color:var(--color-text-secondary)">Total direct investment (' + withValue + ' of ' + PROJECTS.length + ' with estimates)</td>';
+  html += '<td class="num" style="color:#8B2E2E;font-size:0.9375rem">$' + totalDirect.toFixed(1) + 'B</td>';
+  html += '<td class="num" style="color:#5A5A5A;font-size:0.9375rem">$670B</td>';
+  html += '<td colspan="2"></td>';
+  html += '</tr>';
+  html += '</tfoot>';
+  table.innerHTML = html;
+}
+
+function copyTable() {
+  const M = 670 / 263.85;
+  const rows = [['Project','Type','Province','Year Proposed','Year Cancelled','Value ($B)','Est. Impact ($B)','Reason','Responsible','Detail']];
+  PROJECTS.forEach(p => {
+    rows.push([p.name, p.type, p.province, p.year_proposed, p.year_cancelled, p.value_billions || '', p.value_billions ? (p.value_billions * M).toFixed(1) : '', p.reason_category, p.responsible_entities.join('; '), p.cancellation_detail]);
+  });
+  const text = rows.map(r => r.join('\t')).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const MULTIPLIER = 670 / 263.85;
+  const rows = [['Project','Type','Province','Year Proposed','Year Cancelled','Direct Value ($B)','Est. Impact ($B)','Reason','Responsible Entities','Detail']];
+  PROJECTS.forEach(p => {
+    rows.push(['"'+p.name+'"', p.type, '"'+p.province+'"', p.year_proposed, p.year_cancelled, p.value_billions || '', p.value_billions ? (p.value_billions * MULTIPLIER).toFixed(1) : '', '"'+p.reason_category+'"', '"'+p.responsible_entities.join('; ')+'"', '"'+p.cancellation_detail+'"']);
+  });
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'cancelled_projects_canada.csv';
+  a.click();
+}
+
+// Initialize
+updateChart();
+buildTable();
+</script>
+
+</body>
+</html>

@@ -69,6 +69,21 @@
     /* Alternating card direction */
     .plot-card:nth-child(even) .card-visual{order:-1}
     @media(max-width:767px){.plot-card:nth-child(even) .card-visual{order:0}}
+    /* Hero card */
+    .hero-card-wrap{max-width:960px;margin:0 auto;padding:0 1.5rem 1.5rem;width:100%;box-sizing:border-box}
+    @media(min-width:640px){.hero-card-wrap{padding:0 2rem 2rem}}
+    .hero-card{display:flex;flex-direction:column;background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);text-decoration:none;color:inherit;overflow:hidden;transition:transform .15s, box-shadow .15s}
+    @media(min-width:768px){.hero-card{flex-direction:row}}
+    .hero-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+    .hero-card-content{padding:2rem;flex:1;display:flex;flex-direction:column;justify-content:center}
+    .hero-card-subtitle{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6B4E2E;margin:0 0 0.5rem}
+    .hero-card-title{font-size:1.5rem;font-weight:800;color:var(--color-text-primary);margin:0 0 0.75rem;line-height:1.25}
+    @media(min-width:640px){.hero-card-title{font-size:1.75rem}}
+    .hero-card-description{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.25rem}
+    .hero-card-cta .btn-primary{display:inline-block;padding:0.5rem 1.25rem;background:#6B4E2E;color:#fff;border-radius:9999px;font-size:0.8125rem;font-weight:700;text-decoration:none;transition:background .15s}
+    .hero-card:hover .btn-primary{background:#5A3F22}
+    .hero-card-visual{background:#F5EDE3;padding:2rem;display:flex;align-items:center;justify-content:center;min-height:140px}
+    @media(min-width:768px){.hero-card-visual{min-width:280px;max-width:320px;min-height:0}}
   </style>
 </head>
 <body>
@@ -77,12 +92,34 @@
     <div class="navbar-links">
       <a href="https://canada-central.com">Home</a>
       <a class="active" href="index.html">Plots</a>
+      <a href="reports.html">Reports</a>
     </div>
   </nav>
 
   <div class="hero">
     <h1 class="hero-title">Canada Central Plots</h1>
     <p class="hero-desc">Interactive data visualizations for Canadian economic indicators. Transforming public fiscal and employment data into clear, accessible charts.</p>
+  </div>
+
+  <div class="hero-card-wrap">
+    <a class="hero-card" href="reports.html">
+      <div class="hero-card-content">
+        <div class="hero-card-subtitle">Accountability Reports</div>
+        <h2 class="hero-card-title">What's really going on?</h2>
+        <p class="hero-card-description">Investigative deep dives into Canada's biggest policy failures. Cancelled resource projects worth $670B. 1 in 4 Canadians who can't afford to eat. Not statistics &mdash; investigations.</p>
+        <div class="hero-card-cta">
+          <span class="btn-primary">View Reports</span>
+        </div>
+      </div>
+      <div class="hero-card-visual">
+        <div style="text-align:center">
+          <div style="font-size:3.5rem;font-weight:800;color:#6B4E2E;line-height:1">$670B</div>
+          <div style="font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#8A8A8A;margin-top:6px">cancelled projects</div>
+          <div style="margin-top:1.25rem;font-size:2.5rem;font-weight:800;color:#6B4E2E;line-height:1">1 in 4</div>
+          <div style="font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#8A8A8A;margin-top:6px">Canadians food insecure</div>
+        </div>
+      </div>
+    </a>
   </div>
 
   <div class="cards-section">
