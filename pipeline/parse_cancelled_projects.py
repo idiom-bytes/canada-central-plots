@@ -1,0 +1,421 @@
+#!/usr/bin/env python3
+"""Parse cancelled Canadian energy projects from markdown source into structured JSON."""
+
+import json
+import os
+
+PROJECTS = [
+    {
+        "name": "Keltic LNG",
+        "type": "LNG",
+        "province": "Nova Scotia",
+        "year_proposed": 2007,
+        "year_cancelled": 2007,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An LNG import facility in Nova Scotia that would manufacture plastic pellets.",
+        "cancellation_detail": "Won its first provincial approval in 2007 but never went ahead, and all approvals expired."
+    },
+    {
+        "name": "Corridor Resources Shale Gas",
+        "type": "Other",
+        "province": "New Brunswick",
+        "year_proposed": 2011,
+        "year_cancelled": 2014,
+        "value_billions": None,
+        "reason_category": "Political Intervention",
+        "responsible_entities": ["New Brunswick Government"],
+        "description": "A proposal to produce from huge shale-gas reserves in New Brunswick.",
+        "cancellation_detail": "Unable to find a partner, and in 2014 the New Brunswick government imposed a moratorium on hydraulic fracturing."
+    },
+    {
+        "name": "Dunkirk Oil Sands",
+        "type": "Oil Sands",
+        "province": "Alberta",
+        "year_proposed": 2014,
+        "year_cancelled": 2014,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A Koch brothers oil sands project in Alberta to produce up to 60,000 barrels per day using SAGD.",
+        "cancellation_detail": "Proposed and ditched in the same year (2014) by the developers."
+    },
+    {
+        "name": "Kitsault LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2013,
+        "year_cancelled": 2014,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An LNG export project at the northern mining ghost town of Kitsault, BC.",
+        "cancellation_detail": "Developer was still working on cost estimates in 2014 and nothing was heard thereafter."
+    },
+    {
+        "name": "Carmon Creek Oil Sands",
+        "type": "Oil Sands",
+        "province": "Alberta",
+        "year_proposed": 2013,
+        "year_cancelled": 2015,
+        "value_billions": None,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": [],
+        "description": "A Shell project to produce 80,000 barrels per day from Alberta oil sands.",
+        "cancellation_detail": "Shell gave up in 2015 citing high costs and a lack of pipelines to coastal waters."
+    },
+    {
+        "name": "Stewart LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2014,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An LNG terminal near Stewart in northern BC aiming to produce 30 million tonnes per year.",
+        "cancellation_detail": "Has not been heard from since 2014."
+    },
+    {
+        "name": "Watson Island LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2014,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An LNG terminal at Prince Rupert with capacity to produce one million tonnes per year.",
+        "cancellation_detail": "No updates since 2014 and the project website went offline."
+    },
+    {
+        "name": "Discovery LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2015,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A 20-million-tonne-per-year LNG project at Campbell River on Vancouver Island requiring a 300-km pipeline.",
+        "cancellation_detail": "Developer was still seeking partners in 2018 but no updates since 2015."
+    },
+    {
+        "name": "Orca LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2015,
+        "year_cancelled": 2015,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A Texas-based company's plan to export 24 million tonnes of LNG per year from near Prince Rupert.",
+        "cancellation_detail": "Received NEB export licence in 2015 but no news from the developer since then."
+    },
+    {
+        "name": "New Times Energy LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2015,
+        "year_cancelled": 2016,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A proposed 12-million-tonne-per-year LNG terminal at Prince Rupert.",
+        "cancellation_detail": "Export licence approved by Ottawa in 2016 but no news of the project or pipeline since."
+    },
+    {
+        "name": "Northern Gateway",
+        "type": "Pipeline",
+        "province": "Multi-Province",
+        "year_proposed": 2008,
+        "year_cancelled": 2016,
+        "value_billions": 7.9,
+        "reason_category": "Political Intervention",
+        "responsible_entities": ["Justin Trudeau", "Federal Government"],
+        "description": "Enbridge's $7.9-billion oil pipeline from Alberta to the BC coast for exports to Asia.",
+        "cancellation_detail": "Killed by PM Justin Trudeau's 2016 declaration banning oil tankers near the Great Bear Rainforest."
+    },
+    {
+        "name": "Muskwa Oil Sands",
+        "type": "Oil Sands",
+        "province": "Alberta",
+        "year_proposed": 2012,
+        "year_cancelled": 2016,
+        "value_billions": None,
+        "reason_category": "Regulatory Delays",
+        "responsible_entities": [],
+        "description": "A Koch brothers oil sands project in Alberta to produce 10,000 barrels per day.",
+        "cancellation_detail": "Scrapped in 2016 with the developer citing regulatory uncertainty."
+    },
+    {
+        "name": "Douglas Channel LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2016,
+        "value_billions": 0.4,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $400-million floating LNG terminal in Douglas Channel near Kitimat led by AltaGas.",
+        "cancellation_detail": "Shelved in 2016 with AltaGas citing a global LNG surplus and low prices."
+    },
+    {
+        "name": "Triton LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2013,
+        "year_cancelled": 2016,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An AltaGas and Idemitsu Kosan LNG project near Kitimat producing 2.3 million tonnes per year.",
+        "cancellation_detail": "Frozen at the same time as Douglas Channel LNG in 2016 by the partners."
+    },
+    {
+        "name": "Energy East",
+        "type": "Pipeline",
+        "province": "Multi-Province",
+        "year_proposed": 2013,
+        "year_cancelled": 2017,
+        "value_billions": 15.7,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": ["Quebec Government", "Federal Government", "National Energy Board"],
+        "description": "A $15.7-billion pipeline to move oil from Alberta and Saskatchewan to Quebec and New Brunswick refineries.",
+        "cancellation_detail": "TC Energy shelved the project citing regulatory delays, cost implications, and challenging obstacles after Quebec's court challenge and environmental opposition."
+    },
+    {
+        "name": "Mackenzie Valley Pipeline",
+        "type": "Pipeline",
+        "province": "Northwest Territories",
+        "year_proposed": 1974,
+        "year_cancelled": 2017,
+        "value_billions": 16.2,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": ["Federal Government", "National Energy Board"],
+        "description": "A 1,220-km pipeline to move natural gas from the Beaufort Sea to northern Alberta.",
+        "cancellation_detail": "Abandoned after costs ballooned from $8B to $16.2B and the regulatory process took from 2004 to 2011 instead of the expected 22-24 months."
+    },
+    {
+        "name": "Prince Rupert LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2012,
+        "year_cancelled": 2017,
+        "value_billions": 11.0,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An $11-billion LNG terminal on Ridley Island, Prince Rupert, producing 21 million tonnes per year.",
+        "cancellation_detail": "Shell took over the project from BG Group in 2016 but shelved it in 2017."
+    },
+    {
+        "name": "Westcoast Connector Pipeline",
+        "type": "Pipeline",
+        "province": "British Columbia",
+        "year_proposed": 2012,
+        "year_cancelled": 2017,
+        "value_billions": 9.6,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $9.6-billion, 850-km natural gas pipeline from northeast BC to Ridley Island to feed Prince Rupert LNG.",
+        "cancellation_detail": "Killed when Shell shelved the Prince Rupert LNG project it was designed to supply."
+    },
+    {
+        "name": "Pacific NorthWest LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2013,
+        "year_cancelled": 2017,
+        "value_billions": 36.0,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": ["Federal Government"],
+        "description": "A $36-billion LNG export plant on Lelu Island near Prince Rupert producing 20.5 million tonnes per year.",
+        "cancellation_detail": "Petronas and partners cited market conditions, but Tourmaline Oil CEO blamed government dithering and delays that missed the window of high LNG prices."
+    },
+    {
+        "name": "Aurora LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2017,
+        "value_billions": 28.0,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $28-billion LNG terminal on Digby Island, Prince Rupert, producing up to 24 million tonnes per year.",
+        "cancellation_detail": "Nexen Energy and Chinese and Japanese partners ditched the plan in 2017 citing the economics."
+    },
+    {
+        "name": "WCC LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2015,
+        "year_cancelled": 2018,
+        "value_billions": 25.0,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $25-billion LNG export facility on Tuck Inlet, Prince Rupert, producing 30 million tonnes per year.",
+        "cancellation_detail": "ExxonMobil and Imperial Oil scrapped the project in 2018 without explanation."
+    },
+    {
+        "name": "Grassy Point LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2018,
+        "value_billions": 10.0,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $10-billion LNG facility 30 km north of Prince Rupert producing up to 20 million tonnes per year.",
+        "cancellation_detail": "Australia's Woodside Energy shelved the plan in 2018 to focus on Kitimat LNG, which also later died."
+    },
+    {
+        "name": "Aspen Oil Sands",
+        "type": "Oil Sands",
+        "province": "Alberta",
+        "year_proposed": 2013,
+        "year_cancelled": 2019,
+        "value_billions": 7.0,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An Imperial Oil project to produce up to 150,000 barrels of bitumen per day.",
+        "cancellation_detail": "The $7-billion project was put on hold in 2019."
+    },
+    {
+        "name": "Kwispaa LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2014,
+        "year_cancelled": 2022,
+        "value_billions": 18.0,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": ["Federal Government"],
+        "description": "An $18-billion LNG plant near Bamfield on Vancouver Island with an associated natural-gas pipeline.",
+        "cancellation_detail": "Steelhead LNG stopped work in 2019 and in 2022 Ottawa formally terminated the environmental-assessment window."
+    },
+    {
+        "name": "Frontier Oil Sands",
+        "type": "Oil Sands",
+        "province": "Alberta",
+        "year_proposed": 2012,
+        "year_cancelled": 2020,
+        "value_billions": 20.6,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": [],
+        "description": "A Teck-proposed $20.6-billion mining project in Alberta's oil sands with capacity of 260,000 barrels per day.",
+        "cancellation_detail": "Teck gave up the idea in 2020 after prolonged regulatory and political uncertainty."
+    },
+    {
+        "name": "Kitimat LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2018,
+        "year_cancelled": 2021,
+        "value_billions": 30.0,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $30-billion LNG export plant at Kitimat proposed by Chevron Canada and Woodside Energy producing 10 million tonnes per year.",
+        "cancellation_detail": "Chevron failed to find a buyer for its share and the partners shelved the project in 2021."
+    },
+    {
+        "name": "Goldboro LNG",
+        "type": "LNG",
+        "province": "Nova Scotia",
+        "year_proposed": 2011,
+        "year_cancelled": 2021,
+        "value_billions": None,
+        "reason_category": "Multiple Factors",
+        "responsible_entities": ["Federal Government"],
+        "description": "An LNG plant on Nova Scotia's east shore to ship 10 million tonnes per year to Europe.",
+        "cancellation_detail": "Pieridae bailed out in 2021 after failing to win $925 million in federal funding."
+    },
+    {
+        "name": "Keystone XL",
+        "type": "Pipeline",
+        "province": "Alberta",
+        "year_proposed": 2008,
+        "year_cancelled": 2021,
+        "value_billions": 8.0,
+        "reason_category": "Foreign Government",
+        "responsible_entities": ["Joe Biden"],
+        "description": "An $8-billion TC Energy pipeline to deliver Alberta oil to Nebraska and on to U.S. Gulf Coast refineries.",
+        "cancellation_detail": "U.S. President Joe Biden revoked the presidential permit on his first day in office citing the climate crisis."
+    },
+    {
+        "name": "Energie Saguenay",
+        "type": "LNG",
+        "province": "Quebec",
+        "year_proposed": 2015,
+        "year_cancelled": 2022,
+        "value_billions": 20.0,
+        "reason_category": "Political Intervention",
+        "responsible_entities": ["Quebec Government", "Steven Guilbeault", "Justin Trudeau", "Federal Government"],
+        "description": "A $20-billion LNG plant at the port of Saguenay in Quebec to produce 10.5 million tonnes per year for export.",
+        "cancellation_detail": "Quebec pulled support on environmental grounds and federal minister Steven Guilbeault delivered the final rejection in 2022 saying negative environmental effects were unjustifiable."
+    },
+    {
+        "name": "Bear Head LNG",
+        "type": "LNG",
+        "province": "Nova Scotia",
+        "year_proposed": 2014,
+        "year_cancelled": 2023,
+        "value_billions": None,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "An LNG export plant on the Strait of Canso, Nova Scotia, to send 12 million tonnes per year to Europe.",
+        "cancellation_detail": "In 2023 Bear Head, under new ownership, abandoned LNG and announced plans to produce hydrogen instead."
+    },
+    {
+        "name": "Port Edward LNG",
+        "type": "LNG",
+        "province": "British Columbia",
+        "year_proposed": 2019,
+        "year_cancelled": 2024,
+        "value_billions": 0.45,
+        "reason_category": "Market Conditions",
+        "responsible_entities": [],
+        "description": "A $450-million small-scale LNG project east of Port Edward, BC, to ship LNG overseas in containers.",
+        "cancellation_detail": "The project was scrapped in 2024."
+    },
+]
+
+# Note: Enbridge Line 5 is listed in the source but is under appeal / not yet cancelled,
+# and TrueFlow Technologies appears to be a stray line, not a project.
+# The 31st project is the Westcoast Connector Pipeline, which died alongside Prince Rupert LNG.
+
+assert len(PROJECTS) == 31, f"Expected 31 projects, got {len(PROJECTS)}"
+
+
+def main():
+    out_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, "projects-cancelled.json")
+
+    with open(out_path, "w") as f:
+        json.dump(PROJECTS, f, indent=2, ensure_ascii=False)
+
+    print(f"Wrote {len(PROJECTS)} projects to {os.path.abspath(out_path)}")
+
+    total_value = sum(p["value_billions"] for p in PROJECTS if p["value_billions"] is not None)
+    valued_count = sum(1 for p in PROJECTS if p["value_billions"] is not None)
+
+    print(f"\nTotal projects: {len(PROJECTS)}")
+    print(f"Projects with stated value: {valued_count}")
+    print(f"Total estimated value: ${total_value:.2f} billion CAD")
+
+    # Breakdown by type
+    from collections import Counter
+    type_counts = Counter(p["type"] for p in PROJECTS)
+    print("\nBy type:")
+    for t, c in type_counts.most_common():
+        print(f"  {t}: {c}")
+
+    # Breakdown by province
+    prov_counts = Counter(p["province"] for p in PROJECTS)
+    print("\nBy province:")
+    for p, c in prov_counts.most_common():
+        print(f"  {p}: {c}")
+
+
+if __name__ == "__main__":
+    main()

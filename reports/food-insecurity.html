@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Insecurity | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;--color-cream-dark: #E8E2D5;--color-beige: #D8D1C2;--color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;--color-text-primary: #2D2D2D;--color-text-secondary: #5A5A5A;--color-text-tertiary: #8A8A8A;
+      --color-teal: #3A5F6F;--shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);--radius-md: 0.5rem;--radius-lg: 0.75rem;
+      --accent: #6B4E2E;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem;max-width:900px}
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat .big{font-size:2rem;font-weight:800;color:var(--accent);line-height:1.2}
+    @media(min-width:640px){.hero-stat .big{font-size:2.5rem}}
+    .hero-stat .label{font-size:0.75rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;margin-top:4px}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative;margin-bottom:1.5rem}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 12px;color:var(--color-text-primary)}
+    .chart-wrap{position:relative;height:350px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+    .view-toggle{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+    .view-btn{padding:5px 14px;border-radius:9999px;font-size:0.6875rem;font-weight:600;cursor:pointer;border:2px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);transition:all .15s}
+    .view-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .accountability h3{font-size:1.0625rem;font-weight:700;color:var(--accent);margin:0 0 0.75rem}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#fde8e8;border-color:#f5c6c6;color:#8B2E2E}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .bar-cell{display:flex;align-items:center;gap:8px}
+    .bar-fill{height:14px;border-radius:3px;background:var(--accent);opacity:0.7;min-width:2px}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="https://canada-central.com/participation">MP Participation</a>
+      <a href="../index.html">Statistics</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+
+      <h1 class="page-title">A Nation That Can't Feed Its Children</h1>
+      <p class="page-subtitle">Source: Statistics Canada (CCHS), PROOF, Food Banks Canada &middot; 2011&ndash;2023</p>
+      <p class="page-desc">Canada is one of the wealthiest countries on earth. Yet <strong>1 in 4 Canadians</strong> &mdash; nearly 10 million people &mdash; cannot reliably afford to eat. <strong>1 in 3 children</strong> lives in a household that struggles to put food on the table. Food bank visits have <strong>doubled since 2019</strong>, but food banks only reach 12% of those who are hungry. The rest go without. This is not a natural disaster or a supply problem. Canada produces enough food to feed its population several times over. This is a policy failure &mdash; driven by inadequate income support, runaway housing costs that leave nothing for groceries, and a federal government that announced a "Food Policy for Canada" in 2019 with no targets, no funding, and no accountability.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="big">1 in 4</div>
+          <div class="label">Canadians food insecure</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">1 in 3</div>
+          <div class="label">children affected</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">2x</div>
+          <div class="label">food bank visits since 2019</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">58%</div>
+          <div class="label">of Nunavut households</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">47%</div>
+          <div class="label">of Black Canadians</div>
+        </div>
+      </div>
+
+      <!-- Accountability Section -->
+      <div class="accountability">
+        <h3>Who is responsible?</h3>
+        <p>Food insecurity is not caused by a lack of food. It is caused by a lack of money. Every institution that controls how much money reaches low-income households bears responsibility for the crisis on this page.</p>
+
+        <p><strong>Federal Government</strong> <span class="entity-tag govt">Policy failure</span><br>
+        Announced a "Food Policy for Canada" in 2019 with no measurable targets and no enforcement mechanism. The Canada Child Benefit &mdash; the single largest anti-poverty transfer &mdash; has not kept pace with inflation. The federal carbon tax adds to grocery costs for families already stretched to the limit. Meanwhile, 65% of food-insecure households have someone working &mdash; employment alone does not guarantee food security.</p>
+
+        <p><strong>Provincial Social Assistance Programs</strong> <span class="entity-tag govt">Inadequate rates</span><br>
+        Over 60% of households on provincial social assistance or disability are food insecure. Social assistance rates have been frozen or cut in real terms across most provinces for decades. In Ontario, a single person on Ontario Works receives $733/month &mdash; when average rent for a bachelor apartment exceeds $1,500 in most cities.</p>
+
+        <div class="quote-block">
+          "Household food insecurity is a policy decision. Governments at every level have chosen to allow income support programs to erode in real value while housing and food costs have accelerated. The result is mathematically inevitable."
+          <span class="attr">&mdash; PROOF, University of Toronto</span>
+        </div>
+
+        <p><strong>Housing Policy</strong> <span class="entity-tag govt">Crowding out food spending</span><br>
+        The lowest-income Canadian households now spend <strong>66% of disposable income on housing</strong> (up from 49% in 2021). When two-thirds of your income goes to rent, there is nothing left for food. Food insecurity is, in large part, a housing crisis wearing a different mask.</p>
+
+        <p><strong>Indigenous and Northern Affairs</strong> <span class="entity-tag govt">Nunavut: 58%</span><br>
+        Nearly 3 in 5 households in Nunavut are food insecure &mdash; the highest rate in any region of any developed country. A jug of milk costs $15. A bag of apples costs $20. The federal Nutrition North program, meant to subsidize food costs in remote communities, has been repeatedly criticized as inadequate, poorly targeted, and benefiting retailers more than families.</p>
+
+        <div class="quote-block">
+          "In Nunavut, food insecurity is not a risk factor. It is the norm. The majority of households cannot afford adequate food in one of the wealthiest nations on earth."
+          <span class="attr">&mdash; Inuit Tapiriit Kanatami</span>
+        </div>
+      </div>
+
+      <!-- View Toggles -->
+      <div class="view-toggle">
+        <button class="view-btn on" onclick="setView('timeline')">Timeline</button>
+        <button class="view-btn" onclick="setView('provincial')">By Province</button>
+        <button class="view-btn" onclick="setView('foodbanks')">Food Bank Visits</button>
+        <button class="view-btn" onclick="setView('demographics')">Who's Hungry</button>
+        <button class="view-btn" onclick="setView('children')">Children</button>
+        <button class="view-btn" onclick="setView('severity')">Severity</button>
+      </div>
+
+      <!-- Chart -->
+      <div class="chart-card">
+        <h3 id="chartTitle">Food Insecurity Rate in Canada (% of Persons), 2011&ndash;2023</h3>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Provincial Food Insecurity Rates (2023)</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"national_trend":[{"year":2011,"value":12.3},{"year":2012,"value":12.6},{"year":2013,"value":12.5},{"year":2014,"value":12.0},{"year":2015,"value":12.4},{"year":2016,"value":12.2},{"year":2017,"value":12.5},{"year":2018,"value":16.8},{"year":2019,"value":15.9},{"year":2020,"value":15.7},{"year":2021,"value":18.4},{"year":2022,"value":22.9},{"year":2023,"value":25.5}],"provincial":{"Newfoundland & Labrador":[{"year":2018,"value":18.9},{"year":2019,"value":17.7},{"year":2020,"value":17.5},{"year":2021,"value":22.5},{"year":2022,"value":26.0},{"year":2023,"value":30.1}],"Prince Edward Island":[{"year":2018,"value":17.3},{"year":2019,"value":18.6},{"year":2020,"value":16.5},{"year":2021,"value":23.6},{"year":2022,"value":28.6},{"year":2023,"value":24.6}],"Nova Scotia":[{"year":2018,"value":20.9},{"year":2019,"value":18.0},{"year":2020,"value":17.7},{"year":2021,"value":22.0},{"year":2022,"value":28.9},{"year":2023,"value":29.3}],"New Brunswick":[{"year":2018,"value":17.8},{"year":2019,"value":15.7},{"year":2020,"value":18.4},{"year":2021,"value":22.7},{"year":2022,"value":25.6},{"year":2023,"value":29.5}],"Quebec":[{"year":2018,"value":14.4},{"year":2019,"value":10.9},{"year":2020,"value":12.7},{"year":2021,"value":14.7},{"year":2022,"value":15.7},{"year":2023,"value":19.8}],"Ontario":[{"year":2018,"value":17.0},{"year":2019,"value":17.3},{"year":2020,"value":16.1},{"year":2021,"value":19.2},{"year":2022,"value":24.5},{"year":2023,"value":26.4}],"Manitoba":[{"year":2018,"value":19.1},{"year":2019,"value":18.2},{"year":2020,"value":17.1},{"year":2021,"value":19.6},{"year":2022,"value":26.8},{"year":2023,"value":25.6}],"Saskatchewan":[{"year":2018,"value":17.2},{"year":2019,"value":17.7},{"year":2020,"value":18.5},{"year":2021,"value":20.3},{"year":2022,"value":28.0},{"year":2023,"value":30.6}],"Alberta":[{"year":2018,"value":19.2},{"year":2019,"value":18.5},{"year":2020,"value":19.7},{"year":2021,"value":21.8},{"year":2022,"value":27.4},{"year":2023,"value":30.9}],"British Columbia":[{"year":2018,"value":16.2},{"year":2019,"value":16.2},{"year":2020,"value":14.6},{"year":2021,"value":16.8},{"year":2022,"value":21.8},{"year":2023,"value":24.4}],"Canada":[{"year":2018,"value":16.8},{"year":2019,"value":15.9},{"year":2020,"value":15.7},{"year":2021,"value":18.4},{"year":2022,"value":22.9},{"year":2023,"value":25.5}],"Nunavut":[{"year":2017,"value":57.0},{"year":2018,"value":57.0},{"year":2021,"value":46.1},{"year":2022,"value":46.1},{"year":2023,"value":58.1}],"Northwest Territories":[{"year":2017,"value":21.8},{"year":2021,"value":22.2},{"year":2022,"value":22.2},{"year":2023,"value":34.2}],"Yukon":[{"year":2017,"value":15.2},{"year":2021,"value":12.8},{"year":2022,"value":12.8},{"year":2023,"value":21.8}]},"severity":[{"year":2018,"marginal":5.2,"moderate":8.0,"severe":3.6},{"year":2019,"marginal":5.1,"moderate":7.6,"severe":3.2},{"year":2020,"marginal":4.6,"moderate":7.6,"severe":3.6},{"year":2021,"marginal":5.6,"moderate":8.9,"severe":4.0},{"year":2022,"marginal":6.0,"moderate":10.9,"severe":6.0},{"year":2023,"marginal":6.4,"moderate":12.4,"severe":6.7}],"demographics":{"All persons":{"label":"All Canadians","value":25.5},"Persons under 18 years":{"label":"Children (under 18)","value":32.9},"Persons 18 to 64 years":{"label":"Working age (18-64)","value":27.1},"Persons 65 years and over":{"label":"Seniors (65+)","value":12.6},"Black":{"label":"Black Canadians","value":46.7},"Indigenous population":{"label":"Indigenous peoples","value":39.9},"South Asian":{"label":"South Asian","value":27.1},"Filipino":{"label":"Filipino","value":37.2},"Latin American":{"label":"Latin American","value":37.4},"Arab":{"label":"Arab","value":31.6},"Chinese":{"label":"Chinese","value":21.3},"Not a visible minority nor Indigenous":{"label":"White / non-minority","value":21.6},"Visible minority population":{"label":"All visible minorities","value":32.2},"Recent immigrants (10 years or less) aged 15 years and over":{"label":"Recent immigrants (<10 yrs)","value":34.4},"Persons aged 15 years and over born in Canada":{"label":"Canadian-born","value":22.1}},"food_bank_visits":{"national_trend":[{"year":2016,"value":863000},{"year":2017,"value":890000},{"year":2018,"value":950000},{"year":2019,"value":1086280},{"year":2021,"value":1272580},{"year":2022,"value":1465721},{"year":2023,"value":1935911},{"year":2024,"value":2059636},{"year":2025,"value":2166000}],"provincial_2025":[{"province":"Ontario","visits":763756,"children":228689,"change_since_2019":124.9},{"province":"Quebec","visits":746411,"children":260419,"change_since_2019":116.2},{"province":"British Columbia","visits":223340,"children":68053,"change_since_2019":79.1},{"province":"Alberta","visits":210541,"children":75968,"change_since_2019":134.4},{"province":"Manitoba","visits":64975,"children":25047,"change_since_2019":97.0},{"province":"Saskatchewan","visits":55310,"children":20906,"change_since_2019":48.6},{"province":"Nova Scotia","visits":43421,"children":14023,"change_since_2019":69.4},{"province":"New Brunswick","visits":32343,"children":10781,"change_since_2019":45.3},{"province":"Newfoundland & Labrador","visits":15422,"children":4700,"change_since_2019":44.1},{"province":"Prince Edward Island","visits":5350,"children":1757,"change_since_2019":80.8},{"province":"Territories","visits":4897,"children":1428,"change_since_2019":null}]},"children_provincial_2023":{"Canada":32.9,"Newfoundland & Labrador":39.9,"Prince Edward Island":31.2,"Nova Scotia":38.0,"New Brunswick":39.9,"Quebec":27.5,"Ontario":33.3,"Manitoba":30.1,"Saskatchewan":38.1,"Alberta":38.0,"British Columbia":32.6}};
+
+const entityColors = {
+  'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D',
+  'Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5',
+  'New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A',
+  'Yukon':'#7A6B5A','Northwest Territories':'#5A6B7A','Nunavut':'#6B5A7A'
+};
+
+let chart = null;
+let currentView = 'timeline';
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-btn').forEach(b => {
+    const bv = b.textContent.toLowerCase().replace(/[^a-z]/g,'');
+    const map = {'timeline':'timeline','byprovince':'provincial','foodbankvisits':'foodbanks','whoshungry':'demographics','children':'children','severity':'severity'};
+    b.classList.toggle('on', map[bv] === v);
+  });
+  updateChart();
+}
+
+function updateChart() {
+  if (chart) chart.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const title = document.getElementById('chartTitle');
+  const tableTitle = document.getElementById('tableTitle');
+
+  if (currentView === 'timeline') {
+    title.textContent = 'Food Insecurity Rate in Canada (% of Persons), 2011\u20132023';
+    tableTitle.textContent = 'National Food Insecurity Rate by Year';
+    const years = DATA.national_trend.map(d => d.year);
+    const values = DATA.national_trend.map(d => d.value);
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: years,
+        datasets: [{
+          label: '% Food Insecure',
+          data: values,
+          backgroundColor: years.map(y => y >= 2021 ? 'rgba(107,78,46,0.85)' : 'rgba(107,78,46,0.45)'),
+          borderColor: '#6B4E2E',
+          borderWidth: 1,
+          borderRadius: 3
+        },{
+          label: '2011 Baseline (12.3%)',
+          data: years.map(() => 12.3),
+          type: 'line',
+          borderColor: '#A13F3F',
+          borderDash: [6,4],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '%'}}
+        },
+        scales: {
+          y: {title: {display: true, text: '% of Persons', font: {size: 11}}, beginAtZero: true, max: 30},
+          x: {title: {display: true, text: 'Year', font: {size: 11}}}
+        }
+      }
+    });
+    buildTimelineTable();
+
+  } else if (currentView === 'provincial') {
+    title.textContent = 'Food Insecurity Rate by Province & Territory (2023)';
+    tableTitle.textContent = 'Provincial & Territorial Food Insecurity Rates (2023)';
+    // Get latest value for each province
+    const entries = [];
+    for (const [prov, vals] of Object.entries(DATA.provincial)) {
+      if (prov === 'Canada') continue;
+      const latest = vals[vals.length - 1];
+      entries.push({prov, value: latest.value, year: latest.year});
+    }
+    entries.sort((a,b) => b.value - a.value);
+    const canadaLatest = DATA.provincial.Canada[DATA.provincial.Canada.length-1].value;
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: entries.map(e => e.prov),
+        datasets: [{
+          label: '% Food Insecure',
+          data: entries.map(e => e.value),
+          backgroundColor: entries.map(e => entityColors[e.prov] || '#6B4E2E'),
+          borderRadius: 3
+        },{
+          label: 'National Average (' + canadaLatest + '%)',
+          data: entries.map(() => canadaLatest),
+          type: 'line',
+          borderColor: '#A13F3F',
+          borderDash: [6,4],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: ctx => ctx.dataset.label.split('(')[0].trim() + ': ' + ctx.parsed.x + '%'}}
+        },
+        scales: {
+          x: {title: {display: true, text: '% of Persons Food Insecure', font: {size: 11}}, beginAtZero: true, max: 65},
+          y: {ticks: {font: {size: 11}}}
+        }
+      }
+    });
+    buildProvincialTable();
+
+  } else if (currentView === 'foodbanks') {
+    title.textContent = 'Monthly Food Bank Visits in Canada, 2016\u20132025';
+    tableTitle.textContent = 'Food Bank Visits by Province (March 2025)';
+    const fb = DATA.food_bank_visits.national_trend;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: fb.map(d => d.year),
+        datasets: [{
+          label: 'Monthly Visits',
+          data: fb.map(d => d.value),
+          backgroundColor: fb.map(d => d.year >= 2023 ? 'rgba(107,78,46,0.85)' : 'rgba(107,78,46,0.45)'),
+          borderColor: '#6B4E2E',
+          borderWidth: 1,
+          borderRadius: 3
+        },{
+          label: '2019 Level (1.09M)',
+          data: fb.map(() => 1086280),
+          type: 'line',
+          borderColor: '#A13F3F',
+          borderDash: [6,4],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: ctx => {
+            if (ctx.datasetIndex === 0) return ctx.parsed.y.toLocaleString() + ' visits/month';
+            return ctx.dataset.label;
+          }}}
+        },
+        scales: {
+          y: {title: {display: true, text: 'Monthly Visits', font: {size: 11}}, beginAtZero: true,
+            ticks: {callback: v => (v/1000000).toFixed(1) + 'M'}},
+          x: {title: {display: true, text: 'Year (March HungerCount)', font: {size: 11}}}
+        }
+      }
+    });
+    buildFoodBankTable();
+
+  } else if (currentView === 'demographics') {
+    title.textContent = 'Food Insecurity Rate by Demographic Group (Canada, 2023)';
+    tableTitle.textContent = 'Food Insecurity by Demographic Group (2023)';
+    const demos = Object.values(DATA.demographics)
+      .filter(d => !['All Canadians'].includes(d.label))
+      .sort((a,b) => b.value - a.value);
+    const natAvg = DATA.demographics['All persons'].value;
+
+    const demoColors = {
+      'Black Canadians':'#2D2D2D','Indigenous peoples':'#6B3838','Latin American':'#C49A6C',
+      'Filipino':'#4A7C59','Recent immigrants (<10 yrs)':'#8B6914','Children (under 18)':'#A05A5A',
+      'All visible minorities':'#5B7FA5','Arab':'#3A5F6F','Working age (18-64)':'#5A5A5A',
+      'South Asian':'#7C5A9D','Canadian-born':'#6A8A6A','White / non-minority':'#9A7B5A',
+      'Chinese':'#5A6B7A','Seniors (65+)':'#8A8A8A'
+    };
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: demos.map(d => d.label),
+        datasets: [{
+          label: '% Food Insecure',
+          data: demos.map(d => d.value),
+          backgroundColor: demos.map(d => demoColors[d.label] || '#6B4E2E'),
+          borderRadius: 3
+        },{
+          label: 'National Average (' + natAvg + '%)',
+          data: demos.map(() => natAvg),
+          type: 'line',
+          borderColor: '#A13F3F',
+          borderDash: [6,4],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: ctx => ctx.parsed.x + '%'}}
+        },
+        scales: {
+          x: {title: {display: true, text: '% Food Insecure', font: {size: 11}}, beginAtZero: true, max: 55},
+          y: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+    buildDemographicsTable();
+
+  } else if (currentView === 'children') {
+    title.textContent = 'Child Food Insecurity Rate by Province (2023)';
+    tableTitle.textContent = 'Children Under 18 in Food-Insecure Households (2023)';
+    const entries = Object.entries(DATA.children_provincial_2023)
+      .filter(([p]) => p !== 'Canada')
+      .map(([prov, value]) => ({prov, value}))
+      .sort((a,b) => b.value - a.value);
+    const natAvg = DATA.children_provincial_2023.Canada;
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: entries.map(e => e.prov),
+        datasets: [{
+          label: '% Children Food Insecure',
+          data: entries.map(e => e.value),
+          backgroundColor: entries.map(e => entityColors[e.prov] || '#6B4E2E'),
+          borderRadius: 3
+        },{
+          label: 'National Average (' + natAvg + '%)',
+          data: entries.map(() => natAvg),
+          type: 'line',
+          borderColor: '#A13F3F',
+          borderDash: [6,4],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: ctx => ctx.parsed.x + '%'}}
+        },
+        scales: {
+          x: {title: {display: true, text: '% of Children Under 18', font: {size: 11}}, beginAtZero: true, max: 45},
+          y: {ticks: {font: {size: 11}}}
+        }
+      }
+    });
+    buildChildrenTable();
+
+  } else if (currentView === 'severity') {
+    title.textContent = 'Food Insecurity by Severity Level (Canada, 2018\u20132023)';
+    tableTitle.textContent = 'Food Insecurity Severity Breakdown';
+    const sev = DATA.severity;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: sev.map(s => s.year),
+        datasets: [
+          {label: 'Marginal', data: sev.map(s => s.marginal), backgroundColor: 'rgba(196,154,108,0.7)', borderRadius: 2},
+          {label: 'Moderate', data: sev.map(s => s.moderate), backgroundColor: 'rgba(107,78,46,0.7)', borderRadius: 2},
+          {label: 'Severe', data: sev.map(s => s.severe), backgroundColor: 'rgba(139,46,46,0.85)', borderRadius: 2}
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '%'}}
+        },
+        scales: {
+          x: {stacked: true, title: {display: true, text: 'Year', font: {size: 11}}},
+          y: {stacked: true, title: {display: true, text: '% of Persons', font: {size: 11}}, beginAtZero: true}
+        }
+      }
+    });
+    buildSeverityTable();
+  }
+}
+
+// ---- TABLE BUILDERS ----
+
+function buildTimelineTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Year</th><th class="num">Rate (%)</th><th class="num">Change from 2011</th><th>Trend</th></tr></thead><tbody>';
+  const baseline = DATA.national_trend[0].value;
+  DATA.national_trend.forEach(d => {
+    const change = d.value - baseline;
+    const pct = ((d.value - baseline) / baseline * 100).toFixed(0);
+    const cls = change > 0 ? 'color:#A13F3F' : change < 0 ? 'color:#4A7A4A' : '';
+    const barW = Math.abs(change) / 15 * 100;
+    html += '<tr><td><strong>' + d.year + '</strong></td>';
+    html += '<td class="num">' + d.value + '%</td>';
+    html += '<td class="num" style="' + cls + '">' + (change > 0 ? '+' : '') + change.toFixed(1) + 'pp (' + (change > 0 ? '+' : '') + pct + '%)</td>';
+    html += '<td><div class="bar-cell"><div class="bar-fill" style="width:' + barW + '%;' + (change > 0 ? 'background:#A13F3F' : 'background:#4A7A4A') + '"></div></div></td>';
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function buildProvincialTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Province / Territory</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">Change (2018\u20132023)</th></tr></thead><tbody>';
+  const order = ['Nunavut','Northwest Territories','Alberta','Saskatchewan','Newfoundland & Labrador','New Brunswick','Nova Scotia','Ontario','Manitoba','Canada','Prince Edward Island','British Columbia','Yukon','Quebec'];
+  order.forEach(prov => {
+    const vals = DATA.provincial[prov];
+    if (!vals) return;
+    const byYear = {};
+    vals.forEach(v => byYear[v.year] = v.value);
+    const first = byYear[2018] || byYear[2017];
+    const last = byYear[2023];
+    const change = (first && last) ? (last - first).toFixed(1) : '\u2014';
+    const isCanada = prov === 'Canada';
+    html += '<tr' + (isCanada ? ' style="font-weight:700;background:var(--color-cream)"' : '') + '>';
+    html += '<td>' + prov + '</td>';
+    [2018,2019,2020,2021,2022,2023].forEach(y => {
+      const v = byYear[y];
+      html += '<td class="num">' + (v !== undefined ? v + '%' : '\u2014') + '</td>';
+    });
+    const changeNum = parseFloat(change);
+    const cls = changeNum > 0 ? 'color:#A13F3F' : changeNum < 0 ? 'color:#4A7A4A' : '';
+    html += '<td class="num" style="' + cls + '">' + (changeNum > 0 ? '+' : '') + change + (change !== '\u2014' ? 'pp' : '') + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function buildFoodBankTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Province</th><th class="num">Monthly Visits</th><th class="num">Child Visits</th><th class="num">% Children</th><th class="num">Change Since 2019</th></tr></thead><tbody>';
+  DATA.food_bank_visits.provincial_2025.forEach(p => {
+    const childPct = (p.children / p.visits * 100).toFixed(0);
+    const changeTxt = p.change_since_2019 !== null ? '+' + p.change_since_2019 + '%' : '\u2014';
+    html += '<tr><td><strong>' + p.province + '</strong></td>';
+    html += '<td class="num">' + p.visits.toLocaleString() + '</td>';
+    html += '<td class="num">' + p.children.toLocaleString() + '</td>';
+    html += '<td class="num">' + childPct + '%</td>';
+    html += '<td class="num" style="color:#A13F3F">' + changeTxt + '</td>';
+    html += '</tr>';
+  });
+  const totalVisits = DATA.food_bank_visits.provincial_2025.reduce((s,p) => s + p.visits, 0);
+  const totalChildren = DATA.food_bank_visits.provincial_2025.reduce((s,p) => s + p.children, 0);
+  html += '</tbody><tfoot><tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)">';
+  html += '<td>Total</td><td class="num">' + totalVisits.toLocaleString() + '</td>';
+  html += '<td class="num">' + totalChildren.toLocaleString() + '</td>';
+  html += '<td class="num">' + (totalChildren/totalVisits*100).toFixed(0) + '%</td>';
+  html += '<td class="num" style="color:#A13F3F">+99.4% since 2019</td>';
+  html += '</tr></tfoot>';
+  table.innerHTML = html;
+}
+
+function buildDemographicsTable() {
+  const table = document.getElementById('dataTable');
+  const demos = Object.values(DATA.demographics).sort((a,b) => b.value - a.value);
+  const natAvg = DATA.demographics['All persons'].value;
+  let html = '<thead><tr><th>Demographic Group</th><th class="num">% Food Insecure</th><th class="num">vs National Avg</th><th>Visual</th></tr></thead><tbody>';
+  demos.forEach(d => {
+    const diff = d.value - natAvg;
+    const cls = diff > 0 ? 'color:#A13F3F' : diff < 0 ? 'color:#4A7A4A' : '';
+    const barW = d.value / 50 * 100;
+    const isAll = d.label === 'All Canadians';
+    html += '<tr' + (isAll ? ' style="font-weight:700;background:var(--color-cream)"' : '') + '>';
+    html += '<td>' + d.label + '</td>';
+    html += '<td class="num">' + d.value + '%</td>';
+    html += '<td class="num" style="' + cls + '">' + (diff > 0 ? '+' : '') + diff.toFixed(1) + 'pp</td>';
+    html += '<td><div class="bar-cell"><div class="bar-fill" style="width:' + barW + '%;background:' + (diff > 0 ? '#A13F3F' : diff < 0 ? '#4A7A4A' : '#6B4E2E') + '"></div></div></td>';
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function buildChildrenTable() {
+  const table = document.getElementById('dataTable');
+  const entries = Object.entries(DATA.children_provincial_2023)
+    .sort((a,b) => b[1] - a[1]);
+  const natAvg = DATA.children_provincial_2023.Canada;
+  let html = '<thead><tr><th>Province</th><th class="num">% Children Food Insecure</th><th class="num">vs National Avg</th><th>Visual</th></tr></thead><tbody>';
+  entries.forEach(([prov, val]) => {
+    const diff = val - natAvg;
+    const cls = diff > 0 ? 'color:#A13F3F' : diff < 0 ? 'color:#4A7A4A' : '';
+    const barW = val / 45 * 100;
+    const isCanada = prov === 'Canada';
+    html += '<tr' + (isCanada ? ' style="font-weight:700;background:var(--color-cream)"' : '') + '>';
+    html += '<td>' + prov + '</td>';
+    html += '<td class="num">' + val + '%</td>';
+    html += '<td class="num" style="' + cls + '">' + (diff > 0 ? '+' : '') + diff.toFixed(1) + 'pp</td>';
+    html += '<td><div class="bar-cell"><div class="bar-fill" style="width:' + barW + '%;background:' + (diff > 0 ? '#A13F3F' : diff < 0 ? '#4A7A4A' : '#6B4E2E') + '"></div></div></td>';
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function buildSeverityTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Year</th><th class="num">Marginal</th><th class="num">Moderate</th><th class="num">Severe</th><th class="num">Total</th></tr></thead><tbody>';
+  DATA.severity.forEach(s => {
+    const total = (s.marginal + s.moderate + s.severe).toFixed(1);
+    html += '<tr><td><strong>' + s.year + '</strong></td>';
+    html += '<td class="num">' + s.marginal + '%</td>';
+    html += '<td class="num">' + s.moderate + '%</td>';
+    html += '<td class="num" style="color:#A13F3F">' + s.severe + '%</td>';
+    html += '<td class="num" style="font-weight:700">' + total + '%</td>';
+    html += '</tr>';
+  });
+  // Change row
+  const first = DATA.severity[0];
+  const last = DATA.severity[DATA.severity.length-1];
+  html += '</tbody><tfoot><tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)">';
+  html += '<td>Change (' + first.year + '\u2013' + last.year + ')</td>';
+  html += '<td class="num" style="color:#A13F3F">+' + (last.marginal - first.marginal).toFixed(1) + 'pp</td>';
+  html += '<td class="num" style="color:#A13F3F">+' + (last.moderate - first.moderate).toFixed(1) + 'pp</td>';
+  html += '<td class="num" style="color:#A13F3F">+' + (last.severe - first.severe).toFixed(1) + 'pp</td>';
+  html += '<td class="num" style="color:#A13F3F">+' + ((last.marginal+last.moderate+last.severe) - (first.marginal+first.moderate+first.severe)).toFixed(1) + 'pp</td>';
+  html += '</tr></tfoot>';
+  table.innerHTML = html;
+}
+
+function copyTable() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push(td.textContent.trim()));
+    rows.push(cells.join('\t'));
+  });
+  navigator.clipboard.writeText(rows.join('\n')).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push('"' + td.textContent.trim().replace(/"/g,'""') + '"'));
+    rows.push(cells.join(','));
+  });
+  const csv = rows.join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'food_insecurity_canada.csv';
+  a.click();
+}
+
+// Initialize
+updateChart();
+</script>
+
+</body>
+</html>
