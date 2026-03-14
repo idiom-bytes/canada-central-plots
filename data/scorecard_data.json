@@ -7,16 +7,6 @@
       "invert": true,
       "canada": -872.71,
       "provinces": {
-        "Ontario": {
-          "value": -67.04,
-          "grade": "C",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": -570.75,
-          "grade": "B",
-          "trend": "down"
-        },
         "British Columbia": {
           "value": -1290.03,
           "grade": "A",
@@ -27,35 +17,45 @@
           "grade": "D",
           "trend": "up"
         },
-        "Manitoba": {
-          "value": -761.74,
-          "grade": "B",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": -197.32,
           "grade": "C",
           "trend": "up"
         },
-        "Nova Scotia": {
-          "value": 237.82,
-          "grade": "D",
-          "trend": "stable"
+        "Manitoba": {
+          "value": -761.74,
+          "grade": "B",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": -67.04,
+          "grade": "C",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": -570.75,
+          "grade": "B",
+          "trend": "down"
         },
         "New Brunswick": {
           "value": -114.98,
           "grade": "C",
           "trend": "down"
         },
-        "Newfoundland & Labrador": {
-          "value": -545.54,
-          "grade": "B",
-          "trend": "up"
+        "Nova Scotia": {
+          "value": 237.82,
+          "grade": "D",
+          "trend": "stable"
         },
         "Prince Edward Island": {
           "value": -875.96,
           "grade": "A",
           "trend": "down"
+        },
+        "Newfoundland & Labrador": {
+          "value": -545.54,
+          "grade": "B",
+          "trend": "up"
         }
       }
     },
@@ -66,16 +66,6 @@
       "invert": true,
       "canada": 33458.22,
       "provinces": {
-        "Ontario": {
-          "value": 26266.65,
-          "grade": "D",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 26071.13,
-          "grade": "C",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 15324.17,
           "grade": "B",
@@ -86,18 +76,23 @@
           "grade": "A",
           "trend": "down"
         },
-        "Manitoba": {
-          "value": 23355.6,
-          "grade": "C",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": 12336.63,
           "grade": "A",
           "trend": "stable"
         },
-        "Nova Scotia": {
-          "value": 19062.52,
+        "Manitoba": {
+          "value": 23355.6,
+          "grade": "C",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": 26266.65,
+          "grade": "D",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 26071.13,
           "grade": "C",
           "trend": "up"
         },
@@ -106,14 +101,19 @@
           "grade": "B",
           "trend": "down"
         },
-        "Newfoundland & Labrador": {
-          "value": 33532.7,
-          "grade": "D",
+        "Nova Scotia": {
+          "value": 19062.52,
+          "grade": "C",
           "trend": "up"
         },
         "Prince Edward Island": {
           "value": 16588.47,
           "grade": "B",
+          "trend": "up"
+        },
+        "Newfoundland & Labrador": {
+          "value": 33532.7,
+          "grade": "D",
           "trend": "up"
         }
       }
@@ -125,16 +125,6 @@
       "invert": false,
       "canada": 11685.87,
       "provinces": {
-        "Ontario": {
-          "value": 14478.73,
-          "grade": "D",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 19578.74,
-          "grade": "B",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 15446.5,
           "grade": "D",
@@ -145,19 +135,24 @@
           "grade": "C",
           "trend": "up"
         },
-        "Manitoba": {
-          "value": 15942.22,
-          "grade": "D",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": 19236.61,
           "grade": "B",
           "trend": "up"
         },
-        "Nova Scotia": {
-          "value": 17995.05,
-          "grade": "C",
+        "Manitoba": {
+          "value": 15942.22,
+          "grade": "D",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": 14478.73,
+          "grade": "D",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 19578.74,
+          "grade": "B",
           "trend": "up"
         },
         "New Brunswick": {
@@ -165,8 +160,8 @@
           "grade": "C",
           "trend": "up"
         },
-        "Newfoundland & Labrador": {
-          "value": 18544.82,
+        "Nova Scotia": {
+          "value": 17995.05,
           "grade": "C",
           "trend": "up"
         },
@@ -175,14 +170,19 @@
           "grade": "B",
           "trend": "up"
         },
-        "Northwest Territories": {
-          "value": 63699.67,
-          "grade": "A",
+        "Newfoundland & Labrador": {
+          "value": 18544.82,
+          "grade": "C",
           "trend": "up"
         },
         "Yukon": {
           "value": 43663.78,
           "grade": "B",
+          "trend": "up"
+        },
+        "Northwest Territories": {
+          "value": 63699.67,
+          "grade": "A",
           "trend": "up"
         },
         "Nunavut": {
@@ -199,16 +199,6 @@
       "invert": false,
       "canada": 59529,
       "provinces": {
-        "Ontario": {
-          "value": 59276,
-          "grade": "C",
-          "trend": "stable"
-        },
-        "Quebec": {
-          "value": 53812,
-          "grade": "C",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 60131,
           "grade": "B",
@@ -219,23 +209,38 @@
           "grade": "B",
           "trend": "stable"
         },
+        "Saskatchewan": {
+          "value": 70921,
+          "grade": "B",
+          "trend": "up"
+        },
         "Manitoba": {
           "value": 52480,
           "grade": "C",
           "trend": "stable"
         },
-        "Saskatchewan": {
-          "value": 70921,
-          "grade": "B",
+        "Ontario": {
+          "value": 59276,
+          "grade": "C",
+          "trend": "stable"
+        },
+        "Quebec": {
+          "value": 53812,
+          "grade": "C",
           "trend": "up"
+        },
+        "New Brunswick": {
+          "value": 46467,
+          "grade": "D",
+          "trend": "stable"
         },
         "Nova Scotia": {
           "value": 47451,
           "grade": "D",
           "trend": "up"
         },
-        "New Brunswick": {
-          "value": 46467,
+        "Prince Edward Island": {
+          "value": 47199,
           "grade": "D",
           "trend": "stable"
         },
@@ -244,19 +249,14 @@
           "grade": "C",
           "trend": "stable"
         },
-        "Prince Edward Island": {
-          "value": 47199,
-          "grade": "D",
+        "Yukon": {
+          "value": 69335,
+          "grade": "B",
           "trend": "stable"
         },
         "Northwest Territories": {
           "value": 92914,
           "grade": "A",
-          "trend": "stable"
-        },
-        "Yukon": {
-          "value": 69335,
-          "grade": "B",
           "trend": "stable"
         },
         "Nunavut": {
@@ -273,16 +273,6 @@
       "invert": false,
       "canada": 1152.0,
       "provinces": {
-        "Ontario": {
-          "value": 1184.4,
-          "grade": "B",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 1050.0,
-          "grade": "B",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 1200.0,
           "grade": "A",
@@ -293,19 +283,24 @@
           "grade": "A",
           "trend": "up"
         },
-        "Manitoba": {
-          "value": 1050.0,
-          "grade": "C",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": 1111.13,
           "grade": "B",
           "trend": "up"
         },
-        "Nova Scotia": {
-          "value": 1038.38,
-          "grade": "D",
+        "Manitoba": {
+          "value": 1050.0,
+          "grade": "B",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": 1184.4,
+          "grade": "B",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 1050.0,
+          "grade": "C",
           "trend": "up"
         },
         "New Brunswick": {
@@ -313,73 +308,137 @@
           "grade": "D",
           "trend": "up"
         },
-        "Newfoundland & Labrador": {
-          "value": 1050.0,
-          "grade": "C",
+        "Nova Scotia": {
+          "value": 1038.38,
+          "grade": "D",
           "trend": "up"
         },
         "Prince Edward Island": {
           "value": 1040.0,
           "grade": "C",
           "trend": "up"
+        },
+        "Newfoundland & Labrador": {
+          "value": 1050.0,
+          "grade": "C",
+          "trend": "up"
         }
       }
     },
     {
-      "name": "Employment Rate",
+      "name": "Private Employment Rate",
       "vertical": "economy",
       "unit": "per 1K",
       "invert": false,
-      "canada": 440.1,
+      "canada": 330.8,
       "provinces": {
-        "Ontario": {
-          "value": 437.9,
-          "grade": "B",
-          "trend": "stable"
-        },
-        "Quebec": {
-          "value": 456.5,
-          "grade": "A",
-          "trend": "stable"
-        },
         "British Columbia": {
-          "value": 437.8,
+          "value": 330.2,
           "grade": "B",
           "trend": "stable"
         },
         "Alberta": {
-          "value": 446.2,
-          "grade": "B",
-          "trend": "stable"
-        },
-        "Manitoba": {
-          "value": 434.9,
-          "grade": "C",
+          "value": 350.5,
+          "grade": "A",
           "trend": "stable"
         },
         "Saskatchewan": {
-          "value": 421.7,
+          "value": 285.1,
           "grade": "D",
           "trend": "stable"
         },
-        "Nova Scotia": {
-          "value": 428.7,
-          "grade": "C",
+        "Manitoba": {
+          "value": 310.8,
+          "grade": "B",
+          "trend": "stable"
+        },
+        "Ontario": {
+          "value": 338.3,
+          "grade": "A",
+          "trend": "stable"
+        },
+        "Quebec": {
+          "value": 332.5,
+          "grade": "B",
           "trend": "stable"
         },
         "New Brunswick": {
-          "value": 422.3,
+          "value": 291.7,
+          "grade": "C",
+          "trend": "stable"
+        },
+        "Nova Scotia": {
+          "value": 300.9,
+          "grade": "C",
+          "trend": "stable"
+        },
+        "Prince Edward Island": {
+          "value": 302.4,
           "grade": "C",
           "trend": "stable"
         },
         "Newfoundland & Labrador": {
-          "value": 413.2,
+          "value": 277.2,
           "grade": "D",
+          "trend": "stable"
+        }
+      }
+    },
+    {
+      "name": "Public Sector Share",
+      "vertical": "economy",
+      "unit": "%",
+      "invert": true,
+      "canada": 24.8,
+      "provinces": {
+        "British Columbia": {
+          "value": 24.6,
+          "grade": "B",
+          "trend": "stable"
+        },
+        "Alberta": {
+          "value": 21.5,
+          "grade": "A",
+          "trend": "up"
+        },
+        "Saskatchewan": {
+          "value": 32.4,
+          "grade": "C",
+          "trend": "stable"
+        },
+        "Manitoba": {
+          "value": 28.5,
+          "grade": "B",
+          "trend": "stable"
+        },
+        "Ontario": {
+          "value": 22.7,
+          "grade": "A",
+          "trend": "stable"
+        },
+        "Quebec": {
+          "value": 27.2,
+          "grade": "B",
+          "trend": "stable"
+        },
+        "New Brunswick": {
+          "value": 30.9,
+          "grade": "C",
+          "trend": "stable"
+        },
+        "Nova Scotia": {
+          "value": 29.8,
+          "grade": "C",
           "trend": "stable"
         },
         "Prince Edward Island": {
-          "value": 454.8,
-          "grade": "A",
+          "value": 33.5,
+          "grade": "D",
+          "trend": "stable"
+        },
+        "Newfoundland & Labrador": {
+          "value": 32.9,
+          "grade": "D",
           "trend": "stable"
         }
       }
@@ -391,16 +450,6 @@
       "invert": false,
       "canada": 62.2,
       "provinces": {
-        "Ontario": {
-          "value": 40.2,
-          "grade": "D",
-          "trend": "down"
-        },
-        "Quebec": {
-          "value": 66.1,
-          "grade": "C",
-          "trend": "down"
-        },
         "British Columbia": {
           "value": 77.6,
           "grade": "B",
@@ -411,14 +460,29 @@
           "grade": "A",
           "trend": "up"
         },
+        "Saskatchewan": {
+          "value": 48.5,
+          "grade": "C",
+          "trend": "up"
+        },
         "Manitoba": {
           "value": 52.3,
           "grade": "C",
           "trend": "down"
         },
-        "Saskatchewan": {
-          "value": 48.5,
+        "Ontario": {
+          "value": 40.2,
+          "grade": "D",
+          "trend": "down"
+        },
+        "Quebec": {
+          "value": 66.1,
           "grade": "C",
+          "trend": "down"
+        },
+        "New Brunswick": {
+          "value": 87.2,
+          "grade": "B",
           "trend": "up"
         },
         "Nova Scotia": {
@@ -426,19 +490,14 @@
           "grade": "B",
           "trend": "up"
         },
-        "New Brunswick": {
-          "value": 87.2,
-          "grade": "B",
+        "Prince Edward Island": {
+          "value": 96.8,
+          "grade": "A",
           "trend": "up"
         },
         "Newfoundland & Labrador": {
           "value": 28.5,
           "grade": "D",
-          "trend": "up"
-        },
-        "Prince Edward Island": {
-          "value": 96.8,
-          "grade": "A",
           "trend": "up"
         }
       }
@@ -450,16 +509,6 @@
       "invert": true,
       "canada": 121.5,
       "provinces": {
-        "Ontario": {
-          "value": 119.4,
-          "grade": "B",
-          "trend": "stable"
-        },
-        "Quebec": {
-          "value": 149.3,
-          "grade": "D",
-          "trend": "stable"
-        },
         "British Columbia": {
           "value": 124.3,
           "grade": "C",
@@ -470,19 +519,24 @@
           "grade": "B",
           "trend": "stable"
         },
-        "Manitoba": {
-          "value": 145.4,
-          "grade": "D",
-          "trend": "stable"
-        },
         "Saskatchewan": {
           "value": 109.9,
           "grade": "A",
           "trend": "stable"
         },
-        "Nova Scotia": {
-          "value": 127.5,
-          "grade": "C",
+        "Manitoba": {
+          "value": 145.4,
+          "grade": "D",
+          "trend": "stable"
+        },
+        "Ontario": {
+          "value": 119.4,
+          "grade": "B",
+          "trend": "stable"
+        },
+        "Quebec": {
+          "value": 149.3,
+          "grade": "D",
           "trend": "stable"
         },
         "New Brunswick": {
@@ -490,14 +544,19 @@
           "grade": "B",
           "trend": "stable"
         },
-        "Newfoundland & Labrador": {
-          "value": 109.8,
-          "grade": "A",
+        "Nova Scotia": {
+          "value": 127.5,
+          "grade": "C",
           "trend": "stable"
         },
         "Prince Edward Island": {
           "value": 123.7,
           "grade": "C",
+          "trend": "stable"
+        },
+        "Newfoundland & Labrador": {
+          "value": 109.8,
+          "grade": "A",
           "trend": "stable"
         }
       }
@@ -509,16 +568,6 @@
       "invert": false,
       "canada": 3.3,
       "provinces": {
-        "Ontario": {
-          "value": 3.3,
-          "grade": "B",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 3.1,
-          "grade": "B",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 4.0,
           "grade": "B",
@@ -529,19 +578,24 @@
           "grade": "A",
           "trend": "down"
         },
-        "Manitoba": {
-          "value": 2.8,
-          "grade": "C",
-          "trend": "down"
-        },
         "Saskatchewan": {
           "value": 3.0,
           "grade": "C",
           "trend": "down"
         },
-        "Nova Scotia": {
-          "value": 2.5,
-          "grade": "D",
+        "Manitoba": {
+          "value": 2.8,
+          "grade": "C",
+          "trend": "down"
+        },
+        "Ontario": {
+          "value": 3.3,
+          "grade": "B",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 3.1,
+          "grade": "B",
           "trend": "up"
         },
         "New Brunswick": {
@@ -549,15 +603,20 @@
           "grade": "C",
           "trend": "up"
         },
-        "Newfoundland & Labrador": {
-          "value": 1.6,
+        "Nova Scotia": {
+          "value": 2.5,
           "grade": "D",
-          "trend": "down"
+          "trend": "up"
         },
         "Prince Edward Island": {
           "value": 4.2,
           "grade": "A",
           "trend": "up"
+        },
+        "Newfoundland & Labrador": {
+          "value": 1.6,
+          "grade": "D",
+          "trend": "down"
         }
       }
     },
@@ -568,16 +627,6 @@
       "invert": true,
       "canada": 77.89,
       "provinces": {
-        "Ontario": {
-          "value": 60.69,
-          "grade": "A",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 63.01,
-          "grade": "A",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 92.98,
           "grade": "C",
@@ -588,45 +637,55 @@
           "grade": "C",
           "trend": "stable"
         },
-        "Manitoba": {
-          "value": 141.24,
-          "grade": "C",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": 153.85,
           "grade": "C",
           "trend": "up"
         },
-        "Nova Scotia": {
-          "value": 75.45,
-          "grade": "B",
-          "trend": "stable"
+        "Manitoba": {
+          "value": 141.24,
+          "grade": "C",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": 60.69,
+          "grade": "A",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 63.01,
+          "grade": "A",
+          "trend": "up"
         },
         "New Brunswick": {
           "value": 84.53,
           "grade": "B",
           "trend": "stable"
         },
-        "Newfoundland & Labrador": {
-          "value": 89.25,
+        "Nova Scotia": {
+          "value": 75.45,
           "grade": "B",
-          "trend": "up"
+          "trend": "stable"
         },
         "Prince Edward Island": {
           "value": 72.59,
           "grade": "B",
           "trend": "up"
         },
-        "Northwest Territories": {
-          "value": 526.92,
-          "grade": "D",
+        "Newfoundland & Labrador": {
+          "value": 89.25,
+          "grade": "B",
           "trend": "up"
         },
         "Yukon": {
           "value": 209.24,
           "grade": "D",
           "trend": "stable"
+        },
+        "Northwest Territories": {
+          "value": 526.92,
+          "grade": "D",
+          "trend": "up"
         },
         "Nunavut": {
           "value": 415.23,
@@ -642,16 +701,6 @@
       "invert": true,
       "canada": 99.87,
       "provinces": {
-        "Ontario": {
-          "value": 81.28,
-          "grade": "A",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 97.04,
-          "grade": "B",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 94.13,
           "grade": "B",
@@ -662,13 +711,28 @@
           "grade": "C",
           "trend": "stable"
         },
+        "Saskatchewan": {
+          "value": 198.53,
+          "grade": "C",
+          "trend": "up"
+        },
         "Manitoba": {
           "value": 213.83,
           "grade": "C",
           "trend": "up"
         },
-        "Saskatchewan": {
-          "value": 198.53,
+        "Ontario": {
+          "value": 81.28,
+          "grade": "A",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 97.04,
+          "grade": "B",
+          "trend": "up"
+        },
+        "New Brunswick": {
+          "value": 98.63,
           "grade": "C",
           "trend": "up"
         },
@@ -677,9 +741,9 @@
           "grade": "B",
           "trend": "stable"
         },
-        "New Brunswick": {
-          "value": 98.63,
-          "grade": "C",
+        "Prince Edward Island": {
+          "value": 79.67,
+          "grade": "A",
           "trend": "up"
         },
         "Newfoundland & Labrador": {
@@ -687,20 +751,15 @@
           "grade": "B",
           "trend": "up"
         },
-        "Prince Edward Island": {
-          "value": 79.67,
-          "grade": "A",
-          "trend": "up"
+        "Yukon": {
+          "value": 222.14,
+          "grade": "D",
+          "trend": "stable"
         },
         "Northwest Territories": {
           "value": 571.63,
           "grade": "D",
           "trend": "up"
-        },
-        "Yukon": {
-          "value": 222.14,
-          "grade": "D",
-          "trend": "stable"
         },
         "Nunavut": {
           "value": 649.11,
@@ -716,16 +775,6 @@
       "invert": true,
       "canada": 1.91,
       "provinces": {
-        "Ontario": {
-          "value": 1.75,
-          "grade": "B",
-          "trend": "stable"
-        },
-        "Quebec": {
-          "value": 1.07,
-          "grade": "B",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 1.63,
           "grade": "B",
@@ -736,29 +785,34 @@
           "grade": "C",
           "trend": "down"
         },
-        "Manitoba": {
-          "value": 6.29,
-          "grade": "D",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": 5.24,
           "grade": "C",
           "trend": "down"
         },
-        "Nova Scotia": {
-          "value": 2.32,
-          "grade": "C",
-          "trend": "down"
+        "Manitoba": {
+          "value": 6.29,
+          "grade": "D",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": 1.75,
+          "grade": "B",
+          "trend": "stable"
+        },
+        "Quebec": {
+          "value": 1.07,
+          "grade": "B",
+          "trend": "up"
         },
         "New Brunswick": {
           "value": 2.11,
           "grade": "C",
           "trend": "up"
         },
-        "Newfoundland & Labrador": {
-          "value": 0.73,
-          "grade": "A",
+        "Nova Scotia": {
+          "value": 2.32,
+          "grade": "C",
           "trend": "down"
         },
         "Prince Edward Island": {
@@ -766,15 +820,20 @@
           "grade": "B",
           "trend": "down"
         },
-        "Northwest Territories": {
-          "value": 13.41,
-          "grade": "D",
-          "trend": "up"
+        "Newfoundland & Labrador": {
+          "value": 0.73,
+          "grade": "A",
+          "trend": "down"
         },
         "Yukon": {
           "value": 0.0,
           "grade": "A",
           "trend": "stable"
+        },
+        "Northwest Territories": {
+          "value": 13.41,
+          "grade": "D",
+          "trend": "up"
         },
         "Nunavut": {
           "value": 9.72,
@@ -790,16 +849,6 @@
       "invert": false,
       "canada": 0.94,
       "provinces": {
-        "Ontario": {
-          "value": 0.7,
-          "grade": "C",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 0.7,
-          "grade": "D",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 0.47,
           "grade": "D",
@@ -810,13 +859,28 @@
           "grade": "A",
           "trend": "up"
         },
+        "Saskatchewan": {
+          "value": 1.53,
+          "grade": "B",
+          "trend": "up"
+        },
         "Manitoba": {
           "value": 1.18,
           "grade": "C",
           "trend": "up"
         },
-        "Saskatchewan": {
-          "value": 1.53,
+        "Ontario": {
+          "value": 0.7,
+          "grade": "C",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 0.7,
+          "grade": "D",
+          "trend": "up"
+        },
+        "New Brunswick": {
+          "value": 1.33,
           "grade": "B",
           "trend": "up"
         },
@@ -825,9 +889,9 @@
           "grade": "C",
           "trend": "up"
         },
-        "New Brunswick": {
-          "value": 1.33,
-          "grade": "B",
+        "Prince Edward Island": {
+          "value": 1.64,
+          "grade": "A",
           "trend": "up"
         },
         "Newfoundland & Labrador": {
@@ -835,18 +899,13 @@
           "grade": "D",
           "trend": "up"
         },
-        "Prince Edward Island": {
-          "value": 1.64,
-          "grade": "A",
+        "Yukon": {
+          "value": 1.44,
+          "grade": "B",
           "trend": "up"
         },
         "Northwest Territories": {
           "value": 1.53,
-          "grade": "B",
-          "trend": "up"
-        },
-        "Yukon": {
-          "value": 1.44,
           "grade": "B",
           "trend": "up"
         },
@@ -864,16 +923,6 @@
       "invert": false,
       "canada": 10.45,
       "provinces": {
-        "Ontario": {
-          "value": 11.72,
-          "grade": "B",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": 6.36,
-          "grade": "D",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 9.86,
           "grade": "D",
@@ -884,13 +933,28 @@
           "grade": "C",
           "trend": "up"
         },
+        "Saskatchewan": {
+          "value": 14.36,
+          "grade": "B",
+          "trend": "up"
+        },
         "Manitoba": {
           "value": 14.2,
           "grade": "B",
           "trend": "up"
         },
-        "Saskatchewan": {
-          "value": 14.36,
+        "Ontario": {
+          "value": 11.72,
+          "grade": "B",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": 6.36,
+          "grade": "D",
+          "trend": "up"
+        },
+        "New Brunswick": {
+          "value": 14.41,
           "grade": "B",
           "trend": "up"
         },
@@ -899,9 +963,9 @@
           "grade": "C",
           "trend": "up"
         },
-        "New Brunswick": {
-          "value": 14.41,
-          "grade": "B",
+        "Prince Edward Island": {
+          "value": 15.56,
+          "grade": "A",
           "trend": "up"
         },
         "Newfoundland & Labrador": {
@@ -909,19 +973,14 @@
           "grade": "C",
           "trend": "up"
         },
-        "Prince Edward Island": {
-          "value": 15.56,
+        "Yukon": {
+          "value": 17.11,
           "grade": "A",
           "trend": "up"
         },
         "Northwest Territories": {
           "value": 9.92,
           "grade": "C",
-          "trend": "up"
-        },
-        "Yukon": {
-          "value": 17.11,
-          "grade": "A",
           "trend": "up"
         },
         "Nunavut": {
@@ -938,16 +997,6 @@
       "invert": false,
       "canada": null,
       "provinces": {
-        "Ontario": {
-          "value": -0.77,
-          "grade": "C",
-          "trend": "up"
-        },
-        "Quebec": {
-          "value": -0.66,
-          "grade": "C",
-          "trend": "up"
-        },
         "British Columbia": {
           "value": 0.34,
           "grade": "B",
@@ -958,28 +1007,33 @@
           "grade": "A",
           "trend": "up"
         },
-        "Manitoba": {
-          "value": -1.87,
-          "grade": "C",
-          "trend": "up"
-        },
         "Saskatchewan": {
           "value": -1.9,
           "grade": "C",
           "trend": "up"
         },
-        "Nova Scotia": {
-          "value": 2.24,
-          "grade": "B",
-          "trend": "down"
+        "Manitoba": {
+          "value": -1.87,
+          "grade": "C",
+          "trend": "up"
+        },
+        "Ontario": {
+          "value": -0.77,
+          "grade": "C",
+          "trend": "up"
+        },
+        "Quebec": {
+          "value": -0.66,
+          "grade": "C",
+          "trend": "up"
         },
         "New Brunswick": {
           "value": -0.33,
           "grade": "B",
           "trend": "down"
         },
-        "Newfoundland & Labrador": {
-          "value": 0.1,
+        "Nova Scotia": {
+          "value": 2.24,
           "grade": "B",
           "trend": "down"
         },
@@ -988,15 +1042,20 @@
           "grade": "A",
           "trend": "down"
         },
-        "Northwest Territories": {
-          "value": -5.16,
-          "grade": "D",
-          "trend": "up"
+        "Newfoundland & Labrador": {
+          "value": 0.1,
+          "grade": "B",
+          "trend": "down"
         },
         "Yukon": {
           "value": -5.07,
           "grade": "D",
           "trend": "down"
+        },
+        "Northwest Territories": {
+          "value": -5.16,
+          "grade": "D",
+          "trend": "up"
         },
         "Nunavut": {
           "value": -4.92,
@@ -1007,33 +1066,33 @@
     }
   ],
   "composites": {
-    "Ontario": 2.47,
-    "Quebec": 2.47,
-    "British Columbia": 2.6,
-    "Alberta": 2.93,
-    "Manitoba": 1.93,
-    "Saskatchewan": 2.53,
+    "British Columbia": 2.62,
+    "Alberta": 3.06,
+    "Saskatchewan": 2.5,
+    "Manitoba": 2.12,
+    "Ontario": 2.62,
+    "Quebec": 2.38,
+    "New Brunswick": 2.31,
     "Nova Scotia": 2.0,
-    "New Brunswick": 2.33,
-    "Newfoundland & Labrador": 2.2,
-    "Prince Edward Island": 3.27,
-    "Northwest Territories": 2.12,
+    "Prince Edward Island": 3.0,
+    "Newfoundland & Labrador": 2.12,
     "Yukon": 2.5,
+    "Northwest Territories": 2.12,
     "Nunavut": 1.88
   },
   "provinces": [
-    "Ontario",
-    "Quebec",
     "British Columbia",
     "Alberta",
-    "Manitoba",
     "Saskatchewan",
-    "Nova Scotia",
+    "Manitoba",
+    "Ontario",
+    "Quebec",
     "New Brunswick",
-    "Newfoundland & Labrador",
+    "Nova Scotia",
     "Prince Edward Island",
-    "Northwest Territories",
+    "Newfoundland & Labrador",
     "Yukon",
+    "Northwest Territories",
     "Nunavut"
   ]
 }

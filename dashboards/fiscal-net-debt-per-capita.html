@@ -41,8 +41,8 @@
     @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
     .page-subtitle a{color:inherit}
     .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
-    .entities{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
-    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .entities{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;align-items:center}
+    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
     .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s, background .15s}
     @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
     .chip.on{opacity:1}
@@ -160,10 +160,10 @@
   };
 
   const entityOrder = [
-    'Canada', 'Ontario', 'Quebec', 'British Columbia',
-    'Alberta', 'Manitoba', 'Saskatchewan', 'Nova Scotia',
-    'New Brunswick', 'Newfoundland & Labrador', 'Prince Edward Island', 'Northwest Territories',
-    'Yukon', 'Nunavut'
+    'Canada', 'Yukon', 'Northwest Territories', 'Nunavut',
+    'British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba',
+    'Ontario', 'Quebec', 'New Brunswick', 'Nova Scotia',
+    'Prince Edward Island', 'Newfoundland & Labrador'
   ];
 
   function init() {
@@ -241,11 +241,7 @@
     const labels = pairs.map(d => d.year);
     const values = pairs.map(d => d.value);
 
-    const maxAbs = Math.max(...values.map(Math.abs));
-    const useMillions = maxAbs < 2;
-    const unit = useMillions ? 'Millions' : 'Billions';
-    const unitShort = useMillions ? 'M' : 'B';
-    const displayValues = useMillions ? values.map(v => +(v * 1000).toFixed(0)) : values;
+    const displayValues = values.map(v => Math.round(v));
 
     if (chart) chart.destroy();
 
@@ -273,7 +269,7 @@
           legend: { display: false },
           title: {
             display: true,
-            text: selectedEntity + ' — Net Debt ($ ' + unit + ' CAD)',
+            text: selectedEntity + ' — Net Debt per Capita ($)',
             color: '#2D2D2D',
             font: { size: 13, weight: 600 }
           },
@@ -282,8 +278,8 @@
               label: ctx => {
                 const v = ctx.parsed.y;
                 if (v == null) return null;
-                if (v < 0) return ' Net assets: $' + Math.abs(v).toFixed(useMillions ? 0 : 1) + unitShort;
-                return ' Net debt: $' + v.toFixed(useMillions ? 0 : 1) + unitShort;
+                if (v < 0) return ' Net assets: $' + Math.abs(v).toLocaleString() + ' per person';
+                return ' Net debt: $' + v.toLocaleString() + ' per person';
               }
             }
           }
@@ -298,13 +294,13 @@
               font: { size: 10 }, color: '#8A8A8A',
               callback: v => {
                 if (v === 0) return '$0';
-                return v > 0 ? '$' + v + unitShort : '-$' + Math.abs(v) + unitShort;
+                return '$' + v.toLocaleString();
               }
             },
             grid: { color: 'rgba(0,0,0,0.06)' },
             title: {
               display: true,
-              text: '$ ' + unit + ' CAD',
+              text: '$ per Capita',
               font: { size: 11 },
               color: '#5A5A5A'
             }
@@ -313,18 +309,18 @@
       }
     });
 
-    buildTable(labels, displayValues, useMillions, unitShort);
+    buildTable(labels, displayValues);
   }
 
-  function buildTable(labels, displayValues, useMillions, unitShort) {
+  function buildTable(labels, displayValues) {
     document.getElementById('tableTitle').textContent = selectedEntity + ' Historical Data';
     const table = document.getElementById('dataTable');
-    let html = '<thead><tr><th>Fiscal Year</th><th class="num">Net Debt ($' + unitShort + ')</th><th class="num">Type</th></tr></thead><tbody>';
+    let html = '<thead><tr><th>Fiscal Year</th><th class="num">Net Debt ($/person)</th><th class="num">Type</th></tr></thead><tbody>';
     for (let i = labels.length - 1; i >= 0; i--) {
       const v = displayValues[i];
       const cls = v >= 0 ? 'debt' : 'assets';
       const type = v >= 0 ? 'Net Debt' : 'Net Assets';
-      const fmt = useMillions ? '$' + Math.abs(v).toLocaleString() + 'M' : '$' + Math.abs(v).toFixed(1) + 'B';
+      const fmt = '$' + Math.abs(v).toLocaleString();
       html += '<tr><td>' + labels[i] + '</td><td class="num ' + cls + '">' + fmt + '</td><td class="num ' + cls + '">' + type + '</td></tr>';
     }
     html += '</tbody>';
@@ -363,6 +359,15 @@
   }
 
   init();
+</script>
+<script>/* dash-keyboard-nav */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    var side = e.key === 'ArrowLeft' ? '.dash-nav-left' : '.dash-nav-right';
+    var btn = document.querySelector(side + ' .dash-nav-btn:not(.disabled)');
+    if (btn) { e.preventDefault(); window.location.href = btn.href; }
+  }
+});
 </script>
 </body>
 </html>

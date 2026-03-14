@@ -156,10 +156,43 @@ def build_fiscal_per_capita(fiscal_file: str) -> dict:
     return {"years": years, "entities": entities}
 
 
+def build_nested_per_capita(filename: str) -> dict:
+    """Convert nested {entity: [{year, value}]} with values in millions to per-capita."""
+    raw = load_json(filename)
+    pop = load_json("demographics-population.json")
+    pop_lookup = {}
+    for entity, entries in pop.items():
+        for e in entries:
+            pop_lookup[(entity, e["year"])] = e["value"]
+
+    yl = nested_to_yearlist(raw)
+    years_int = [int(y) for y in yl["years"]]
+
+    entities = {}
+    for entity, vals in yl["entities"].items():
+        pc_vals = []
+        for i, y in enumerate(years_int):
+            v = vals[i]
+            p = pop_lookup.get((entity, y))
+            if v is not None and p and p > 0:
+                # Values are in millions of dollars
+                pc_vals.append(round(v * 1_000_000 / p, 2))
+            else:
+                pc_vals.append(None)
+        entities[entity] = pc_vals
+
+    return {"years": yl["years"], "entities": entities}
+
+
 def build_revenue_and_spending() -> dict:
-    """Combined revenue + spending + balance."""
+    """Combined revenue + spending + balance — all per capita."""
     rev_raw = load_json("fiscal-government-revenue.json")
     spend_raw = load_json("fiscal-government-spending.json")
+    pop = load_json("demographics-population.json")
+    pop_lookup = {}
+    for entity, entries in pop.items():
+        for e in entries:
+            pop_lookup[(entity, e["year"])] = e["value"]
 
     rev_yl = nested_to_yearlist(rev_raw)
     spend_yl = nested_to_yearlist(spend_raw)
@@ -174,10 +207,33 @@ def build_revenue_and_spending() -> dict:
             result[entity] = [vals[yr_idx[y]] if y in yr_idx and yr_idx[y] < len(vals) else None for y in merged_years]
         return result
 
-    revenue = reindex(rev_yl, years)
-    spending = reindex(spend_yl, years)
+    rev_raw_vals = reindex(rev_yl, years)
+    spend_raw_vals = reindex(spend_yl, years)
 
-    # Balance = revenue - spending (in millions)
+    # Convert to per capita (raw values are in millions)
+    def to_per_capita(raw_dict):
+        pc = {}
+        for entity, vals in raw_dict.items():
+            pc_vals = []
+            for i, y in enumerate(years):
+                v = vals[i]
+                try:
+                    yr_int = int(y)
+                except (ValueError, IndexError):
+                    pc_vals.append(None)
+                    continue
+                p = pop_lookup.get((entity, yr_int))
+                if v is not None and p and p > 0:
+                    pc_vals.append(round(v * 1_000_000 / p, 2))
+                else:
+                    pc_vals.append(None)
+            pc[entity] = pc_vals
+        return pc
+
+    revenue = to_per_capita(rev_raw_vals)
+    spending = to_per_capita(spend_raw_vals)
+
+    # Balance = revenue - spending (per capita $)
     balance = {}
     all_entities = set(list(revenue.keys()) + list(spending.keys()))
     for entity in all_entities:
@@ -186,7 +242,7 @@ def build_revenue_and_spending() -> dict:
         bv = []
         for r, s in zip(rv, sv):
             if r is not None and s is not None:
-                bv.append(round(r - s, 1))
+                bv.append(round(r - s, 2))
             else:
                 bv.append(None)
         balance[entity] = bv
@@ -282,8 +338,8 @@ DASHBOARD_BUILDERS = {
     # Fiscal
     "fiscal-deficit-per-capita.html": lambda: build_fiscal_per_capita("fiscal-deficit.json"),
     "fiscal-net-debt-per-capita.html": lambda: build_fiscal_per_capita("fiscal-net-debt.json"),
-    "fiscal-government-revenue.html": lambda: build_nested_as_yearlist("fiscal-government-revenue.json"),
-    "fiscal-government-spending.html": lambda: build_nested_as_yearlist("fiscal-government-spending.json"),
+    "fiscal-government-revenue.html": lambda: build_nested_per_capita("fiscal-government-revenue.json"),
+    "fiscal-government-spending.html": lambda: build_nested_per_capita("fiscal-government-spending.json"),
     "fiscal-revenue-and-spending.html": build_revenue_and_spending,
     # Housing
     "housing-new-price-index.html": lambda: build_nested_as_yearlist("housing-new-price-index.json"),

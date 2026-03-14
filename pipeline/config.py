@@ -26,25 +26,25 @@ PROVINCE_CANONICAL = {
 }
 
 PROVINCES = [
-    "Ontario",
-    "Quebec",
     "British Columbia",
     "Alberta",
-    "Manitoba",
     "Saskatchewan",
-    "Nova Scotia",
+    "Manitoba",
+    "Ontario",
+    "Quebec",
     "New Brunswick",
-    "Newfoundland & Labrador",
+    "Nova Scotia",
     "Prince Edward Island",
+    "Newfoundland & Labrador",
 ]
 
 TERRITORIES = [
-    "Northwest Territories",
     "Yukon",
+    "Northwest Territories",
     "Nunavut",
 ]
 
-# Canonical ordering: Canada first, then provinces (by population), then territories
+# Canonical ordering: Canada first, then provinces (west to east), then territories
 PROVINCES_ORDERED = ["Canada"] + PROVINCES + TERRITORIES
 
 # Legacy: fiscal data files historically used "Federal" for the national entity.

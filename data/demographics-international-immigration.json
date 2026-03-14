@@ -217,442 +217,6 @@
       "value": 435421
     }
   ],
-  "Ontario": [
-    {
-      "year": 1971,
-      "value": 62258
-    },
-    {
-      "year": 1972,
-      "value": 75267
-    },
-    {
-      "year": 1973,
-      "value": 120369
-    },
-    {
-      "year": 1974,
-      "value": 112876
-    },
-    {
-      "year": 1975,
-      "value": 85648
-    },
-    {
-      "year": 1976,
-      "value": 63267
-    },
-    {
-      "year": 1977,
-      "value": 49986
-    },
-    {
-      "year": 1978,
-      "value": 40768
-    },
-    {
-      "year": 1979,
-      "value": 64536
-    },
-    {
-      "year": 1980,
-      "value": 54648
-    },
-    {
-      "year": 1981,
-      "value": 57870
-    },
-    {
-      "year": 1982,
-      "value": 44951
-    },
-    {
-      "year": 1983,
-      "value": 40252
-    },
-    {
-      "year": 1984,
-      "value": 40442
-    },
-    {
-      "year": 1985,
-      "value": 43158
-    },
-    {
-      "year": 1986,
-      "value": 70252
-    },
-    {
-      "year": 1987,
-      "value": 85125
-    },
-    {
-      "year": 1988,
-      "value": 98070
-    },
-    {
-      "year": 1989,
-      "value": 108863
-    },
-    {
-      "year": 1990,
-      "value": 115213
-    },
-    {
-      "year": 1991,
-      "value": 129706
-    },
-    {
-      "year": 1992,
-      "value": 145962
-    },
-    {
-      "year": 1993,
-      "value": 120181
-    },
-    {
-      "year": 1994,
-      "value": 119730
-    },
-    {
-      "year": 1995,
-      "value": 115961
-    },
-    {
-      "year": 1996,
-      "value": 119401
-    },
-    {
-      "year": 1997,
-      "value": 106419
-    },
-    {
-      "year": 1998,
-      "value": 91899
-    },
-    {
-      "year": 1999,
-      "value": 116744
-    },
-    {
-      "year": 2000,
-      "value": 149998
-    },
-    {
-      "year": 2001,
-      "value": 152823
-    },
-    {
-      "year": 2002,
-      "value": 109814
-    },
-    {
-      "year": 2003,
-      "value": 127944
-    },
-    {
-      "year": 2004,
-      "value": 129795
-    },
-    {
-      "year": 2005,
-      "value": 133052
-    },
-    {
-      "year": 2006,
-      "value": 115439
-    },
-    {
-      "year": 2007,
-      "value": 115050
-    },
-    {
-      "year": 2008,
-      "value": 105425
-    },
-    {
-      "year": 2009,
-      "value": 116586
-    },
-    {
-      "year": 2010,
-      "value": 105019
-    },
-    {
-      "year": 2011,
-      "value": 101259
-    },
-    {
-      "year": 2012,
-      "value": 105878
-    },
-    {
-      "year": 2013,
-      "value": 101929
-    },
-    {
-      "year": 2014,
-      "value": 89674
-    },
-    {
-      "year": 2015,
-      "value": 120132
-    },
-    {
-      "year": 2016,
-      "value": 98520
-    },
-    {
-      "year": 2017,
-      "value": 132511
-    },
-    {
-      "year": 2018,
-      "value": 139108
-    },
-    {
-      "year": 2019,
-      "value": 127105
-    },
-    {
-      "year": 2020,
-      "value": 107908
-    },
-    {
-      "year": 2021,
-      "value": 227424
-    },
-    {
-      "year": 2022,
-      "value": 199332
-    },
-    {
-      "year": 2023,
-      "value": 197689
-    },
-    {
-      "year": 2024,
-      "value": 190576
-    }
-  ],
-  "Quebec": [
-    {
-      "year": 1971,
-      "value": 17690
-    },
-    {
-      "year": 1972,
-      "value": 19861
-    },
-    {
-      "year": 1973,
-      "value": 33213
-    },
-    {
-      "year": 1974,
-      "value": 31339
-    },
-    {
-      "year": 1975,
-      "value": 28363
-    },
-    {
-      "year": 1976,
-      "value": 25034
-    },
-    {
-      "year": 1977,
-      "value": 16169
-    },
-    {
-      "year": 1978,
-      "value": 14833
-    },
-    {
-      "year": 1979,
-      "value": 24385
-    },
-    {
-      "year": 1980,
-      "value": 18787
-    },
-    {
-      "year": 1981,
-      "value": 24052
-    },
-    {
-      "year": 1982,
-      "value": 18700
-    },
-    {
-      "year": 1983,
-      "value": 15268
-    },
-    {
-      "year": 1984,
-      "value": 13568
-    },
-    {
-      "year": 1985,
-      "value": 15944
-    },
-    {
-      "year": 1986,
-      "value": 25452
-    },
-    {
-      "year": 1987,
-      "value": 24620
-    },
-    {
-      "year": 1988,
-      "value": 29493
-    },
-    {
-      "year": 1989,
-      "value": 37763
-    },
-    {
-      "year": 1990,
-      "value": 45791
-    },
-    {
-      "year": 1991,
-      "value": 51600
-    },
-    {
-      "year": 1992,
-      "value": 48357
-    },
-    {
-      "year": 1993,
-      "value": 35964
-    },
-    {
-      "year": 1994,
-      "value": 26768
-    },
-    {
-      "year": 1995,
-      "value": 29490
-    },
-    {
-      "year": 1996,
-      "value": 27991
-    },
-    {
-      "year": 1997,
-      "value": 27242
-    },
-    {
-      "year": 1998,
-      "value": 27739
-    },
-    {
-      "year": 1999,
-      "value": 30250
-    },
-    {
-      "year": 2000,
-      "value": 36716
-    },
-    {
-      "year": 2001,
-      "value": 39114
-    },
-    {
-      "year": 2002,
-      "value": 34913
-    },
-    {
-      "year": 2003,
-      "value": 44561
-    },
-    {
-      "year": 2004,
-      "value": 43420
-    },
-    {
-      "year": 2005,
-      "value": 41999
-    },
-    {
-      "year": 2006,
-      "value": 45069
-    },
-    {
-      "year": 2007,
-      "value": 45865
-    },
-    {
-      "year": 2008,
-      "value": 46511
-    },
-    {
-      "year": 2009,
-      "value": 51531
-    },
-    {
-      "year": 2010,
-      "value": 53411
-    },
-    {
-      "year": 2011,
-      "value": 54215
-    },
-    {
-      "year": 2012,
-      "value": 55948
-    },
-    {
-      "year": 2013,
-      "value": 51641
-    },
-    {
-      "year": 2014,
-      "value": 45509
-    },
-    {
-      "year": 2015,
-      "value": 55408
-    },
-    {
-      "year": 2016,
-      "value": 53158
-    },
-    {
-      "year": 2017,
-      "value": 47908
-    },
-    {
-      "year": 2018,
-      "value": 44862
-    },
-    {
-      "year": 2019,
-      "value": 33301
-    },
-    {
-      "year": 2020,
-      "value": 33671
-    },
-    {
-      "year": 2021,
-      "value": 62805
-    },
-    {
-      "year": 2022,
-      "value": 64475
-    },
-    {
-      "year": 2023,
-      "value": 55455
-    },
-    {
-      "year": 2024,
-      "value": 57629
-    }
-  ],
   "British Columbia": [
     {
       "year": 1971,
@@ -1089,224 +653,6 @@
       "value": 58194
     }
   ],
-  "Manitoba": [
-    {
-      "year": 1971,
-      "value": 5086
-    },
-    {
-      "year": 1972,
-      "value": 5352
-    },
-    {
-      "year": 1973,
-      "value": 7769
-    },
-    {
-      "year": 1974,
-      "value": 7334
-    },
-    {
-      "year": 1975,
-      "value": 6489
-    },
-    {
-      "year": 1976,
-      "value": 5154
-    },
-    {
-      "year": 1977,
-      "value": 4426
-    },
-    {
-      "year": 1978,
-      "value": 3410
-    },
-    {
-      "year": 1979,
-      "value": 7207
-    },
-    {
-      "year": 1980,
-      "value": 6327
-    },
-    {
-      "year": 1981,
-      "value": 5165
-    },
-    {
-      "year": 1982,
-      "value": 4515
-    },
-    {
-      "year": 1983,
-      "value": 3958
-    },
-    {
-      "year": 1984,
-      "value": 3478
-    },
-    {
-      "year": 1985,
-      "value": 3906
-    },
-    {
-      "year": 1986,
-      "value": 4078
-    },
-    {
-      "year": 1987,
-      "value": 4836
-    },
-    {
-      "year": 1988,
-      "value": 5294
-    },
-    {
-      "year": 1989,
-      "value": 6766
-    },
-    {
-      "year": 1990,
-      "value": 6342
-    },
-    {
-      "year": 1991,
-      "value": 4792
-    },
-    {
-      "year": 1992,
-      "value": 5419
-    },
-    {
-      "year": 1993,
-      "value": 4525
-    },
-    {
-      "year": 1994,
-      "value": 3811
-    },
-    {
-      "year": 1995,
-      "value": 3666
-    },
-    {
-      "year": 1996,
-      "value": 4030
-    },
-    {
-      "year": 1997,
-      "value": 3093
-    },
-    {
-      "year": 1998,
-      "value": 3293
-    },
-    {
-      "year": 1999,
-      "value": 4207
-    },
-    {
-      "year": 2000,
-      "value": 4837
-    },
-    {
-      "year": 2001,
-      "value": 4825
-    },
-    {
-      "year": 2002,
-      "value": 4902
-    },
-    {
-      "year": 2003,
-      "value": 7418
-    },
-    {
-      "year": 2004,
-      "value": 7687
-    },
-    {
-      "year": 2005,
-      "value": 8881
-    },
-    {
-      "year": 2006,
-      "value": 10794
-    },
-    {
-      "year": 2007,
-      "value": 10739
-    },
-    {
-      "year": 2008,
-      "value": 12974
-    },
-    {
-      "year": 2009,
-      "value": 14122
-    },
-    {
-      "year": 2010,
-      "value": 15841
-    },
-    {
-      "year": 2011,
-      "value": 15101
-    },
-    {
-      "year": 2012,
-      "value": 12698
-    },
-    {
-      "year": 2013,
-      "value": 15462
-    },
-    {
-      "year": 2014,
-      "value": 14803
-    },
-    {
-      "year": 2015,
-      "value": 17450
-    },
-    {
-      "year": 2016,
-      "value": 15558
-    },
-    {
-      "year": 2017,
-      "value": 14172
-    },
-    {
-      "year": 2018,
-      "value": 15911
-    },
-    {
-      "year": 2019,
-      "value": 14736
-    },
-    {
-      "year": 2020,
-      "value": 10179
-    },
-    {
-      "year": 2021,
-      "value": 21343
-    },
-    {
-      "year": 2022,
-      "value": 25602
-    },
-    {
-      "year": 2023,
-      "value": 23589
-    },
-    {
-      "year": 2024,
-      "value": 21433
-    }
-  ],
   "Saskatchewan": [
     {
       "year": 1971,
@@ -1525,222 +871,658 @@
       "value": 18199
     }
   ],
-  "Nova Scotia": [
+  "Manitoba": [
     {
       "year": 1971,
-      "value": 1709
+      "value": 5086
     },
     {
       "year": 1972,
-      "value": 1923
+      "value": 5352
     },
     {
       "year": 1973,
-      "value": 3064
+      "value": 7769
     },
     {
       "year": 1974,
-      "value": 2342
+      "value": 7334
     },
     {
       "year": 1975,
-      "value": 2004
+      "value": 6489
     },
     {
       "year": 1976,
-      "value": 1854
+      "value": 5154
     },
     {
       "year": 1977,
-      "value": 1219
+      "value": 4426
     },
     {
       "year": 1978,
-      "value": 967
+      "value": 3410
     },
     {
       "year": 1979,
-      "value": 1885
+      "value": 7207
     },
     {
       "year": 1980,
-      "value": 1271
+      "value": 6327
     },
     {
       "year": 1981,
-      "value": 1470
+      "value": 5165
     },
     {
       "year": 1982,
-      "value": 937
+      "value": 4515
     },
     {
       "year": 1983,
-      "value": 939
+      "value": 3958
     },
     {
       "year": 1984,
-      "value": 1049
+      "value": 3478
     },
     {
       "year": 1985,
-      "value": 974
+      "value": 3906
     },
     {
       "year": 1986,
-      "value": 1170
+      "value": 4078
     },
     {
       "year": 1987,
-      "value": 1212
+      "value": 4836
     },
     {
       "year": 1988,
-      "value": 1452
+      "value": 5294
     },
     {
       "year": 1989,
-      "value": 1454
+      "value": 6766
     },
     {
       "year": 1990,
-      "value": 1542
+      "value": 6342
     },
     {
       "year": 1991,
-      "value": 1927
+      "value": 4792
     },
     {
       "year": 1992,
-      "value": 2599
+      "value": 5419
     },
     {
       "year": 1993,
-      "value": 3084
+      "value": 4525
     },
     {
       "year": 1994,
-      "value": 3726
+      "value": 3811
     },
     {
       "year": 1995,
-      "value": 3397
+      "value": 3666
     },
     {
       "year": 1996,
-      "value": 3111
+      "value": 4030
     },
     {
       "year": 1997,
-      "value": 2590
+      "value": 3093
     },
     {
       "year": 1998,
-      "value": 1624
+      "value": 3293
     },
     {
       "year": 1999,
-      "value": 1674
+      "value": 4207
     },
     {
       "year": 2000,
-      "value": 1747
+      "value": 4837
     },
     {
       "year": 2001,
-      "value": 1609
+      "value": 4825
     },
     {
       "year": 2002,
-      "value": 1257
+      "value": 4902
     },
     {
       "year": 2003,
-      "value": 1707
+      "value": 7418
     },
     {
       "year": 2004,
-      "value": 1711
+      "value": 7687
     },
     {
       "year": 2005,
-      "value": 2197
+      "value": 8881
     },
     {
       "year": 2006,
-      "value": 2722
+      "value": 10794
     },
     {
       "year": 2007,
-      "value": 2668
+      "value": 10739
     },
     {
       "year": 2008,
-      "value": 2446
+      "value": 12974
     },
     {
       "year": 2009,
-      "value": 2414
+      "value": 14122
     },
     {
       "year": 2010,
-      "value": 2286
+      "value": 15841
     },
     {
       "year": 2011,
-      "value": 2352
+      "value": 15101
     },
     {
       "year": 2012,
-      "value": 2241
+      "value": 12698
     },
     {
       "year": 2013,
-      "value": 2779
+      "value": 15462
     },
     {
       "year": 2014,
-      "value": 2687
+      "value": 14803
     },
     {
       "year": 2015,
-      "value": 5482
+      "value": 17450
     },
     {
       "year": 2016,
-      "value": 4366
+      "value": 15558
     },
     {
       "year": 2017,
-      "value": 5147
+      "value": 14172
     },
     {
       "year": 2018,
-      "value": 6398
+      "value": 15911
     },
     {
       "year": 2019,
-      "value": 6249
+      "value": 14736
     },
     {
       "year": 2020,
-      "value": 3552
+      "value": 10179
     },
     {
       "year": 2021,
-      "value": 13838
+      "value": 21343
     },
     {
       "year": 2022,
-      "value": 12305
+      "value": 25602
     },
     {
       "year": 2023,
-      "value": 13765
+      "value": 23589
     },
     {
       "year": 2024,
-      "value": 10984
+      "value": 21433
+    }
+  ],
+  "Ontario": [
+    {
+      "year": 1971,
+      "value": 62258
+    },
+    {
+      "year": 1972,
+      "value": 75267
+    },
+    {
+      "year": 1973,
+      "value": 120369
+    },
+    {
+      "year": 1974,
+      "value": 112876
+    },
+    {
+      "year": 1975,
+      "value": 85648
+    },
+    {
+      "year": 1976,
+      "value": 63267
+    },
+    {
+      "year": 1977,
+      "value": 49986
+    },
+    {
+      "year": 1978,
+      "value": 40768
+    },
+    {
+      "year": 1979,
+      "value": 64536
+    },
+    {
+      "year": 1980,
+      "value": 54648
+    },
+    {
+      "year": 1981,
+      "value": 57870
+    },
+    {
+      "year": 1982,
+      "value": 44951
+    },
+    {
+      "year": 1983,
+      "value": 40252
+    },
+    {
+      "year": 1984,
+      "value": 40442
+    },
+    {
+      "year": 1985,
+      "value": 43158
+    },
+    {
+      "year": 1986,
+      "value": 70252
+    },
+    {
+      "year": 1987,
+      "value": 85125
+    },
+    {
+      "year": 1988,
+      "value": 98070
+    },
+    {
+      "year": 1989,
+      "value": 108863
+    },
+    {
+      "year": 1990,
+      "value": 115213
+    },
+    {
+      "year": 1991,
+      "value": 129706
+    },
+    {
+      "year": 1992,
+      "value": 145962
+    },
+    {
+      "year": 1993,
+      "value": 120181
+    },
+    {
+      "year": 1994,
+      "value": 119730
+    },
+    {
+      "year": 1995,
+      "value": 115961
+    },
+    {
+      "year": 1996,
+      "value": 119401
+    },
+    {
+      "year": 1997,
+      "value": 106419
+    },
+    {
+      "year": 1998,
+      "value": 91899
+    },
+    {
+      "year": 1999,
+      "value": 116744
+    },
+    {
+      "year": 2000,
+      "value": 149998
+    },
+    {
+      "year": 2001,
+      "value": 152823
+    },
+    {
+      "year": 2002,
+      "value": 109814
+    },
+    {
+      "year": 2003,
+      "value": 127944
+    },
+    {
+      "year": 2004,
+      "value": 129795
+    },
+    {
+      "year": 2005,
+      "value": 133052
+    },
+    {
+      "year": 2006,
+      "value": 115439
+    },
+    {
+      "year": 2007,
+      "value": 115050
+    },
+    {
+      "year": 2008,
+      "value": 105425
+    },
+    {
+      "year": 2009,
+      "value": 116586
+    },
+    {
+      "year": 2010,
+      "value": 105019
+    },
+    {
+      "year": 2011,
+      "value": 101259
+    },
+    {
+      "year": 2012,
+      "value": 105878
+    },
+    {
+      "year": 2013,
+      "value": 101929
+    },
+    {
+      "year": 2014,
+      "value": 89674
+    },
+    {
+      "year": 2015,
+      "value": 120132
+    },
+    {
+      "year": 2016,
+      "value": 98520
+    },
+    {
+      "year": 2017,
+      "value": 132511
+    },
+    {
+      "year": 2018,
+      "value": 139108
+    },
+    {
+      "year": 2019,
+      "value": 127105
+    },
+    {
+      "year": 2020,
+      "value": 107908
+    },
+    {
+      "year": 2021,
+      "value": 227424
+    },
+    {
+      "year": 2022,
+      "value": 199332
+    },
+    {
+      "year": 2023,
+      "value": 197689
+    },
+    {
+      "year": 2024,
+      "value": 190576
+    }
+  ],
+  "Quebec": [
+    {
+      "year": 1971,
+      "value": 17690
+    },
+    {
+      "year": 1972,
+      "value": 19861
+    },
+    {
+      "year": 1973,
+      "value": 33213
+    },
+    {
+      "year": 1974,
+      "value": 31339
+    },
+    {
+      "year": 1975,
+      "value": 28363
+    },
+    {
+      "year": 1976,
+      "value": 25034
+    },
+    {
+      "year": 1977,
+      "value": 16169
+    },
+    {
+      "year": 1978,
+      "value": 14833
+    },
+    {
+      "year": 1979,
+      "value": 24385
+    },
+    {
+      "year": 1980,
+      "value": 18787
+    },
+    {
+      "year": 1981,
+      "value": 24052
+    },
+    {
+      "year": 1982,
+      "value": 18700
+    },
+    {
+      "year": 1983,
+      "value": 15268
+    },
+    {
+      "year": 1984,
+      "value": 13568
+    },
+    {
+      "year": 1985,
+      "value": 15944
+    },
+    {
+      "year": 1986,
+      "value": 25452
+    },
+    {
+      "year": 1987,
+      "value": 24620
+    },
+    {
+      "year": 1988,
+      "value": 29493
+    },
+    {
+      "year": 1989,
+      "value": 37763
+    },
+    {
+      "year": 1990,
+      "value": 45791
+    },
+    {
+      "year": 1991,
+      "value": 51600
+    },
+    {
+      "year": 1992,
+      "value": 48357
+    },
+    {
+      "year": 1993,
+      "value": 35964
+    },
+    {
+      "year": 1994,
+      "value": 26768
+    },
+    {
+      "year": 1995,
+      "value": 29490
+    },
+    {
+      "year": 1996,
+      "value": 27991
+    },
+    {
+      "year": 1997,
+      "value": 27242
+    },
+    {
+      "year": 1998,
+      "value": 27739
+    },
+    {
+      "year": 1999,
+      "value": 30250
+    },
+    {
+      "year": 2000,
+      "value": 36716
+    },
+    {
+      "year": 2001,
+      "value": 39114
+    },
+    {
+      "year": 2002,
+      "value": 34913
+    },
+    {
+      "year": 2003,
+      "value": 44561
+    },
+    {
+      "year": 2004,
+      "value": 43420
+    },
+    {
+      "year": 2005,
+      "value": 41999
+    },
+    {
+      "year": 2006,
+      "value": 45069
+    },
+    {
+      "year": 2007,
+      "value": 45865
+    },
+    {
+      "year": 2008,
+      "value": 46511
+    },
+    {
+      "year": 2009,
+      "value": 51531
+    },
+    {
+      "year": 2010,
+      "value": 53411
+    },
+    {
+      "year": 2011,
+      "value": 54215
+    },
+    {
+      "year": 2012,
+      "value": 55948
+    },
+    {
+      "year": 2013,
+      "value": 51641
+    },
+    {
+      "year": 2014,
+      "value": 45509
+    },
+    {
+      "year": 2015,
+      "value": 55408
+    },
+    {
+      "year": 2016,
+      "value": 53158
+    },
+    {
+      "year": 2017,
+      "value": 47908
+    },
+    {
+      "year": 2018,
+      "value": 44862
+    },
+    {
+      "year": 2019,
+      "value": 33301
+    },
+    {
+      "year": 2020,
+      "value": 33671
+    },
+    {
+      "year": 2021,
+      "value": 62805
+    },
+    {
+      "year": 2022,
+      "value": 64475
+    },
+    {
+      "year": 2023,
+      "value": 55455
+    },
+    {
+      "year": 2024,
+      "value": 57629
     }
   ],
   "New Brunswick": [
@@ -1961,222 +1743,222 @@
       "value": 12532
     }
   ],
-  "Newfoundland & Labrador": [
+  "Nova Scotia": [
     {
       "year": 1971,
-      "value": 729
+      "value": 1709
     },
     {
       "year": 1972,
-      "value": 751
+      "value": 1923
     },
     {
       "year": 1973,
-      "value": 1128
+      "value": 3064
     },
     {
       "year": 1974,
-      "value": 995
+      "value": 2342
     },
     {
       "year": 1975,
-      "value": 1013
+      "value": 2004
     },
     {
       "year": 1976,
-      "value": 648
+      "value": 1854
     },
     {
       "year": 1977,
-      "value": 466
+      "value": 1219
     },
     {
       "year": 1978,
-      "value": 377
+      "value": 967
     },
     {
       "year": 1979,
-      "value": 681
+      "value": 1885
     },
     {
       "year": 1980,
-      "value": 483
+      "value": 1271
     },
     {
       "year": 1981,
-      "value": 424
+      "value": 1470
     },
     {
       "year": 1982,
-      "value": 356
+      "value": 937
     },
     {
       "year": 1983,
-      "value": 311
+      "value": 939
     },
     {
       "year": 1984,
-      "value": 300
+      "value": 1049
     },
     {
       "year": 1985,
-      "value": 298
+      "value": 974
     },
     {
       "year": 1986,
-      "value": 355
+      "value": 1170
     },
     {
       "year": 1987,
-      "value": 434
+      "value": 1212
     },
     {
       "year": 1988,
-      "value": 431
+      "value": 1452
     },
     {
       "year": 1989,
-      "value": 483
+      "value": 1454
     },
     {
       "year": 1990,
-      "value": 614
+      "value": 1542
     },
     {
       "year": 1991,
-      "value": 704
+      "value": 1927
     },
     {
       "year": 1992,
-      "value": 806
+      "value": 2599
     },
     {
       "year": 1993,
-      "value": 704
+      "value": 3084
     },
     {
       "year": 1994,
-      "value": 615
+      "value": 3726
     },
     {
       "year": 1995,
-      "value": 557
+      "value": 3397
     },
     {
       "year": 1996,
-      "value": 479
+      "value": 3111
     },
     {
       "year": 1997,
-      "value": 411
+      "value": 2590
     },
     {
       "year": 1998,
-      "value": 368
+      "value": 1624
     },
     {
       "year": 1999,
-      "value": 425
+      "value": 1674
     },
     {
       "year": 2000,
-      "value": 445
+      "value": 1747
     },
     {
       "year": 2001,
-      "value": 414
+      "value": 1609
     },
     {
       "year": 2002,
-      "value": 316
+      "value": 1257
     },
     {
       "year": 2003,
-      "value": 536
+      "value": 1707
     },
     {
       "year": 2004,
-      "value": 541
+      "value": 1711
     },
     {
       "year": 2005,
-      "value": 453
+      "value": 2197
     },
     {
       "year": 2006,
-      "value": 515
+      "value": 2722
     },
     {
       "year": 2007,
-      "value": 635
+      "value": 2668
     },
     {
       "year": 2008,
-      "value": 571
+      "value": 2446
     },
     {
       "year": 2009,
-      "value": 680
+      "value": 2414
     },
     {
       "year": 2010,
-      "value": 700
+      "value": 2286
     },
     {
       "year": 2011,
-      "value": 742
+      "value": 2352
     },
     {
       "year": 2012,
-      "value": 678
+      "value": 2241
     },
     {
       "year": 2013,
-      "value": 1025
+      "value": 2779
     },
     {
       "year": 2014,
-      "value": 847
+      "value": 2687
     },
     {
       "year": 2015,
-      "value": 1427
+      "value": 5482
     },
     {
       "year": 2016,
-      "value": 1027
+      "value": 4366
     },
     {
       "year": 2017,
-      "value": 1281
+      "value": 5147
     },
     {
       "year": 2018,
-      "value": 1649
+      "value": 6398
     },
     {
       "year": 2019,
-      "value": 1565
+      "value": 6249
     },
     {
       "year": 2020,
-      "value": 884
+      "value": 3552
     },
     {
       "year": 2021,
-      "value": 2841
+      "value": 13838
     },
     {
       "year": 2022,
-      "value": 5337
+      "value": 12305
     },
     {
       "year": 2023,
-      "value": 5333
+      "value": 13765
     },
     {
       "year": 2024,
-      "value": 5473
+      "value": 10984
     }
   ],
   "Prince Edward Island": [
@@ -2397,142 +2179,222 @@
       "value": 2843
     }
   ],
-  "Northwest Territories": [
+  "Newfoundland & Labrador": [
+    {
+      "year": 1971,
+      "value": 729
+    },
+    {
+      "year": 1972,
+      "value": 751
+    },
+    {
+      "year": 1973,
+      "value": 1128
+    },
+    {
+      "year": 1974,
+      "value": 995
+    },
+    {
+      "year": 1975,
+      "value": 1013
+    },
+    {
+      "year": 1976,
+      "value": 648
+    },
+    {
+      "year": 1977,
+      "value": 466
+    },
+    {
+      "year": 1978,
+      "value": 377
+    },
+    {
+      "year": 1979,
+      "value": 681
+    },
+    {
+      "year": 1980,
+      "value": 483
+    },
+    {
+      "year": 1981,
+      "value": 424
+    },
+    {
+      "year": 1982,
+      "value": 356
+    },
+    {
+      "year": 1983,
+      "value": 311
+    },
+    {
+      "year": 1984,
+      "value": 300
+    },
+    {
+      "year": 1985,
+      "value": 298
+    },
+    {
+      "year": 1986,
+      "value": 355
+    },
+    {
+      "year": 1987,
+      "value": 434
+    },
+    {
+      "year": 1988,
+      "value": 431
+    },
+    {
+      "year": 1989,
+      "value": 483
+    },
+    {
+      "year": 1990,
+      "value": 614
+    },
     {
       "year": 1991,
-      "value": 108
+      "value": 704
     },
     {
       "year": 1992,
-      "value": 121
+      "value": 806
     },
     {
       "year": 1993,
-      "value": 119
+      "value": 704
     },
     {
       "year": 1994,
-      "value": 127
+      "value": 615
     },
     {
       "year": 1995,
-      "value": 114
+      "value": 557
     },
     {
       "year": 1996,
-      "value": 79
+      "value": 479
     },
     {
       "year": 1997,
-      "value": 68
+      "value": 411
     },
     {
       "year": 1998,
-      "value": 46
+      "value": 368
     },
     {
       "year": 1999,
-      "value": 86
+      "value": 425
     },
     {
       "year": 2000,
-      "value": 74
+      "value": 445
     },
     {
       "year": 2001,
-      "value": 94
+      "value": 414
     },
     {
       "year": 2002,
-      "value": 59
+      "value": 316
     },
     {
       "year": 2003,
-      "value": 105
+      "value": 536
     },
     {
       "year": 2004,
-      "value": 79
+      "value": 541
     },
     {
       "year": 2005,
-      "value": 73
+      "value": 453
     },
     {
       "year": 2006,
-      "value": 98
+      "value": 515
     },
     {
       "year": 2007,
-      "value": 132
+      "value": 635
     },
     {
       "year": 2008,
-      "value": 109
+      "value": 571
     },
     {
       "year": 2009,
-      "value": 129
+      "value": 680
     },
     {
       "year": 2010,
-      "value": 90
+      "value": 700
     },
     {
       "year": 2011,
-      "value": 141
+      "value": 742
     },
     {
       "year": 2012,
-      "value": 152
+      "value": 678
     },
     {
       "year": 2013,
-      "value": 163
+      "value": 1025
     },
     {
       "year": 2014,
-      "value": 179
+      "value": 847
     },
     {
       "year": 2015,
-      "value": 220
+      "value": 1427
     },
     {
       "year": 2016,
-      "value": 225
+      "value": 1027
     },
     {
       "year": 2017,
-      "value": 255
+      "value": 1281
     },
     {
       "year": 2018,
-      "value": 227
+      "value": 1649
     },
     {
       "year": 2019,
-      "value": 161
+      "value": 1565
     },
     {
       "year": 2020,
-      "value": 144
+      "value": 884
     },
     {
       "year": 2021,
-      "value": 346
+      "value": 2841
     },
     {
       "year": 2022,
-      "value": 282
+      "value": 5337
     },
     {
       "year": 2023,
-      "value": 366
+      "value": 5333
     },
     {
       "year": 2024,
-      "value": 456
+      "value": 5473
     }
   ],
   "Yukon": [
@@ -2751,6 +2613,144 @@
     {
       "year": 2024,
       "value": 826
+    }
+  ],
+  "Northwest Territories": [
+    {
+      "year": 1991,
+      "value": 108
+    },
+    {
+      "year": 1992,
+      "value": 121
+    },
+    {
+      "year": 1993,
+      "value": 119
+    },
+    {
+      "year": 1994,
+      "value": 127
+    },
+    {
+      "year": 1995,
+      "value": 114
+    },
+    {
+      "year": 1996,
+      "value": 79
+    },
+    {
+      "year": 1997,
+      "value": 68
+    },
+    {
+      "year": 1998,
+      "value": 46
+    },
+    {
+      "year": 1999,
+      "value": 86
+    },
+    {
+      "year": 2000,
+      "value": 74
+    },
+    {
+      "year": 2001,
+      "value": 94
+    },
+    {
+      "year": 2002,
+      "value": 59
+    },
+    {
+      "year": 2003,
+      "value": 105
+    },
+    {
+      "year": 2004,
+      "value": 79
+    },
+    {
+      "year": 2005,
+      "value": 73
+    },
+    {
+      "year": 2006,
+      "value": 98
+    },
+    {
+      "year": 2007,
+      "value": 132
+    },
+    {
+      "year": 2008,
+      "value": 109
+    },
+    {
+      "year": 2009,
+      "value": 129
+    },
+    {
+      "year": 2010,
+      "value": 90
+    },
+    {
+      "year": 2011,
+      "value": 141
+    },
+    {
+      "year": 2012,
+      "value": 152
+    },
+    {
+      "year": 2013,
+      "value": 163
+    },
+    {
+      "year": 2014,
+      "value": 179
+    },
+    {
+      "year": 2015,
+      "value": 220
+    },
+    {
+      "year": 2016,
+      "value": 225
+    },
+    {
+      "year": 2017,
+      "value": 255
+    },
+    {
+      "year": 2018,
+      "value": 227
+    },
+    {
+      "year": 2019,
+      "value": 161
+    },
+    {
+      "year": 2020,
+      "value": 144
+    },
+    {
+      "year": 2021,
+      "value": 346
+    },
+    {
+      "year": 2022,
+      "value": 282
+    },
+    {
+      "year": 2023,
+      "value": 366
+    },
+    {
+      "year": 2024,
+      "value": 456
     }
   ],
   "Nunavut": [

@@ -58,7 +58,7 @@
     .trend-toggle input[type=checkbox]{width:16px;height:16px;accent-color:var(--color-teal);cursor:pointer;margin:0}
     /* Province chips */
     .provinces{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
-    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
     .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.3;transition:opacity .15s}
     @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
     .chip.on{opacity:1}
@@ -511,5 +511,14 @@
     // --- Init ---
     loadData();
   </script>
+<script>/* dash-keyboard-nav */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    var side = e.key === 'ArrowLeft' ? '.dash-nav-left' : '.dash-nav-right';
+    var btn = document.querySelector(side + ' .dash-nav-btn:not(.disabled)');
+    if (btn) { e.preventDefault(); window.location.href = btn.href; }
+  }
+});
+</script>
 </body>
 </html>

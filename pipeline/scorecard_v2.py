@@ -58,7 +58,9 @@ def get_timeseries_yearlist(data: dict, entity: str) -> list[tuple[int, float]]:
     return sorted(result, key=lambda x: x[0])
 
 
-def get_timeseries_employment(data: dict, entity: str, pop_data: dict) -> list[tuple[int, float]]:
+def get_timeseries_employment(data: dict, entity: str, pop_data: dict,
+                              mode: str = "total") -> list[tuple[int, float]]:
+    """mode: 'private' = private sector per 1K, 'public_share' = public % of total, 'total' = all."""
     pdata = data.get("provinces", {}).get(entity, {})
     dates = data.get("dates", [])
     priv = pdata.get("private", [])
@@ -69,22 +71,32 @@ def get_timeseries_employment(data: dict, entity: str, pop_data: dict) -> list[t
     pop_ts = get_timeseries_nested(pop_data, entity)
     pop_by_year = {y: v for y, v in pop_ts}
 
-    yearly = {}
+    yearly_priv = {}
+    yearly_pub = {}
     for i, d in enumerate(dates):
         yr = int(d[:4])
         pv = priv[i] if i < len(priv) and priv[i] is not None else 0
         pu = pub[i] if i < len(pub) and pub[i] is not None else 0
         if pv + pu > 0:
-            yearly.setdefault(yr, []).append(pv + pu)
+            yearly_priv.setdefault(yr, []).append(pv)
+            yearly_pub.setdefault(yr, []).append(pu)
 
     result = []
-    for yr in sorted(yearly):
-        vals = yearly[yr]
-        if len(vals) >= 6:
-            avg = sum(vals) / len(vals)
+    for yr in sorted(yearly_priv):
+        pv_vals = yearly_priv.get(yr, [])
+        pu_vals = yearly_pub.get(yr, [])
+        if len(pv_vals) >= 6:
+            avg_priv = sum(pv_vals) / len(pv_vals)
+            avg_pub = sum(pu_vals) / len(pu_vals)
             pop = pop_by_year.get(yr)
-            if pop and pop > 0:
-                rate = round(avg * 1000 / pop * 1000, 1)
+            if mode == "private" and pop and pop > 0:
+                rate = round(avg_priv * 1000 / pop * 1000, 1)
+                result.append((yr, rate))
+            elif mode == "public_share" and (avg_priv + avg_pub) > 0:
+                share = round(avg_pub / (avg_priv + avg_pub) * 100, 1)
+                result.append((yr, share))
+            elif mode == "total" and pop and pop > 0:
+                rate = round((avg_priv + avg_pub) * 1000 / pop * 1000, 1)
                 result.append((yr, rate))
     return result
 
@@ -101,7 +113,11 @@ def extract_timeseries(mdef: dict, raw: dict, entity: str,
     lookup = entity
 
     if fmt == "employment":
-        return get_timeseries_employment(employment_data, entity, pop_data)
+        return get_timeseries_employment(employment_data, entity, pop_data, mode="total")
+    elif fmt == "employment_private":
+        return get_timeseries_employment(employment_data, entity, pop_data, mode="private")
+    elif fmt == "employment_public_share":
+        return get_timeseries_employment(employment_data, entity, pop_data, mode="public_share")
     elif fmt == "nested":
         ts = get_timeseries_nested(raw, lookup)
     elif fmt == "yearlist":
@@ -300,9 +316,13 @@ METRIC_DEFS = [
      "file": "economy-median-weekly-wages.json", "unit": "$", "invert": False,
      "format": "nested", "canada_key": "Canada", "per_capita": None,
      "dashboard": "dashboards/economy-median-weekly-wages.html"},
-    {"id": "employment", "name": "Employment Rate", "vertical": "economy",
+    {"id": "priv_employment", "name": "Private Employment Rate", "vertical": "economy",
      "file": "economy-employment.json", "unit": "per 1K", "invert": False,
-     "format": "employment", "canada_key": "Canada", "per_capita": None,
+     "format": "employment_private", "canada_key": "Canada", "per_capita": None,
+     "dashboard": "dashboards/economy-employment-by-sector.html"},
+    {"id": "pub_share", "name": "Public Sector Share", "vertical": "economy",
+     "file": "economy-employment.json", "unit": "%", "invert": True,
+     "format": "employment_public_share", "canada_key": "Canada", "per_capita": None,
      "dashboard": "dashboards/economy-employment-by-sector.html"},
     {"id": "starts", "name": "Housing Starts per 10K", "vertical": "housing",
      "file": "housing-starts.json", "unit": "starts", "invert": False,

@@ -189,20 +189,9 @@
 </nav>
 
   <div class="hero">
-    <h1>Canada Scorecard</h1>
+    <h1>National Scorecard</h1>
     <p>A comprehensive report card for every province and territory, graded across 15 metrics spanning fiscal health, economic strength, housing, crime, and demographics. Grades blend peer ranking, historical trajectory, and national context — so a province isn't just measured against others, but against its own track record and the health of Canada as a whole. Use the timeline to explore how grades have shifted from 2000 to today.</p>
   </div>
-
-  <section class="timeline-section">
-    <div class="timeline-card">
-      <div class="timeline-header">
-        <span class="timeline-label">Viewing Year</span>
-        <span class="timeline-year" id="yearDisplay"></span>
-      </div>
-      <input type="range" class="timeline-range" id="yearSlider">
-      <div class="timeline-ticks" id="yearTicks"></div>
-    </div>
-  </section>
 
   <section class="controls">
     <h3>Grading Mode</h3>
@@ -230,6 +219,17 @@
     <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-c-bg);color:var(--grade-c)">C</div> Below avg (6-8)</div>
     <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-d-bg);color:var(--grade-d)">D</div> Bottom tier (9-10)</div>
   </div>
+
+  <section class="timeline-section">
+    <div class="timeline-card">
+      <div class="timeline-header">
+        <span class="timeline-label">Viewing Year</span>
+        <span class="timeline-year" id="yearDisplay"></span>
+      </div>
+      <input type="range" class="timeline-range" id="yearSlider">
+      <div class="timeline-ticks" id="yearTicks"></div>
+    </div>
+  </section>
 
   <section class="heatmap-section">
     <div class="heatmap-section-header">
@@ -467,7 +467,7 @@ function buildRankings() {
   if (startIdx + 3 > n) startIdx = Math.max(0, n - 3);
 
   // Left arrow — shift window left
-  html += `<button class="carousel-arrow${startIdx>0?'':' disabled'}" onclick="selectRank(${startIdx-1})">\u2190</button>`;
+  html += `<button class="carousel-arrow${startIdx>0?'':' disabled'}" onclick="shiftWindow(${startIdx-1})">\u2190</button>`;
 
   // 3 cards side by side, all same size
   for (let i = startIdx; i < startIdx + 3 && i < n; i++) {
@@ -476,12 +476,29 @@ function buildRankings() {
   }
 
   // Right arrow — shift window right
-  html += `<button class="carousel-arrow${startIdx+3<n?'':' disabled'}" onclick="selectRank(${startIdx+3})">\u2192</button>`;
+  html += `<button class="carousel-arrow${startIdx+3<n?'':' disabled'}" onclick="shiftWindow(${startIdx+3})">\u2192</button>`;
 
   html += '</div>';
   container.innerHTML = html;
 }
 
+// Shift the 3-card window without changing focus
+function shiftWindow(idx) {
+  if (idx < 0 || idx >= rankedCache.length) return;
+  selectedRankIdx = idx;
+  // If focus is no longer visible, move it to stay in view
+  const n = rankedCache.length;
+  let startIdx = idx;
+  if (startIdx + 3 > n) startIdx = Math.max(0, n - 3);
+  if (focusedRankIdx < startIdx || focusedRankIdx >= startIdx + 3) {
+    focusedRankIdx = startIdx;
+    highlightedProv = rankedCache[startIdx].prov;
+  }
+  buildRankings();
+  buildHeatmap();
+}
+
+// Jump to a province: move window so it's visible AND focus it
 function selectRank(idx) {
   if (idx < 0 || idx >= rankedCache.length) return;
   selectedRankIdx = idx;
@@ -491,6 +508,7 @@ function selectRank(idx) {
   buildHeatmap();
 }
 
+// Click a visible card: just move the glow, don't shift
 function focusCard(prov) {
   const idx = rankedCache.findIndex(r => r.prov === prov);
   if (idx < 0) return;
@@ -623,10 +641,39 @@ function toggleHighlight(prov) {
 
 function render() { buildRankings(); buildHeatmap(); }
 
-// Keyboard nav for carousel
+// Keyboard nav for carousel — move glow first, shift window only at edges
 document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowLeft') { selectRank(selectedRankIdx - 1); e.preventDefault(); }
-  else if (e.key === 'ArrowRight') { selectRank(selectedRankIdx + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    if (focusedRankIdx <= 0) return;
+    const n = rankedCache.length;
+    let winStart = selectedRankIdx;
+    if (winStart + 3 > n) winStart = Math.max(0, n - 3);
+    const newFocus = focusedRankIdx - 1;
+    if (newFocus < winStart) {
+      // Glow hit left edge — shift window left
+      selectedRankIdx = newFocus;
+    }
+    focusedRankIdx = newFocus;
+    highlightedProv = rankedCache[newFocus].prov;
+    buildRankings();
+    buildHeatmap();
+  } else if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    const n = rankedCache.length;
+    if (focusedRankIdx >= n - 1) return;
+    let winStart = selectedRankIdx;
+    if (winStart + 3 > n) winStart = Math.max(0, n - 3);
+    const newFocus = focusedRankIdx + 1;
+    if (newFocus >= winStart + 3) {
+      // Glow hit right edge — shift window right
+      selectedRankIdx = newFocus - 2;
+    }
+    focusedRankIdx = newFocus;
+    highlightedProv = rankedCache[newFocus].prov;
+    buildRankings();
+    buildHeatmap();
+  }
 });
 
 // Cross-card metric hover — highlight same metric row across all 3 cards
