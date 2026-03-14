@@ -144,14 +144,20 @@
         <button class="view-btn on" onclick="setView('timeline')">Timeline</button>
         <button class="view-btn" onclick="setView('provincial')">By Province</button>
         <button class="view-btn" onclick="setView('foodbanks')">Food Bank Visits</button>
-        <button class="view-btn" onclick="setView('demographics')">Who's Hungry</button>
+        <button class="view-btn" onclick="setView('demographics')">Demographics</button>
         <button class="view-btn" onclick="setView('children')">Children</button>
         <button class="view-btn" onclick="setView('severity')">Severity</button>
       </div>
 
       <!-- Chart -->
       <div class="chart-card">
-        <h3 id="chartTitle">Food Insecurity Rate in Canada (% of Persons), 2011&ndash;2023</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+          <h3 id="chartTitle" style="margin:0">Food Insecurity Rate in Canada (% of Persons), 2011&ndash;2023</h3>
+          <div id="subToggle" style="display:none">
+            <button class="view-btn on" onclick="setSubMode('pct')" id="subPct">Percentage</button>
+            <button class="view-btn" onclick="setSubMode('total')" id="subTotal">Total</button>
+          </div>
+        </div>
         <div class="chart-wrap"><canvas id="chart"></canvas></div>
       </div>
 
@@ -184,14 +190,27 @@ const entityColors = {
 
 let chart = null;
 let currentView = 'timeline';
+let subMode = 'pct';
 
 function setView(v) {
   currentView = v;
-  document.querySelectorAll('.view-btn').forEach(b => {
+  subMode = 'pct';
+  document.querySelectorAll('.view-toggle > .view-btn').forEach(b => {
     const bv = b.textContent.toLowerCase().replace(/[^a-z]/g,'');
-    const map = {'timeline':'timeline','byprovince':'provincial','foodbankvisits':'foodbanks','whoshungry':'demographics','children':'children','severity':'severity'};
+    const map = {'timeline':'timeline','byprovince':'provincial','foodbankvisits':'foodbanks','demographics':'demographics','children':'children','severity':'severity'};
     b.classList.toggle('on', map[bv] === v);
   });
+  const sub = document.getElementById('subToggle');
+  sub.style.display = (v === 'children' || v === 'demographics') ? 'flex' : 'none';
+  document.getElementById('subPct').classList.add('on');
+  document.getElementById('subTotal').classList.remove('on');
+  updateChart();
+}
+
+function setSubMode(mode) {
+  subMode = mode;
+  document.getElementById('subPct').classList.toggle('on', mode === 'pct');
+  document.getElementById('subTotal').classList.toggle('on', mode === 'total');
   updateChart();
 }
 
@@ -335,12 +354,24 @@ function updateChart() {
     buildFoodBankTable();
 
   } else if (currentView === 'demographics') {
-    title.textContent = 'Food Insecurity Rate by Demographic Group (Canada, 2023)';
-    tableTitle.textContent = 'Food Insecurity by Demographic Group (2023)';
+    // Population estimates (thousands) for demographic groups, StatCan 2023
+    const demoPop = {
+      'All Canadians':40100,'Children (under 18)':7636,'Working age (18-64)':25800,'Seniors (65+)':7700,
+      'Black Canadians':1800,'Indigenous peoples':1900,'South Asian':2900,'Filipino':960,
+      'Latin American':700,'Arab':860,'Chinese':1800,'White / non-minority':27700,
+      'All visible minorities':10400,'Recent immigrants (<10 yrs)':3200,'Canadian-born':29500
+    };
+    const showTotal = subMode === 'total';
     const demos = Object.values(DATA.demographics)
       .filter(d => !['All Canadians'].includes(d.label))
-      .sort((a,b) => b.value - a.value);
+      .map(d => ({...d, total: demoPop[d.label] ? Math.round(demoPop[d.label] * 1000 * d.value / 100) : null}))
+      .sort((a,b) => showTotal ? (b.total||0) - (a.total||0) : b.value - a.value);
     const natAvg = DATA.demographics['All persons'].value;
+
+    title.textContent = showTotal
+      ? 'Estimated People Food Insecure by Demographic Group (Canada, 2023)'
+      : 'Food Insecurity Rate by Demographic Group (Canada, 2023)';
+    tableTitle.textContent = 'Food Insecurity by Demographic Group (2023)';
 
     const demoColors = {
       'Black Canadians':'#2D2D2D','Indigenous peoples':'#6B3838','Latin American':'#C49A6C',
@@ -355,8 +386,8 @@ function updateChart() {
       data: {
         labels: demos.map(d => d.label),
         datasets: [{
-          label: '% Food Insecure',
-          data: demos.map(d => d.value),
+          label: showTotal ? 'Est. People Affected' : '% Food Insecure',
+          data: demos.map(d => showTotal ? (d.total || 0) : d.value),
           backgroundColor: demos.map(d => demoColors[d.label] || '#6B4E2E'),
           borderRadius: 3
         },{
@@ -367,58 +398,8 @@ function updateChart() {
           borderDash: [6,4],
           borderWidth: 2,
           pointRadius: 0,
-          fill: false
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
-          tooltip: {callbacks: {label: ctx => ctx.parsed.x + '%'}}
-        },
-        scales: {
-          x: {title: {display: true, text: '% Food Insecure', font: {size: 11}}, beginAtZero: true, max: 55},
-          y: {ticks: {font: {size: 10}}}
-        }
-      }
-    });
-    buildDemographicsTable();
-
-  } else if (currentView === 'children') {
-    title.textContent = 'Child Food Insecurity Rate by Province (2023)';
-    tableTitle.textContent = 'Children Under 18 in Food-Insecure Households (2023)';
-    // StatCan 2023 population estimates for children under 18 (thousands)
-    const childPop = {
-      'Canada':7636,'Ontario':2794,'Quebec':1690,'British Columbia':919,'Alberta':958,
-      'Manitoba':321,'Saskatchewan':283,'Nova Scotia':176,'New Brunswick':138,
-      'Newfoundland & Labrador':82,'Prince Edward Island':32
-    };
-    const entries = Object.entries(DATA.children_provincial_2023)
-      .filter(([p]) => p !== 'Canada')
-      .map(([prov, value]) => ({prov, value, estChildren: childPop[prov] ? Math.round(childPop[prov] * 1000 * value / 100) : null}))
-      .sort((a,b) => b.value - a.value);
-    const natAvg = DATA.children_provincial_2023.Canada;
-    const natEstChildren = Math.round(childPop['Canada'] * 1000 * natAvg / 100);
-
-    chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: entries.map(e => e.prov),
-        datasets: [{
-          label: '% Children Food Insecure',
-          data: entries.map(e => e.value),
-          backgroundColor: entries.map(e => entityColors[e.prov] || '#6B4E2E'),
-          borderRadius: 3
-        },{
-          label: 'National Average (' + natAvg + '%)',
-          data: entries.map(() => natAvg),
-          type: 'line',
-          borderColor: '#A13F3F',
-          borderDash: [6,4],
-          borderWidth: 2,
-          pointRadius: 0,
-          fill: false
+          fill: false,
+          hidden: showTotal
         }]
       },
       options: {
@@ -428,15 +409,73 @@ function updateChart() {
           legend: {display: true, position: 'top', labels: {font: {size: 11}}},
           tooltip: {callbacks: {label: function(ctx) {
             if (ctx.datasetIndex === 1) return ctx.dataset.label;
-            const prov = entries[ctx.dataIndex].prov;
-            const est = entries[ctx.dataIndex].estChildren;
-            const line1 = ctx.parsed.x + '% of children food insecure';
-            if (est) return [line1, '\u2248 ' + est.toLocaleString() + ' children affected'];
-            return line1;
+            if (showTotal) return '~' + ctx.parsed.x.toLocaleString() + ' people';
+            return ctx.parsed.x + '%';
           }}}
         },
         scales: {
-          x: {title: {display: true, text: '% of Children Under 18', font: {size: 11}}, beginAtZero: true, max: 45},
+          x: {title: {display: true, text: showTotal ? 'Estimated People Affected' : '% Food Insecure', font: {size: 11}}, beginAtZero: true,
+            ...(showTotal ? {ticks: {callback: v => v >= 1000000 ? (v/1000000).toFixed(1) + 'M' : v >= 1000 ? (v/1000).toFixed(0) + 'K' : v}} : {max: 55})},
+          y: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+    buildDemographicsTable();
+
+  } else if (currentView === 'children') {
+    const childPop = {
+      'Canada':7636,'Ontario':2794,'Quebec':1690,'British Columbia':919,'Alberta':958,
+      'Manitoba':321,'Saskatchewan':283,'Nova Scotia':176,'New Brunswick':138,
+      'Newfoundland & Labrador':82,'Prince Edward Island':32
+    };
+    const entries = Object.entries(DATA.children_provincial_2023)
+      .filter(([p]) => p !== 'Canada')
+      .map(([prov, value]) => ({prov, value, total: childPop[prov] ? Math.round(childPop[prov] * 1000 * value / 100) : null}))
+      .sort((a,b) => subMode === 'total' ? (b.total||0) - (a.total||0) : b.value - a.value);
+    const natAvg = DATA.children_provincial_2023.Canada;
+    const natTotal = Math.round(childPop['Canada'] * 1000 * natAvg / 100);
+    const showTotal = subMode === 'total';
+
+    title.textContent = showTotal
+      ? 'Estimated Children in Food-Insecure Households by Province (2023)'
+      : 'Child Food Insecurity Rate by Province (2023)';
+    tableTitle.textContent = 'Children Under 18 in Food-Insecure Households (2023)';
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: entries.map(e => e.prov),
+        datasets: [{
+          label: showTotal ? 'Est. Children Affected' : '% Children Food Insecure',
+          data: entries.map(e => showTotal ? (e.total || 0) : e.value),
+          backgroundColor: entries.map(e => entityColors[e.prov] || '#6B4E2E'),
+          borderRadius: 3
+        },{
+          label: showTotal ? 'National: ~' + natTotal.toLocaleString() + ' (avg per province)' : 'National Average (' + natAvg + '%)',
+          data: showTotal ? entries.map(() => natTotal / entries.length) : entries.map(() => natAvg),
+          type: 'line',
+          borderColor: '#A13F3F',
+          borderDash: [6,4],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+          hidden: showTotal
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: true, position: 'top', labels: {font: {size: 11}}},
+          tooltip: {callbacks: {label: function(ctx) {
+            if (ctx.datasetIndex === 1) return ctx.dataset.label;
+            if (showTotal) return '~' + ctx.parsed.x.toLocaleString() + ' children';
+            return ctx.parsed.x + '%';
+          }}}
+        },
+        scales: {
+          x: {title: {display: true, text: showTotal ? 'Estimated Children Affected' : '% of Children Under 18', font: {size: 11}}, beginAtZero: true,
+            ...(showTotal ? {ticks: {callback: v => v >= 1000 ? (v/1000).toFixed(0) + 'K' : v}} : {max: 45})},
           y: {ticks: {font: {size: 11}}}
         }
       }
@@ -548,19 +587,27 @@ function buildFoodBankTable() {
 
 function buildDemographicsTable() {
   const table = document.getElementById('dataTable');
-  const demos = Object.values(DATA.demographics).sort((a,b) => b.value - a.value);
+  const demoPop = {
+    'All Canadians':40100,'Children (under 18)':7636,'Working age (18-64)':25800,'Seniors (65+)':7700,
+    'Black Canadians':1800,'Indigenous peoples':1900,'South Asian':2900,'Filipino':960,
+    'Latin American':700,'Arab':860,'Chinese':1800,'White / non-minority':27700,
+    'All visible minorities':10400,'Recent immigrants (<10 yrs)':3200,'Canadian-born':29500
+  };
+  const showTotal = subMode === 'total';
+  const demos = Object.values(DATA.demographics)
+    .map(d => ({...d, total: demoPop[d.label] ? Math.round(demoPop[d.label] * 1000 * d.value / 100) : null}))
+    .sort((a,b) => showTotal ? (b.total||0) - (a.total||0) : b.value - a.value);
   const natAvg = DATA.demographics['All persons'].value;
-  let html = '<thead><tr><th>Demographic Group</th><th class="num">% Food Insecure</th><th class="num">vs National Avg</th><th>Visual</th></tr></thead><tbody>';
+  let html = '<thead><tr><th>Demographic Group</th><th class="num">% Food Insecure</th><th class="num">Est. People Affected</th><th class="num">vs National Avg</th></tr></thead><tbody>';
   demos.forEach(d => {
     const diff = d.value - natAvg;
     const cls = diff > 0 ? 'color:#A13F3F' : diff < 0 ? 'color:#4A7A4A' : '';
-    const barW = d.value / 50 * 100;
     const isAll = d.label === 'All Canadians';
     html += '<tr' + (isAll ? ' style="font-weight:700;background:var(--color-cream)"' : '') + '>';
     html += '<td>' + d.label + '</td>';
     html += '<td class="num">' + d.value + '%</td>';
+    html += '<td class="num">' + (d.total ? '~' + d.total.toLocaleString() : '\u2014') + '</td>';
     html += '<td class="num" style="' + cls + '">' + (diff > 0 ? '+' : '') + diff.toFixed(1) + 'pp</td>';
-    html += '<td><div class="bar-cell"><div class="bar-fill" style="width:' + barW + '%;background:' + (diff > 0 ? '#A13F3F' : diff < 0 ? '#4A7A4A' : '#6B4E2E') + '"></div></div></td>';
     html += '</tr>';
   });
   html += '</tbody>';
@@ -574,22 +621,21 @@ function buildChildrenTable() {
     'Manitoba':321,'Saskatchewan':283,'Nova Scotia':176,'New Brunswick':138,
     'Newfoundland & Labrador':82,'Prince Edward Island':32
   };
+  const showTotal = subMode === 'total';
   const entries = Object.entries(DATA.children_provincial_2023)
-    .sort((a,b) => b[1] - a[1]);
+    .map(([prov, val]) => [prov, val, childPop[prov] ? Math.round(childPop[prov] * 1000 * val / 100) : null])
+    .sort((a,b) => showTotal ? (b[2]||0) - (a[2]||0) : b[1] - a[1]);
   const natAvg = DATA.children_provincial_2023.Canada;
-  let html = '<thead><tr><th>Province</th><th class="num">% Children Food Insecure</th><th class="num">Est. Children Affected</th><th class="num">vs National Avg</th><th>Visual</th></tr></thead><tbody>';
-  entries.forEach(([prov, val]) => {
+  let html = '<thead><tr><th>Province</th><th class="num">% Food Insecure</th><th class="num">Est. Children Affected</th><th class="num">vs National Avg</th></tr></thead><tbody>';
+  entries.forEach(([prov, val, est]) => {
     const diff = val - natAvg;
     const cls = diff > 0 ? 'color:#A13F3F' : diff < 0 ? 'color:#4A7A4A' : '';
-    const barW = val / 45 * 100;
     const isCanada = prov === 'Canada';
-    const est = childPop[prov] ? Math.round(childPop[prov] * 1000 * val / 100) : null;
     html += '<tr' + (isCanada ? ' style="font-weight:700;background:var(--color-cream)"' : '') + '>';
     html += '<td>' + prov + '</td>';
     html += '<td class="num">' + val + '%</td>';
-    html += '<td class="num">' + (est ? '\u2248 ' + est.toLocaleString() : '\u2014') + '</td>';
+    html += '<td class="num">' + (est ? '~' + est.toLocaleString() : '\u2014') + '</td>';
     html += '<td class="num" style="' + cls + '">' + (diff > 0 ? '+' : '') + diff.toFixed(1) + 'pp</td>';
-    html += '<td><div class="bar-cell"><div class="bar-fill" style="width:' + barW + '%;background:' + (diff > 0 ? '#A13F3F' : diff < 0 ? '#4A7A4A' : '#6B4E2E') + '"></div></div></td>';
     html += '</tr>';
   });
   html += '</tbody>';
