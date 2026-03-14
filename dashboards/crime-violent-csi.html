@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Violent Crime Severity Index | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--color-teal:#3A5F6F;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
+    .entities{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s,background .15s}
+    @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
+    .chip.on{opacity:1}
+    .chip.chip-national{border-width:3px;font-weight:800;font-size:0.75rem;letter-spacing:0.02em}
+    @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid #A63D40;min-height:350px;position:relative;padding:20px}
+    canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+    .table-section{margin-top:1.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);white-space:nowrap}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table .positive{color:#A13F3F}
+    .data-table .negative{color:#4A7A4A}
+  
+    .chip-nodata { opacity: 0.45; border-style: dashed !important; }
+    .no-data-msg { text-align: center; padding: 3rem 1rem; color: var(--color-text-tertiary, #8A8A8A); font-size: 1.1rem; }
+    /* Dashboard navigation */
+    .dash-nav{max-width:1400px;margin:0 auto 0.75rem;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:0;padding:6px 0;border-bottom:1px solid var(--color-beige)}
+    .dash-nav-left{justify-self:end;padding-right:12px}
+    .dash-nav-right{justify-self:start;padding-left:12px}
+    .dash-nav-center{display:flex;align-items:center;gap:8px;justify-content:center}
+    .dash-nav-btn{padding:4px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;text-decoration:none;color:var(--color-white);white-space:nowrap;display:inline-flex;align-items:center;gap:4px;transition:transform .15s,box-shadow .15s}
+    .dash-nav-btn:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+    .dash-nav-btn.disabled{opacity:0.15;pointer-events:none}
+    .dash-nav-sector{display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:6px;transition:opacity .15s,background .15s;cursor:default}
+    .dash-nav-sector:hover{background:var(--color-cream-dark)}
+    .dash-nav-center:hover .dash-nav-sector{opacity:0.45}
+    .dash-nav-center:hover .dash-nav-sector:hover{opacity:1}
+    .dash-nav-label{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;transition:opacity .15s}
+    .dash-nav-pips{display:flex;gap:4px;align-items:center}
+    .dash-nav-pip{width:9px;height:9px;border-radius:50%;border:2px solid;text-decoration:none;display:block;transition:transform .15s,background .15s}
+    .dash-nav-pip:hover{transform:scale(1.4);background:var(--pip-color)}
+    .dash-nav-pip.filled{background:var(--pip-color)}
+    .dash-nav-pip.current{transform:scale(1.3);background:var(--pip-color)}
+    .dash-nav-pip.current:hover{transform:scale(1.4)}
+    .dash-nav-pip-wrap{position:relative;display:flex;align-items:center}
+    .dash-nav-pip-wrap .dash-nav-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:5px;font-size:0.625rem;font-weight:600;color:var(--color-white);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+    .dash-nav-pip-wrap:hover .dash-nav-tooltip{opacity:1}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a class="active" href="../index.html">Statistics</a>
+    <a href="../scorecard-v2.html">Scorecard</a>
+  </div>
+</nav>
+  <div class="page">
+    <div class="content">
+    <div class="dash-nav">
+      <div class="dash-nav-left"><a class="dash-nav-btn" href="crime-violent-vs-nonviolent.html" style="background:#A63D40">&#8592; Violent vs Non-Violent</a></div>
+      <div class="dash-nav-center"><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#4A6FA5">Fiscal</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="fiscal-deficit-per-capita.html" class="dash-nav-pip" style="border-color:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Deficit / Surplus</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-net-debt-per-capita.html" class="dash-nav-pip" style="border-color:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Net Debt</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-revenue-and-spending.html" class="dash-nav-pip" style="border-color:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Revenue & Spending</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-government-revenue.html" class="dash-nav-pip" style="border-color:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Government Revenue</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-government-spending.html" class="dash-nav-pip" style="border-color:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Government Spending</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#3D7A4A">Economy</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="economy-gdp-per-capita.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">GDP Per Capita</span></span><span class="dash-nav-pip-wrap"><a href="economy-employment-by-sector.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">Employment by Sector</span></span><span class="dash-nav-pip-wrap"><a href="economy-median-weekly-wages.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">Median Weekly Wages</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#C4763C">Housing</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="housing-starts-by-province.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Housing Starts</span></span><span class="dash-nav-pip-wrap"><a href="housing-new-price-index.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">New Price Index</span></span><span class="dash-nav-pip-wrap"><a href="housing-rental-vacancy-rate.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Rental Vacancy Rate</span></span><span class="dash-nav-pip-wrap"><a href="housing-affordability-index.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Affordability Index</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#A63D40">Crime</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="crime-severity-index.html" class="dash-nav-pip filled" style="border-color:#A63D40;background:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Crime Severity Index</span></span><span class="dash-nav-pip-wrap"><a href="crime-homicide-rate.html" class="dash-nav-pip filled" style="border-color:#A63D40;background:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Homicide Rate</span></span><span class="dash-nav-pip-wrap"><a href="crime-violent-vs-nonviolent.html" class="dash-nav-pip filled" style="border-color:#A63D40;background:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Violent vs Non-Violent</span></span><span class="dash-nav-pip-wrap"><a href="crime-violent-csi.html" class="dash-nav-pip current filled" style="border-color:#A63D40;background:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Violent CSI</span></span><span class="dash-nav-pip-wrap"><a href="crime-nonviolent-csi.html" class="dash-nav-pip" style="border-color:#A63D40;"></a><span class="dash-nav-tooltip" style="background:#A63D40">Non-Violent CSI</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#7C5A9D">Demographics</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="demographics-population-growth.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">Population Growth</span></span><span class="dash-nav-pip-wrap"><a href="demographics-international-immigration.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">International Immigration</span></span><span class="dash-nav-pip-wrap"><a href="demographics-interprovincial-migration.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">Interprovincial Migration</span></span></div></div></div>
+      <div class="dash-nav-right"><a class="dash-nav-btn" href="crime-nonviolent-csi.html" style="background:#A63D40">Non-Violent CSI &#8594;</a></div>
+    </div>
+      <h1 class="page-title">Violent Crime Severity Index by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510002601" target="_blank" rel="noopener">Statistics Canada, Table 35-10-0026-01</a></p>
+      <p class="page-desc">The Violent Crime Severity Index measures police-reported violent crime weighted by offence seriousness. Manitoba and Saskatchewan consistently report rates 2x the national average, while PEI and Quebec are the safest.</p>
+      <div class="entities" id="entities"></div>
+      <div class="chart-card"><canvas id="chart"></canvas></div>
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Historical Data</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table" id="dataTable"></table></div>
+      </div>
+    </div>
+  </div>
+<script>
+const ALL_DATA = {"years":[1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"entities":{"Canada":[97.8,99.36,97.79,97.2,96.2,97.56,96.01,98.52,100.0,97.78,95.07,94.29,89.22,85.72,81.95,74.02,70.71,75.34,76.88,81.27,83.54,90.24,87.99,93.4,99.07,100.92,99.87],"Ontario":[84.54,83.19,84.73,84.77,82.19,81.47,79.12,83.39,86.66,85.95,82.07,81.89,77.89,72.71,70.03,61.91,57.86,59.98,64.6,69.79,74.41,75.27,69.5,72.69,78.61,79.78,81.28],"Quebec":[90.47,95.91,93.54,89.47,88.66,89.31,88.37,89.38,90.77,84.1,82.19,80.18,75.81,78.14,75.38,68.39,63.88,66.47,67.86,72.83,71.8,75.29,74.58,84.16,89.0,93.41,97.04],"British Columbia":[132.47,133.48,122.2,117.29,121.23,117.11,120.2,119.55,120.93,117.71,115.91,112.77,103.97,95.98,90.6,79.7,76.12,81.55,73.51,74.43,75.01,91.45,90.91,95.42,101.28,97.4,94.13],"Alberta":[98.36,100.62,97.12,103.04,99.4,105.58,102.79,107.81,105.67,107.62,112.19,106.48,98.19,94.68,88.88,85.33,87.12,98.9,92.9,98.65,99.63,108.36,110.03,114.4,113.69,117.29,105.93],"Manitoba":[154.07,162.49,159.61,158.73,153.53,163.85,163.29,170.22,170.72,174.8,160.1,177.98,169.23,163.53,155.86,137.01,127.9,138.63,153.38,160.8,170.51,189.74,171.06,182.56,211.97,218.73,213.83],"Saskatchewan":[141.76,134.97,146.07,155.97,160.13,186.84,166.37,171.25,177.27,170.38,152.95,155.23,153.34,142.88,133.85,122.87,124.38,137.64,150.59,145.98,141.98,174.86,181.11,189.36,197.76,205.4,198.53],"Nova Scotia":[84.95,87.58,89.04,94.21,94.66,98.95,105.14,104.97,106.69,92.05,88.77,89.77,84.59,87.27,78.49,72.74,66.93,70.93,71.1,78.66,78.74,82.25,99.46,98.14,99.88,96.39,94.49],"New Brunswick":[67.12,78.56,73.25,74.51,77.58,75.63,73.2,71.13,65.0,65.63,68.09,72.26,68.41,67.21,65.31,59.22,57.55,59.82,65.9,69.75,76.85,87.33,84.34,89.39,98.17,96.1,98.63],"Newfoundland & Labrador":[58.43,58.2,61.8,59.96,58.53,60.41,59.65,67.02,60.55,62.54,66.48,60.87,69.25,60.67,64.34,65.97,58.02,67.02,73.56,70.34,71.36,79.15,80.93,96.16,96.24,99.82,89.89],"Prince Edward Island":[57.83,55.83,60.41,59.04,65.6,68.12,58.52,49.2,49.55,40.23,44.06,44.77,41.9,44.72,45.7,43.49,48.17,42.16,36.87,40.4,49.41,65.29,57.15,60.64,66.19,79.53,79.67],"Northwest Territories":[305.99,276.92,258.66,287.78,313.91,347.97,347.97,305.96,272.63,347.83,341.94,330.12,333.21,333.35,354.32,306.71,279.84,365.33,336.33,375.19,430.55,491.49,527.39,475.08,548.65,545.4,571.63],"Yukon":[214.17,232.04,252.68,242.8,234.68,239.64,294.33,166.86,158.1,198.41,195.49,200.22,186.2,176.56,163.27,156.81,237.97,209.02,236.23,252.39,215.04,232.92,256.58,273.64,273.47,267.08,222.14],"Nunavut":[null,314.53,363.25,380.63,404.36,433.07,451.91,404.47,370.84,508.94,476.93,481.4,502.55,492.45,462.82,429.15,446.45,388.59,433.13,473.22,559.92,636.69,650.59,592.29,585.81,679.79,649.11]}};
+let chart=null,selectedEntity='Canada';
+const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A','Northwest Territories':'#5A7D6F','Yukon':'#8B7355','Nunavut':'#6B8E8E'};
+const entityOrder=['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island','Northwest Territories','Yukon','Nunavut'];
+
+function init(){buildChips();update()}
+function buildChips(){const container=document.getElementById('entities');const territories=new Set(['Northwest Territories','Yukon','Nunavut']);const row1=document.createElement('div');row1.className='chip-row';const row2=document.createElement('div');row2.className='chip-row';entityOrder.forEach(name=>{const _noData=!ALL_DATA.entities||!ALL_DATA.entities[name];const chip=document.createElement('span');const color=entityColors[name]||'#666';const isNational=name==='Canada';chip.className='chip'+(isNational?' chip-national':'')+(_noData?' chip-nodata':'')+(name===selectedEntity?' on':'');chip.dataset.entity=name;chip.style.borderColor=color;chip.style.color=color;if(name===selectedEntity){chip.style.background=color;chip.style.color='#fff'}chip.textContent=name;chip.onclick=()=>selectEntity(name);if(isNational||territories.has(name)){row1.appendChild(chip)}else{row2.appendChild(chip)}});container.appendChild(row1);container.appendChild(row2)}
+function selectEntity(n){selectedEntity=n;document.querySelectorAll('#entities .chip').forEach(c=>{const s=c.dataset.entity===n;const col=entityColors[c.dataset.entity]||'#666';c.classList.toggle('on',s);if(s){c.style.background=col;c.style.color='#fff'}else{c.style.background='';c.style.color=col}});update()}
+
+function update(){
+  if(!ALL_DATA.entities[selectedEntity]){document.getElementById('chart').style.display='none';let msg=document.getElementById('noDataMsg');if(!msg){msg=document.createElement('div');msg.id='noDataMsg';msg.className='no-data-msg';document.getElementById('chart').parentNode.insertBefore(msg,document.getElementById('chart'))}msg.style.display='block';msg.textContent='No data available for '+selectedEntity;const tb=document.getElementById('dataTable');if(tb)tb.innerHTML='';return}document.getElementById('chart').style.display='';let ndm=document.getElementById('noDataMsg');if(ndm)ndm.style.display='none';
+  const vals=ALL_DATA.entities[selectedEntity],natVals=ALL_DATA.entities['Canada'],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
+  if(chart)chart.destroy();
+  const ctx=document.getElementById('chart').getContext('2d');
+  const datasets=[{label:selectedEntity,data:vals,backgroundColor:color+'B3',borderColor:color,borderWidth:1,borderRadius:2}];
+  if(selectedEntity!=='Canada')datasets.push({label:'National Average',data:natVals,type:'line',borderColor:'#2D2D2D',borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false,order:-1});
+  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:selectedEntity!=='Canada',position:'top',labels:{boxWidth:15,font:{size:10},color:'#5A5A5A'}},title:{display:true,text:selectedEntity+' — Violent Crime Severity Index',color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;return v!=null?' '+c.dataset.label+': '+v.toFixed(1):null}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A',callback:v=>v.toFixed(1)},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:'Violent CSI',font:{size:11},color:'#5A5A5A'}}}}});
+  buildTable(labels,vals,natVals);
+}
+
+function buildTable(labels,vals,natVals){
+  document.getElementById('tableTitle').textContent=selectedEntity+' — Violent Crime Severity Index';
+  const t=document.getElementById('dataTable'),sd=selectedEntity!=='Canada';
+  let h='<thead><tr><th>Year</th><th class="num">Violent CSI</th>';
+  if(sd)h+='<th class="num">vs National</th>';
+  h+='</tr></thead><tbody>';
+  for(let i=labels.length-1;i>=0;i--){
+    const v=vals[i];h+='<tr><td>'+labels[i]+'</td><td class="num">'+(v!=null?v.toFixed(1):'—')+'</td>';
+    if(sd&&v!=null&&natVals[i]!=null){const d=((v/natVals[i]-1)*100).toFixed(1);const cls=parseFloat(d)>=0?'positive':'negative';const s=parseFloat(d)>=0?'+':'';h+='<td class="num '+cls+'">'+s+d+'%</td>'}
+    else if(sd)h+='<td class="num">—</td>';
+    h+='</tr>';
+  }
+  h+='</tbody>';t.innerHTML=h;
+}
+
+function copyTable(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>c.textContent.trim()).join('\t'))});navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=event.target;b.textContent='Copied';b.classList.add('copied');setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000)})}
+function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_violent_csi.csv';a.click()}
+init();
+</script>
+</body>
+</html>

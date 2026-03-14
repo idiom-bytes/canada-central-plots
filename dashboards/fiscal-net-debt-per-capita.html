@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Net Debt | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-burgundy: #6B3838;
+      --color-teal: #3A5F6F;
+      --color-tan: #C49A6C;
+      --color-purple: #7C5A9D;
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
+    .entities{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s, background .15s}
+    @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
+    .chip.on{opacity:1}
+    .chip.chip-canada{border-width:3px;font-weight:800;font-size:0.75rem;letter-spacing:0.02em}
+    @media(min-width:640px){.chip.chip-canada{padding:5px 14px;font-size:0.8125rem}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--color-text-secondary);min-height:350px;position:relative;padding:20px}
+    canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+    /* Table */
+    .table-section{margin-top:1.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream)}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary)}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table .debt{color:#A13F3F}
+    .data-table .assets{color:#4A7A4A}
+  
+    .chip-nodata { opacity: 0.45; border-style: dashed !important; }
+    .no-data-msg { text-align: center; padding: 3rem 1rem; color: var(--color-text-tertiary, #8A8A8A); font-size: 1.1rem; }
+    /* Dashboard navigation */
+    .dash-nav{max-width:1400px;margin:0 auto 0.75rem;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:0;padding:6px 0;border-bottom:1px solid var(--color-beige)}
+    .dash-nav-left{justify-self:end;padding-right:12px}
+    .dash-nav-right{justify-self:start;padding-left:12px}
+    .dash-nav-center{display:flex;align-items:center;gap:8px;justify-content:center}
+    .dash-nav-btn{padding:4px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;text-decoration:none;color:var(--color-white);white-space:nowrap;display:inline-flex;align-items:center;gap:4px;transition:transform .15s,box-shadow .15s}
+    .dash-nav-btn:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+    .dash-nav-btn.disabled{opacity:0.15;pointer-events:none}
+    .dash-nav-sector{display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:6px;transition:opacity .15s,background .15s;cursor:default}
+    .dash-nav-sector:hover{background:var(--color-cream-dark)}
+    .dash-nav-center:hover .dash-nav-sector{opacity:0.45}
+    .dash-nav-center:hover .dash-nav-sector:hover{opacity:1}
+    .dash-nav-label{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;transition:opacity .15s}
+    .dash-nav-pips{display:flex;gap:4px;align-items:center}
+    .dash-nav-pip{width:9px;height:9px;border-radius:50%;border:2px solid;text-decoration:none;display:block;transition:transform .15s,background .15s}
+    .dash-nav-pip:hover{transform:scale(1.4);background:var(--pip-color)}
+    .dash-nav-pip.filled{background:var(--pip-color)}
+    .dash-nav-pip.current{transform:scale(1.3);background:var(--pip-color)}
+    .dash-nav-pip.current:hover{transform:scale(1.4)}
+    .dash-nav-pip-wrap{position:relative;display:flex;align-items:center}
+    .dash-nav-pip-wrap .dash-nav-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:5px;font-size:0.625rem;font-weight:600;color:var(--color-white);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+    .dash-nav-pip-wrap:hover .dash-nav-tooltip{opacity:1}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a class="active" href="../index.html">Statistics</a>
+    <a href="../scorecard-v2.html">Scorecard</a>
+  </div>
+</nav>
+
+  <div class="page">
+    <div class="content">
+    <div class="dash-nav">
+      <div class="dash-nav-left"><a class="dash-nav-btn" href="fiscal-deficit-per-capita.html" style="background:#4A6FA5">&#8592; Deficit / Surplus</a></div>
+      <div class="dash-nav-center"><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#4A6FA5">Fiscal</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="fiscal-deficit-per-capita.html" class="dash-nav-pip filled" style="border-color:#4A6FA5;background:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Deficit / Surplus</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-net-debt-per-capita.html" class="dash-nav-pip current filled" style="border-color:#4A6FA5;background:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Net Debt</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-revenue-and-spending.html" class="dash-nav-pip" style="border-color:#4A6FA5;"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Revenue & Spending</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-government-revenue.html" class="dash-nav-pip" style="border-color:#4A6FA5;"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Government Revenue</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-government-spending.html" class="dash-nav-pip" style="border-color:#4A6FA5;"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Government Spending</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#3D7A4A">Economy</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="economy-gdp-per-capita.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">GDP Per Capita</span></span><span class="dash-nav-pip-wrap"><a href="economy-employment-by-sector.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">Employment by Sector</span></span><span class="dash-nav-pip-wrap"><a href="economy-median-weekly-wages.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">Median Weekly Wages</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#C4763C">Housing</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="housing-starts-by-province.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Housing Starts</span></span><span class="dash-nav-pip-wrap"><a href="housing-new-price-index.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">New Price Index</span></span><span class="dash-nav-pip-wrap"><a href="housing-rental-vacancy-rate.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Rental Vacancy Rate</span></span><span class="dash-nav-pip-wrap"><a href="housing-affordability-index.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Affordability Index</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#A63D40">Crime</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="crime-severity-index.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Crime Severity Index</span></span><span class="dash-nav-pip-wrap"><a href="crime-homicide-rate.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Homicide Rate</span></span><span class="dash-nav-pip-wrap"><a href="crime-violent-vs-nonviolent.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Violent vs Non-Violent</span></span><span class="dash-nav-pip-wrap"><a href="crime-violent-csi.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Violent CSI</span></span><span class="dash-nav-pip-wrap"><a href="crime-nonviolent-csi.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Non-Violent CSI</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#7C5A9D">Demographics</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="demographics-population-growth.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">Population Growth</span></span><span class="dash-nav-pip-wrap"><a href="demographics-international-immigration.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">International Immigration</span></span><span class="dash-nav-pip-wrap"><a href="demographics-interprovincial-migration.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">Interprovincial Migration</span></span></div></div></div>
+      <div class="dash-nav-right"><a class="dash-nav-btn" href="fiscal-revenue-and-spending.html" style="background:#4A6FA5">Revenue & Spending &#8594;</a></div>
+    </div>
+      <h1 class="page-title">Canadian Government Net Debt</h1>
+      <p class="page-subtitle">Source: <a href="https://www.canada.ca/en/department-finance/services/publications/fiscal-reference-tables/2025.html" target="_blank" rel="noopener">Department of Finance, Fiscal Reference Tables 2025</a></p>
+      <p class="page-desc">Net debt is the total amount a government owes after subtracting its financial assets (cash, investments, loans receivable) from its total liabilities (bonds, pensions, accounts payable). It represents the <em>stock</em> of debt at a point in time, the accumulated result of every past deficit, surplus, revaluation, and accounting change. Unlike the <a href="fiscal-deficit-per-capita.html">annual deficit</a>, which measures a single year's shortfall, net debt shows the full balance sheet position. It is the standard measure used by credit rating agencies and fiscal policy analysts to assess a government's long-term fiscal health.</p>
+
+      <div class="entities" id="entities"></div>
+
+      <div class="chart-card">
+        <canvas id="chart"></canvas>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Historical Data</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const ALL_DATA = {"years":["1983-84","1984-85","1985-86","1986-87","1987-88","1988-89","1989-90","1990-91","1991-92","1992-93","1993-94","1994-95","1995-96","1996-97","1997-98","1998-99","1999-00","2000-01","2001-02","2002-03","2003-04","2004-05","2005-06","2006-07","2007-08","2008-09","2009-10","2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],"entities":{"Canada":[6775.09,8305.13,9644.72,10797.97,11834.41,12823.73,13739.16,14845.18,15897.68,17173.01,18404.54,19568.17,20428.76,20567.22,20302.32,19992.26,19411.02,18632.11,18223.55,17843.89,17413.31,17207.59,16653.37,16084.77,15697.7,15924.6,17468.89,18335.05,19216.51,19863.51,19852.06,19775.04,19846.52,20194.79,20601.68,20827.23,21608.79,30235.9,32550.85,32933.39,33777.3,33773.91],"Newfoundland & Labrador":[null,null,null,null,null,null,null,6148.59,6762.77,7360.69,11121.13,11889.3,12548.53,12953.41,13250.78,14541.26,15168.87,15985.88,17105.87,20446.24,22164.82,22981.4,22710.04,22640.34,20017.8,15579.52,15907.39,15823.69,14934.61,15867.44,17230.91,19565.51,23658.65,25680.44,27692.73,29106.63,27348.04,30405.17,32102.85,31058.41,32795.77,33719.23],"Prince Edward Island":[null,null,null,null,null,null,null,1687.06,2071.04,2675.29,5825.52,7419.23,7365.25,7293.52,7347.81,7289.92,7484.54,7620.72,7682.91,8620.56,9545.95,9659.94,9560.58,9501.77,9803.28,10235.27,11295.96,12072.52,13271.45,14125.96,14589.21,14781.91,15072.32,14772.86,14224.66,13923.64,14185.58,14447.87,14494.27,14593.3,15253.2,16860.59],"Nova Scotia":[null,null,null,null,null,null,null,5195.23,5934.63,7928.64,8788.59,9181.43,9578.5,9813.95,10649.91,11053.45,12047.75,12957.52,13019.0,13067.11,13138.8,13100.97,13050.0,13178.66,12960.29,13162.89,13844.69,13681.56,14161.71,14780.05,15705.34,16006.09,16076.06,15875.14,15722.16,15580.95,15617.97,17196.27,17161.58,17323.64,18138.57,19246.95],"New Brunswick":[null,null,null,null,null,null,null,4377.46,4828.54,7418.59,7291.55,7424.84,7417.34,7616.97,7641.08,7874.44,9405.8,9206.99,9015.46,9167.64,9433.66,9260.45,9223.85,8999.21,9484.46,10082.01,11387.33,12774.99,13314.1,14549.13,15891.63,17728.7,18387.15,18511.19,18560.14,18520.51,18304.91,17563.75,16021.71,15218.78,14198.0,14295.82],"Quebec":[null,null,null,null,null,null,null,5368.03,5925.8,6597.74,7243.73,8019.57,8535.55,8945.9,12179.35,12172.53,12211.79,12026.72,12581.1,12884.84,12999.82,13116.61,13779.66,16256.76,16179.61,17268.32,19692.97,20465.41,22274.31,23745.15,24084.87,24349.7,24224.1,23726.34,23152.52,22484.93,22167.38,22756.15,22957.25,24085.45,24940.78,26253.2],"Ontario":[null,null,null,null,null,null,null,3733.55,4732.86,5845.52,7539.73,8386.06,9302.18,9814.22,10040.39,10095.11,11682.12,11340.98,11151.95,10973.74,11463.09,11537.06,12382.28,12370.13,12537.28,13163.02,14892.75,16575.98,18240.36,19410.31,20439.02,21630.57,22346.89,22633.95,22947.76,23565.71,24179.4,25234.03,25793.52,26379.94,26212.09,26451.25],"Manitoba":[null,null,null,null,null,null,null,4315.1,4704.38,5733.86,6093.32,6143.0,6066.51,5704.48,8555.37,8729.75,8796.9,8620.14,8684.69,8939.43,9496.51,9461.08,9293.35,9125.01,8878.08,9526.06,9631.34,10231.15,11740.35,12665.18,13930.74,15578.21,16937.26,17715.01,18333.24,19073.15,19101.73,20556.0,21021.26,21351.29,22240.54,23630.43],"Saskatchewan":[null,null,null,null,null,null,null,4564.73,6532.28,10229.13,10596.88,10390.51,9761.51,9166.34,8812.24,8689.4,8299.46,8168.21,8707.33,9309.29,9353.47,8512.94,7810.69,7376.7,5857.85,3459.91,3440.31,3595.12,4260.27,4718.35,4204.33,4991.06,7039.68,8974.05,9840.37,10231.71,10556.4,11718.49,13265.27,12385.52,11856.99,12525.36],"Alberta":[null,null,null,null,null,null,null,2233.31,3062.91,4489.74,5016.32,4706.35,4245.72,3138.59,2113.19,1683.3,701.06,-1431.33,-1647.84,-2163.8,-3314.18,-5545.23,-7833.01,-9975.35,-9973.96,-8815.66,-7425.91,-5801.02,-5013.59,-3734.56,-3275.08,-3197.53,-944.54,2121.36,4564.22,6401.78,9216.19,13576.87,13311.43,10106.96,8821.44,6995.27],"British Columbia":[null,null,null,null,null,null,null,1916.7,2620.2,3035.63,3226.1,3250.75,3219.15,3185.08,3170.76,5500.72,5776.07,5929.35,6286.65,6965.0,7222.79,6826.88,6458.41,5771.14,5565.15,6072.19,6718.04,7217.46,8246.33,7893.47,8079.93,8023.02,8292.99,7864.2,8595.11,8546.14,9025.59,10461.54,10842.48,11185.25,12920.43,15395.56]}};
+  let chart = null;
+  let selectedEntity = 'Canada';
+
+  const entityColors = {
+    'Canada':                      '#2D2D2D',
+    'Ontario':                     '#6B3838',
+    'Quebec':                      '#3A5F6F',
+    'British Columbia':            '#7C5A9D',
+    'Alberta':                     '#C49A6C',
+    'Manitoba':                    '#4A7C59',
+    'Saskatchewan':                '#8B6914',
+    'Nova Scotia':                 '#5B7FA5',
+    'New Brunswick':               '#A05A5A',
+    'Newfoundland & Labrador':     '#6A8A6A',
+    'Prince Edward Island':        '#9A7B5A',
+    'Northwest Territories':       '#5A7D6F',
+    'Yukon':                       '#8B7355',
+    'Nunavut':                     '#6B8E8E'
+  };
+
+  const entityOrder = [
+    'Canada', 'Ontario', 'Quebec', 'British Columbia',
+    'Alberta', 'Manitoba', 'Saskatchewan', 'Nova Scotia',
+    'New Brunswick', 'Newfoundland & Labrador', 'Prince Edward Island', 'Northwest Territories',
+    'Yukon', 'Nunavut'
+  ];
+
+  function init() {
+    buildChips();
+    update();
+  }
+
+  function buildChips() {
+    const container = document.getElementById('entities');
+    const territories = new Set(['Northwest Territories', 'Yukon', 'Nunavut']);
+    const row1 = document.createElement('div');
+    row1.className = 'chip-row';
+    const row2 = document.createElement('div');
+    row2.className = 'chip-row';
+    entityOrder.forEach(name => {
+      const _noData = !ALL_DATA.entities || !ALL_DATA.entities[name];
+      const chip = document.createElement('span');
+      const color = entityColors[name] || '#666';
+      const isNational = name === 'Canada';
+      chip.className = 'chip' + (isNational ? ' chip-national' : '') + (_noData ? ' chip-nodata' : '') + (name === selectedEntity ? ' on' : '');
+      chip.dataset.entity = name;
+      chip.style.borderColor = color;
+      chip.style.color = color;
+      if (name === selectedEntity) {
+        chip.style.background = color;
+        chip.style.color = '#fff';
+      }
+      chip.textContent = name;
+      chip.onclick = () => selectEntity(name);
+      if (isNational || territories.has(name)) {
+        row1.appendChild(chip);
+      } else {
+        row2.appendChild(chip);
+      }
+    });
+    container.appendChild(row1);
+    container.appendChild(row2);
+  }
+
+  function selectEntity(name) {
+    selectedEntity = name;
+    document.querySelectorAll('#entities .chip').forEach(c => {
+      const isSelected = c.dataset.entity === name;
+      const color = entityColors[c.dataset.entity] || '#666';
+      c.classList.toggle('on', isSelected);
+      if (isSelected) {
+        c.style.background = color;
+        c.style.color = '#fff';
+      } else {
+        c.style.background = '';
+        c.style.color = color;
+      }
+    });
+    update();
+  }
+
+  function update() {
+    const entityValues = ALL_DATA.entities[selectedEntity];
+    if (!entityValues) {
+      document.getElementById('chart').style.display = 'none';
+      let msg = document.getElementById('noDataMsg');
+      if (!msg) { msg = document.createElement('div'); msg.id = 'noDataMsg'; msg.className = 'no-data-msg'; document.getElementById('chart').parentNode.insertBefore(msg, document.getElementById('chart')); }
+      msg.style.display = 'block'; msg.textContent = 'No data available for ' + selectedEntity;
+      if (document.getElementById('dataTable')) document.getElementById('dataTable').innerHTML = '';
+      return;
+    }
+    document.getElementById('chart').style.display = '';
+    let ndm = document.getElementById('noDataMsg'); if (ndm) ndm.style.display = 'none';
+
+    const pairs = [];
+    ALL_DATA.years.forEach((y, i) => {
+      if (entityValues[i] != null) pairs.push({ year: y, value: entityValues[i] });
+    });
+
+    const labels = pairs.map(d => d.year);
+    const values = pairs.map(d => d.value);
+
+    const maxAbs = Math.max(...values.map(Math.abs));
+    const useMillions = maxAbs < 2;
+    const unit = useMillions ? 'Millions' : 'Billions';
+    const unitShort = useMillions ? 'M' : 'B';
+    const displayValues = useMillions ? values.map(v => +(v * 1000).toFixed(0)) : values;
+
+    if (chart) chart.destroy();
+
+    const color = entityColors[selectedEntity] || '#2D2D2D';
+
+    const ctx = document.getElementById('chart').getContext('2d');
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: selectedEntity,
+          data: displayValues,
+          backgroundColor: color + 'B3',
+          borderColor: color,
+          borderWidth: 1,
+          borderRadius: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: selectedEntity + ' — Net Debt ($ ' + unit + ' CAD)',
+            color: '#2D2D2D',
+            font: { size: 13, weight: 600 }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const v = ctx.parsed.y;
+                if (v == null) return null;
+                if (v < 0) return ' Net assets: $' + Math.abs(v).toFixed(useMillions ? 0 : 1) + unitShort;
+                return ' Net debt: $' + v.toFixed(useMillions ? 0 : 1) + unitShort;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { maxRotation: 45, font: { size: 10 }, color: '#8A8A8A' },
+            grid: { display: false }
+          },
+          y: {
+            ticks: {
+              font: { size: 10 }, color: '#8A8A8A',
+              callback: v => {
+                if (v === 0) return '$0';
+                return v > 0 ? '$' + v + unitShort : '-$' + Math.abs(v) + unitShort;
+              }
+            },
+            grid: { color: 'rgba(0,0,0,0.06)' },
+            title: {
+              display: true,
+              text: '$ ' + unit + ' CAD',
+              font: { size: 11 },
+              color: '#5A5A5A'
+            }
+          }
+        }
+      }
+    });
+
+    buildTable(labels, displayValues, useMillions, unitShort);
+  }
+
+  function buildTable(labels, displayValues, useMillions, unitShort) {
+    document.getElementById('tableTitle').textContent = selectedEntity + ' Historical Data';
+    const table = document.getElementById('dataTable');
+    let html = '<thead><tr><th>Fiscal Year</th><th class="num">Net Debt ($' + unitShort + ')</th><th class="num">Type</th></tr></thead><tbody>';
+    for (let i = labels.length - 1; i >= 0; i--) {
+      const v = displayValues[i];
+      const cls = v >= 0 ? 'debt' : 'assets';
+      const type = v >= 0 ? 'Net Debt' : 'Net Assets';
+      const fmt = useMillions ? '$' + Math.abs(v).toLocaleString() + 'M' : '$' + Math.abs(v).toFixed(1) + 'B';
+      html += '<tr><td>' + labels[i] + '</td><td class="num ' + cls + '">' + fmt + '</td><td class="num ' + cls + '">' + type + '</td></tr>';
+    }
+    html += '</tbody>';
+    table.innerHTML = html;
+  }
+
+  function copyTable() {
+    const table = document.getElementById('dataTable');
+    const rows = table.querySelectorAll('tr');
+    const lines = [];
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('th, td');
+      lines.push(Array.from(cells).map(c => c.textContent.trim()).join('\t'));
+    });
+    navigator.clipboard.writeText(lines.join('\n')).then(() => {
+      const btn = event.target;
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  function downloadCSV() {
+    const table = document.getElementById('dataTable');
+    const rows = table.querySelectorAll('tr');
+    const lines = [];
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('th, td');
+      lines.push(Array.from(cells).map(c => '"' + c.textContent.trim() + '"').join(','));
+    });
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '_net_debt.csv';
+    a.click();
+  }
+
+  init();
+</script>
+</body>
+</html>

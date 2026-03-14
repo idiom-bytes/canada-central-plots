@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Revenue per Capita | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{--color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;--color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;--color-teal:#3A5F6F;--shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-subtitle a{color:inherit}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;max-width:900px}
+    .entities{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .chip-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .chip{padding:4px 10px;border-radius:9999px;cursor:pointer;font-size:0.6875rem;font-weight:600;border:2px solid;opacity:.35;transition:opacity .15s,background .15s}
+    @media(min-width:640px){.chip{padding:5px 12px;font-size:0.75rem}}
+    .chip.on{opacity:1}
+    .chip.chip-national{border-width:3px;font-weight:800;font-size:0.75rem;letter-spacing:0.02em}
+    @media(min-width:640px){.chip.chip-national{padding:5px 14px;font-size:0.8125rem}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid #4A6FA5;min-height:350px;position:relative;padding:20px}
+    canvas{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+    .table-section{margin-top:1.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);white-space:nowrap}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table .positive{color:#4A7A4A}
+    .data-table .negative{color:#A13F3F}
+  
+    .chip-nodata { opacity: 0.45; border-style: dashed !important; }
+    .no-data-msg { text-align: center; padding: 3rem 1rem; color: var(--color-text-tertiary, #8A8A8A); font-size: 1.1rem; }
+    /* Dashboard navigation */
+    .dash-nav{max-width:1400px;margin:0 auto 0.75rem;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:0;padding:6px 0;border-bottom:1px solid var(--color-beige)}
+    .dash-nav-left{justify-self:end;padding-right:12px}
+    .dash-nav-right{justify-self:start;padding-left:12px}
+    .dash-nav-center{display:flex;align-items:center;gap:8px;justify-content:center}
+    .dash-nav-btn{padding:4px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;text-decoration:none;color:var(--color-white);white-space:nowrap;display:inline-flex;align-items:center;gap:4px;transition:transform .15s,box-shadow .15s}
+    .dash-nav-btn:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+    .dash-nav-btn.disabled{opacity:0.15;pointer-events:none}
+    .dash-nav-sector{display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:6px;transition:opacity .15s,background .15s;cursor:default}
+    .dash-nav-sector:hover{background:var(--color-cream-dark)}
+    .dash-nav-center:hover .dash-nav-sector{opacity:0.45}
+    .dash-nav-center:hover .dash-nav-sector:hover{opacity:1}
+    .dash-nav-label{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;transition:opacity .15s}
+    .dash-nav-pips{display:flex;gap:4px;align-items:center}
+    .dash-nav-pip{width:9px;height:9px;border-radius:50%;border:2px solid;text-decoration:none;display:block;transition:transform .15s,background .15s}
+    .dash-nav-pip:hover{transform:scale(1.4);background:var(--pip-color)}
+    .dash-nav-pip.filled{background:var(--pip-color)}
+    .dash-nav-pip.current{transform:scale(1.3);background:var(--pip-color)}
+    .dash-nav-pip.current:hover{transform:scale(1.4)}
+    .dash-nav-pip-wrap{position:relative;display:flex;align-items:center}
+    .dash-nav-pip-wrap .dash-nav-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:5px;font-size:0.625rem;font-weight:600;color:var(--color-white);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+    .dash-nav-pip-wrap:hover .dash-nav-tooltip{opacity:1}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a class="active" href="../index.html">Statistics</a>
+    <a href="../scorecard-v2.html">Scorecard</a>
+  </div>
+</nav>
+  <div class="page">
+    <div class="content">
+    <div class="dash-nav">
+      <div class="dash-nav-left"><a class="dash-nav-btn" href="fiscal-revenue-and-spending.html" style="background:#4A6FA5">&#8592; Revenue & Spending</a></div>
+      <div class="dash-nav-center"><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#4A6FA5">Fiscal</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="fiscal-deficit-per-capita.html" class="dash-nav-pip filled" style="border-color:#4A6FA5;background:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Deficit / Surplus</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-net-debt-per-capita.html" class="dash-nav-pip filled" style="border-color:#4A6FA5;background:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Net Debt</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-revenue-and-spending.html" class="dash-nav-pip filled" style="border-color:#4A6FA5;background:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Revenue & Spending</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-government-revenue.html" class="dash-nav-pip current filled" style="border-color:#4A6FA5;background:#4A6FA5;--pip-color:#4A6FA5"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Government Revenue</span></span><span class="dash-nav-pip-wrap"><a href="fiscal-government-spending.html" class="dash-nav-pip" style="border-color:#4A6FA5;"></a><span class="dash-nav-tooltip" style="background:#4A6FA5">Government Spending</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#3D7A4A">Economy</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="economy-gdp-per-capita.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">GDP Per Capita</span></span><span class="dash-nav-pip-wrap"><a href="economy-employment-by-sector.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">Employment by Sector</span></span><span class="dash-nav-pip-wrap"><a href="economy-median-weekly-wages.html" class="dash-nav-pip" style="border-color:#3D7A4A;--pip-color:#3D7A4A"></a><span class="dash-nav-tooltip" style="background:#3D7A4A">Median Weekly Wages</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#C4763C">Housing</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="housing-starts-by-province.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Housing Starts</span></span><span class="dash-nav-pip-wrap"><a href="housing-new-price-index.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">New Price Index</span></span><span class="dash-nav-pip-wrap"><a href="housing-rental-vacancy-rate.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Rental Vacancy Rate</span></span><span class="dash-nav-pip-wrap"><a href="housing-affordability-index.html" class="dash-nav-pip" style="border-color:#C4763C;--pip-color:#C4763C"></a><span class="dash-nav-tooltip" style="background:#C4763C">Affordability Index</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#A63D40">Crime</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="crime-severity-index.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Crime Severity Index</span></span><span class="dash-nav-pip-wrap"><a href="crime-homicide-rate.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Homicide Rate</span></span><span class="dash-nav-pip-wrap"><a href="crime-violent-vs-nonviolent.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Violent vs Non-Violent</span></span><span class="dash-nav-pip-wrap"><a href="crime-violent-csi.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Violent CSI</span></span><span class="dash-nav-pip-wrap"><a href="crime-nonviolent-csi.html" class="dash-nav-pip" style="border-color:#A63D40;--pip-color:#A63D40"></a><span class="dash-nav-tooltip" style="background:#A63D40">Non-Violent CSI</span></span></div></div><div class="dash-nav-sector"><span class="dash-nav-label" style="color:#7C5A9D">Demographics</span><div class="dash-nav-pips"><span class="dash-nav-pip-wrap"><a href="demographics-population-growth.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">Population Growth</span></span><span class="dash-nav-pip-wrap"><a href="demographics-international-immigration.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">International Immigration</span></span><span class="dash-nav-pip-wrap"><a href="demographics-interprovincial-migration.html" class="dash-nav-pip" style="border-color:#7C5A9D;--pip-color:#7C5A9D"></a><span class="dash-nav-tooltip" style="background:#7C5A9D">Interprovincial Migration</span></span></div></div></div>
+      <div class="dash-nav-right"><a class="dash-nav-btn" href="fiscal-government-spending.html" style="background:#4A6FA5">Government Spending &#8594;</a></div>
+    </div>
+      <h1 class="page-title">Government Revenue per Capita by Province</h1>
+      <p class="page-subtitle">Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610045001" target="_blank" rel="noopener">Statistics Canada, Table 36-10-0450-01</a></p>
+      <p class="page-desc">Total government revenue per capita, covering tax revenue, investment income, and transfers. Alberta generates the highest revenue per person thanks to resource royalties, while Quebec relies heavily on federal transfers.</p>
+      <div class="entities" id="entities"></div>
+      <div class="chart-card"><canvas id="chart"></canvas></div>
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">Historical Data</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table" id="dataTable"></table></div>
+      </div>
+    </div>
+  </div>
+<script>
+const ALL_DATA = {"years":["2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"entities":{"Canada":[246104,240976,226301,229780,245703,252380,261667,275229,287521,293186,312261,337092,340589,340571,409340,438882,460790,486736],"Ontario":[108624,110389,110838,119836,119724,125416,129046,134638,143947,151791,159995,166871,169001,173568,191911,207405,219560,235399],"Quebec":[85925,87380,88959,92548,97828,100996,105836,110500,114135,117681,123340,132528,139380,143207,155526,164195,167812,177350],"British Columbia":[38274,39980,38085,41934,42280,44244,45604,48847,50539,54650,57191,60135,63836,63088,73992,82243,83333,88007],"Alberta":[40359,46134,37846,40981,44226,44568,48145,52632,45443,43336,47517,49691,51798,49160,60735,79640,77252,84984],"Manitoba":[12794,13183,13250,13638,13718,14277,14835,15149,15646,16235,16835,17238,18430,19103,19871,20785,22070,24068],"Saskatchewan":[13173,15215,12941,13654,14117,15147,15219,15525,15033,14432,15396,16587,17361,17749,19106,21704,21891,24372],"Nova Scotia":[9623,10085,10366,10492,10667,10995,11225,11465,11857,12070,12521,12952,13582,14100,15325,16432,17948,19673],"New Brunswick":[7867,8146,8209,8576,8628,8567,8720,9057,9270,9798,10414,10822,11274,11982,12412,13433,14148,15050],"Newfoundland & Labrador":[6637,7535,7308,8294,8836,7917,7737,7683,6922,7259,7828,7523,8095,8553,8893,9103,9399,10198],"Prince Edward Island":[1499,1589,1787,1807,1724,1776,1890,1885,1912,2100,2261,2329,2569,2813,2933,3769,3281,3669],"Northwest Territories":[1375,1459,1564,1597,1615,1657,1676,1983,2063,2169,2243,2344,2464,2389,2516,2587,2736,2927],"Yukon":[773,886,975,1084,1139,1122,1203,1173,1176,1228,1267,1346,1481,1683,1696,1777,1940,2108],"Nunavut":[1103,1235,1310,1386,1472,1556,1648,1674,1723,1783,1824,2117,2066,2247,2275,2321,2509,2723]}};
+let chart=null,selectedEntity='Canada';
+const entityColors={'Canada':'#2D2D2D','Ontario':'#6B3838','Quebec':'#3A5F6F','British Columbia':'#7C5A9D','Alberta':'#C49A6C','Manitoba':'#4A7C59','Saskatchewan':'#8B6914','Nova Scotia':'#5B7FA5','New Brunswick':'#A05A5A','Newfoundland & Labrador':'#6A8A6A','Prince Edward Island':'#9A7B5A','Northwest Territories':'#5A7D6F','Yukon':'#8B7355','Nunavut':'#6B8E8E'};
+const entityOrder=['Canada','Ontario','Quebec','British Columbia','Alberta','Manitoba','Saskatchewan','Nova Scotia','New Brunswick','Newfoundland & Labrador','Prince Edward Island','Northwest Territories','Yukon','Nunavut'];
+
+function init(){buildChips();update()}
+function buildChips(){const container=document.getElementById('entities');const territories=new Set(['Northwest Territories','Yukon','Nunavut']);const row1=document.createElement('div');row1.className='chip-row';const row2=document.createElement('div');row2.className='chip-row';entityOrder.forEach(name=>{const _noData=!ALL_DATA.entities||!ALL_DATA.entities[name];const chip=document.createElement('span');const color=entityColors[name]||'#666';const isNational=name==='Canada';chip.className='chip'+(isNational?' chip-national':'')+(_noData?' chip-nodata':'')+(name===selectedEntity?' on':'');chip.dataset.entity=name;chip.style.borderColor=color;chip.style.color=color;if(name===selectedEntity){chip.style.background=color;chip.style.color='#fff'}chip.textContent=name;chip.onclick=()=>selectEntity(name);if(isNational||territories.has(name)){row1.appendChild(chip)}else{row2.appendChild(chip)}});container.appendChild(row1);container.appendChild(row2)}
+function selectEntity(n){selectedEntity=n;document.querySelectorAll('#entities .chip').forEach(c=>{const s=c.dataset.entity===n;const col=entityColors[c.dataset.entity]||'#666';c.classList.toggle('on',s);if(s){c.style.background=col;c.style.color='#fff'}else{c.style.background='';c.style.color=col}});update()}
+
+function update(){
+  if(!ALL_DATA.entities[selectedEntity]){document.getElementById('chart').style.display='none';let msg=document.getElementById('noDataMsg');if(!msg){msg=document.createElement('div');msg.id='noDataMsg';msg.className='no-data-msg';document.getElementById('chart').parentNode.insertBefore(msg,document.getElementById('chart'))}msg.style.display='block';msg.textContent='No data available for '+selectedEntity;const tb=document.getElementById('dataTable');if(tb)tb.innerHTML='';return}document.getElementById('chart').style.display='';let ndm=document.getElementById('noDataMsg');if(ndm)ndm.style.display='none';
+  const vals=ALL_DATA.entities[selectedEntity],natVals=ALL_DATA.entities['Canada'],labels=ALL_DATA.years,color=entityColors[selectedEntity]||'#2D2D2D';
+  if(chart)chart.destroy();
+  const ctx=document.getElementById('chart').getContext('2d');
+  const datasets=[{label:selectedEntity,data:vals,backgroundColor:color+'B3',borderColor:color,borderWidth:1,borderRadius:2}];
+  if(selectedEntity!=='Canada')datasets.push({label:'National Average',data:natVals,type:'line',borderColor:'#2D2D2D',borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false,order:-1});
+  chart=new Chart(ctx,{type:'bar',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:selectedEntity!=='Canada',position:'top',labels:{boxWidth:15,font:{size:10},color:'#5A5A5A'}},title:{display:true,text:selectedEntity+' — Government Revenue per Capita',color:'#2D2D2D',font:{size:13,weight:600}},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;return v!=null?' '+c.dataset.label+': $'+Math.round(v).toLocaleString():null}}}},scales:{x:{ticks:{maxRotation:45,font:{size:10},color:'#8A8A8A'},grid:{display:false}},y:{ticks:{font:{size:10},color:'#8A8A8A',callback:v=>'$'+Math.round(v).toLocaleString()},grid:{color:'rgba(0,0,0,0.06)'},title:{display:true,text:'Revenue per Capita ($)',font:{size:11},color:'#5A5A5A'}}}}});
+  buildTable(labels,vals,natVals);
+}
+
+function buildTable(labels,vals,natVals){
+  document.getElementById('tableTitle').textContent=selectedEntity+' — Government Revenue per Capita';
+  const t=document.getElementById('dataTable'),sd=selectedEntity!=='Canada';
+  let h='<thead><tr><th>Year</th><th class="num">Revenue per Capita</th>';
+  if(sd)h+='<th class="num">vs National</th>';
+  h+='</tr></thead><tbody>';
+  for(let i=labels.length-1;i>=0;i--){
+    const v=vals[i];h+='<tr><td>'+labels[i]+'</td><td class="num">'+(v!=null?'$'+Math.round(v).toLocaleString():'—')+'</td>';
+    if(sd&&v!=null&&natVals[i]!=null){const d=((v/natVals[i]-1)*100).toFixed(1);const cls=parseFloat(d)>=0?'positive':'negative';const s=parseFloat(d)>=0?'+':'';h+='<td class="num '+cls+'">'+s+d+'%</td>'}
+    else if(sd)h+='<td class="num">—</td>';
+    h+='</tr>';
+  }
+  h+='</tbody>';t.innerHTML=h;
+}
+
+function copyTable(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>c.textContent.trim()).join('\t'))});navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=event.target;b.textContent='Copied';b.classList.add('copied');setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000)})}
+function downloadCSV(){const t=document.getElementById('dataTable'),rows=t.querySelectorAll('tr'),lines=[];rows.forEach(r=>{const cells=r.querySelectorAll('th,td');lines.push(Array.from(cells).map(c=>'"'+c.textContent.trim()+'"').join(','))});const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=selectedEntity.toLowerCase().replace(/[^a-z0-9]+/g,'_')+'_government_revenue.csv';a.click()}
+init();
+</script>
+</body>
+</html>
