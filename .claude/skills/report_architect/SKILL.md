@@ -20,6 +20,46 @@ Research → Data Collection → Transform → data/report-*.json → reports/*.
 
 ---
 
+## CRITICAL RULES — Read Before Starting
+
+### Rule 1: All Data Must Flow Through the Pipeline
+
+**NEVER hardcode data directly into page components or HTML.** Every data point displayed in a report MUST come from a JSON file produced by a pipeline script.
+
+The data flow is always:
+```
+Source (StatCan/API/XLSX) → pipeline/report_{slug}.py → app-next/public/data/report-{slug}.json → page.tsx fetches JSON
+```
+
+Even for small datasets from non-StatCan sources (OECD projections, FOI data, NGO reports), the data must be defined in the pipeline script and written to the JSON output — NOT embedded as `const DATA = {...}` in the page. This ensures:
+- Data can be updated by re-running the pipeline without touching frontend code
+- All data sources are documented in one place (the pipeline script)
+- Data transformations are reproducible and auditable
+- Multiple pages/components can share the same data
+
+**The only exception** is truly static content like report narrative text, accountability descriptions, and entity tags — those live in the page component.
+
+**Hardcoded data in pipeline scripts IS acceptable** when no API/download exists (e.g., OECD projections, FOI request numbers). But that hardcoded data must still be in the pipeline script, output to JSON, and consumed by the page from the JSON.
+
+### Rule 2: Data Must Be Current
+
+**Charts and tables that end years before the present are useless.** Every data source must provide data as close to the current date as possible.
+
+During Phase 1 research:
+- **Verify the data covers through at least the previous calendar year** (e.g., if it's 2026, data must reach at least 2025). If a source only goes to 2018, find a replacement.
+- **Prefer monthly/quarterly data over annual** — it's more current and granular.
+- **Check the StatCan table's "Frequency" and "Latest Reference Period"** before committing to it. A table last updated in 2019 is dead weight.
+- **When joining multiple datasets** (e.g., deficit + employment), verify they cover the same time range. A join that silently truncates at the shorter dataset's end date is a bug — it happened with deficit-per-job stopping at 2007-08 because debt data was indexed by array position instead of fiscal year key.
+
+During Phase 2 pipeline:
+- **Always check the last date in the output data.** After running the transform, print the date range: `print(f"Date range: {data[0]['date']} to {data[-1]['date']}")`. If it doesn't reach near-present, investigate.
+- **When joining datasets by year/date, use dict lookups keyed by date** — never index into parallel arrays by integer position, as arrays from different sources often have different start dates and lengths.
+
+During Phase 6 validation:
+- **Verify every chart view shows data through at least the previous year.** If a view's data stops years before present, it's broken and must be fixed before shipping.
+
+---
+
 ## Phase 1: Research & Planning
 
 ### 1a. Deep research the topic
@@ -50,18 +90,21 @@ Reports require thorough research before any code is written. Use WebSearch and 
 
 For each data source, determine:
 
-| Source | Type | URL/Table | Format | Provincial? | Years | Notes |
-|--------|------|-----------|--------|-------------|-------|-------|
-| ... | StatCan / NGO / Gov | ... | CSV/JSON/scrape | Yes/No | YYYY-YYYY | ... |
+| Source | Type | URL/Table | Format | Provincial? | Latest Date | Frequency | Notes |
+|--------|------|-----------|--------|-------------|-------------|-----------|-------|
+| ... | StatCan / NGO / Gov | ... | CSV/JSON/scrape | Yes/No | YYYY-MM | Monthly/Annual | ... |
+
+**The "Latest Date" column is mandatory.** If a source's latest data point is more than 2 years old, flag it and look for a replacement. Do not commit to stale data sources.
 
 **StatCan tables** (preferred for structured data):
 - Pattern: `XX-XX-XXXX` (e.g. `13-10-0835`)
 - Bulk CSV: `https://www150.statcan.gc.ca/n1/tbl/csv/{ID_NO_DASHES}-eng.zip`
+- Before choosing a table, check its metadata page to verify the latest reference period and update frequency
 
-**Non-StatCan sources** (NGO reports, government publications):
-- Determine if data can be extracted programmatically or must be hardcoded
-- For small datasets (< 100 rows), hardcoding inline in the HTML is acceptable
-- For larger datasets, create a transform script
+**Non-StatCan sources** (NGO reports, government publications, FOI data):
+- All data — regardless of size — must be defined in the pipeline script (`pipeline/report_{slug}.py`), not in the page component
+- Small/manual datasets are hardcoded as Python dicts/lists in the pipeline script, then written to the output JSON alongside automated data
+- This keeps all data in one place and makes updates easy (edit the pipeline, re-run, done)
 
 ### 1c. Design the report structure
 
@@ -70,8 +113,33 @@ Every report needs these components:
 1. **Headline statistics** (3-5 hero stat cards) — the numbers that shock
 2. **Accountability narrative** — who is responsible and why
 3. **Multiple chart views** (2-4 toggle-able views) — different angles on the same problem
-4. **Benchmark visualization** — at least one chart/stat that contextualizes how bad it is
-5. **Full data table** — every data point, with Copy and Download CSV
+4. **Metric descriptions** — every chart view must have a plain-language description explaining what the metric measures and how to read it
+5. **Benchmark visualization** — at least one chart/stat that contextualizes how bad it is
+6. **Full data table** — every data point, with Copy and Download CSV
+
+**Metric descriptions (required for every view):**
+
+Every chart view must include a `VIEW_DESCRIPTIONS` constant mapping view keys to plain-language explanations. These descriptions appear between the chart title and the chart itself using the `.metric-desc` CSS class. They should:
+- Explain what the metric measures and where the data comes from
+- Tell the reader how to interpret the chart (what does "up" or "down" mean?)
+- Be 1-3 sentences, written for a general audience
+- Avoid jargon; if a technical term is necessary, define it inline
+
+```typescript
+const VIEW_DESCRIPTIONS: Record<string, string> = {
+  timeline: 'What this measures. How to read it. What the trend means.',
+  provincial: 'What this compares. Why geographic variation matters.',
+};
+```
+
+Rendered in the chart card:
+```tsx
+<div className="chart-card" style={{ borderTopColor: ACCENT }}>
+  <h3 style={{ margin: 0 }}>{chartTitle}</h3>
+  {VIEW_DESCRIPTIONS[currentView] && <p className="metric-desc">{VIEW_DESCRIPTIONS[currentView]}</p>}
+  {chartConfig && <ChartJS config={chartConfig} height={350} />}
+</div>
+```
 
 **Chart view ideas** (pick the most relevant):
 - **Timeline** — trend over years (bar or line)
@@ -100,9 +168,9 @@ Reports use `--accent` for their theme. Pick based on the topic:
 ### 1e. Define the report naming
 
 Files follow the pattern:
-- Data: `data/report-{slug}.json`
-- Report HTML: `reports/{slug}.html`
-- Transform (if needed): `pipeline/report_{slug}.py` or inline in HTML
+- Pipeline script: `pipeline/report_{slug}.py` (REQUIRED — every report has one)
+- Data output: `app-next/public/data/report-{slug}.json`
+- Page component: `app-next/app/reports/{slug}/page.tsx`
 
 ### 1f. Confirm with user
 
@@ -157,11 +225,11 @@ with open(f'pipeline/lake/{table_id}/{table_clean}.csv', encoding='utf-8-sig') a
 **For non-StatCan sources**, fetch and parse:
 - Web scrape if structured HTML tables exist
 - Download PDFs and extract data manually
-- If data is small/irregular, hardcode it directly in the report HTML
+- If data is small/irregular, hardcode it as Python dicts in the pipeline script (NOT in the page component)
 
 ### 2b. Build the transform
 
-**If the data comes from StatCan or a large CSV**, create a standalone transform script:
+**Every report MUST have a pipeline script** at `pipeline/report_{slug}.py`. Even if all data is manually compiled, the pipeline script is where that data lives:
 
 ```python
 # pipeline/report_{slug}.py
@@ -200,11 +268,11 @@ if __name__ == "__main__":
     main()
 ```
 
-**If the data is small or manually compiled** (e.g. from multiple NGO reports), embed it directly as `const DATA = {...}` in the HTML. This is common for reports — unlike metric dashboards, report data often comes from heterogeneous sources that can't be automated.
+**If the data is small or manually compiled** (e.g. from OECD projections, FOI requests, NGO reports), define it as Python dicts/lists in the pipeline script. The pipeline script writes everything to one JSON file. The page component fetches that JSON — it never contains raw data.
 
-### 2c. Register in config (optional)
+### 2c. Register in config
 
-If using a StatCan source that should be re-downloaded on pipeline runs, add to `pipeline/config.py`:
+**For StatCan sources**, add to `pipeline/config.py` so they get downloaded on pipeline runs:
 
 ```python
 "TABLE-ID": {
@@ -213,18 +281,31 @@ If using a StatCan source that should be re-downloaded on pipeline runs, add to 
 },
 ```
 
-If the data is hardcoded or from non-StatCan sources, skip this step.
+**For non-StatCan downloadable sources** (e.g., OSB XLSX), add a download function in `pipeline/download.py`.
 
-### 2d. Test the transform
+### 2d. Test the transform and verify data currency
 
 ```bash
 python3 pipeline/report_{slug}.py
+```
+
+After running, **always verify the output date range**:
+```bash
 python3 -c "
 import json
-d = json.load(open('data/report-{slug}.json'))
-print(json.dumps(d, indent=2)[:2000])
+d = json.load(open('app-next/public/data/report-{slug}.json'))
+# For each data section, print its date range
+for key in d:
+    if isinstance(d[key], list) and len(d[key]) > 0:
+        first = d[key][0]
+        last = d[key][-1]
+        date_key = 'date' if 'date' in first else 'year' if 'year' in first else None
+        if date_key:
+            print(f'{key}: {first[date_key]} → {last[date_key]} ({len(d[key])} entries)')
 "
 ```
+
+**If any data section ends more than 2 years before present, investigate and fix before proceeding.**
 
 ---
 
@@ -549,6 +630,19 @@ Open `reports.html` and verify:
 
 Manually verify at least 3 data points against the original source. Reports are public-facing accountability documents — accuracy is non-negotiable.
 
+### 6d. Verify data currency
+
+For every chart view:
+- [ ] Data extends to at least the previous calendar year
+- [ ] No chart view is silently truncated due to a dataset join bug (e.g., array index mismatch between datasets with different start dates)
+- [ ] Hero stats reflect the latest available data, not stale snapshots
+
+**Common currency bugs to watch for:**
+- Joining datasets by array index instead of date key (causes silent truncation at the shorter array's length)
+- Filtering to `year <= 2024` when 2025 data exists
+- Using hardcoded baseline years that exclude recent data
+- Pipeline script that works but page component filters out recent entries
+
 ---
 
 ## Reference: Report CSS
@@ -645,8 +739,10 @@ const entityColors = {
 
 ## Reference: Existing Reports
 
-| Report | Slug | Accent | File |
-|--------|------|--------|------|
-| Systematic Economic Dereliction | cancelled-projects | `#8B2E2E` | `reports/cancelled-projects.html` |
+| Report | Slug | Accent | Pipeline | Page |
+|--------|------|--------|----------|------|
+| Systematic Economic Dereliction | cancelled-projects | `#8B2E2E` | `pipeline/parse_cancelled_projects.py` | `app-next/app/reports/cancelled-projects/page.tsx` |
+| A Nation That Can't Feed Its Children | food-insecurity | `#6B4E2E` | `pipeline/report_food_insecurity.py` | `app-next/app/reports/food-insecurity/page.tsx` |
+| The Small Business Crisis | sme-health | `#8B4513` | `pipeline/report_sme_health.py` | `app-next/app/reports/sme-health/page.tsx` |
 
-When creating a new report, read `reports/cancelled-projects.html` as the canonical example of tone, structure, and CSS.
+When creating a new report, read `app-next/app/reports/food-insecurity/page.tsx` and `pipeline/report_sme_health.py` as canonical examples of the pattern: pipeline script → JSON → React page with ChartJS.
