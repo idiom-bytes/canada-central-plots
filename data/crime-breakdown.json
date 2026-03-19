@@ -110,226 +110,6 @@
         "value": 99.87
       }
     ],
-    "Ontario": [
-      {
-        "year": 1998,
-        "value": 84.54
-      },
-      {
-        "year": 1999,
-        "value": 83.19
-      },
-      {
-        "year": 2000,
-        "value": 84.73
-      },
-      {
-        "year": 2001,
-        "value": 84.77
-      },
-      {
-        "year": 2002,
-        "value": 82.19
-      },
-      {
-        "year": 2003,
-        "value": 81.47
-      },
-      {
-        "year": 2004,
-        "value": 79.12
-      },
-      {
-        "year": 2005,
-        "value": 83.39
-      },
-      {
-        "year": 2006,
-        "value": 86.66
-      },
-      {
-        "year": 2007,
-        "value": 85.95
-      },
-      {
-        "year": 2008,
-        "value": 82.07
-      },
-      {
-        "year": 2009,
-        "value": 81.89
-      },
-      {
-        "year": 2010,
-        "value": 77.89
-      },
-      {
-        "year": 2011,
-        "value": 72.71
-      },
-      {
-        "year": 2012,
-        "value": 70.03
-      },
-      {
-        "year": 2013,
-        "value": 61.91
-      },
-      {
-        "year": 2014,
-        "value": 57.86
-      },
-      {
-        "year": 2015,
-        "value": 59.98
-      },
-      {
-        "year": 2016,
-        "value": 64.6
-      },
-      {
-        "year": 2017,
-        "value": 69.79
-      },
-      {
-        "year": 2018,
-        "value": 74.41
-      },
-      {
-        "year": 2019,
-        "value": 75.27
-      },
-      {
-        "year": 2020,
-        "value": 69.5
-      },
-      {
-        "year": 2021,
-        "value": 72.69
-      },
-      {
-        "year": 2022,
-        "value": 78.61
-      },
-      {
-        "year": 2023,
-        "value": 79.78
-      },
-      {
-        "year": 2024,
-        "value": 81.28
-      }
-    ],
-    "Quebec": [
-      {
-        "year": 1998,
-        "value": 90.47
-      },
-      {
-        "year": 1999,
-        "value": 95.91
-      },
-      {
-        "year": 2000,
-        "value": 93.54
-      },
-      {
-        "year": 2001,
-        "value": 89.47
-      },
-      {
-        "year": 2002,
-        "value": 88.66
-      },
-      {
-        "year": 2003,
-        "value": 89.31
-      },
-      {
-        "year": 2004,
-        "value": 88.37
-      },
-      {
-        "year": 2005,
-        "value": 89.38
-      },
-      {
-        "year": 2006,
-        "value": 90.77
-      },
-      {
-        "year": 2007,
-        "value": 84.1
-      },
-      {
-        "year": 2008,
-        "value": 82.19
-      },
-      {
-        "year": 2009,
-        "value": 80.18
-      },
-      {
-        "year": 2010,
-        "value": 75.81
-      },
-      {
-        "year": 2011,
-        "value": 78.14
-      },
-      {
-        "year": 2012,
-        "value": 75.38
-      },
-      {
-        "year": 2013,
-        "value": 68.39
-      },
-      {
-        "year": 2014,
-        "value": 63.88
-      },
-      {
-        "year": 2015,
-        "value": 66.47
-      },
-      {
-        "year": 2016,
-        "value": 67.86
-      },
-      {
-        "year": 2017,
-        "value": 72.83
-      },
-      {
-        "year": 2018,
-        "value": 71.8
-      },
-      {
-        "year": 2019,
-        "value": 75.29
-      },
-      {
-        "year": 2020,
-        "value": 74.58
-      },
-      {
-        "year": 2021,
-        "value": 84.16
-      },
-      {
-        "year": 2022,
-        "value": 89.0
-      },
-      {
-        "year": 2023,
-        "value": 93.41
-      },
-      {
-        "year": 2024,
-        "value": 97.04
-      }
-    ],
     "British Columbia": [
       {
         "year": 1998,
@@ -550,116 +330,6 @@
         "value": 105.93
       }
     ],
-    "Manitoba": [
-      {
-        "year": 1998,
-        "value": 154.07
-      },
-      {
-        "year": 1999,
-        "value": 162.49
-      },
-      {
-        "year": 2000,
-        "value": 159.61
-      },
-      {
-        "year": 2001,
-        "value": 158.73
-      },
-      {
-        "year": 2002,
-        "value": 153.53
-      },
-      {
-        "year": 2003,
-        "value": 163.85
-      },
-      {
-        "year": 2004,
-        "value": 163.29
-      },
-      {
-        "year": 2005,
-        "value": 170.22
-      },
-      {
-        "year": 2006,
-        "value": 170.72
-      },
-      {
-        "year": 2007,
-        "value": 174.8
-      },
-      {
-        "year": 2008,
-        "value": 160.1
-      },
-      {
-        "year": 2009,
-        "value": 177.98
-      },
-      {
-        "year": 2010,
-        "value": 169.23
-      },
-      {
-        "year": 2011,
-        "value": 163.53
-      },
-      {
-        "year": 2012,
-        "value": 155.86
-      },
-      {
-        "year": 2013,
-        "value": 137.01
-      },
-      {
-        "year": 2014,
-        "value": 127.9
-      },
-      {
-        "year": 2015,
-        "value": 138.63
-      },
-      {
-        "year": 2016,
-        "value": 153.38
-      },
-      {
-        "year": 2017,
-        "value": 160.8
-      },
-      {
-        "year": 2018,
-        "value": 170.51
-      },
-      {
-        "year": 2019,
-        "value": 189.74
-      },
-      {
-        "year": 2020,
-        "value": 171.06
-      },
-      {
-        "year": 2021,
-        "value": 182.56
-      },
-      {
-        "year": 2022,
-        "value": 211.97
-      },
-      {
-        "year": 2023,
-        "value": 218.73
-      },
-      {
-        "year": 2024,
-        "value": 213.83
-      }
-    ],
     "Saskatchewan": [
       {
         "year": 1998,
@@ -770,114 +440,334 @@
         "value": 198.53
       }
     ],
-    "Nova Scotia": [
+    "Manitoba": [
       {
         "year": 1998,
-        "value": 84.95
+        "value": 154.07
       },
       {
         "year": 1999,
-        "value": 87.58
+        "value": 162.49
       },
       {
         "year": 2000,
-        "value": 89.04
+        "value": 159.61
       },
       {
         "year": 2001,
-        "value": 94.21
+        "value": 158.73
       },
       {
         "year": 2002,
-        "value": 94.66
+        "value": 153.53
       },
       {
         "year": 2003,
-        "value": 98.95
+        "value": 163.85
       },
       {
         "year": 2004,
-        "value": 105.14
+        "value": 163.29
       },
       {
         "year": 2005,
-        "value": 104.97
+        "value": 170.22
       },
       {
         "year": 2006,
-        "value": 106.69
+        "value": 170.72
       },
       {
         "year": 2007,
-        "value": 92.05
+        "value": 174.8
       },
       {
         "year": 2008,
-        "value": 88.77
+        "value": 160.1
       },
       {
         "year": 2009,
-        "value": 89.77
+        "value": 177.98
       },
       {
         "year": 2010,
-        "value": 84.59
+        "value": 169.23
       },
       {
         "year": 2011,
-        "value": 87.27
+        "value": 163.53
       },
       {
         "year": 2012,
-        "value": 78.49
+        "value": 155.86
       },
       {
         "year": 2013,
-        "value": 72.74
+        "value": 137.01
       },
       {
         "year": 2014,
-        "value": 66.93
+        "value": 127.9
       },
       {
         "year": 2015,
-        "value": 70.93
+        "value": 138.63
       },
       {
         "year": 2016,
-        "value": 71.1
+        "value": 153.38
       },
       {
         "year": 2017,
-        "value": 78.66
+        "value": 160.8
       },
       {
         "year": 2018,
-        "value": 78.74
+        "value": 170.51
       },
       {
         "year": 2019,
-        "value": 82.25
+        "value": 189.74
       },
       {
         "year": 2020,
-        "value": 99.46
+        "value": 171.06
       },
       {
         "year": 2021,
-        "value": 98.14
+        "value": 182.56
       },
       {
         "year": 2022,
-        "value": 99.88
+        "value": 211.97
       },
       {
         "year": 2023,
-        "value": 96.39
+        "value": 218.73
       },
       {
         "year": 2024,
-        "value": 94.49
+        "value": 213.83
+      }
+    ],
+    "Ontario": [
+      {
+        "year": 1998,
+        "value": 84.54
+      },
+      {
+        "year": 1999,
+        "value": 83.19
+      },
+      {
+        "year": 2000,
+        "value": 84.73
+      },
+      {
+        "year": 2001,
+        "value": 84.77
+      },
+      {
+        "year": 2002,
+        "value": 82.19
+      },
+      {
+        "year": 2003,
+        "value": 81.47
+      },
+      {
+        "year": 2004,
+        "value": 79.12
+      },
+      {
+        "year": 2005,
+        "value": 83.39
+      },
+      {
+        "year": 2006,
+        "value": 86.66
+      },
+      {
+        "year": 2007,
+        "value": 85.95
+      },
+      {
+        "year": 2008,
+        "value": 82.07
+      },
+      {
+        "year": 2009,
+        "value": 81.89
+      },
+      {
+        "year": 2010,
+        "value": 77.89
+      },
+      {
+        "year": 2011,
+        "value": 72.71
+      },
+      {
+        "year": 2012,
+        "value": 70.03
+      },
+      {
+        "year": 2013,
+        "value": 61.91
+      },
+      {
+        "year": 2014,
+        "value": 57.86
+      },
+      {
+        "year": 2015,
+        "value": 59.98
+      },
+      {
+        "year": 2016,
+        "value": 64.6
+      },
+      {
+        "year": 2017,
+        "value": 69.79
+      },
+      {
+        "year": 2018,
+        "value": 74.41
+      },
+      {
+        "year": 2019,
+        "value": 75.27
+      },
+      {
+        "year": 2020,
+        "value": 69.5
+      },
+      {
+        "year": 2021,
+        "value": 72.69
+      },
+      {
+        "year": 2022,
+        "value": 78.61
+      },
+      {
+        "year": 2023,
+        "value": 79.78
+      },
+      {
+        "year": 2024,
+        "value": 81.28
+      }
+    ],
+    "Quebec": [
+      {
+        "year": 1998,
+        "value": 90.47
+      },
+      {
+        "year": 1999,
+        "value": 95.91
+      },
+      {
+        "year": 2000,
+        "value": 93.54
+      },
+      {
+        "year": 2001,
+        "value": 89.47
+      },
+      {
+        "year": 2002,
+        "value": 88.66
+      },
+      {
+        "year": 2003,
+        "value": 89.31
+      },
+      {
+        "year": 2004,
+        "value": 88.37
+      },
+      {
+        "year": 2005,
+        "value": 89.38
+      },
+      {
+        "year": 2006,
+        "value": 90.77
+      },
+      {
+        "year": 2007,
+        "value": 84.1
+      },
+      {
+        "year": 2008,
+        "value": 82.19
+      },
+      {
+        "year": 2009,
+        "value": 80.18
+      },
+      {
+        "year": 2010,
+        "value": 75.81
+      },
+      {
+        "year": 2011,
+        "value": 78.14
+      },
+      {
+        "year": 2012,
+        "value": 75.38
+      },
+      {
+        "year": 2013,
+        "value": 68.39
+      },
+      {
+        "year": 2014,
+        "value": 63.88
+      },
+      {
+        "year": 2015,
+        "value": 66.47
+      },
+      {
+        "year": 2016,
+        "value": 67.86
+      },
+      {
+        "year": 2017,
+        "value": 72.83
+      },
+      {
+        "year": 2018,
+        "value": 71.8
+      },
+      {
+        "year": 2019,
+        "value": 75.29
+      },
+      {
+        "year": 2020,
+        "value": 74.58
+      },
+      {
+        "year": 2021,
+        "value": 84.16
+      },
+      {
+        "year": 2022,
+        "value": 89.0
+      },
+      {
+        "year": 2023,
+        "value": 93.41
+      },
+      {
+        "year": 2024,
+        "value": 97.04
       }
     ],
     "New Brunswick": [
@@ -990,114 +880,114 @@
         "value": 98.63
       }
     ],
-    "Newfoundland & Labrador": [
+    "Nova Scotia": [
       {
         "year": 1998,
-        "value": 58.43
+        "value": 84.95
       },
       {
         "year": 1999,
-        "value": 58.2
+        "value": 87.58
       },
       {
         "year": 2000,
-        "value": 61.8
+        "value": 89.04
       },
       {
         "year": 2001,
-        "value": 59.96
+        "value": 94.21
       },
       {
         "year": 2002,
-        "value": 58.53
+        "value": 94.66
       },
       {
         "year": 2003,
-        "value": 60.41
+        "value": 98.95
       },
       {
         "year": 2004,
-        "value": 59.65
+        "value": 105.14
       },
       {
         "year": 2005,
-        "value": 67.02
+        "value": 104.97
       },
       {
         "year": 2006,
-        "value": 60.55
+        "value": 106.69
       },
       {
         "year": 2007,
-        "value": 62.54
+        "value": 92.05
       },
       {
         "year": 2008,
-        "value": 66.48
+        "value": 88.77
       },
       {
         "year": 2009,
-        "value": 60.87
+        "value": 89.77
       },
       {
         "year": 2010,
-        "value": 69.25
+        "value": 84.59
       },
       {
         "year": 2011,
-        "value": 60.67
+        "value": 87.27
       },
       {
         "year": 2012,
-        "value": 64.34
+        "value": 78.49
       },
       {
         "year": 2013,
-        "value": 65.97
+        "value": 72.74
       },
       {
         "year": 2014,
-        "value": 58.02
+        "value": 66.93
       },
       {
         "year": 2015,
-        "value": 67.02
+        "value": 70.93
       },
       {
         "year": 2016,
-        "value": 73.56
+        "value": 71.1
       },
       {
         "year": 2017,
-        "value": 70.34
+        "value": 78.66
       },
       {
         "year": 2018,
-        "value": 71.36
+        "value": 78.74
       },
       {
         "year": 2019,
-        "value": 79.15
+        "value": 82.25
       },
       {
         "year": 2020,
-        "value": 80.93
+        "value": 99.46
       },
       {
         "year": 2021,
-        "value": 96.16
+        "value": 98.14
       },
       {
         "year": 2022,
-        "value": 96.24
+        "value": 99.88
       },
       {
         "year": 2023,
-        "value": 99.82
+        "value": 96.39
       },
       {
         "year": 2024,
-        "value": 89.89
+        "value": 94.49
       }
     ],
     "Prince Edward Island": [
@@ -1210,114 +1100,114 @@
         "value": 79.67
       }
     ],
-    "Northwest Territories": [
+    "Newfoundland & Labrador": [
       {
         "year": 1998,
-        "value": 305.99
+        "value": 58.43
       },
       {
         "year": 1999,
-        "value": 276.92
+        "value": 58.2
       },
       {
         "year": 2000,
-        "value": 258.66
+        "value": 61.8
       },
       {
         "year": 2001,
-        "value": 287.78
+        "value": 59.96
       },
       {
         "year": 2002,
-        "value": 313.91
+        "value": 58.53
       },
       {
         "year": 2003,
-        "value": 347.97
+        "value": 60.41
       },
       {
         "year": 2004,
-        "value": 347.97
+        "value": 59.65
       },
       {
         "year": 2005,
-        "value": 305.96
+        "value": 67.02
       },
       {
         "year": 2006,
-        "value": 272.63
+        "value": 60.55
       },
       {
         "year": 2007,
-        "value": 347.83
+        "value": 62.54
       },
       {
         "year": 2008,
-        "value": 341.94
+        "value": 66.48
       },
       {
         "year": 2009,
-        "value": 330.12
+        "value": 60.87
       },
       {
         "year": 2010,
-        "value": 333.21
+        "value": 69.25
       },
       {
         "year": 2011,
-        "value": 333.35
+        "value": 60.67
       },
       {
         "year": 2012,
-        "value": 354.32
+        "value": 64.34
       },
       {
         "year": 2013,
-        "value": 306.71
+        "value": 65.97
       },
       {
         "year": 2014,
-        "value": 279.84
+        "value": 58.02
       },
       {
         "year": 2015,
-        "value": 365.33
+        "value": 67.02
       },
       {
         "year": 2016,
-        "value": 336.33
+        "value": 73.56
       },
       {
         "year": 2017,
-        "value": 375.19
+        "value": 70.34
       },
       {
         "year": 2018,
-        "value": 430.55
+        "value": 71.36
       },
       {
         "year": 2019,
-        "value": 491.49
+        "value": 79.15
       },
       {
         "year": 2020,
-        "value": 527.39
+        "value": 80.93
       },
       {
         "year": 2021,
-        "value": 475.08
+        "value": 96.16
       },
       {
         "year": 2022,
-        "value": 548.65
+        "value": 96.24
       },
       {
         "year": 2023,
-        "value": 545.4
+        "value": 99.82
       },
       {
         "year": 2024,
-        "value": 571.63
+        "value": 89.89
       }
     ],
     "Yukon": [
@@ -1428,6 +1318,116 @@
       {
         "year": 2024,
         "value": 222.14
+      }
+    ],
+    "Northwest Territories": [
+      {
+        "year": 1998,
+        "value": 305.99
+      },
+      {
+        "year": 1999,
+        "value": 276.92
+      },
+      {
+        "year": 2000,
+        "value": 258.66
+      },
+      {
+        "year": 2001,
+        "value": 287.78
+      },
+      {
+        "year": 2002,
+        "value": 313.91
+      },
+      {
+        "year": 2003,
+        "value": 347.97
+      },
+      {
+        "year": 2004,
+        "value": 347.97
+      },
+      {
+        "year": 2005,
+        "value": 305.96
+      },
+      {
+        "year": 2006,
+        "value": 272.63
+      },
+      {
+        "year": 2007,
+        "value": 347.83
+      },
+      {
+        "year": 2008,
+        "value": 341.94
+      },
+      {
+        "year": 2009,
+        "value": 330.12
+      },
+      {
+        "year": 2010,
+        "value": 333.21
+      },
+      {
+        "year": 2011,
+        "value": 333.35
+      },
+      {
+        "year": 2012,
+        "value": 354.32
+      },
+      {
+        "year": 2013,
+        "value": 306.71
+      },
+      {
+        "year": 2014,
+        "value": 279.84
+      },
+      {
+        "year": 2015,
+        "value": 365.33
+      },
+      {
+        "year": 2016,
+        "value": 336.33
+      },
+      {
+        "year": 2017,
+        "value": 375.19
+      },
+      {
+        "year": 2018,
+        "value": 430.55
+      },
+      {
+        "year": 2019,
+        "value": 491.49
+      },
+      {
+        "year": 2020,
+        "value": 527.39
+      },
+      {
+        "year": 2021,
+        "value": 475.08
+      },
+      {
+        "year": 2022,
+        "value": 548.65
+      },
+      {
+        "year": 2023,
+        "value": 545.4
+      },
+      {
+        "year": 2024,
+        "value": 571.63
       }
     ],
     "Nunavut": [
@@ -1646,226 +1646,6 @@
       {
         "year": 2024,
         "value": 69.76
-      }
-    ],
-    "Ontario": [
-      {
-        "year": 1998,
-        "value": 106.94
-      },
-      {
-        "year": 1999,
-        "value": 95.82
-      },
-      {
-        "year": 2000,
-        "value": 90.7
-      },
-      {
-        "year": 2001,
-        "value": 87.22
-      },
-      {
-        "year": 2002,
-        "value": 85.45
-      },
-      {
-        "year": 2003,
-        "value": 83.8
-      },
-      {
-        "year": 2004,
-        "value": 77.85
-      },
-      {
-        "year": 2005,
-        "value": 74.48
-      },
-      {
-        "year": 2006,
-        "value": 75.46
-      },
-      {
-        "year": 2007,
-        "value": 70.1
-      },
-      {
-        "year": 2008,
-        "value": 66.66
-      },
-      {
-        "year": 2009,
-        "value": 64.46
-      },
-      {
-        "year": 2010,
-        "value": 60.85
-      },
-      {
-        "year": 2011,
-        "value": 56.84
-      },
-      {
-        "year": 2012,
-        "value": 54.92
-      },
-      {
-        "year": 2013,
-        "value": 49.07
-      },
-      {
-        "year": 2014,
-        "value": 46.94
-      },
-      {
-        "year": 2015,
-        "value": 47.69
-      },
-      {
-        "year": 2016,
-        "value": 49.1
-      },
-      {
-        "year": 2017,
-        "value": 51.34
-      },
-      {
-        "year": 2018,
-        "value": 55.11
-      },
-      {
-        "year": 2019,
-        "value": 55.55
-      },
-      {
-        "year": 2020,
-        "value": 50.21
-      },
-      {
-        "year": 2021,
-        "value": 49.86
-      },
-      {
-        "year": 2022,
-        "value": 51.42
-      },
-      {
-        "year": 2023,
-        "value": 54.77
-      },
-      {
-        "year": 2024,
-        "value": 52.97
-      }
-    ],
-    "Quebec": [
-      {
-        "year": 1998,
-        "value": 121.22
-      },
-      {
-        "year": 1999,
-        "value": 107.52
-      },
-      {
-        "year": 2000,
-        "value": 104.94
-      },
-      {
-        "year": 2001,
-        "value": 99.33
-      },
-      {
-        "year": 2002,
-        "value": 95.41
-      },
-      {
-        "year": 2003,
-        "value": 94.32
-      },
-      {
-        "year": 2004,
-        "value": 91.1
-      },
-      {
-        "year": 2005,
-        "value": 90.13
-      },
-      {
-        "year": 2006,
-        "value": 91.09
-      },
-      {
-        "year": 2007,
-        "value": 84.91
-      },
-      {
-        "year": 2008,
-        "value": 83.36
-      },
-      {
-        "year": 2009,
-        "value": 81.97
-      },
-      {
-        "year": 2010,
-        "value": 76.06
-      },
-      {
-        "year": 2011,
-        "value": 71.45
-      },
-      {
-        "year": 2012,
-        "value": 68.84
-      },
-      {
-        "year": 2013,
-        "value": 60.46
-      },
-      {
-        "year": 2014,
-        "value": 55.28
-      },
-      {
-        "year": 2015,
-        "value": 53.36
-      },
-      {
-        "year": 2016,
-        "value": 52.45
-      },
-      {
-        "year": 2017,
-        "value": 52.34
-      },
-      {
-        "year": 2018,
-        "value": 51.04
-      },
-      {
-        "year": 2019,
-        "value": 48.81
-      },
-      {
-        "year": 2020,
-        "value": 43.42
-      },
-      {
-        "year": 2021,
-        "value": 46.34
-      },
-      {
-        "year": 2022,
-        "value": 49.38
-      },
-      {
-        "year": 2023,
-        "value": 50.53
-      },
-      {
-        "year": 2024,
-        "value": 49.95
       }
     ],
     "British Columbia": [
@@ -2088,116 +1868,6 @@
         "value": 92.32
       }
     ],
-    "Manitoba": [
-      {
-        "year": 1998,
-        "value": 154.65
-      },
-      {
-        "year": 1999,
-        "value": 148.82
-      },
-      {
-        "year": 2000,
-        "value": 145.64
-      },
-      {
-        "year": 2001,
-        "value": 150.1
-      },
-      {
-        "year": 2002,
-        "value": 146.31
-      },
-      {
-        "year": 2003,
-        "value": 160.35
-      },
-      {
-        "year": 2004,
-        "value": 163.39
-      },
-      {
-        "year": 2005,
-        "value": 151.51
-      },
-      {
-        "year": 2006,
-        "value": 150.22
-      },
-      {
-        "year": 2007,
-        "value": 141.5
-      },
-      {
-        "year": 2008,
-        "value": 118.26
-      },
-      {
-        "year": 2009,
-        "value": 122.14
-      },
-      {
-        "year": 2010,
-        "value": 111.19
-      },
-      {
-        "year": 2011,
-        "value": 98.45
-      },
-      {
-        "year": 2012,
-        "value": 99.15
-      },
-      {
-        "year": 2013,
-        "value": 87.28
-      },
-      {
-        "year": 2014,
-        "value": 85.11
-      },
-      {
-        "year": 2015,
-        "value": 94.3
-      },
-      {
-        "year": 2016,
-        "value": 101.43
-      },
-      {
-        "year": 2017,
-        "value": 103.74
-      },
-      {
-        "year": 2018,
-        "value": 109.92
-      },
-      {
-        "year": 2019,
-        "value": 121.3
-      },
-      {
-        "year": 2020,
-        "value": 109.34
-      },
-      {
-        "year": 2021,
-        "value": 108.15
-      },
-      {
-        "year": 2022,
-        "value": 121.94
-      },
-      {
-        "year": 2023,
-        "value": 119.2
-      },
-      {
-        "year": 2024,
-        "value": 113.41
-      }
-    ],
     "Saskatchewan": [
       {
         "year": 1998,
@@ -2308,114 +1978,334 @@
         "value": 137.29
       }
     ],
-    "Nova Scotia": [
+    "Manitoba": [
       {
         "year": 1998,
-        "value": 113.26
+        "value": 154.65
       },
       {
         "year": 1999,
-        "value": 111.17
+        "value": 148.82
       },
       {
         "year": 2000,
-        "value": 97.65
+        "value": 145.64
       },
       {
         "year": 2001,
-        "value": 91.89
+        "value": 150.1
       },
       {
         "year": 2002,
-        "value": 93.62
+        "value": 146.31
       },
       {
         "year": 2003,
-        "value": 102.39
+        "value": 160.35
       },
       {
         "year": 2004,
-        "value": 107.34
+        "value": 163.39
       },
       {
         "year": 2005,
-        "value": 101.0
+        "value": 151.51
       },
       {
         "year": 2006,
-        "value": 99.0
+        "value": 150.22
       },
       {
         "year": 2007,
-        "value": 91.88
+        "value": 141.5
       },
       {
         "year": 2008,
-        "value": 82.37
+        "value": 118.26
       },
       {
         "year": 2009,
-        "value": 81.76
+        "value": 122.14
       },
       {
         "year": 2010,
-        "value": 83.24
+        "value": 111.19
       },
       {
         "year": 2011,
-        "value": 76.48
+        "value": 98.45
       },
       {
         "year": 2012,
-        "value": 76.14
+        "value": 99.15
       },
       {
         "year": 2013,
-        "value": 68.94
+        "value": 87.28
       },
       {
         "year": 2014,
-        "value": 66.61
+        "value": 85.11
       },
       {
         "year": 2015,
-        "value": 60.33
+        "value": 94.3
       },
       {
         "year": 2016,
-        "value": 59.0
+        "value": 101.43
       },
       {
         "year": 2017,
-        "value": 61.48
+        "value": 103.74
       },
       {
         "year": 2018,
-        "value": 60.35
+        "value": 109.92
       },
       {
         "year": 2019,
-        "value": 60.05
+        "value": 121.3
       },
       {
         "year": 2020,
-        "value": 61.44
+        "value": 109.34
       },
       {
         "year": 2021,
-        "value": 61.59
+        "value": 108.15
       },
       {
         "year": 2022,
-        "value": 65.42
+        "value": 121.94
       },
       {
         "year": 2023,
-        "value": 66.26
+        "value": 119.2
       },
       {
         "year": 2024,
-        "value": 68.48
+        "value": 113.41
+      }
+    ],
+    "Ontario": [
+      {
+        "year": 1998,
+        "value": 106.94
+      },
+      {
+        "year": 1999,
+        "value": 95.82
+      },
+      {
+        "year": 2000,
+        "value": 90.7
+      },
+      {
+        "year": 2001,
+        "value": 87.22
+      },
+      {
+        "year": 2002,
+        "value": 85.45
+      },
+      {
+        "year": 2003,
+        "value": 83.8
+      },
+      {
+        "year": 2004,
+        "value": 77.85
+      },
+      {
+        "year": 2005,
+        "value": 74.48
+      },
+      {
+        "year": 2006,
+        "value": 75.46
+      },
+      {
+        "year": 2007,
+        "value": 70.1
+      },
+      {
+        "year": 2008,
+        "value": 66.66
+      },
+      {
+        "year": 2009,
+        "value": 64.46
+      },
+      {
+        "year": 2010,
+        "value": 60.85
+      },
+      {
+        "year": 2011,
+        "value": 56.84
+      },
+      {
+        "year": 2012,
+        "value": 54.92
+      },
+      {
+        "year": 2013,
+        "value": 49.07
+      },
+      {
+        "year": 2014,
+        "value": 46.94
+      },
+      {
+        "year": 2015,
+        "value": 47.69
+      },
+      {
+        "year": 2016,
+        "value": 49.1
+      },
+      {
+        "year": 2017,
+        "value": 51.34
+      },
+      {
+        "year": 2018,
+        "value": 55.11
+      },
+      {
+        "year": 2019,
+        "value": 55.55
+      },
+      {
+        "year": 2020,
+        "value": 50.21
+      },
+      {
+        "year": 2021,
+        "value": 49.86
+      },
+      {
+        "year": 2022,
+        "value": 51.42
+      },
+      {
+        "year": 2023,
+        "value": 54.77
+      },
+      {
+        "year": 2024,
+        "value": 52.97
+      }
+    ],
+    "Quebec": [
+      {
+        "year": 1998,
+        "value": 121.22
+      },
+      {
+        "year": 1999,
+        "value": 107.52
+      },
+      {
+        "year": 2000,
+        "value": 104.94
+      },
+      {
+        "year": 2001,
+        "value": 99.33
+      },
+      {
+        "year": 2002,
+        "value": 95.41
+      },
+      {
+        "year": 2003,
+        "value": 94.32
+      },
+      {
+        "year": 2004,
+        "value": 91.1
+      },
+      {
+        "year": 2005,
+        "value": 90.13
+      },
+      {
+        "year": 2006,
+        "value": 91.09
+      },
+      {
+        "year": 2007,
+        "value": 84.91
+      },
+      {
+        "year": 2008,
+        "value": 83.36
+      },
+      {
+        "year": 2009,
+        "value": 81.97
+      },
+      {
+        "year": 2010,
+        "value": 76.06
+      },
+      {
+        "year": 2011,
+        "value": 71.45
+      },
+      {
+        "year": 2012,
+        "value": 68.84
+      },
+      {
+        "year": 2013,
+        "value": 60.46
+      },
+      {
+        "year": 2014,
+        "value": 55.28
+      },
+      {
+        "year": 2015,
+        "value": 53.36
+      },
+      {
+        "year": 2016,
+        "value": 52.45
+      },
+      {
+        "year": 2017,
+        "value": 52.34
+      },
+      {
+        "year": 2018,
+        "value": 51.04
+      },
+      {
+        "year": 2019,
+        "value": 48.81
+      },
+      {
+        "year": 2020,
+        "value": 43.42
+      },
+      {
+        "year": 2021,
+        "value": 46.34
+      },
+      {
+        "year": 2022,
+        "value": 49.38
+      },
+      {
+        "year": 2023,
+        "value": 50.53
+      },
+      {
+        "year": 2024,
+        "value": 49.95
       }
     ],
     "New Brunswick": [
@@ -2528,114 +2418,114 @@
         "value": 79.61
       }
     ],
-    "Newfoundland & Labrador": [
+    "Nova Scotia": [
       {
         "year": 1998,
-        "value": 83.28
+        "value": 113.26
       },
       {
         "year": 1999,
-        "value": 73.45
+        "value": 111.17
       },
       {
         "year": 2000,
-        "value": 73.32
+        "value": 97.65
       },
       {
         "year": 2001,
-        "value": 72.57
+        "value": 91.89
       },
       {
         "year": 2002,
-        "value": 76.31
+        "value": 93.62
       },
       {
         "year": 2003,
-        "value": 79.84
+        "value": 102.39
       },
       {
         "year": 2004,
-        "value": 86.89
+        "value": 107.34
       },
       {
         "year": 2005,
-        "value": 82.99
+        "value": 101.0
       },
       {
         "year": 2006,
-        "value": 77.97
+        "value": 99.0
       },
       {
         "year": 2007,
-        "value": 80.23
+        "value": 91.88
       },
       {
         "year": 2008,
-        "value": 72.84
+        "value": 82.37
       },
       {
         "year": 2009,
-        "value": 75.53
+        "value": 81.76
       },
       {
         "year": 2010,
-        "value": 82.26
+        "value": 83.24
       },
       {
         "year": 2011,
-        "value": 75.77
+        "value": 76.48
       },
       {
         "year": 2012,
-        "value": 69.2
+        "value": 76.14
       },
       {
         "year": 2013,
-        "value": 69.24
+        "value": 68.94
       },
       {
         "year": 2014,
-        "value": 63.81
+        "value": 66.61
       },
       {
         "year": 2015,
-        "value": 65.19
+        "value": 60.33
       },
       {
         "year": 2016,
-        "value": 67.91
+        "value": 59.0
       },
       {
         "year": 2017,
-        "value": 60.67
+        "value": 61.48
       },
       {
         "year": 2018,
-        "value": 61.88
+        "value": 60.35
       },
       {
         "year": 2019,
-        "value": 68.36
+        "value": 60.05
       },
       {
         "year": 2020,
-        "value": 64.32
+        "value": 61.44
       },
       {
         "year": 2021,
-        "value": 69.8
+        "value": 61.59
       },
       {
         "year": 2022,
-        "value": 77.18
+        "value": 65.42
       },
       {
         "year": 2023,
-        "value": 83.66
+        "value": 66.26
       },
       {
         "year": 2024,
-        "value": 89.74
+        "value": 68.48
       }
     ],
     "Prince Edward Island": [
@@ -2748,114 +2638,114 @@
         "value": 70.37
       }
     ],
-    "Northwest Territories": [
+    "Newfoundland & Labrador": [
       {
         "year": 1998,
-        "value": 252.66
+        "value": 83.28
       },
       {
         "year": 1999,
-        "value": 247.12
+        "value": 73.45
       },
       {
         "year": 2000,
-        "value": 249.25
+        "value": 73.32
       },
       {
         "year": 2001,
-        "value": 249.81
+        "value": 72.57
       },
       {
         "year": 2002,
-        "value": 290.74
+        "value": 76.31
       },
       {
         "year": 2003,
-        "value": 336.09
+        "value": 79.84
       },
       {
         "year": 2004,
-        "value": 355.45
+        "value": 86.89
       },
       {
         "year": 2005,
-        "value": 357.75
+        "value": 82.99
       },
       {
         "year": 2006,
-        "value": 332.66
+        "value": 77.97
       },
       {
         "year": 2007,
-        "value": 331.1
+        "value": 80.23
       },
       {
         "year": 2008,
-        "value": 343.26
+        "value": 72.84
       },
       {
         "year": 2009,
-        "value": 324.63
+        "value": 75.53
       },
       {
         "year": 2010,
-        "value": 353.86
+        "value": 82.26
       },
       {
         "year": 2011,
-        "value": 344.48
+        "value": 75.77
       },
       {
         "year": 2012,
-        "value": 331.53
+        "value": 69.2
       },
       {
         "year": 2013,
-        "value": 317.42
+        "value": 69.24
       },
       {
         "year": 2014,
-        "value": 293.32
+        "value": 63.81
       },
       {
         "year": 2015,
-        "value": 305.44
+        "value": 65.19
       },
       {
         "year": 2016,
-        "value": 282.88
+        "value": 67.91
       },
       {
         "year": 2017,
-        "value": 287.32
+        "value": 60.67
       },
       {
         "year": 2018,
-        "value": 291.1
+        "value": 61.88
       },
       {
         "year": 2019,
-        "value": 358.68
+        "value": 68.36
       },
       {
         "year": 2020,
-        "value": 383.28
+        "value": 64.32
       },
       {
         "year": 2021,
-        "value": 390.91
+        "value": 69.8
       },
       {
         "year": 2022,
-        "value": 415.05
+        "value": 77.18
       },
       {
         "year": 2023,
-        "value": 459.82
+        "value": 83.66
       },
       {
         "year": 2024,
-        "value": 513.5
+        "value": 89.74
       }
     ],
     "Yukon": [
@@ -2966,6 +2856,116 @@
       {
         "year": 2024,
         "value": 205.85
+      }
+    ],
+    "Northwest Territories": [
+      {
+        "year": 1998,
+        "value": 252.66
+      },
+      {
+        "year": 1999,
+        "value": 247.12
+      },
+      {
+        "year": 2000,
+        "value": 249.25
+      },
+      {
+        "year": 2001,
+        "value": 249.81
+      },
+      {
+        "year": 2002,
+        "value": 290.74
+      },
+      {
+        "year": 2003,
+        "value": 336.09
+      },
+      {
+        "year": 2004,
+        "value": 355.45
+      },
+      {
+        "year": 2005,
+        "value": 357.75
+      },
+      {
+        "year": 2006,
+        "value": 332.66
+      },
+      {
+        "year": 2007,
+        "value": 331.1
+      },
+      {
+        "year": 2008,
+        "value": 343.26
+      },
+      {
+        "year": 2009,
+        "value": 324.63
+      },
+      {
+        "year": 2010,
+        "value": 353.86
+      },
+      {
+        "year": 2011,
+        "value": 344.48
+      },
+      {
+        "year": 2012,
+        "value": 331.53
+      },
+      {
+        "year": 2013,
+        "value": 317.42
+      },
+      {
+        "year": 2014,
+        "value": 293.32
+      },
+      {
+        "year": 2015,
+        "value": 305.44
+      },
+      {
+        "year": 2016,
+        "value": 282.88
+      },
+      {
+        "year": 2017,
+        "value": 287.32
+      },
+      {
+        "year": 2018,
+        "value": 291.1
+      },
+      {
+        "year": 2019,
+        "value": 358.68
+      },
+      {
+        "year": 2020,
+        "value": 383.28
+      },
+      {
+        "year": 2021,
+        "value": 390.91
+      },
+      {
+        "year": 2022,
+        "value": 415.05
+      },
+      {
+        "year": 2023,
+        "value": 459.82
+      },
+      {
+        "year": 2024,
+        "value": 513.5
       }
     ],
     "Nunavut": [

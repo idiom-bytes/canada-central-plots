@@ -236,51 +236,78 @@ def main():
 
     metrics.append(build_metric("Median Weekly Wages", "economy", wage_vals, canada_wages[0] if canada_wages else None, unit="$", trends=wage_trends))
 
-    # 6. Employment Rate (private + public total, per capita)
-    emp_vals = {}
-    emp_trends = {}
-    dates = employment.get("dates", [])
+    # 6. Private Sector Employment Rate (per 1K population)
+    priv_emp_vals = {}
+    priv_emp_trends = {}
+    pub_share_vals = {}
+    pub_share_trends = {}
     for p in PROVINCES:
         pdata = employment.get("provinces", {}).get(p, {})
         priv = pdata.get("private", [])
         pub = pdata.get("public", [])
-        if priv and pub:
-            # Get last 12 months average
+        if priv and pub and p in pop_latest:
+            # Private employment: last 12 months average
+            recent_priv = []
+            for i in range(max(0, len(priv) - 12), len(priv)):
+                pv = priv[i] if i < len(priv) and priv[i] is not None else 0
+                recent_priv.append(pv)
+            if recent_priv:
+                avg_priv = sum(recent_priv) / len(recent_priv)
+                priv_emp_vals[p] = round(avg_priv * 1000 / pop_latest[p] * 1000, 1)
+
+                # Trend: compare last 12mo avg to prior 12mo avg
+                prior_priv = []
+                start = max(0, len(priv) - 24)
+                end = max(0, len(priv) - 12)
+                for i in range(start, end):
+                    pv = priv[i] if i < len(priv) and priv[i] is not None else 0
+                    prior_priv.append(pv)
+                if prior_priv:
+                    priv_emp_trends[p] = compute_trend(recent_priv[-3:], prior_priv[-3:])
+
+            # Public sector share: public / (private + public)
+            recent_pub = []
             recent_total = []
             for i in range(max(0, len(priv) - 12), len(priv)):
                 pv = priv[i] if i < len(priv) and priv[i] is not None else 0
                 pu = pub[i] if i < len(pub) and pub[i] is not None else 0
+                recent_pub.append(pu)
                 recent_total.append(pv + pu)
-            if recent_total and p in pop_latest:
-                avg = sum(recent_total) / len(recent_total)
-                # Employment rate per 1000 people (avg is in thousands, pop is persons)
-                emp_vals[p] = round(avg * 1000 / pop_latest[p] * 1000, 1)
+            if recent_total and sum(recent_total) > 0:
+                share = sum(recent_pub) / sum(recent_total) * 100
+                pub_share_vals[p] = round(share, 1)
 
-                # Trend: compare last 12mo avg to prior 12mo avg
+                # Trend
+                prior_pub = []
                 prior_total = []
                 start = max(0, len(priv) - 24)
                 end = max(0, len(priv) - 12)
                 for i in range(start, end):
                     pv = priv[i] if i < len(priv) and priv[i] is not None else 0
                     pu = pub[i] if i < len(pub) and pub[i] is not None else 0
+                    prior_pub.append(pu)
                     prior_total.append(pv + pu)
-                if prior_total:
-                    emp_trends[p] = compute_trend(recent_total[-3:], prior_total[-3:])
+                if prior_total and sum(prior_total) > 0:
+                    pub_share_trends[p] = compute_trend(recent_pub[-3:], prior_pub[-3:])
 
+    # Canada private employment rate
+    canada_priv_emp_val = None
+    canada_pub_share_val = None
     canada_emp = employment.get("provinces", {}).get("Canada", {})
-    canada_emp_val = None
     if canada_emp and pop_latest.get("Canada"):
         priv = canada_emp.get("private", [])
         pub = canada_emp.get("public", [])
         if priv and pub:
-            recent = [
-                (priv[i] or 0) + (pub[i] or 0)
-                for i in range(max(0, len(priv) - 12), len(priv))
-            ]
-            if recent:
-                canada_emp_val = round(sum(recent) / len(recent) * 1000 / pop_latest["Canada"] * 1000, 1)
+            recent_priv = [priv[i] or 0 for i in range(max(0, len(priv) - 12), len(priv))]
+            recent_pub = [pub[i] or 0 for i in range(max(0, len(pub) - 12), len(pub))]
+            if recent_priv:
+                canada_priv_emp_val = round(sum(recent_priv) / len(recent_priv) * 1000 / pop_latest["Canada"] * 1000, 1)
+            total = sum(recent_priv) + sum(recent_pub)
+            if total > 0:
+                canada_pub_share_val = round(sum(recent_pub) / total * 100, 1)
 
-    metrics.append(build_metric("Employment Rate", "economy", emp_vals, canada_emp_val, unit="per 1K", trends=emp_trends))
+    metrics.append(build_metric("Private Employment Rate", "economy", priv_emp_vals, canada_priv_emp_val, unit="per 1K", trends=priv_emp_trends))
+    metrics.append(build_metric("Public Sector Share", "economy", pub_share_vals, canada_pub_share_val, invert=True, unit="%", trends=pub_share_trends))
 
     # --- HOUSING ---
     # 7. Housing Starts per 10K
