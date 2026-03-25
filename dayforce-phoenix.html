@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dayforce / Phoenix Pay System — Lobbying & Relationship Map</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --red: #f85149;
+    --orange: #d29922;
+    --green: #3fb950;
+    --purple: #bc8cff;
+    --pink: #f778ba;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+
+  /* ── HEADER ── */
+  header { padding: 24px 32px; border-bottom: 1px solid var(--border); }
+  header h1 { font-size: 22px; font-weight: 600; }
+  header p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+  /* ── LAYOUT ── */
+  .container { display: flex; height: calc(100vh - 80px); }
+  .graph-panel { flex: 1; position: relative; overflow: hidden; }
+  .side-panel { width: 420px; border-left: 1px solid var(--border); overflow-y: auto; padding: 20px; }
+  .side-panel h2 { font-size: 16px; margin-bottom: 12px; color: var(--accent); }
+  .side-panel h3 { font-size: 14px; margin: 16px 0 8px; color: var(--orange); }
+
+  /* ── GRAPH ── */
+  svg { width: 100%; height: 100%; }
+  .node circle { cursor: pointer; stroke-width: 2.5; transition: r 0.2s; }
+  .node text { fill: var(--text); font-size: 11px; pointer-events: none; font-weight: 500; }
+  .node:hover circle { filter: brightness(1.3); }
+  .link { stroke-opacity: 0.5; fill: none; }
+  .link:hover { stroke-opacity: 1; }
+
+  /* ── LEGEND ── */
+  .legend { position: absolute; top: 16px; left: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; font-size: 12px; z-index: 10; }
+  .legend-title { font-weight: 600; margin-bottom: 8px; font-size: 13px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 5px 0; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-line { width: 24px; height: 0; border-top: 2.5px solid; flex-shrink: 0; }
+
+  /* ── CARDS ── */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; font-size: 13px; line-height: 1.55; }
+  .card.risk { border-left: 3px solid var(--red); }
+  .card.info { border-left: 3px solid var(--accent); }
+  .card.warn { border-left: 3px solid var(--orange); }
+  .card strong { color: var(--text); }
+  .card .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .card .label.red { color: var(--red); }
+  .card .label.orange { color: var(--orange); }
+  .card .label.blue { color: var(--accent); }
+  .card a { color: var(--accent); text-decoration: none; font-size: 12px; word-break: break-all; }
+  .card a:hover { text-decoration: underline; }
+  .card ul { padding-left: 16px; margin-top: 4px; }
+  .card li { margin: 3px 0; }
+
+  /* ── TOOLTIP ── */
+  .tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; font-size: 12px; pointer-events: none; opacity: 0; transition: opacity 0.15s; max-width: 320px; z-index: 20; line-height: 1.5; }
+  .tooltip .tt-name { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  .tooltip .tt-role { color: var(--muted); }
+  .tooltip .tt-detail { margin-top: 6px; color: var(--text); }
+  .tooltip .tt-flag { color: var(--red); font-weight: 600; margin-top: 4px; }
+
+  /* ── TABS ── */
+  .tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .tab { padding: 8px 16px; font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; color: var(--muted); transition: all 0.15s; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── TIMELINE ── */
+  .tl-item { display: flex; gap: 12px; margin-bottom: 12px; font-size: 12px; }
+  .tl-date { width: 72px; flex-shrink: 0; color: var(--muted); font-weight: 600; }
+  .tl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 5px; }
+  .tl-dot.red { background: var(--red); }
+  .tl-dot.orange { background: var(--orange); }
+  .tl-dot.green { background: var(--green); }
+  .tl-text { flex: 1; line-height: 1.5; }
+
+  /* ── NODE DETAIL (selected) ── */
+  #node-detail { display: none; }
+  #node-detail.visible { display: block; }
+  #node-detail-back { cursor: pointer; color: var(--accent); font-size: 12px; margin-bottom: 10px; }
+
+  /* filter buttons */
+  .filters { position: absolute; bottom: 16px; left: 16px; display: flex; gap: 6px; z-index: 10; flex-wrap: wrap; max-width: 400px; }
+  .filter-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 5px 12px; font-size: 11px; color: var(--muted); cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover, .filter-btn.active { color: var(--text); border-color: var(--accent); background: rgba(88,166,255,0.1); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dayforce &times; Phoenix Pay System — Lobbying & Relationship Map</h1>
+  <p>All data sourced from lobbycanada.gc.ca, Auditor General reports, Globe and Mail, CBC, and government press releases. Last updated: 2026-03-24.</p>
+</header>
+
+<div class="container">
+  <!-- GRAPH -->
+  <div class="graph-panel">
+    <svg id="graph"></svg>
+    <div class="tooltip" id="tooltip"></div>
+
+    <div class="legend">
+      <div class="legend-title">Node Types</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div> Dayforce / Corporate</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f85149"></div> Lobbyist (in-house / consultant)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#3fb950"></div> Government Official (DPOH)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#d29922"></div> Government Institution</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#bc8cff"></div> Subcontractor / Partner</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f778ba"></div> External Entity</div>
+      <div class="legend-title" style="margin-top:10px">Edge Types</div>
+      <div class="legend-item"><div class="legend-line" style="border-color:#f85149; border-style:solid"></div> Revolving Door</div>
+      <div class="legend-item"><div class="legend-line" style="border-color:#58a6ff; border-style:solid"></div> Lobbying Contact</div>
+      <div class="legend-item"><div class="legend-line" style="border-color:#d29922; border-style:dashed"></div> Contract / Procurement</div>
+      <div class="legend-item"><div class="legend-line" style="border-color:#8b949e; border-style:dotted"></div> Employment / Corporate</div>
+    </div>
+
+    <div class="filters">
+      <div class="filter-btn active" data-filter="all">All</div>
+      <div class="filter-btn" data-filter="revolving-door">Revolving Door</div>
+      <div class="filter-btn" data-filter="lobbying">Lobbying Contacts</div>
+      <div class="filter-btn" data-filter="contracts">Contracts</div>
+      <div class="filter-btn" data-filter="corporate">Corporate Structure</div>
+    </div>
+  </div>
+
+  <!-- SIDE PANEL -->
+  <div class="side-panel">
+    <div id="node-detail">
+      <div id="node-detail-back">&larr; Back to overview</div>
+      <div id="node-detail-content"></div>
+    </div>
+
+    <div id="overview-content">
+      <div class="tabs">
+        <div class="tab active" data-tab="risks">Risks</div>
+        <div class="tab" data-tab="timeline">Timeline</div>
+        <div class="tab" data-tab="sources">Sources</div>
+      </div>
+
+      <!-- RISKS TAB -->
+      <div class="tab-content active" id="tab-risks">
+        <h3>Conflicts of Interest</h3>
+        <div class="card risk">
+          <div class="label red">Revolving Door — Gianluca Cairo</div>
+          <strong>Chief of Staff to PSPC Minister Judy Foote</strong> (who oversaw Phoenix rollout) and later to <strong>Innovation Minister Navdeep Bains</strong> — left government <strong>July 2019</strong>, one month after Ceridian was shortlisted. Hired to lead Ceridian's new public-sector division. Now <strong>VP Public Sector</strong> at Dayforce and listed as <strong>client contact representative</strong> on lobbying registrations.<br><br>
+          <a href="https://www.theglobeandmail.com/business/article-innovation-ministers-chief-of-staff-leaving-post-to-join-ceridian-as/">Globe and Mail</a>
+        </div>
+        <div class="card risk">
+          <div class="label red">Revolving Door — Regan Watts</div>
+          Consultant lobbyist for Dayforce via <strong>Fratton Park Inc.</strong> since Nov 2021. Former <strong>Director of Strategic Planning at Finance Canada</strong> (2010-2012), <strong>Senior Policy Advisor at Foreign Affairs</strong>, staffer at <strong>Health Canada, Transport, and PMO</strong> (2006-2012). Now the primary liaison between Dayforce and senior DPOHs.<br><br>
+          <a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=370509&regId=917675">Lobbying Registry</a>
+        </div>
+
+        <h3>Procurement Risks</h3>
+        <div class="card warn">
+          <div class="label orange">Effective Sole-Source After Gate Process</div>
+          Three vendors (Ceridian, SAP, Workday) were shortlisted via "agile procurement." Ceridian won Gate 3. <strong>No public explanation for why SAP/Workday were eliminated.</strong> The $350.6M contract is effectively sole-source.
+        </div>
+        <div class="card warn">
+          <div class="label orange">Cost Escalation: $16.9M → $350.6M → $4.2B+</div>
+          Pilot: $16.9M (2021). Build contract: $350.6M (2025). Auditor General's estimated total: <strong>$4.2B+</strong>, which she says <strong>"does not include important costs"</strong> and will be higher. Phoenix itself cost taxpayers <strong>$5.1B in fixes</strong>.<br><br>
+          <a href="https://www.canada.ca/en/auditor-general/our-work/audit-reports/auditor-general-report-2026-modernizing-pay-system.html">AG Report 2026</a>
+        </div>
+        <div class="card warn">
+          <div class="label orange">Accelerated Timeline</div>
+          Target moved from <strong>2034 → March 2031</strong> (3 years earlier). AG Hogan warned this could <strong>"create similar pay issues"</strong> as the Phoenix rollout. Announced <em>after</em> the audit period ended.<br><br>
+          <a href="https://www.cbc.ca/news/canada/ottawa/phoenix-dayforce-federal-canada-government-pay-9.7138444">CBC</a>
+        </div>
+
+        <h3>Structural Risks</h3>
+        <div class="card risk">
+          <div class="label red">Foreign Private Equity Ownership</div>
+          Dayforce was taken private by <strong>Thoma Bravo (US)</strong> for <strong>US$12.3B</strong> (Feb 2026), with minority stake from <strong>Abu Dhabi Investment Authority</strong>. Delisted from NYSE/TSX. <strong>Reduced transparency</strong> for a company handling payroll of 431,000 federal employees. No public ICA national security review found.<br><br>
+          <a href="https://betakit.com/canadian-led-dayforce-to-be-acquired-by-thoma-bravo/">BetaKit</a>
+        </div>
+        <div class="card warn">
+          <div class="label orange">233,653 Unresolved Pay Transactions</div>
+          As of Sept 2025, 133,619 employees still affected. 155,217 transactions older than one year. PSPC will <strong>not meet</strong> its March 2026 clearing target. Errors <strong>will carry over into Dayforce</strong>.<br><br>
+          <a href="https://www.canada.ca/en/auditor-general/our-work/audit-reports/auditor-general-report-2026-modernizing-pay-system.html">AG Report</a>
+        </div>
+        <div class="card warn">
+          <div class="label orange">Pay Rule Simplification Stalled</div>
+          AG: <em>"A decade later, there has been little progress made to simplify these rules."</em> TBS and unions have not reached consensus. PSPC building costly cloud extensions as a workaround ($4M+/year).
+        </div>
+
+        <h3>Lobbying Scope</h3>
+        <div class="card info">
+          <div class="label blue">18+ Federal Institutions Targeted</div>
+          In-house and consultant registrations cover PMO, PCO, PSPC, TBS, Finance Canada, CRA, ESDC, SSC, ISED, Health Canada, House of Commons, and more. Subject matters: Government Procurement, Science &amp; Technology, Taxation, Labour, Health.
+        </div>
+        <div class="card info">
+          <div class="label blue">61 Communication Reports Filed</div>
+          21 in-house (David Ossip) + 35 consultant (Regan Watts) + 5 (Craig Robinson / Earnscliffe). Oddly, <strong>0 in-house reports in the last 12 months</strong> despite active $4.2B+ contract.
+        </div>
+      </div>
+
+      <!-- TIMELINE TAB -->
+      <div class="tab-content" id="tab-timeline">
+        <h3>Key Events</h3>
+        <div class="tl-item"><div class="tl-date">2005</div><div class="tl-dot"></div><div class="tl-text">Ceridian Canada first registers consultant lobbyist (Tactix) for "contracting out government payroll services"</div></div>
+        <div class="tl-item"><div class="tl-date">Sep 2018</div><div class="tl-dot"></div><div class="tl-text">Ceridian (now Dayforce) in-house lobbying registration begins. David Ossip listed as responsible officer.</div></div>
+        <div class="tl-item"><div class="tl-date">May 2018</div><div class="tl-dot"></div><div class="tl-text">Craig Robinson (Earnscliffe Strategy Group) begins consulting lobbying for Ceridian</div></div>
+        <div class="tl-item"><div class="tl-date">Jun 2019</div><div class="tl-dot green"></div><div class="tl-text"><strong>Ceridian shortlisted</strong> alongside SAP and Workday for NextGen HR &amp; Pay at Gate 3</div></div>
+        <div class="tl-item"><div class="tl-date">Jul 2019</div><div class="tl-dot red"></div><div class="tl-text"><strong>Gianluca Cairo</strong> leaves as Chief of Staff to Innovation Minister Bains, joins Ceridian to lead new public-sector division</div></div>
+        <div class="tl-item"><div class="tl-date">Sep 2021</div><div class="tl-dot green"></div><div class="tl-text"><strong>$16.9M pilot contract</strong> awarded to Ceridian (8 years)</div></div>
+        <div class="tl-item"><div class="tl-date">Nov 2021</div><div class="tl-dot"></div><div class="tl-text">Regan Watts (Fratton Park Inc.) begins consultant lobbying for Dayforce</div></div>
+        <div class="tl-item"><div class="tl-date">Sep 2023</div><div class="tl-dot"></div><div class="tl-text">Watts meets Alex Benay (Assoc. Deputy Minister, PSPC) and Kim Steele (ADM, PSPC)</div></div>
+        <div class="tl-item"><div class="tl-date">Oct 2023</div><div class="tl-dot"></div><div class="tl-text">Watts meets Benay and Steele again at PSPC</div></div>
+        <div class="tl-item"><div class="tl-date">Nov 2023</div><div class="tl-dot"></div><div class="tl-text">Watts meets Carlos Pena (Senior Policy Advisor, TBS Minister's Office)</div></div>
+        <div class="tl-item"><div class="tl-date">Dec 2023</div><div class="tl-dot"></div><div class="tl-text">Watts meets both Benay (PSPC) and Pena (TBS) — dual-track lobbying</div></div>
+        <div class="tl-item"><div class="tl-date">Jan 2024</div><div class="tl-dot"></div><div class="tl-text">Watts meets Pena (TBS) on Science &amp; Technology</div></div>
+        <div class="tl-item"><div class="tl-date">May 2024</div><div class="tl-dot"></div><div class="tl-text">Watts meets Benay (PSPC) and <strong>Treasury Board President Anita Anand</strong> + Pena</div></div>
+        <div class="tl-item"><div class="tl-date">Jan 2025</div><div class="tl-dot"></div><div class="tl-text">Watts meets Benay (PSPC) and Mary-Rose Brown (Chief of Staff, PSPC Minister)</div></div>
+        <div class="tl-item"><div class="tl-date">Jun 2025</div><div class="tl-dot green"></div><div class="tl-text"><strong>$350.6M contract signed</strong> (10 years, extendable to 20). Minister Lightbound announces.</div></div>
+        <div class="tl-item"><div class="tl-date">Jun 2025</div><div class="tl-dot red"></div><div class="tl-text">Alex Benay reveals <strong>fixing Phoenix cost $5.1 billion</strong></div></div>
+        <div class="tl-item"><div class="tl-date">Aug 2025</div><div class="tl-dot orange"></div><div class="tl-text">Thoma Bravo announces <strong>US$12.3B acquisition</strong> of Dayforce</div></div>
+        <div class="tl-item"><div class="tl-date">Jan 2026</div><div class="tl-dot"></div><div class="tl-text">Watts meets <strong>Treasury Board President Shafqat Ali</strong> on Government Procurement</div></div>
+        <div class="tl-item"><div class="tl-date">Jan 2026</div><div class="tl-dot orange"></div><div class="tl-text">PSPC <strong>accelerates timeline by 3 years</strong> (target: March 2031 instead of 2034)</div></div>
+        <div class="tl-item"><div class="tl-date">Feb 2026</div><div class="tl-dot red"></div><div class="tl-text">Thoma Bravo <strong>completes acquisition</strong>. Dayforce delisted from NYSE/TSX. Now private.</div></div>
+        <div class="tl-item"><div class="tl-date">Mar 2026</div><div class="tl-dot red"></div><div class="tl-text"><strong>Auditor General Karen Hogan</strong> tables report: $4.2B+ cost, transition risks, Phoenix lessons not learned</div></div>
+      </div>
+
+      <!-- SOURCES TAB -->
+      <div class="tab-content" id="tab-sources">
+        <h3>Government / Official Sources</h3>
+        <div class="card info">
+          <ul>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?regId=884276&cno=362774">Dayforce In-House Lobbying Registration (940366-362774)</a></li>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=362774">Dayforce In-House 12-Month Summary</a></li>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=370509&regId=917675">Regan Watts Consultant Registration (945127-370509)</a></li>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=370509">Regan Watts 12-Month Summary</a></li>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=362225&regId=893484">Craig Robinson / Earnscliffe Registration (928388-362225)</a></li>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=362320&regId=884121">Mary Anne Carter / Earnscliffe Registration (929175-362320)</a></li>
+            <li><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=2423&regId=477919">S. Christopher Phelan / Tactix Registration (775914-2423)</a></li>
+            <li><a href="https://www.canada.ca/en/auditor-general/our-work/audit-reports/auditor-general-report-2026-modernizing-pay-system.html">Auditor General Report 2026 — Modernizing the Pay System</a></li>
+            <li><a href="https://www.canada.ca/en/public-services-procurement/news/2025/06/government-of-canada-moves-forward-with-hr-and-pay-transformation-through-dayforce.html">Gov Canada — Moves Forward with Dayforce (Jun 2025)</a></li>
+            <li><a href="https://www.canada.ca/en/shared-services/corporate/about-us/publications/2023-24/next-generation-hr-pay-final-findings-report.html">NextGen HR and Pay Final Findings Report</a></li>
+            <li><a href="https://www.canada.ca/en/public-services-procurement/news/2026/03/statement-from-minister-lightbound-in-response-to-the-auditor-generals-report-on-modernizing-the-pay-system.html">Minister Lightbound Response to AG Report</a></li>
+            <li><a href="https://open.canada.ca/data/en/dataset/a34eb330-7136-4f5e-9f5f-3ba41df58b06">Open Government — Monthly Communication Reports (Bulk CSV)</a></li>
+            <li><a href="https://open.canada.ca/data/en/dataset/70ef2117-1095-4d77-80eb-b87f2bada2a4">Open Government — Lobbying Registrations (Bulk CSV)</a></li>
+          </ul>
+        </div>
+        <h3>News / Media</h3>
+        <div class="card info">
+          <ul>
+            <li><a href="https://www.theglobeandmail.com/business/article-innovation-ministers-chief-of-staff-leaving-post-to-join-ceridian-as/">Globe and Mail — Cairo leaves government for Ceridian (Jul 2019)</a></li>
+            <li><a href="https://www.theglobeandmail.com/business/article-federal-government-selects-made-in-canada-software-to-start-replacing/">Globe and Mail — Dayforce selected to replace Phoenix</a></li>
+            <li><a href="https://www.theglobeandmail.com/politics/article-phoenix-pay-system-auditor-general-report-42-billion/">Globe and Mail — $4.2B replacement cost</a></li>
+            <li><a href="https://www.cbc.ca/news/canada/ottawa/phoenix-dayforce-federal-canada-government-pay-9.7138444">CBC — AG flags risks in Phoenix-to-Dayforce transition</a></li>
+            <li><a href="https://www.cbc.ca/news/canada/ottawa/federal-phoenix-pay-system-10-year-anniversary-9.7093933">CBC — 10 years of Phoenix mistakes</a></li>
+            <li><a href="https://betakit.com/canadian-led-dayforce-to-be-acquired-by-thoma-bravo/">BetaKit — Dayforce acquired by Thoma Bravo</a></li>
+            <li><a href="https://www.thomabravo.com/press-releases/thoma-bravo-completes-acquisition-of-dayforce">Thoma Bravo — Acquisition complete</a></li>
+            <li><a href="https://pipsc.ca/news-issues/phoenix-pay-system/ten-years-after-phoenix-5-billion-warning-canada-cannot-ignore">PIPSC — Ten years after Phoenix: $5B warning</a></li>
+            <li><a href="https://www.hilltimes.com/story/2025/01/22/feds-eye-march-decision-on-replacing-problem-plagued-phoenix-payroll-system/448379/">Hill Times — Feds eye March decision</a></li>
+            <li><a href="https://jpia.princeton.edu/news/burnt-by-phoenix-canadas-costly-lesson-public-financial-management">Princeton JPIA — Canada's Costly Lesson</a></li>
+            <li><a href="https://investors.dayforce.com/news-and-events/press-releases/press-release-details/2025/Government-of-Canada-Moves-Forward-with-HR-and-Pay-Transformation-Through-Dayforce/default.aspx">Dayforce IR — Press Release</a></li>
+          </ul>
+        </div>
+        <h3>Research Gaps</h3>
+        <div class="card warn">
+          <ul>
+            <li>Elections Canada individual contributions for Ossip, Cairo, Watts not yet queried (requires interactive search)</li>
+            <li>Investment Canada Act review status for Thoma Bravo acquisition unclear</li>
+            <li>OGGO committee testimony on Dayforce contract (2025-2026) not found in public search</li>
+            <li>Full historical communication reports require bulk CSV download from Open Government portal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──
+const nodes = [
+  // CORPORATE (blue)
+  { id: "dayforce", label: "Dayforce\n(fka Ceridian)", group: "corporate", r: 28, detail: "Dayforce Canada Ltd. (formerly Ceridian Canada Ltd., renamed 2024-02-01). HQ: 4110 Yonge St, Toronto. Won $350.6M contract (Jun 2025) to replace Phoenix pay system for 431,000 federal employees.", flag: null },
+  { id: "ossip", label: "David Ossip", group: "corporate", r: 20, detail: "Chairman and CEO. Responsible officer on in-house lobbying registration (since Sep 2018). 21 communication reports filed historically.", flag: null },
+  { id: "elliott", label: "Paul Elliott", group: "corporate", r: 16, detail: "Chief Operating Officer. Registered in-house lobbyist since 2018. Longtime Ceridian executive (since 2004).", flag: null },
+  { id: "turner", label: "Leagh Turner", group: "corporate", r: 14, detail: "Former President and Global COO. Registered in-house lobbyist. Departed November 2023. Background at SAP/Oracle.", flag: null },
+  { id: "kitching", label: "Scott Kitching", group: "corporate", r: 14, detail: "EVP and General Counsel. Registered in-house lobbyist.", flag: null },
+  { id: "arsenault", label: "James Arsenault", group: "corporate", r: 12, detail: "Director, Product Marketing. Registered in-house lobbyist.", flag: null },
+  { id: "zimmer", label: "Erik Zimmer", group: "corporate", r: 14, detail: "EVP, Head of M&A and Investor Relations. Joined Ceridian 2018 as Chief Strategy Officer. Key in Dayforce technology integration. Not on lobbying registry.", flag: null },
+  { id: "mcdonald", label: "Bill McDonald", group: "corporate", r: 14, detail: "EVP, Chief Legal and Compliance Officer. Oversees legal/governance. Not on lobbying registry.", flag: null },
+  { id: "gitajn", label: "Arthur Gitajn", group: "corporate", r: 12, detail: "CFO. Registered in-house lobbyist.", flag: null },
+
+  // LOBBYISTS (red)
+  { id: "cairo", label: "Gianluca Cairo", group: "lobbyist", r: 22, detail: "VP Public Sector Revenue Enablement & Strategy at Dayforce. Client contact on lobbying registrations. FORMERLY: Chief of Staff to PSPC Minister Judy Foote (oversaw Phoenix rollout), then Chief of Staff to Innovation Minister Navdeep Bains. Left government Jul 2019 — one month after Ceridian shortlisted.", flag: "REVOLVING DOOR: Left government 1 month after Ceridian shortlisted for Phoenix replacement. Ethics Commissioner cleared but timing raises serious questions." },
+  { id: "watts", label: "Regan Watts", group: "lobbyist", r: 20, detail: "Consultant lobbyist via Fratton Park Inc. since Nov 2021. 35 communication reports filed. FORMERLY: Director of Strategic Planning at Finance Canada (2010-12), Senior Policy Advisor at Foreign Affairs (2009-10), staffer at Health Canada, Transport, PMO (2006-2012).", flag: "REVOLVING DOOR: Former government staffer across 5 ministerial offices now serves as primary lobbyist-to-DPOH liaison for Dayforce." },
+  { id: "robinson", label: "Craig Robinson", group: "lobbyist", r: 14, detail: "Earnscliffe Strategy Group. Consultant lobbyist 2018-2020 (inactive). 5 communication reports filed.", flag: null },
+  { id: "carter", label: "Mary Anne Carter", group: "lobbyist", r: 10, detail: "Earnscliffe Strategy Group. Consultant lobbyist Oct 2018 - Apr 2019 (inactive). 0 communication reports.", flag: null },
+  { id: "phelan", label: "Chris Phelan", group: "lobbyist", r: 10, detail: "Tactix Government Consulting. Lobbied for Ceridian Canada Inc. in 2005 re: 'contracting out government payroll services.' Earliest known lobbying on this topic.", flag: null },
+
+  // GOVERNMENT OFFICIALS (green)
+  { id: "benay", label: "Alex Benay", group: "government", r: 22, detail: "Associate Deputy Minister, PSPC. Key decision-maker overseeing Phoenix/Dayforce transition. Met with Watts at least 5 times (Sep 2023 - Jan 2025). Revealed Phoenix fix costs totalled $5.1B.", flag: "Primary government contact for Dayforce lobbying. 5+ documented meetings with Watts across 16 months." },
+  { id: "steele", label: "Kim Steele", group: "government", r: 14, detail: "ADM & CIO, Digital Services Branch, PSPC. Met with Watts Sep-Oct 2023.", flag: null },
+  { id: "anand", label: "Anita Anand", group: "government", r: 18, detail: "President of the Treasury Board (at time of meeting). Met with Watts May 2024 on Labour, Science & Technology.", flag: "Cabinet minister directly lobbied by Dayforce consultant." },
+  { id: "ali", label: "Shafqat Ali", group: "government", r: 18, detail: "President of the Treasury Board (current). Met with Watts Jan 16, 2026 on Government Procurement, Labour, Science & Technology.", flag: "Cabinet minister directly lobbied by Dayforce consultant." },
+  { id: "pena", label: "Carlos Pena", group: "government", r: 14, detail: "Senior Policy Advisor, TBS Minister's Office. Met with Watts 4 times (Nov 2023 - May 2024).", flag: null },
+  { id: "brown", label: "Mary-Rose Brown", group: "government", r: 14, detail: "Chief of Staff, PSPC Minister's Office. Met with Watts Jan 2025.", flag: null },
+  { id: "cardinal", label: "Cheryl Cardinal", group: "government", r: 10, detail: "Director of Policy, PSPC Minister's Office. Met with Watts May 2023.", flag: null },
+  { id: "john", label: "Ophelia John", group: "government", r: 10, detail: "Policy Advisor, PSPC Minister's Office. Met with Watts May 2023.", flag: null },
+  { id: "bethell", label: "Gini Bethell", group: "government", r: 12, detail: "Assistant Deputy Minister, PSPC. Met with Robinson/Ossip Oct 2018.", flag: null },
+  { id: "linklater", label: "Les Linklater", group: "government", r: 12, detail: "Associate Deputy Minister, TBS/PSPC. Met with Robinson/Ossip Oct 2018.", flag: null },
+  { id: "rahman", label: "Mohammad Rahman", group: "government", r: 10, detail: "ADM, PSPC. Met with Ossip (in-house) Oct 2018.", flag: null },
+  { id: "lightbound", label: "Joel Lightbound", group: "government", r: 16, detail: "Minister of Government Transformation, Public Works and Procurement. Announced $350.6M contract Jun 2025.", flag: null },
+  { id: "bains", label: "Navdeep Bains", group: "government", r: 14, detail: "Former Innovation Minister. Cairo was his Chief of Staff until Jul 2019.", flag: null },
+  { id: "foote", label: "Judy Foote", group: "government", r: 14, detail: "Former PSPC Minister (oversaw Phoenix rollout). Cairo was her Chief of Staff 2015-2016.", flag: null },
+  { id: "hogan", label: "Karen Hogan", group: "government", r: 16, detail: "Auditor General of Canada. Tabled Mar 2026 report flagging $4.2B+ cost, transition risks, Phoenix lessons not learned.", flag: null },
+
+  // INSTITUTIONS (orange)
+  { id: "pspc", label: "PSPC", group: "institution", r: 22, detail: "Public Services and Procurement Canada. Owns the Phoenix/Dayforce contract. Most heavily lobbied institution.", flag: null },
+  { id: "tbs", label: "Treasury Board\nSecretariat", group: "institution", r: 18, detail: "Treasury Board of Canada Secretariat. Responsible for pay policy and rules. Lobbied by both in-house and consultant.", flag: null },
+  { id: "pmo", label: "PMO", group: "institution", r: 14, detail: "Prime Minister's Office. Listed in both in-house and consultant lobbying registrations.", flag: null },
+  { id: "finance", label: "Finance Canada", group: "institution", r: 14, detail: "Department of Finance. Listed across all registrations. Watts formerly worked here.", flag: null },
+  { id: "ssc", label: "Shared Services\nCanada", group: "institution", r: 12, detail: "Shared Services Canada. IT infrastructure partner.", flag: null },
+
+  // SUBCONTRACTORS (purple)
+  { id: "deloitte", label: "Deloitte", group: "partner", r: 16, detail: "Implementation partner. Also involved in original Phoenix business case alongside IBM/PwC (flagged by CBC as potential conflict).", flag: "Was involved in original Phoenix business case — now implementation partner for its replacement." },
+  { id: "cgi", label: "CGI", group: "partner", r: 12, detail: "Named implementation partner for Dayforce government deployment.", flag: null },
+  { id: "hcltech", label: "HCLTech", group: "partner", r: 12, detail: "Named implementation partner for Dayforce government deployment.", flag: null },
+  { id: "earnscliffe", label: "Earnscliffe\nStrategy", group: "partner", r: 14, detail: "Lobbying firm. Provided Robinson and Carter as consultant lobbyists 2018-2020.", flag: null },
+  { id: "fratton", label: "Fratton Park\nInc.", group: "partner", r: 14, detail: "Regan Watts' consulting firm. Registered lobbyist for Dayforce since Nov 2021.", flag: null },
+
+  // EXTERNAL (pink)
+  { id: "thoma", label: "Thoma Bravo", group: "external", r: 20, detail: "US private equity firm. Acquired Dayforce for US$12.3B (completed Feb 2026). Dayforce now delisted from NYSE/TSX.", flag: "US private equity now controls company managing payroll for entire Canadian federal public service." },
+  { id: "adia", label: "ADIA\n(Abu Dhabi)", group: "external", r: 14, detail: "Abu Dhabi Investment Authority. Significant minority investor in Thoma Bravo's Dayforce acquisition.", flag: "Foreign sovereign wealth fund holds stake in company handling Canadian federal payroll data." },
+  { id: "ibm", label: "IBM\n(Phoenix)", group: "external", r: 16, detail: "Built the original Phoenix pay system. $5.1B in fix costs. Dayforce contract is its replacement.", flag: null },
+];
+
+const links = [
+  // CORPORATE STRUCTURE (dotted gray)
+  { source: "dayforce", target: "ossip", type: "corporate", label: "Chairman & CEO" },
+  { source: "dayforce", target: "elliott", type: "corporate", label: "COO" },
+  { source: "dayforce", target: "turner", type: "corporate", label: "Former President" },
+  { source: "dayforce", target: "kitching", type: "corporate", label: "General Counsel" },
+  { source: "dayforce", target: "arsenault", type: "corporate", label: "Dir. Product Mktg" },
+  { source: "dayforce", target: "zimmer", type: "corporate", label: "EVP M&A / IR" },
+  { source: "dayforce", target: "mcdonald", type: "corporate", label: "Chief Legal" },
+  { source: "dayforce", target: "gitajn", type: "corporate", label: "CFO" },
+  { source: "dayforce", target: "cairo", type: "corporate", label: "VP Public Sector" },
+
+  // REVOLVING DOOR (red solid)
+  { source: "cairo", target: "foote", type: "revolving-door", label: "Chief of Staff 2015-16" },
+  { source: "cairo", target: "bains", type: "revolving-door", label: "Chief of Staff 2017-19" },
+  { source: "watts", target: "finance", type: "revolving-door", label: "Dir. Strategic Planning 2010-12" },
+  { source: "watts", target: "pmo", type: "revolving-door", label: "Policy Advisor 2006-07" },
+
+  // LOBBYING CONTACTS (blue solid)
+  { source: "watts", target: "benay", type: "lobbying", label: "5+ meetings (2023-25)" },
+  { source: "watts", target: "steele", type: "lobbying", label: "Sep-Oct 2023" },
+  { source: "watts", target: "anand", type: "lobbying", label: "May 2024" },
+  { source: "watts", target: "ali", type: "lobbying", label: "Jan 2026" },
+  { source: "watts", target: "pena", type: "lobbying", label: "4 meetings (2023-24)" },
+  { source: "watts", target: "brown", type: "lobbying", label: "Jan 2025" },
+  { source: "watts", target: "cardinal", type: "lobbying", label: "May 2023" },
+  { source: "watts", target: "john", type: "lobbying", label: "May 2023" },
+  { source: "robinson", target: "bethell", type: "lobbying", label: "Oct 2018" },
+  { source: "robinson", target: "linklater", type: "lobbying", label: "Oct 2018" },
+  { source: "ossip", target: "bethell", type: "lobbying", label: "Oct 2018" },
+  { source: "ossip", target: "linklater", type: "lobbying", label: "Oct 2018" },
+  { source: "ossip", target: "rahman", type: "lobbying", label: "Oct 2018" },
+
+  // CONTRACTS (dashed orange)
+  { source: "dayforce", target: "pspc", type: "contracts", label: "$350.6M contract (Jun 2025)" },
+  { source: "ibm", target: "pspc", type: "contracts", label: "Phoenix ($5.1B in fixes)" },
+
+  // LOBBYING FIRM LINKS
+  { source: "watts", target: "fratton", type: "corporate", label: "Principal" },
+  { source: "robinson", target: "earnscliffe", type: "corporate", label: "Consultant" },
+  { source: "carter", target: "earnscliffe", type: "corporate", label: "Consultant" },
+  { source: "fratton", target: "dayforce", type: "corporate", label: "Consultant lobbyist" },
+  { source: "earnscliffe", target: "dayforce", type: "corporate", label: "Consultant lobbyist (2018-20)" },
+
+  // GOVERNMENT STRUCTURE
+  { source: "benay", target: "pspc", type: "corporate", label: "Assoc. Deputy Minister" },
+  { source: "steele", target: "pspc", type: "corporate", label: "ADM & CIO" },
+  { source: "brown", target: "pspc", type: "corporate", label: "Chief of Staff, Minister" },
+  { source: "cardinal", target: "pspc", type: "corporate", label: "Dir. Policy, Minister" },
+  { source: "john", target: "pspc", type: "corporate", label: "Policy Advisor" },
+  { source: "bethell", target: "pspc", type: "corporate", label: "ADM" },
+  { source: "rahman", target: "pspc", type: "corporate", label: "ADM" },
+  { source: "lightbound", target: "pspc", type: "corporate", label: "Minister" },
+  { source: "anand", target: "tbs", type: "corporate", label: "President (former)" },
+  { source: "ali", target: "tbs", type: "corporate", label: "President (current)" },
+  { source: "pena", target: "tbs", type: "corporate", label: "Senior Policy Advisor" },
+  { source: "linklater", target: "tbs", type: "corporate", label: "Assoc. Deputy Minister" },
+  { source: "foote", target: "pspc", type: "corporate", label: "Former Minister" },
+  { source: "bains", target: "pspc", type: "corporate", label: "" },
+
+  // SUBCONTRACTORS
+  { source: "deloitte", target: "dayforce", type: "contracts", label: "Implementation partner" },
+  { source: "cgi", target: "dayforce", type: "contracts", label: "Implementation partner" },
+  { source: "hcltech", target: "dayforce", type: "contracts", label: "Implementation partner" },
+  { source: "deloitte", target: "ibm", type: "contracts", label: "Phoenix business case" },
+
+  // OWNERSHIP
+  { source: "thoma", target: "dayforce", type: "contracts", label: "Acquired US$12.3B (Feb 2026)" },
+  { source: "adia", target: "thoma", type: "contracts", label: "Minority investor" },
+];
+
+// ── COLORS ──
+const groupColors = {
+  corporate: "#58a6ff",
+  lobbyist: "#f85149",
+  government: "#3fb950",
+  institution: "#d29922",
+  partner: "#bc8cff",
+  external: "#f778ba"
+};
+
+const linkStyles = {
+  "revolving-door": { color: "#f85149", dash: "" , width: 3 },
+  "lobbying":       { color: "#58a6ff", dash: "" , width: 2 },
+  "contracts":      { color: "#d29922", dash: "6,3", width: 2 },
+  "corporate":      { color: "#8b949e", dash: "3,3", width: 1.5 },
+};
+
+// ── SVG SETUP ──
+const svg = document.getElementById("graph");
+const tooltip = document.getElementById("tooltip");
+const width = svg.parentElement.clientWidth;
+const height = svg.parentElement.clientHeight;
+svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+// Create node map
+const nodeMap = {};
+nodes.forEach(n => { nodeMap[n.id] = n; n.x = width/2 + (Math.random()-0.5)*400; n.y = height/2 + (Math.random()-0.5)*300; });
+
+// ── FORCE SIMULATION ──
+function simulate() {
+  const iterations = 300;
+  const centerX = width / 2, centerY = height / 2;
+
+  // Initial positions by group
+  const groupPositions = {
+    corporate: { x: centerX - 100, y: centerY - 80 },
+    lobbyist:  { x: centerX - 250, y: centerY + 50 },
+    government:{ x: centerX + 200, y: centerY + 50 },
+    institution:{ x: centerX + 250, y: centerY - 100 },
+    partner:   { x: centerX - 200, y: centerY + 200 },
+    external:  { x: centerX + 100, y: centerY - 200 },
+  };
+
+  nodes.forEach(n => {
+    const gp = groupPositions[n.group] || { x: centerX, y: centerY };
+    n.x = gp.x + (Math.random()-0.5) * 200;
+    n.y = gp.y + (Math.random()-0.5) * 200;
+    n.vx = 0; n.vy = 0;
+  });
+
+  for (let iter = 0; iter < iterations; iter++) {
+    const alpha = 1 - iter / iterations;
+
+    // Repulsion
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i+1; j < nodes.length; j++) {
+        let dx = nodes[j].x - nodes[i].x;
+        let dy = nodes[j].y - nodes[i].y;
+        let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        let minDist = (nodes[i].r + nodes[j].r) * 2.5;
+        let force = -800 / (dist * dist);
+        if (dist < minDist) force -= (minDist - dist) * 0.5;
+        let fx = (dx/dist) * force * alpha;
+        let fy = (dy/dist) * force * alpha;
+        nodes[i].vx -= fx; nodes[i].vy -= fy;
+        nodes[j].vx += fx; nodes[j].vy += fy;
+      }
+    }
+
+    // Attraction (links)
+    links.forEach(l => {
+      const s = nodeMap[l.source] || nodeMap[l.source.id];
+      const t = nodeMap[l.target] || nodeMap[l.target.id];
+      if (!s || !t) return;
+      let dx = t.x - s.x, dy = t.y - s.y;
+      let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+      let idealDist = l.type === "corporate" ? 100 : 180;
+      let force = (dist - idealDist) * 0.005 * alpha;
+      s.vx += (dx/dist)*force; s.vy += (dy/dist)*force;
+      t.vx -= (dx/dist)*force; t.vy -= (dy/dist)*force;
+    });
+
+    // Center gravity
+    nodes.forEach(n => {
+      n.vx += (centerX - n.x) * 0.001 * alpha;
+      n.vy += (centerY - n.y) * 0.001 * alpha;
+      n.vx *= 0.8; n.vy *= 0.8;
+      n.x += n.vx; n.y += n.vy;
+      n.x = Math.max(n.r+10, Math.min(width-n.r-10, n.x));
+      n.y = Math.max(n.r+10, Math.min(height-n.r-10, n.y));
+    });
+  }
+}
+simulate();
+
+// ── RENDER ──
+let activeFilter = "all";
+
+function render() {
+  svg.innerHTML = "";
+
+  // Defs for arrows
+  const defs = document.createElementNS("http://www.w3.org/2000/svg","defs");
+  Object.entries(linkStyles).forEach(([type, style]) => {
+    const marker = document.createElementNS("http://www.w3.org/2000/svg","marker");
+    marker.setAttribute("id", `arrow-${type}`);
+    marker.setAttribute("viewBox","0 0 10 6");
+    marker.setAttribute("refX","10");
+    marker.setAttribute("refY","3");
+    marker.setAttribute("markerWidth","8");
+    marker.setAttribute("markerHeight","6");
+    marker.setAttribute("orient","auto");
+    const path = document.createElementNS("http://www.w3.org/2000/svg","path");
+    path.setAttribute("d","M0,0 L10,3 L0,6 Z");
+    path.setAttribute("fill", style.color);
+    path.setAttribute("fill-opacity","0.6");
+    marker.appendChild(path);
+    defs.appendChild(marker);
+  });
+  svg.appendChild(defs);
+
+  // Links
+  const linkGroup = document.createElementNS("http://www.w3.org/2000/svg","g");
+  links.forEach(l => {
+    const s = nodeMap[l.source] || nodeMap[l.source];
+    const t = nodeMap[l.target] || nodeMap[l.target];
+    if (!s || !t) return;
+
+    const style = linkStyles[l.type] || linkStyles.corporate;
+    const visible = activeFilter === "all" || activeFilter === l.type;
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg","line");
+    line.setAttribute("x1", s.x); line.setAttribute("y1", s.y);
+    line.setAttribute("x2", t.x); line.setAttribute("y2", t.y);
+    line.setAttribute("stroke", style.color);
+    line.setAttribute("stroke-width", style.width);
+    if (style.dash) line.setAttribute("stroke-dasharray", style.dash);
+    line.setAttribute("class", "link");
+    line.setAttribute("opacity", visible ? 0.5 : 0.07);
+
+    // Edge label
+    if (l.label && visible) {
+      const mx = (s.x + t.x)/2, my = (s.y + t.y)/2;
+      const text = document.createElementNS("http://www.w3.org/2000/svg","text");
+      text.setAttribute("x", mx); text.setAttribute("y", my - 4);
+      text.setAttribute("fill", style.color);
+      text.setAttribute("font-size","9");
+      text.setAttribute("text-anchor","middle");
+      text.setAttribute("opacity","0.7");
+      text.textContent = l.label;
+      linkGroup.appendChild(text);
+    }
+
+    linkGroup.appendChild(line);
+  });
+  svg.appendChild(linkGroup);
+
+  // Nodes
+  const nodeGroup = document.createElementNS("http://www.w3.org/2000/svg","g");
+  nodes.forEach(n => {
+    const g = document.createElementNS("http://www.w3.org/2000/svg","g");
+    g.setAttribute("class","node");
+    g.setAttribute("transform", `translate(${n.x},${n.y})`);
+
+    // Determine if node is relevant to current filter
+    const nodeLinks = links.filter(l => (l.source === n.id || l.target === n.id) && (activeFilter === "all" || l.type === activeFilter));
+    const nodeVisible = activeFilter === "all" || nodeLinks.length > 0;
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    circle.setAttribute("r", n.r);
+    circle.setAttribute("fill", groupColors[n.group]);
+    circle.setAttribute("fill-opacity", nodeVisible ? 0.2 : 0.05);
+    circle.setAttribute("stroke", groupColors[n.group]);
+    circle.setAttribute("stroke-opacity", nodeVisible ? 1 : 0.1);
+    if (n.flag) {
+      circle.setAttribute("stroke", "#f85149");
+      circle.setAttribute("stroke-width","3");
+      circle.setAttribute("stroke-dasharray","4,2");
+    }
+    g.appendChild(circle);
+
+    // Label
+    const lines = n.label.split("\n");
+    lines.forEach((line, i) => {
+      const text = document.createElementNS("http://www.w3.org/2000/svg","text");
+      text.setAttribute("y", n.r + 14 + i*13);
+      text.setAttribute("text-anchor","middle");
+      text.setAttribute("opacity", nodeVisible ? 1 : 0.15);
+      text.textContent = line;
+      g.appendChild(text);
+    });
+
+    // Flag indicator
+    if (n.flag) {
+      const warn = document.createElementNS("http://www.w3.org/2000/svg","text");
+      warn.setAttribute("y", -n.r - 4);
+      warn.setAttribute("text-anchor","middle");
+      warn.setAttribute("fill","#f85149");
+      warn.setAttribute("font-size","14");
+      warn.setAttribute("font-weight","bold");
+      warn.textContent = "\u26A0";
+      g.appendChild(warn);
+    }
+
+    // Interactions
+    g.addEventListener("mouseenter", (e) => {
+      const rect = svg.parentElement.getBoundingClientRect();
+      let html = `<div class="tt-name">${n.label.replace(/\n/g,' ')}</div>`;
+      html += `<div class="tt-role">${n.group.toUpperCase()}</div>`;
+      html += `<div class="tt-detail">${n.detail}</div>`;
+      if (n.flag) html += `<div class="tt-flag">\u26A0 ${n.flag}</div>`;
+      tooltip.innerHTML = html;
+      tooltip.style.opacity = 1;
+      const tx = n.x + rect.left + 20;
+      const ty = n.y + rect.top - 10;
+      tooltip.style.left = Math.min(tx, window.innerWidth - 340) + "px";
+      tooltip.style.top = Math.min(ty, window.innerHeight - 200) + "px";
+    });
+    g.addEventListener("mouseleave", () => { tooltip.style.opacity = 0; });
+    g.addEventListener("click", () => showNodeDetail(n));
+
+    nodeGroup.appendChild(g);
+  });
+  svg.appendChild(nodeGroup);
+}
+
+// ── NODE DETAIL PANEL ──
+function showNodeDetail(n) {
+  const detail = document.getElementById("node-detail");
+  const content = document.getElementById("node-detail-content");
+  const overview = document.getElementById("overview-content");
+
+  const connections = links.filter(l => l.source === n.id || l.target === n.id);
+  let html = `<h2 style="color:${groupColors[n.group]}">${n.label.replace(/\n/g,' ')}</h2>`;
+  html += `<div class="card info"><div class="label blue">${n.group.toUpperCase()}</div>${n.detail}</div>`;
+
+  if (n.flag) {
+    html += `<div class="card risk"><div class="label red">FLAG</div>${n.flag}</div>`;
+  }
+
+  if (connections.length > 0) {
+    html += `<h3>Connections (${connections.length})</h3>`;
+    connections.forEach(l => {
+      const otherId = l.source === n.id ? l.target : l.source;
+      const other = nodeMap[otherId];
+      if (!other) return;
+      const style = linkStyles[l.type];
+      const typeLabel = l.type.replace("-"," ").toUpperCase();
+      html += `<div class="card" style="border-left: 3px solid ${style.color}">`;
+      html += `<strong>${other.label.replace(/\n/g,' ')}</strong> <span style="color:${style.color};font-size:11px">[${typeLabel}]</span>`;
+      if (l.label) html += `<br><span style="color:var(--muted);font-size:12px">${l.label}</span>`;
+      html += `</div>`;
+    });
+  }
+
+  content.innerHTML = html;
+  detail.classList.add("visible");
+  overview.style.display = "none";
+}
+
+document.getElementById("node-detail-back").addEventListener("click", () => {
+  document.getElementById("node-detail").classList.remove("visible");
+  document.getElementById("overview-content").style.display = "";
+});
+
+// ── TABS ──
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(tc => tc.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+  });
+});
+
+// ── FILTERS ──
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+// ── DRAG ──
+let dragNode = null, dragOffX = 0, dragOffY = 0;
+svg.addEventListener("mousedown", e => {
+  const pt = svgPoint(e);
+  nodes.forEach(n => {
+    if (Math.hypot(pt.x - n.x, pt.y - n.y) < n.r) {
+      dragNode = n; dragOffX = pt.x - n.x; dragOffY = pt.y - n.y;
+    }
+  });
+});
+svg.addEventListener("mousemove", e => {
+  if (!dragNode) return;
+  const pt = svgPoint(e);
+  dragNode.x = pt.x - dragOffX;
+  dragNode.y = pt.y - dragOffY;
+  render();
+});
+svg.addEventListener("mouseup", () => { dragNode = null; });
+function svgPoint(e) {
+  const rect = svg.getBoundingClientRect();
+  return { x: (e.clientX - rect.left) / rect.width * width, y: (e.clientY - rect.top) / rect.height * height };
+}
+
+// ── RESIZE ──
+window.addEventListener("resize", () => {
+  const w = svg.parentElement.clientWidth;
+  const h = svg.parentElement.clientHeight;
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+});
+
+// Initial render
+render();
+</script>
+</body>
+</html>
