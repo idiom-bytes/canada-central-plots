@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrescribeIT Investigation — $250M Federal Contract</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  header {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  header .badge {
+    background: #b91c1c;
+    color: #fef2f2;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e6edf3;
+  }
+
+  header .meta {
+    font-size: 12px;
+    color: #8b949e;
+    margin-left: auto;
+  }
+
+  .main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* === GRAPH PANEL === */
+  .graph-panel {
+    flex: 0 0 58%;
+    position: relative;
+    border-right: 1px solid #30363d;
+    background: #0d1117;
+  }
+
+  #graph-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .graph-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    max-width: 420px;
+  }
+
+  .filter-btn {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #8b949e;
+    font-size: 11px;
+    padding: 4px 9px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { background: #2d333b; color: #e6edf3; }
+  .filter-btn.active { background: #1f6feb; border-color: #1f6feb; color: #fff; }
+
+  .legend {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(22,27,34,0.92);
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 11px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 14px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #8b949e;
+    white-space: nowrap;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-line {
+    width: 20px;
+    height: 3px;
+    flex-shrink: 0;
+  }
+
+  /* Tooltip */
+  #tooltip {
+    position: fixed;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 10px 13px;
+    font-size: 12px;
+    max-width: 260px;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+
+  #tooltip .tt-title { font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+  #tooltip .tt-type { font-size: 10px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+  #tooltip .tt-desc { color: #c9d1d9; line-height: 1.4; }
+  #tooltip .tt-warn { color: #f97316; margin-top: 6px; font-size: 11px; }
+
+  /* === SIDE PANEL === */
+  .side-panel {
+    flex: 0 0 42%;
+    display: flex;
+    flex-direction: column;
+    background: #0d1117;
+    overflow: hidden;
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #30363d;
+    background: #161b22;
+    flex-shrink: 0;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: #8b949e;
+    font-size: 13px;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    flex: 1;
+  }
+  .tab-btn:hover { color: #e6edf3; }
+  .tab-btn.active { color: #e6edf3; border-bottom-color: #1f6feb; }
+
+  .tab-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: none;
+  }
+  .tab-content.active { display: block; }
+
+  /* Scrollbar */
+  .tab-content::-webkit-scrollbar { width: 5px; }
+  .tab-content::-webkit-scrollbar-track { background: #0d1117; }
+  .tab-content::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+
+  /* Risk Cards */
+  .risk-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 11px 13px;
+    margin-bottom: 10px;
+    border-left-width: 3px;
+  }
+  .risk-card.critical { border-left-color: #dc2626; }
+  .risk-card.high { border-left-color: #f97316; }
+  .risk-card.medium { border-left-color: #eab308; }
+  .risk-card.info { border-left-color: #3b82f6; }
+
+  .risk-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .critical .risk-label { color: #dc2626; }
+  .high .risk-label { color: #f97316; }
+  .medium .risk-label { color: #eab308; }
+  .info .risk-label { color: #3b82f6; }
+
+  .risk-title { font-weight: 600; font-size: 13px; color: #e6edf3; margin-bottom: 5px; }
+  .risk-desc { font-size: 12px; color: #8b949e; line-height: 1.5; }
+  .risk-source { margin-top: 6px; }
+  .risk-source a { font-size: 11px; color: #1f6feb; text-decoration: none; }
+  .risk-source a:hover { text-decoration: underline; }
+
+  /* Timeline */
+  .timeline-entry {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .tl-dot.contract { background: #22c55e; }
+  .tl-dot.conflict { background: #dc2626; }
+  .tl-dot.lobbying { background: #3b82f6; }
+  .tl-dot.parliamentary { background: #a855f7; }
+  .tl-date { font-size: 11px; color: #6e7681; min-width: 80px; flex-shrink: 0; }
+  .tl-text { font-size: 12px; color: #c9d1d9; line-height: 1.4; }
+
+  /* Sources */
+  .source-group { margin-bottom: 16px; }
+  .source-group h4 { font-size: 12px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 5px; }
+  .source-item { margin-bottom: 5px; }
+  .source-item a { font-size: 12px; color: #1f6feb; text-decoration: none; word-break: break-all; }
+  .source-item a:hover { text-decoration: underline; }
+
+  .gap-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 5px;
+    padding: 10px 12px;
+    margin-bottom: 7px;
+    font-size: 12px;
+    color: #8b949e;
+    line-height: 1.5;
+  }
+  .gap-box strong { color: #e6edf3; }
+
+  /* Detail panel */
+  .detail-pane {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    width: 240px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 12px;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    z-index: 100;
+  }
+  .detail-pane.visible { display: block; }
+  .detail-close { float: right; cursor: pointer; color: #6e7681; font-size: 14px; }
+  .detail-pane h3 { font-size: 13px; color: #e6edf3; margin-bottom: 6px; }
+  .detail-pane p { color: #8b949e; line-height: 1.5; margin-bottom: 4px; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #30363d;
+    background: #161b22;
+    flex-shrink: 0;
+  }
+  .stat {
+    flex: 1;
+    padding: 7px 10px;
+    border-right: 1px solid #30363d;
+    text-align: center;
+  }
+  .stat:last-child { border-right: none; }
+  .stat .s-val { font-size: 16px; font-weight: 700; color: #dc2626; }
+  .stat .s-lbl { font-size: 10px; color: #6e7681; margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">Investigation</span>
+  <h1>PrescribeIT — $250M Federal Contract</h1>
+  <span class="meta">Canada Health Infoway / TELUS Health &nbsp;|&nbsp; Research: April 14, 2026</span>
+</header>
+
+<div class="main">
+  <!-- GRAPH PANEL -->
+  <div class="graph-panel">
+    <canvas id="graph-canvas"></canvas>
+
+    <div class="graph-controls">
+      <button class="filter-btn active" data-filter="all">All Links</button>
+      <button class="filter-btn" data-filter="revolving">Revolving Door</button>
+      <button class="filter-btn" data-filter="lobbying">Lobbying</button>
+      <button class="filter-btn" data-filter="contract">Contracts</button>
+      <button class="filter-btn" data-filter="corporate">Corporate</button>
+      <button class="filter-btn" data-filter="parliamentary">Parliamentary</button>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Corporate / Operator</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div>Lobbyist</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div>Government Official</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>Government Institution</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div>Parliament / MP</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ec4899"></div>Healthcare Org</div>
+      <div class="legend-item"><div class="legend-line" style="background:#dc2626"></div>Revolving Door</div>
+      <div class="legend-item"><div class="legend-line" style="background:#3b82f6"></div>Lobbying Contact</div>
+      <div class="legend-item"><div class="legend-line" style="background:#f97316; border-top: 2px dashed #f97316; background:none; height:0"></div>Contract / Funding</div>
+      <div class="legend-item"><div class="legend-line" style="background:#6e7681"></div>Corporate / Employment</div>
+    </div>
+
+    <div class="detail-pane" id="detail-pane">
+      <span class="detail-close" id="detail-close">✕</span>
+      <h3 id="detail-title">—</h3>
+      <p id="detail-body">—</p>
+    </div>
+  </div>
+
+  <!-- SIDE PANEL -->
+  <div class="side-panel">
+    <div class="stats-bar">
+      <div class="stat"><div class="s-val">$250M+</div><div class="s-lbl">Federal Spending</div></div>
+      <div class="stat"><div class="s-val">&lt;5%</div><div class="s-lbl">Prescription Adoption</div></div>
+      <div class="stat"><div class="s-val">$2.65B</div><div class="s-lbl">Infoway Total Received</div></div>
+      <div class="stat"><div class="s-val">0</div><div class="s-lbl">AG Audits Since 2009</div></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="risks">Risks</button>
+      <button class="tab-btn" data-tab="timeline">Timeline</button>
+      <button class="tab-btn" data-tab="sources">Sources</button>
+    </div>
+
+    <!-- RISKS TAB -->
+    <div class="tab-content active" id="tab-risks">
+
+      <div class="risk-card critical">
+        <div class="risk-label">Critical — Conflict of Interest</div>
+        <div class="risk-title">Jocelyne Voisin: Overseer, Board Member, and Lobbying Target</div>
+        <div class="risk-desc">Health Canada's Senior ADM Jocelyne Voisin simultaneously: (1) oversees Health Canada contributions to Canada Health Infoway, (2) sits on Infoway's Board of Directors, AND (3) was lobbied by TELUS Health's in-house lobbyists on June 19, 2025. She is on both sides of the funder-funded relationship while being courted by the company whose technology is at the centre of the $250M controversy.</div>
+        <div class="risk-source"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=377208" target="_blank">Lobbying Registry — TELUS Health</a></div>
+      </div>
+
+      <div class="risk-card critical">
+        <div class="risk-label">Critical — Procurement Integrity</div>
+        <div class="risk-title">Charles Harnick Registered During RFP Evaluation</div>
+        <div class="risk-desc">Former Ontario Attorney General Charles Harnick registered as a consultant lobbyist for TELUS Health Solutions GP in September 2016 — the exact month Infoway's PrescribeIT Call for Proposals was under evaluation. His registration explicitly targeted Health Canada and Government Procurement. TELUS Health won the contract in May 2017.</div>
+        <div class="risk-source"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=358462&regId=864619" target="_blank">Harnick Lobbying Registration #864619</a></div>
+      </div>
+
+      <div class="risk-card high">
+        <div class="risk-label">High — IP Ownership</div>
+        <div class="risk-title">TELUS Retains IP from $250M Public Investment</div>
+        <div class="risk-desc">Despite $250M+ in public funds channelled through Canada Health Infoway to build PrescribeIT on TELUS Health's proprietary platform, TELUS retains ownership of the core transmission hub technology. The government cannot continue or redeploy the service without TELUS's consent. Parliament has not received the IP ownership agreements despite formal requests.</div>
+        <div class="risk-source"><a href="https://www.theglobeandmail.com/business/economy/article-federal-axe-the-fax-e-prescribing-service-built-with-telus-health-to/" target="_blank">Globe and Mail — Shutdown Investigation</a></div>
+      </div>
+
+      <div class="risk-card high">
+        <div class="risk-label">High — Parliamentary Accountability</div>
+        <div class="risk-title">Liberal MPs Blocking Contract Disclosure at HESA</div>
+        <div class="risk-desc">At HESA (March 24, 2026), Liberal MP Sonia Sidhu moved to delete the PrescribeIT-specific materials from a Conservative document production motion — removing the 2017 TELUS contract, all amendments, IP agreements, termination notice, and payment history. Before a vote occurred, a Bloc adjournment motion ended the meeting. A Standing Order 106(4) special meeting was scheduled for April 15, 2026 to revisit.</div>
+        <div class="risk-source"><a href="https://www.ourcommons.ca/documentviewer/en/45-1/HESA/meeting-25/minutes" target="_blank">HESA Meeting 25 Minutes</a></div>
+      </div>
+
+      <div class="risk-card high">
+        <div class="risk-label">High — Audit Gap</div>
+        <div class="risk-title">No Auditor General Review Since 2009 / 2011</div>
+        <div class="risk-desc">The 2009 OAG report found retroactive contracting, misleading adoption figures, and inadequate funding agreements. Despite $2.65B+ more in spending since then — including the entire PrescribeIT program — no public OAG performance audit of Infoway has been published since 2009/2011. PrescribeIT ran its entire lifecycle without independent performance auditing.</div>
+        <div class="risk-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3091895/" target="_blank">CMAJ / PMC — OAG findings summary</a></div>
+      </div>
+
+      <div class="risk-card high">
+        <div class="risk-label">High — Pattern of Failure</div>
+        <div class="risk-title">Infoway Missed All 8 Program Targets in 2011 Audit</div>
+        <div class="risk-desc">A 2011 external audit commissioned by Infoway's own board found it missed self-established targets in all eight major program areas. The 2009 OAG found Infoway misrepresented physician adoption rates (claiming 38% to get $500M; actual was 22%). PrescribeIT's &lt;5% adoption repeats this pattern of overpromised, underdelivered outcomes.</div>
+        <div class="risk-source"><a href="https://www.cmaj.ca/content/183/8/893" target="_blank">CMAJ — Audit concludes Infoway missed targets</a></div>
+      </div>
+
+      <div class="risk-card medium">
+        <div class="risk-label">Medium — Revolving Door</div>
+        <div class="risk-title">Stuart Barnable: Senate Insider Lobbying for TELUS</div>
+        <div class="risk-desc">Stuart Barnable was Chief of Staff in the Senate (2015–2021) and Policy Advisor to Senate Speaker George Furey. He then registered as a consultant lobbyist for TELUS Health (H+K Strategies) until February 17, 2026 — the same month PrescribeIT's shutdown was announced. His registration covered federal-provincial health cooperation and government procurement.</div>
+        <div class="risk-source"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=378294" target="_blank">Barnable Lobbying Registration</a></div>
+      </div>
+
+      <div class="risk-card medium">
+        <div class="risk-label">Medium — Revolving Door</div>
+        <div class="risk-title">Don Boudria: Former Liberal Cabinet Minister Lobbying for TELUS</div>
+        <div class="risk-desc">Former Liberal cabinet minister Don Boudria registered as a consultant lobbyist for TELUS Corp. (parent of TELUS Health) during the period of Liberal government funding of PrescribeIT. A Liberal political insider lobbying a Liberal government for the company holding a $250M+ contract raises access concerns.</div>
+        <div class="risk-source"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=359984" target="_blank">Boudria Lobbying Registration</a></div>
+      </div>
+
+      <div class="risk-card medium">
+        <div class="risk-label">Medium — Governance Structure</div>
+        <div class="risk-title">Arm's-Length Structure as Accountability Shield</div>
+        <div class="risk-desc">Infoway's status as an independent not-for-profit allows Health Canada to claim it doesn't control Infoway's operations. Parliament cannot compel Infoway directly. The $250M TELUS contract was an Infoway-managed contract — outside Treasury Board procurement rules and Access to Information requirements. This structural gap has allowed $2.65B+ in spending to avoid meaningful parliamentary review.</div>
+        <div class="risk-source"><a href="https://www.ourcommons.ca/documentviewer/en/45-1/HESA/meeting-25/minutes" target="_blank">HESA Meeting 25 — Committee Motion</a></div>
+      </div>
+
+      <div class="risk-card medium">
+        <div class="risk-label">Medium — Metric Integrity</div>
+        <div class="risk-title">Enrollment vs. Usage: Misleading Adoption Reporting</div>
+        <div class="risk-desc">Infoway reported 16,185 prescribers and 7,953 pharmacies "enrolled" while actual prescription usage remained below 5%. This echoes the 2009 OAG finding where "available" was used to mean something far short of "used." The 2025 fee introduction (despite CPhA survey showing 65% of pharmacists would quit) suggests Infoway leadership was out of touch with provider realities.</div>
+        <div class="risk-source"><a href="https://www.prescribeit.ca/2023-year-in-review" target="_blank">PrescribeIT 2023 Year in Review</a></div>
+      </div>
+
+    </div>
+
+    <!-- TIMELINE TAB -->
+    <div class="tab-content" id="tab-timeline">
+
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">2001</div><div class="tl-text">Canada Health Infoway established. $500M federal seed funding from First Ministers' Action Plan. Total funding over 2001–2010: $2.1 billion.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Nov 2009</div><div class="tl-text">Auditor General Sheila Fraser: Infoway missed all 8 program targets. Retroactive contracting (13 of 35 contracts signed after work began). Misleading adoption stats: claimed 38% physician EMR access; actual was 22%.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">2011</div><div class="tl-text">External audit commissioned by Infoway's own board (Bell Browne Molnar): Infoway missed self-established targets in all 8 major program areas. Only 16% of $2.168B earmarked for clinician adoption.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">Budget 2016</div><div class="tl-text">$50M allocated to Infoway for e-prescribing and tele-homecare. PrescribeIT program begins. RFP (Call for Proposals) issued in July 2016.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Sep 2016</div><div class="tl-text"><strong style="color:#f97316">⚠ Red flag:</strong> Charles Harnick (former Ontario AG) registers as consultant lobbyist for TELUS Health, targeting Health Canada and Government Procurement — same month as PrescribeIT RFP evaluation.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">Budget 2017</div><div class="tl-text">$300M allocated over 5 years for e-prescribing, virtual care, EMR. Total Infoway investment reaches $2.45B cumulative.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">May 11, 2017</div><div class="tl-text">Canada Health Infoway selects TELUS Health as PrescribeIT technical provider. Platform built on proprietary TELUS Health Exchange.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">Aug 2017</div><div class="tl-text">First electronic prescription sent through PrescribeIT (Huntsville, Ontario). Trial begins in Alberta and Ontario communities.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot parliamentary"></div>
+        <div><div class="tl-date">Apr 2023</div><div class="tl-text">Conservative MP Eric Duncan's written question Q-1262 answered — requested funding totals by year and usage by province. Data not publicly debated in committee.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">May 2024</div><div class="tl-text">Infoway issues RFEOI for private-sector takeover, managed by PricewaterhouseCoopers. Deadline for Letters of Intent: December 19, 2024. No viable partner found.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Dec 2024</div><div class="tl-text">CPhA formally opposes $0.20/prescription fee. Survey of 1,300+ pharmacists: 65% would quit PrescribeIT if fee implemented. CPhA escalates to Health Minister.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Jan 1, 2025</div><div class="tl-text">$0.20/prescription pharmacy fee implemented despite CPhA warnings. Accelerates adoption collapse.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot lobbying"></div>
+        <div><div class="tl-date">Jun 4, 2025</div><div class="tl-text">TELUS Health lobbyists meet with PMO Policy Advisor Joshua Swift and Opposition Leader's Office Policy Director Aaron Wudrick.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Jun 19, 2025</div><div class="tl-text"><strong style="color:#dc2626">⚠ Critical:</strong> TELUS Health in-house lobbyists meet with Jocelyne Voisin (Health Canada Senior ADM who also sits on Infoway's board) and two other Health Canada officials.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot parliamentary"></div>
+        <div><div class="tl-date">Feb 4, 2026</div><div class="tl-text">Bill S-5 (Connected Care for Canadians Act) introduced in Senate — mandates health IT interoperability; does not recreate a centralized platform.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Feb 12, 2026</div><div class="tl-text">Canada Health Infoway announces PrescribeIT shutdown effective May 29, 2026. $250M+, 9 years, &lt;5% prescription adoption.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot lobbying"></div>
+        <div><div class="tl-date">Feb 17, 2026</div><div class="tl-text">Stuart Barnable (TELUS Health consultant lobbyist, former Senate Chief of Staff) ends H+K Strategies registration — same month as shutdown announcement.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot parliamentary"></div>
+        <div><div class="tl-date">Mar 12, 2026</div><div class="tl-text">HESA: Conservative MP Matt Strauss moves document production motion for all PrescribeIT contracts, amendments, IP agreements, termination notice, and payment history. Deadline: April 17, 2026.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot conflict"></div>
+        <div><div class="tl-date">Mar 24, 2026</div><div class="tl-text"><strong style="color:#f97316">⚠ Accountability blocked:</strong> Liberal MP Sonia Sidhu moves amendment to delete PrescribeIT contract records. Bloc MP Blanchette-Joncas moves adjournment (passes 5-0). No vote on disclosure.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot parliamentary"></div>
+        <div><div class="tl-date">Apr 15, 2026</div><div class="tl-text">HESA Meeting 27 scheduled (Standing Order 106(4)) to revisit unresolved PrescribeIT document production order. <em>Outcome pending.</em></div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">May 1, 2026</div><div class="tl-text">National e-prescribing open standard to be published publicly by Infoway.</div></div>
+      </div>
+      <div class="timeline-entry">
+        <div class="tl-dot contract"></div>
+        <div><div class="tl-date">May 29, 2026</div><div class="tl-text">PrescribeIT ceases all operations at 11:59 PM EST. Controlled substance prescriptions revert to physical secure pads in Alberta. Doctors back to fax.</div></div>
+      </div>
+
+    </div>
+
+    <!-- SOURCES TAB -->
+    <div class="tab-content" id="tab-sources">
+
+      <div class="source-group">
+        <h4>Parliamentary (Primary)</h4>
+        <div class="source-item"><a href="https://www.ourcommons.ca/documentviewer/en/45-1/HESA/meeting-25/minutes" target="_blank">HESA Meeting 25 Minutes — Strauss motion &amp; Sidhu amendment</a></div>
+        <div class="source-item"><a href="https://openparliament.ca/committees/health/45-1/27/" target="_blank">HESA Meeting 27 — SO 106(4) special meeting (April 15, 2026)</a></div>
+        <div class="source-item"><a href="https://www.ourcommons.ca/written-questions/44-1/q-1262" target="_blank">Written Question Q-1262 (Eric Duncan, PrescribeIT metrics)</a></div>
+        <div class="source-item"><a href="https://openparliament.ca/search/?q=prescribeit&type=debate" target="_blank">OpenParliament — PrescribeIT debate search</a></div>
+        <div class="source-item"><a href="https://openparliament.ca/search/?q=prescribeit&type=committee" target="_blank">OpenParliament — PrescribeIT committee search</a></div>
+        <div class="source-item"><a href="https://www.ourcommons.ca/Content/Committee/441/FINA/Brief/BR13231868/br-external/CanadianPharmacistsAssociation-e.pdf" target="_blank">CPhA Pre-Budget Submission 2025 to FINA</a></div>
+        <div class="source-item"><a href="https://www.parl.ca/legisinfo/en/bill/45-1/s-5" target="_blank">Bill S-5 — Connected Care for Canadians Act</a></div>
+        <div class="source-item"><a href="https://www.ourcommons.ca/Content/Committee/402/PACP/WebDoc/WD4020496/PACP-Sessional-ActionPlans/21-Canada%20Health%20Infoway%20Action%20Plan-e.htm" target="_blank">PACP Action Plans — Canada Health Infoway</a></div>
+      </div>
+
+      <div class="source-group">
+        <h4>Lobbying Registry</h4>
+        <div class="source-item"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=377208" target="_blank">TELUS Health Inc. — In-house registration (Corp #377208)</a></div>
+        <div class="source-item"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/vwRg?cno=358462&regId=864619" target="_blank">Charles Harnick — TELUS Health consultant #864619</a></div>
+        <div class="source-item"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=378294" target="_blank">Stuart Barnable / H+K Strategies — TELUS Health consultant</a></div>
+        <div class="source-item"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=235601" target="_blank">TELUS Corporation — In-house registration</a></div>
+        <div class="source-item"><a href="https://lobbycanada.gc.ca/app/secure/ocl/lrs/do/clntSmmry?clientOrgCorpNumber=359984" target="_blank">Don Boudria — TELUS Corp consultant</a></div>
+      </div>
+
+      <div class="source-group">
+        <h4>Government / Official</h4>
+        <div class="source-item"><a href="https://www.prescribeit.ca/update-on-the-future-of-prescribeit" target="_blank">PrescribeIT — Future Update &amp; RFEOI</a></div>
+        <div class="source-item"><a href="https://www.prescribeit.ca/2023-year-in-review" target="_blank">PrescribeIT 2023 Year in Review (adoption stats)</a></div>
+        <div class="source-item"><a href="https://www.infoway-inforoute.ca/en/who-we-are/our-team" target="_blank">Canada Health Infoway — Team &amp; Board</a></div>
+        <div class="source-item"><a href="https://www.budget.canada.ca/2017/docs/plan/chap-03-en.html" target="_blank">Budget 2017 — Infoway $300M funding</a></div>
+        <div class="source-item"><a href="https://www.canada.ca/en/health-canada/corporate/transparency/corporate-management-reporting/report-plans-priorities/2025-26-supplementary-information-tables/details-transfer-payment-programs.html" target="_blank">Health Canada 2025-26 Supplementary Tables</a></div>
+        <div class="source-item"><a href="https://www.newswire.ca/news-releases/infoway-selects-telus-health-for-prescribeit-621970253.html" target="_blank">Newswire — TELUS Health selected (May 11, 2017)</a></div>
+        <div class="source-item"><a href="https://www.newswire.ca/news-releases/federal-government-announces-new-funding-for-canada-health-infoway-616933104.html" target="_blank">Newswire — Budget 2017 Infoway announcement</a></div>
+      </div>
+
+      <div class="source-group">
+        <h4>News / Media</h4>
+        <div class="source-item"><a href="https://www.theglobeandmail.com/business/economy/article-federal-axe-the-fax-e-prescribing-service-built-with-telus-health-to/" target="_blank">Globe and Mail — "$250M program shut down" (Feb 2026)</a></div>
+        <div class="source-item"><a href="https://www.theglobeandmail.com/business/economy/article-digital-prescription-tool-cancelled-failed-to-replace-fax-machines/" target="_blank">Globe and Mail — "Digital prescription tool cancelled"</a></div>
+        <div class="source-item"><a href="https://www.cbc.ca/news/canada/london/prescribe-it-9.7127925" target="_blank">CBC News — "Back to the fax? Doctors in limbo"</a></div>
+        <div class="source-item"><a href="https://www.cbc.ca/news/science/federal-ehealth-project-has-holes-auditor-general-1.825287" target="_blank">CBC News — "Federal eHealth project has holes" (2009 OAG)</a></div>
+        <div class="source-item"><a href="https://www.canhealth.com/2026/02/18/infoway-pulls-the-plug-on-prescribeit/" target="_blank">Canadian Healthcare Technology — Infoway pulls the plug</a></div>
+        <div class="source-item"><a href="https://canadianhealthcarenetwork.ca/prescribeit-being-shut-down-due-low-adoption-rates-infoway-looks-promote-open-e-prescribing" target="_blank">Canadian Healthcare Network — Shutdown coverage</a></div>
+        <div class="source-item"><a href="https://prich5757.wordpress.com/2026/02/23/prescribing-for-failure-the-canadian-e-prescribing-experience/" target="_blank">Days of Past Futures — "Prescribing for failure?" (Keshavjee analysis)</a></div>
+        <div class="source-item"><a href="https://globalnews.ca/news/11750090/prime-minister-mark-carney-question-period-attendance/" target="_blank">Global News — Carney QP attendance</a></div>
+      </div>
+
+      <div class="source-group">
+        <h4>Healthcare Sector</h4>
+        <div class="source-item"><a href="https://www.pharmacists.ca/news-events/news/cpha-urges-pause-on-prescribeit-transaction-fee-that-will-threaten-the-sustainability-of-canadian-pharmacies/" target="_blank">CPhA — Opposes $0.20/prescription fee (Dec 2024)</a></div>
+        <div class="source-item"><a href="https://abpharmacy.ca/news/prescribeit-e-prescribing-service-to-cease-operations-may-29-2026/" target="_blank">Alberta College of Pharmacy — Shutdown notice</a></div>
+      </div>
+
+      <div class="source-group">
+        <h4>Audit / Academic</h4>
+        <div class="source-item"><a href="https://www.cmaj.ca/content/183/8/893" target="_blank">CMAJ — "Audit concludes Infoway missed program targets" (2011)</a></div>
+        <div class="source-item"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3042437/" target="_blank">PMC — "Experts call for health infoway watchdog" (2011)</a></div>
+        <div class="source-item"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3091895/" target="_blank">PMC/CMAJ — 2009 OAG findings summary</a></div>
+        <div class="source-item"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5008949/" target="_blank">CMAJ — PrescribeIT RFP coverage (2016)</a></div>
+        <div class="source-item"><a href="https://www.mondaq.com/canada/it-and-internet/90376/federal-auditor-generals-report-on-canada-health-infoway" target="_blank">MONDAQ — OAG Infoway report analysis</a></div>
+      </div>
+
+      <div class="source-group">
+        <h4>Research Gaps — What Could Not Be Verified</h4>
+        <div class="gap-box"><strong>TELUS Health contract value (2017–2026):</strong> Total payments from Infoway to TELUS Health unknown. This is the core of the Conservative document production motion.</div>
+        <div class="gap-box"><strong>The PwC sale process:</strong> Which companies responded to the 2024 RFEOI? Why did each decline? Not publicly documented.</div>
+        <div class="gap-box"><strong>"Chief Filibuster Officer" / 2-hour filibuster:</strong> Specific phrasing not found in Hansard. What is documented is procedurally equivalent. May originate in MP social media or media commentary.</div>
+        <div class="gap-box"><strong>IP transfer terms post-shutdown:</strong> What happens to TELUS transmission hub IP after May 29? Not publicly disclosed.</div>
+        <div class="gap-box"><strong>April 15, 2026 HESA Meeting 27 outcome:</strong> Special meeting had not yet occurred at time of research.</div>
+        <div class="gap-box"><strong>Angela Jonsson's government contacts:</strong> As Infoway EVP of Public Affairs, her meetings with federal officials are not in any lobbying registry — Infoway is not a registered entity.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+
+const nodes = [
+  // Corporate / Operator (blue)
+  { id: 'infoway', label: 'Canada Health\nInfoway', type: 'corporate', color: '#3b82f6', r: 28,
+    desc: 'Federal not-for-profit operator of PrescribeIT. Received $2.65B+ in federal funding since 2001. Created by First Ministers in 2001. Accountable to board of current/former deputy ministers. No formal lobbying registration despite extensive government relations.',
+    warn: 'Outside Treasury Board procurement rules; limited ATIP access; no OAG audit since 2009/2011.' },
+  { id: 'telus_health', label: 'TELUS Health', type: 'corporate', color: '#3b82f6', r: 24,
+    desc: 'Division of TELUS Corp. Selected as PrescribeIT technical provider (May 11, 2017). Built platform on proprietary TELUS Health Exchange. Retains intellectual property despite $250M+ in public investment. Collected "millions annually" in licensing/service fees.',
+    warn: 'Retains IP from $250M public investment. Contract terms never publicly disclosed.' },
+  { id: 'telus_corp', label: 'TELUS Corp.', type: 'corporate', color: '#3b82f6', r: 20,
+    desc: 'Parent company of TELUS Health. Maintains in-house lobbying registration (Corp #235601) covering 40+ federal institutions. Key in-house lobbyists: Tom Chervinsky, Nicholas Moore, Katherine Preiss, Rhys Sandner.',
+    warn: null },
+  { id: 'pwc', label: 'PwC', type: 'corporate', color: '#6366f1', r: 14,
+    desc: 'PricewaterhouseCoopers managed the 2024 Request for Expression of Interest (RFEOI) process to find a private-sector acquirer for PrescribeIT. Process failed — no viable partner found by December 2024.',
+    warn: null },
+
+  // Lobbyists (red)
+  { id: 'harnick', label: 'Charles Harnick\n(Counsel PA)', type: 'lobbyist', color: '#ef4444', r: 18,
+    desc: 'Former Ontario Attorney General. Registered as consultant lobbyist for TELUS Health Solutions GP (September 2016) — same month as PrescribeIT RFP evaluation. Targeted Health Canada and Government Procurement. Registration #864619.',
+    warn: 'Registered during RFP evaluation period. TELUS won the contract May 2017.' },
+  { id: 'barnable', label: 'Stuart Barnable\n(H+K Strategies)', type: 'lobbyist', color: '#ef4444', r: 16,
+    desc: 'Former Chief of Staff, Senate of Canada (2015–2021); Policy Advisor to Senate Speaker George Furey. Consultant lobbyist for TELUS Health until February 17, 2026 — same month as PrescribeIT shutdown announcement.',
+    warn: 'Former Senate insider; registration ended same month as shutdown.' },
+  { id: 'boudria', label: 'Don Boudria', type: 'lobbyist', color: '#ef4444', r: 14,
+    desc: 'Former Liberal cabinet minister. Registered as consultant lobbyist for TELUS Corp. (parent of TELUS Health) during period of Liberal government funding of PrescribeIT.',
+    warn: 'Liberal insider lobbying for TELUS during Liberal government PrescribeIT funding.' },
+  { id: 'telus_inhouse', label: 'TELUS Health\nIn-house Lobbyists', type: 'lobbyist', color: '#ef4444', r: 16,
+    desc: 'TELUS Health in-house lobbying registration (Corp #377208). Key meetings documented in June 2025 with PMO, Health Canada, and Opposition Leader\'s Office. President: Mohamed El-Demerdash.',
+    warn: null },
+
+  // Government Officials (green)
+  { id: 'voisin', label: 'Jocelyne Voisin\nHealth Canada', type: 'government', color: '#22c55e', r: 20,
+    desc: 'Senior Assistant Deputy Minister, Health Canada. Simultaneously: oversees Health Canada contributions to Infoway AND sits on Infoway\'s Board of Directors. Met with TELUS Health in-house lobbyists June 19, 2025.',
+    warn: 'Critical triple conflict: Health Canada overseer + Infoway board member + TELUS lobbying target.' },
+  { id: 'vaughan', label: 'Dr. Peter Vaughan\nBoard Chair', type: 'government', color: '#22c55e', r: 16,
+    desc: 'Board Chair, Canada Health Infoway (since 2017). Former Deputy Minister of Health, Nova Scotia. Chairs federally funded entity through its entire operational lifecycle, including $250M+ PrescribeIT program.',
+    warn: 'Former senior health official chairs entity with no independent oversight since 2011.' },
+  { id: 'green', label: 'Michael Green\nCEO Infoway', type: 'government', color: '#22c55e', r: 16,
+    desc: 'President and CEO, Canada Health Infoway (since August 2014). Ran PrescribeIT from launch to shutdown. At shutdown: "PrescribeIT has not reached the scale required to support long-term sustainability."',
+    warn: null },
+  { id: 'michel', label: 'Marjorie Michel\nHealth Minister', type: 'government', color: '#22c55e', r: 16,
+    desc: 'Federal Minister of Health (2025–). Minister at time of PrescribeIT shutdown. Spokesperson stated adoption was "below anticipated levels" and cited absence of federal-provincial cost-sharing model. Tabled Canada Health Act Annual Report Feb 13, 2026 — the day after shutdown — without a dedicated PrescribeIT statement.',
+    warn: null },
+  { id: 'curtis', label: 'Shalene\nCurtis-Micallef\nDM Health Canada', type: 'government', color: '#22c55e', r: 14,
+    desc: 'Deputy Minister, Health Canada. Testified at HESA March 24, 2026: described PrescribeIT as "an initiative that was started by Canada Health Infoway" — distancing federal government from accountability.',
+    warn: null },
+  { id: 'swift', label: 'Joshua Swift\nPMO', type: 'government', color: '#22c55e', r: 13,
+    desc: 'Policy Advisor, Prime Minister\'s Office (PMO). Met with TELUS Health in-house lobbyists on June 4, 2025.',
+    warn: null },
+
+  // Government Institutions (orange)
+  { id: 'health_canada', label: 'Health Canada', type: 'institution', color: '#f97316', r: 22,
+    desc: 'Federal department responsible for funding Canada Health Infoway through contribution agreements. Infoway\'s funding agreement expired March 31, 2026. Health Canada\'s 2025-26 plan noted a $14.7M decrease in Infoway contributions — wind-down had begun before shutdown.',
+    warn: null },
+  { id: 'pmo', label: 'Prime Minister\'s\nOffice (PMO)', type: 'institution', color: '#f97316', r: 16,
+    desc: 'TELUS Health lobbied the PMO (meeting with Joshua Swift, June 4, 2025). PM Carney has attended Question Period significantly less frequently than his predecessor, limiting opposition accountability opportunities.',
+    warn: null },
+  { id: 'treasury_board', label: 'Treasury Board', type: 'institution', color: '#f97316', r: 14,
+    desc: 'Canada Health Infoway operates outside normal Treasury Board procurement rules as an arm\'s-length not-for-profit. Its contracts with vendors like TELUS Health are governed only by Infoway\'s own procurement policies — a significant accountability gap.',
+    warn: null },
+  { id: 'oag', label: 'Auditor General\n(OAG)', type: 'institution', color: '#f97316', r: 14,
+    desc: '2009 Auditor General (Sheila Fraser) found Infoway missed all 8 program targets, retroactive contracting, and misleading adoption statistics. No OAG performance audit of Infoway has been published since 2009/2011 despite $2.65B+ more in spending.',
+    warn: 'No audit since 2009/2011. Entire PrescribeIT program ran without independent OAG oversight.' },
+
+  // Parliament / MPs (purple)
+  { id: 'hesa', label: 'Health Committee\n(HESA)', type: 'parliament', color: '#a855f7', r: 18,
+    desc: 'House of Commons Standing Committee on Health. Conservative MP Matt Strauss moved document production motion (March 12, 2026) for all PrescribeIT contracts, amendments, IP agreements, termination notice, and payment history. Liberal amendment sought to delete PrescribeIT materials. Special meeting scheduled April 15, 2026.',
+    warn: 'Document production motion blocked by Liberal amendment + Bloc adjournment.' },
+  { id: 'strauss', label: 'Matt Strauss\nMP (CPC)', type: 'parliament', color: '#a855f7', r: 15,
+    desc: 'Conservative MP, Kitchener South–Hespeler. Moved the document production motion at HESA (March 12, 2026) demanding full TELUS Health contract, IP agreements, termination notice, and payment history. Compared PrescribeIT spending ($250M) to the Liberal Sponsorship Scandal.',
+    warn: null },
+  { id: 'sidhu', label: 'Sonia Sidhu\nMP (LPC)', type: 'parliament', color: '#a855f7', r: 15,
+    desc: 'Liberal MP, Brampton South. Moved amendment at HESA (March 24, 2026) to delete PrescribeIT-specific materials — the 2017 TELUS contract, all amendments, IP agreements, termination notice, and full payment history — from the Conservative document production motion.',
+    warn: 'Moved amendment to strip contract accountability records from HESA production order.' },
+  { id: 'blanchette', label: 'Maxime\nBlanchette-Joncas\nMP (BQ)', type: 'parliament', color: '#a855f7', r: 13,
+    desc: 'Bloc Québécois MP. Moved adjournment of debate before vote could occur on Sidhu\'s amendment. Adjournment passed 5-0, ending March 24 HESA meeting without resolution.',
+    warn: null },
+  { id: 'duncan', label: 'Eric Duncan\nMP (CPC)', type: 'parliament', color: '#a855f7', r: 13,
+    desc: 'Conservative MP, Stormont–Dundas–South Glengarry. Filed written question Q-1262 in 44th Parliament on PrescribeIT metrics — total funding by year and actual prescriber/pharmacy usage by province.',
+    warn: null },
+  { id: 'lawton', label: 'Andrew Lawton\nMP (CPC)', type: 'parliament', color: '#a855f7', r: 13,
+    desc: 'Conservative MP, Elgin–St. Thomas–London South. Publicly challenged Health Minister on PrescribeIT shutdown. "It\'s 2026, the government should not be keeping the fax machine on life support."',
+    warn: null },
+
+  // Healthcare Organizations (pink)
+  { id: 'cpha', label: 'CPhA\n(Pharmacists Assoc.)', type: 'healthcare', color: '#ec4899', r: 15,
+    desc: 'Canadian Pharmacists Association. Formally opposed the $0.20/prescription fee in December 2024. Survey of 1,300+ pharmacists: 65% would quit PrescribeIT if fee implemented. CEO Glen Doucet: "Pharmacies are being asked to absorb the cost of a solution that benefits the entire health-care system."',
+    warn: null },
+  { id: 'aca', label: 'Alberta College\nof Pharmacy', type: 'healthcare', color: '#ec4899', r: 12,
+    desc: 'Notified members that TPP Type 1 monitored medications (controlled substances) would revert to physical secure prescription pads after May 29, 2026 — a direct patient safety regression.',
+    warn: null },
+];
+
+const links = [
+  // Corporate structure
+  { source: 'telus_health', target: 'telus_corp', type: 'corporate', label: 'Subsidiary of' },
+  { source: 'telus_health', target: 'infoway', type: 'contract', label: 'PrescribeIT contract (2017–2026)' },
+  { source: 'infoway', target: 'health_canada', type: 'contract', label: 'Contribution agreement (2.65B+ cumulative)' },
+  { source: 'green', target: 'infoway', type: 'corporate', label: 'CEO since 2014' },
+  { source: 'vaughan', target: 'infoway', type: 'corporate', label: 'Board Chair' },
+  { source: 'pwc', target: 'infoway', type: 'contract', label: 'Managed 2024 RFEOI (failed)' },
+
+  // Revolving door / conflicts
+  { source: 'voisin', target: 'health_canada', type: 'corporate', label: 'Senior ADM' },
+  { source: 'voisin', target: 'infoway', type: 'revolving', label: 'Board member (conflict)' },
+  { source: 'vaughan', target: 'health_canada', type: 'revolving', label: 'Former NS DM of Health' },
+  { source: 'boudria', target: 'telus_corp', type: 'revolving', label: 'Former Liberal minister → TELUS lobbyist' },
+  { source: 'barnable', target: 'telus_health', type: 'revolving', label: 'Former Senate Chief of Staff → TELUS lobbyist' },
+
+  // Lobbying contacts
+  { source: 'harnick', target: 'telus_health', type: 'corporate', label: 'Consultant lobbyist (Reg #864619)' },
+  { source: 'harnick', target: 'health_canada', type: 'lobbying', label: 'Lobbied during RFP (Sep 2016)', date: 'Sep 2016' },
+  { source: 'harnick', target: 'treasury_board', type: 'lobbying', label: 'Lobbied Government Procurement', date: 'Sep 2016' },
+  { source: 'telus_inhouse', target: 'telus_health', type: 'corporate', label: 'In-house registration' },
+  { source: 'telus_inhouse', target: 'voisin', type: 'lobbying', label: 'Met Jun 19, 2025', date: 'Jun 2025' },
+  { source: 'telus_inhouse', target: 'swift', type: 'lobbying', label: 'Met Jun 4, 2025', date: 'Jun 2025' },
+  { source: 'telus_inhouse', target: 'health_canada', type: 'lobbying', label: 'Lobbied Health Canada', date: '2025' },
+  { source: 'telus_inhouse', target: 'pmo', type: 'lobbying', label: 'Lobbied PMO', date: 'Jun 2025' },
+  { source: 'barnable', target: 'health_canada', type: 'lobbying', label: 'Lobbied (until Feb 2026)' },
+  { source: 'swift', target: 'pmo', type: 'corporate', label: 'Policy Advisor' },
+
+  // Parliamentary
+  { source: 'strauss', target: 'hesa', type: 'parliamentary', label: 'Document production motion (Mar 12, 2026)' },
+  { source: 'sidhu', target: 'hesa', type: 'parliamentary', label: 'Amendment to block disclosure (Mar 24, 2026)' },
+  { source: 'blanchette', target: 'hesa', type: 'parliamentary', label: 'Adjournment motion (prevents vote)' },
+  { source: 'duncan', target: 'hesa', type: 'parliamentary', label: 'Written Q-1262 on PrescribeIT metrics' },
+  { source: 'lawton', target: 'michel', type: 'parliamentary', label: 'Challenged on shutdown' },
+  { source: 'michel', target: 'health_canada', type: 'corporate', label: 'Health Minister' },
+  { source: 'curtis', target: 'health_canada', type: 'corporate', label: 'Deputy Minister' },
+  { source: 'hesa', target: 'infoway', type: 'parliamentary', label: 'Sought unredacted contracts' },
+  { source: 'oag', target: 'infoway', type: 'parliamentary', label: '2009 audit (last OAG review)' },
+
+  // Healthcare sector
+  { source: 'cpha', target: 'infoway', type: 'parliamentary', label: 'Opposed fee; 65% exit threat' },
+  { source: 'aca', target: 'telus_health', type: 'parliamentary', label: 'Notified members of shutdown' },
+];
+
+// ============================================================
+// GRAPH ENGINE
+// ============================================================
+
+const canvas = document.getElementById('graph-canvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+let activeFilter = 'all';
+let hoveredNode = null;
+let draggedNode = null;
+let dragOffsetX = 0, dragOffsetY = 0;
+
+function resize() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  W = canvas.width = rect.width;
+  H = canvas.height = rect.height;
+}
+resize();
+window.addEventListener('resize', () => { resize(); });
+
+// Position nodes
+const nodeMap = {};
+nodes.forEach(n => { nodeMap[n.id] = n; });
+
+// Initial positions with manual layout hints
+const pos = {
+  'infoway': [0.38, 0.42],
+  'telus_health': [0.58, 0.38],
+  'telus_corp': [0.72, 0.25],
+  'pwc': [0.68, 0.55],
+  'harnick': [0.72, 0.72],
+  'barnable': [0.82, 0.55],
+  'boudria': [0.82, 0.38],
+  'telus_inhouse': [0.68, 0.82],
+  'voisin': [0.22, 0.32],
+  'vaughan': [0.28, 0.55],
+  'green': [0.42, 0.58],
+  'michel': [0.18, 0.65],
+  'curtis': [0.12, 0.52],
+  'swift': [0.12, 0.32],
+  'health_canada': [0.22, 0.45],
+  'pmo': [0.08, 0.42],
+  'treasury_board': [0.12, 0.18],
+  'oag': [0.35, 0.18],
+  'hesa': [0.42, 0.78],
+  'strauss': [0.28, 0.88],
+  'sidhu': [0.52, 0.92],
+  'blanchette': [0.62, 0.88],
+  'duncan': [0.18, 0.82],
+  'lawton': [0.08, 0.72],
+  'cpha': [0.52, 0.65],
+  'aca': [0.62, 0.72],
+};
+
+nodes.forEach(n => {
+  const p = pos[n.id] || [0.5 + (Math.random()-0.5)*0.6, 0.5 + (Math.random()-0.5)*0.6];
+  n.x = p[0] * (W || 800);
+  n.y = p[1] * (H || 600);
+  n.vx = 0;
+  n.vy = 0;
+});
+
+// Force simulation
+function tick() {
+  const alpha = 0.08;
+
+  // Repulsion
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i+1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      let dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.sqrt(dx*dx + dy*dy) || 1;
+      const minD = (a.r + b.r) * 3.5;
+      if (d < minD) {
+        const f = (minD - d) / d * 0.4;
+        a.vx -= dx * f; a.vy -= dy * f;
+        b.vx += dx * f; b.vy += dy * f;
+      }
+    }
+  }
+
+  // Attraction along links
+  const visLinks = links.filter(l => activeFilter === 'all' || l.type === activeFilter);
+  visLinks.forEach(l => {
+    const a = nodeMap[l.source], b = nodeMap[l.target];
+    if (!a || !b) return;
+    let dx = b.x - a.x, dy = b.y - a.y;
+    const d = Math.sqrt(dx*dx + dy*dy) || 1;
+    const target = 140;
+    const f = (d - target) / d * 0.05;
+    a.vx += dx*f; a.vy += dy*f;
+    b.vx -= dx*f; b.vy -= dy*f;
+  });
+
+  // Center pull
+  nodes.forEach(n => {
+    n.vx += (W * 0.5 - n.x) * 0.003;
+    n.vy += (H * 0.5 - n.y) * 0.003;
+  });
+
+  // Integrate
+  nodes.forEach(n => {
+    if (draggedNode === n) return;
+    n.vx *= 0.85;
+    n.vy *= 0.85;
+    n.x += n.vx;
+    n.y += n.vy;
+    n.x = Math.max(n.r + 10, Math.min(W - n.r - 10, n.x));
+    n.y = Math.max(n.r + 10, Math.min(H - n.r - 10, n.y));
+  });
+}
+
+function getEdgeColor(type) {
+  switch(type) {
+    case 'revolving': return '#dc2626';
+    case 'lobbying': return '#3b82f6';
+    case 'contract': return '#f97316';
+    case 'corporate': return '#6e7681';
+    case 'parliamentary': return '#a855f7';
+    default: return '#6e7681';
+  }
+}
+
+function drawEdge(ctx, a, b, type, label) {
+  if (activeFilter !== 'all' && type !== activeFilter) return;
+  const color = getEdgeColor(type);
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = 0.5;
+  ctx.lineWidth = type === 'revolving' ? 2.5 : 1.5;
+  if (type === 'contract') {
+    ctx.setLineDash([6, 4]);
+  } else {
+    ctx.setLineDash([]);
+  }
+
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const d = Math.sqrt(dx*dx + dy*dy);
+  const ux = dx/d, uy = dy/d;
+  const sx = a.x + ux*a.r, sy = a.y + uy*a.r;
+  const ex = b.x - ux*b.r, ey = b.y - uy*b.r;
+
+  ctx.beginPath();
+  ctx.moveTo(sx, sy);
+  ctx.lineTo(ex, ey);
+  ctx.stroke();
+
+  // Arrowhead
+  const angle = Math.atan2(ey-sy, ex-sx);
+  ctx.globalAlpha = 0.7;
+  ctx.setLineDash([]);
+  ctx.beginPath();
+  ctx.moveTo(ex, ey);
+  ctx.lineTo(ex - 8*Math.cos(angle-0.35), ey - 8*Math.sin(angle-0.35));
+  ctx.lineTo(ex - 8*Math.cos(angle+0.35), ey - 8*Math.sin(angle+0.35));
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  let lines = [];
+  words.forEach(w => {
+    const test = line + (line ? ' ' : '') + w;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = w;
+    } else line = test;
+  });
+  lines.push(line);
+  const startY = y - (lines.length-1) * lineHeight / 2;
+  lines.forEach((l, i) => ctx.fillText(l, x, startY + i * lineHeight));
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw edges
+  links.forEach(l => {
+    const a = nodeMap[l.source], b = nodeMap[l.target];
+    if (a && b) drawEdge(ctx, a, b, l.type, l.label);
+  });
+
+  // Draw nodes
+  nodes.forEach(n => {
+    const isHovered = hoveredNode === n;
+
+    // Warning glow
+    if (n.warn) {
+      ctx.save();
+      ctx.shadowBlur = 16;
+      ctx.shadowColor = '#dc2626';
+      ctx.strokeStyle = '#dc2626';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + 4, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // Node circle
+    ctx.save();
+    ctx.shadowBlur = isHovered ? 20 : 0;
+    ctx.shadowColor = n.color;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+    ctx.fillStyle = isHovered ? n.color : n.color + '99';
+    ctx.fill();
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = isHovered ? 2.5 : 1.5;
+    ctx.setLineDash([]);
+    ctx.stroke();
+    ctx.restore();
+
+    // Warning icon
+    if (n.warn) {
+      ctx.save();
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 11px system-ui';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('⚠', n.x + n.r * 0.65, n.y - n.r * 0.65);
+      ctx.restore();
+    }
+
+    // Label
+    const lines = n.label.split('\n');
+    ctx.save();
+    ctx.fillStyle = '#e6edf3';
+    ctx.font = `${Math.max(9, Math.min(12, n.r * 0.45))}px system-ui`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const lh = Math.max(10, n.r * 0.5);
+    lines.forEach((line, i) => {
+      ctx.fillText(line, n.x, n.y + (i - (lines.length-1)/2) * lh);
+    });
+    ctx.restore();
+  });
+
+  tick();
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+// ============================================================
+// INTERACTIONS
+// ============================================================
+
+const tooltip = document.getElementById('tooltip');
+
+function nodeAt(x, y) {
+  for (let i = nodes.length-1; i >= 0; i--) {
+    const n = nodes[i];
+    const dx = x - n.x, dy = y - n.y;
+    if (dx*dx + dy*dy <= n.r*n.r) return n;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+
+  if (draggedNode) {
+    draggedNode.x = mx + dragOffsetX;
+    draggedNode.y = my + dragOffsetY;
+    tooltip.style.display = 'none';
+    return;
+  }
+
+  const n = nodeAt(mx, my);
+  hoveredNode = n;
+  if (n) {
+    tooltip.style.display = 'block';
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top = (e.clientY - 10) + 'px';
+    tooltip.innerHTML = `
+      <div class="tt-title">${n.label.replace('\n', ' ')}</div>
+      <div class="tt-type">${n.type}</div>
+      <div class="tt-desc">${n.desc}</div>
+      ${n.warn ? `<div class="tt-warn">⚠ ${n.warn}</div>` : ''}
+    `;
+  } else {
+    tooltip.style.display = 'none';
+  }
+});
+
+canvas.addEventListener('mousedown', e => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const n = nodeAt(mx, my);
+  if (n) {
+    draggedNode = n;
+    dragOffsetX = n.x - mx;
+    dragOffsetY = n.y - my;
+  }
+});
+
+canvas.addEventListener('mouseup', e => {
+  if (draggedNode) {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    // If barely moved, treat as click → show detail pane
+    const dx = mx + dragOffsetX - draggedNode.x;
+    const dy = my + dragOffsetY - draggedNode.y;
+    if (Math.abs(dx) < 5 && Math.abs(dy) < 5) {
+      showDetail(draggedNode);
+    }
+    draggedNode = null;
+  }
+});
+
+canvas.addEventListener('mouseleave', () => {
+  draggedNode = null;
+  hoveredNode = null;
+  tooltip.style.display = 'none';
+});
+
+function showDetail(n) {
+  const pane = document.getElementById('detail-pane');
+  document.getElementById('detail-title').textContent = n.label.replace('\n', ' ');
+  document.getElementById('detail-body').innerHTML = n.desc + (n.warn ? `<br><br><strong style="color:#f97316">⚠ ${n.warn}</strong>` : '');
+  pane.classList.add('visible');
+}
+
+document.getElementById('detail-close').addEventListener('click', () => {
+  document.getElementById('detail-pane').classList.remove('visible');
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+  });
+});
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
