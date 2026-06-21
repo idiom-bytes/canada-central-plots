@@ -25,6 +25,7 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) research-bot"
 
 TARGETS = {
     "Trafficking in persons [1525]": "trafficking",
+    "Kidnapping [1515]": "kidnapping",
     "Total sexual violations against children [130]": "child_sexual",
     "Sexual assault, level 1 [1330]": "sexual_assault",
 }
@@ -89,6 +90,7 @@ def main():
         "trafficking": "Human trafficking",
         "child_sexual": "Sexual violations against children",
         "sexual_assault": "Sexual assault (level 1)",
+        "kidnapping": "Kidnapping",
     }, "source": "Statistics Canada Table 35-10-0177-01 (incident-based crime, police-reported)"}
 
     for key in TARGETS.values():
