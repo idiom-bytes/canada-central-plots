@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canada vs. the UK: The Same Experiment, One Step Behind | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/crime_rates.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --color-uk:#1D3A6B;--color-uk-light:#E9EEF6;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1040px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    .hero{padding:2.25rem 0 1rem}
+    .hero-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.6rem}
+    .hero-title{font-size:2rem;font-weight:800;margin:0 0 0.75rem;line-height:1.12}
+    @media(min-width:640px){.hero-title{font-size:2.6rem}}
+    .hero-lede{font-size:1.05rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:780px}
+    .hero-lede strong{color:var(--color-text-primary)}
+
+    .keyrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0 0.5rem}
+    @media(min-width:768px){.keyrow{grid-template-columns:repeat(4,1fr)}}
+    .key{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:0.9rem 1rem;border-top:3px solid var(--color-alarm)}
+    .key.uk{border-top-color:var(--color-uk)}
+    .key .v{font-size:1.5rem;font-weight:800;color:var(--color-alarm);line-height:1;margin:0}
+    .key.uk .v{color:var(--color-uk)}
+    .key .l{font-size:0.6875rem;color:var(--color-text-secondary);margin:0.3rem 0 0;line-height:1.4}
+
+    .sech{font-size:1.4rem;font-weight:800;margin:1.9rem 0 0.25rem}
+    .secsub{font-size:0.875rem;color:var(--color-text-secondary);margin:0 0 1rem;max-width:760px;line-height:1.6}
+
+    /* comparison dimension */
+    .dim{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.4rem 1.5rem;margin:1rem 0}
+    .dim-h{font-size:1.1rem;font-weight:800;margin:0 0 0.9rem;line-height:1.25}
+    .cols{display:grid;grid-template-columns:1fr;gap:0.75rem;margin:0 0 0.85rem}
+    @media(min-width:680px){.cols{grid-template-columns:1fr 1fr}}
+    .col{border-radius:var(--radius-md);padding:0.85rem 1rem}
+    .col.uk{background:var(--color-uk-light)}
+    .col.ca{background:var(--color-alarm-light)}
+    .col-flag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 0.4rem}
+    .col.uk .col-flag{color:var(--color-uk)}
+    .col.ca .col-flag{color:var(--color-alarm-dark)}
+    .col p{font-size:0.85rem;line-height:1.6;color:var(--color-text-secondary);margin:0}
+    .col p strong{color:var(--color-text-primary)}
+    .takeaway{font-size:0.85rem;font-weight:700;color:var(--color-text-primary);background:var(--color-cream-dark);border-radius:var(--radius-md);padding:0.6rem 0.85rem;line-height:1.5}
+
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;margin:1rem 0}
+    .chart-title{font-size:0.95rem;font-weight:700;margin:0 0 0.2rem}
+    .chart-sub{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 0.85rem;line-height:1.4}
+    .chart-wrap{position:relative;height:300px}
+    .grid2{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:860px){.grid2{grid-template-columns:1fr 1fr}}
+
+    .method{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.4rem 1.6rem;margin:1.25rem 0 0;font-size:0.85rem;line-height:1.7;color:var(--color-text-secondary)}
+    .method h2{font-size:1.05rem;color:var(--color-text-primary);margin:0 0 0.6rem}
+    .method li{margin:0 0 0.4rem}
+    .method strong{color:var(--color-text-primary)}
+    .seelinks{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.6rem}
+    .seelink{font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-teal);padding:0.4rem 0.8rem;border-radius:999px}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1rem}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links" id="nav"></div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <p class="hero-tag">The Cautionary Template · Canada vs. the UK</p>
+    <h1 class="hero-title">The Same Experiment, One Step Behind</h1>
+    <p class="hero-lede">Britain spent two decades denying, then uncovering, an epidemic of group-based child sexual exploitation &mdash; and only after a national reckoning began recording who was responsible. Canada is running a similar experiment in rapid intake and weak enforcement, with the <strong>same crimes rising sharply</strong> &mdash; but it cannot yet see the pattern, because it does not collect the data the UK was finally forced to confront. This is what we can compare, and what we deliberately cannot.</p>
+  </div>
+
+  <div class="keyrow">
+    <div class="key uk"><p class="v">~1,400</p><p class="l">UK: children exploited in Rotherham alone, 1997&ndash;2013 (Jay Report) &mdash; a conservative estimate</p></div>
+    <div class="key uk"><p class="v">19,125</p><p class="l">UK: modern-slavery referrals in 2024 &mdash; a record high</p></div>
+    <div class="key"><p class="v" id="kCaTraf">&mdash;</p><p class="l">Canada: police-reported human-trafficking incidents (2024)</p></div>
+    <div class="key"><p class="v" id="kCaChild">&mdash;</p><p class="l">Canada: sexual violations against children (2024)</p></div>
+  </div>
+
+  <h2 class="sech">Five dimensions, side by side</h2>
+  <p class="secsub">Each row sets what the UK eventually established against what Canada currently measures. The gap is rarely in the crime &mdash; it is in the seeing.</p>
+  <div id="dims"></div>
+
+  <h2 class="sech">Canada's own numbers are climbing</h2>
+  <p class="secsub">Police-reported rates per 100,000, from Statistics Canada's Uniform Crime Reporting survey. These are undercounts (most sexual offences go unreported), and definitions differ from the UK &mdash; but the direction is unambiguous.</p>
+  <div class="grid2">
+    <div class="chart-card">
+      <h2 class="chart-title">Rate of growth, last 10 years</h2>
+      <p class="chart-sub">Change in police-reported rate per 100k, 2014&rarr;2024.</p>
+      <div class="chart-wrap"><canvas id="growthChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2 class="chart-title">Sexual violations against children, rate per 100k</h2>
+      <p class="chart-sub" id="childTrendSub">The series most comparable to the UK's group-CSE focus.</p>
+      <div class="chart-wrap"><canvas id="childChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="method">
+    <h2>What we can and cannot claim (read this)</h2>
+    <ul>
+      <li><strong>We are NOT claiming Canada's offenders mirror the UK's.</strong> The UK's disproportionate-perpetrator findings come from data Canada does not collect. We cannot run that comparison here &mdash; and that absence, not any assumed answer, is the point. See <a href="origin-data-gap.html">the Origin Data Gap</a>.</li>
+      <li><strong>Cross-country numbers are indicative, not identical.</strong> The UK's NRM (all modern slavery) and Canada's UCR &ldquo;trafficking in persons&rdquo; are different instruments; UK group-CSE definitions differ from Canada's child-sexual-violation categories. We compare direction and institutional response, not like-for-like counts.</li>
+      <li><strong>Police-reported is an undercount</strong> in both countries; reporting and recording practices differ and change over time. Trafficking and child-exploitation offences were also codified relatively recently in Canada, so we report 10-year change, not since-inception (which would be a meaningless base-effect figure).</li>
+      <li><strong>The subject is institutions and decisions</strong>, not migrants or any community. The UK lesson is about a system that would not look; the Canadian risk is a system that does not record.</li>
+    </ul>
+    <div class="seelinks">
+      <a class="seelink" href="origin-data-gap.html">The Origin Data Gap &rarr;</a>
+      <a class="seelink" href="exploitation-record.html">Canada's Exploitation Record &rarr;</a>
+      <a class="seelink" href="enforcement.html">Enforcement &rarr;</a>
+      <a class="seelink" href="narrative-gap.html">The Narrative Gap &rarr;</a>
+    </div>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+// shared canonical nav (this page included)
+const NAV=[['Overview','overview.html'],['Volumes','immigration-volumes.html'],['Asylum','asylum-channel.html'],['Policy','policy-timeline.html'],['Canada vs UK','canada-vs-uk.html'],['Exploitation','exploitation-record.html'],['Data Gap','origin-data-gap.html'],['Justice','justice-backlog.html'],['Lobbying','lobbying-influence.html'],['Hate Crime','hate-crime.html'],['Cost','asylum-cost.html'],['Enforcement','enforcement.html'],['Narrative Gap','narrative-gap.html'],['Reports','reports.html']];
+document.getElementById('nav').innerHTML=NAV.map(([l,h])=>`<a${h==='canada-vs-uk.html'?' class="active"':''} href="${h}">${l}</a>`).join('');
+
+const CR=window.CRIME_RATES;
+function fmt(n){return n==null?'—':n.toLocaleString('en-CA');}
+
+// dimensions
+const DIMS=[
+  {h:'1 · Scale &amp; trend of the crimes',
+   uk:'Rotherham alone: <strong>~1,400 children</strong> exploited (1997&ndash;2013), described as conservative. Nationally, modern-slavery referrals hit a record <strong>19,125 in 2024</strong> (+13% year over year).',
+   ca:'Police-reported <strong>human trafficking: __TRAF__ incidents</strong> in 2024 (up <strong>__TRAFG__%</strong> in a decade); <strong>sexual violations against children: __CHILD__</strong> (up <strong>__CHILDG__%</strong>). Both almost certainly undercount.',
+   t:'The crimes are present and rising in both countries. The difference is not whether it is happening.'},
+  {h:'2 · Who is responsible &mdash; and whether it is recorded',
+   uk:'After years of denial, Baroness Casey’s 2025 audit found offender ethnicity <strong>unrecorded in two-thirds</strong> of group-CSE cases (&ldquo;a bloody disaster&rdquo;). Where it was recorded &mdash; e.g. Greater Manchester multi-victim cases &mdash; <strong>52% were Asian, the largest subgroup Pakistani</strong>; British-Pakistani men were disproportionately represented in several northern areas.',
+   ca:'Canada records <strong>no offender immigration status, citizenship or country of origin</strong> for these crimes at all. In our catalogue of 3,342 cases, <strong>99.4% carry no origin signal</strong>. There is nothing to under-record &mdash; the field does not exist.',
+   t:'The UK was finally forced to look and found a pattern it had buried. Canada cannot look, by design.'},
+  {h:'3 · The institutional response',
+   uk:'A cascade of reckonings: the <strong>Jay Report (2014)</strong>, the seven-year <strong>IICSA inquiry (2022)</strong>, <strong>Baroness Casey’s national audit (Jan&ndash;Jun 2025)</strong> with 12 accepted recommendations, and a <strong>national statutory inquiry (2025)</strong>.',
+   ca:'<strong>No equivalent national inquiry</strong> into group-based child sexual exploitation. The issue has not had its Rotherham moment &mdash; or its data.',
+   t:'Canada is roughly where Britain was before 2014: the reckoning has not happened.'},
+  {h:'4 · The failure mechanism',
+   uk:'Reviews documented authorities who <strong>would not act for fear of appearing racist</strong>, victims disbelieved or blamed, and records quietly not kept. The failure was institutional will and honesty.',
+   ca:'The Canadian failure is upstream and quieter: <strong>origin is never collected</strong> (so no pattern can ever surface), paired with an <strong>enforcement system that can’t remove failed cases</strong> and courts that can’t keep pace.',
+   t:'Same blind spot, reached by a different route: one system refused to see, the other declines to record.'},
+  {h:'5 · Where Canada sits on the UK’s timeline',
+   uk:'Two decades from first warnings to national audit &mdash; most of it lost to denial.',
+   ca:'Rising crimes, weak data, rapid intake, no national inquiry yet. <strong>Canada is at roughly the UK’s c.2010&ndash;2014 stage</strong> &mdash; with the UK’s experience available as a warning it has not yet had to learn the hard way.',
+   t:'The value of a cautionary template is acting before, not after, the inquiry.'}
+];
+
+function meta(k){return CR?CR.meta[k]:null;}
+if(CR){
+  const t=meta('trafficking'),c=meta('child_sexual');
+  document.getElementById('kCaTraf').textContent=fmt(t.latest_count);
+  document.getElementById('kCaChild').textContent=fmt(c.latest_count);
+  DIMS[0].ca=DIMS[0].ca
+    .replace('__TRAF__',fmt(t.latest_count)).replace('__TRAFG__',t.change_10yr_pct)
+    .replace('__CHILD__',fmt(c.latest_count)).replace('__CHILDG__',c.change_10yr_pct);
+}
+document.getElementById('dims').innerHTML=DIMS.map(d=>`
+  <div class="dim"><p class="dim-h">${d.h}</p>
+    <div class="cols">
+      <div class="col uk"><p class="col-flag">United Kingdom</p><p>${d.uk}</p></div>
+      <div class="col ca"><p class="col-flag">Canada</p><p>${d.ca}</p></div>
+    </div>
+    <p class="takeaway">${d.t}</p>
+  </div>`).join('');
+
+if(CR){
+  const keys=['trafficking','child_sexual','sexual_assault'];
+  new Chart(document.getElementById('growthChart'),{
+    type:'bar',
+    data:{labels:keys.map(k=>CR.labels[k]),datasets:[{data:keys.map(k=>CR.meta[k].change_10yr_pct),
+      backgroundColor:['#B83232','#C47A3F','#3A5F6F']}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'+'+c.raw+'% over 10 years'}}},
+      scales:{x:{beginAtZero:true,ticks:{callback:v=>'+'+v+'%'}},y:{ticks:{font:{size:11}}}}}
+  });
+  const cs=CR.series.child_sexual;
+  document.getElementById('childTrendSub').textContent='Police-reported rate per 100k, '+cs.years[0]+'–'+cs.years[cs.years.length-1]+'. Most comparable to the UK’s group-CSE focus.';
+  new Chart(document.getElementById('childChart'),{
+    type:'line',
+    data:{labels:cs.years,datasets:[{label:'Rate /100k',data:cs.rate,borderColor:'#C47A3F',
+      backgroundColor:'rgba(196,122,63,.12)',fill:true,tension:.25,pointRadius:0,borderWidth:2.5}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' /100k'}}},
+      scales:{y:{beginAtZero:true},x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{size:9}}}}}
+  });
+}
+
+document.getElementById('foot').textContent='Canadian figures: Statistics Canada Table 35-10-0177-01 (police-reported incident-based crime). UK figures: Independent Inquiry into CSE in Rotherham (Jay, 2014); Baroness Casey’s National Audit on Group-based Child Sexual Exploitation (2025); Home Office Modern Slavery NRM statistics (2024). Cross-country comparisons are indicative; see the caveats above. Compiled by Canada Central.';
+</script>
+</body>
+</html>
