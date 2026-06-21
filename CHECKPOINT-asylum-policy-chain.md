@@ -135,10 +135,34 @@ land border; it's policy-enabled intake. "Border crisis" → "policy choice." Th
    144k(2023) → 173k(2024), down ~36% early 2025. Sources: cis.org · tracreports.org/766 · justice.gov EOIR ·
    canada.ca asylum stats · irb-cisr.gc.ca
 
-STATUS: "How the channel was built — and who built it" section BUILT into asylum-channel.html
-(static HTML: intro prose + 7-step .chain timeline + enforcement callout + who-built-it + cost/US note
-+ sources line). Remaining optional: IMP-specific growth numbers; confirm McCallum as Dec-2016 minister
-(public record says yes, IRCC min. Nov 2015–Jan 2017).
+### VERIFIED FINDINGS — round 3 (2026-06-21) [instrument types — CONFIRMED]
+
+- **Study-permit cap** = **Ministerial Instructions under IRPA s.87.3** (Gazette per s.87.3(6));
+  cap 606,250 applications (~360k approvals); Min. Miller. NOT a bill.
+- **Mexico visa lift** = **Order in Council P.C. 2016-981** (18 Nov 2016, in force 1 Dec 2016), IRPR.
+  **Reimpose** = **P.C. 2024-161** (26 Feb 2024, in force 29 Feb 2024), IRPA s.5(1),14,26. NOT bills.
+- **Bill C-31** (Royal Assent 28 Jun 2012, Kenney) — Designated Countries of Origin framework; emptied
+  administratively ~2019 (Hussen).
+- **Bill C-97** (Budget Implementation Act, Royal Assent 21 Jun 2019, Morneau) — Div.16/clause 306:
+  ineligible for IRB if claimed in an info-sharing country (US/UK/AU/NZ). A tightening, buried in a budget bill.
+- **Bill C-12** "Strengthening Canada's Immigration System and Borders Act" — became law ~Mar 2026
+  (canada.ca news 2026/03). New asylum measures. [VERIFY specific provisions.]
+- KEY INSIGHT: the OPENING levers were executive (OiC / ministerial instruction / admin / treaty),
+  NO parliamentary vote. The Acts of Parliament (C-31, C-97, C-12) are mostly bookend tightening.
+
+STATUS — DELIVERED & COMMITTED (branch feature/immigration-asylum-narrative):
+- NEW PAGE **policy-timeline.html** — "How the Channel Was Built" dedicated view: stat cards
+  (8 of 11 decisions made without a vote), legend (open/redirect/brake/framework), an OVERVIEW
+  "chain at a glance" card (click-to-jump), a DETAILED 11-step timeline (date · instrument badge ·
+  direction chip · sponsor · what it did · impact), enforcement callout + cost/US note + sources.
+  Data-driven from a DECISIONS[] array. JS parses clean; divs balanced.
+- asylum-channel.html: the big "How the channel was built" section was RELOCATED to the new page;
+  replaced with a short teaser + link. Nav link added.
+- index.html: added a "How the Channel Was Built" hub plot-card.
+- Nav link "Policy Timeline" added to asylum-channel.html + new page. NOT yet added to the other
+  plot pages' navbars (immigration-volumes, exploitation, origin-data-gap, justice, lobbying) — TODO if wanted.
+
+Remaining optional: verify Bill C-12 provisions; DCO-emptied exact date (2019); IMP-specific growth.
 
 ---
 
