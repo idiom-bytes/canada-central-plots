@@ -162,6 +162,21 @@ STATUS — DELIVERED & COMMITTED (branch feature/immigration-asylum-narrative):
 - Nav link "Policy Timeline" added to asylum-channel.html + new page. NOT yet added to the other
   plot pages' navbars (immigration-volumes, exploitation, origin-data-gap, justice, lobbying) — TODO if wanted.
 
+### LOOP COMPLETE — roadmap items 1→4 built (2026-06-21)
+All four capstone-first roadmap items done, each committed on feature/immigration-asylum-narrative:
+1. **overview.html** — capstone story page (4 chapters + risk grid + objectivity standards), wired
+   into index banner + navbars. The connective navigation.
+2. **hate-crime.html** — "Narrative vs. Reality: antisemitism". StatCan 2024: Jewish 920 (70%) vs
+   Muslim 229; rate gap 21× (census) to 25× (surge-adj) — BOTH denominators shown for honesty.
+3. **asylum-cost.html** — "The Real Cost". IFHP $896M (24-25)→>$1.5B (29-30); IHAP ~$1.1B; $16,500/claimant.
+   "$5B" corrected; federal-only undercount flagged.
+4. **enforcement.html** — "Running to Stand Still". IMPORTANT CORRECTION to earlier "removal is rare"
+   framing: removals are at RECORD highs (23,160 in 2025, +33%, 92% of priority irregular claimants),
+   but outpaced — ~24,500 new removable cases/yr, inventory doubled to ~31k, ~33k warrants, screening
+   23k→165k, IRB 70k→270k. Honest framing: record enforcement still losing ground to upstream intake.
+All linked from overview risk grid. Total loop research: ~6 web searches, 0 sub-agents.
+Each page: node --check passed, divs balanced.
+
 ### ROUND 4 (2026-06-21)
 - **Bill C-12 CONFIRMED**: "Strengthening Canada's Immigration System and Borders Act", Royal Assent
   26 Mar 2026 (45-1). One-year bar (claims >1yr after first entry since 24 Jun 2020 not IRB-referred)
