@@ -7,3 +7,4 @@ __pycache__/
 # The processed outputs the pages actually load live in data/ and ARE committed.
 /lake/
 /pipeline/lake/
+.claude/worktrees/

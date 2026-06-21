@@ -137,7 +137,7 @@
 
 <script>
 // shared canonical nav (this page included)
-const NAV=[['Overview','overview.html'],['Volumes','immigration-volumes.html'],['Asylum','asylum-channel.html'],['Policy','policy-timeline.html'],['Canada vs UK','canada-vs-uk.html'],['Exploitation','exploitation-record.html'],['Data Gap','origin-data-gap.html'],['Justice','justice-backlog.html'],['Lobbying','lobbying-influence.html'],['Hate Crime','hate-crime.html'],['Cost','asylum-cost.html'],['Enforcement','enforcement.html'],['Narrative Gap','narrative-gap.html'],['Reports','reports.html']];
+const NAV=[['Overview','overview.html'],['Volumes','immigration-volumes.html'],['Asylum','asylum-channel.html'],['Policy','policy-timeline.html'],['Policy Impact','policy-crime-impact.html'],['Canada vs UK','canada-vs-uk.html'],['Exploitation','exploitation-record.html'],['Data Gap','origin-data-gap.html'],['Justice','justice-backlog.html'],['Lobbying','lobbying-influence.html'],['Hate Crime','hate-crime.html'],['Cost','asylum-cost.html'],['Enforcement','enforcement.html'],['Narrative Gap','narrative-gap.html'],['Reports','reports.html']];
 document.getElementById('nav').innerHTML=NAV.map(([l,h])=>`<a${h==='canada-vs-uk.html'?' class="active"':''} href="${h}">${l}</a>`).join('');
 
 const CR=window.CRIME_RATES;
