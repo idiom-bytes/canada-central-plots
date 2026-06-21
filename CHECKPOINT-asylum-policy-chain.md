@@ -77,6 +77,69 @@ US contrast (only if hard-sourced): acceptance/grant rates, removal rates, backl
 Key honesty constraint: the border paradox — inflow is NOT people forcing the world's most-defended
 land border; it's policy-enabled intake. "Border crisis" → "policy choice." This is the thesis.
 
+### VERIFIED FINDINGS — lean inline research, round 1 (2026-06-21) [CONFIRMED w/ sources]
+
+1. **Study-permit cap** — CONFIRMED. Min. **Marc Miller** (IRCC) announced a 2-year national cap
+   on **22 Jan 2024**: ~360,000 approved study permits for 2024, a **35% cut from 2023**; new
+   provincial/territorial **attestation letter** required per application from that date. Implies
+   intake was effectively uncapped before. Grad students later folded into cap in 2025.
+   Sources: canada.ca (IRCC news, 22 Jan 2024) · cbc.ca/news/politics/miller-cap-international-students-1.7090779
+
+2. **STCA Additional Protocol** — CONFIRMED. Announced **24 Mar 2023**, in force **12:01 EDT 25 Mar
+   2023**; extended STCA to the ENTIRE land border (incl. between ports of entry). Claimants who cross
+   irregularly and claim within **14 days** can be returned to the US. Roxham Road shut **25 Mar 2023**
+   (~100,000 had crossed; ~81,148 irregular claims Jan2017–Dec2022, top source Haiti). Effect: pushed
+   claims away from the border → inland/airport.
+   Sources: loc.gov global-legal-monitor 2023-04-05 · migrationpolicy.org us-canada-safe-third-country-agreement · canada.ca STCA page
+
+3. **TFWP Workforce Solutions Road Map** — CONFIRMED. ESDC Min. **Carla Qualtrough**, **4 Apr 2022**.
+   LMIA validity 9→**18 months**; High-Wage/Global Talent employment duration to **3 years**; low-wage
+   cap raised from **10%→20%** of workforce (30% for 7 sectors incl. Accommodation & Food Services);
+   ended the auto-refusal of LMIAs in regions with ≥6% unemployment. (IMP, LMIA-exempt, grew fastest —
+   [VERIFY IMP-specific numbers].)
+   Source: canada.ca/en/employment-social-development/news/2022/04/ (backgrounder + announcement)
+
+4. **Mexico visa** — CONFIRMED. Visitor-visa requirement **lifted 1 Dec 2016** (eTA only);
+   **reimposed 29 Feb 2024** by Min. Miller. Mexican asylum claims rose **260 (2016) → 23,995 (2023)**;
+   Mexico = **17% of all claims**. [VERIFY: McCallum was IRCC min. in Dec 2016 — not explicitly in source.]
+   Sources: cbc.ca mexico-canada-visas-asylum-1.7128408 · canada.ca CIMM Nov 25 2024 Mexico note
+
+5. **Costs / backlog** — CONFIRMED (and CORRECTS the "$5B" figure). PBO/IRB:
+   - IFHP (asylum healthcare) **$722M in 2024-25**, could approach **$1B/yr by end of decade**.
+   - PBO "Costing Asylum Claims from Visa-Exempt Countries": eTA-arrival inventory **$455M over 5yr**;
+     clearing the recent backlog ~**half a billion**.
+   - IRB backlog **~300,000 pending**; avg time-in-system **19 months** (2025).
+   - CBSA removals inventory: **~74,000 failed claimants** (Dec 2025).
+   - ⚠️ The viral "$5B" number is NOT a single documented PBO figure — real figures are smaller and
+     itemized ($0.5–1B ranges). Use the specific PBO numbers, flag $5B as unverified/aggregate.
+   Sources: pbo-dpb.ca RP-2425-007-S · globalnews.ca 10536523 · irb-cisr.gc.ca departmental plan 24-25
+
+### VERIFIED FINDINGS — round 2 (2026-06-21) [CONFIRMED w/ sources]
+
+6. **CBSA removals / enforcement gap** — CONFIRMED. Auditor General, Spring 2020, tabled **8 Jul 2020**:
+   CBSA did not know the whereabouts of **~34,700** people under removal orders (two-thirds of cases
+   sampled); ~50,000 enforceable cases in inventory; **failed asylum claimants = largest share** ordered
+   to leave, most NOT removed within the 1-year target. (Pairs with ~74,000 failed claimants in removals
+   inventory Dec 2025 from round 1.) Sources: oag-bvg.gc.ca mr_20200708 · cbc.ca 1.5641643 · theglobeandmail.com
+
+7. **Immigration Levels Plan** — CONFIRMED. **1 Nov 2022**, Min. **Sean Fraser**: 465k (2023), 485k (2024),
+   **500k (2025)** PRs. Century Initiative publicly applauded it; cofounder **Dominic Barton** chaired the
+   2016 Advisory Council on Economic Growth (recommended 450k), consistent w/ 100M-by-2100. McKinsey/Barton
+   influence = **CONTESTED** (Radio-Canada raised it; Fraser denied). NOTE: this is a PERMANENT-resident
+   plan — backdrop/posture, not a direct asylum lever. Sources: canada.ca news 2022/11 · cicnews 1131587 ·
+   theglobeandmail.com (McKinsey denial) · en.wikipedia Sean_Fraser
+
+8. **US contrast** — CONFIRMED (indicative, different systems). US asylum grant rate fell **51%→19%**
+   (Feb 2024–Aug 2025) as it tightened; US filed **905,632** asylum applications FY2024. Canada IRB
+   inventory **70,223 (end 2022) → 272,440 (end 2024)**, waits up to **3.7 yrs**; claims 92k(2022) →
+   144k(2023) → 173k(2024), down ~36% early 2025. Sources: cis.org · tracreports.org/766 · justice.gov EOIR ·
+   canada.ca asylum stats · irb-cisr.gc.ca
+
+STATUS: "How the channel was built — and who built it" section BUILT into asylum-channel.html
+(static HTML: intro prose + 7-step .chain timeline + enforcement callout + who-built-it + cost/US note
++ sources line). Remaining optional: IMP-specific growth numbers; confirm McCallum as Dec-2016 minister
+(public record says yes, IRCC min. Nov 2015–Jan 2017).
+
 ---
 
 ## Workstream A — main branch build + data-api deploy (../hoc_db-main) — PAUSED
