@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Narrative Gap: What We're Told vs. What the Data Shows | Canada Central</title>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1000px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    .hero{padding:2.25rem 0 1rem}
+    .hero-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.6rem}
+    .hero-title{font-size:2rem;font-weight:800;margin:0 0 0.75rem;line-height:1.12}
+    @media(min-width:640px){.hero-title{font-size:2.75rem}}
+    .hero-lede{font-size:1.05rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:780px}
+    .hero-lede strong{color:var(--color-text-primary)}
+
+    /* gap card */
+    .gap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.6rem;margin:1rem 0;border-left:4px solid var(--color-alarm)}
+    .gap.self{border-left-color:var(--color-success)}
+    .gap-lens{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#fff;background:var(--color-alarm);display:inline-block;padding:2px 9px;border-radius:999px;margin:0 0 0.6rem}
+    .gap.self .gap-lens{background:var(--color-success)}
+    .twocol{display:grid;grid-template-columns:1fr;gap:0.75rem;margin:0 0 0.85rem}
+    @media(min-width:680px){.twocol{grid-template-columns:1fr 1fr}}
+    .side{border-radius:var(--radius-md);padding:0.8rem 0.95rem}
+    .side.claim{background:var(--color-alarm-light)}
+    .side.real{background:var(--color-success-light)}
+    .side-h{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 0.35rem}
+    .side.claim .side-h{color:var(--color-alarm-dark)}
+    .side.real .side-h{color:var(--color-success)}
+    .side p{font-size:0.875rem;line-height:1.6;color:var(--color-text-secondary);margin:0}
+    .side p strong{color:var(--color-text-primary)}
+    .gap h2{font-size:1.2rem;font-weight:800;margin:0 0 0.55rem;line-height:1.25}
+    .verdict{font-size:0.85rem;font-weight:700;color:var(--color-text-primary);background:var(--color-cream-dark);border-radius:var(--radius-md);padding:0.6rem 0.85rem;margin:0 0 0.7rem;line-height:1.5}
+    .src{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.5;margin:0 0 0.7rem}
+    .seelinks{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .seelink{font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-teal);padding:0.4rem 0.8rem;border-radius:999px}
+    .seelink:hover{background:#2c4a57}
+
+    .method{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.4rem 1.6rem;margin:1.25rem 0 0;font-size:0.875rem;line-height:1.7;color:var(--color-text-secondary)}
+    .method h2{font-size:1.05rem;color:var(--color-text-primary);margin:0 0 0.6rem}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1rem}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="overview.html">Overview</a>
+    <a href="immigration-volumes.html">Volumes</a>
+    <a href="asylum-channel.html">Asylum</a>
+    <a href="policy-timeline.html">Policy</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="justice-backlog.html">Justice</a>
+    <a href="lobbying-influence.html">Lobbying</a>
+    <a href="hate-crime.html">Hate Crime</a>
+    <a href="asylum-cost.html">Cost</a>
+    <a href="enforcement.html">Enforcement</a>
+    <a class="active" href="narrative-gap.html">Narrative Gap</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <p class="hero-tag">Pillar E · The Meta-Finding</p>
+    <h1 class="hero-title">The Narrative Gap</h1>
+    <p class="hero-lede">Across every part of this investigation, one pattern keeps repeating: <strong>the story we are told diverges, in a consistent direction, from what Canada's own data shows.</strong> Sometimes the headline is technically true but misleading; sometimes the cause is mis-stated; sometimes the thing being measured is quietly the wrong thing. Each gap below is documented against primary sources &mdash; including the cases where the exaggeration favoured <em>our</em> argument, and we corrected it.</p>
+  </div>
+
+  <div id="gaps"></div>
+
+  <div class="method">
+    <h2>Why a divergence this consistent is itself the finding</h2>
+    <p>Any single gap could be an honest simplification. But the direction is not random: the reassuring number is the one in the headline, the alarming one is the one you have to dig for, and the thing that gets measured and publicised is rarely the thing with the largest measured burden. That systematic tilt &mdash; not any one statistic &mdash; is the story this page exists to name.</p>
+    <p>To stay credible we apply the same test to ourselves: we lead with rates and disclose denominators, we use primary sources, we flag contested attributions, and <strong>we correct exaggerations even when they support the thesis</strong> &mdash; the &ldquo;$5B&rdquo; case below is one we corrected against our own side. A review that only catches the other side's errors is just the same bias wearing a lab coat.</p>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+// Pillar E — documented narrative-vs-data divergences. self:true = a correction against our own thesis.
+const GAPS=[
+  {
+    lens:'Misleading by omission', self:false,
+    claim:'&ldquo;Immigration is coming down. The population is even shrinking.&rdquo;',
+    real:'True for the levers Ottawa controls directly &mdash; permanent residents, study and work permits all fell from their 2024&ndash;25 peaks. But <strong>new asylum claims are up 608% since 2015</strong>, the standing claimant population is <strong>~525,000</strong>, and <strong>2.56M temporary residents</strong> are already inside the country and cannot be un-admitted.',
+    title:'The one stream that isn’t coming down is the one in the headline’s blind spot.',
+    verdict:'Verdict: technically true, substantively misleading. The controlled doors are closing; the uncontrolled one is wide open.',
+    src:'StatCan 17-10-0008-01 & 17-10-0121-01; IRCC asylum open data.',
+    links:[{h:'immigration-volumes.html',l:'Permanent vs. Temporary'},{h:'asylum-channel.html',l:'The Asylum Channel'}]
+  },
+  {
+    lens:'Mis-attributed cause', self:false,
+    claim:'&ldquo;It’s a border crisis &mdash; this happened to us.&rdquo;',
+    real:'The growth came through the front door, by design. We traced <strong>11 federal decisions (2012&ndash;2026)</strong> that built the channel &mdash; and <strong>8 of the 11 were executive instruments</strong> (Orders in Council, ministerial instructions, a treaty protocol) that never went to a parliamentary vote.',
+    title:'Not an accident, and not the border &mdash; a decade of policy choices.',
+    verdict:'Verdict: the cause is internal and nameable. Accountability lives in the Gazette, not in a crisis no one chose.',
+    src:'Canada Gazette (OICs/SORs), ministerial instructions, IRPA amendments; see view for per-decision citations.',
+    links:[{h:'policy-timeline.html',l:'How the Channel Was Built'}]
+  },
+  {
+    lens:'Selective measurement', self:false,
+    claim:'&ldquo;We can’t talk about offender origin &mdash; that data isn’t collected.&rdquo;',
+    real:'Canada publishes country of citizenship for asylum claimants down to the top 25 &mdash; updated monthly. Yet for people <strong>charged with sexual offences and trafficking</strong>, no origin, citizenship or status field exists at all. <strong>99.4%</strong> of 3,342 catalogued cases carry no origin signal.',
+    title:'The state tracks origin precisely when it chooses to.',
+    verdict:'Verdict: the gap is a choice, not a technical limit. What isn’t counted can’t be debated &mdash; by anyone, in either direction.',
+    src:'IRCC asylum open data (origin published); StatCan UCR survey (no accused-origin field).',
+    links:[{h:'origin-data-gap.html',l:'The Origin Data Gap'},{h:'asylum-channel.html',l:'Asylum origins'}]
+  },
+  {
+    lens:'Inverted priority', self:false,
+    claim:'Institutional and media attention centres on Islamophobia as the defining religious-hate problem.',
+    real:'Police-reported hate crime falls overwhelmingly on Jewish Canadians &mdash; <strong>about 70% of religious hate crime</strong> at <strong>~1% of the population</strong>. By rate the gap is <strong>21&times; to 25&times;</strong> higher than for Muslims, depending on the denominator &mdash; and we show both. Antisemitic and anti-Muslim incidents are both real and both rose post-Oct-2023; the point is the measured <em>burden</em>, not a contest of suffering.',
+    title:'The largest measured burden gets the least of the framing.',
+    verdict:'Verdict: attention and incidence point in different directions. Both denominators still leave the gap large and real.',
+    src:'StatCan UCR hate-crime tables (police-reported ≠ total; underreporting varies); 2021 Census vs. surge-adjusted denominators shown side by side.',
+    links:[{h:'hate-crime.html',l:'Religious Hate Crime'}]
+  },
+  {
+    lens:'Exaggeration — corrected against our own side', self:true,
+    claim:'A viral figure: &ldquo;asylum is costing Canada $5 billion.&rdquo;',
+    real:'The honest, itemized numbers are lower and more specific: asylum healthcare (IFHP) hit <strong>$896M in 2024-25</strong> (PBO projects <strong>&gt;$1.5B/yr by 2029-30</strong>), with roughly <strong>$1.1B</strong> in interim housing support to date. Real and rising &mdash; but the round &ldquo;$5B&rdquo; conflates categories. These are also federal-only, so they <em>undercount</em> the provincial download.',
+    title:'We replaced a number that favoured our argument with the sourced one.',
+    verdict:'Verdict: the cost is serious and understated in a different way (provincial costs are missing) &mdash; but the $5B headline is not supportable as stated.',
+    src:'Parliamentary Budget Officer; IRCC IFHP figures; provincial housing-support disclosures.',
+    links:[{h:'asylum-cost.html',l:'The Real Cost'}]
+  },
+  {
+    lens:'Optimism gap', self:false,
+    claim:'&ldquo;We’re removing people who shouldn’t be here &mdash; enforcement is working.&rdquo;',
+    real:'Removals reached a <strong>record ~23,000 in 2025</strong> &mdash; genuine effort &mdash; but roughly <strong>24,500 new removable cases arrive each year</strong>, the removal inventory has <strong>doubled to ~31,000</strong>, and the Auditor General found CBSA had lost track of <strong>34,700</strong> under removal orders. The IRB asylum backlog sits near <strong>300,000</strong>.',
+    title:'Record enforcement, still losing ground to intake.',
+    verdict:'Verdict: running to stand still. Effort is up and the gap is still widening &mdash; we corrected our own earlier &ldquo;removal is rare&rdquo; line to say this precisely.',
+    src:'CBSA removals data; Office of the Auditor General (2020); IRB backlog statistics.',
+    links:[{h:'enforcement.html',l:'Running to Stand Still'},{h:'justice-backlog.html',l:'The Justice Backlog'}]
+  }
+];
+
+document.getElementById('gaps').innerHTML=GAPS.map(g=>{
+  const links=g.links.map(x=>`<a class="seelink" href="${x.h}">See: ${x.l} &rarr;</a>`).join('');
+  return `<div class="gap${g.self?' self':''}">
+    <span class="gap-lens">${g.lens}</span>
+    <div class="twocol">
+      <div class="side claim"><p class="side-h">What we're told</p><p>${g.claim}</p></div>
+      <div class="side real"><p class="side-h">What the data shows</p><p>${g.real}</p></div>
+    </div>
+    <h2>${g.title}</h2>
+    <p class="verdict">${g.verdict}</p>
+    <p class="src">Sources: ${g.src}</p>
+    <div class="seelinks">${links}</div>
+  </div>`;
+}).join('');
+
+document.getElementById('foot').textContent='A meta-view of Pillar E in the Canada Central immigration-intelligence suite. Every figure traces to the linked view’s primary citations (Statistics Canada, PBO, IRB, Auditor General, IRCC, CBSA, the Canada Gazette). Items marked in green are corrections we made against our own thesis. Compiled by Canada Central.';
+</script>
+</body>
+</html>
