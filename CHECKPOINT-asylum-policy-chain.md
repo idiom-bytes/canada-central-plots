@@ -162,7 +162,22 @@ STATUS — DELIVERED & COMMITTED (branch feature/immigration-asylum-narrative):
 - Nav link "Policy Timeline" added to asylum-channel.html + new page. NOT yet added to the other
   plot pages' navbars (immigration-volumes, exploitation, origin-data-gap, justice, lobbying) — TODO if wanted.
 
-Remaining optional: verify Bill C-12 provisions; DCO-emptied exact date (2019); IMP-specific growth.
+### ROUND 4 (2026-06-21)
+- **Bill C-12 CONFIRMED**: "Strengthening Canada's Immigration System and Borders Act", Royal Assent
+  26 Mar 2026 (45-1). One-year bar (claims >1yr after first entry since 24 Jun 2020 not IRB-referred)
+  + codified 14-day land-border bar; applies to claims on/after 3 Jun 2025; real-time IRCC/CBSA/ESDC
+  data-sharing + digital removal orders; most provisions in force 1 Jan 2027. Timeline entry updated.
+- **policy-timeline.html**: added "What the brakes did NOT fix — structural problems still in place"
+  section (STRUCT_PROBLEMS[] → prob-grid cards), each linking down to the relevant view
+  (asylum-channel, immigration-volumes, origin-data-gap, justice-backlog, lobbying). Addresses the
+  "green looks solved but problems remain" concern + creates connective overview/navigation.
+- **GitHub issues created** in idiom-bytes/house_of_commons:
+  - #146 — Scrape Canada Gazette (Parts I/II/III): OICs, SORs, ministerial instructions, RIAS —
+    the REGULATORY layer (where 8/11 immigration levers actually happened).
+  - #147 — Scrape the Senate (current + historical) mirroring the HoC data model.
+
+Remaining optional: DCO-emptied exact date (2019); IMP-specific growth; add "Policy Timeline" nav
+link to the other plot pages' navbars (only asylum + index done).
 
 ---
 
