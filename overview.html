@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canada's Immigration Reality: The Whole Story | Canada Central</title>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1000px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    .hero{padding:2.25rem 0 1rem}
+    .hero-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.6rem}
+    .hero-title{font-size:2rem;font-weight:800;margin:0 0 0.75rem;line-height:1.12}
+    @media(min-width:640px){.hero-title{font-size:2.75rem}}
+    .hero-lede{font-size:1.05rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:760px}
+    .hero-lede strong{color:var(--color-text-primary)}
+
+    .keyrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0 0.5rem}
+    @media(min-width:768px){.keyrow{grid-template-columns:repeat(4,1fr)}}
+    .key{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:0.9rem 1rem;border-top:3px solid var(--color-alarm)}
+    .key .v{font-size:1.5rem;font-weight:800;color:var(--color-alarm);line-height:1;margin:0}
+    .key .l{font-size:0.6875rem;color:var(--color-text-secondary);margin:0.3rem 0 0;line-height:1.4}
+
+    .chapter{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.6rem;margin:1rem 0}
+    .chapter-num{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.35rem}
+    .chapter-claim{font-size:0.85rem;font-style:italic;color:var(--color-alarm-dark);background:var(--color-alarm-light);border-left:3px solid var(--color-alarm);padding:0.5rem 0.75rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0 0 0.85rem}
+    .chapter h2{font-size:1.3rem;font-weight:800;margin:0 0 0.6rem;line-height:1.2}
+    .chapter p{font-size:0.95rem;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.85rem}
+    .chapter p strong{color:var(--color-text-primary)}
+    .verdict{font-size:0.85rem;font-weight:700;color:var(--color-text-primary);background:var(--color-cream-dark);border-radius:var(--radius-md);padding:0.6rem 0.85rem;margin:0 0 0.85rem}
+    .seelinks{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .seelink{font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-teal);padding:0.4rem 0.8rem;border-radius:999px}
+    .seelink:hover{background:#2c4a57}
+
+    .risk-head{font-size:1.5rem;font-weight:800;margin:1.75rem 0 0.25rem}
+    .risk-sub{font-size:0.9rem;color:var(--color-text-secondary);margin:0 0 1rem;max-width:760px;line-height:1.6}
+    .risk-grid{display:grid;grid-template-columns:1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:760px){.risk-grid{grid-template-columns:1fr 1fr}}
+    .risk{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.15rem;border-left:4px solid var(--color-alarm);display:flex;flex-direction:column}
+    .risk-cat{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-text-tertiary);margin:0 0 0.25rem}
+    .risk-title{font-size:0.95rem;font-weight:700;margin:0 0 0.35rem;color:var(--color-text-primary);line-height:1.3}
+    .risk-detail{font-size:0.8125rem;line-height:1.55;color:var(--color-text-secondary);margin:0 0 0.6rem;flex:1}
+    .risk-link{font-size:0.75rem;font-weight:700;text-decoration:none;color:var(--color-teal)}
+    .risk-link:hover{text-decoration:underline}
+    .risk-link.soon{color:var(--color-text-tertiary);font-weight:600}
+
+    .method{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.4rem 1.6rem;margin:1rem 0;font-size:0.875rem;line-height:1.7;color:var(--color-text-secondary)}
+    .method h2{font-size:1.05rem;color:var(--color-text-primary);margin:0 0 0.6rem}
+    .method li{margin:0 0 0.4rem}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1rem}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="overview.html" class="active">Overview</a>
+    <a href="immigration-volumes.html">Volumes</a>
+    <a href="asylum-channel.html">Asylum</a>
+    <a href="policy-timeline.html">Policy Timeline</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <p class="hero-tag">The Whole Story · Start Here</p>
+    <h1 class="hero-title">Canada's Immigration Reality</h1>
+    <p class="hero-lede">One question runs through everything here: <strong>does what we're told match what the data shows?</strong> The government says immigration is coming down. By the numbers, one stream is doing the opposite &mdash; and the system driving it was built deliberately, by policy, over a decade. This page is the spine: the claims, the evidence, and the risks now in place. Every section links to the underlying data.</p>
+  </div>
+
+  <div class="keyrow">
+    <div class="key"><p class="v">2.56M</p><p class="l">temporary residents in Canada (2026), +1.2M since 2021</p></div>
+    <div class="key"><p class="v">+608%</p><p class="l">growth in new asylum claims since 2015</p></div>
+    <div class="key"><p class="v">8 of 11</p><p class="l">policy decisions made with no parliamentary vote</p></div>
+    <div class="key"><p class="v">~300k</p><p class="l">asylum claims stuck in the IRB backlog</p></div>
+  </div>
+
+  <!-- Chapter 1 -->
+  <div class="chapter" id="ch1">
+    <p class="chapter-num">Chapter 1 · The Volume Reality</p>
+    <p class="chapter-claim">The claim: &ldquo;Immigration is coming down.&rdquo;</p>
+    <h2>True for the front door. Not for asylum.</h2>
+    <p>Permanent residents, study permits and work permits are all falling from their 2024&ndash;25 peaks &mdash; so the headline is technically true. But the <strong>asylum stream is the exception</strong>: new claims are up <strong>608% since 2015</strong>, and the standing claimant population sits at <strong>~525,000</strong>. Net non-permanent residents peaked at <strong>+781,000 in a single year</strong> (2023/24) &mdash; more than every permanent immigrant admitted that year. And the <strong>2.56M temporary residents already inside the country</strong> cannot be un-admitted; many can still claim asylum as their status lapses.</p>
+    <p class="verdict">Verdict: the headline is true and substantively misleading. The lever the government doesn't fully control is the one that's exploding.</p>
+    <div class="seelinks">
+      <a class="seelink" href="immigration-volumes.html">See: Permanent vs. Temporary &rarr;</a>
+      <a class="seelink" href="asylum-channel.html">See: The Asylum Channel &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Chapter 2 -->
+  <div class="chapter" id="ch2">
+    <p class="chapter-num">Chapter 2 · The Policy Design</p>
+    <p class="chapter-claim">The claim: &ldquo;It's a border crisis &mdash; this happened to us.&rdquo;</p>
+    <h2>It was built, by policy, on purpose.</h2>
+    <p>The land border to the south is the most heavily policed on earth; the growth came through the front door. We traced <strong>11 federal decisions (2012&ndash;2026)</strong> that built the channel &mdash; the Mexico visa lift, the loosened temporary-worker rules, uncapped international students, the Safe Third Country redirect that pushed claims <em>inland</em> (31% of claims in 2022 &rarr; 71% in 2025), and the late-arriving brakes. The striking pattern: <strong>8 of the 11 were executive instruments</strong> &mdash; Orders in Council, ministerial instructions, an international protocol &mdash; that never went to a vote. The actual Acts of Parliament mostly arrived at the bookends, to tighten.</p>
+    <p class="verdict">Verdict: not an accident and not the border. A chain of internal decisions, with dates and ministers &mdash; accountability that lives in the Gazette, not in Hansard.</p>
+    <div class="seelinks">
+      <a class="seelink" href="policy-timeline.html">See: How the Channel Was Built &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Chapter 3 -->
+  <div class="chapter" id="ch3">
+    <p class="chapter-num">Chapter 3 · The Consequences &amp; Risks</p>
+    <p class="chapter-claim">The pattern to watch: UK-style intake without integration or enforcement.</p>
+    <h2>What the system produces downstream.</h2>
+    <p>The United Kingdom is the cautionary template &mdash; rapid intake plus weak integration plus slow enforcement, producing social-cohesion breakdown, grooming-gang scandals, a surge in antisemitism, and fiscal strain. Canada is running the same experiment. These are the risk surfaces, each measured against official data:</p>
+    <div class="risk-grid" id="riskGrid"></div>
+    <p style="font-size:0.8125rem;color:var(--color-text-tertiary);margin:0">Surfaces marked &ldquo;in progress&rdquo; are being built in the current pass.</p>
+  </div>
+
+  <!-- Chapter 4 -->
+  <div class="chapter" id="ch4">
+    <p class="chapter-num">Chapter 4 · What's Still Broken</p>
+    <p class="chapter-claim">The brakes came late and don't reach the structural gaps.</p>
+    <h2>The problems still in place today.</h2>
+    <p>The 2024&ndash;26 brakes (study cap, Mexico visa reimposed, Bill C-12) slowed <em>new</em> intake. They did not fix the load-bearing problems: <strong>removal rarely follows a refused claim</strong> (CBSA lost track of 34,700 under removal orders; ~74,000 failed claimants in inventory), the <strong>IRB can't keep pace</strong> (~300k backlog, ~19-month waits), the <strong>inland pool is already inside</strong>, <strong>origin is tracked only selectively</strong>, and the <strong>levers remain executive</strong> &mdash; reopenable without a vote.</p>
+    <div class="seelinks">
+      <a class="seelink" href="policy-timeline.html#probGrid">See: What the brakes didn't fix &rarr;</a>
+    </div>
+  </div>
+
+  <div class="method">
+    <h2>How we keep this objective</h2>
+    <p>This is a review, not a polemic. The standards we hold ourselves to:</p>
+    <ul>
+      <li><strong>Primary, official sources</strong> for every headline (Statistics Canada, PBO, IRB, Auditor General, IRCC, ESDC, CBSA, the Canada Gazette, Parliament).</li>
+      <li><strong>Rates, not raw counts</strong> &mdash; and we always disclose the population denominator we used.</li>
+      <li><strong>We correct exaggerations even when they favour the argument</strong> (e.g. the viral &ldquo;$5B&rdquo; asylum-cost figure is replaced with itemized PBO numbers).</li>
+      <li><strong>We flag contested attributions</strong> (e.g. Century Initiative influence &mdash; asserted by critics, denied by the minister).</li>
+      <li><strong>We state what the data cannot establish</strong> (inland claimants' prior status; offender origin; causation vs. correlation).</li>
+      <li><strong>The subject is decisions and decision-makers</strong>, not migrants as individuals.</li>
+    </ul>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+// Risk surfaces (Pillar C of the strategy charter). view:'' + soon:true => not yet built this pass.
+const RISKS=[
+  {cat:'Social cohesion',title:'Antisemitism &amp; religious hate crime',detail:'Police-reported hate crimes fall overwhelmingly on Jewish Canadians — far higher by both count and rate than any other group — despite the public focus on Islamophobia. The clearest narrative-vs-data gap.',view:'',label:'In progress',soon:true},
+  {cat:'Public safety',title:'Sexual exploitation &amp; trafficking',detail:'3,342 distinct Canadian exploitation/trafficking cases (2016–2026), up ~3× since 2016 — the same risk surface as the UK grooming-gang scandals.',view:'exploitation-record.html',label:'The Exploitation Record'},
+  {cat:'Institutional integrity',title:'The origin data gap',detail:'Canada publishes country of citizenship for asylum claimants, but records nothing about the origin of those charged with sexual offences and trafficking — making any link unmeasurable by design.',view:'origin-data-gap.html',label:'The Origin Data Gap'},
+  {cat:'Justice capacity',title:'Courts &amp; catch-and-release',detail:'76.6% of people in provincial jails are un-convicted as courts fall behind; the remand population has grown +538%. The system cannot absorb the load.',view:'justice-backlog.html',label:'The Justice Backlog'},
+  {cat:'Fiscal',title:'The real cost',detail:'Asylum healthcare (IFHP) cost $722M in 2024-25 (PBO projects ~$1B/yr by ~2030); clearing the backlog ~$0.5B. The honest figures — not the viral "$5B".',view:'',label:'In progress',soon:true},
+  {cat:'Influence / demand',title:'Who lobbies for volume',detail:'The heaviest immigration lobbyists are employers and universities — the structural demand for intake that the brakes never touched.',view:'lobbying-influence.html',label:'Who Lobbies Ottawa'},
+];
+
+document.getElementById('riskGrid').innerHTML=RISKS.map(r=>{
+  const link=r.soon
+    ? `<span class="risk-link soon">${r.label} &middot; soon</span>`
+    : `<a class="risk-link" href="${r.view}">See: ${r.label} &rarr;</a>`;
+  return `<div class="risk"><p class="risk-cat">${r.cat}</p><p class="risk-title">${r.title}</p><p class="risk-detail">${r.detail}</p>${link}</div>`;
+}).join('');
+
+document.getElementById('foot').textContent='Sources span Statistics Canada, the Parliamentary Budget Officer, the Immigration and Refugee Board, the Auditor General, IRCC/ESDC/CBSA, the Canada Gazette and Parliament of Canada. Each linked view carries its own citations. Compiled by Canada Central. Contested attributions are flagged inline; figures pending primary-source confirmation are marked accordingly.';
+</script>
+</body>
+</html>
