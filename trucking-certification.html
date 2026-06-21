@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canada Central | Heavy-Duty Truck Certification Gap</title>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --color-teal: #3A5F6F;
+      --color-burgundy: #8B2E2E;
+      --color-amber: #B86A1A;
+      --color-amber-light: #FDF3E7;
+      --color-danger: #A13F3F;
+      --color-danger-light: #FDF0F0;
+      --color-green: #3A6B3A;
+      --color-green-light: #EFF5EF;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+    }
+    html,body{margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary)}
+
+    /* Navbar */
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+
+    /* Hero */
+    .hero{max-width:780px;margin:0 auto;padding:3rem 1.5rem 2rem;text-align:center}
+    .hero-tag{display:inline-block;font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-amber);background:var(--color-amber-light);border:1px solid #E8C090;border-radius:9999px;padding:4px 14px;margin-bottom:1rem}
+    .hero-title{font-size:2.25rem;font-weight:800;color:var(--color-text-primary);line-height:1.12;margin:0 0 1rem}
+    @media(min-width:640px){.hero-title{font-size:3rem}}
+    .hero-sub{font-size:1rem;color:var(--color-text-secondary);line-height:1.7;margin:0 auto 1.5rem;max-width:620px}
+    @media(min-width:640px){.hero-sub{font-size:1.125rem}}
+    .hero-meta{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:0.75rem;font-weight:600;color:var(--color-text-tertiary)}
+
+    /* Flow container */
+    .flow{max-width:860px;margin:0 auto;padding:1rem 1.5rem 4rem}
+    @media(min-width:640px){.flow{padding:1.5rem 2rem 5rem}}
+
+    /* Step connector */
+    .step-connector{display:flex;justify-content:center;margin:0.25rem 0;color:var(--color-beige-dark);font-size:1.5rem;line-height:1}
+
+    /* Section block */
+    .section{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;margin-bottom:0.5rem}
+    .section-header{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.75rem;border-bottom:1px solid var(--color-cream-dark)}
+    .step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;flex-shrink:0}
+    .section-label{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 2px}
+    .section-title{font-size:1.0625rem;font-weight:700;color:var(--color-text-primary);margin:0;line-height:1.3}
+    @media(min-width:640px){.section-title{font-size:1.2rem}}
+    .section-body{padding:1.5rem 1.75rem}
+    .section-body p{margin:0 0 0.75rem;font-size:0.9rem;color:var(--color-text-primary);line-height:1.7}
+    .section-body p:last-child{margin-bottom:0}
+
+    /* Stat row */
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.25rem 0}
+    .stat-box{background:var(--color-cream);border-radius:var(--radius-md);padding:1rem 1.25rem;text-align:center}
+    .stat-big{font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:4px}
+    .stat-label{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-text-tertiary)}
+
+    /* Timeline */
+    .timeline{margin:1.25rem 0;display:flex;flex-direction:column;gap:0}
+    .timeline-item{display:flex;gap:1rem;align-items:flex-start;padding:0.875rem 1rem;border-radius:var(--radius-md)}
+    .timeline-item.alert{background:var(--color-danger-light);border:1px solid #E8C0C0}
+    .timeline-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
+    .timeline-content .t-date{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:3px}
+    .timeline-content .t-desc{font-size:0.875rem;color:var(--color-text-primary);line-height:1.5}
+
+    /* The diagram — certification gap */
+    .cert-diagram{margin:1.25rem 0;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
+    .cert-box{border-radius:var(--radius-md);padding:1rem 1.25rem;text-align:center}
+    .cert-box .cert-label{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+    .cert-box .cert-agency{font-size:1.625rem;font-weight:800;letter-spacing:-0.01em;line-height:1}
+    .cert-box .cert-sub{font-size:0.6875rem;color:var(--color-text-primary);margin-top:4px;line-height:1.4}
+    .cert-arrow{text-align:center;padding:0 0.75rem;font-size:1.5rem;color:var(--color-danger)}
+    .cert-clash{text-align:center;padding:0 0.75rem}
+    .cert-clash-icon{font-size:1.75rem}
+    .cert-clash-label{font-size:0.5rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-danger);margin-top:4px}
+
+    /* Impact grid */
+    .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;margin:1.25rem 0}
+    .impact-item{background:var(--color-cream);border-radius:var(--radius-md);padding:0.875rem 1rem;display:flex;gap:0.75rem;align-items:flex-start}
+    .impact-icon{font-size:1.25rem;flex-shrink:0;margin-top:1px}
+    .impact-label{font-size:0.8125rem;font-weight:700;color:var(--color-text-primary);margin-bottom:3px}
+    .impact-desc{font-size:0.75rem;color:var(--color-text-primary);line-height:1.4}
+
+    /* The fix box */
+    .fix-box{background:var(--color-green-light);border:1.5px solid #A8CCA8;border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin:1.25rem 0}
+    .fix-box .fix-label{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-green);margin-bottom:0.5rem}
+    .fix-box .fix-text{font-size:0.9375rem;font-weight:600;color:var(--color-text-primary);line-height:1.6;margin:0}
+
+    /* Highlight quote */
+    .pull-quote{border-left:3px solid var(--color-amber);padding:0.75rem 1rem 0.75rem 1.25rem;margin:1.25rem 0;background:var(--color-amber-light);border-radius:0 var(--radius-md) var(--radius-md) 0}
+    .pull-quote p{font-size:0.9rem;font-style:italic;color:var(--color-text-primary);margin:0 0 4px;line-height:1.6}
+    .pull-quote cite{font-size:0.6875rem;font-weight:600;color:var(--color-text-tertiary);font-style:normal}
+
+    /* Recommendation section */
+    .rec-section{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;margin-top:1.5rem}
+    .rec-header{padding:1.25rem 1.75rem 1.25rem;border-bottom:1px solid var(--color-cream-dark)}
+    .rec-header-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-teal);margin-bottom:6px}
+    .rec-header-title{font-size:1.0625rem;font-weight:700;color:var(--color-text-primary);margin:0;line-height:1.3}
+    @media(min-width:640px){.rec-header-title{font-size:1.2rem}}
+    .rec-body{padding:1.5rem 1.75rem}
+    /* Card grid */
+    .rec-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:700px){.rec-grid{grid-template-columns:repeat(3,1fr)}}
+    .rec-card{background:var(--color-cream);border:1px solid var(--color-beige);border-radius:var(--radius-lg);padding:1.25rem 1.25rem 1.125rem;display:flex;flex-direction:column;gap:0}
+    .rec-card-heading{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.625rem}
+    .rec-card-icon{font-size:1.5rem;flex-shrink:0;line-height:1}
+    .rec-card-title{font-size:0.9rem;font-weight:700;color:var(--color-text-primary);margin:0;line-height:1.35}
+    .rec-card-desc{font-size:0.8rem;color:var(--color-text-primary);line-height:1.6;margin:0;flex:1}
+    .rec-card-meta{margin-top:1rem;padding-top:0.875rem;border-top:1px solid var(--color-beige);display:flex;flex-direction:column;gap:0.4rem}
+    .rec-meta-row{display:flex;flex-direction:column;gap:0.15rem}
+    .rec-meta-heading{font-size:0.8125rem;font-weight:700;color:var(--color-text-primary)}
+    .rec-meta-desc{font-size:0.75rem;color:var(--color-text-primary);line-height:1.5}
+
+    /* Source footer */
+    .sources{max-width:860px;margin:0 auto;padding:0 1.5rem 3rem}
+    @media(min-width:640px){.sources{padding:0 2rem 3rem}}
+    .sources-inner{border-top:1px solid var(--color-beige);padding-top:1.25rem}
+    .sources-title{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin-bottom:0.5rem}
+    .sources-list{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .sources-list a{font-size:0.75rem;color:var(--color-teal);text-decoration:none;border:1px solid var(--color-beige);border-radius:9999px;padding:3px 10px;background:var(--color-white)}
+    .sources-list a:hover{border-color:var(--color-teal)}
+
+    /* Color helpers */
+    .c-amber{color:var(--color-amber)}
+    .c-danger{color:var(--color-danger)}
+    .c-teal{color:var(--color-teal)}
+    .c-green{color:var(--color-green)}
+
+    /* Financial impact table */
+    .impact-table{margin:1.25rem 0;border:1px solid var(--color-beige);border-radius:var(--radius-md);overflow:hidden}
+    .impact-row{display:grid;grid-template-columns:1fr 2fr;gap:0}
+    .impact-row:nth-child(even){background:var(--color-cream)}
+    .impact-row:nth-child(odd){background:var(--color-white)}
+    .impact-row-num{padding:1rem 1.25rem;border-right:1px solid var(--color-beige)}
+    .impact-row-num .ir-label{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin-bottom:4px}
+    .impact-row-num .ir-value{font-size:1.1rem;font-weight:800;color:var(--color-teal);line-height:1.2}
+    .impact-row-desc{padding:1rem 1.25rem}
+    .impact-row-desc .ir-title{font-size:0.8125rem;font-weight:700;color:var(--color-text-primary);margin-bottom:4px}
+    .impact-row-desc .ir-text{font-size:0.8rem;color:var(--color-text-primary);line-height:1.55;margin:0}
+    .confidence-note{font-size:0.8rem;color:var(--color-text-primary);font-style:italic;margin-top:1rem;padding:0.75rem 1rem;background:var(--color-cream);border-radius:var(--radius-md)}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="https://canada-central.com/participation">MP Participation</a>
+      <a href="index.html">Statistics</a>
+      <a class="active" href="reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">Supply Chain &mdash; May 2026</div>
+    <h1 class="hero-title">Canada&rsquo;s Heavy-Duty Truck Certification Gap</h1>
+    <p class="hero-sub">A U.S. agency restructuring shifted which body certifies heavy-duty truck emissions. Canada&rsquo;s import regulations haven&rsquo;t been updated to reflect it. The practical result: Canadian dealers may not be able to order 2027-model trucks unless the gap is closed before August 2026.</p>
+    <div class="hero-meta">
+      <span>Sectors Affected: 6</span>
+      <span>Trucks/Year: ~20,000</span>
+      <span>Ordering Window: Aug 2026</span>
+      <span>Fix Required: 1 regulation amendment</span>
+    </div>
+  </div>
+
+  <div class="flow">
+
+    <!-- SECTION 1: The Dependency -->
+    <div class="section" id="section-dependency">
+      <div class="section-header">
+        <div class="step-num" style="background:#EEF4F7;color:var(--color-teal)">1</div>
+        <div>
+          <div class="section-label" style="color:var(--color-teal)">Context</div>
+          <h2 class="section-title">Canada&rsquo;s heavy-duty fleet is sourced from the U.S.</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Canada does not manufacture its own heavy-duty commercial trucks. American manufacturers &mdash; Kenworth, Peterbilt, Freightliner, International, Mack &mdash; supply <strong>95% of Canada&rsquo;s heavy-duty truck fleet</strong>. This long-standing trade relationship has worked smoothly because Canadian and U.S. emissions and safety standards have been closely aligned.</p>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-big c-teal">95%</div>
+            <div class="stat-label">of supply from U.S. manufacturers</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-big c-teal">~20,000</div>
+            <div class="stat-label">Class 8 trucks sold in Canada/yr</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-big c-teal">6</div>
+            <div class="stat-label">critical sectors dependent on fleet renewal</div>
+          </div>
+        </div>
+        <p>Fleet renewal follows long lead times. Trucking companies typically pre-order 12&ndash;18 months in advance, making the annual ordering window a hard constraint for the following model year.</p>
+      </div>
+    </div>
+
+    <div class="step-connector">&#8595;</div>
+
+    <!-- SECTION 2: The Policy Gap -->
+    <div class="section" id="section-gap">
+      <div class="section-header">
+        <div class="step-num" style="background:#FDF3E7;color:var(--color-amber)">2</div>
+        <div>
+          <div class="section-label" style="color:var(--color-amber)">The Regulatory Gap</div>
+          <h2 class="section-title">A U.S. agency restructuring left a gap in Canadian import regs</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Canada&rsquo;s import regulations for heavy-duty trucks recognize emissions certifications issued by the U.S. <strong>Environmental Protection Agency (EPA)</strong>. This has been the standard arrangement for decades.</p>
+        <p>The U.S. subsequently restructured responsibility for heavy-duty vehicle certifications, moving them to the <strong>National Highway Traffic Safety Administration (NHTSA)</strong>. Canadian regulations cite the EPA as the recognized certifying body and have not yet been updated to reflect this change. As a result, new trucks certified by NHTSA cannot currently be imported under Canadian rules.</p>
+
+        <div class="cert-diagram">
+          <div class="cert-box" style="background:#EEF4F7">
+            <div class="cert-label" style="color:var(--color-teal)">What the U.S. now issues</div>
+            <div class="cert-agency c-teal">NHTSA</div>
+            <div class="cert-sub">National Highway Traffic<br>Safety Administration</div>
+          </div>
+          <div style="text-align:center;padding:0 0.875rem">
+            <div style="font-size:2rem;color:var(--color-amber)">&#8800;</div>
+            <div style="font-size:0.5rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-amber);margin-top:4px">Gap</div>
+          </div>
+          <div class="cert-box" style="background:var(--color-amber-light)">
+            <div class="cert-label" style="color:var(--color-amber)">What Canada currently requires</div>
+            <div class="cert-agency c-amber">EPA</div>
+            <div class="cert-sub">Environmental Protection<br>Agency</div>
+          </div>
+        </div>
+
+        <div class="pull-quote">
+          <p>&ldquo;It&rsquo;s more of a paperwork problem and a paperwork misalignment than it is a misalignment of vision.&rdquo;</p>
+          <cite>&mdash; Canadian Truck Dealers Association spokesperson, May 2026</cite>
+        </div>
+
+        <p>The trucks themselves meet all technical standards. Safety and emissions specs between the two countries remain aligned. The gap is administrative, not substantive.</p>
+      </div>
+    </div>
+
+    <div class="step-connector">&#8595;</div>
+
+    <!-- SECTION 3: The Timeline -->
+    <div class="section" id="section-timeline">
+      <div class="section-header">
+        <div class="step-num" style="background:var(--color-amber-light);color:var(--color-amber)">3</div>
+        <div>
+          <div class="section-label" style="color:var(--color-amber)">Timeline</div>
+          <h2 class="section-title">The ordering window arrives in August 2026</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>The gap was formally created on <strong>February 12, 2026</strong>, when the U.S. EPA rescinded its authority over GHG vehicle certifications. But the trajectory was clear from March 2025, when the Trump administration announced its intent &mdash; leaving over a year between the announcement and the August 2026 ordering window.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--color-beige-dark)"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:var(--color-text-tertiary)">May 2018</div>
+              <div class="t-desc">Canada harmonizes HD GHG regulations with U.S. EPA Phase 2. Certification language: &ldquo;any engine certified by EPA may be sold in Canada.&rdquo;</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--color-beige-dark)"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:var(--color-text-tertiary)">April 2024</div>
+              <div class="t-desc">Biden EPA finalizes Phase 3 GHG standards for MY2027+, as an EPA-only rule. Canada does not update its regulations to reflect the new standard.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--color-amber)"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:var(--color-amber)">March 2025</div>
+              <div class="t-desc">Trump EPA announces intent to rescind the 2009 Endangerment Finding &mdash; the legal basis for all GHG vehicle certifications. U.S. manufacturers immediately flag Ottawa: EPA certification will cease to exist for 2027+ trucks.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#3A5F6F"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:#3A5F6F">February 12, 2026</div>
+              <div class="t-desc">Trump EPA formally rescinds all GHG vehicle emission standards. EPA no longer has authority to certify heavy-duty trucks. NHTSA becomes the only remaining federal certifier. The gap is now a legal fact.</div>
+            </div>
+          </div>
+          <div class="timeline-item" style="background:var(--color-amber-light);border:1px solid #E8C090;border-radius:var(--radius-md)">
+            <div class="timeline-dot" style="background:var(--color-amber)"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:var(--color-amber)">May 2026</div>
+              <div class="t-desc">Canadian Truck Dealers Association raises the issue publicly. Government has acknowledged the gap and indicated it is working toward a resolution.</div>
+            </div>
+          </div>
+          <div class="timeline-item" style="background:var(--color-amber-light);border:1px solid #E8C090;border-radius:var(--radius-md)">
+            <div class="timeline-dot" style="background:var(--color-amber)"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:var(--color-amber)">August 2026 &mdash; Ordering Window</div>
+              <div class="t-desc"><strong>Canadian fleets make annual renewal decisions</strong> for the 2027 model year. Regulatory alignment needs to be in place before this window.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--color-beige-dark)"></div>
+            <div class="timeline-content">
+              <div class="t-date" style="color:var(--color-text-tertiary)">2027 Model Year</div>
+              <div class="t-desc">Without orders placed in August, new heavy-duty truck supply for 2027 would be significantly curtailed.</div>
+            </div>
+          </div>
+        </div>
+        <div class="pull-quote">
+          <p>&ldquo;This is a yesterday problem, not a tomorrow problem.&rdquo;</p>
+          <cite>&mdash; Huw Williams, Canadian Truck Dealers Association, May 2026</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">&#8595;</div>
+
+    <!-- SECTION 4: Financial Impact -->
+    <div class="section" id="section-financial">
+      <div class="section-header">
+        <div class="step-num" style="background:#EEF4F7;color:var(--color-teal)">4</div>
+        <div>
+          <div class="section-label" style="color:var(--color-teal)">Financial Impact</div>
+          <h2 class="section-title">A $4&ndash;5B direct disruption across the supply chain</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Class 8 trucks are almost entirely built-to-order &mdash; there is no dealer floor stock for semis. Missing the ordering window means missing the supply for that model year entirely. With ~17,000&ndash;20,000 Class 8 trucks sold in Canada annually at an average of ~$265,000 CAD each, the direct purchase market at risk is $4.5&ndash;5.3B CAD. That is the first-order number. The broader supply chain impact compounds from there.</p>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-big c-teal">$4.5&ndash;5.3B</div>
+            <div class="stat-label">Direct truck purchase market (17&ndash;20K units &times; $265K avg)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-big c-teal">$65B</div>
+            <div class="stat-label">Annual trucking industry revenue &mdash; the system this disruption propagates into</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-big c-teal">$6.3B</div>
+            <div class="stat-label">Aftermarket parts/service market &mdash; elevated near-term by aging fleets requiring more service</div>
+          </div>
+        </div>
+        <div class="impact-table">
+          <div class="impact-row">
+            <div class="impact-row-num">
+              <div class="ir-label">New Truck Market</div>
+              <div class="ir-value">$4.5&ndash;5.3B CAD</div>
+            </div>
+            <div class="impact-row-desc">
+              <div class="ir-title">New truck market: $4.5&ndash;5.3B CAD</div>
+              <p class="ir-text">Dealers: zero Class 8 new-unit revenue for the 2027 model year. U.S. manufacturers lose their Canadian order book (~17&ndash;20K units). Financing and leasing companies lose origination volume. This is a one-year gap, but the compounding cost of a delayed fleet is not recovered.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-row-num">
+              <div class="ir-label">Fleet Operating Costs</div>
+              <div class="ir-value">~$595M/yr incremental</div>
+            </div>
+            <div class="impact-row-desc">
+              <div class="ir-title">Fleet operating costs: ~$595M/yr incremental</div>
+              <p class="ir-text">17,000 un-renewed trucks running one additional year on aging equipment. Maintenance cost premium: ~$20,000/truck/yr &rarr; ~$340M. Fuel efficiency gap on older trucks: ~5&ndash;10% more diesel per km &rarr; ~$255M/yr estimated. These costs fall directly on fleet operators.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-row-num">
+              <div class="ir-label">Freight Capacity Pressure</div>
+              <div class="ir-value">$3.25&ndash;6.5B in rate exposure</div>
+            </div>
+            <div class="impact-row-desc">
+              <div class="ir-title">Freight capacity pressure: $3.25&ndash;6.5B in rate exposure</div>
+              <p class="ir-text">A 5&ndash;10% capacity squeeze in a $65B freight industry translates to $3.25&ndash;6.5B in upward rate pressure passed through to shippers. Tight seasonal industries (agriculture, forestry) are most exposed &mdash; there is no buffer time in a harvest window.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-row-num">
+              <div class="ir-label">Downstream Sectors</div>
+              <div class="ir-value">Cost absorption</div>
+            </div>
+            <div class="impact-row-desc">
+              <div class="ir-title">Downstream sector cost absorption</div>
+              <p class="ir-text">Construction, infrastructure, mining, and agriculture absorb higher freight rates as an operating cost. These sectors already face compressed margins in 2026. Cost pass-through ultimately reaches consumers through goods pricing &mdash; concentrated in food, fuel, and building materials.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-row-num">
+              <div class="ir-label">Confidence</div>
+              <div class="ir-value">Note</div>
+            </div>
+            <div class="impact-row-desc">
+              <div class="ir-title">Note on confidence</div>
+              <p class="ir-text">The $4&ndash;5B direct figure is well-grounded in unit volumes and pricing data. The downstream multiplier ($3.25&ndash;6.5B rate pressure) is an order-of-magnitude estimate. No analyst has modeled this as a standalone scenario because until recently it was considered an unlikely outcome. The uncertainty band is wide; downstream figures should be treated as order-of-magnitude estimates.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">&#8595;</div>
+
+    <!-- SECTION 5: The Impacts -->
+    <div class="section" id="section-sectors">
+      <div class="section-header">
+        <div class="step-num" style="background:#EEF4F7;color:var(--color-teal)">5</div>
+        <div>
+          <div class="section-label" style="color:var(--color-teal)">Affected Sectors</div>
+          <h2 class="section-title">Sectors dependent on heavy-duty fleet renewal</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Heavy trucks underpin freight and logistics across most of Canada&rsquo;s primary industries. Reduced availability of new trucks would mean slower fleet renewal, higher operating costs on aging equipment, and reduced capacity across sectors with tight seasonal windows.</p>
+        <div class="impact-grid">
+          <div class="impact-item">
+            <div class="impact-icon">&#128666;</div>
+            <div>
+              <div class="impact-label">Shipping &amp; Freight</div>
+              <div class="impact-desc">Core logistics backbone. Fleet aging raises costs and reduces reliability.</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">&#127959;</div>
+            <div>
+              <div class="impact-label">Construction</div>
+              <div class="impact-desc">Heavy equipment transport and materials delivery depend on Class 8 capacity.</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">&#127963;</div>
+            <div>
+              <div class="impact-label">Infrastructure</div>
+              <div class="impact-desc">Road, utilities, and public works projects rely on heavy hauling.</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">&#127795;</div>
+            <div>
+              <div class="impact-label">Forestry</div>
+              <div class="impact-desc">Log and pulp transport requires continuous fleet availability.</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">&#9935;</div>
+            <div>
+              <div class="impact-label">Mining</div>
+              <div class="impact-desc">Ore and mineral haulage is entirely dependent on heavy fleet renewal.</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">&#127806;</div>
+            <div>
+              <div class="impact-label">Agriculture</div>
+              <div class="impact-desc">Grain, livestock, and supply transport compressed into short seasonal windows.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">&#8595;</div>
+
+    <!-- SECTION 6: The Problem, Distilled -->
+    <div class="section" id="section-findings">
+      <div class="section-header">
+        <div class="step-num" style="background:#F5F0E8;color:#7A5C2E">6</div>
+        <div>
+          <div class="section-label" style="color:#7A5C2E">In Plain Terms</div>
+          <h2 class="section-title">A standards gap on paper, not in practice</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Both countries share aligned safety and emissions outcomes. There is no technical disagreement. The issue is that Canadian import regulations reference the EPA as the certifying body, and that reference has not been updated since NHTSA assumed that role in the U.S.</p>
+        <p><strong>Canada&rsquo;s Motor Vehicle Safety Act regulations cite the EPA as the recognized certifying body. NHTSA now issues those certifications.</strong> Updating the citation resolves the issue.</p>
+        <div class="fix-box">
+          <div class="fix-label">The gap, in plain terms</div>
+          <p class="fix-text">Canada&rsquo;s regulations cite <strong style="color:var(--color-amber)">EPA</strong> as the certifying body.<br>U.S. certifications are now issued by <strong style="color:var(--color-teal)">NHTSA</strong>.<br>Amending the regulation to recognize <strong style="color:var(--color-green)">NHTSA</strong> closes the gap.<br><br>The technical standards themselves do not need to change.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">&#8595;</div>
+
+    <!-- SECTION 7: Recommendation -->
+    <div class="rec-section" id="section-recommendations">
+      <div class="rec-header">
+        <div class="rec-header-tag">Recommendation</div>
+        <h2 class="rec-header-title">Three steps to resolve this before August</h2>
+      </div>
+      <div class="rec-body">
+        <div class="rec-grid">
+
+          <!-- Card 1 -->
+          <div class="rec-card">
+            <div class="rec-card-heading">
+              <span class="rec-card-icon">&#128221;</span>
+              <h3 class="rec-card-title">Amend the Motor Vehicle Safety Act regulations</h3>
+            </div>
+            <div class="rec-card-desc">Transport Canada should amend the regulations to recognize NHTSA certifications as equivalent to EPA certifications for heavy-duty truck imports. The technical standards are already aligned &mdash; this is an administrative citation update, not a policy debate. When the UK&rsquo;s vehicle type approval regulations were left citing a body that no longer had authority after Brexit, targeted statutory instruments (SI 2019/648) updated the certifying body references &mdash; the same mechanism available under Canada&rsquo;s MVSA.</div>
+            <div class="rec-card-meta">
+              <div class="rec-meta-row">
+                <div class="rec-meta-heading">Feasibility &mdash; High</div>
+                <div class="rec-meta-desc">Administrative citation update via statutory instrument — no new policy required</div>
+              </div>
+              <div class="rec-meta-row">
+                <div class="rec-meta-heading">Impact &mdash; Direct</div>
+                <div class="rec-meta-desc">Closes the import gap immediately upon amendment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="rec-card">
+            <div class="rec-card-heading">
+              <span class="rec-card-icon">&#128197;</span>
+              <h3 class="rec-card-title">Deliver a formal amendment before August 2026</h3>
+            </div>
+            <div class="rec-card-desc">Fleet renewal ordering decisions happen in August. A ministerial interim order may be the fastest first step, but it expires in 12 months and is not a durable fix. A full regulatory amendment with a public completion date is the correct outcome.</div>
+            <div class="rec-card-meta">
+              <div class="rec-meta-row">
+                <div class="rec-meta-heading">Feasibility &mdash; Medium</div>
+                <div class="rec-meta-desc">Requires departmental prioritization within a tight window</div>
+              </div>
+              <div class="rec-meta-row">
+                <div class="rec-meta-heading">Impact &mdash; Critical</div>
+                <div class="rec-meta-desc">Saves the 2027 model year order cycle for Canadian fleets</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="rec-card">
+            <div class="rec-card-heading">
+              <span class="rec-card-icon">&#128260;</span>
+              <h3 class="rec-card-title">Adopt ambulatory references in MVSA regulations</h3>
+            </div>
+            <div class="rec-card-desc">Transport Canada&rsquo;s own January&ndash;March 2026 MVSA consultation explicitly raised whether references to foreign certifying bodies should be &ldquo;ambulatory&rdquo; &mdash; automatically tracking changes &mdash; rather than fixed to specific versions. The current gap is a direct consequence of a fixed EPA citation. Making MVSA references ambulatory would prevent future certification gaps structurally, without requiring emergency legislation each time a U.S. agency restructures.</div>
+            <div class="rec-card-meta">
+              <div class="rec-meta-row">
+                <div class="rec-meta-heading">Feasibility &mdash; Medium</div>
+                <div class="rec-meta-desc">Transport Canada raised this in its 2026 MVSA consultation — the policy groundwork exists</div>
+              </div>
+              <div class="rec-meta-row">
+                <div class="rec-meta-heading">Impact &mdash; Preventive</div>
+                <div class="rec-meta-desc">Eliminates this class of problem: future certifying body restructurings would not create import gaps</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /flow -->
+
+  <div class="sources">
+    <div class="sources-inner">
+      <div class="sources-title">Sources</div>
+      <div class="sources-list">
+        <a href="https://www.bnnbloomberg.ca/business/politics/2026/05/21/canadian-truck-dealers-warn-they-cant-buy-new-models-until-feds-fix-paperwork/" target="_blank">BNN Bloomberg</a>
+        <a href="https://www.theglobeandmail.com/business/article-truck-dealers-new-models-ottawa-paperwork-united-states-emissions/" target="_blank">Globe and Mail</a>
+        <a href="https://www.cp24.com/news/canada/2026/05/21/canadian-truck-dealers-warn-they-cant-buy-new-models-until-feds-fix-paperwork/" target="_blank">CP24</a>
+        <a href="https://trinitytrucksales.ca/phil-aitkens-bi-weekly/model-year-2027-diesel-emissions-rules" target="_blank">Trinity Truck Sales</a>
+        <a href="https://www.actresearch.net/resources/blog/class-8-truck-sales-forecast-2026" target="_blank">ACT Research</a>
+        <a href="https://www.transportpolicy.net/standard/canada-heavy-duty-ghg/" target="_blank">Transport Policy</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

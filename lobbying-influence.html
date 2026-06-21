@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Lobbies Ottawa on Immigration | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/lobbying.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.25rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1180px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+    .page-header{padding:1.75rem 0 1rem}
+    .page-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.5rem}
+    .page-title{font-size:1.875rem;font-weight:800;margin:0 0 0.5rem;line-height:1.15}
+    @media(min-width:640px){.page-title{font-size:2.5rem}}
+    .page-subtitle{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:820px}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 .25rem}
+    .stat-value{font-size:1.6rem;font-weight:800;line-height:1.05;margin:0}
+    @media(min-width:640px){.stat-value{font-size:1.9rem}}
+    .stat-value.alarm{color:var(--color-alarm)}.stat-value.teal{color:var(--color-teal)}.stat-value.amber{color:var(--color-amber)}
+    .stat-label{font-size:0.6875rem;color:var(--color-text-secondary);margin:.25rem 0 0;line-height:1.4}
+    .charts-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:1024px){.charts-grid{grid-template-columns:1fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem}
+    .chart-card.full{grid-column:1/-1}
+    .chart-title{font-size:0.9375rem;font-weight:700;margin:0 0 0.2rem;line-height:1.3}
+    .chart-subtitle{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 0.85rem;line-height:1.4}
+    .chart-wrap{position:relative;height:300px}
+    .chart-wrap.tall{height:420px}
+    .prose{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.75rem;margin-bottom:1rem;font-size:0.9375rem;line-height:1.75;color:var(--color-text-secondary)}
+    .prose h2{font-size:1.1rem;color:var(--color-text-primary);margin:0 0 0.75rem}
+    .prose p{margin:0 0 0.9rem}.prose strong{color:var(--color-text-primary)}
+    .callout{border-left:4px solid var(--color-teal);background:#EAF0F2;padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.5rem 0;font-size:0.875rem;line-height:1.65;color:var(--color-teal)}
+    .inst-row{display:flex;align-items:center;gap:0.75rem;padding:0.4rem 0;border-bottom:1px solid var(--color-cream-dark);font-size:0.8125rem}
+    .inst-row:last-child{border-bottom:none}
+    .inst-bar{height:10px;border-radius:5px;background:var(--color-teal);flex-shrink:0}
+    .inst-name{flex:1;min-width:0}
+    .inst-n{font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-teal)}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.25rem}
+    .loading{text-align:center;padding:3rem;color:var(--color-text-tertiary)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a href="index.html">Statistics</a>
+    <a href="immigration-volumes.html">Volumes</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="justice-backlog.html">Backlog</a>
+    <a href="lobbying-influence.html" class="active">Lobbying</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-tag">Influence · View 4</p>
+    <h1 class="page-title">Who Lobbies Ottawa on Immigration</h1>
+    <p class="page-subtitle">Influence over immigration policy can be measured without speculation: every registered lobbying contact with a federal official is public record. This view aggregates a decade of those filings on the subject of immigration &mdash; who lobbies, how often, and which institutions they target.</p>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="prose">
+      <h2>The finding: economic interests drive the lobbying</h2>
+      <p id="lede"></p>
+      <div class="callout" id="callout"></div>
+      <p style="font-size:0.8125rem;color:var(--color-text-tertiary);margin-bottom:0">What this is &mdash; and isn't: this measures <em>registered lobbying activity</em>, the formal, legal channel of influence. It does not capture informal influence, and a high contact count is not wrongdoing. It simply shows whose voices are loudest in the room when immigration policy is set.</p>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card full">
+        <h2 class="chart-title">Immigration lobbying contacts per year</h2>
+        <p class="chart-subtitle">Registered monthly communication reports tagged with the subject "Immigration", by year.</p>
+        <div class="chart-wrap"><canvas id="yearChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Top organizations lobbying on immigration</h2>
+        <p class="chart-subtitle">By number of registered contacts, all years.</p>
+        <div class="chart-wrap tall"><canvas id="orgChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Institutions most lobbied</h2>
+        <p class="chart-subtitle">Federal bodies named as the target of immigration lobbying.</p>
+        <div id="instList" style="margin-top:.25rem"></div>
+      </div>
+    </div>
+
+    <p class="foot" id="foot"></p>
+  </div>
+  <div class="loading" id="loading">Loading…</div>
+</div>
+
+<script>
+const DB=window.LOBBY_DB;
+function fmt(n){return n==null?'—':n.toLocaleString('en-CA');}
+function go(){
+  if(!DB){document.getElementById('loading').textContent='Data file not found — keep data/lobbying.js next to this page.';return;}
+  const m=DB.meta;
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+
+  document.getElementById('statGrid').innerHTML=[
+    {t:'Immigration lobbying contacts',v:fmt(m.total_immig_comms),c:'alarm',l:m.first_year+'–'+m.last_year+', registered'},
+    {t:'Organizations involved',v:fmt(m.distinct_orgs),c:'teal',l:'distinct registered clients'},
+    {t:'Peak year',v:m.peak_year+' · '+fmt(m.peak_n),c:'amber',l:'contacts in the busiest year'},
+    {t:'Most lobbied',v:'IRCC + Commons',c:'teal',l:'top federal targets'},
+  ].map(c=>`<div class="stat-card ${c.c}"><p class="stat-tag">${c.t}</p><p class="stat-value ${c.c}">${c.v}</p><p class="stat-label">${c.l}</p></div>`).join('');
+
+  // per year
+  new Chart(document.getElementById('yearChart'),{
+    type:'bar',
+    data:{labels:DB.by_year.map(d=>d.year),datasets:[{label:'Immigration lobbying contacts',data:DB.by_year.map(d=>d.n),backgroundColor:'#3A5F6F'}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)+' contacts'}}},
+      scales:{y:{beginAtZero:true}}}
+  });
+
+  // top orgs horizontal
+  const orgs=DB.top_orgs.slice(0,12);
+  new Chart(document.getElementById('orgChart'),{
+    type:'bar',
+    data:{labels:orgs.map(o=>o.org.length>34?o.org.slice(0,33)+'…':o.org),datasets:[{data:orgs.map(o=>o.n),backgroundColor:'#B83232'}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{title:items=>orgs[items[0].dataIndex].org,label:c=>fmt(c.raw)+' contacts'}}},
+      scales:{x:{beginAtZero:true},y:{ticks:{font:{size:10}}}}}
+  });
+
+  // institutions list with bars
+  const inst=DB.top_institutions.slice(0,10);
+  const max=inst[0].n;
+  document.getElementById('instList').innerHTML=inst.map(i=>{
+    const w=Math.max(6,Math.round(120*i.n/max));
+    return `<div class="inst-row"><span class="inst-bar" style="width:${w}px"></span><span class="inst-name">${esc(i.institution)}</span><span class="inst-n">${fmt(i.n)}</span></div>`;
+  }).join('');
+
+  const econTop=DB.top_orgs.slice(0,6).map(o=>o.org).join(', ');
+  document.getElementById('lede').innerHTML=
+    `Over ${m.first_year}–${m.last_year}, organizations filed <strong>${fmt(m.total_immig_comms)}</strong> registered lobbying contacts with federal officials on immigration, rising to a peak of <strong>${fmt(m.peak_n)}</strong> in ${m.peak_year}. The most active are not advocacy groups of any ethnicity or faith &mdash; they are <strong>economic interests</strong>: ${esc(econTop)}.`;
+  document.getElementById('callout').innerHTML=
+    `<strong>Follow the incentive.</strong> The heaviest lobbyists on immigration are employers, universities, and the international-education sector &mdash; constituencies that benefit directly from a larger labour pool and from tuition-paying international students. That, not the framing of any minority group, is what the public record shows drives the pressure for higher intake.`;
+  document.getElementById('foot').textContent='Source: '+m.source+'. Compiled by Canada Central via direct download from the Registry of Lobbyists. A "contact" is one monthly communication report; multi-subject reports are counted under each subject.';
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+go();
+</script>
+</body>
+</html>

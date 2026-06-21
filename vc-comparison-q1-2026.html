@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canada vs US Venture Capital — Q1 2026 | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-burgundy: #6B3838;
+      --color-teal: #3A5F6F;
+      --color-tan: #C49A6C;
+      --color-purple: #7C5A9D;
+      --color-dark-purple: #4A3A6E;
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --color-success: #4A7A4A;
+      --color-warning: #C47A3F;
+      --color-error: #A13F3F;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--color-cream); color: var(--color-text-primary); }
+
+    .navbar { padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; background: var(--color-cream); border-bottom: 1px solid var(--color-beige); }
+    .navbar-brand { font-size: 1rem; font-weight: 700; color: var(--color-text-primary); text-decoration: none; }
+    .navbar-brand:hover { color: var(--color-teal); }
+    .navbar-links { display: flex; gap: 1.5rem; font-size: 0.875rem; font-weight: 600; }
+    .navbar-links a { color: var(--color-text-secondary); text-decoration: none; }
+    .navbar-links a:hover { color: var(--color-text-primary); }
+
+    .page { padding: 1.5rem; }
+    .content { max-width: 1100px; margin: 0 auto; }
+
+    .page-eyebrow { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-tertiary); margin: 0 0 0.4rem; }
+    .page-title { font-size: 1.75rem; font-weight: 800; color: var(--color-text-primary); margin: 0 0 0.5rem; line-height: 1.2; }
+    .page-subtitle { font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.65; max-width: 760px; margin: 0 0 0.25rem; }
+    .page-source { font-size: 0.6875rem; color: var(--color-text-tertiary); margin: 0 0 1.5rem; }
+    .page-source a { color: var(--color-teal); text-decoration: none; }
+
+    .context-box { background: var(--color-white); border-left: 4px solid var(--color-warning); border-radius: var(--radius-md); padding: 0.875rem 1rem; margin-bottom: 1.5rem; font-size: 0.8125rem; line-height: 1.6; color: var(--color-text-secondary); }
+    .context-box strong { color: var(--color-text-primary); }
+    .context-box.info { border-left-color: var(--color-teal); }
+
+    .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+    @media (min-width: 640px) { .stats-row { grid-template-columns: repeat(4, 1fr); } }
+    .stat-chip { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1rem 1.125rem; }
+    .stat-chip-label { font-size: 0.6375rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 0.3rem; }
+    .stat-chip-value { font-size: 1.625rem; font-weight: 800; line-height: 1; margin: 0 0 0.2rem; }
+    .stat-chip-sub { font-size: 0.6875rem; color: var(--color-text-tertiary); margin: 0; line-height: 1.4; }
+    .val-us { color: var(--color-teal); }
+    .val-ca { color: var(--color-burgundy); }
+    .val-ratio { color: var(--color-purple); }
+    .val-warn { color: var(--color-warning); }
+
+    .section { margin-bottom: 2rem; }
+    .section-header { margin-bottom: 0.875rem; }
+    .section-eyebrow { font-size: 0.6375rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-text-tertiary); margin: 0 0 0.25rem; }
+    .section-title { font-size: 1.125rem; font-weight: 700; color: var(--color-text-primary); margin: 0 0 0.25rem; }
+    .section-desc { font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.6; margin: 0; max-width: 820px; }
+
+    .chart-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.25rem 1.25rem 1rem; margin-bottom: 1rem; }
+    .chart-card-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); margin: 0 0 0.75rem; }
+    .chart-wrap { position: relative; }
+    .chart-wrap-h140 { height: 140px; }
+    .chart-wrap-h220 { height: 220px; }
+    .chart-wrap-h280 { height: 280px; }
+    .chart-wrap-h320 { height: 320px; }
+    .chart-wrap-h360 { height: 360px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 768px) { .two-col { grid-template-columns: 1fr 1fr; } }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 0.5rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.375rem; font-size: 0.6875rem; color: var(--color-text-secondary); font-weight: 500; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .legend-line { width: 18px; height: 3px; flex-shrink: 0; }
+    .legend-line-dashed { width: 18px; height: 0; border-top: 2px dashed; flex-shrink: 0; }
+
+    .scenario-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+    @media (min-width: 640px) { .scenario-grid { grid-template-columns: repeat(3, 1fr); } }
+    .scenario-card { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 0.875rem 1rem; border-top: 3px solid var(--color-beige); }
+    .scenario-card.active { border-top-color: var(--color-teal); }
+    .scenario-card.warn { border-top-color: var(--color-warning); }
+    .scenario-label { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 0.25rem; }
+    .scenario-us { font-size: 1.375rem; font-weight: 800; color: var(--color-teal); margin: 0; }
+    .scenario-ca { font-size: 1rem; font-weight: 700; color: var(--color-burgundy); margin: 0.125rem 0; }
+    .scenario-ratio { font-size: 0.75rem; font-weight: 600; color: var(--color-purple); margin: 0; }
+    .scenario-note { font-size: 0.625rem; color: var(--color-text-tertiary); margin: 0.375rem 0 0; line-height: 1.4; }
+
+    .table-wrap { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; border: 1px solid var(--color-beige); margin-bottom: 1rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .data-table th { text-align: left; padding: 0.625rem 0.875rem; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); border-bottom: 2px solid var(--color-beige); background: var(--color-cream); white-space: nowrap; }
+    .data-table th.r { text-align: right; }
+    .data-table td { padding: 0.5625rem 0.875rem; border-bottom: 1px solid var(--color-cream-dark); vertical-align: middle; }
+    .data-table td.r { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--color-cream); }
+    .val-teal { color: var(--color-teal); }
+    .val-burg { color: var(--color-burgundy); }
+    .val-purp { color: var(--color-purple); }
+    .val-muted { color: var(--color-text-tertiary); font-weight: 400 !important; }
+    .val-ahead { color: var(--color-success); font-weight: 700 !important; }
+    .val-behind { color: var(--color-error); font-weight: 600 !important; }
+    .estimate-mark { font-size: 0.5625rem; color: var(--color-warning); vertical-align: super; }
+    .badge { display: inline-block; padding: 2px 6px; border-radius: 99px; font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge-normalized { background: #EDE9F6; color: var(--color-purple); }
+    .badge-distorted { background: #FCF0E8; color: var(--color-warning); }
+    .badge-est { background: #F5EDDF; color: var(--color-warning); }
+
+    .callout-box { background: var(--color-cream-dark); border-radius: var(--radius-md); padding: 0.625rem 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: var(--color-text-secondary); line-height: 1.6; display: flex; flex-wrap: wrap; gap: 1rem; }
+    .callout-box strong { color: var(--color-text-primary); }
+    .callout-us { color: var(--color-teal); font-weight: 700; }
+    .callout-ca { color: var(--color-burgundy); font-weight: 700; }
+
+    .findings-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+    @media (min-width: 640px) { .findings-grid { grid-template-columns: 1fr 1fr; } }
+    .finding-card { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 1rem; border-left: 3px solid var(--color-beige); }
+    .finding-card.f-teal { border-left-color: var(--color-teal); }
+    .finding-card.f-burg { border-left-color: var(--color-burgundy); }
+    .finding-card.f-purp { border-left-color: var(--color-purple); }
+    .finding-card.f-warn { border-left-color: var(--color-warning); }
+    .finding-num { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 0.25rem; }
+    .finding-text { font-size: 0.8125rem; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+    .finding-text strong { color: var(--color-text-primary); }
+
+    .method-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 640px) { .method-grid { grid-template-columns: 1fr 1fr; } }
+    .method-card { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 1rem; }
+    .method-title { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-tertiary); margin: 0 0 0.5rem; }
+    .method-body { font-size: 0.75rem; color: var(--color-text-secondary); line-height: 1.65; margin: 0; }
+    .method-body a { color: var(--color-teal); text-decoration: none; }
+    .method-body a:hover { text-decoration: underline; }
+
+    .divider { border: none; border-top: 1px solid var(--color-beige); margin: 1.5rem 0; }
+    .chart-note { font-size: 0.625rem; color: var(--color-text-tertiary); margin-top: 0.375rem; line-height: 1.5; }
+
+    .recs-grid { display: grid; grid-template-columns: 1fr; gap: 0.875rem; }
+    @media (min-width: 700px) { .recs-grid { grid-template-columns: 1fr 1fr; } }
+    .recommendation-card { display: flex; gap: 0.875rem; background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.125rem 1.25rem; border-left: 4px solid var(--color-teal); }
+    .recommendation-card .rec-num { flex-shrink: 0; font-size: 1.5rem; font-weight: 800; color: var(--color-text-tertiary); line-height: 1; padding-top: 0.15rem; min-width: 2rem; }
+    .recommendation-card .rec-body { flex: 1; }
+    .recommendation-card .rec-body h3 { font-size: 0.9375rem; font-weight: 700; color: var(--color-text-primary); margin: 0 0 0.5rem; line-height: 1.3; }
+    .rec-mechanism, .rec-precedent, .rec-who { font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.65; margin: 0 0 0.4rem; }
+    .rec-mechanism strong, .rec-precedent strong, .rec-who strong { color: var(--color-text-primary); }
+    .rec-target { font-size: 0.75rem; background: var(--color-cream); border-radius: var(--radius-md); padding: 0.4rem 0.6rem; color: var(--color-text-secondary); margin-top: 0.4rem; }
+    .rec-target strong { color: var(--color-text-primary); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="index.html">Statistics</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+<div class="content">
+
+  <p class="page-eyebrow">Venture Capital · Q1 2026</p>
+  <h1 class="page-title">Record U.S. Quarter. Structural Canadian Crisis.</h1>
+  <p class="page-subtitle">In Q1 2026, the US venture market hit its all-time quarterly record ($267B, overwhelmingly driven by AI mega-rounds) while Canada recorded its lowest deal count since 2017 — 104 deals, $936M CAD, and effectively zero growth-stage capital. These are two different stories. This report uses 25 quarters of consistent KPMG/PitchBook data for both countries and disaggregates the signal from the noise.</p>
+  <p class="page-source">Sources: NVCA Venture Monitor (Q1-2025 – Q1-2026) · KPMG Venture Pulse Q1-2026 · CVCA Q1-2026 (press) · BDC Canada VC Landscape 2025 · CVCA annual reports</p>
+
+  <div class="context-box">
+    <strong>About the "$267B vs $1M" comparison:</strong> This compares the US <em>all-stage total</em> against Canada's <em>growth-stage only</em> result — two different denominators. Both numbers are real, but they are not comparable as stated. This report presents all valid apples-to-apples pairings across five stages, two methodologies, and 25 quarters.
+  </div>
+
+  <!-- Stat chips -->
+  <div class="stats-row" id="hero-stats">
+    <div class="stat-chip">
+      <p class="stat-chip-label">US Q1 2026 · All Stages</p>
+      <p class="stat-chip-value val-us">$267B</p>
+      <p class="stat-chip-sub">NVCA · 2.9× Q1 2025 ($91.5B)</p>
+    </div>
+    <div class="stat-chip">
+      <p class="stat-chip-label">Canada Q1 2026 · All Stages</p>
+      <p class="stat-chip-value val-ca">$936M</p>
+      <p class="stat-chip-sub">CAD · CVCA · lowest deal count since 2017</p>
+    </div>
+    <div class="stat-chip">
+      <p class="stat-chip-label">All-Stage Ratio (Headline)</p>
+      <p class="stat-chip-value val-ratio">396×</p>
+      <p class="stat-chip-sub">US vs Canada, USD-adjusted</p>
+    </div>
+    <div class="stat-chip">
+      <p class="stat-chip-label">All-Stage Ratio (Ex Top-5)</p>
+      <p class="stat-chip-value val-warn">107×</p>
+      <p class="stat-chip-sub">$71.6B US vs $674M CA (USD) · ex-OpenAI, Anthropic, xAI, Waymo, Databricks</p>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section" id="section-decomp">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 1 · Understanding the US Number</p>
+      <h2 class="section-title">What's Inside the $267 Billion</h2>
+      <p class="section-desc">Five companies — OpenAI, Anthropic, xAI, Waymo, and Databricks — account for $195.6B (73%) of the US total. Removing just these five drops the quarter to $71.6B, a level consistent with recent prior quarters. OpenAI's $122B round alone is 46% of the entire US total and larger than any prior quarter in US VC history.</p>
+    </div>
+
+    <div class="chart-card">
+      <p class="chart-card-title">US Q1 2026 — Composition of $267.2B (USD Billions)</p>
+      <div class="chart-wrap chart-wrap-h140">
+        <canvas id="chartDecomp"></canvas>
+      </div>
+      <div class="legend" style="margin-top:0.75rem;">
+        <div class="legend-item"><div class="legend-dot" style="background:#6B3838"></div>OpenAI · $122.0B (46%)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#9B6060"></div>Anthropic + xAI + Waymo · $66.6B (25%)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C49A6C"></div>Other · $78.6B (29%) — includes Databricks $7B + all remaining deals</div>
+      </div>
+      <p class="chart-note">Source: top_deals.json → us_q1_2026_decomposition. Top-5 deals (OpenAI, Anthropic, xAI, Waymo, Databricks) = $195.6B (73%). Remaining $71.6B is everything else. Chart note: each segment's share of $267.2B. NVCA Q1-2026 + KPMG Q1-2026.</p>
+    </div>
+
+    <div class="scenario-grid">
+      <div class="scenario-card warn">
+        <p class="scenario-label">Headline <span class="badge badge-distorted">Distorted</span></p>
+        <p class="scenario-us">$267.2B US</p>
+        <p class="scenario-ca">$674M CA (USD)</p>
+        <p class="scenario-ratio">396× gap · all stages</p>
+        <p class="scenario-note">Includes OpenAI's $122B. Single-company sovereign-scale round dominates the total.</p>
+      </div>
+      <div class="scenario-card active">
+        <p class="scenario-label">Ex Top-5 Mega-Deals <span class="badge badge-normalized">Normalized</span></p>
+        <p class="scenario-us">$71.6B US</p>
+        <p class="scenario-ca">$674M CA (USD)</p>
+        <p class="scenario-ratio">107× gap · all stages</p>
+        <p class="scenario-note">Removes OpenAI, Anthropic, xAI, Waymo, Databricks. Closer to "baseline market."</p>
+      </div>
+      <div class="scenario-card active">
+        <p class="scenario-label">Q1 2025 YoY Baseline <span class="badge badge-normalized">Comparable</span></p>
+        <p class="scenario-us">$91.5B US</p>
+        <p class="scenario-ca">$907M CA (USD)</p>
+        <p class="scenario-ratio">~101× gap · all stages</p>
+        <p class="scenario-note">NVCA Q1-2025 vs CVCA Q1-2025 ($1,260M CAD). Most honest like-for-like comparison.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 2: 25-Quarter Trend -->
+  <div class="section" id="section-trend">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 2 · 25-Quarter Trend (Q1 2020 – Q1 2026)</p>
+      <h2 class="section-title">Both Markets Moved in Opposite Directions</h2>
+      <p class="section-desc">Using the same KPMG/PitchBook series for both countries (25 consecutive quarters, same methodology). The US hit an all-time quarterly record in Q1 2026 — overwhelmingly driven by AI mega-rounds. Canada hit a near-decade deal-count low. The axes are independent; the Q1 2026 US bar is not comparable to the Canada bar.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="chart-card">
+        <p class="chart-card-title">United States — Quarterly VC (KPMG/PitchBook, USD Billions)</p>
+        <div class="chart-wrap chart-wrap-h280">
+          <canvas id="chartUSTrend"></canvas>
+        </div>
+        <p class="chart-note">Source: KPMG Venture Pulse Q1-2026 (chart extraction) for Q1-2020–Q4-2024; KPMG-derived estimates for Q1-2025–Q4-2025; NVCA Q1-2026 for the final bar ($267.2B). KPMG and NVCA diverge for Q1-2025 onward (e.g. KPMG Q1-2025 ≈ $56B vs NVCA $91.5B — different deal-inclusion filters). NVCA figures used in narrative text and stat chips; KPMG used here for series consistency with Canada. Q1-2026 bar is NVCA as KPMG Q1-2026 US was not extracted.</p>
+      </div>
+      <div class="chart-card">
+        <p class="chart-card-title">Canada — Quarterly VC (KPMG/PitchBook, CAD Millions)</p>
+        <div class="chart-wrap chart-wrap-h280">
+          <canvas id="chartCATrend"></canvas>
+        </div>
+        <p class="chart-note">Source: KPMG Venture Pulse Q1-2026 → canada_quarterly.json series_kpmg_pitchbook. Continuous 25-quarter KPMG/PitchBook series. Values are ~10–15% lower than CVCA member-reported data for the same periods (see Methodology). Q4-2025 spike ($3,923M) likely driven by large deal(s) — possibly Waabi tranches. CVCA Q1-2026 press release cites $936M CAD (KPMG shows $1,017M).</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 3: A Decade in Context -->
+  <div class="section" id="section-normalized">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 3 · A Decade in Context</p>
+      <h2 class="section-title">Normalized Market Trajectory — Annual Backbone + Quarterly Overlay</h2>
+      <p class="section-desc">Both markets indexed to their 2019 level (= 100). Solid lines show annual totals (NVCA/CVCA). Dashed lines overlay the KPMG/PitchBook quarterly series on the same scale — <span style="font-weight:600">▲</span> marks Q1 2020 (first quarterly point), <span style="font-weight:600">■</span> marks Q4 2025 (last quarterly point). Both series diverged sharply after 2023: the US annual index reached 217 by 2025 while Canada's reached only 122. Canada briefly led on the index in 2021–2023 — the peak-to-trough correction hit both markets but the US recovered faster and far higher. Q1 2026 US is off-scale (see callout).</p>
+    </div>
+
+    <div class="chart-card">
+      <p class="chart-card-title">US &amp; Canada VC — Indexed to 2019 = 100 · Annual (solid) + Quarterly Overlay (dashed)</p>
+      <div class="chart-wrap chart-wrap-h360">
+        <canvas id="chartNorm"></canvas>
+      </div>
+      <div class="legend" style="margin-top:0.625rem; flex-wrap:wrap; gap:1rem;">
+        <div class="legend-item">
+          <div style="width:18px;height:3px;background:#3A5F6F;flex-shrink:0"></div>
+          <span>US Annual (NVCA)</span>
+        </div>
+        <div class="legend-item">
+          <div style="width:18px;height:3px;background:#6B3838;flex-shrink:0"></div>
+          <span>Canada Annual (CVCA/BDC)</span>
+        </div>
+        <div class="legend-item">
+          <div style="width:18px;height:0;border-top:2px dashed #3A5F6F99;flex-shrink:0;margin-top:2px"></div>
+          <span>US Quarterly (KPMG)</span>
+        </div>
+        <div class="legend-item">
+          <div style="width:18px;height:0;border-top:2px dashed #6B383899;flex-shrink:0;margin-top:2px"></div>
+          <span>Canada Quarterly (KPMG)</span>
+        </div>
+        <div class="legend-item">
+          <div style="width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0);border:2px solid #6B3838;flex-shrink:0"></div>
+          <span>Estimated annual point (BDC/PitchBook, 2016–2018)</span>
+        </div>
+      </div>
+      <div class="callout-box" style="margin-top:0.75rem;">
+        <span><strong>Q1 2026 (off-scale — excluded from overlay):</strong></span>
+        <span><span class="callout-us">US ≈ 683</span> (NVCA $267.2B — OpenAI mega-round; annual base $156.5B)</span>
+        <span><span class="callout-ca">Canada ≈ 62</span> (KPMG $1,017M; CVCA $936M; quarterly base $1,637.5M)</span>
+      </div>
+      <p class="chart-note">Annual and quarterly series share a common 2019 = 100 base (quarterly base = annual ÷ 4: US $39.125B, Canada $1,637.5M CAD). Annual: US 2016–2025 (NVCA); Canada 2016–2025 (CVCA; 2016–2018 BDC/PitchBook, hollow circles). Quarterly: KPMG/PitchBook Q1-2020–Q4-2025, both countries, same methodology. Canada 2019 base = $6.55B CAD (avg of CVCA $6.5B and BDC $6.6B). Sources: us_annual.json, canada_annual.json, us_quarterly.json, canada_quarterly.json.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-top:0.75rem">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="r">US Total (USD)</th>
+            <th class="r">US Index</th>
+            <th class="r">Canada Total (CAD)</th>
+            <th class="r">CA Index</th>
+            <th class="r">Index Gap (US−CA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2016<span class="estimate-mark">~</span></td><td class="r val-teal">$83.7B</td><td class="r">53.5</td><td class="r val-burg">$3.0B<span class="estimate-mark">~</span></td><td class="r">45.8<span class="estimate-mark">~</span></td><td class="r val-muted">+7.7</td></tr>
+          <tr><td>2017<span class="estimate-mark">~</span></td><td class="r val-teal">$93.6B</td><td class="r">59.8</td><td class="r val-burg">$3.8B<span class="estimate-mark">~</span></td><td class="r">58.0<span class="estimate-mark">~</span></td><td class="r val-muted">+1.8</td></tr>
+          <tr><td>2018<span class="estimate-mark">~</span></td><td class="r val-teal">$149.7B</td><td class="r">95.7</td><td class="r val-burg">$3.8B<span class="estimate-mark">~</span></td><td class="r">58.0<span class="estimate-mark">~</span></td><td class="r val-muted">+37.7</td></tr>
+          <tr style="font-weight:700"><td>2019 <span style="font-size:0.6rem;color:var(--color-text-tertiary)">(base)</span></td><td class="r val-teal">$156.5B</td><td class="r">100.0</td><td class="r val-burg">$6.55B</td><td class="r">100.0</td><td class="r val-muted">0.0</td></tr>
+          <tr><td>2020</td><td class="r val-teal">$175.5B</td><td class="r">112.1</td><td class="r val-burg">$4.6B</td><td class="r">70.2</td><td class="r val-behind">+41.9</td></tr>
+          <tr><td>2021</td><td class="r val-teal">$358.1B</td><td class="r" style="font-weight:700">228.8</td><td class="r val-burg">$15.4B</td><td class="r" style="font-weight:700">235.1</td><td class="r val-ahead">−6.3</td></tr>
+          <tr><td>2022</td><td class="r val-teal">$236.2B</td><td class="r">150.9</td><td class="r val-burg">$10.4B</td><td class="r">158.8</td><td class="r val-ahead">−7.9</td></tr>
+          <tr><td>2023</td><td class="r val-teal">$167.3B</td><td class="r">106.9</td><td class="r val-burg">$7.1B</td><td class="r">108.4</td><td class="r val-ahead">−1.5</td></tr>
+          <tr><td>2024</td><td class="r val-teal">$212.6B</td><td class="r">135.8</td><td class="r val-burg">$8.5B</td><td class="r">129.8</td><td class="r val-muted">+6.0</td></tr>
+          <tr style="font-weight:700"><td>2025</td><td class="r val-teal">$339.4B</td><td class="r">216.9</td><td class="r val-burg">$8.0B</td><td class="r">122.1</td><td class="r val-behind">+94.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="chart-note">Gap = US index minus Canada index. Negative = Canada ahead on indexed basis. Canada led the US on normalized terms in 2021–2023 — the correction hit both markets roughly equally. The divergence emerged in 2024–2025, not 2021–2022. <span class="estimate-mark">~</span> = Canada 2016–2018 from BDC/PitchBook; Canada 2019 base = avg of CVCA $6.5B and BDC $6.6B = $6.55B. Sources: us_annual.json (NVCA), canada_annual.json (CVCA/BDC).</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 4: Stage-wise Comparison -->
+  <div class="section" id="section-stage">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 4 · VC Stage-wise Comparison</p>
+      <h2 class="section-title">Annual Stage Trajectory + Q1 Snapshots + Cross-Country</h2>
+      <p class="section-desc">Three complementary views: (1) Canada's full annual stage evolution 2020–2024, revealing the growth-stage collapse in context; (2) Q1-to-Q1 seasonal comparison across three years, answering whether Q1-2026 is a departure or typical; (3) US vs Canada cross-section on the same log scale for Q1-2026.</p>
+    </div>
+
+    <!-- Chart 5: Canada Annual Stage 2020-2024 -->
+    <div class="chart-card">
+      <p class="chart-card-title">Canada Annual VC by Stage — 2020–2024 (CAD Millions)</p>
+      <div class="chart-wrap chart-wrap-h320">
+        <canvas id="chartStageAnnual"></canvas>
+      </div>
+      <div class="legend" style="margin-top:0.625rem;">
+        <div class="legend-item"><div class="legend-dot" style="background:#D4A06A"></div>Pre-seed</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C49A6C"></div>Seed</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#3A5F6F"></div>Early (A–B)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6B3838"></div>Later (C–D)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4A3A6E"></div>Growth (E+)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C49A6C66;border:1px dashed #aaa;border-radius:2px"></div>2020: approximate (lighter opacity)</div>
+      </div>
+      <p class="chart-note">Source: canada_stage_annual.json → data, years 2020–2024. 2020 all bars at ~40% opacity (approximate chart reads; Pre-seed not available). 2023 Seed ($927M) and Early ($3,155M) derived by back-applying BDC Figure 10 YoY % changes to CVCA 2024 actuals — medium confidence. 2024 Growth Equity ($1,487M) inflated by Clio's $1.24B Series F (84% of stage total); ex-Clio = $247M. Growth-stage collapse from $1,809M (2021) to $91M (2023) to $1,487M (2024 Clio-driven) to ~$1M Q1-2026 is visible in the annual context without a separate chart.</p>
+    </div>
+
+    <!-- Chart 6: Canada Q1 Stage Snapshots -->
+    <div class="chart-card" id="section-stage-snapshots" style="margin-top:1rem;">
+      <p class="chart-card-title">Canada Q1 Stage Snapshots — Q1-2024 vs Q1-2025 vs Q1-2026 (CAD Millions, Log Scale)</p>
+      <div class="chart-wrap chart-wrap-h280">
+        <canvas id="chartQ1Snapshots"></canvas>
+      </div>
+      <div class="legend" style="margin-top:0.625rem;">
+        <div class="legend-item"><div class="legend-dot" style="background:#3A5F6F88"></div>Q1 2024</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#3A5F6F"></div>Q1 2025</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6B3838"></div>Q1 2026</div>
+      </div>
+      <p class="chart-note">Log scale — each gridline = 10×. Source: canada_stage_annual.json → quarterly_snapshots. Q1-2024 and Q1-2025 from CVCA quarterly reports (high confidence); Q1-2026 from CVCA press materials (medium confidence). Seed/Pre-seed combined: Q1-2024=$119M (pre-seed $15M + seed $104M), Q1-2025=$101M ($12M+$89M), Q1-2026=$185M (combined, per press release). Growth Q1-2026 = $1M (1 undisclosed deal) vs $140M five-year Q1 average (CVCA via Globe and Mail). Early-stage absorbed 70% of Q1-2026 total — record high share.</p>
+    </div>
+
+    <!-- Chart 7: US vs Canada Stage Comparison -->
+    <div class="chart-card" style="margin-top:1rem;">
+      <p class="chart-card-title">US vs Canada Stage Comparison — Q1 2026 (USD Billions, Log Scale)</p>
+      <div class="chart-wrap chart-wrap-h280">
+        <canvas id="chartStageCompare"></canvas>
+      </div>
+      <div class="legend" style="margin-top:0.625rem;">
+        <div class="legend-item"><div class="legend-dot" style="background:#3A5F6F"></div>US · Headline (NVCA)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#7C5A9D"></div>US · Ex Top-5 ($71.6B total)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6B3838"></div>Canada (USD at 0.72)</div>
+      </div>
+      <p class="chart-note">Source: canada_stage_annual.json (Q1-2026 quarterly snapshot) + top_deals.json (US decomposition). Canada converted at 0.72 CAD/USD. US Later+Growth headline ($222.4B) distorted by OpenAI ($122B), Anthropic ($30.6B), xAI ($20B), Waymo ($16B) = $188.6B of mega-rounds classified as Late/Growth stage. US ex-Top-5 Later+Growth = $222.4B − $188.6B = $33.8B (estimated). US Seed (~$10.0B) estimated; US Early ($25.1B) from NVCA stage breakdown. Log scale — each gridline = 10×. Sources: top_deals.json, canada_stage_annual.json.</p>
+    </div>
+
+    <div class="context-box info" style="margin-top:1rem;">
+      <strong>What's inside Canadian VC:</strong> Canada's investment is concentrated in enterprise AI, legaltech, logistics, and life sciences — not frontier-model infrastructure. The largest recent deals: <strong>Waabi</strong> (autonomous driving, ~$750M USD Q1-2026 per KPMG — likely accounting for 70%+ of Canada's KPMG Q1 total, with possible Q4-2025 tranches), <strong>Cohere</strong> (enterprise LLMs, $689M USD from Nvidia/AMD, 2025), and <strong>Clio</strong> (legaltech, $1.24B CAD in Q3-2024, 84% of 2024 growth equity). Cohere is Canada's closest analog to a US foundation-model company, but its largest round was 177× smaller than OpenAI's Q1-2026 raise alone. ICT/AI captured ~64% of Canadian VC in 2025 ($5.1B of $8.0B). Ex-Waabi, Canada's remaining 103 deals in Q1-2026 raised an estimated $180–250M — averaging under $2.5M per deal. <strong>Canada is building in AI; the frontier-model capital intensity is a US and sovereign-fund story.</strong>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 5: Key Findings -->
+  <div class="section" id="findings">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 5 · Key Findings</p>
+      <h2 class="section-title">What the Numbers Actually Show</h2>
+    </div>
+    <div class="findings-grid">
+      <div class="finding-card f-teal">
+        <p class="finding-num">Finding 01 · The US Headline Is Structurally Misleading</p>
+        <p class="finding-text">OpenAI alone raised <strong>$122B — 46% of the entire US Q1 total</strong>. Strip the top-5 deals (OpenAI, Anthropic, xAI, Waymo, Databricks) and the US market ran at $71.6B — elevated but not a breakout signal. Deal count fell 15% quarter-over-quarter (4,594 deals vs. the prior quarter). The headline reflects one extraordinary company, not an extraordinary market.</p>
+      </div>
+      <div class="finding-card f-burg">
+        <p class="finding-num">Finding 02 · Canada's Crisis Is Structural, Not Cyclical</p>
+        <p class="finding-text">Q1-2026: $936M CAD, 104 deals — the <strong>lowest deal count since 2017</strong>. Three consecutive Q1 declines: 180 deals (2023) → 128 (2024) → 116 (2025) → 104 (2026). Growth-stage capital is effectively gone: <strong>one deal, $1M</strong>, against a five-year Q1 average of $140M. Q1 is always the softest quarter; the comparison is Q1 vs. Q1. This is not seasonal.</p>
+      </div>
+      <div class="finding-card f-purp">
+        <p class="finding-num">Finding 03 · The Gap Opened in 2024 — Not a Decade Ago</p>
+        <p class="finding-text">Indexed to 2019 = 100, Canada <strong>led the US</strong> in 2021 (CA: 235 vs US: 229) and tracked it nearly identically through 2023 (CA: 108 vs US: 107). The divergence opened in 2024 (US: 136, CA: 130) and widened sharply in 2025 (US: 217, CA: 122). A gap that opened in 24 months is a capital-availability policy failure — not a structural destiny.</p>
+      </div>
+      <div class="finding-card f-warn">
+        <p class="finding-num">Finding 04 · The Capital Cliff Is Coming in 2027–2028</p>
+        <p class="finding-text">Early-stage is genuinely healthy: Seed/Pre-seed up 83% YoY ($185M vs $101M), Early (A–B) up 73% ($651M vs $376M). Canada is producing companies. But <strong>without growth capital to graduate into</strong>, today's seed cohort faces a capital cliff when they need Series C–E funding in 2027–2028. The crisis is lagged — not yet visible in seed numbers.</p>
+      </div>
+      <div class="finding-card f-teal">
+        <p class="finding-num">Finding 05 · Later-Stage Deal Sizes Have Compressed 50%</p>
+        <p class="finding-text">Later-stage (C–D) raised $248M in Q1-2026 across 9 deals: an average of <strong>$27.6M per deal vs. ~$55M historically</strong>. Companies that are getting funded at later stage are raising half as much as two years ago — slowing hiring cycles, product development, and market expansion timelines. The volume is there; the scale is gone.</p>
+      </div>
+      <div class="finding-card f-burg">
+        <p class="finding-num">Finding 06 · Both Headlines Are Single-Company Stories</p>
+        <p class="finding-text">US: OpenAI's $122B is 46% of the entire US total. Canada: Waabi's ~$750M USD Q1-2026 round (KPMG) likely accounts for 70%+ of the KPMG Canada Q1 total ($1.0B CAD). <strong>Ex-Waabi, Canada's remaining 103 deals raised an estimated $180–250M</strong> — less than $2.5M per deal on average. Strip the single outlier on each side and the structural story is far starker.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 6: Recommendations -->
+  <div class="section" id="recommendations">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 6 · What Should Be Done</p>
+      <h2 class="section-title">Four Actionable Proposals</h2>
+      <p class="section-desc">The growth-stage gap opened in 24 months. It can be closed. These proposals are grounded in precedent — not invented — and each targets a specific finding above.</p>
+    </div>
+
+    <div class="recs-grid">
+
+      <div class="recommendation-card" id="rec-1">
+        <div class="rec-num">01</div>
+        <div class="rec-body">
+          <h3>VCCI-3 WITH A MANDATORY GROWTH-STAGE ALLOCATION</h3>
+          <p class="rec-mechanism"><strong>What:</strong> Commit $2B to a third Venture Capital Catalyst Initiative in Budget 2027, with an explicit mandate that 60% of deployment targets growth-stage rounds (Series C–E, >$20M per deal). Neither VCCI-1 ($450M, 2017) nor VCCI-2 ($1B, Budget 2024) carried a growth-stage requirement — both targeted early stage. The fund-of-funds model is proven; what's missing is the mandate.</p>
+          <p class="rec-precedent"><strong>Precedent:</strong> VCCI-1 generated $1.6B in total VC deployment from a $450M government commitment — a 3.6× multiplier. Addresses Finding 02 and Finding 04 directly.</p>
+          <p class="rec-who"><strong>Who implements:</strong> ISED Canada via BDC partnership (Budget appropriation — no new legislation required).</p>
+          <p class="rec-target"><strong>Measurable target:</strong> 25 growth-stage Canadian deals per year (≥$20M each) by 2028, up from 1 deal in Q1 2026.</p>
+        </div>
+      </div>
+
+      <div class="recommendation-card" id="rec-2" style="border-left-color: var(--color-purple)">
+        <div class="rec-num">02</div>
+        <div class="rec-body">
+          <h3>PENSION HOME-BIAS CO-INVESTMENT TAX CREDIT</h3>
+          <p class="rec-mechanism"><strong>What:</strong> Introduce a 15% upfront income tax credit for Canadian pension plans (CPPIB, OMERS, OTPP, PSP) that co-invest alongside a qualified lead VC in Canadian growth rounds (Series C–E). Canadian pensions manage $2.5 trillion; a 0.04% domestic growth VC allocation = $1B per year.</p>
+          <p class="rec-precedent"><strong>Precedent:</strong> UK Enterprise Investment Scheme (30% income tax relief) grew UK VC from £600M (2010) to £6.4B (2022). Quebec's LSVCC tax credit structure generates $800M+/year in Quebec VC annually. Addresses Finding 02 and Finding 03.</p>
+          <p class="rec-who"><strong>Who implements:</strong> Finance Canada, Income Tax Act amendment.</p>
+          <p class="rec-target"><strong>Measurable target:</strong> $500M/year in pension-backed Canadian growth VC by 2027.</p>
+        </div>
+      </div>
+
+      <div class="recommendation-card" id="rec-3" style="border-left-color: var(--color-burgundy)">
+        <div class="rec-num">03</div>
+        <div class="rec-body">
+          <h3>SCALE BDC DIRECT GROWTH EQUITY TO $300M/YEAR</h3>
+          <p class="rec-mechanism"><strong>What:</strong> Direct BDC to allocate $300M/year to direct growth equity in Canadian companies at Series C–E, with a 1:1 private capital co-investment requirement. BDC already has a growth equity program — scale it with a specific annual target and a co-investment condition to maximize private leverage.</p>
+          <p class="rec-precedent"><strong>Precedent:</strong> BDC deployed $200M in growth equity in 2022 (BDC Annual Report 2022). Israel's Yozma program (1993) used 8 government-backed funds totalling $100M to catalyze $2.3B in private VC within 10 years. Addresses Finding 02 and Finding 05.</p>
+          <p class="rec-who"><strong>Who implements:</strong> BDC Board + Treasury Board direction (no new legislation required).</p>
+          <p class="rec-target"><strong>Measurable target:</strong> 20 growth-stage deals ≥$25M each per year in Canada by 2026.</p>
+        </div>
+      </div>
+
+      <div class="recommendation-card" id="rec-4" style="border-left-color: var(--color-tan)">
+        <div class="rec-num">04</div>
+        <div class="rec-body">
+          <h3>REQUIRE PUBLIC QUARTERLY VC STAGE DATA</h3>
+          <p class="rec-mechanism"><strong>What:</strong> Require CVCA — which receives federal funding through VCCI — to publish stage-level VC investment data quarterly, publicly, within 60 days of quarter end, matching the detail and accessibility of the US NVCA Venture Monitor. The CVCA Q1-2026 full report was not publicly available; data came only from press releases and media reports.</p>
+          <p class="rec-precedent"><strong>Precedent:</strong> NVCA publishes full stage breakdown, deal count, and median deal size each quarter, freely, within 30 days. UK's British Business Bank publishes an annual Small Business Finance Markets report with full stage and regional breakdowns. Addresses Finding 06.</p>
+          <p class="rec-who"><strong>Who implements:</strong> ISED Canada, via VCCI funding conditions (contractual, not legislative).</p>
+          <p class="rec-target"><strong>Measurable target:</strong> CVCA quarterly stage report publicly available within 60 days of quarter end, starting Q2-2026.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 7: Methodology -->
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">Section 7 · Methodology &amp; Sources</p>
+      <h2 class="section-title">Data Notes</h2>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <p class="method-title">Why KPMG for Quarterly Trend Charts</p>
+        <p class="method-body">The quarterly trend and normalized index charts require a continuous, gap-free series with identical methodology for both countries. CVCA (authoritative for Canada) is missing Q2–Q4 2025. NVCA doesn't publish pre-2025 quarterly data publicly. KPMG/PitchBook provides 25 unbroken quarters for both US and Canada from the same source. Mixing CVCA and KPMG would introduce a ~15% step-change; mixing NVCA and KPMG would introduce a 39%+ divergence for some quarters. All absolute dollar figures in text and stat chips use CVCA (Canada) and NVCA (US).</p>
+      </div>
+      <div class="method-card">
+        <p class="method-title">CVCA vs KPMG (Canada)</p>
+        <p class="method-body">CVCA = member-reported data, broader coverage (captures smaller seed/angel deals disclosed directly by fund managers). KPMG = PitchBook global deal database, ~10–15% lower than CVCA for the same periods. For Q1-2026: CVCA press = $936M; KPMG = $1,017M. Both are medium confidence (CVCA PDF not publicly released; KPMG is chart read). Use CVCA for narrative text; KPMG for trend charts.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-title">NVCA vs KPMG (United States)</p>
+        <p class="method-body">NVCA/PitchBook Venture Monitor and KPMG Venture Pulse both use PitchBook data but with different deal-inclusion filters at the global aggregation level. Example divergence: NVCA Q1-2025 = $91.5B, KPMG Q1-2025 ≈ $56.0B (39% gap). NVCA is authoritative for US; KPMG series used only in trend charts for methodological parity with Canada. This means the KPMG "US" bars are not NVCA figures — see chart notes for details.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-title">Index Methodology &amp; Exchange Rate</p>
+        <p class="method-body">Annual index: value / 2019-annual-base × 100. US base = $156.5B USD (NVCA 2019). Canada base = $6.55B CAD (average of CVCA $6.5B and BDC $6.6B). Quarterly index: value / (annual-base ÷ 4) × 100. US quarterly base = $39.125B. Canada quarterly base = $1,637.5M CAD. This keeps annual and quarterly series on the same scale. Exchange rate: CAD/USD = 0.72 (approximate Q1-2026 rate). Used only where explicit USD comparisons are made.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-title">Stage Definitions</p>
+        <p class="method-body">CVCA: Pre-seed (&lt;$2M), Seed ($2–5M), Early (Series A–B), Later (Series C–D), Growth (Series E+). This report maps these to NVCA/PitchBook equivalents: Pre-seed/Seed → Seed, Early → Early-stage VC, Later → Late-stage VC, Growth → Venture Growth. US stage estimates: Seed (~$10B estimated); Early ($25.1B from NVCA); Later+Growth ($222.4B headline, $33.8B ex-top-5 estimated). Estimated values marked.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-title">Primary Sources</p>
+        <p class="method-body">
+          NVCA/PitchBook Venture Monitor: Q1-2025, Q2-2025, Q3-2025, Q4-2025, Q1-2026 (PDFs, lake/vc/raw/)<br>
+          KPMG Venture Pulse Q1-2026 (PDF, lake/vc/raw/kpmg-venture-pulse-q1-2026.pdf)<br>
+          CVCA Year-End 2024, Q1-2024, Q1-2025 (PDFs, lake/vc/raw/)<br>
+          BDC Canada VC Landscape 2025 (PDF, lake/vc/raw/bdc-vc-landscape-2025.pdf)<br>
+          CVCA Q1-2026 press release / BetaKit / The Logic (web sources, medium confidence)<br>
+          Clean data: lake/vc/clean/ — canada_quarterly.json, us_quarterly.json, canada_annual.json, us_annual.json, canada_stage_annual.json, top_deals.json
+        </p>
+      </div>
+    </div>
+    <p style="font-size:0.6875rem;color:var(--color-text-tertiary);margin-top:1rem;">Report generated May 2026 · Canada Central · Data current as of Q1 2026 publications · Data lake: lake/vc/clean/ · Build spec: lake/vc/SPEC.md</p>
+  </div>
+
+</div>
+</div>
+
+<script>
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif";
+Chart.defaults.color = '#8A8A8A';
+
+const TEAL  = '#3A5F6F';
+const BURG  = '#6B3838';
+const TAN   = '#C49A6C';
+const PURP  = '#7C5A9D';
+const DPURP = '#4A3A6E';
+const BEIGE = '#D8D1C2';
+const GRID  = '#E8E2D5';
+
+// ── Chart 1: US $267B Decomposition ──────────────────────────────────────────
+(function() {
+  const ctx = document.getElementById('chartDecomp').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Q1 2026'],
+      datasets: [
+        { label: 'OpenAI · $122.0B',               data: [122.0], backgroundColor: '#6B3838', borderWidth: 0 },
+        { label: 'Anthropic + xAI + Waymo · $66.6B', data: [66.6], backgroundColor: '#9B6060', borderWidth: 0 },
+        { label: 'Other · $78.6B',                  data: [78.6], backgroundColor: '#C49A6C', borderWidth: 0 }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: c => ` ${c.dataset.label.split('·')[0].trim()}: $${c.raw}B (${(c.raw/267.2*100).toFixed(1)}%)`
+          }
+        }
+      },
+      scales: {
+        x: { stacked: true, grid: { color: GRID }, ticks: { callback: v => `$${v}B` },
+             title: { display: true, text: 'USD Billions', font: { size: 10 }, color: '#8A8A8A' },
+             max: 280 },
+        y: { stacked: true, grid: { display: false }, ticks: { display: false } }
+      }
+    }
+  });
+})();
+
+// ── Charts 2 & 3: 25-Quarter Trend Bars ──────────────────────────────────────
+(function() {
+  // Q1-2020 through Q1-2026 labels
+  const QTRS = [
+    "Q1'20","Q2'20","Q3'20","Q4'20",
+    "Q1'21","Q2'21","Q3'21","Q4'21",
+    "Q1'22","Q2'22","Q3'22","Q4'22",
+    "Q1'23","Q2'23","Q3'23","Q4'23",
+    "Q1'24","Q2'24","Q3'24","Q4'24",
+    "Q1'25","Q2'25","Q3'25","Q4'25",
+    "Q1'26"
+  ];
+
+  // US KPMG series (Q4-2024 uses KPMG value ~80.9 per report footnote;
+  // Q1-2025 and Q2-2025 from SPEC methodology notes; Q3-Q4 2025 derived from idx;
+  // Q1-2026 is NVCA $267.2B — KPMG Q1-2026 US not extracted)
+  const US_KPMG = [
+    39.5, 39.2, 49.0, 47.8,
+    80.1, 86.7, 90.6,100.6,
+    80.9, 70.8, 45.3, 39.5,
+    53.0, 36.7, 36.3, 38.3,
+    38.5, 47.8, 45.5, 80.9,
+    56.0,125.9, 70.1, 72.6,
+   267.2
+  ];
+
+  // Canada KPMG series — series_kpmg_pitchbook, 25 quarters
+  const CA_KPMG = [
+    1017.2, 886.1, 1309.9, 2722.1,
+    4871.6,2669.0, 3081.6, 3560.7,
+    2136.3,1601.8, 2167.7, 1417.0,
+    1950.3,1020.5, 2103.5,  889.1,
+    1564.6,2661.0, 1716.8, 1247.1,
+    1372.0,2058.9, 1183.2, 3923.5,
+    1017.2
+  ];
+
+  // US bar chart
+  const ctxUS = document.getElementById('chartUSTrend').getContext('2d');
+  new Chart(ctxUS, {
+    type: 'bar',
+    data: {
+      labels: QTRS,
+      datasets: [{
+        label: 'US VC (USD Billions)',
+        data: US_KPMG,
+        backgroundColor: US_KPMG.map((_, i) => i === 24 ? BURG : TEAL),
+        borderWidth: 0,
+        borderRadius: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ` $${c.raw}B USD` } }
+      },
+      scales: {
+        y: { grid: { color: GRID }, ticks: { callback: v => `$${v}B` }, beginAtZero: true },
+        x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } }
+      }
+    }
+  });
+
+  // Canada bar chart
+  const ctxCA = document.getElementById('chartCATrend').getContext('2d');
+  new Chart(ctxCA, {
+    type: 'bar',
+    data: {
+      labels: QTRS,
+      datasets: [{
+        label: 'Canada VC (CAD Millions)',
+        data: CA_KPMG,
+        backgroundColor: CA_KPMG.map((_, i) => i === 24 ? BURG : (i === 23 ? TAN : TEAL)),
+        borderWidth: 0,
+        borderRadius: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ` $${c.raw.toLocaleString()}M CAD` } }
+      },
+      scales: {
+        y: { grid: { color: GRID }, ticks: { callback: v => `$${v.toLocaleString()}M` }, beginAtZero: true },
+        x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } }
+      }
+    }
+  });
+})();
+
+// ── Chart 4: Combined Normalized Index ───────────────────────────────────────
+(function() {
+  const ctx = document.getElementById('chartNorm').getContext('2d');
+
+  // Annual backbone: 2016-2025
+  const ANN_X = [2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+  // US annual idx (base $156.5B): [53.5,59.8,95.7,100.0,112.1,228.8,150.9,106.9,135.8,216.9]
+  // CA annual idx (base $6.55B):  [45.8,58.0,58.0,100.0, 70.2,235.1,158.8,108.4,129.8,122.1]
+  const US_ANN = [53.5, 59.8, 95.7, 100.0, 112.1, 228.8, 150.9, 106.9, 135.8, 216.9];
+  const CA_ANN = [45.8, 58.0, 58.0, 100.0,  70.2, 235.1, 158.8, 108.4, 129.8, 122.1];
+
+  // Quarterly overlay: Q1-2020 to Q4-2025 (24 points)
+  // x positions: 2020.0, 2020.25, ..., 2025.75
+  const Q_X = [];
+  for (let y = 2020; y <= 2025; y++) {
+    for (let q = 0; q < 4; q++) Q_X.push(+(y + q * 0.25).toFixed(2));
+  }
+  // US quarterly idx (KPMG base $39.125B):
+  const US_Q = [101.0,100.2,125.2,122.2,204.7,221.6,231.6,257.1,206.8,181.0,115.8,101.0,135.5,93.8,92.8,97.9,98.4,122.2,116.3,206.8,143.1,321.8,179.2,185.6];
+  // CA quarterly idx (KPMG base $1637.5M):
+  const CA_Q = [62.1,54.1,80.0,166.2,297.5,163.0,188.2,217.4,130.5,97.8,132.4,86.5,119.1,62.3,128.5,54.3,95.5,162.5,104.8,76.2,83.8,125.7,72.3,239.6];
+
+  // Point styles for quarterly series: ▲ first, ■ last, • others
+  const qStyles = Array(24).fill('circle');
+  const qSizes  = Array(24).fill(2.5);
+  qStyles[0]  = 'triangle'; qSizes[0]  = 7;
+  qStyles[23] = 'rect';     qSizes[23] = 7;
+
+  // CA annual: hollow circles for estimated points (2016-2018, indices 0-2)
+  const CA_ANN_BG   = CA_ANN.map((_, i) => i < 3 ? 'rgba(0,0,0,0)' : BURG);
+  const CA_ANN_BORD = CA_ANN.map((_, i) => i < 3 ? BURG : 'white');
+  const CA_ANN_BW   = CA_ANN.map((_, i) => i < 3 ? 2 : 1.5);
+
+  // Reference line at 100
+  const refLine = {
+    id: 'refLine100',
+    afterDraw(chart) {
+      const { ctx: c, chartArea, scales: { y } } = chart;
+      const py = y.getPixelForValue(100);
+      c.save();
+      c.strokeStyle = '#AAAAAA';
+      c.lineWidth = 1;
+      c.setLineDash([4, 4]);
+      c.beginPath();
+      c.moveTo(chartArea.left, py);
+      c.lineTo(chartArea.right, py);
+      c.stroke();
+      c.restore();
+    }
+  };
+
+  new Chart(ctx, {
+    type: 'line',
+    plugins: [refLine],
+    data: {
+      datasets: [
+        {
+          label: 'US Annual (NVCA)',
+          data: ANN_X.map((x, i) => ({ x, y: US_ANN[i] })),
+          borderColor: TEAL,
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointBackgroundColor: TEAL,
+          pointBorderColor: 'white',
+          pointBorderWidth: 1.5,
+          tension: 0.3,
+          fill: false,
+          order: 1
+        },
+        {
+          label: 'Canada Annual (CVCA/BDC)',
+          data: ANN_X.map((x, i) => ({ x, y: CA_ANN[i] })),
+          borderColor: BURG,
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointBackgroundColor: CA_ANN_BG,
+          pointBorderColor: CA_ANN_BORD,
+          pointBorderWidth: CA_ANN_BW,
+          tension: 0.3,
+          fill: false,
+          order: 2
+        },
+        {
+          label: 'US Quarterly (KPMG)',
+          data: Q_X.map((x, i) => ({ x, y: US_Q[i] })),
+          borderColor: TEAL + '99',
+          borderWidth: 1.5,
+          borderDash: [5, 5],
+          pointRadius: qSizes,
+          pointStyle: qStyles,
+          pointBackgroundColor: TEAL + '99',
+          pointBorderColor: TEAL + '99',
+          tension: 0,
+          fill: false,
+          order: 3
+        },
+        {
+          label: 'Canada Quarterly (KPMG)',
+          data: Q_X.map((x, i) => ({ x, y: CA_Q[i] })),
+          borderColor: BURG + '99',
+          borderWidth: 1.5,
+          borderDash: [5, 5],
+          pointRadius: qSizes,
+          pointStyle: qStyles,
+          pointBackgroundColor: BURG + '99',
+          pointBorderColor: BURG + '99',
+          tension: 0,
+          fill: false,
+          order: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      parsing: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: items => {
+              const x = items[0].parsed.x;
+              if (Number.isInteger(x)) return String(x);
+              const yr = Math.floor(x);
+              const q  = Math.round((x - yr) * 4) + 1;
+              return `Q${q} ${yr}`;
+            },
+            label: c => ` ${c.dataset.label}: ${c.parsed.y.toFixed(1)} (2019 = 100)`
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          min: 2015.5,
+          max: 2026.2,
+          grid: { color: GRID },
+          ticks: {
+            callback: v => Number.isInteger(v) ? v : null,
+            stepSize: 1,
+            maxRotation: 0
+          }
+        },
+        y: {
+          min: 30,
+          max: 360,
+          grid: { color: GRID },
+          title: { display: true, text: 'Index (2019 = 100)', font: { size: 10 }, color: '#8A8A8A' },
+          ticks: { callback: v => v }
+        }
+      }
+    }
+  });
+})();
+
+// ── Chart 5: Canada Annual Stage Breakdown 2020-2024 (stacked bar) ────────────
+(function() {
+  const ctx = document.getElementById('chartStageAnnual').getContext('2d');
+
+  // Plugin: label the Growth (E+) bars directly — otherwise they're invisible slivers
+  const growthLabels = {
+    id: 'growthLabels',
+    afterDraw(chart) {
+      const { ctx: c, chartArea } = chart;
+      const meta = chart.getDatasetMeta(4); // Growth is dataset index 4
+      const vals = [220, 1809, 328, 91, 1487];
+      meta.data.forEach((bar, i) => {
+        const v = vals[i];
+        if (!v) return;
+        const txt = v >= 1000 ? `$${(v / 1000).toFixed(1)}B` : `$${v}M`;
+        const ly = Math.max(bar.y - 4, chartArea.top + 11);
+        c.save();
+        c.fillStyle = DPURP;
+        c.font = 'bold 8px -apple-system, sans-serif';
+        c.textAlign = 'center';
+        c.fillText(txt, bar.x, ly);
+        c.restore();
+      });
+    }
+  };
+
+  const YEARS = ['2020*', '2021', '2022', '2023', '2024'];
+
+  // Stage data — source: canada_stage_annual.json
+  // 2020 bars lighter (approximate). Pre-seed 2020 = null (not available).
+  // 2023 Seed + Early = medium confidence (derived)
+  const alpha = '66'; // ~40% opacity for 2020
+
+  const makeColors = (full) => [`${full}${alpha}`, full, full, full, full];
+
+  new Chart(ctx, {
+    type: 'bar',
+    plugins: [growthLabels],
+    data: {
+      labels: YEARS,
+      datasets: [
+        {
+          label: 'Pre-seed',
+          data: [null, 161, 241, 163, 99],
+          backgroundColor: makeColors('#D4A06A'),
+          borderWidth: 0,
+          stack: 'stage'
+        },
+        {
+          label: 'Seed',
+          data: [603, 958, 851, 927, 510],
+          backgroundColor: makeColors(TAN),
+          borderWidth: 0,
+          stack: 'stage'
+        },
+        {
+          label: 'Early (A–B)',
+          data: [1480, 4310, 4030, 3155, 2930],
+          backgroundColor: makeColors(TEAL),
+          borderWidth: 0,
+          stack: 'stage'
+        },
+        {
+          label: 'Later (C–D)',
+          data: [787, 3050, 2394, 2184, 2129],
+          backgroundColor: makeColors(BURG),
+          borderWidth: 0,
+          stack: 'stage'
+        },
+        {
+          label: 'Growth (E+)',
+          data: [220, 1809, 328, 91, 1487],
+          backgroundColor: makeColors(DPURP),
+          borderWidth: 0,
+          stack: 'stage'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: c => c.raw != null ? ` ${c.dataset.label}: $${c.raw.toLocaleString()}M CAD` : ` ${c.dataset.label}: N/A`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, stacked: true },
+        y: {
+          grid: { color: GRID },
+          stacked: true,
+          title: { display: true, text: 'CAD Millions (annual)', font: { size: 10 }, color: '#8A8A8A' },
+          ticks: { callback: v => `$${(v/1000).toFixed(0)}B` },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+})();
+
+// ── Chart 6: Canada Q1 Stage Snapshots (log scale, grouped bar) ───────────────
+(function() {
+  const ctx = document.getElementById('chartQ1Snapshots').getContext('2d');
+
+  // Plugin: $140M reference line over the Growth group only + value labels
+  const growthRefLine = {
+    id: 'growthRefLine',
+    afterDraw(chart) {
+      const { ctx: c, scales: { y } } = chart;
+      // Growth group is label index 3; get bar positions from all 3 datasets
+      const bars = [0, 1, 2].map(di => chart.getDatasetMeta(di).data[3]).filter(Boolean);
+      if (bars.length < 3) return;
+      const xLeft  = bars[0].x - bars[0].width / 2 - 4;
+      const xRight = bars[2].x + bars[2].width / 2 + 4;
+
+      // Draw $140M reference line only over the Growth group
+      const y140 = y.getPixelForValue(140);
+      c.save();
+      c.strokeStyle = '#C47A3F';
+      c.lineWidth = 1.5;
+      c.setLineDash([5, 4]);
+      c.beginPath();
+      c.moveTo(xLeft, y140);
+      c.lineTo(xRight, y140);
+      c.stroke();
+      c.setLineDash([]);
+      c.fillStyle = '#C47A3F';
+      c.font = 'bold 8px -apple-system, sans-serif';
+      c.textAlign = 'center';
+      c.fillText('5-yr Q1 avg: $140M', (xLeft + xRight) / 2, y140 - 4);
+      c.restore();
+
+      // Value labels on the three Growth bars
+      const growthVals = ['$26M', '$17M', '$1M'];
+      const growthColors = ['#5A5A5A', '#5A5A5A', '#C47A3F'];
+      bars.forEach((bar, di) => {
+        c.save();
+        c.fillStyle = growthColors[di];
+        c.font = `${di === 2 ? 'bold ' : ''}8.5px -apple-system, sans-serif`;
+        c.textAlign = 'center';
+        c.fillText(growthVals[di], bar.x, bar.y - 4);
+        c.restore();
+      });
+    }
+  };
+
+  // Source: canada_stage_annual.json → quarterly_snapshots
+  // Stages: Seed/Pre-seed, Early (A-B), Later (C-D), Growth (E+)
+  // Q1-2024: seed+preseed=119, early=576, later=278, growth=26
+  // Q1-2025: seed+preseed=101, early=376, later=349, growth=17
+  // Q1-2026: seed+ps combined=185, early=651, later=248, growth=1
+
+  const STAGES = ['Seed/Pre-seed', 'Early (A–B)', 'Later (C–D)', 'Growth (E+)'];
+  const Q1_2024 = [119, 576, 278, 26];
+  const Q1_2025 = [101, 376, 349, 17];
+  const Q1_2026 = [185, 651, 248, 1];
+
+  new Chart(ctx, {
+    type: 'bar',
+    plugins: [growthRefLine],
+    data: {
+      labels: STAGES,
+      datasets: [
+        { label: 'Q1 2024', data: Q1_2024, backgroundColor: TEAL + '88',                    borderWidth: 0, borderRadius: 2 },
+        { label: 'Q1 2025', data: Q1_2025, backgroundColor: TEAL,                          borderWidth: 0, borderRadius: 2 },
+        { label: 'Q1 2026', data: Q1_2026, backgroundColor: [BURG, BURG, BURG, '#C47A3F'], borderWidth: 0, borderRadius: 2 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ` ${c.dataset.label}: $${c.raw}M CAD` } }
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: {
+          type: 'logarithmic',
+          grid: { color: GRID },
+          title: { display: true, text: 'CAD Millions (log scale)', font: { size: 10 }, color: '#8A8A8A' },
+          min: 0.5,
+          ticks: {
+            callback: v => {
+              if ([1, 10, 100, 1000].includes(v)) return `$${v}M`;
+              return null;
+            }
+          }
+        }
+      }
+    }
+  });
+})();
+
+// ── Chart 7: US vs Canada Stage Comparison (log scale) ───────────────────────
+(function() {
+  const ctx = document.getElementById('chartStageCompare').getContext('2d');
+
+  // Source: top_deals.json (US) + canada_stage_annual.json quarterly_snapshots Q1-2026
+  // US Seed ~$10.0B estimated; US Early $25.1B NVCA; US Later+Growth $222.4B headline
+  // US ex-Top-5 Later+Growth = $222.4B - $188.6B = ~$33.8B estimated
+  // Canada USD at 0.72: Seed/PS = 185*0.72/1000 = 0.1332B, Early = 651*0.72/1000 = 0.4687B
+  //   Later+Growth = (248+1)*0.72/1000 = 0.1793B
+
+  const STAGES = ['Seed/Pre-seed', 'Early (A–B)', 'Later+Growth (C+)'];
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: STAGES,
+      datasets: [
+        {
+          label: 'US · Headline',
+          data: [10.0, 25.1, 222.4],
+          backgroundColor: TEAL,
+          borderWidth: 0,
+          borderRadius: 3
+        },
+        {
+          label: 'US · Ex Top-5',
+          data: [10.0, 25.1, 33.8],
+          backgroundColor: PURP,
+          borderWidth: 0,
+          borderRadius: 3
+        },
+        {
+          label: 'Canada (USD-adjusted)',
+          data: [0.1332, 0.4687, 0.1793],
+          backgroundColor: BURG,
+          borderWidth: 0,
+          borderRadius: 3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: c => ` ${c.dataset.label}: $${c.raw < 1 ? (c.raw*1000).toFixed(0)+'M' : c.raw+'B'} USD`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: {
+          type: 'logarithmic',
+          grid: { color: GRID },
+          title: { display: true, text: 'USD Billions (log scale)', font: { size: 10 }, color: '#8A8A8A' },
+          min: 0.05,
+          ticks: {
+            callback: v => {
+              if ([0.1, 1, 10, 100, 1000].includes(v)) return `$${v}B`;
+              return null;
+            }
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

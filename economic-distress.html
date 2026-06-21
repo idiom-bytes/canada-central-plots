@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canadian Economic Distress Monitor | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --color-teal: #3A5F6F;
+      --color-alarm: #B83232;
+      --color-alarm-dark: #8B2020;
+      --color-alarm-light: #F8ECEC;
+      --color-amber: #C47A3F;
+      --color-amber-light: #FDF3E7;
+      --color-success: #3A7A4A;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --shadow-alarm: 0 2px 12px 0 rgba(184,50,50,0.15);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+
+    /* ── Navbar ── */
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+
+    /* ── Live ticker bar ── */
+    .ticker-bar{background:var(--color-alarm);color:#fff;padding:0.5rem 1rem;display:flex;align-items:center;gap:0.75rem;font-size:0.75rem;font-weight:600;letter-spacing:0.04em;overflow:hidden}
+    .ticker-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.4s ease-in-out infinite;flex-shrink:0}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
+    .ticker-label{text-transform:uppercase;letter-spacing:0.08em;opacity:.85;flex-shrink:0}
+    .ticker-scroll{flex:1;overflow:hidden;position:relative;height:1.2em}
+    .ticker-items{display:flex;gap:3rem;position:absolute;white-space:nowrap;animation:scroll 60s linear infinite}
+    .ticker-items:hover{animation-play-state:paused}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── Page layout ── */
+    .page{flex:1;padding:0 1rem 2rem;max-width:1280px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    /* ── Page header ── */
+    .page-header{padding:1.75rem 0 1rem}
+    .page-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.5rem;display:flex;align-items:center;gap:6px}
+    .page-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--color-alarm);animation:pulse 1.4s ease-in-out infinite}
+    .page-title{font-size:1.875rem;font-weight:800;color:var(--color-text-primary);margin:0 0 0.5rem;line-height:1.15}
+    @media(min-width:640px){.page-title{font-size:2.5rem}}
+    .page-subtitle{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0 0 0.25rem;max-width:780px}
+    .page-updated{font-size:0.6875rem;color:var(--color-text-tertiary)}
+
+    /* ── Stat cards grid ── */
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;display:flex;flex-direction:column;gap:0.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0}
+    .stat-value{font-size:1.875rem;font-weight:800;line-height:1;margin:0}
+    @media(min-width:640px){.stat-value{font-size:2.25rem}}
+    .stat-value.alarm{color:var(--color-alarm)}
+    .stat-value.amber{color:var(--color-amber)}
+    .stat-value.teal{color:var(--color-teal)}
+    .stat-label{font-size:0.6875rem;font-weight:500;color:var(--color-text-secondary);margin:0;line-height:1.4}
+    .stat-delta{font-size:0.625rem;font-weight:700;padding:1px 6px;border-radius:9999px;display:inline-block;margin-top:2px}
+    .stat-delta.bad{background:#FDE8E8;color:var(--color-alarm)}
+    .stat-delta.warn{background:#FDEBD0;color:var(--color-amber)}
+
+    /* ── Live counter card ── */
+    .live-card{background:var(--color-alarm);color:#fff;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.25rem;box-shadow:var(--shadow-alarm)}
+    @media(min-width:640px){.live-card{padding:1.5rem 2rem}}
+    .live-icon{font-size:1.75rem;flex-shrink:0}
+    .live-content{flex:1;min-width:0}
+    .live-label{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;opacity:.8;margin:0 0 4px}
+    .live-counter{font-size:2.5rem;font-weight:800;line-height:1;margin:0;font-variant-numeric:tabular-nums}
+    @media(min-width:640px){.live-counter{font-size:3.5rem}}
+    .live-desc{font-size:0.75rem;opacity:.85;margin:4px 0 0;line-height:1.5}
+    .live-rate{font-size:0.6875rem;opacity:.7;margin:2px 0 0}
+
+    /* ── Charts grid ── */
+    .charts-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:1024px){.charts-grid{grid-template-columns:1fr 1fr}}
+    .charts-grid.triple{grid-template-columns:1fr}
+    @media(min-width:1024px){.charts-grid.triple{grid-template-columns:1fr 1fr 1fr}}
+
+    /* ── Chart card ── */
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem}
+    .chart-card.full{grid-column:1/-1}
+    .chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;gap:1rem;flex-wrap:wrap}
+    .chart-title{font-size:0.875rem;font-weight:700;color:var(--color-text-primary);margin:0;line-height:1.3}
+    .chart-subtitle{font-size:0.6875rem;color:var(--color-text-tertiary);margin:2px 0 0;line-height:1.4}
+    .chart-badge{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 8px;border-radius:9999px;white-space:nowrap;flex-shrink:0}
+    .chart-badge.alarm{background:var(--color-alarm);color:#fff}
+    .chart-badge.amber{background:var(--color-amber);color:#fff}
+    .chart-badge.teal{background:var(--color-teal);color:#fff}
+    .chart-canvas-wrap{position:relative;height:220px}
+    @media(min-width:640px){.chart-canvas-wrap{height:260px}}
+    .chart-canvas-wrap.tall{height:300px}
+    @media(min-width:640px){.chart-canvas-wrap.tall{height:380px}}
+
+    /* ── Industry grid ── */
+    .industry-table{width:100%;border-collapse:collapse;font-size:0.75rem}
+    .industry-table th{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-tertiary);padding:0 0.5rem 0.5rem;text-align:left}
+    .industry-table th:last-child{text-align:right}
+    .industry-table td{padding:0.375rem 0.5rem;border-top:1px solid var(--color-cream-dark);vertical-align:middle}
+    .industry-table td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+    .bar-cell{width:50%;padding-right:1rem}
+    .bar-outer{height:10px;background:var(--color-cream-dark);border-radius:5px;overflow:hidden;position:relative}
+    .bar-inner{height:100%;border-radius:5px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+    /* private neg=bright red, public neg=dark maroon; private pos=bright teal, public pos=dark navy */
+    .bar-inner.neg-priv{background:#C13A3A}
+    .bar-inner.neg-pub {background:#6B1A1A}
+    .bar-inner.pos-priv{background:#2E7A62}
+    .bar-inner.pos-pub {background:#1E3A5F}
+    .pct-cell{font-size:0.75rem;min-width:52px}
+    .pct-neg-priv{color:#C13A3A}
+    .pct-neg-pub {color:#6B1A1A}
+    .pct-pos-priv{color:#2E7A62}
+    .pct-pos-pub {color:#1E3A5F}
+    /* legend */
+    .industry-legend{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:0.75rem;font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+    .legend-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
+    .legend-item{display:flex;align-items:center;color:var(--color-text-tertiary)}
+
+    /* ── Sources footer ── */
+    .sources{background:var(--color-cream-dark);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-top:0.5rem}
+    .sources-title{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    .sources-list{font-size:0.6875rem;color:var(--color-text-secondary);line-height:1.8;margin:0;padding:0;list-style:none}
+
+    /* ── Section dividers ── */
+    .section-label{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:1.5rem 0 0.625rem;padding:0}
+
+    /* ── Refresh indicator ── */
+    .refresh-badge{font-size:0.5625rem;color:var(--color-text-tertiary);display:flex;align-items:center;gap:4px}
+    .refresh-spin{width:8px;height:8px;border:1.5px solid var(--color-beige-dark);border-top-color:var(--color-teal);border-radius:50%;animation:spin 1s linear infinite;display:none}
+    .refresh-spin.active{display:inline-block}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a href="https://canada-central.com/participation">MP Participation</a>
+    <a href="index.html">Statistics</a>
+    <a class="active" href="economic-distress.html">Distress Monitor</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<!-- Live ticker -->
+<div class="ticker-bar">
+  <span class="ticker-dot"></span>
+  <span class="ticker-label">Live</span>
+  <div class="ticker-scroll">
+    <div class="ticker-items" id="ticker">
+      <span>Canada unemployment: 6.8% (2025 annual) — highest since 2016 outside COVID</span>
+      <span>&#x2022;</span>
+      <span>Net new businesses fell to +7,370 in 2024 — down 75% from 2021 peak of 29,152</span>
+      <span>&#x2022;</span>
+      <span>Business exits: 183,029 in 2024 — permanent closures rising year-over-year</span>
+      <span>&#x2022;</span>
+      <span>41% of Canadian businesses behind on payments (CFIB 2025)</span>
+      <span>&#x2022;</span>
+      <span>Wholesale trade employment down 4.3% year-over-year</span>
+      <span>&#x2022;</span>
+      <span>Retail trade employment down 1.5% year-over-year</span>
+      <span>&#x2022;</span>
+      <span>Canada unemployment: 6.8% (2025 annual) — highest since 2016 outside COVID</span>
+      <span>&#x2022;</span>
+      <span>Net new businesses fell to +7,370 in 2024 — down 75% from 2021 peak of 29,152</span>
+      <span>&#x2022;</span>
+      <span>Business exits: 183,029 in 2024 — permanent closures rising year-over-year</span>
+      <span>&#x2022;</span>
+      <span>41% of Canadian businesses behind on payments (CFIB 2025)</span>
+      <span>&#x2022;</span>
+      <span>Wholesale trade employment down 4.3% year-over-year</span>
+      <span>&#x2022;</span>
+      <span>Retail trade employment down 1.5% year-over-year</span>
+      <span>&#x2022;</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-tag"><span class="page-tag-dot"></span>Economic Distress Monitor</p>
+    <h1 class="page-title">Canadian Business Crisis</h1>
+    <p class="page-subtitle">Real-time aggregation of unemployment, business closures, insolvencies, and entrepreneurship data across Canada. Sourced from Statistics Canada, the Office of the Superintendent of Bankruptcy, and CFIB. Updates monthly as new data is published.</p>
+    <p class="page-updated" id="updated-label">Loading data...</p>
+  </div>
+
+  <!-- Headline stat cards -->
+  <div class="stat-grid" id="stat-grid">
+    <div class="stat-card alarm">
+      <p class="stat-tag">Unemployment Rate</p>
+      <p class="stat-value alarm" id="stat-unemployment">—</p>
+      <p class="stat-label">Canada annual avg (LFS)</p>
+      <span class="stat-delta bad" id="delta-unemployment">—</span>
+    </div>
+    <div class="stat-card alarm">
+      <p class="stat-tag">Net New Businesses</p>
+      <p class="stat-value alarm" id="stat-net-biz">—</p>
+      <p class="stat-label">2024 full-year net (births − exits)</p>
+      <span class="stat-delta bad" id="delta-net-biz">↓ 75% below 2021 peak</span>
+    </div>
+    <div class="stat-card amber">
+      <p class="stat-tag">Daily Business Exits</p>
+      <p class="stat-value amber" id="stat-daily-exits">—</p>
+      <p class="stat-label">Permanent closures per day (2024)</p>
+      <span class="stat-delta warn" id="delta-exits">—</span>
+    </div>
+    <div class="stat-card teal">
+      <p class="stat-tag">Sectors Losing Jobs</p>
+      <p class="stat-value teal" id="stat-sectors">—</p>
+      <p class="stat-label">Industries with negative 12-month change</p>
+      <span class="stat-delta bad" id="delta-sectors">of industries tracked</span>
+    </div>
+  </div>
+
+  <!-- Live running counter -->
+  <div class="live-card">
+    <div class="live-icon">🏚️</div>
+    <div class="live-content">
+      <p class="live-label">Since you opened this page</p>
+      <p class="live-counter" id="live-counter">0.00</p>
+      <p class="live-desc">businesses have permanently closed in Canada</p>
+      <p class="live-rate" id="live-rate">Calculating rate...</p>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div class="refresh-badge">
+        <span class="refresh-spin" id="refresh-spin"></span>
+        <span id="refresh-label">Auto-refreshes every 5 min</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Employment &amp; G7 Context</p>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <p class="chart-title">Canada Unemployment Rate</p>
+          <p class="chart-subtitle">Annual average, % — Statistics Canada LFS Table 14-10-0023-01</p>
+        </div>
+        <span class="chart-badge alarm" id="badge-unemp">—</span>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-unemp"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <p class="chart-title">G7 Unemployment Comparison</p>
+          <p class="chart-subtitle">Latest available monthly rate — OECD STLABOUR</p>
+        </div>
+        <span class="chart-badge alarm">Canada Highlighted</span>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-g7"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Business Formation &amp; Closures</p>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <p class="chart-title">New Business Entries vs Exits</p>
+          <p class="chart-subtitle">Annual count — StatCan Table 33-10-0270-01 (Entrants &amp; Exits)</p>
+        </div>
+        <span class="chart-badge amber">Annual</span>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-smb"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <p class="chart-title">Monthly Net Business Formation</p>
+          <p class="chart-subtitle">Entrants minus permanent exits — trailing 36 months</p>
+        </div>
+        <span class="chart-badge alarm">Monthly</span>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-smb-monthly"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Business Insolvencies</p>
+  <div class="charts-grid">
+    <div class="chart-card full">
+      <div class="chart-header">
+        <div>
+          <p class="chart-title">Business Insolvencies — Canada</p>
+          <p class="chart-subtitle">Monthly business bankruptcies + proposals — Office of the Superintendent of Bankruptcy (OSB)</p>
+        </div>
+        <span class="chart-badge alarm" id="badge-insol">—</span>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-insol"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Industry Employment Changes</p>
+  <div class="chart-card">
+    <div class="chart-header">
+      <div>
+        <p class="chart-title">12-Month Employment Change by Industry</p>
+        <p class="chart-subtitle">% change, year-over-year — StatCan Table 14-10-0355-01 (SA)</p>
+      </div>
+      <span class="chart-badge alarm">Most Recent</span>
+    </div>
+    <div id="industry-table-wrap"></div>
+  </div>
+
+  <div class="sources" style="margin-top:1.5rem">
+    <p class="sources-title">Data Sources</p>
+    <ul class="sources-list" id="sources-list">
+      <li>Statistics Canada, Table 14-10-0023-01 — Labour Force Survey (LFS), seasonally adjusted</li>
+      <li>Statistics Canada, Table 33-10-0270-01 — Business entry and exit rates (Entrants &amp; Exits)</li>
+      <li>Statistics Canada, Table 14-10-0355-01 — Employment by industry, seasonally adjusted</li>
+      <li>OECD STLABOUR — G7 monthly unemployment comparison</li>
+      <li>Office of the Superintendent of Bankruptcy (OSB) — Monthly insolvency statistics</li>
+      <li>CFIB Business Barometer — Payment arrears (2025 survey)</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const DATA_URL = 'data/economic_distress.json';
+let globalData = null;
+let liveCounterInterval = null;
+let liveCounterStart = null;
+let livePerSecond = 0;
+
+// ── Number formatting ──────────────────────────────────────────────────────
+function fmt(n, decimals = 0) {
+  if (n == null) return '—';
+  return n.toLocaleString('en-CA', { maximumFractionDigits: decimals, minimumFractionDigits: decimals });
+}
+function fmtPct(n, decimals = 1) {
+  if (n == null) return '—';
+  return n.toFixed(decimals) + '%';
+}
+function fmtDelta(n) {
+  if (n == null) return '';
+  return (n >= 0 ? '+' : '') + fmt(n);
+}
+
+// ── Animated counter from 0 to target ─────────────────────────────────────
+function animateCounter(el, target, duration = 1600, suffix = '', prefix = '', decimals = 0) {
+  const start = performance.now();
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = eased * target;
+    el.textContent = prefix + fmt(current, decimals) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ── Live closure counter ───────────────────────────────────────────────────
+function startLiveCounter(dailyRate) {
+  if (liveCounterInterval) clearInterval(liveCounterInterval);
+  const el = document.getElementById('live-counter');
+  const rateEl = document.getElementById('live-rate');
+  liveCounterStart = performance.now();
+  livePerSecond = dailyRate / 86400;
+
+  const hourly = (dailyRate / 24).toFixed(1);
+  rateEl.textContent = `Based on ${fmt(dailyRate, 1)} exits/day (2024 avg) — approx. ${hourly} per hour`;
+
+  liveCounterInterval = setInterval(() => {
+    const elapsed = (performance.now() - liveCounterStart) / 1000;
+    const count = elapsed * livePerSecond;
+    const floored = Math.floor(count);
+    const decimal = (count - floored).toFixed(2).slice(1);
+    el.textContent = fmt(floored) + decimal;
+    // Flash on new integer
+    if (Math.floor((elapsed - 1/60) * livePerSecond) < floored) {
+      el.style.textShadow = '0 0 20px rgba(255,255,255,0.9)';
+      setTimeout(() => { el.style.textShadow = ''; }, 300);
+    }
+  }, 100);
+}
+
+// ── Chart helpers ──────────────────────────────────────────────────────────
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif";
+Chart.defaults.animation.duration = 800;
+
+function makeLineChart(id, labels, datasets, opts = {}) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  return new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: opts.legend ?? false },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const val = ctx.parsed.y;
+              if (opts.pct) return ` ${val.toFixed(1)}%`;
+              return ` ${fmt(val, opts.decimals ?? 0)}${opts.suffix ?? ''}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 10 }, maxTicksLimit: 10, color: '#8A8A8A' }
+        },
+        y: {
+          grid: { color: 'rgba(0,0,0,0.04)' },
+          ticks: {
+            font: { size: 10 },
+            color: '#8A8A8A',
+            callback: v => opts.pct ? v.toFixed(1) + '%' : fmt(v, 0) + (opts.suffix ?? '')
+          },
+          ...(opts.suggestedMin != null ? { suggestedMin: opts.suggestedMin } : {}),
+          ...(opts.suggestedMax != null ? { suggestedMax: opts.suggestedMax } : {}),
+        }
+      },
+      interaction: { mode: 'index', intersect: false },
+    }
+  });
+}
+
+function makeBarChart(id, labels, datasets, opts = {}) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  return new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: opts.horizontal ? 'y' : 'x',
+      plugins: {
+        legend: { display: opts.legend ?? true, labels: { font: { size: 11 }, boxWidth: 12, padding: 12 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const val = ctx.parsed[opts.horizontal ? 'x' : 'y'];
+              if (opts.pct) return ` ${val > 0 ? '+' : ''}${val.toFixed(1)}%`;
+              return ` ${fmtDelta(val)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: opts.horizontal ? { color: 'rgba(0,0,0,0.04)' } : { display: false },
+          stacked: opts.stacked,
+          ticks: {
+            font: { size: 10 }, color: '#8A8A8A',
+            callback: opts.horizontal && opts.pct
+              ? v => (v > 0 ? '+' : '') + v.toFixed(1) + '%'
+              : undefined
+          }
+        },
+        y: {
+          grid: opts.horizontal ? { display: false } : { color: 'rgba(0,0,0,0.04)' },
+          stacked: opts.stacked,
+          ticks: {
+            font: { size: 10 }, color: '#8A8A8A',
+            callback: !opts.horizontal
+              ? v => fmt(v / 1000, 0) + 'k'
+              : undefined
+          }
+        }
+      },
+      interaction: { mode: 'index', intersect: false },
+    }
+  });
+}
+
+// ── Sector classification (NAICS-based) ───────────────────────────────────
+// Public = government-funded or Crown; Mixed = significant both; else Private
+const SECTOR = {
+  'Public Administration':       'public',
+  'Education':                   'public',
+  'Healthcare':                  'public',
+  'Utilities':                   'mixed',
+};
+function sectorOf(industry) {
+  return SECTOR[industry] || 'private';
+}
+// bar/pct CSS class per sector + direction
+function barClass(industry, neg) {
+  const s = sectorOf(industry);
+  if (neg) return s === 'private' ? 'neg-priv' : 'neg-pub';
+  return s === 'private' ? 'pos-priv' : 'pos-pub';
+}
+
+// ── Build industry bar table ───────────────────────────────────────────────
+function buildIndustryTable(changes) {
+  const sorted = [...changes].sort((a, b) => a.change_pct - b.change_pct);
+  const maxAbs = Math.max(...sorted.map(x => Math.abs(x.change_pct)));
+  const rows = sorted.map(c => {
+    const neg = c.change_pct < 0;
+    const pct = c.change_pct.toFixed(1);
+    const barW = Math.min(100, Math.abs(c.change_pct) / maxAbs * 100);
+    const cls = barClass(c.industry, neg);
+    const s = sectorOf(c.industry);
+    const sectorBadge = s !== 'private'
+      ? `<span style="font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:1px 5px;border-radius:3px;margin-left:5px;background:${s==='public'?'#E8EEF5':'#EEF0E8'};color:${s==='public'?'#1E3A5F':'#3A4A2A'}">${s}</span>`
+      : '';
+    return `
+      <tr>
+        <td style="font-size:.75rem;font-weight:500;color:var(--color-text-primary)">${c.industry}${sectorBadge}</td>
+        <td class="bar-cell">
+          <div class="bar-outer">
+            <div class="bar-inner ${cls}" style="width:0" data-width="${barW}"></div>
+          </div>
+        </td>
+        <td class="pct-cell pct-${cls}">${neg ? '' : '+'}${pct}%</td>
+        <td style="font-size:.6875rem;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums">
+          ${c.change_12m_k > 0 ? '+' : ''}${fmt(c.change_12m_k * 1000)}
+        </td>
+      </tr>`;
+  }).join('');
+
+  const legend = `
+    <div class="industry-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#C13A3A"></span>Private sector — declining</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#6B1A1A"></span>Public / mixed — declining</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#2E7A62"></span>Private sector — growing</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1E3A5F"></span>Public / mixed — growing</span>
+    </div>`;
+
+  document.getElementById('industry-table-wrap').innerHTML = legend + `
+    <table class="industry-table">
+      <thead>
+        <tr>
+          <th>Industry</th>
+          <th>Trend</th>
+          <th>YoY %</th>
+          <th>Jobs ±</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  // Animate bars in
+  setTimeout(() => {
+    document.querySelectorAll('.bar-inner').forEach(el => {
+      el.style.width = el.dataset.width + '%';
+    });
+  }, 100);
+}
+
+// ── Aggregate monthly SMB to annual ───────────────────────────────────────
+function aggregateSmbAnnual(smb) {
+  const years = {};
+  smb.years.forEach((ym, i) => {
+    const yr = ym.slice(0, 4);
+    if (!years[yr]) years[yr] = { entries: 0, exits: 0, hasExits: false };
+    if (smb.entries[i] != null) years[yr].entries += smb.entries[i];
+    if (smb.exits[i] != null) { years[yr].exits += smb.exits[i]; years[yr].hasExits = true; }
+  });
+  // Only include years where we have exit data (not partial)
+  const fullYears = Object.entries(years)
+    .filter(([yr, d]) => d.hasExits && parseInt(yr) <= 2024)
+    .sort(([a], [b]) => a - b)
+    .slice(-10);
+  return {
+    labels: fullYears.map(([yr]) => yr),
+    entries: fullYears.map(([, d]) => Math.round(d.entries)),
+    exits: fullYears.map(([, d]) => Math.round(d.exits)),
+    net: fullYears.map(([, d]) => Math.round(d.entries - d.exits)),
+  };
+}
+
+// ── Monthly SMB (last N months where exits exist) ─────────────────────────
+function getSmbMonthly(smb, n = 36) {
+  const paired = smb.years
+    .map((ym, i) => ({ ym, e: smb.entries[i], x: smb.exits[i] }))
+    .filter(d => d.e != null && d.x != null);
+  const recent = paired.slice(-n);
+  return {
+    labels: recent.map(d => d.ym),
+    entries: recent.map(d => Math.round(d.e)),
+    exits: recent.map(d => Math.round(d.x)),
+    net: recent.map(d => Math.round(d.e - d.x)),
+  };
+}
+
+// ── Main render ────────────────────────────────────────────────────────────
+function render(data) {
+  globalData = data;
+  const { headline, unemployment, g7_unemployment, insolvencies, industry_changes, smb_formation, meta } = data;
+
+  // Updated label
+  const updated = document.getElementById('updated-label');
+  if (meta?.updated) {
+    updated.textContent = `Last updated: ${meta.updated} · Sources: Statistics Canada, OECD, OSB`;
+  }
+
+  // ── Headline cards ──
+  const unempEl = document.getElementById('stat-unemployment');
+  animateCounter(unempEl, headline.unemployment_rate_pct, 1600, '%', '', 1);
+  document.getElementById('delta-unemployment').textContent =
+    `${headline.unemployment_rate_date} · Highest since 2016 (ex-COVID)`;
+
+  const netBizEl = document.getElementById('stat-net-biz');
+  // Compute 2024 net from smb
+  const annual = aggregateSmbAnnual(smb_formation);
+  const yr2024 = annual.labels.indexOf('2024');
+  const net2024 = yr2024 >= 0 ? annual.net[yr2024] : 7370;
+  animateCounter(netBizEl, net2024, 1600, '', '+', 0);
+
+  // Daily exits
+  const dailyExits = yr2024 >= 0 ? annual.exits[yr2024] / 365 : headline.daily_insolvency_rate;
+  const dailyEl = document.getElementById('stat-daily-exits');
+  animateCounter(dailyEl, dailyExits, 1600, '/day', '', 0);
+  document.getElementById('delta-exits').textContent =
+    `${fmt(yr2024 >= 0 ? annual.exits[yr2024] : 183029)} total exits in 2024`;
+
+  // Sectors losing jobs
+  const negCount = (industry_changes || []).filter(c => c.change_pct < 0).length;
+  const totalCount = (industry_changes || []).length;
+  const sectorsEl = document.getElementById('stat-sectors');
+  animateCounter(sectorsEl, negCount, 1200, '', '', 0);
+  document.getElementById('delta-sectors').textContent = `of ${totalCount} industries tracked`;
+
+  // G7 badge
+  document.getElementById('badge-unemp').textContent =
+    fmtPct(headline.unemployment_rate_pct) + ' in ' + headline.unemployment_rate_date;
+
+  // ── Live counter ──
+  startLiveCounter(dailyExits);
+
+  // ── Unemployment trend chart ──
+  if (unemployment?.dates?.length > 0) {
+    const recent = unemployment.dates.map((d, i) => ({ d, v: unemployment.canada[i] }))
+      .filter(x => parseInt(x.d) >= 2010);
+    makeLineChart('chart-unemp',
+      recent.map(x => x.d),
+      [{
+        label: 'Unemployment Rate (%)',
+        data: recent.map(x => x.v),
+        borderColor: '#B83232',
+        backgroundColor: 'rgba(184,50,50,0.08)',
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.3,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#B83232',
+      }],
+      { pct: true, suggestedMin: 3, legend: false }
+    );
+  }
+
+  // ── G7 comparison ──
+  if (g7_unemployment?.latest) {
+    const entries = Object.entries(g7_unemployment.latest)
+      .sort(([, a], [, b]) => b - a);
+    const labels = entries.map(([k]) => k);
+    const values = entries.map(([, v]) => v);
+    const colors = labels.map(l =>
+      l === 'Canada' ? '#B83232' : '#C8C0B0'
+    );
+    makeBarChart('chart-g7', labels, [{
+      label: 'Unemployment Rate (%)',
+      data: values,
+      backgroundColor: colors,
+      borderRadius: 4,
+    }], {
+      horizontal: true,
+      legend: false,
+      pct: true,
+    });
+  }
+
+  // ── SMB annual ──
+  if (smb_formation?.years?.length > 0) {
+    const a = aggregateSmbAnnual(smb_formation);
+    makeBarChart('chart-smb', a.labels, [
+      {
+        label: 'New Entries (births)',
+        data: a.entries,
+        backgroundColor: 'rgba(58,95,111,0.75)',
+        borderRadius: 3,
+      },
+      {
+        label: 'Permanent Exits (closures)',
+        data: a.exits,
+        backgroundColor: 'rgba(184,50,50,0.75)',
+        borderRadius: 3,
+      },
+    ], { stacked: false, legend: true });
+  }
+
+  // ── SMB monthly net ──
+  if (smb_formation?.years?.length > 0) {
+    const m = getSmbMonthly(smb_formation, 36);
+    const colors = m.net.map(v => v >= 0 ? 'rgba(58,95,111,0.7)' : 'rgba(184,50,50,0.75)');
+    makeBarChart('chart-smb-monthly', m.labels, [{
+      label: 'Net (Entries − Exits)',
+      data: m.net,
+      backgroundColor: colors,
+      borderRadius: 2,
+    }], { legend: false });
+  }
+
+  // ── Insolvencies ──
+  if (insolvencies?.dates?.length > 0) {
+    // Trim to last 60 months for readability
+    const n = Math.min(60, insolvencies.dates.length);
+    const dates = insolvencies.dates.slice(-n);
+    const biz = insolvencies.business.slice(-n);
+    const trailing12 = biz.slice(-12).reduce((s, v) => s + (v || 0), 0);
+    document.getElementById('badge-insol').textContent = `${fmt(trailing12)} past 12 months`;
+
+    makeBarChart('chart-insol', dates, [
+      {
+        label: 'Business Insolvencies',
+        data: biz,
+        backgroundColor: 'rgba(184,50,50,0.7)',
+        borderRadius: 2,
+      },
+    ], { legend: false });
+  }
+
+  // ── Industry table ──
+  if (industry_changes?.length > 0) {
+    buildIndustryTable(industry_changes);
+  }
+}
+
+// ── Load & refresh ─────────────────────────────────────────────────────────
+async function loadData(showSpinner = false) {
+  if (showSpinner) {
+    document.getElementById('refresh-spin').classList.add('active');
+    document.getElementById('refresh-label').textContent = 'Refreshing...';
+  }
+  try {
+    const resp = await fetch(DATA_URL + '?t=' + Date.now());
+    const data = await resp.json();
+    render(data);
+  } catch (e) {
+    console.error('Failed to load data:', e);
+  } finally {
+    document.getElementById('refresh-spin').classList.remove('active');
+    document.getElementById('refresh-label').textContent = 'Auto-refreshes every 5 min';
+  }
+}
+
+// Initial load + schedule refresh every 5 minutes
+loadData();
+setInterval(() => loadData(true), 300000);
+</script>
+</body>
+</html>
