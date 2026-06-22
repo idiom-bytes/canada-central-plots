@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immigration, Policy &amp; Public-Safety Crime in Canada: A Data Report | Canada Central</title>
+  <meta name="description" content="An objective, source-based report testing what Canada's official data shows about immigration intake, the policy decisions that reshaped the system, and trends in human trafficking, kidnapping, sexual assault and child exploitation — with explicit limits on what the data can and cannot prove.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://plots.canada-central.com/report.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Immigration, Policy &amp; Public-Safety Crime in Canada: A Data Report">
+  <meta property="og:description" content="What does Canada's own data show about immigration, the policy that built the system, and trends in trafficking, kidnapping, sexual assault and child exploitation? An objective, sourced report.">
+  <meta property="og:url" content="https://plots.canada-central.com/report.html">
+  <meta property="og:site_name" content="Canada Central">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Immigration, Policy &amp; Public-Safety Crime in Canada: A Data Report">
+  <meta name="twitter:description" content="An objective, source-based report — intake, policy, and public-safety crime trends, with explicit limits on causation.">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Report",
+    "headline":"Immigration, Policy & Public-Safety Crime in Canada: A Data Report",
+    "description":"An objective, source-based report testing what Canada's official data shows about immigration intake, the policy decisions that reshaped the system, and trends in human trafficking, kidnapping, sexual assault and child exploitation.",
+    "author":{"@type":"Organization","name":"Canada Central"},
+    "publisher":{"@type":"Organization","name":"Canada Central"},
+    "inLanguage":"en-CA",
+    "datePublished":"2026-06-21",
+    "isAccessibleForFree":true,
+    "creativeWorkStatus":"Published",
+    "about":["Immigration policy in Canada","Asylum in Canada","Human trafficking","Child sexual exploitation","Criminal justice backlog","Canada Gazette regulation"],
+    "citation":["Statistics Canada Uniform Crime Reporting Survey (Table 35-10-0177-01)","Statistics Canada Table 17-10-0121-01","Immigration, Refugees and Citizenship Canada open data","Canada Gazette Part II","Office of the Commissioner of Lobbying of Canada","Baroness Casey National Audit on Group-based Child Sexual Exploitation (2025)"]
+  }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/asylum.js"></script>
+  <script src="data/crime_rates.js"></script>
+  <script src="data/datagap.js"></script>
+  <script src="data/justice.js"></script>
+  <script src="data/lobbying.js"></script>
+  <script src="data/policy_events.js"></script>
+  <script src="data/gazette_events.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;--color-uk:#1D3A6B;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);line-height:1.65}
+    a{color:var(--color-teal)}
+    .topbar{position:sticky;top:0;z-index:100;background:var(--color-cream);border-bottom:1px solid var(--color-beige);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 1.2rem;gap:1rem}
+    .topbar-brand{font-weight:800;font-size:0.95rem;color:var(--color-text-primary);text-decoration:none}
+    .topbar-jump{font-size:0.8rem;padding:0.35rem 0.6rem;border:1px solid var(--color-beige-dark);border-radius:var(--radius-md);background:var(--color-white);max-width:55vw}
+    @media(min-width:980px){.topbar-jump{display:none}}
+    .topbar-links{font-size:0.8rem;font-weight:600}
+    .topbar-links a{color:var(--color-text-secondary);text-decoration:none;margin-left:1rem}
+
+    .wrap{display:block;max-width:1180px;margin:0 auto;padding:0 1rem}
+    @media(min-width:980px){.wrap{display:grid;grid-template-columns:250px 1fr;gap:2.5rem;padding:0 1.5rem}}
+    /* TOC */
+    .toc{display:none}
+    @media(min-width:980px){
+      .toc{display:block;position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:1.5rem 0;font-size:0.8125rem}
+    }
+    .toc-h{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.6rem}
+    .toc a{display:block;color:var(--color-text-secondary);text-decoration:none;padding:0.3rem 0.6rem;border-left:2px solid transparent;line-height:1.35;margin-bottom:1px}
+    .toc a:hover{color:var(--color-text-primary)}
+    .toc a.active{color:var(--color-alarm);border-left-color:var(--color-alarm);font-weight:700;background:var(--color-alarm-light)}
+    .toc .num{color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;margin-right:0.4rem}
+
+    main{padding:1.5rem 0 4rem;min-width:0}
+    .hero h1{font-size:1.9rem;font-weight:800;line-height:1.12;margin:0.5rem 0 0.75rem}
+    @media(min-width:640px){.hero h1{font-size:2.6rem}}
+    .hero .lede{font-size:1.1rem;color:var(--color-text-secondary);margin:0;max-width:720px}
+    .hero .lede strong{color:var(--color-text-primary)}
+    .kicker{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--color-alarm);margin:0}
+
+    section{scroll-margin-top:70px;padding:2rem 0 0.5rem;border-top:1px solid var(--color-beige);margin-top:2rem}
+    section.lead{border-top:none;margin-top:1.5rem}
+    .ch-num{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.25rem}
+    h2{font-size:1.5rem;font-weight:800;margin:0 0 0.5rem;line-height:1.2}
+    @media(min-width:640px){h2{font-size:1.8rem}}
+    h3{font-size:1.05rem;margin:1.25rem 0 0.4rem}
+    p{font-size:0.975rem;color:var(--color-text-secondary);margin:0 0 0.9rem}
+    p strong{color:var(--color-text-primary)}
+
+    .disclaimer{background:var(--color-white);border:1px solid var(--color-beige);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.6rem;margin:1rem 0}
+    .disclaimer h2{font-size:1.15rem}
+    .disclaimer ul{margin:0.5rem 0 0;padding-left:1.1rem}
+    .disclaimer li{font-size:0.9rem;color:var(--color-text-secondary);margin:0 0 0.5rem}
+    .disclaimer li strong{color:var(--color-text-primary)}
+
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+    @media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+    .stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:0.9rem 1.1rem;border-top:3px solid var(--color-alarm)}
+    .stat.teal{border-top-color:var(--color-teal)}.stat.amber{border-top-color:var(--color-amber)}.stat.uk{border-top-color:var(--color-uk)}
+    .stat .v{font-size:1.5rem;font-weight:800;color:var(--color-alarm);line-height:1;margin:0}
+    .stat.teal .v{color:var(--color-teal)}.stat.amber .v{color:var(--color-amber)}.stat.uk .v{color:var(--color-uk)}
+    .stat .l{font-size:0.6875rem;color:var(--color-text-secondary);margin:0.3rem 0 0;line-height:1.4}
+
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.1rem 1.25rem;margin:1rem 0}
+    .chart-card .cap{font-size:0.7rem;color:var(--color-text-tertiary);margin:0 0 0.7rem}
+    .chart-wrap{position:relative;height:300px}
+    .deep{display:inline-block;font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-teal);padding:0.4rem 0.85rem;border-radius:999px;margin:0.35rem 0 0.5rem}
+    .deep:hover{background:#2c4a57}
+    .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:0.9rem 1.15rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.9rem 0;font-size:0.9rem;color:var(--color-alarm-dark);line-height:1.6}
+    .callout.teal{border-left-color:var(--color-teal);background:#EAF0F2;color:var(--color-teal)}
+
+    /* events rail (synthesis) */
+    .rail{position:relative;height:90px;border-bottom:2px solid var(--color-beige);margin:0.6rem 0 0.2rem}
+    .rail-ev{position:absolute;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);border:1.5px solid #fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+    .rail-axis{display:flex;justify-content:space-between;font-size:0.6rem;color:var(--color-text-tertiary);font-weight:600}
+    .legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.72rem;font-weight:600;color:var(--color-text-secondary);margin:0.3rem 0 0.6rem}
+    .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+
+    .index-grid{display:grid;grid-template-columns:1fr;gap:0.5rem;margin:0.75rem 0}
+    @media(min-width:680px){.index-grid{grid-template-columns:1fr 1fr}}
+    .index-grid a{background:var(--color-white);border:1px solid var(--color-beige);border-radius:var(--radius-md);padding:0.6rem 0.85rem;text-decoration:none;color:var(--color-text-primary);font-size:0.85rem;font-weight:600}
+    .index-grid a:hover{border-color:var(--color-teal)}
+    .index-grid a span{display:block;font-size:0.72rem;color:var(--color-text-tertiary);font-weight:400;margin-top:2px}
+    .foot{font-size:0.7rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.5rem;border-top:1px solid var(--color-beige);padding-top:1rem}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-brand" href="https://canada-central.com">Canada Central</a>
+  <select class="topbar-jump" id="jump" aria-label="Jump to section"></select>
+  <span class="topbar-links"><a href="index.html">Dashboards</a><a href="reports.html">Reports</a></span>
+</div>
+
+<div class="wrap">
+  <nav class="toc" id="toc" aria-label="Table of contents"><p class="toc-h">The report</p></nav>
+
+  <main>
+    <div class="hero">
+      <p class="kicker">An objective, source-based data report · Updated June 2026</p>
+      <h1>Immigration, Policy &amp; Public-Safety Crime in Canada</h1>
+      <p class="lede">One question runs through this report: <strong>does what Canadians are told match what the country's own data shows?</strong> We trace immigration intake, the policy decisions that reshaped the system, and the trends in human trafficking, kidnapping, sexual assault and child exploitation &mdash; and we are deliberately strict about what the numbers can, and cannot, prove.</p>
+    </div>
+
+    <!-- 0. Method -->
+    <section class="lead" id="method">
+      <div class="disclaimer">
+        <p class="ch-num">Before you read</p>
+        <h2>How this report is built, and what it does not claim</h2>
+        <p>This is a review, not an argument. It is written to be read by people across the political spectrum, and to be evaluated on its sources. The standards we hold ourselves to:</p>
+        <ul>
+          <li><strong>Primary, official sources for every headline</strong> — Statistics Canada, IRCC, the Parliamentary Budget Officer, the Immigration and Refugee Board, the Auditor General, CBSA, the Canada Gazette, and Parliament.</li>
+          <li><strong>Rates, not raw counts — with the denominator disclosed.</strong> Population-normalized figures are used wherever a comparison is made.</li>
+          <li><strong>We correct exaggerations even when they suit the thesis</strong> — for example, the viral &ldquo;$5&nbsp;billion&rdquo; asylum-cost figure is replaced with itemized official numbers.</li>
+          <li><strong>We state what the data cannot establish.</strong> Canada does not record the immigration status or origin of criminal offenders, so this report does <em>not</em> claim a link between immigration and crime. It reports two things side by side and is explicit that <strong>correlation is not causation</strong>.</li>
+          <li><strong>The subject is decisions and institutions, not migrants.</strong> Accountability here attaches to policy choices and the bodies that made them &mdash; never to people by origin or faith.</li>
+        </ul>
+        <p style="margin:0.6rem 0 0;font-size:0.85rem">Every chapter below links to a full interactive dashboard with the underlying data, sources and a downloadable table.</p>
+      </div>
+    </section>
+
+    <!-- 1 -->
+    <section id="thesis">
+      <p class="ch-num">Chapter 1</p>
+      <h2>What we're told vs. what the data shows</h2>
+      <p>The government's message is that immigration is being reduced. Measured against the official series, that is true of the levers Ottawa controls directly &mdash; permanent residents, study permits and work permits have all fallen from their 2024&ndash;25 peaks. But the pattern that repeats throughout this report is a <strong>consistent gap between the reassuring headline and the harder number underneath it</strong>: the one intake stream the government controls least is the exception, and it is still climbing. That gap &mdash; not any single statistic &mdash; is the throughline.</p>
+      <a class="deep" href="narrative-gap.html">Deep dive: The Narrative Gap &rarr;</a>
+      &nbsp;<a class="deep" href="overview.html">The Overview &rarr;</a>
+    </section>
+
+    <!-- 2 -->
+    <section id="intake">
+      <p class="ch-num">Chapter 2</p>
+      <h2>The intake: permanent down, temporary still enormous, asylum rising</h2>
+      <div class="stats" id="intakeStats"></div>
+      <p>Canada admits two very different streams: permanent immigrants, who are selected and tracked, and a far larger, faster-moving population of temporary residents &mdash; foreign workers, international students and asylum claimants. The temporary population reached <strong>2.56&nbsp;million</strong> and roughly doubled in under four years. As the government capped permits, one component kept rising: <strong>asylum</strong>.</p>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="divChart"></canvas></div>
+        <p class="cap">Temporary-resident population by type (StatCan 17-10-0121). Work and study turn down from their peaks; asylum keeps climbing.</p>
+      </div>
+      <a class="deep" href="immigration-volumes.html">Deep dive: Permanent vs. Temporary &rarr;</a>
+      &nbsp;<a class="deep" href="asylum-channel.html">The Asylum Channel &rarr;</a>
+    </section>
+
+    <!-- 3 -->
+    <section id="built">
+      <p class="ch-num">Chapter 3</p>
+      <h2>How the system was built &mdash; mostly without a vote</h2>
+      <p>The growth was not an accident at the border; it was assembled by policy. Tracing the decisions that reshaped screening, asylum and enforcement from 2012 onward, a striking pattern emerges: <strong>most were executive instruments</strong> &mdash; Orders in Council, ministerial instructions and a treaty protocol &mdash; that never went to a parliamentary vote. The accountability for them lives in the Canada Gazette, not in Hansard. This report assembled <strong id="evCount">42</strong> dated decisions across the curated and Gazette layers.</p>
+      <a class="deep" href="policy-timeline.html">Deep dive: How the Channel Was Built &rarr;</a>
+    </section>
+
+    <!-- 4 -->
+    <section id="consequences">
+      <p class="ch-num">Chapter 4</p>
+      <h2>The consequences the system produces downstream</h2>
+      <div class="stats" id="crimeStats"></div>
+      <p>Over the same decade, Canada's police-reported rates for the crimes at the centre of this report all rose. These are undercounts &mdash; most sexual offences go unreported &mdash; and the trafficking and child-exploitation offences were codified relatively recently, so the chart below is indexed to 2014 to show relative growth honestly. Alongside the crime trends sit the fiscal cost (asylum healthcare alone reached <strong>$896&nbsp;million</strong> in 2024-25, projected above $1.5&nbsp;billion/year by 2029-30) and a social-cohesion signal: <strong>antisemitic incidents are the largest share of religious hate crime</strong> (~70%, at roughly 1% of the population), despite the public focus elsewhere.</p>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="crimeChart"></canvas></div>
+        <p class="cap">Police-reported rate per 100k, indexed to 2014=100 (StatCan UCR 35-10-0177).</p>
+      </div>
+      <a class="deep" href="exploitation-record.html">Deep dive: The Exploitation Record &rarr;</a>
+      &nbsp;<a class="deep" href="asylum-cost.html">The Real Cost &rarr;</a>
+      &nbsp;<a class="deep" href="hate-crime.html">Religious Hate Crime &rarr;</a>
+    </section>
+
+    <!-- 5 -->
+    <section id="blindspot">
+      <p class="ch-num">Chapter 5</p>
+      <h2>The blind spot: Canada doesn't record who</h2>
+      <div class="chart-card" style="max-width:420px">
+        <div class="chart-wrap" style="height:240px"><canvas id="gapChart"></canvas></div>
+        <p class="cap">Share of 3,342 catalogued exploitation/trafficking cases that name any offender origin or status.</p>
+      </div>
+      <p>Here the report reaches its most important limit. Of <strong>3,342</strong> distinct Canadian exploitation and trafficking cases assembled from a decade of coverage, <strong>99.4% give no indication</strong> of the offender's immigration status or nationality &mdash; because Statistics Canada's crime survey contains no such field. Note the asymmetry: Canada <em>does</em> publish the country of citizenship of asylum claimants, monthly, but records nothing about the origin of those charged with these crimes. The link many assume, in either direction, is <strong>unmeasurable by design</strong> &mdash; and that is the finding, not a workaround for one.</p>
+      <a class="deep" href="origin-data-gap.html">Deep dive: The Origin Data Gap &rarr;</a>
+    </section>
+
+    <!-- 6 -->
+    <section id="capacity">
+      <p class="ch-num">Chapter 6</p>
+      <h2>A justice and enforcement system that can't keep up</h2>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="remandChart"></canvas></div>
+        <p class="cap">Remand (held without conviction) as a share of provincial custody (StatCan 35-10-0154).</p>
+      </div>
+      <p>Whatever enters the system has to be processed, and the system is overwhelmed. <strong>More than three in four people in Canada's provincial jails have not been convicted of anything</strong> &mdash; they are held on remand, awaiting trials the courts can't deliver in time; the un-convicted share rose from 22.5% in 1978 to 76.6% today. At the enforcement end, removals reached a record ~23,000 in 2025 but were still outpaced by new removable cases, while the asylum backlog sits near 300,000. Effort is up; the gap keeps widening.</p>
+      <a class="deep" href="justice-backlog.html">Deep dive: The Justice Backlog &rarr;</a>
+      &nbsp;<a class="deep" href="enforcement.html">Enforcement &rarr;</a>
+    </section>
+
+    <!-- 7 -->
+    <section id="uk">
+      <p class="ch-num">Chapter 7</p>
+      <h2>The cautionary template: Canada vs. the UK</h2>
+      <p>Britain spent two decades denying, then uncovering, group-based child sexual exploitation &mdash; and only after a national reckoning began recording who was responsible (Baroness Casey's 2025 audit found ethnicity unrecorded in two-thirds of cases; where recorded, disproportionately British-Pakistani). Canada shows the same crimes rising, but <strong>cannot run that comparison</strong>, because it records no offender origin. On the UK's timeline, Canada sits at roughly its pre-inquiry, c.2010&ndash;2014 stage &mdash; with the UK's experience available as a warning it has not yet had to learn.</p>
+      <div class="callout teal">We do not project the UK's offender findings onto Canada. The point is the opposite: Canada has made the question unanswerable here, while the same risk surface grows.</div>
+      <a class="deep" href="canada-vs-uk.html">Deep dive: Canada vs. the UK &rarr;</a>
+    </section>
+
+    <!-- 8 -->
+    <section id="influence">
+      <p class="ch-num">Chapter 8</p>
+      <h2>Who lobbies for the volume</h2>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="lobbyChart"></canvas></div>
+        <p class="cap">Registered lobbying contacts on immigration per year (Registry of Lobbyists).</p>
+      </div>
+      <p>Influence over immigration policy is a matter of public record. Across 2008&ndash;2024 organizations filed <strong>6,094</strong> registered lobbying contacts on immigration &mdash; and the heaviest are not advocacy groups of any faith or ethnicity. They are <strong>economic interests</strong>: universities, the Business Council of Canada, colleges, student associations, Restaurants Canada and the CFIB &mdash; constituencies that benefit from a larger labour pool and tuition-paying international students.</p>
+      <a class="deep" href="lobbying-influence.html">Deep dive: Who Lobbies Ottawa &rarr;</a>
+    </section>
+
+    <!-- 9 -->
+    <section id="synthesis">
+      <p class="ch-num">Chapter 9 · Synthesis</p>
+      <h2>Did the policy changes weaken the system?</h2>
+      <p>This is where the report's threads meet. Below, every dated decision is placed on one timeline, coloured by whether it weakened or strengthened the system's capacity to screen, detain, prosecute and remove.</p>
+      <div class="legend">
+        <span><span class="dot" style="background:#B83232"></span>Weakened</span>
+        <span><span class="dot" style="background:#3A7A4A"></span>Strengthened</span>
+        <span><span class="dot" style="background:#C47A3F"></span>Mixed</span>
+        <span><span class="dot" style="background:#B7AE9E"></span>Unassessed</span>
+      </div>
+      <div class="chart-card">
+        <div class="rail" id="rail"></div>
+        <div class="rail-axis" id="railAxis"></div>
+      </div>
+      <p>The timing lines up in one direction: the <strong>system-weakening decisions cluster in 2016&ndash;2022</strong>, while the corrective brakes (bail reform, the study cap, the Borders Act) arrive only in <strong>2023&ndash;2026</strong> &mdash; and every tracked crime rose over the period in between.</p>
+      <div class="callout">What this establishes is narrower than it may look, and we hold the line on it: <strong>the system was being loosened during the years these crimes climbed, and the corrections came only afterward.</strong> It does not prove the decisions caused the crime trends &mdash; reporting practices, detection and many other factors move these rates &mdash; and the brakes are too recent for their effect to show in data ending in 2024.</p>
+      <a class="deep" href="policy-crime-impact.html">Deep dive: Policy vs. Crime &rarr;</a>
+    </section>
+
+    <!-- 10 -->
+    <section id="explore">
+      <p class="ch-num">Explore the evidence</p>
+      <h2>Every chapter, in full</h2>
+      <p>Each view below is a standalone interactive dashboard with its own sources and downloadable data.</p>
+      <div class="index-grid">
+        <a href="immigration-volumes.html">Permanent vs. Temporary<span>Intake volumes by type</span></a>
+        <a href="asylum-channel.html">The Asylum Channel<span>The stream that won't close</span></a>
+        <a href="policy-timeline.html">How the Channel Was Built<span>The policy decisions</span></a>
+        <a href="exploitation-record.html">The Exploitation Record<span>3,342 catalogued cases</span></a>
+        <a href="origin-data-gap.html">The Origin Data Gap<span>Canada doesn't record who</span></a>
+        <a href="justice-backlog.html">The Justice Backlog<span>Remand &amp; court delay</span></a>
+        <a href="enforcement.html">Enforcement<span>Running to stand still</span></a>
+        <a href="canada-vs-uk.html">Canada vs. the UK<span>The cautionary template</span></a>
+        <a href="asylum-cost.html">The Real Cost<span>Itemized fiscal figures</span></a>
+        <a href="hate-crime.html">Religious Hate Crime<span>Narrative vs. reality</span></a>
+        <a href="lobbying-influence.html">Who Lobbies Ottawa<span>Influence on the record</span></a>
+        <a href="policy-crime-impact.html">Policy vs. Crime<span>The synthesis overlay</span></a>
+        <a href="narrative-gap.html">The Narrative Gap<span>The meta-finding</span></a>
+        <a href="overview.html">The Overview<span>The original story spine</span></a>
+      </div>
+      <p class="foot" id="foot"></p>
+    </section>
+  </main>
+</div>
+
+<script>
+// ---------- Table of contents ----------
+const CH=[
+  ['method','Before you read'],['thesis','1 · Narrative vs. reality'],['intake','2 · The intake'],
+  ['built','3 · How it was built'],['consequences','4 · The consequences'],['blindspot','5 · The blind spot'],
+  ['capacity','6 · System capacity'],['uk','7 · Canada vs. the UK'],['influence','8 · Who lobbies'],
+  ['synthesis','9 · Synthesis'],['explore','Explore the evidence']];
+document.getElementById('toc').insertAdjacentHTML('beforeend',
+  CH.map(([id,t],i)=>`<a href="#${id}" data-id="${id}"><span class="num">${i===0||i===CH.length-1?'·':i}</span>${t.replace(/^\d+ · /,'')}</a>`).join(''));
+const jump=document.getElementById('jump');
+jump.innerHTML='<option>Jump to…</option>'+CH.map(([id,t])=>`<option value="${id}">${t}</option>`).join('');
+jump.onchange=()=>{const el=document.getElementById(jump.value);if(el)el.scrollIntoView();};
+// scrollspy
+const links={};document.querySelectorAll('.toc a').forEach(a=>links[a.dataset.id]=a);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  Object.values(links).forEach(a=>a.classList.remove('active'));
+  if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+
+// ---------- data + charts ----------
+const A=window.ASYLUM_DB,CR=window.CRIME_RATES,DG=window.DATAGAP_DB,JU=window.JUSTICE_DB,LO=window.LOBBY_DB;
+const EVENTS=[...((window.POLICY_EVENTS||{}).events||[]),...((window.GAZETTE_EVENTS||{}).events||[])].filter(e=>e.year);
+function fmt(n){return n==null?'—':Math.round(n).toLocaleString('en-CA');}
+function K(n){return n==null?'—':Math.round(n/1000)+'k';}
+function M(n){return n==null?'—':(n/1e6).toFixed(2)+'M';}
+const mk=(el,cfg)=>{if(el)new Chart(el,Object.assign({responsive:true,maintainAspectRatio:false},cfg));};
+
+document.getElementById('evCount').textContent=EVENTS.length;
+
+// intake stats + divergence
+if(A){
+  const m=A.meta;
+  document.getElementById('intakeStats').innerHTML=[
+    ['Temporary residents',M(m.stock_asylum_latest!=null?A.stock.total[A.stock.total.length-1]:null),'alarm','present, latest quarter'],
+    ['New asylum claims','+'+m.inflow_growth_pct+'%','amber','since '+m.inflow_first_year],
+    ['Asylum claimants',K(m.stock_asylum_latest),'teal','in Canada now'],
+    ['Top source',m.top_country,'teal',m.ref_year_countries+' leader'],
+  ].map(s=>`<div class="stat ${s[2]}"><p class="v">${s[1]}</p><p class="l">${s[0]} — ${s[3]}</p></div>`).join('');
+  const S=A.stock,L=S.periods.map(p=>{const[y,mo]=p.split('-');return ({'01':'Q1','04':'Q1','07':'Q3','10':'Q4'}[mo]||mo)+" '"+y.slice(2);});
+  mk(document.getElementById('divChart'),{type:'line',data:{labels:L,datasets:[
+    {label:'Asylum',data:S.asylum,borderColor:'#B83232',backgroundColor:'rgba(184,50,50,.08)',fill:true,borderWidth:3,tension:.25,pointRadius:0},
+    {label:'Work permits',data:S.work,borderColor:'#C47A3F',borderWidth:2,tension:.25,pointRadius:0},
+    {label:'Study permits',data:S.study,borderColor:'#3A5F6F',borderWidth:2,tension:.25,pointRadius:0},
+    {label:'Total NPR',data:S.total,borderColor:'#8A8A8A',borderDash:[5,4],borderWidth:1.5,tension:.25,pointRadius:0}]},
+    options:{plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.raw)}}},scales:{y:{ticks:{callback:K}},x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{size:9}}}}}});
+}
+
+// crime stats + indexed trends
+if(CR){
+  const order=['trafficking','kidnapping','child_sexual','sexual_assault'];
+  document.getElementById('crimeStats').innerHTML=order.map(k=>`<div class="stat"><p class="v">+${CR.meta[k].change_10yr_pct}%</p><p class="l">${CR.labels[k]} — rate, 2014–2024</p></div>`).join('');
+  const YRS=[];for(let y=2014;y<=2024;y++)YRS.push(y);
+  const rAt=(k,y)=>{const s=CR.series[k];const i=s.years.indexOf(y);return i>=0?s.rate[i]:null;};
+  const col={trafficking:'#B83232',kidnapping:'#8B2020',child_sexual:'#C47A3F',sexual_assault:'#3A5F6F'};
+  mk(document.getElementById('crimeChart'),{type:'line',data:{labels:YRS,datasets:order.map(k=>{const b=rAt(k,2014);return{label:CR.labels[k],data:YRS.map(y=>{const r=rAt(k,y);return r!=null&&b?Math.round(r/b*100):null;}),borderColor:col[k],borderWidth:2.5,tension:.25,pointRadius:0};})},
+    options:{interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw+' (2014=100)'}}},scales:{y:{title:{display:true,text:'Indexed (2014=100)'}},x:{ticks:{font:{size:10}}}}}});
+}
+
+// data gap doughnut
+if(DG){const m=DG.meta;mk(document.getElementById('gapChart'),{type:'doughnut',
+  data:{labels:['Silent on origin','Origin identified'],datasets:[{data:[m.total_cases-m.any_identified,m.any_identified],backgroundColor:['#B83232','#3A7A4A'],borderWidth:3,borderColor:'#FEFEFE'}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.raw)}}}}});}
+
+// remand share
+if(JU){const S=JU.series;mk(document.getElementById('remandChart'),{type:'line',
+  data:{labels:S.map(s=>s.year.split('/')[0]),datasets:[
+    {label:'Remand share of custody (%)',data:S.map(s=>s.remand_share),borderColor:'#8B2020',backgroundColor:'rgba(139,32,32,.1)',fill:true,borderWidth:2.5,tension:.25,pointRadius:0},
+    {label:'50%',data:S.map(()=>50),borderColor:'#8A8A8A',borderDash:[6,4],borderWidth:1,pointRadius:0,fill:false}]},
+  options:{plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}}},scales:{y:{max:100,ticks:{callback:v=>v+'%'}},x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:9,font:{size:9}}}}}});}
+
+// lobbying per year
+if(LO){mk(document.getElementById('lobbyChart'),{type:'bar',
+  data:{labels:LO.by_year.map(d=>d.year),datasets:[{data:LO.by_year.map(d=>d.n),backgroundColor:'#3A5F6F'}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)+' contacts'}}},scales:{y:{beginAtZero:true}}}});}
+
+// synthesis rail
+(function(){const MIN=2012,MAX=2026,DCOL={weakened:'#B83232',strengthened:'#3A7A4A',mixed:'#C47A3F',unknown:'#B7AE9E'};
+  const rail=document.getElementById('rail');if(!rail)return;
+  function frac(e){const d=e.date&&e.date.length>=7?new Date(e.date+'T00:00:00'):null;const yv=d?(d.getUTCFullYear()+d.getUTCMonth()/12):e.year;return Math.max(0,Math.min(1,(yv-MIN)/(MAX-MIN)));}
+  rail.innerHTML=EVENTS.map((e,i)=>`<div class="rail-ev" style="left:${(frac(e)*100).toFixed(1)}%;top:${12+(i%6)*12}px;background:${DCOL[e.direction]||'#B7AE9E'}" title="${e.year} · ${(e.title||'').replace(/"/g,'&quot;')} (${e.direction})"></div>`).join('');
+  let ax='';for(let y=MIN;y<=MAX;y+=2)ax+=`<span>${y}</span>`;document.getElementById('railAxis').innerHTML=ax;})();
+
+document.getElementById('foot').textContent='Sources: Statistics Canada (UCR 35-10-0177, 17-10-0121, 35-10-0154), IRCC open data, the Canada Gazette and Justice Laws, the Office of the Commissioner of Lobbying, the Parliamentary Budget Officer, and the UK Jay (2014) and Casey (2025) reviews. Each linked dashboard carries its own citations. This report normalizes by population, discloses denominators, and distinguishes correlation from causation. Compiled by Canada Central.';
+</script>
+</body>
+</html>
