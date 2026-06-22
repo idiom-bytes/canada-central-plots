@@ -312,6 +312,54 @@ def curated_events():
             "citation": "Canada Gazette Part II, SOR/2025-11",
             "source_url": "https://gazette.gc.ca/rp-pr/p2/2025/2025-02-12/html/sor-dors11-eng.html",
         },
+        {
+            "date": "2024-02-29",
+            "title": "Mexico visa requirement partially re-imposed (eTA restricted)",
+            "instrument": "Regulation (SOR)",
+            "direction": "strengthened",
+            "domain": "asylum",
+            "summary": "IRPR amendment (P.C. 2024-161) requiring a visitor visa for most "
+                       "Mexican nationals and restricting eTA eligibility, expressly in "
+                       "response to the rise in failed/withdrawn Mexican asylum claims "
+                       "(260 in 2016 to 23,995 in 2023) after the 2016 visa lift.",
+            "citation": "Canada Gazette Part II, SOR/2024-34",
+            "source_url": "https://gazette.gc.ca/rp-pr/p2/2024/2024-03-13/html/sor-dors34-eng.html",
+        },
+        {
+            "date": "2024-12-18",
+            "title": "Information sharing to flag inadmissible/ineligible persons earlier",
+            "instrument": "Regulation (SOR)",
+            "direction": "strengthened",
+            "domain": "screening",
+            "summary": "IRPR amendment strengthening information sharing to identify "
+                       "individuals who are ineligible, inadmissible, or both, at the "
+                       "earliest opportunity.",
+            "citation": "Canada Gazette Part II, SOR/2024-257",
+            "source_url": "https://gazette.gc.ca/rp-pr/p2/2024/2024-12-18/html/sor-dors257-eng.html",
+        },
+        {
+            "date": "2024-12-18",
+            "title": "Ports of Entry — 'flagpoling' service restrictions",
+            "instrument": "Regulation (SOR)",
+            "direction": "strengthened",
+            "domain": "screening",
+            "summary": "IRPR amendment barring 'flagpolers' (temporary residents who exit to "
+                       "the US and re-enter within 24h) from accessing work/study-permit "
+                       "services at ports of entry.",
+            "citation": "Canada Gazette Part II, SOR/2024-258",
+            "source_url": "https://gazette.gc.ca/rp-pr/p2/2024/2024-12-18/html/sor-dors258-eng.html",
+        },
+        {
+            "date": "2025-01-01",
+            "title": "Removal costs — escorted-removal cost recovery",
+            "instrument": "Regulation (SOR)",
+            "direction": "strengthened",
+            "domain": "removal/enforcement",
+            "summary": "IRPR amendment addressing removal-preparation activities and "
+                       "escorted-removal cost recovery (escort officer, overtime, transport).",
+            "citation": "Canada Gazette Part II, SOR/2024-284",
+            "source_url": "https://gazette.gc.ca/rp-pr/p2/2025/2025-01-01/html/sor-dors284-eng.html",
+        },
     ]
     out = []
     for e in raw:
