@@ -103,7 +103,8 @@
 
     .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.1rem 1.25rem;margin:1rem 0}
     .chart-card .cap{font-size:0.7rem;color:var(--color-text-tertiary);margin:0 0 0.7rem}
-    .chart-wrap{position:relative;height:300px}
+    .chart-wrap{position:relative;height:300px;width:100%;min-width:0}
+    .chart-wrap canvas{max-width:100%}
     .deep{display:inline-block;font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-teal);padding:0.4rem 0.85rem;border-radius:999px;margin:0.35rem 0 0.5rem}
     .deep:hover{background:#2c4a57}
     .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:0.9rem 1.15rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.9rem 0;font-size:0.9rem;color:var(--color-alarm-dark);line-height:1.6}
@@ -322,7 +323,11 @@ const EVENTS=[...((window.POLICY_EVENTS||{}).events||[]),...((window.GAZETTE_EVE
 function fmt(n){return n==null?'—':Math.round(n).toLocaleString('en-CA');}
 function K(n){return n==null?'—':Math.round(n/1000)+'k';}
 function M(n){return n==null?'—':(n/1e6).toFixed(2)+'M';}
-const mk=(el,cfg)=>{if(el)new Chart(el,Object.assign({responsive:true,maintainAspectRatio:false},cfg));};
+const CHARTS=[];
+const mk=(el,cfg)=>{if(el){const c=new Chart(el,Object.assign({responsive:true,maintainAspectRatio:false},cfg));CHARTS.push(c);return c;}};
+// Charts are created at end-of-body before fonts/scrollbar fully settle, which can
+// leave them measured at a stale width inside the grid column. Re-fit once laid out.
+window.addEventListener('load',()=>{requestAnimationFrame(()=>CHARTS.forEach(c=>{try{c.resize();}catch(e){}}));});
 
 document.getElementById('evCount').textContent=EVENTS.length;
 
