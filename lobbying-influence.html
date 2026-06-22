@@ -87,7 +87,7 @@
 
 <div class="page">
   <div class="page-header">
-    <p class="page-tag">Influence · View 4</p>
+    <p class="page-tag">Influence</p>
     <h1 class="page-title">Who Lobbies Ottawa on Immigration</h1>
     <p class="page-subtitle">Influence over immigration policy can be measured without speculation: every registered lobbying contact with a federal official is public record. This view aggregates a decade of those filings on the subject of immigration &mdash; who lobbies, how often, and which institutions they target.</p>
   </div>
@@ -129,7 +129,7 @@
 const DB=window.LOBBY_DB;
 function fmt(n){return n==null?'—':n.toLocaleString('en-CA');}
 function go(){
-  if(!DB){document.getElementById('loading').textContent='Data file not found — keep data/lobbying.js next to this page.';return;}
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
   const m=DB.meta;
   document.getElementById('loading').style.display='none';
   document.getElementById('app').style.display='block';
@@ -173,7 +173,7 @@ function go(){
     `Over ${m.first_year}–${m.last_year}, organizations filed <strong>${fmt(m.total_immig_comms)}</strong> registered lobbying contacts with federal officials on immigration, rising to a peak of <strong>${fmt(m.peak_n)}</strong> in ${m.peak_year}. The most active are not advocacy groups of any ethnicity or faith &mdash; they are <strong>economic interests</strong>: ${esc(econTop)}.`;
   document.getElementById('callout').innerHTML=
     `<strong>Follow the incentive.</strong> The heaviest lobbyists on immigration are employers, universities, and the international-education sector &mdash; constituencies that benefit directly from a larger labour pool and from tuition-paying international students. That, not the framing of any minority group, is what the public record shows drives the pressure for higher intake.`;
-  document.getElementById('foot').textContent='Source: '+m.source+'. Compiled by Canada Central via direct download from the Registry of Lobbyists. A "contact" is one monthly communication report; multi-subject reports are counted under each subject.';
+  document.getElementById('foot').textContent='Source: '+m.source+'. Compiled by Canada Central. A "contact" is one monthly communication report; multi-subject reports are counted under each subject.';
 }
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
 go();

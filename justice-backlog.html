@@ -80,7 +80,7 @@
 
 <div class="page">
   <div class="page-header">
-    <p class="page-tag">Catch &amp; Release · View 3</p>
+    <p class="page-tag">Catch &amp; Release</p>
     <h1 class="page-title">A System That Can't Keep Up</h1>
     <p class="page-subtitle">When courts cannot process cases fast enough, two things happen: people pile up in jail <strong>before any trial</strong>, and serious charges get <strong>stayed for delay</strong>. Canada's own correctional data shows the first directly — most people now in provincial jails have not been convicted of anything.</p>
   </div>
@@ -119,7 +119,7 @@ const DB=window.JUSTICE_DB;
 function fmt(n){return n==null?'—':Math.round(n).toLocaleString('en-CA');}
 function shYr(y){return y.split('/')[0];}
 function go(){
-  if(!DB){document.getElementById('loading').textContent='Data file not found — keep data/justice.js next to this page.';return;}
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
   const m=DB.meta,S=DB.series;
   document.getElementById('loading').style.display='none';
   document.getElementById('app').style.display='block';
@@ -159,7 +159,7 @@ function go(){
     `In ${m.earliest_year}, remand prisoners were ${m.remand_share_earliest}% of the provincial jail population. By ${m.latest_year} they were <strong>${m.remand_share_latest}%</strong>. The un-convicted became the majority around <strong>${m.crossover_year}</strong> and never looked back. The remand population itself has grown <strong>+${m.remand_growth_pct}%</strong> — even as the sentenced population shrank.`;
   document.getElementById('callout').innerHTML=
     `<strong>More than three in four people in Canada's provincial jails today have not been convicted of anything.</strong> They are detained because the courts cannot bring them to trial in time — a backlog measured in years, not weeks.`;
-  document.getElementById('foot').textContent='Source: '+m.source+'. Compiled by Canada Central via direct StatCan download. R. v. Jordan, 2016 SCC 27, sets the constitutional ceilings on trial delay referenced above.';
+  document.getElementById('foot').textContent='Source: '+m.source+'. Compiled by Canada Central. R. v. Jordan, 2016 SCC 27, sets the constitutional ceilings on trial delay referenced above.';
 }
 go();
 </script>

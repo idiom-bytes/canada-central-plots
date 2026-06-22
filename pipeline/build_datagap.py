@@ -82,13 +82,13 @@ def main():
         "nationality_terms": dict(sorted(nat_terms.items(), key=lambda x: -x[1])),
         "exceptions": exceptions,
         "pipeline": [
-            {"stage": "Harvest", "detail": "Keyless Google News RSS, 111 queries × 2016–2026",
-             "n": 24514, "unit": "articles indexed"},
-            {"stage": "Triage", "detail": "Deterministic keyword scoring + Canada classifier",
+            {"stage": "Gather", "detail": "A decade of Canadian news coverage, 2016–2026",
+             "n": 24514, "unit": "articles reviewed"},
+            {"stage": "Filter", "detail": "Canadian exploitation & trafficking cases",
              "n": 18189, "unit": "Canadian articles"},
-            {"stage": "Dedup", "detail": "Cross-outlet clustering into distinct cases",
+            {"stage": "Combine", "detail": "Merge multiple outlets' coverage of one case",
              "n": total, "unit": "distinct cases"},
-            {"stage": "Origin signal", "detail": "Cases naming any immigration status or nationality",
+            {"stage": "Origin check", "detail": "Cases naming any immigration status or nationality",
              "n": len(identified), "unit": "cases (the rest are silent)"},
         ],
     }

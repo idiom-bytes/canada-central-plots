@@ -115,7 +115,7 @@
 
 <div class="page">
   <div class="hero">
-    <p class="hero-tag">Methodology &amp; Finding № 1</p>
+    <p class="hero-tag">Methodology &amp; Key Finding</p>
     <h1>Canada does not record who commits these crimes.</h1>
     <p>We assembled a decade-long database of Canadian sexual-exploitation, human-trafficking and child-exploitation cases. Then we asked a simple question the official statistics cannot answer: <strong>what was the offender's immigration status or country of origin?</strong></p>
     <div class="hero-big">
@@ -187,7 +187,7 @@ const DB = window.DATAGAP_DB;
 function fmt(n){return (n||0).toLocaleString('en-CA');}
 
 function go(){
-  if(!DB){document.getElementById('loading').textContent='Data file not found — keep data/datagap.js next to this page.';return;}
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
   const m=DB.meta;
   document.getElementById('heroSilent').textContent=m.silent_pct+'%';
   document.getElementById('loading').style.display='none';
@@ -228,7 +228,7 @@ function go(){
     return `<tr><td class="yr-cell">${c.year||'—'}</td><td>${esc(c.title)}</td><td>${chips}</td><td><a href="${c.url}" target="_blank" rel="noopener">${esc(c.source||'link')}</a></td></tr>`;
   }).join('');
 
-  document.getElementById('foot').textContent='Source: Canada Central database — '+fmt(m.total_cases)+' distinct Canadian sexual-exploitation/trafficking cases (2016–2026), assembled from Google News coverage via a keyless, deterministic pipeline. Origin/status detected by keyword scan of case headlines. Structural claim re: Uniform Crime Reporting Survey reflects Statistics Canada CCJS data dictionaries, which contain no field for accused citizenship, immigration status, or country of birth.';
+  document.getElementById('foot').textContent='Source: Canada Central database — '+fmt(m.total_cases)+' distinct Canadian sexual-exploitation/trafficking cases (2016–2026), assembled from a decade of Canadian news coverage. Offender origin or status was recorded only where the coverage itself stated it. The structural point about the Uniform Crime Reporting Survey reflects Statistics Canada CCJS data dictionaries, which contain no field for accused citizenship, immigration status, or country of birth.';
 }
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
 go();

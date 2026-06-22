@@ -91,7 +91,7 @@
 
 <div class="page">
   <div class="page-header">
-    <p class="page-tag">The Big Picture · View 5</p>
+    <p class="page-tag">The Big Picture</p>
     <h1 class="page-title">The Asylum Channel</h1>
     <p class="page-subtitle">Ottawa says immigration is being cut and the population is shrinking. That is true of permanent residents, work permits and study permits &mdash; all now falling from their 2024&ndash;25 peaks. One stream is the exception: <strong>asylum</strong>. It has never stopped rising, it is the one category where Canada <em>does</em> publish country of origin, and the half-million claimants now in the country are the measure of a system that takes them in far faster than it resolves or removes them.</p>
   </div>
@@ -166,7 +166,7 @@ function fmt(n){return n==null?'—':Math.round(n).toLocaleString('en-CA');}
 function K(n){return n==null?'—':Math.round(n/1000)+'k';}
 function shQ(p){const[y,m]=p.split('-');return ({'01':'Q1','04':'Q1','07':'Q3','10':'Q4'}[m]||m)+" '"+y.slice(2);}
 function go(){
-  if(!DB){document.getElementById('loading').textContent='Data file not found — keep data/asylum.js next to this page.';return;}
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
   const m=DB.meta,dv=DB.diverge;
   document.getElementById('loading').style.display='none';
   document.getElementById('app').style.display='block';
@@ -257,7 +257,7 @@ function go(){
     ['5','<strong>And economic interests drive the policy.</strong> The heaviest immigration lobbyists are employers and universities, not the groups usually blamed — <a href="lobbying-influence.html">Who Lobbies Ottawa</a>.'],
   ].map(s=>`<div class="chain-step"><div class="chain-ico">${s[0]}</div><div class="chain-body">${s[1]}</div></div>`).join('');
 
-  document.getElementById('foot').textContent='Sources: '+m.sources.join('  ·  ')+'. Compiled by Canada Central via direct download. Enforcement context: Office of the Auditor General of Canada, 2020 — CBSA could not locate a large share of people subject to removal.';
+  document.getElementById('foot').textContent='Sources: '+m.sources.join('  ·  ')+'. Compiled by Canada Central. Enforcement context: Office of the Auditor General of Canada, 2020 — CBSA could not locate a large share of people subject to removal.';
 }
 go();
 </script>

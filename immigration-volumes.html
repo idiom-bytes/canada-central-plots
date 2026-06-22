@@ -86,9 +86,9 @@
 
 <div class="page">
   <div class="page-header">
-    <p class="page-tag">Immigration Volumes · View 2</p>
+    <p class="page-tag">Immigration Volumes</p>
     <h1 class="page-title">Permanent vs. Temporary</h1>
-    <p class="page-subtitle">Canada admits two very different streams of people: <strong>permanent immigrants</strong>, selected and tracked, and a far larger and faster-growing population of <strong>temporary residents</strong> — foreign workers, international students, and asylum claimants. This view sizes each, directly from Statistics Canada. No estimates, no search — official tables only.</p>
+    <p class="page-subtitle">Canada admits two very different streams of people: <strong>permanent immigrants</strong>, selected and tracked, and a far larger and faster-growing population of <strong>temporary residents</strong> — foreign workers, international students, and asylum claimants. This view sizes each, drawn directly from Statistics Canada's official tables.</p>
   </div>
 
   <div id="app" style="display:none">
@@ -140,7 +140,7 @@ function shYr(y){return y.split('/')[0];}
 function shQ(p){const[y,m]=p.split('-');return ({'01':'Q1','04':'Q1','07':'Q3','10':'Q4'}[m]||m)+" '"+y.slice(2);}
 
 function go(){
-  if(!DB){document.getElementById('loading').textContent='Data file not found — keep data/volumes.js next to this page.';return;}
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
   const m=DB.meta;
   document.getElementById('loading').style.display='none';
   document.getElementById('app').style.display='block';
@@ -211,7 +211,7 @@ function go(){
     `Permanent immigration roughly doubled over the period, reaching <strong>${fmt(m.immigrants_latest)}</strong> admissions in ${m.immigrants_latest_year}. But the temporary-resident population grew far faster: net non-permanent residents peaked at <strong>+${fmt(m.peak_net_npr)}</strong> in a single year (${m.peak_net_npr_year}) — more than every permanent immigrant admitted that year. The standing NPR population now sits at <strong>${M(m.npr_total_latest)}</strong>.`;
   document.getElementById('surgeCallout').innerHTML=
     `<strong>The temporary stream is the real story.</strong> Since ${m.npr_first_period}, the non-permanent resident population has grown by <strong>+${fmt(m.npr_growth_since_first)}</strong> — roughly doubling. Work-permit holders alone (${M(m.npr_work)}) outnumber the entire annual permanent-immigrant intake several times over, yet this population is admitted with far less selection and tracking.`;
-  document.getElementById('foot').textContent='Sources: '+m.sources.join('  ·  ')+'. Compiled by Canada Central via direct StatCan download (no third-party estimates).';
+  document.getElementById('foot').textContent='Sources: '+m.sources.join('  ·  ')+'. Compiled by Canada Central.';
 }
 go();
 </script>

@@ -164,7 +164,7 @@ const DCOL={weakened:'#B83232',strengthened:'#3A7A4A',mixed:'#C47A3F',unknown:'#
 function rateAt(key,y){const s=CR.series[key];const i=s.years.indexOf(y);return i>=0?s.rate[i]:null;}
 
 function go(){
-  if(!CR){document.querySelector('.page').insertAdjacentHTML('afterbegin','<p style="padding:2rem;color:#8A8A8A">Data not found — keep data/*.js next to this page.</p>');return;}
+  if(!CR){document.querySelector('.page').insertAdjacentHTML('afterbegin','<p style="padding:2rem;color:#8A8A8A">The data could not be loaded — please refresh the page.</p>');return;}
 
   // key stats
   const order=['trafficking','kidnapping','child_sexual','sexual_assault'];
@@ -213,7 +213,7 @@ function go(){
 
   renderTable('all','all');
   buildFilters();
-  document.getElementById('foot').textContent='Crime: Statistics Canada Table 35-10-0177-01 (police-reported, rate/100k). Events: Canada Central curated policy-events set + Canada Gazette regulatory layer (Justice Laws IRPR amendment index + landmark SOR/OIC), '+EVENTS.length+' dated events 2004&ndash;2026, each with a primary-source citation. Compiled by Canada Central.';
+  document.getElementById('foot').textContent='Crime: Statistics Canada Table 35-10-0177-01 (police-reported, rate/100k). Events: '+EVENTS.length+' dated immigration, asylum and enforcement decisions (2004&ndash;2026) — Acts of Parliament, Orders in Council, regulations and court rulings — each with a primary-source citation from the Canada Gazette, Parliament or the courts. Compiled by Canada Central.';
 }
 
 let fDir='all',fSrc='all';
