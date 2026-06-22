@@ -1,9 +1,20 @@
 # REPORT_CONTEXT.md — Infographic brief for an image-generation LLM
 
-**Purpose:** generate **5 sequenced infographics** that lead a viewer through one data report —
-*Immigration, Policy & Public-Safety Crime in Canada* (Canada Central). The five form a story
-arc: **intake → crime → the data blind spot → system failure → the UK warning.** This file is
-self-contained: everything the image model needs is below.
+**Purpose:** generate a **cover/masthead + 5 sequenced infographics (6 images total)** that lead a
+viewer through one data report (Canada Central). The five story panels form an arc:
+**intake → crime → the data blind spot → system failure → the UK warning** — opened by a title card.
+This file is self-contained: everything the image model needs is below.
+
+## The report's name
+
+> # WHAT CANADA DOESN'T COUNT
+> ### Immigration, policy, and the public-safety record — measured to the edge of the data.
+
+Use this as the title throughout. The name carries the report's spine on several levels: Canada
+doesn't count **offenders' origin**; doesn't count the **asylum growth** hidden behind "immigration
+is coming down"; and reshaped the system through **executive orders that bypassed parliamentary
+scrutiny**. It is neutral, factual, and memorable.
+*(Acceptable alternates if a variant is needed: "The Unrecorded" · "Coming Down?" · "The Blind Spot.")*
 
 > **Read this first — what this report IS and ISN'T.** It is an objective, source-based review.
 > It reports two things side by side — immigration policy/intake, and public-safety crime trends —
@@ -72,9 +83,27 @@ exactly as given.
 
 ---
 
-## 3. The 5 infographics
+## 3. The infographics
 
-### № 1 — "Coming down? Not the part that matters." (THE HOOK · divergence)
+### № 0 — "WHAT CANADA DOESN'T COUNT" (COVER · masthead / title card)
+- **Role in arc:** the splash/cover that names the study, sets the objective tone, and invites the viewer in. This is the lead image (article header / carousel slide 1 / share thumbnail).
+- **One-line message:** A serious, source-based national data report — what the numbers show, and where Canada stops counting.
+- **Title text (exact, baked in large):** `WHAT CANADA DOESN'T COUNT`
+- **Subtitle (exact, smaller):** `Immigration, policy & the public-safety record — measured to the edge of the data`
+- **Eyebrow / kicker (small, top):** `A CANADA CENTRAL DATA REPORT · 2026`
+- **Optional "inside this report" stat ticker (small, along the bottom):** `2.56M temporary residents` · `+608% asylum claims` · `99.4% of cases: offender origin unrecorded` · `76.6% in jail un-convicted`
+- **Visual concept:** a calm, authoritative editorial **cover**. Cream `#F0ECE3` background, large
+  near-black `#2D2D2D` title set in a bold humanist sans. Behind/around the title, a **faint,
+  elegant motif**: a subtle maple leaf composed of fine data points or thin chart lines, OR a single
+  thin rising line (alarm red `#B83232`) crossing the page, OR a faint **redaction bar** partly
+  obscuring a line of text (evokes "doesn't count / unrecorded"). Lots of whitespace. A thin rule
+  separating title from the bottom stat-ticker strip. The "Canada Central" wordmark, understated.
+- **Mood:** investigative but trustworthy — a national broadsheet's special-report cover, not a poster.
+- **Avoid:** people, flags-as-symbols, drama, clip-art. No politicians, no borders, no crowds.
+  Typography and one quiet motif do all the work.
+- **Footer adds:** `plots.canada-central.com/report.html` + the standard source line.
+
+### № 1 — "Coming down? Not the part that matters." (PANEL 1 · THE HOOK · divergence)
 - **Role in arc:** open with the contradiction between the message and the data.
 - **One-line message:** Permits are falling, but asylum — the stream Ottawa controls least — keeps rising.
 - **Hero numbers (exact strings):**
@@ -153,13 +182,14 @@ exactly as given.
 
 ---
 
-## 4. Suggested sequence caption (if posted as a carousel)
+## 4. Suggested sequence (if posted as a carousel / used in the article)
 
-1. *Coming down? Not the part that matters.* — the intake divergence
-2. *The crimes rising at home.* — the four trends
-3. *Canada doesn't record who.* — the blind spot
-4. *A system that can't keep up.* — backlog, removals, executive rule-making
-5. *The UK already lived this.* — the warning + read the report
+1. **WHAT CANADA DOESN'T COUNT** — cover / title card (№ 0)
+2. *Coming down? Not the part that matters.* — the intake divergence (№ 1)
+3. *The crimes rising at home.* — the four trends (№ 2)
+4. *Canada doesn't record who.* — the blind spot (№ 3)
+5. *A system that can't keep up.* — backlog, removals, executive rule-making (№ 4)
+6. *The UK already lived this.* — the warning + read the report (№ 5)
 
 ---
 
