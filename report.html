@@ -196,9 +196,26 @@
       <a class="deep" href="origin-data-gap.html">Chapter 1: The Blind Spot</a>
     </section>
 
-    <!-- 2 -->
+    <!-- 2 · The problem at home (official data) -->
+    <section id="consequences">
+      <p class="ch-num">Chapter 2 · Official data</p>
+      <h2>The problem at home: is it getting worse?</h2>
+      <p style="font-size:0.85rem;color:var(--color-text-tertiary)"><strong>Source note.</strong> Chapter&nbsp;1 measured <em>news coverage</em> and what it omits. This chapter uses <strong>official Statistics Canada data</strong> &mdash; police-reported incidents (UCR, Table 35-10-0177). A different source for a different question: not &ldquo;who,&rdquo; but &ldquo;how much, and is it rising?&rdquo;</p>
+      <div class="stats" id="crimeStats"></div>
+      <p>In 2024, Canadian police reported <strong>503 human-trafficking incidents</strong> (up <strong>+102% since 2016</strong>) and <strong>13,108 child-exploitation incidents</strong> (up <strong>+79%</strong>). Every tracked offence rose over the decade; the chart indexes each to 2014&nbsp;=&nbsp;100 to show relative growth honestly. These are widely regarded as undercounts &mdash; most sexual offences go unreported &mdash; and StatCan cautions that part of the rise reflects greater reporting and detection, not occurrence alone.</p>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="crimeChart"></canvas></div>
+        <p class="cap">Police-reported rate per 100k, indexed to 2014=100 (StatCan UCR 35-10-0177).</p>
+      </div>
+      <div class="callout">Per capita, England records roughly <strong>3&times; Canada's rate</strong> of child sexual offences, and UK modern-slavery referrals have risen far faster than Canadian trafficking incidents &mdash; but the measures differ and are not directly comparable (see Chapter&nbsp;7).</div>
+      <a class="deep" href="ucr-record.html">Deep dive: The Official Record (UCR) &rarr;</a>
+      &nbsp;<a class="deep" href="exploitation-record.html">The Exploitation Record (news) &rarr;</a>
+      &nbsp;<a class="deep" href="hate-crime.html">Religious Hate Crime &rarr;</a>
+    </section>
+
+    <!-- 3 -->
     <section id="thesis">
-      <p class="ch-num">Chapter 2</p>
+      <p class="ch-num">Chapter 3</p>
       <h2>The question, and why it's hard to answer</h2>
       <p>Britain's grooming-gang scandals exposed organized child sexual exploitation on a scale its institutions had refused to see &mdash; and only began to measure after a national reckoning. This investigation asks whether Canada shows early signs of the same problem, and finds the honest answer is partly obscured by Canada's own choices about what to record. What follows is the holistic picture: the conditions, the crime trends, the recording gap, the enforcement response, and the UK precedent.</p>
       <p>A theme recurs throughout: a <strong>consistent gap between the reassuring official message and the harder number underneath it</strong> &mdash; starting with the claim that immigration is simply &ldquo;coming down.&rdquo;</p>
@@ -208,7 +225,7 @@
 
     <!-- 2 -->
     <section id="intake">
-      <p class="ch-num">Chapter 3</p>
+      <p class="ch-num">Chapter 4</p>
       <h2>The intake: permanent down, temporary still enormous, asylum rising</h2>
       <div class="stats" id="intakeStats"></div>
       <p>Canada admits two very different streams: permanent immigrants, who are selected and tracked, and a far larger, faster-moving population of temporary residents &mdash; foreign workers, international students and asylum claimants. The temporary population reached <strong>2.56&nbsp;million</strong> and roughly doubled in under four years. As the government capped permits, one component kept rising: <strong>asylum</strong>.</p>
@@ -222,24 +239,10 @@
 
     <!-- 3 -->
     <section id="built">
-      <p class="ch-num">Chapter 4</p>
+      <p class="ch-num">Chapter 5</p>
       <h2>How the system was built &mdash; mostly without a vote</h2>
       <p>The growth was not an accident at the border; it was assembled by policy. Tracing the decisions that reshaped screening, asylum and enforcement from 2012 onward, a striking pattern emerges: <strong>most were executive instruments</strong> &mdash; Orders in Council, ministerial instructions and a treaty protocol &mdash; that never went to a parliamentary vote. The accountability for them lives in the Canada Gazette, not in Hansard. This report tracks <strong id="evCount">42</strong> such decisions, each with a primary-source citation.</p>
       <a class="deep" href="policy-timeline.html">Deep dive: How the Channel Was Built &rarr;</a>
-    </section>
-
-    <!-- 4 -->
-    <section id="consequences">
-      <p class="ch-num">Chapter 5</p>
-      <h2>The problem at home: is it actually growing?</h2>
-      <div class="stats" id="crimeStats"></div>
-      <p>This is the heart of the question. Over the past decade, Canada's police-reported rates for the crimes closest to the UK's grooming-gang phenomenon all rose &mdash; led by <strong>child sexual exploitation (+148%)</strong> and human trafficking. These are undercounts &mdash; most sexual offences go unreported &mdash; and the trafficking and child-exploitation offences were codified relatively recently, so the chart below is indexed to 2014 to show relative growth honestly. Alongside the crime trends sits a social-cohesion signal: <strong>antisemitic incidents are the largest share of religious hate crime</strong> (~70%, at roughly 1% of the population), despite the public focus elsewhere.</p>
-      <div class="chart-card">
-        <div class="chart-wrap"><canvas id="crimeChart"></canvas></div>
-        <p class="cap">Police-reported rate per 100k, indexed to 2014=100 (StatCan UCR 35-10-0177).</p>
-      </div>
-      <a class="deep" href="exploitation-record.html">Deep dive: The Exploitation Record &rarr;</a>
-      &nbsp;<a class="deep" href="hate-crime.html">Religious Hate Crime &rarr;</a>
     </section>
 
     <!-- 6 -->
@@ -331,7 +334,8 @@
         <a href="immigration-volumes.html">Permanent vs. Temporary<span>Intake volumes by type</span></a>
         <a href="asylum-channel.html">The Asylum Channel<span>The stream that won't close</span></a>
         <a href="policy-timeline.html">How the Channel Was Built<span>The policy decisions</span></a>
-        <a href="exploitation-record.html">The Exploitation Record<span>3,342 catalogued cases</span></a>
+        <a href="ucr-record.html">The Official Record (UCR)<span>Police-reported incidents</span></a>
+        <a href="exploitation-record.html">The Exploitation Record<span>3,342 catalogued cases (news)</span></a>
         <a href="origin-data-gap.html">The Origin Data Gap<span>Canada doesn't record who</span></a>
         <a href="justice-backlog.html">The Justice Backlog<span>Remand &amp; court delay</span></a>
         <a href="enforcement.html">Enforcement<span>Running to stand still</span></a>
@@ -352,8 +356,8 @@
 // ---------- Table of contents ----------
 const CH=[
   ['method','Before you read'],['blindspot','1 · The blind spot'],
-  ['thesis','2 · Narrative vs. reality'],['intake','3 · The intake'],['built','4 · How it was built'],
-  ['consequences','5 · The consequences'],['capacity','6 · System capacity'],['uk','7 · Canada vs. the UK'],
+  ['consequences','2 · Is it getting worse?'],['thesis','3 · Narrative vs. reality'],['intake','4 · The intake'],
+  ['built','5 · How it was built'],['capacity','6 · System capacity'],['uk','7 · Canada vs. the UK'],
   ['influence','8 · Who lobbies'],['synthesis','9 · Synthesis'],['measure','10 · History (background)'],
   ['recommend','11 · Recommendations'],['explore','Explore the evidence']];
 document.getElementById('toc').insertAdjacentHTML('beforeend',
@@ -404,10 +408,15 @@ if(A){
 
 // crime stats + indexed trends
 if(CR){
-  const order=['trafficking','kidnapping','child_sexual','sexual_assault'];
-  document.getElementById('crimeStats').innerHTML=order.map(k=>`<div class="stat"><p class="v">+${CR.meta[k].change_10yr_pct}%</p><p class="l">${CR.labels[k]} — rate, 2014–2024</p></div>`).join('');
-  const YRS=[];for(let y=2014;y<=2024;y++)YRS.push(y);
+  const order=['trafficking','child_sexual','sexual_assault','kidnapping'];
   const rAt=(k,y)=>{const s=CR.series[k];const i=s.years.indexOf(y);return i>=0?s.rate[i]:null;};
+  const cAt=(k,y)=>{const s=CR.series[k];const i=s.years.indexOf(y);return (i>=0&&s.count)?s.count[i]:null;};
+  const since2016=k=>{const a=cAt(k,2016),b=CR.meta[k].latest_count;return (a&&b)?Math.round((b/a-1)*100):null;};
+  document.getElementById('crimeStats').innerHTML=order.map(k=>{
+    const m=CR.meta[k],cnt=m.latest_count,pc=since2016(k);
+    return `<div class="stat"><p class="v">${cnt!=null?cnt.toLocaleString('en-CA'):'—'}</p><p class="l">${CR.labels[k]} — incidents (${m.latest_year})${pc!=null?', +'+pc+'% since 2016':''}</p></div>`;
+  }).join('');
+  const YRS=[];for(let y=2014;y<=2024;y++)YRS.push(y);
   const col={trafficking:'#B83232',kidnapping:'#8B2020',child_sexual:'#C47A3F',sexual_assault:'#3A5F6F'};
   mk(document.getElementById('crimeChart'),{type:'line',data:{labels:YRS,datasets:order.map(k=>{const b=rAt(k,2014);return{label:CR.labels[k],data:YRS.map(y=>{const r=rAt(k,y);return r!=null&&b?Math.round(r/b*100):null;}),borderColor:col[k],borderWidth:2.5,tension:.25,pointRadius:0};})},
     options:{interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw+' (2014=100)'}}},scales:{y:{title:{display:true,text:'Indexed (2014=100)'}},x:{ticks:{font:{size:10}}}}}});

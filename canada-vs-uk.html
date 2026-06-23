@@ -94,7 +94,7 @@
     <div class="key uk"><p class="v">~1,400</p><p class="l">UK: children exploited in Rotherham alone, 1997&ndash;2013 (Jay Report) &mdash; a conservative estimate</p></div>
     <div class="key uk"><p class="v">19,125</p><p class="l">UK: modern-slavery referrals in 2024 &mdash; a record high</p></div>
     <div class="key"><p class="v" id="kCaTraf">&mdash;</p><p class="l">Canada: police-reported human-trafficking incidents (2024)</p></div>
-    <div class="key"><p class="v" id="kCaChild">&mdash;</p><p class="l">Canada: sexual violations against children (2024)</p></div>
+    <div class="key"><p class="v" id="kCaChild">&mdash;</p><p class="l">Canada: child exploitation (2024)</p></div>
   </div>
 
   <h2 class="sech">Five dimensions, side by side</h2>
@@ -110,10 +110,33 @@
       <div class="chart-wrap"><canvas id="growthChart"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2 class="chart-title">Sexual violations against children, rate per 100k</h2>
+      <h2 class="chart-title">Child exploitation, rate per 100k</h2>
       <p class="chart-sub" id="childTrendSub">The series most comparable to the UK's group-CSE focus.</p>
       <div class="chart-wrap"><canvas id="childChart"></canvas></div>
     </div>
+  </div>
+
+  <h2 class="sech">Head to head: how fast, and how much</h2>
+  <p class="secsub">Each country's own official series, 2016&rarr;2024. The instruments differ &mdash; Canada: police-reported <em>incidents</em> (UCR); UK trafficking: <em>victim referrals</em> (NRM); UK child: police-recorded sexual offences vs under-16s (England) &mdash; so compare trajectory and rate, not raw totals.</p>
+  <div class="grid2">
+    <div class="chart-card">
+      <h2 class="chart-title">Growth since 2016 (%)</h2>
+      <p class="chart-sub">Change in each country's own official series, 2016&rarr;2024.</p>
+      <div class="chart-wrap"><canvas id="cvkGrowth"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2 class="chart-title">Child exploitation &mdash; rate per 100,000</h2>
+      <p class="chart-sub">Per-capita, latest year. Different definitions (England = under-16); England records far more broadly.</p>
+      <div class="chart-wrap"><canvas id="cvkRate"></canvas></div>
+    </div>
+  </div>
+  <div class="dim">
+    <p class="dim-h">Running totals, 2016 &rarr; 2024</p>
+    <div class="cols">
+      <div class="col uk"><p class="col-flag">United Kingdom</p><p>Modern-slavery referrals (NRM): <strong>3,800 &rarr; 19,125</strong> (+403%). Child sexual offences vs under-16 (England): <strong>43,522 &rarr; 56,674</strong> (+30%).</p></div>
+      <div class="col ca"><p class="col-flag">Canada</p><p>Human-trafficking incidents (UCR): <strong>249 &rarr; 503</strong> (+102%). Child exploitation (UCR): <strong>7,334 &rarr; 13,108</strong> (+79%).</p></div>
+    </div>
+    <p class="takeaway">UK modern-slavery identification grew far faster (+403%); on child sexual offences Canada actually rose faster than England (+79% vs +30%) &mdash; yet England's recorded rate is ~3&times; higher per capita, largely because it records far more broadly. Levels are not like-for-like; the trajectories are the point.</p>
   </div>
 
   <div class="method">
@@ -147,7 +170,7 @@ function fmt(n){return n==null?'—':n.toLocaleString('en-CA');}
 const DIMS=[
   {h:'1 · Scale &amp; trend of the crimes',
    uk:'Rotherham alone: <strong>~1,400 children</strong> exploited (1997&ndash;2013), described as conservative. Nationally, modern-slavery referrals hit a record <strong>19,125 in 2024</strong> (+13% year over year).',
-   ca:'Police-reported <strong>human trafficking: __TRAF__ incidents</strong> in 2024 (up <strong>__TRAFG__%</strong> in a decade); <strong>sexual violations against children: __CHILD__</strong> (up <strong>__CHILDG__%</strong>). Both almost certainly undercount.',
+   ca:'Police-reported <strong>human trafficking: __TRAF__ incidents</strong> in 2024 (up <strong>__TRAFG__%</strong> in a decade); <strong>child exploitation: __CHILD__</strong> (up <strong>__CHILDG__%</strong>). Both almost certainly undercount.',
    t:'The crimes are present and rising in both countries. The difference is not whether it is happening.'},
   {h:'2 · Who is responsible &mdash; and whether it is recorded',
    uk:'After years of denial, Baroness Casey’s 2025 audit found offender ethnicity <strong>unrecorded in two-thirds</strong> of group-CSE cases (&ldquo;a bloody disaster&rdquo;). Where it was recorded &mdash; e.g. Greater Manchester multi-victim cases &mdash; <strong>52% were Asian, the largest subgroup Pakistani</strong>; British-Pakistani men were disproportionately represented in several northern areas.',
@@ -205,6 +228,17 @@ if(CR){
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' /100k'}}},
       scales:{y:{beginAtZero:true},x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{size:9}}}}}
   });
+  // head-to-head: growth since 2016 (Canada vs UK) + child rate per 100k
+  function _c16(k){const s=CR.series[k];const i=s.years.indexOf(2016);return (i>=0&&s.count)?s.count[i]:null;}
+  function _since(k){const a=_c16(k),b=CR.meta[k].latest_count;return (a&&b)?Math.round((b/a-1)*100):null;}
+  new Chart(document.getElementById('cvkGrowth'),{type:'bar',
+    data:{labels:['Human trafficking','Child exploitation'],datasets:[
+      {label:'Canada',data:[_since('trafficking'),_since('child_sexual')],backgroundColor:'#B83232'},
+      {label:'United Kingdom',data:[403,30],backgroundColor:'#1D3A6B'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': +'+c.raw+'%'}}},scales:{y:{beginAtZero:true,ticks:{callback:v=>'+'+v+'%'}}}}});
+  new Chart(document.getElementById('cvkRate'),{type:'bar',
+    data:{labels:['Canada','England'],datasets:[{data:[Math.round((CR.meta.child_sexual.latest_rate||31.7)*10)/10,98.2],backgroundColor:['#B83232','#1D3A6B']}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' per 100k'}}},scales:{y:{beginAtZero:true,title:{display:true,text:'per 100,000'}}}}});
 }
 
 document.getElementById('foot').textContent='Canadian figures: Statistics Canada Table 35-10-0177-01 (police-reported incident-based crime). UK figures: Independent Inquiry into CSE in Rotherham (Jay, 2014); Baroness Casey’s National Audit on Group-based Child Sexual Exploitation (2025); Home Office Modern Slavery NRM statistics (2024). Cross-country comparisons are indicative; see the caveats above. Compiled by Canada Central.';

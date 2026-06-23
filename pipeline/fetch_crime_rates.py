@@ -88,7 +88,7 @@ def main():
 
     out = {"meta": {}, "series": series, "labels": {
         "trafficking": "Human trafficking",
-        "child_sexual": "Sexual violations against children",
+        "child_sexual": "Child exploitation",
         "sexual_assault": "Sexual assault (level 1)",
         "kidnapping": "Kidnapping",
     }, "source": "Statistics Canada Table 35-10-0177-01 (incident-based crime, police-reported)"}
