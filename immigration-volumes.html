@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permanent vs. Temporary: Immigration Volumes | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/volumes.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1180px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    .page-header{padding:1.75rem 0 1rem}
+    .page-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.5rem}
+    .page-title{font-size:1.875rem;font-weight:800;margin:0 0 0.5rem;line-height:1.15}
+    @media(min-width:640px){.page-title{font-size:2.5rem}}
+    .page-subtitle{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:820px}
+
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 .25rem}
+    .stat-value{font-size:1.75rem;font-weight:800;line-height:1;margin:0}
+    @media(min-width:640px){.stat-value{font-size:2rem}}
+    .stat-value.alarm{color:var(--color-alarm)}.stat-value.teal{color:var(--color-teal)}.stat-value.amber{color:var(--color-amber)}
+    .stat-label{font-size:0.6875rem;color:var(--color-text-secondary);margin:.25rem 0 0;line-height:1.4}
+
+    .charts-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:1024px){.charts-grid{grid-template-columns:2fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem}
+    .chart-card.full{grid-column:1/-1}
+    .chart-title{font-size:0.9375rem;font-weight:700;margin:0 0 0.2rem;line-height:1.3}
+    .chart-subtitle{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 0.85rem;line-height:1.4}
+    .chart-wrap{position:relative;height:300px}
+    .chart-wrap.sm{height:280px}
+
+    .prose{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.75rem;margin-bottom:1rem;font-size:0.9375rem;line-height:1.75;color:var(--color-text-secondary)}
+    .prose h2{font-size:1.1rem;color:var(--color-text-primary);margin:0 0 0.75rem}
+    .prose p{margin:0 0 0.9rem}.prose strong{color:var(--color-text-primary)}
+    .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.5rem 0;font-size:0.875rem;line-height:1.65;color:var(--color-alarm-dark)}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.25rem}
+    .loading{text-align:center;padding:3rem;color:var(--color-text-tertiary)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="overview.html">Overview</a>
+    <a class="active" href="immigration-volumes.html">Volumes</a>
+    <a href="asylum-channel.html">Asylum</a>
+    <a href="policy-timeline.html">Policy</a>
+    <a href="policy-crime-impact.html">Policy Impact</a>
+    <a href="canada-vs-uk.html">Canada vs UK</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="justice-backlog.html">Justice</a>
+    <a href="lobbying-influence.html">Lobbying</a>
+    <a href="hate-crime.html">Hate Crime</a>
+    <a href="asylum-cost.html">Cost</a>
+    <a href="enforcement.html">Enforcement</a>
+    <a href="narrative-gap.html">Narrative Gap</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-tag">Immigration Volumes</p>
+    <h1 class="page-title">Permanent vs. Temporary</h1>
+    <p class="page-subtitle">Canada admits two very different streams of people: <strong>permanent immigrants</strong>, selected and tracked, and a far larger and faster-growing population of <strong>temporary residents</strong> — foreign workers, international students, and asylum claimants. This view sizes each, drawn directly from Statistics Canada's official tables.</p>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h2 class="chart-title">Permanent immigrants vs. net temporary residents</h2>
+        <p class="chart-subtitle">Annual flows, fiscal years 2000/01–2024/25. Net non-permanent residents = arrivals minus departures, so it can go negative.</p>
+        <div class="chart-wrap"><canvas id="annualChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Temporary residents today</h2>
+        <p class="chart-subtitle" id="compSub">Current composition.</p>
+        <div class="chart-wrap sm"><canvas id="compChart"></canvas></div>
+      </div>
+      <div class="chart-card full">
+        <h2 class="chart-title">Net change in temporary residents, by type</h2>
+        <p class="chart-subtitle">The same net non-permanent flow as the top-left chart, split by permit type. Fiscal years (July–June), so each bar totals the red "net" bar above — these are July-to-July deltas of the stock below, and they reconcile exactly to the official annual flow. Available from 2021/22, where the by-type series begins (July 2021).</p>
+        <div class="chart-wrap" style="height:320px"><canvas id="flowChart"></canvas></div>
+      </div>
+      <div class="chart-card full">
+        <h2 class="chart-title">The temporary-resident population, by type</h2>
+        <p class="chart-subtitle">Point-in-time stock of people present on permits or asylum claims, quarterly. The five categories sum to the total NPR population.</p>
+        <div class="chart-wrap" style="height:320px"><canvas id="nprChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>What the official numbers show</h2>
+      <p id="lede"></p>
+      <div class="callout" id="surgeCallout"></div>
+      <p style="font-size:0.8125rem;color:var(--color-text-tertiary);margin-bottom:0">Reading the data: the <strong>annual</strong> chart shows <em>flows</em> (net change in a year); the <strong>by-type stock</strong> chart shows the <em>level</em> (how many are present at a point in time). The <strong>net change by type</strong> chart bridges them — it splits each year's net flow into the same categories, and every bar totals the red "net" bar above (fiscal-year July-to-July deltas of the stock reconcile <em>exactly</em> to the official annual flow). So the +781k of 2023/24 is the same number, now shown as where it came from: work permits (+400k), study (+82k), asylum (+142k), work+study (+102k) and other (+54k). In 2024/25 the net turned slightly negative as study and work+study permits fell faster than asylum and work permits rose. Asylum figures count claimants, protected persons and related groups, whether or not they also hold a permit.</p>
+    </div>
+
+    <p class="foot" id="foot"></p>
+  </div>
+  <div class="loading" id="loading">Loading…</div>
+</div>
+
+<script>
+const DB=window.VOLUMES_DB;
+const C={work:'#B83232',work_study:'#C47A3F',study:'#3A5F6F',asylum:'#8B2020',other:'#C8C0B0'};
+const LBL={work:'Work permit only (TFW/IMP)',work_study:'Work + study permit',study:'Study permit only',asylum:'Asylum claimants & related',other:'Other'};
+function fmt(n){return n==null?'—':n.toLocaleString('en-CA');}
+function M(n){return n==null?'—':(n/1e6).toFixed(2)+'M';}
+function K(n){return n==null?'—':Math.round(n/1e3)+'k';}
+function shYr(y){return y.split('/')[0];}
+function shQ(p){const[y,m]=p.split('-');return ({'01':'Q1','04':'Q1','07':'Q3','10':'Q4'}[m]||m)+" '"+y.slice(2);}
+
+function go(){
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
+  const m=DB.meta;
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+
+  document.getElementById('statGrid').innerHTML=[
+    {t:'Temporary residents now',v:M(m.npr_total_latest),c:'alarm',l:'total NPR population, '+m.npr_latest_period},
+    {t:'Work permit holders',v:M(m.npr_work),c:'amber',l:'foreign workers (TFW + mobility)'},
+    {t:'Asylum claimants',v:K(m.npr_asylum),c:'teal',l:'claimants, protected persons & related'},
+    {t:'Peak net inflow',v:'+'+K(m.peak_net_npr),c:'alarm',l:'net NPR added in '+m.peak_net_npr_year},
+  ].map(c=>`<div class="stat-card ${c.c}"><p class="stat-tag">${c.t}</p><p class="stat-value ${c.c}">${c.v}</p><p class="stat-label">${c.l}</p></div>`).join('');
+
+  // annual: permanent immigrants vs net NPR
+  const A=DB.annual;
+  new Chart(document.getElementById('annualChart'),{
+    type:'bar',
+    data:{labels:A.map(a=>shYr(a.year)),datasets:[
+      {label:'Permanent immigrants',data:A.map(a=>a.immigrants),backgroundColor:'#3A5F6F'},
+      {label:'Net non-permanent residents',data:A.map(a=>a.net_npr),backgroundColor:'#B83232'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.raw)}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:v=>K(v)}},x:{ticks:{maxRotation:0,autoSkip:true,font:{size:9}}}}}
+  });
+
+  // current composition doughnut
+  const last=DB.npr.periods.length-1;
+  const comps=['work','work_study','study','asylum','other'];
+  document.getElementById('compSub').textContent='Composition at '+DB.npr.periods[last]+'. Total '+M(m.npr_total_latest)+'.';
+  new Chart(document.getElementById('compChart'),{
+    type:'doughnut',
+    data:{labels:comps.map(k=>LBL[k]),datasets:[{data:comps.map(k=>DB.npr.series[k][last]),backgroundColor:comps.map(k=>C[k]),borderWidth:2,borderColor:'#FEFEFE'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:9},boxWidth:10}},
+        tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.raw)}}}}
+  });
+
+  // NPR stock by type, stacked over time
+  new Chart(document.getElementById('nprChart'),{
+    type:'bar',
+    data:{labels:DB.npr.periods.map(shQ),datasets:comps.map(k=>({label:LBL[k],data:DB.npr.series[k],backgroundColor:C[k],stack:'s',borderWidth:0}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.raw)}}},
+      scales:{x:{stacked:true,ticks:{font:{size:9}}},y:{stacked:true,beginAtZero:true,ticks:{callback:v=>K(v)}}}}
+  });
+
+  // Net NPR flow by type — derived from the stock series as fiscal-year (Jul→Jul)
+  // deltas. Each year's sum reconciles exactly to net_npr in the annual chart.
+  const julyIdx=DB.npr.periods.map((p,i)=>p.endsWith('-07')?i:-1).filter(i=>i>=0);
+  const flowLabels=[],flowSeries={};comps.forEach(k=>flowSeries[k]=[]);
+  for(let j=1;j<julyIdx.length;j++){
+    const a=julyIdx[j-1],b=julyIdx[j];
+    flowLabels.push(DB.npr.periods[a].slice(0,4)+'/'+DB.npr.periods[b].slice(2,4));
+    comps.forEach(k=>flowSeries[k].push(DB.npr.series[k][b]-DB.npr.series[k][a]));
+  }
+  new Chart(document.getElementById('flowChart'),{
+    type:'bar',
+    data:{labels:flowLabels,datasets:comps.map(k=>({label:LBL[k],data:flowSeries[k],backgroundColor:C[k],stack:'f',borderWidth:0}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.raw),footer:items=>'Net total: '+fmt(items.reduce((s,i)=>s+i.raw,0))}}},
+      scales:{x:{stacked:true,ticks:{font:{size:10}}},y:{stacked:true,beginAtZero:true,ticks:{callback:v=>K(v)}}}}
+  });
+
+  const prGrowth=Math.round((DB.annual.find(a=>a.year===m.immigrants_latest_year).immigrants/ DB.annual[0].immigrants -1)*100);
+  document.getElementById('lede').innerHTML=
+    `Permanent immigration roughly doubled over the period, reaching <strong>${fmt(m.immigrants_latest)}</strong> admissions in ${m.immigrants_latest_year}. But the temporary-resident population grew far faster: net non-permanent residents peaked at <strong>+${fmt(m.peak_net_npr)}</strong> in a single year (${m.peak_net_npr_year}) — more than every permanent immigrant admitted that year. The standing NPR population now sits at <strong>${M(m.npr_total_latest)}</strong>.`;
+  document.getElementById('surgeCallout').innerHTML=
+    `<strong>The temporary stream is the real story.</strong> Since ${m.npr_first_period}, the non-permanent resident population has grown by <strong>+${fmt(m.npr_growth_since_first)}</strong> — roughly doubling. Work-permit holders alone (${M(m.npr_work)}) outnumber the entire annual permanent-immigrant intake several times over, yet this population is admitted with far less selection and tracking.`;
+  document.getElementById('foot').textContent='Sources: '+m.sources.join('  ·  ')+'. Compiled by Canada Central.';
+}
+go();
+</script>
+</body>
+</html>

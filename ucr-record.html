@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canada's Official Crime Record (UCR) | Canada Central</title>
+  <meta name="description" content="The official Statistics Canada (UCR) counterpart to the news-coverage exploitation database: police-reported incidents of human trafficking, child exploitation, sexual assault and kidnapping, 2016–2024.">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/crime_rates.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-weight:700;font-size:1rem;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1280px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+    .page-header{padding:1.75rem 0 1rem}
+    .page-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-teal);margin:0 0 0.5rem;display:flex;align-items:center;gap:6px}
+    .page-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--color-teal)}
+    .page-title{font-size:1.875rem;font-weight:800;margin:0 0 0.5rem;line-height:1.15}
+    @media(min-width:640px){.page-title{font-size:2.5rem}}
+    .page-subtitle{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0 0 0.25rem;max-width:820px}
+    .page-updated{font-size:0.6875rem;color:var(--color-text-tertiary)}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;display:flex;flex-direction:column;gap:0.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0}
+    .stat-value{font-size:1.875rem;font-weight:800;line-height:1;margin:0}
+    @media(min-width:640px){.stat-value{font-size:2.25rem}}
+    .stat-value.alarm{color:var(--color-alarm)}.stat-value.amber{color:var(--color-amber)}.stat-value.teal{color:var(--color-teal)}
+    .stat-label{font-size:0.6875rem;font-weight:500;color:var(--color-text-secondary);margin:0;line-height:1.4}
+    .controls{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:1.25rem;align-items:flex-end}
+    .ctrl-group{display:flex;flex-direction:column;gap:0.4rem}
+    .ctrl-label{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary)}
+    .cat-btns{display:flex;flex-wrap:wrap;gap:0.4rem}
+    .pill{font-size:0.75rem;font-weight:600;padding:0.35rem 0.7rem;border-radius:9999px;border:1px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);cursor:pointer;transition:all .15s;user-select:none;display:flex;align-items:center;gap:6px}
+    .pill .pd{width:9px;height:9px;border-radius:2px}
+    .pill.active{color:#fff;border-color:transparent}
+    .pill.mode.active{background:var(--color-teal);color:#fff;border-color:var(--color-teal)}
+    .charts-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:1024px){.charts-grid{grid-template-columns:2fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem}
+    .chart-card.full{grid-column:1/-1}
+    .chart-title{font-size:0.875rem;font-weight:700;margin:0 0 0.25rem;line-height:1.3}
+    .chart-subtitle{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 0.75rem;line-height:1.4}
+    .chart-canvas-wrap{position:relative;height:280px}
+    .method{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem 1.5rem;font-size:0.75rem;color:var(--color-text-secondary);line-height:1.7}
+    .method h3{font-size:0.8125rem;margin:0 0 0.5rem;color:var(--color-text-primary)}
+    .method .cmp{color:var(--color-teal);font-weight:600}
+    .loading{text-align:center;padding:3rem;color:var(--color-text-tertiary)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="report.html">The Report</a>
+    <a href="exploitation-record.html">Exploitation (news)</a>
+    <a class="active" href="ucr-record.html">Official UCR</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="canada-vs-uk.html">Canada vs UK</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-tag"><span class="page-tag-dot"></span> Official record · Statistics Canada</p>
+    <h1 class="page-title">Canada's Official Crime Record (UCR)</h1>
+    <p class="page-subtitle">The official counterpart to the <a href="exploitation-record.html">news-coverage database</a>: actual <strong>police-reported incidents</strong> from Statistics Canada's Uniform Crime Reporting Survey (Table 35-10-0177), 2016&ndash;2024. Same shape as the coverage view &mdash; but real counts, not media attention. Toggle crime types to compare.</p>
+    <p class="page-updated" id="updated">Loading&hellip;</p>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="controls">
+      <div class="ctrl-group">
+        <span class="ctrl-label">Crime type (toggle)</span>
+        <div class="cat-btns" id="catBtns"></div>
+      </div>
+      <div class="ctrl-group">
+        <span class="ctrl-label">Trend view</span>
+        <div class="cat-btns" id="modeBtns">
+          <span class="pill mode active" data-m="index">Indexed (2016=100)</span>
+          <span class="pill mode" data-m="counts">Counts</span>
+        </div>
+      </div>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h2 class="chart-title">Police-reported incidents per year</h2>
+        <p class="chart-subtitle" id="trendSub"></p>
+        <div class="chart-canvas-wrap"><canvas id="trendChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Crime-type share</h2>
+        <p class="chart-subtitle">Share of incidents in the latest year (selected types).</p>
+        <div class="chart-canvas-wrap"><canvas id="catChart"></canvas></div>
+      </div>
+      <div class="chart-card full">
+        <h2 class="chart-title">Crime-type composition over time</h2>
+        <p class="chart-subtitle">Police-reported incidents per year by offence (stacked).</p>
+        <div class="chart-canvas-wrap" style="height:300px"><canvas id="stackChart"></canvas></div>
+      </div>
+    </div>
+    <div class="method">
+      <h3>About this view</h3>
+      <p>Source: Statistics Canada, Uniform Crime Reporting Survey, <strong>Table 35-10-0177</strong> (actual police-reported incidents, Canada). <span class="cmp">Read alongside the news-coverage <a href="exploitation-record.html">Exploitation &amp; Trafficking Record</a></span>: that view counts <em>cases that received media coverage</em> (a proxy for attention); this view counts <em>incidents recorded by police</em> (the official measure). No legal definition of these offences changed in 2016&ndash;2024; StatCan notes increases partly reflect greater reporting and detection, not occurrence alone.</p>
+    </div>
+  </div>
+  <div class="loading" id="loading">Loading&hellip;</div>
+</div>
+
+<script>
+const CR=window.CRIME_RATES;
+const OFF=[
+  {k:'trafficking',   label:'Human trafficking',                  color:'#B83232'},
+  {k:'child_sexual',  label:'Child exploitation', color:'#C47A3F'},
+  {k:'sexual_assault',label:'Sexual assault (level 1)',           color:'#3A5F6F'},
+  {k:'kidnapping',    label:'Kidnapping',                         color:'#8B2020'},
+];
+const Y0=2016, Y1=2024;
+const YEARS=[];for(let y=Y0;y<=Y1;y++)YEARS.push(y);
+const active=new Set(OFF.map(o=>o.k));
+let mode='index';
+const fmt=n=>n==null?'—':Math.round(n).toLocaleString('en-CA');
+const cAt=(k,y)=>{const s=CR.series[k];if(!s||!s.count)return null;const i=s.years.indexOf(y);return i>=0?s.count[i]:null;};
+let charts={};
+function chart(id,type,data,opts){if(charts[id])charts[id].destroy();charts[id]=new Chart(document.getElementById(id),{type,data,options:Object.assign({responsive:true,maintainAspectRatio:false},opts||{})});}
+
+function go(){
+  if(!CR){document.getElementById('loading').textContent='Data could not be loaded — please refresh.';return;}
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('updated').textContent='Statistics Canada UCR · '+Y0+'–'+Y1+' (latest full year '+Y1+')';
+  // pills
+  document.getElementById('catBtns').innerHTML=OFF.map(o=>`<span class="pill cat active" data-k="${o.k}" style="background:${o.color};border-color:${o.color}"><span class="pd" style="background:#fff"></span>${o.label}</span>`).join('');
+  document.querySelectorAll('.pill.cat').forEach(p=>p.onclick=()=>{
+    const k=p.dataset.k;
+    if(active.has(k)&&active.size>1){active.delete(k);p.classList.remove('active');p.style.background='var(--color-cream)';p.style.borderColor='var(--color-beige-dark)';p.style.color='var(--color-text-secondary)';p.querySelector('.pd').style.background=OFF.find(o=>o.k===k).color;}
+    else{active.add(k);p.classList.add('active');const c=OFF.find(o=>o.k===k).color;p.style.background=c;p.style.borderColor=c;p.style.color='#fff';p.querySelector('.pd').style.background='#fff';}
+    render();
+  });
+  document.querySelectorAll('.pill.mode').forEach(p=>p.onclick=()=>{mode=p.dataset.m;document.querySelectorAll('.pill.mode').forEach(x=>x.classList.toggle('active',x===p));render();});
+  render();
+}
+
+function render(){
+  const act=OFF.filter(o=>active.has(o.k));
+  // stat cards
+  const totLatest=act.reduce((s,o)=>s+(cAt(o.k,Y1)||0),0);
+  const tot2016=act.reduce((s,o)=>s+(cAt(o.k,Y0)||0),0);
+  const growth=tot2016?Math.round((totLatest/tot2016-1)*100):null;
+  const tr=CR.meta.trafficking, ch=CR.meta.child_sexual;
+  const since=(k)=>{const a=cAt(k,Y0),b=CR.meta[k].latest_count;return (a&&b)?Math.round((b/a-1)*100):null;};
+  document.getElementById('statGrid').innerHTML=[
+    {t:'Total incidents',v:fmt(totLatest),c:'teal',l:'selected offences, '+Y1},
+    {t:'Growth',v:(growth!=null?'+'+growth+'%':'—'),c:'amber',l:'since '+Y0+' (selected)'},
+    {t:'Human trafficking',v:fmt(tr.latest_count),c:'alarm',l:'incidents, '+Y1+' · +'+since('trafficking')+'% since '+Y0},
+    {t:'Child exploitation',v:fmt(ch.latest_count),c:'amber',l:'incidents, '+Y1+' · +'+since('child_sexual')+'% since '+Y0},
+  ].map(c=>`<div class="stat-card ${c.c}"><p class="stat-tag">${c.t}</p><p class="stat-value ${c.c}">${c.v}</p><p class="stat-label">${c.l}</p></div>`).join('');
+
+  // trend: indexed per-offence lines (default, so small offences stay visible) or total counts
+  if(mode==='index'){
+    document.getElementById('trendSub').textContent='Each offence indexed to its 2016 level = 100, so trafficking stays visible next to far larger offences.';
+    chart('trendChart','line',{labels:YEARS,datasets:act.map(o=>{const b=cAt(o.k,Y0);return{label:o.label,data:YEARS.map(y=>{const c=cAt(o.k,y);return (c!=null&&b)?Math.round(c/b*100):null;}),borderColor:o.color,borderWidth:2.5,tension:.25,pointRadius:0};})},
+      {interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw+' (2016=100)'}}},scales:{y:{title:{display:true,text:'Indexed (2016=100)'}},x:{ticks:{font:{size:10}}}}});
+  } else {
+    document.getElementById('trendSub').textContent='Total police-reported incidents of selected offences, per year (absolute counts — large offences dominate).';
+    chart('trendChart','line',{labels:YEARS,datasets:[{label:'Incidents',data:YEARS.map(y=>act.reduce((s,o)=>s+(cAt(o.k,y)||0),0)),borderColor:'#B83232',backgroundColor:'rgba(184,50,50,.10)',fill:true,borderWidth:2.5,tension:.25,pointRadius:2}]},
+      {plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)+' incidents'}}},scales:{y:{ticks:{callback:fmt}},x:{ticks:{font:{size:10}}}}});
+  }
+
+  // share doughnut (latest year)
+  chart('catChart','doughnut',{labels:act.map(o=>o.label),datasets:[{data:act.map(o=>cAt(o.k,Y1)||0),backgroundColor:act.map(o=>o.color),borderWidth:3,borderColor:'#FEFEFE'}]},
+    {cutout:'58%',plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.raw)}}}});
+
+  // stacked composition
+  chart('stackChart','bar',{labels:YEARS,datasets:act.map(o=>({label:o.label,data:YEARS.map(y=>cAt(o.k,y)),backgroundColor:o.color,stack:'s'}))},
+    {plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{stacked:true,ticks:{font:{size:10}}},y:{stacked:true,ticks:{callback:fmt}}}});
+}
+go();
+</script>
+</body>
+</html>

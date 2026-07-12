@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Real Cost of the Asylum System | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1180px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+    .page-header{padding:1.75rem 0 1rem}
+    .page-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.5rem}
+    .page-title{font-size:1.875rem;font-weight:800;margin:0 0 0.5rem;line-height:1.15}
+    @media(min-width:640px){.page-title{font-size:2.5rem}}
+    .page-subtitle{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:840px}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 .25rem}
+    .stat-value{font-size:1.6rem;font-weight:800;line-height:1.05;margin:0}
+    @media(min-width:640px){.stat-value{font-size:1.9rem}}
+    .stat-value.alarm{color:var(--color-alarm)}.stat-value.teal{color:var(--color-teal)}.stat-value.amber{color:var(--color-amber)}
+    .stat-label{font-size:0.6875rem;color:var(--color-text-secondary);margin:.25rem 0 0;line-height:1.4}
+    .charts-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:1024px){.charts-grid{grid-template-columns:3fr 2fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem}
+    .chart-title{font-size:0.9375rem;font-weight:700;margin:0 0 0.2rem;line-height:1.3}
+    .chart-subtitle{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 0.85rem;line-height:1.4}
+    .chart-wrap{position:relative;height:320px}
+    .prose{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.75rem;margin-bottom:1rem;font-size:0.9375rem;line-height:1.75;color:var(--color-text-secondary)}
+    .prose h2{font-size:1.1rem;color:var(--color-text-primary);margin:0 0 0.75rem}
+    .prose p{margin:0 0 0.9rem}.prose strong{color:var(--color-text-primary)}
+    .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.5rem 0;font-size:0.875rem;line-height:1.65;color:var(--color-alarm-dark)}
+    .caveat{border-left:4px solid var(--color-teal);background:#EAF0F2;padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.5rem 0;font-size:0.8125rem;line-height:1.65;color:var(--color-text-secondary)}
+    .caveat strong{color:var(--color-teal)}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.25rem}
+    .loading{text-align:center;padding:3rem;color:var(--color-text-tertiary)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="overview.html">Overview</a>
+    <a href="immigration-volumes.html">Volumes</a>
+    <a href="asylum-channel.html">Asylum</a>
+    <a href="policy-timeline.html">Policy</a>
+    <a href="policy-crime-impact.html">Policy Impact</a>
+    <a href="canada-vs-uk.html">Canada vs UK</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="justice-backlog.html">Justice</a>
+    <a href="lobbying-influence.html">Lobbying</a>
+    <a href="hate-crime.html">Hate Crime</a>
+    <a class="active" href="asylum-cost.html">Cost</a>
+    <a href="enforcement.html">Enforcement</a>
+    <a href="narrative-gap.html">Narrative Gap</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-tag">Narrative vs. Reality · Fiscal</p>
+    <h1 class="page-title">The Real Cost</h1>
+    <p class="page-subtitle">A figure of &ldquo;$5&nbsp;billion&rdquo; circulates online. It is not a single official number &mdash; and the honest, sourced figures don't need the exaggeration. Federal asylum costs are large, rising fast, and only partly counted: health spending alone has more than quadrupled since 2020 and is headed past $1.5&nbsp;billion a year. This page uses only Parliamentary Budget Officer and IRCC numbers.</p>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h2 class="chart-title">Interim Federal Health Program — annual cost</h2>
+        <p class="chart-subtitle">Asylum-claimant health spending (IFHP), $ millions. Hatched bars are PBO projections.</p>
+        <div class="chart-wrap"><canvas id="ifhpChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Federal housing support to provinces (IHAP)</h2>
+        <p class="chart-subtitle">Interim Housing Assistance Program, paid to jurisdictions to date, $ millions.</p>
+        <div class="chart-wrap"><canvas id="ihapChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>What the official numbers show</h2>
+      <p id="lede"></p>
+      <div class="callout" id="callout"></div>
+      <p id="detail"></p>
+      <div class="caveat" id="caveat"></div>
+      <p style="margin-bottom:0">The cost is downstream of the <a href="policy-timeline.html">policy decisions</a> that built the channel and the <a href="asylum-channel.html">enforcement gap</a> that keeps claimants in the system for years. It is the fiscal face of the same story this project tracks &mdash; see the <a href="overview.html">overview</a>.</p>
+    </div>
+
+    <p class="foot" id="foot"></p>
+  </div>
+  <div class="loading" id="loading">Loading…</div>
+</div>
+
+<script>
+// All figures from the Parliamentary Budget Officer (PBO) and IRCC. $ in millions CAD.
+const IFHP=[ // Interim Federal Health Program, annual
+  {y:'2020-21',v:211,proj:false},
+  {y:'2024-25',v:896,proj:false},
+  {y:'2025-26',v:1000,proj:true},
+  {y:'2029-30',v:1500,proj:true},
+];
+const IHAP={quebec:440.9, ontario:640.2, other:18.9}; // ~$1.1B to date
+const PER_CLAIMANT=16500;   // avg processing cost per eTA asylum claimant, 2024
+const HEALTH_PER={claimant:1645, resettled:347}; // annual IFHP cost per beneficiary
+const BACKLOG_INV=455;      // $M, eTA-arrival inventory pending final decision
+
+function fM(n){return '$'+(n>=1000?(n/1000).toFixed(n%1000?1:0)+'B':Math.round(n)+'M');}
+function f(n){return Math.round(n).toLocaleString('en-CA');}
+
+function go(){
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+
+  const ihapTotal=IHAP.quebec+IHAP.ontario+IHAP.other;
+  document.getElementById('statGrid').innerHTML=[
+    {t:'Asylum health spending, 2024-25',v:fM(896),c:'alarm',l:'IFHP — up from $211M in 2020-21; PBO projects >$1.5B by 2029-30'},
+    {t:'Housing support to provinces',v:'~'+fM(ihapTotal),c:'amber',l:'IHAP to date — Quebec $441M · Ontario $640M'},
+    {t:'Processing cost per claimant',v:'$'+f(PER_CLAIMANT),c:'teal',l:'average, eTA arrivals, full claim process (2024)'},
+    {t:'The viral "$5B"',v:'not official',c:'alarm',l:'no single PBO line — real costs are itemized & partly uncounted'},
+  ].map(c=>`<div class="stat-card ${c.c}"><p class="stat-tag">${c.t}</p><p class="stat-value ${c.c}">${c.v}</p><p class="stat-label">${c.l}</p></div>`).join('');
+
+  // IFHP trajectory — actuals solid, projections hatched/amber
+  new Chart(document.getElementById('ifhpChart'),{
+    type:'bar',
+    data:{labels:IFHP.map(d=>d.y+(d.proj?' (proj.)':'')),datasets:[{
+      data:IFHP.map(d=>d.v),
+      backgroundColor:IFHP.map(d=>d.proj?'#E0B36A':'#B83232'),borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fM(c.raw)+(IFHP[c.dataIndex].proj?' (PBO projection)':'')}}},
+      scales:{y:{beginAtZero:true,title:{display:true,text:'$ millions / year'},ticks:{callback:v=>'$'+(v>=1000?(v/1000)+'B':v+'M'),font:{size:10}}},x:{ticks:{font:{size:10}}}}}
+  });
+
+  // IHAP split
+  new Chart(document.getElementById('ihapChart'),{
+    type:'doughnut',
+    data:{labels:['Quebec','Ontario municipalities','Other jurisdictions'],
+      datasets:[{data:[IHAP.quebec,IHAP.ontario,IHAP.other],backgroundColor:['#3A5F6F','#C47A3F','#C8C0B0'],borderWidth:2,borderColor:'#FEFEFE'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.label+': '+fM(c.raw)}}}}
+  });
+
+  document.getElementById('lede').innerHTML=
+    `Take just the two largest documented federal line items. Asylum-claimant <strong>health coverage (IFHP) cost ${fM(896)} in 2024-25</strong> &mdash; more than quadruple the ${fM(211)} of 2020-21 &mdash; and the PBO projects it will pass <strong>$1.5&nbsp;billion a year by 2029-30</strong>. Separately, Ottawa has paid provinces and municipalities <strong>~${fM(ihapTotal)}</strong> for emergency <strong>housing</strong> (IHAP) to date, with Budget 2024 adding another $1.1B over three years.`;
+  document.getElementById('callout').innerHTML=
+    `<strong>So is it "$5 billion"? Not as one official figure.</strong> But the honest math is sobering: health (~$0.9B/yr and rising), housing (~$1.1B to date), and a ${fM(BACKLOG_INV)} processing inventory are each real, sourced PBO/IRCC numbers. Stack them across years and the cumulative federal bill is firmly in the multi-billion range &mdash; without needing a made-up headline.`;
+  document.getElementById('detail').innerHTML=
+    `Per person, the PBO puts the average cost of processing one asylum claim that arrived on an eTA at <strong>$${f(PER_CLAIMANT)}</strong> over the full process, and annual IFHP health coverage at <strong>$${f(HEALTH_PER.claimant)}</strong> per asylum-claimant beneficiary (versus $${f(HEALTH_PER.resettled)} for an overseas resettled refugee). The cost driver is mechanical: more claims, held longer in a <a href="asylum-channel.html">300,000-case backlog</a>, means more years of eligibility for federally-funded health and support.`;
+  document.getElementById('caveat').innerHTML=
+    `<strong>Why the true figure is higher and fuzzier.</strong> These are <em>federal</em> dollars only. They exclude most of what provinces and municipalities actually carry &mdash; social assistance, K-12 education, healthcare beyond IFHP, legal aid, and shelter capacity &mdash; which is poorly itemized nationally. So the documented numbers <em>understate</em> the all-in public cost; we cite them precisely rather than guess at the rest. We also flag the time bases: IFHP is annual, IHAP is cumulative-to-date, the $${f(BACKLOG_INV)} inventory is one-time.`;
+  document.getElementById('foot').textContent='Sources: Parliamentary Budget Officer — "Projecting the Cost of the Interim Federal Health Program" (RP-2526-023-C) and "Costing Asylum Claims from Visa-Exempt Countries" (RP-2425-007-S); IRCC Interim Housing Assistance Program disclosures and CIMM committee materials (canada.ca); Budget 2024. Federal figures only; provincial/municipal costs are largely unitemized nationally. Compiled by Canada Central.';
+}
+go();
+</script>
+</body>
+</html>

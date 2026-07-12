@@ -1,0 +1,10 @@
+# Python caches
+__pycache__/
+*.pyc
+
+# Raw data lakes — regenerable by pipeline/*.py fetch scripts.
+# Excluded from git: pipeline/lake is ~25GB, lake/ ~166MB. Too large for the repo.
+# The processed outputs the pages actually load live in data/ and ARE committed.
+/lake/
+/pipeline/lake/
+.claude/worktrees/

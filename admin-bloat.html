@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doers vs. Overhead | Canada Central</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --cream: #F0ECE3; --cream-dark: #E8E2D5; --beige: #D8D1C2; --beige-dark: #C8C0B0;
+      --white: #FEFEFE; --text: #2D2D2D; --text2: #5A5A5A; --text3: #8A8A8A;
+      --teal: #3A5F6F; --teal-light: #4A8FA6; --red: #A13F3F; --red-light: #C05050;
+      --gold: #B8860B; --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+           background: var(--cream); color: var(--text); line-height: 1.5; }
+
+    .navbar { padding: .75rem 1.25rem; display: flex; justify-content: space-between; align-items: center;
+              background: var(--cream); border-bottom: 1px solid var(--beige); }
+    .navbar-brand { font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .navbar-brand:hover { color: var(--teal); }
+    .navbar-links { display: flex; gap: 1.5rem; font-size: .875rem; font-weight: 600; }
+    .navbar-links a { color: var(--text2); text-decoration: none; transition: color .2s; }
+    .navbar-links a:hover, .navbar-links a.active { color: var(--text); }
+
+    .hero { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 1.5rem; text-align: center; }
+    .hero-tag { font-size: .625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+                color: var(--red); margin-bottom: .5rem; }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: .75rem; }
+    @media(min-width:640px) { .hero h1 { font-size: 2.5rem; } }
+    .hero p { font-size: .9375rem; color: var(--text2); line-height: 1.7; }
+
+    .page { max-width: 980px; margin: 0 auto; padding: 0 1.25rem 3rem; }
+
+    .findings { display: grid; grid-template-columns: 1fr; gap: .75rem; margin: 1.5rem 0 2rem; }
+    @media(min-width:640px) { .findings { grid-template-columns: repeat(3, 1fr); } }
+    .finding { background: var(--white); border-radius: .5rem; box-shadow: var(--shadow); padding: 1.25rem 1.5rem;
+               border-top: 3px solid var(--teal); }
+    .finding .sector { font-size: .625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+                       color: var(--text3); margin-bottom: .35rem; }
+    .finding .number { font-size: 2rem; font-weight: 800; color: var(--teal); line-height: 1; margin-bottom: .25rem; }
+    .finding .desc { font-size: .8125rem; color: var(--text2); line-height: 1.5; }
+
+    .sector-panel { background: var(--white); border-radius: .75rem; box-shadow: var(--shadow); margin-bottom: 2rem; overflow: hidden; }
+    .sector-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--cream-dark); }
+    .sector-label { font-size: .625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--red); margin-bottom: .3rem; }
+    .sector-title { font-size: 1.375rem; font-weight: 800; line-height: 1.25; margin-bottom: .5rem; }
+    .sector-desc { font-size: .8125rem; color: var(--text2); line-height: 1.65; max-width: 680px; }
+    .sector-body { padding: 1.5rem 2rem; }
+
+    .stat-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .stat-box { background: var(--cream); border-radius: .5rem; padding: .875rem 1.25rem; flex: 1; min-width: 120px; }
+    .stat-box .val { font-size: 1.375rem; font-weight: 800; line-height: 1.1; }
+    .stat-box .lbl { font-size: .625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text3); margin-top: 2px; }
+    .stat-box.up .val { color: var(--red); }
+    .stat-box.down .val { color: var(--teal); }
+    .stat-box.neutral .val { color: var(--text); }
+
+    .chart-wrap { position: relative; height: 280px; margin-bottom: .5rem; }
+    @media(min-width:640px) { .chart-wrap { height: 320px; } }
+    .chart-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media(min-width:768px) { .chart-grid { grid-template-columns: 1fr 1fr; } }
+    .chart-title { font-size: .75rem; font-weight: 700; color: var(--text2); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .05em; }
+    .chart-note { font-size: .6875rem; color: var(--text3); margin-top: .25rem; line-height: 1.5; }
+
+    .source-strip { font-size: .6875rem; color: var(--text3); padding: .875rem 2rem; background: var(--cream); border-top: 1px solid var(--cream-dark); }
+
+    .methodology { background: var(--white); border-radius: .75rem; box-shadow: var(--shadow); padding: 1.5rem 2rem; }
+    .methodology h3 { font-size: 1rem; font-weight: 700; margin-bottom: .75rem; }
+    .methodology p, .methodology li { font-size: .8125rem; color: var(--text2); line-height: 1.65; }
+    .methodology ul { padding-left: 1.25rem; margin-top: .5rem; }
+    .methodology li { margin-bottom: .35rem; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="https://canada-central.com">Home</a>
+    <a href="https://canada-central.com/participation">MP Participation</a>
+    <a href="index.html">Statistics</a>
+    <a class="active" href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Public Sector &mdash; June 2026</div>
+  <h1>Where Does the Money Go?<br>Doers vs. Overhead in Canada's Public Sector</h1>
+  <p>Canada's public sector is growing &mdash; but is the hiring going to frontline workers who deliver value, or to administrative and support roles that expand overhead? Three sectors examined independently: education, healthcare, and public administration.</p>
+</div>
+
+<div class="page">
+
+  <div class="findings">
+    <div class="finding">
+      <div class="sector">Education</div>
+      <div class="number">+86%</div>
+      <div class="desc">Growth in "other non-instructional" operating costs since 1975, while teacher salary share held nearly flat</div>
+    </div>
+    <div class="finding">
+      <div class="sector">Healthcare</div>
+      <div class="number">+119%</div>
+      <div class="desc">Growth in social assistance employment since 2001 &mdash; vs. +68% for physician offices and +45% for hospitals</div>
+    </div>
+    <div class="finding">
+      <div class="sector">Public Administration</div>
+      <div class="number">31.7</div>
+      <div class="desc">Government employees per 1,000 Canadians in 2025, up from 28.1 in 2001 (+13% per-capita growth)</div>
+    </div>
+  </div>
+
+  <!-- ── Sector 1: Education ──────────────────────────────────────────────── -->
+  <div class="sector-panel">
+    <div class="sector-header">
+      <div class="sector-label">Sector 1 &mdash; Education</div>
+      <div class="sector-title">K-12 Schools: Where Does Every Dollar Go?</div>
+      <div class="sector-desc">Using Statistics Canada's school board financial data (1973&ndash;2023), this panel tracks what share of K-12 operating spending goes to <strong>teacher salaries</strong> versus <strong>formal administration</strong> and other non-instructional costs. Formal administration actually <em>declined</em> as a share since its 1990 peak &mdash; but a broader category of non-instructional operating costs nearly doubled.</div>
+    </div>
+    <div class="sector-body">
+      <div class="stat-row">
+        <div class="stat-box neutral">
+          <div class="val">66.7%</div>
+          <div class="lbl">Teacher salaries, 2023 (stable since 1975)</div>
+        </div>
+        <div class="stat-box down">
+          <div class="val">5.7%</div>
+          <div class="lbl">Administration, 2023 &mdash; peak was 8.4% in 1990</div>
+        </div>
+        <div class="stat-box up">
+          <div class="val">14.6%</div>
+          <div class="lbl">"Other" non-instructional, 2023 &mdash; up from 7.8% in 1975</div>
+        </div>
+        <div class="stat-box neutral">
+          <div class="val">9.1%</div>
+          <div class="lbl">School facilities, 2023</div>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <div>
+          <div class="chart-title">Operating Expenditure Breakdown, 1975&ndash;2023</div>
+          <div class="chart-wrap"><canvas id="eduStackChart"></canvas></div>
+          <div class="chart-note">"Other operating" includes professional support staff, curriculum coordinators, IT, and non-classroom program costs. Source: StatCan 37-10-0065-01.</div>
+        </div>
+        <div>
+          <div class="chart-title">Teacher Salaries vs. Non-Instructional Costs</div>
+          <div class="chart-wrap"><canvas id="eduLineChart"></canvas></div>
+          <div class="chart-note">Formal administration declined but "other" non-instructional costs grew from 7.8% to 14.6% of operating budgets. Teacher share held steady at 65&ndash;68%. Source: StatCan 37-10-0065-01.</div>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">Source: Statistics Canada, Table 37-10-0065-01 &mdash; School board expenditures, K-12 public schools, Canada, 1973&ndash;2023.</div>
+  </div>
+
+  <!-- ── Sector 2: Healthcare ─────────────────────────────────────────────── -->
+  <div class="sector-panel">
+    <div class="sector-header">
+      <div class="sector-label">Sector 2 &mdash; Healthcare</div>
+      <div class="sector-title">Healthcare: Spending and the Workforce Gap</div>
+      <div class="sector-desc">Two complementary views: <strong>(1) where the money goes</strong> &mdash; CIHI's National Health Expenditure Trends data traces spending on hospitals, physicians, and system administration since 1975 &mdash; and <strong>(2) who is being hired</strong> &mdash; StatCan's payroll survey tracks employment growth across healthcare sub-sectors since 2001. Canada's administration overhead is low and declining; but healthcare employment growth has been concentrated outside of direct clinical delivery.</div>
+    </div>
+    <div class="sector-body">
+      <div class="stat-row">
+        <div class="stat-box down">
+          <div class="val">1.7%</div>
+          <div class="lbl">System administration share of public health spending (2025), down from 2.8% in 1975</div>
+        </div>
+        <div class="stat-box neutral">
+          <div class="val">62.6%</div>
+          <div class="lbl">Clinical care share (hospitals + physicians + other professionals, 2025)</div>
+        </div>
+        <div class="stat-box up">
+          <div class="val">+119%</div>
+          <div class="lbl">Social assistance employment growth 2001&ndash;2025</div>
+        </div>
+        <div class="stat-box up">
+          <div class="val">+68%</div>
+          <div class="lbl">Physician office employment growth 2001&ndash;2025 &mdash; below the sector average of +88%</div>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <div>
+          <div class="chart-title">Public Health Spending by Category, 1975&ndash;2025 (%)</div>
+          <div class="chart-wrap"><canvas id="nhexChart"></canvas></div>
+          <div class="chart-note">Admin (red, right axis) is 1.7% and declining. Clinical share declined as acute hospital care shifted toward community, home care, and long-term care settings. Source: CIHI NHEX 2025.</div>
+        </div>
+        <div>
+          <div class="chart-title">Healthcare Employment by Sub-Sector (2001 = 100)</div>
+          <div class="chart-wrap"><canvas id="healthSephChart"></canvas></div>
+          <div class="chart-note">Social assistance and nursing/residential care grew far faster than physician offices or hospitals since 2001. Source: StatCan SEPH 14-10-0220-01, December employment.</div>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">Sources: CIHI, National Health Expenditure Trends (NHEX) 2025 open data, public-sector spending, Canada. &nbsp;|&nbsp; Statistics Canada, Table 14-10-0220-01 (SEPH), December employment by NAICS, 2001&ndash;2025.</div>
+  </div>
+
+  <!-- ── Sector 3: Public Administration ─────────────────────────────────── -->
+  <div class="sector-panel">
+    <div class="sector-header">
+      <div class="sector-label">Sector 3 &mdash; Public Administration</div>
+      <div class="sector-title">How Fast Is the Bureaucracy Growing?</div>
+      <div class="sector-desc">Government employment relative to the population it serves. Canada's total public administration workforce grew from 28.1 per 1,000 Canadians in 2001 to 31.7 in 2025 &mdash; a 13% increase in per-capita terms. <strong>Local government is the fastest-growing level</strong>, rising from 10.7 to 12.6 per 1,000. The federal public service surged post-COVID and has only partially retreated from its 9.6 per 1,000 peak in 2022&ndash;23.</div>
+    </div>
+    <div class="sector-body">
+      <div class="stat-row">
+        <div class="stat-box up">
+          <div class="val">31.7</div>
+          <div class="lbl">Public admin employees per 1,000 Canadians (2025)</div>
+        </div>
+        <div class="stat-box up">
+          <div class="val">+13%</div>
+          <div class="lbl">Per-capita growth 2001&rarr;2025</div>
+        </div>
+        <div class="stat-box up">
+          <div class="val">+18%</div>
+          <div class="lbl">Local government per-capita growth (fastest level, 10.7&rarr;12.6/1,000)</div>
+        </div>
+        <div class="stat-box up">
+          <div class="val">9.6</div>
+          <div class="lbl">Federal employees per 1,000 at 2022&ndash;23 peak, currently 8.9</div>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <div>
+          <div class="chart-title">Government Employees per 1,000 Canadians, 2001&ndash;2025</div>
+          <div class="chart-wrap"><canvas id="paChart"></canvas></div>
+          <div class="chart-note">Per-capita normalizes for population growth. Canada's population grew from ~31M to ~42M since 2001; the bureaucracy grew faster. Source: StatCan SEPH + population estimates.</div>
+        </div>
+        <div>
+          <div class="chart-title">Public Administration Employment by Level (thousands), 2001&ndash;2025</div>
+          <div class="chart-wrap"><canvas id="paAbsChart"></canvas></div>
+          <div class="chart-note">Federal +44%, Provincial +44%, Local +58% in absolute headcount since 2001. Source: StatCan SEPH 14-10-0220-01.</div>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">Source: Statistics Canada, Table 14-10-0220-01 (SEPH), December employment, Public Administration NAICS 91 and sub-sectors, 2001&ndash;2025. Population: Table 17-10-0005-01.</div>
+  </div>
+
+  <div class="methodology">
+    <h3>Methodology &amp; Data Notes</h3>
+    <p>Each sector uses <strong>only its own sector-specific data sources</strong> &mdash; there is no cross-sector comparison.</p>
+    <ul>
+      <li><strong>Education:</strong> StatCan Table 37-10-0065-01 reports annual financial data from all K-12 public school boards, broken into teachers' salaries, administration, school facilities, transportation, and other operating costs. Coverage: 1973&ndash;2023.</li>
+      <li><strong>Healthcare (spending):</strong> CIHI NHEX tracks public-sector health spending since 1975 across eight use-of-funds categories. "Administration" covers health system management overhead (provincial health ministries, health authority administration) &mdash; not within-hospital administrative staff.</li>
+      <li><strong>Healthcare (employment):</strong> StatCan SEPH Table 14-10-0220-01 tracks monthly payroll employment by 4-digit NAICS. December values are used as annual proxies. Sub-sectors: physician offices [6211], hospitals [622], nursing and residential care [623], social assistance [624], total health and social assistance [62]. Values are actual employee counts.</li>
+      <li><strong>Public Administration:</strong> SEPH NAICS 91 (total public administration), 911 (federal), 912 (provincial/territorial), 913 (local/municipal/regional). Per-capita = (employment / population) &times; 1,000. Population from StatCan Table 17-10-0005-01, annual estimates.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+const RAW = {"metadata":{"title":"Doers vs. Administrative Overhead in Canada's Public Sector","subtitle":"Sector-specific analysis: education, healthcare, and public administration","sources":["Statistics Canada, Table 37-10-0065-01: School board expenditures, 1973\u20132023","CIHI, National Health Expenditure Trends (NHEX), open data 2025 edition, 1975\u20132024","Statistics Canada, Table 14-10-0220-01: SEPH employment by NAICS, monthly, 2001\u20132026","Statistics Canada, Table 17-10-0005-01: Canada population estimates, annual, 1971\u20132025"],"base_year":2001,"generated":"2026-06-09"},"education":{"label":"Education (K-12)","description":"K-12 public school board expenditures: teacher salaries vs. administration vs. other operating costs","source":"StatCan 37-10-0065-01","series":[{"year":1900,"total":10292.0,"operating":8558.0,"teacher_salaries":5747.0,"other_operating":2811.0,"capital":1734.0,"teacher_pct":67.15,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.85,"non_teacher_pct":32.85},{"year":1901,"total":10714.0,"operating":8852.0,"teacher_salaries":5969.0,"other_operating":2883.0,"capital":1862.0,"teacher_pct":67.43,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.57,"non_teacher_pct":32.57},{"year":1902,"total":11084.0,"operating":9316.0,"teacher_salaries":6282.0,"other_operating":3034.0,"capital":1768.0,"teacher_pct":67.43,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.57,"non_teacher_pct":32.57},{"year":1903,"total":11892.0,"operating":10000.0,"teacher_salaries":6839.0,"other_operating":3161.0,"capital":1892.0,"teacher_pct":68.39,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.61,"non_teacher_pct":31.61},{"year":1904,"total":12760.0,"operating":10627.0,"teacher_salaries":7274.0,"other_operating":3353.0,"capital":2133.0,"teacher_pct":68.45,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.55,"non_teacher_pct":31.55},{"year":1905,"total":14245.0,"operating":11792.0,"teacher_salaries":7871.0,"other_operating":3921.0,"capital":2453.0,"teacher_pct":66.75,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.25,"non_teacher_pct":33.25},{"year":1906,"total":15318.0,"operating":12724.0,"teacher_salaries":8492.0,"other_operating":4232.0,"capital":2594.0,"teacher_pct":66.74,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.26,"non_teacher_pct":33.26},{"year":1907,"total":18150.0,"operating":14244.0,"teacher_salaries":9730.0,"other_operating":4514.0,"capital":3906.0,"teacher_pct":68.31,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.69,"non_teacher_pct":31.69},{"year":1908,"total":20220.0,"operating":15698.0,"teacher_salaries":10794.0,"other_operating":4904.0,"capital":4522.0,"teacher_pct":68.76,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.24,"non_teacher_pct":31.24},{"year":1909,"total":22130.0,"operating":17867.0,"teacher_salaries":12225.0,"other_operating":5642.0,"capital":4263.0,"teacher_pct":68.42,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.58,"non_teacher_pct":31.58},{"year":1910,"total":25793.0,"operating":19575.0,"teacher_salaries":12924.0,"other_operating":6651.0,"capital":6218.0,"teacher_pct":66.02,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.98,"non_teacher_pct":33.98},{"year":1911,"total":28642.0,"operating":22275.0,"teacher_salaries":14887.0,"other_operating":7388.0,"capital":6367.0,"teacher_pct":66.83,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.17,"non_teacher_pct":33.17},{"year":1912,"total":33723.0,"operating":26039.0,"teacher_salaries":17854.0,"other_operating":8185.0,"capital":7684.0,"teacher_pct":68.57,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.43,"non_teacher_pct":31.43},{"year":1913,"total":40107.0,"operating":31389.0,"teacher_salaries":21209.0,"other_operating":10180.0,"capital":8718.0,"teacher_pct":67.57,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.43,"non_teacher_pct":32.43},{"year":1914,"total":46323.0,"operating":33848.0,"teacher_salaries":23114.0,"other_operating":10734.0,"capital":12475.0,"teacher_pct":68.29,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.71,"non_teacher_pct":31.71},{"year":1915,"total":45651.0,"operating":33714.0,"teacher_salaries":22581.0,"other_operating":11133.0,"capital":11937.0,"teacher_pct":66.98,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.02,"non_teacher_pct":33.02},{"year":1916,"total":43158.0,"operating":35382.0,"teacher_salaries":24181.0,"other_operating":11201.0,"capital":7776.0,"teacher_pct":68.34,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.66,"non_teacher_pct":31.66},{"year":1917,"total":46932.0,"operating":38091.0,"teacher_salaries":25767.0,"other_operating":12324.0,"capital":8841.0,"teacher_pct":67.65,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.35,"non_teacher_pct":32.35},{"year":1918,"total":51525.0,"operating":43623.0,"teacher_salaries":29036.0,"other_operating":14587.0,"capital":7902.0,"teacher_pct":66.56,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.44,"non_teacher_pct":33.44},{"year":1919,"total":59025.0,"operating":51372.0,"teacher_salaries":34483.0,"other_operating":16889.0,"capital":7653.0,"teacher_pct":67.12,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.88,"non_teacher_pct":32.88},{"year":1920,"total":74742.0,"operating":63369.0,"teacher_salaries":42088.0,"other_operating":21281.0,"capital":11373.0,"teacher_pct":66.42,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.58,"non_teacher_pct":33.58},{"year":1921,"total":86684.0,"operating":75644.0,"teacher_salaries":50192.0,"other_operating":25452.0,"capital":11040.0,"teacher_pct":66.35,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.65,"non_teacher_pct":33.65},{"year":1922,"total":92706.0,"operating":78076.0,"teacher_salaries":54050.0,"other_operating":24026.0,"capital":14630.0,"teacher_pct":69.23,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":30.77,"non_teacher_pct":30.77},{"year":1923,"total":96559.0,"operating":82245.0,"teacher_salaries":55784.0,"other_operating":26461.0,"capital":14314.0,"teacher_pct":67.83,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.17,"non_teacher_pct":32.17},{"year":1924,"total":103301.0,"operating":85570.0,"teacher_salaries":57738.0,"other_operating":27832.0,"capital":17731.0,"teacher_pct":67.47,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.53,"non_teacher_pct":32.53},{"year":1925,"total":104860.0,"operating":88892.0,"teacher_salaries":60097.0,"other_operating":28795.0,"capital":15968.0,"teacher_pct":67.61,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.39,"non_teacher_pct":32.39},{"year":1926,"total":106972.0,"operating":91169.0,"teacher_salaries":60901.0,"other_operating":30268.0,"capital":15803.0,"teacher_pct":66.8,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.2,"non_teacher_pct":33.2},{"year":1927,"total":110878.0,"operating":94372.0,"teacher_salaries":63227.0,"other_operating":31145.0,"capital":16506.0,"teacher_pct":67.0,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.0,"non_teacher_pct":33.0},{"year":1928,"total":114226.0,"operating":90662.0,"teacher_salaries":65552.0,"other_operating":25110.0,"capital":23564.0,"teacher_pct":72.3,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.7,"non_teacher_pct":27.7},{"year":1929,"total":121998.0,"operating":95484.0,"teacher_salaries":68456.0,"other_operating":27028.0,"capital":26514.0,"teacher_pct":71.69,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.31,"non_teacher_pct":28.31},{"year":1930,"total":125652.0,"operating":101004.0,"teacher_salaries":70548.0,"other_operating":30456.0,"capital":24648.0,"teacher_pct":69.85,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":30.15,"non_teacher_pct":30.15},{"year":1931,"total":122378.0,"operating":99160.0,"teacher_salaries":70671.0,"other_operating":28489.0,"capital":23218.0,"teacher_pct":71.27,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.73,"non_teacher_pct":28.73},{"year":1932,"total":116526.0,"operating":94742.0,"teacher_salaries":68850.0,"other_operating":25892.0,"capital":21784.0,"teacher_pct":72.67,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.33,"non_teacher_pct":27.33},{"year":1933,"total":109266.0,"operating":88223.0,"teacher_salaries":63891.0,"other_operating":24332.0,"capital":21043.0,"teacher_pct":72.42,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.58,"non_teacher_pct":27.58},{"year":1934,"total":104122.0,"operating":84621.0,"teacher_salaries":61464.0,"other_operating":23157.0,"capital":19501.0,"teacher_pct":72.63,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.37,"non_teacher_pct":27.37},{"year":1935,"total":103245.0,"operating":85903.0,"teacher_salaries":61318.0,"other_operating":24585.0,"capital":17342.0,"teacher_pct":71.38,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.62,"non_teacher_pct":28.62},{"year":1936,"total":105966.0,"operating":87429.0,"teacher_salaries":62737.0,"other_operating":24692.0,"capital":18537.0,"teacher_pct":71.76,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.24,"non_teacher_pct":28.24},{"year":1937,"total":109180.0,"operating":90812.0,"teacher_salaries":65521.0,"other_operating":25291.0,"capital":18368.0,"teacher_pct":72.15,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.85,"non_teacher_pct":27.85},{"year":1938,"total":114370.0,"operating":94928.0,"teacher_salaries":68774.0,"other_operating":26154.0,"capital":19442.0,"teacher_pct":72.45,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.55,"non_teacher_pct":27.55},{"year":1939,"total":118953.0,"operating":98643.0,"teacher_salaries":70710.0,"other_operating":27933.0,"capital":20310.0,"teacher_pct":71.68,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.32,"non_teacher_pct":28.32},{"year":1940,"total":120891.0,"operating":99727.0,"teacher_salaries":71805.0,"other_operating":27922.0,"capital":21164.0,"teacher_pct":72.0,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.0,"non_teacher_pct":28.0},{"year":1941,"total":123057.0,"operating":102070.0,"teacher_salaries":73834.0,"other_operating":28236.0,"capital":20987.0,"teacher_pct":72.34,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":27.66,"non_teacher_pct":27.66},{"year":1942,"total":128656.0,"operating":107659.0,"teacher_salaries":76967.0,"other_operating":30692.0,"capital":20997.0,"teacher_pct":71.49,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":28.51,"non_teacher_pct":28.51},{"year":1943,"total":137352.0,"operating":115209.0,"teacher_salaries":81217.0,"other_operating":33992.0,"capital":22143.0,"teacher_pct":70.5,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":29.5,"non_teacher_pct":29.5},{"year":1944,"total":145577.0,"operating":123787.0,"teacher_salaries":86878.0,"other_operating":36909.0,"capital":21790.0,"teacher_pct":70.18,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":29.82,"non_teacher_pct":29.82},{"year":1945,"total":161627.0,"operating":138971.0,"teacher_salaries":96009.0,"other_operating":42962.0,"capital":22656.0,"teacher_pct":69.09,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":30.91,"non_teacher_pct":30.91},{"year":1946,"total":178413.0,"operating":153642.0,"teacher_salaries":106677.0,"other_operating":46965.0,"capital":24771.0,"teacher_pct":69.43,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":30.57,"non_teacher_pct":30.57},{"year":1947,"total":197411.0,"operating":174596.0,"teacher_salaries":121323.0,"other_operating":53273.0,"capital":22815.0,"teacher_pct":69.49,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":30.51,"non_teacher_pct":30.51},{"year":1948,"total":227624.0,"operating":201139.0,"teacher_salaries":137118.0,"other_operating":64021.0,"capital":26485.0,"teacher_pct":68.17,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.83,"non_teacher_pct":31.83},{"year":1949,"total":270247.0,"operating":233141.0,"teacher_salaries":157937.0,"other_operating":75204.0,"capital":37106.0,"teacher_pct":67.74,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.26,"non_teacher_pct":32.26},{"year":1950,"total":308515.0,"operating":261555.0,"teacher_salaries":173268.0,"other_operating":88287.0,"capital":46960.0,"teacher_pct":66.25,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.75,"non_teacher_pct":33.75},{"year":1951,"total":357321.0,"operating":296748.0,"teacher_salaries":197180.0,"other_operating":99568.0,"capital":60573.0,"teacher_pct":66.45,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.55,"non_teacher_pct":33.55},{"year":1952,"total":407548.0,"operating":339099.0,"teacher_salaries":226090.0,"other_operating":113009.0,"capital":68449.0,"teacher_pct":66.67,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":33.33,"non_teacher_pct":33.33},{"year":1953,"total":451196.0,"operating":372915.0,"teacher_salaries":251454.0,"other_operating":121461.0,"capital":78281.0,"teacher_pct":67.43,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.57,"non_teacher_pct":32.57},{"year":1954,"total":509647.0,"operating":423660.0,"teacher_salaries":287007.0,"other_operating":136653.0,"capital":85987.0,"teacher_pct":67.74,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.26,"non_teacher_pct":32.26},{"year":1955,"total":575880.0,"operating":474830.0,"teacher_salaries":321193.0,"other_operating":153637.0,"capital":101050.0,"teacher_pct":67.64,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.36,"non_teacher_pct":32.36},{"year":1956,"total":649501.0,"operating":534625.0,"teacher_salaries":360809.0,"other_operating":173816.0,"capital":114876.0,"teacher_pct":67.49,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.51,"non_teacher_pct":32.51},{"year":1957,"total":755958.0,"operating":607411.0,"teacher_salaries":411602.0,"other_operating":195809.0,"capital":148547.0,"teacher_pct":67.76,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":32.24,"non_teacher_pct":32.24},{"year":1958,"total":863581.0,"operating":695813.0,"teacher_salaries":473726.0,"other_operating":222087.0,"capital":167768.0,"teacher_pct":68.08,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.92,"non_teacher_pct":31.92},{"year":1959,"total":999147.0,"operating":798578.0,"teacher_salaries":550247.0,"other_operating":248331.0,"capital":200569.0,"teacher_pct":68.9,"admin_pct":0.0,"facilities_pct":0.0,"transport_pct":0.0,"other_pct":31.1,"non_teacher_pct":31.1},{"year":1960,"total":1132362.0,"operating":902206.0,"teacher_salaries":626067.0,"administration":36483.0,"transportation":44735.0,"facilities":125582.0,"other_operating":27972.0,"capital":230156.0,"teacher_pct":69.39,"admin_pct":4.04,"facilities_pct":13.92,"transport_pct":4.96,"other_pct":7.69,"non_teacher_pct":30.61},{"year":1961,"total":1265443.0,"operating":1009616.0,"teacher_salaries":703312.0,"administration":40874.0,"transportation":49999.0,"facilities":138169.0,"other_operating":30549.0,"capital":255827.0,"teacher_pct":69.66,"admin_pct":4.05,"facilities_pct":13.69,"transport_pct":4.95,"other_pct":7.65,"non_teacher_pct":30.34},{"year":1962,"total":1410504.0,"operating":1125821.0,"teacher_salaries":783075.0,"administration":45334.0,"transportation":56192.0,"facilities":152930.0,"other_operating":34981.0,"capital":284683.0,"teacher_pct":69.56,"admin_pct":4.03,"facilities_pct":13.58,"transport_pct":4.99,"other_pct":7.84,"non_teacher_pct":30.44},{"year":1963,"total":1566827.0,"operating":1265991.0,"teacher_salaries":883617.0,"administration":52744.0,"transportation":61660.0,"facilities":175278.0,"other_operating":29867.0,"capital":300836.0,"teacher_pct":69.8,"admin_pct":4.17,"facilities_pct":13.85,"transport_pct":4.87,"other_pct":7.32,"non_teacher_pct":30.2},{"year":1964,"total":1772452.0,"operating":1460009.0,"teacher_salaries":1003941.0,"administration":64916.0,"transportation":70044.0,"facilities":212108.0,"other_operating":30886.0,"capital":312443.0,"teacher_pct":68.76,"admin_pct":4.45,"facilities_pct":14.53,"transport_pct":4.8,"other_pct":7.47,"non_teacher_pct":31.24},{"year":1965,"total":2010433.0,"operating":1680914.0,"teacher_salaries":1108017.0,"administration":81197.0,"transportation":87760.0,"facilities":257526.0,"other_operating":48360.0,"capital":329519.0,"teacher_pct":65.92,"admin_pct":4.83,"facilities_pct":15.32,"transport_pct":5.22,"other_pct":8.71,"non_teacher_pct":34.08},{"year":1966,"total":2274491.0,"operating":1930132.0,"teacher_salaries":1252393.0,"administration":100170.0,"transportation":103440.0,"facilities":302483.0,"other_operating":52144.0,"capital":344359.0,"teacher_pct":64.89,"admin_pct":5.19,"facilities_pct":15.67,"transport_pct":5.36,"other_pct":8.89,"non_teacher_pct":35.11},{"year":1967,"total":2672149.0,"operating":2279977.0,"teacher_salaries":1532938.0,"administration":126388.0,"transportation":132109.0,"facilities":299011.0,"other_operating":74098.0,"capital":392172.0,"teacher_pct":67.23,"admin_pct":5.54,"facilities_pct":13.11,"transport_pct":5.79,"other_pct":8.31,"non_teacher_pct":32.77},{"year":1968,"total":3169617.0,"operating":2730794.0,"teacher_salaries":1849855.0,"administration":150333.0,"transportation":154391.0,"facilities":351777.0,"other_operating":77589.0,"capital":438823.0,"teacher_pct":67.74,"admin_pct":5.51,"facilities_pct":12.88,"transport_pct":5.65,"other_pct":8.22,"non_teacher_pct":32.26},{"year":1969,"total":3639434.0,"operating":3179705.0,"teacher_salaries":2171473.0,"administration":153122.0,"transportation":178791.0,"facilities":399080.0,"other_operating":94649.0,"capital":459729.0,"teacher_pct":68.29,"admin_pct":4.82,"facilities_pct":12.55,"transport_pct":5.62,"other_pct":8.72,"non_teacher_pct":31.71},{"year":1970,"total":4086690.0,"operating":3597125.0,"teacher_salaries":2423649.0,"administration":161308.0,"transportation":194534.0,"facilities":470679.0,"other_operating":161884.0,"capital":489565.0,"teacher_pct":67.38,"admin_pct":4.48,"facilities_pct":13.08,"transport_pct":5.41,"other_pct":9.65,"non_teacher_pct":32.62},{"year":1971,"total":4446044.0,"operating":3919082.0,"teacher_salaries":2660179.0,"administration":172217.0,"transportation":214384.0,"facilities":513088.0,"other_operating":166535.0,"capital":526962.0,"teacher_pct":67.88,"admin_pct":4.39,"facilities_pct":13.09,"transport_pct":5.47,"other_pct":9.17,"non_teacher_pct":32.12},{"year":1972,"total":4819364.0,"operating":4194338.0,"teacher_salaries":2872388.0,"administration":191459.0,"transportation":236252.0,"facilities":547150.0,"other_operating":125628.0,"capital":625026.0,"teacher_pct":68.48,"admin_pct":4.56,"facilities_pct":13.04,"transport_pct":5.63,"other_pct":8.28,"non_teacher_pct":31.52},{"year":1973,"total":5354003.0,"operating":4726024.0,"teacher_salaries":3123449.0,"administration":327310.0,"transportation":250299.0,"facilities":628440.0,"other_operating":243631.0,"capital":627979.0,"teacher_pct":66.09,"admin_pct":6.93,"facilities_pct":13.3,"transport_pct":5.3,"other_pct":8.39,"non_teacher_pct":33.91},{"year":1974,"total":6057624.0,"operating":5381623.0,"teacher_salaries":3563821.0,"administration":381401.0,"transportation":294770.0,"facilities":715110.0,"other_operating":251698.0,"capital":676001.0,"teacher_pct":66.22,"admin_pct":7.09,"facilities_pct":13.29,"transport_pct":5.48,"other_pct":7.93,"non_teacher_pct":33.78},{"year":1975,"total":7204458.0,"operating":6454621.0,"teacher_salaries":4249666.0,"administration":472797.0,"transportation":357510.0,"facilities":870042.0,"other_operating":296720.0,"capital":749837.0,"teacher_pct":65.84,"admin_pct":7.32,"facilities_pct":13.48,"transport_pct":5.54,"other_pct":7.82,"non_teacher_pct":34.16},{"year":1976,"total":8470945.0,"operating":7711507.0,"teacher_salaries":5193323.0,"administration":534975.0,"transportation":410135.0,"facilities":986147.0,"other_operating":363571.0,"capital":759438.0,"teacher_pct":67.35,"admin_pct":6.94,"facilities_pct":12.79,"transport_pct":5.32,"other_pct":7.61,"non_teacher_pct":32.65},{"year":1977,"total":9518971.0,"operating":8722793.0,"teacher_salaries":5953761.0,"administration":502191.0,"transportation":455606.0,"facilities":1102873.0,"other_operating":452186.0,"capital":796178.0,"teacher_pct":68.26,"admin_pct":5.76,"facilities_pct":12.64,"transport_pct":5.22,"other_pct":8.12,"non_teacher_pct":31.74},{"year":1978,"total":10211426.0,"operating":9400133.0,"teacher_salaries":6318700.0,"administration":575208.0,"transportation":504694.0,"facilities":1203388.0,"other_operating":521588.0,"capital":811293.0,"teacher_pct":67.22,"admin_pct":6.12,"facilities_pct":12.8,"transport_pct":5.37,"other_pct":8.49,"non_teacher_pct":32.78},{"year":1979,"total":11174897.0,"operating":10309881.0,"teacher_salaries":6856024.0,"administration":698233.0,"transportation":558725.0,"facilities":1309641.0,"other_operating":602606.0,"capital":865016.0,"teacher_pct":66.5,"admin_pct":6.77,"facilities_pct":12.7,"transport_pct":5.42,"other_pct":8.61,"non_teacher_pct":33.5},{"year":1980,"total":12368451.0,"operating":11355987.0,"teacher_salaries":7460420.0,"administration":814391.0,"transportation":619745.0,"facilities":1445697.0,"other_operating":704492.0,"capital":1012464.0,"teacher_pct":65.7,"admin_pct":7.17,"facilities_pct":12.73,"transport_pct":5.46,"other_pct":8.94,"non_teacher_pct":34.3},{"year":1981,"total":14068947.0,"operating":12918074.0,"teacher_salaries":8507518.0,"administration":930373.0,"transportation":708871.0,"facilities":1644748.0,"other_operating":782578.0,"capital":1150873.0,"teacher_pct":65.86,"admin_pct":7.2,"facilities_pct":12.73,"transport_pct":5.49,"other_pct":8.72,"non_teacher_pct":34.14},{"year":1982,"total":15789226.0,"operating":14528131.0,"teacher_salaries":9625230.0,"administration":1059443.0,"transportation":793047.0,"facilities":1856318.0,"other_operating":807163.0,"capital":1261095.0,"teacher_pct":66.25,"admin_pct":7.29,"facilities_pct":12.78,"transport_pct":5.46,"other_pct":8.22,"non_teacher_pct":33.75},{"year":1983,"total":16804107.0,"operating":15364405.0,"teacher_salaries":10202347.0,"administration":1146826.0,"transportation":857153.0,"facilities":1959106.0,"other_operating":795321.0,"capital":1439702.0,"teacher_pct":66.4,"admin_pct":7.46,"facilities_pct":12.75,"transport_pct":5.58,"other_pct":7.8,"non_teacher_pct":33.6},{"year":1984,"total":17719043.0,"operating":16150283.0,"teacher_salaries":10681991.0,"administration":1161032.0,"transportation":925941.0,"facilities":2030889.0,"other_operating":927473.0,"capital":1568760.0,"teacher_pct":66.14,"admin_pct":7.19,"facilities_pct":12.57,"transport_pct":5.73,"other_pct":8.36,"non_teacher_pct":33.86},{"year":1985,"total":18413775.0,"operating":16880182.0,"teacher_salaries":11139942.0,"administration":1235137.0,"transportation":981255.0,"facilities":2080162.0,"other_operating":986687.0,"capital":1533593.0,"teacher_pct":65.99,"admin_pct":7.32,"facilities_pct":12.32,"transport_pct":5.81,"other_pct":8.55,"non_teacher_pct":34.01},{"year":1986,"total":19465830.0,"operating":17882411.0,"teacher_salaries":11771303.0,"administration":1354498.0,"transportation":1050274.0,"facilities":2179411.0,"other_operating":1038864.0,"capital":1583419.0,"teacher_pct":65.83,"admin_pct":7.57,"facilities_pct":12.19,"transport_pct":5.87,"other_pct":8.54,"non_teacher_pct":34.17},{"year":1987,"total":20746671.0,"operating":18978550.0,"teacher_salaries":12432002.0,"administration":1498982.0,"transportation":1129134.0,"facilities":2293172.0,"other_operating":1088457.0,"capital":1768121.0,"teacher_pct":65.51,"admin_pct":7.9,"facilities_pct":12.08,"transport_pct":5.95,"other_pct":8.56,"non_teacher_pct":34.49},{"year":1988,"total":22492014.0,"operating":20458350.0,"teacher_salaries":13355450.0,"administration":1640835.0,"transportation":1212981.0,"facilities":2452200.0,"other_operating":1190427.0,"capital":2033664.0,"teacher_pct":65.28,"admin_pct":8.02,"facilities_pct":11.99,"transport_pct":5.93,"other_pct":8.78,"non_teacher_pct":34.72},{"year":1989,"total":24355427.0,"operating":22216382.0,"teacher_salaries":14474740.0,"administration":1830882.0,"transportation":1312098.0,"facilities":2627668.0,"other_operating":1336848.0,"capital":2139045.0,"teacher_pct":65.15,"admin_pct":8.24,"facilities_pct":11.83,"transport_pct":5.91,"other_pct":8.87,"non_teacher_pct":34.85},{"year":1990,"total":26595557.0,"operating":24340948.0,"teacher_salaries":15830456.0,"administration":2044102.0,"transportation":1417194.0,"facilities":2863434.0,"other_operating":1541037.0,"capital":2254609.0,"teacher_pct":65.04,"admin_pct":8.4,"facilities_pct":11.76,"transport_pct":5.82,"other_pct":8.98,"non_teacher_pct":34.96},{"year":1991,"total":28885169.0,"operating":26411383.0,"teacher_salaries":17299678.0,"administration":2205405.0,"transportation":1507765.0,"facilities":3046248.0,"other_operating":1670716.0,"capital":2473786.0,"teacher_pct":65.5,"admin_pct":8.35,"facilities_pct":11.53,"transport_pct":5.71,"other_pct":8.91,"non_teacher_pct":34.5},{"year":1992,"total":30162431.0,"operating":27720774.0,"teacher_salaries":18458123.0,"administration":2182551.0,"transportation":1513361.0,"facilities":3076977.0,"other_operating":1791054.0,"capital":2441657.0,"teacher_pct":66.59,"admin_pct":7.87,"facilities_pct":11.1,"transport_pct":5.46,"other_pct":8.98,"non_teacher_pct":33.41},{"year":1993,"total":30460225.0,"operating":28390859.0,"teacher_salaries":19018511.0,"administration":2154373.0,"transportation":1498334.0,"facilities":3079939.0,"other_operating":1957246.0,"capital":2069366.0,"teacher_pct":66.99,"admin_pct":7.59,"facilities_pct":10.85,"transport_pct":5.28,"other_pct":9.3,"non_teacher_pct":33.01},{"year":1994,"total":30958878.0,"operating":28505618.0,"teacher_salaries":19024078.0,"administration":2230110.0,"transportation":1483045.0,"facilities":3088134.0,"other_operating":1984770.0,"capital":2453260.0,"teacher_pct":66.74,"admin_pct":7.82,"facilities_pct":10.83,"transport_pct":5.2,"other_pct":9.4,"non_teacher_pct":33.26},{"year":1995,"total":31063290.0,"operating":28607235.0,"teacher_salaries":18962548.0,"administration":2271674.0,"transportation":1473086.0,"facilities":3084268.0,"other_operating":2090008.0,"capital":2456055.0,"teacher_pct":66.29,"admin_pct":7.94,"facilities_pct":10.78,"transport_pct":5.15,"other_pct":9.84,"non_teacher_pct":33.71},{"year":1996,"total":31016673.0,"operating":28781885.0,"teacher_salaries":18993808.0,"administration":2331584.0,"transportation":1470141.0,"facilities":3087002.0,"other_operating":2099636.0,"capital":2234788.0,"teacher_pct":65.99,"admin_pct":8.1,"facilities_pct":10.73,"transport_pct":5.11,"other_pct":10.07,"non_teacher_pct":34.01},{"year":1997,"total":31140584.0,"operating":28806923.0,"teacher_salaries":18611175.0,"administration":2470658.0,"transportation":1446792.0,"facilities":3087468.0,"other_operating":2368092.0,"capital":2333661.0,"teacher_pct":64.61,"admin_pct":8.58,"facilities_pct":10.72,"transport_pct":5.02,"other_pct":11.08,"non_teacher_pct":35.39},{"year":1998,"total":31600920.0,"operating":29417447.0,"teacher_salaries":19098911.0,"administration":2498331.0,"transportation":1443991.0,"facilities":3071548.0,"other_operating":2415741.0,"capital":2183473.0,"teacher_pct":64.92,"admin_pct":8.49,"facilities_pct":10.44,"transport_pct":4.91,"other_pct":11.23,"non_teacher_pct":35.08},{"year":1999,"total":32252944.0,"operating":30077753.0,"teacher_salaries":19667498.0,"administration":2349291.0,"transportation":1500052.0,"facilities":2964012.0,"other_operating":2610590.0,"capital":2175191.0,"teacher_pct":65.39,"admin_pct":7.81,"facilities_pct":9.85,"transport_pct":4.99,"other_pct":11.96,"non_teacher_pct":34.61},{"year":2000,"total":33386974.0,"operating":31237222.0,"teacher_salaries":20325175.0,"administration":2407262.0,"transportation":1565079.0,"facilities":3069238.0,"other_operating":2806948.0,"capital":2149752.0,"teacher_pct":65.07,"admin_pct":7.71,"facilities_pct":9.83,"transport_pct":5.01,"other_pct":12.39,"non_teacher_pct":34.93},{"year":2001,"total":34565697.0,"operating":32465355.0,"teacher_salaries":20985358.0,"administration":2437401.0,"transportation":1625619.0,"facilities":3296720.0,"other_operating":2997624.0,"capital":2100342.0,"teacher_pct":64.64,"admin_pct":7.51,"facilities_pct":10.15,"transport_pct":5.01,"other_pct":12.69,"non_teacher_pct":35.36},{"year":2002,"total":35767108.0,"operating":33611288.0,"teacher_salaries":21756565.0,"administration":2523206.0,"transportation":1664843.0,"facilities":3408462.0,"other_operating":3133889.0,"capital":2155820.0,"teacher_pct":64.73,"admin_pct":7.51,"facilities_pct":10.14,"transport_pct":4.95,"other_pct":12.67,"non_teacher_pct":35.27},{"year":2003,"total":37424217.0,"operating":35010334.0,"teacher_salaries":22714098.0,"administration":2552588.0,"transportation":1719378.0,"facilities":3568325.0,"other_operating":3292864.0,"capital":2413883.0,"teacher_pct":64.88,"admin_pct":7.29,"facilities_pct":10.19,"transport_pct":4.91,"other_pct":12.73,"non_teacher_pct":35.12},{"year":2004,"total":39601729.0,"operating":36529717.0,"teacher_salaries":23736664.0,"administration":2534991.0,"transportation":1785083.0,"facilities":3690388.0,"other_operating":3543866.0,"capital":3072012.0,"teacher_pct":64.98,"admin_pct":6.94,"facilities_pct":10.1,"transport_pct":4.89,"other_pct":13.09,"non_teacher_pct":35.02},{"year":2005,"total":41577439.0,"operating":38230808.0,"teacher_salaries":24653437.0,"administration":2669610.0,"transportation":1890821.0,"facilities":3845088.0,"other_operating":3799212.0,"capital":3346631.0,"teacher_pct":64.49,"admin_pct":6.98,"facilities_pct":10.06,"transport_pct":4.95,"other_pct":13.53,"non_teacher_pct":35.51},{"year":2006,"total":43643973.0,"operating":39880914.0,"teacher_salaries":25824811.0,"administration":2777050.0,"transportation":1970829.0,"facilities":4000429.0,"other_operating":3887175.0,"capital":3763059.0,"teacher_pct":64.75,"admin_pct":6.96,"facilities_pct":10.03,"transport_pct":4.94,"other_pct":13.31,"non_teacher_pct":35.25},{"year":2007,"total":45708027.0,"operating":41616914.0,"teacher_salaries":27126291.0,"administration":2812579.0,"transportation":2046268.0,"facilities":4161645.0,"other_operating":4068424.0,"capital":4091113.0,"teacher_pct":65.18,"admin_pct":6.76,"facilities_pct":10.0,"transport_pct":4.92,"other_pct":13.14,"non_teacher_pct":34.82},{"year":2008,"total":47896142.0,"operating":43381686.0,"teacher_salaries":28365708.0,"administration":2892700.0,"transportation":2130253.0,"facilities":4339294.0,"other_operating":4176068.0,"capital":4514456.0,"teacher_pct":65.39,"admin_pct":6.67,"facilities_pct":10.0,"transport_pct":4.91,"other_pct":13.03,"non_teacher_pct":34.61},{"year":2009,"total":50151830.0,"operating":45379853.0,"teacher_salaries":29753006.0,"administration":3019294.0,"transportation":2164196.0,"facilities":4431037.0,"other_operating":4468023.0,"capital":4771977.0,"teacher_pct":65.56,"admin_pct":6.65,"facilities_pct":9.76,"transport_pct":4.77,"other_pct":13.25,"non_teacher_pct":34.44},{"year":2010,"total":51904934.0,"operating":47325347.0,"teacher_salaries":30889846.0,"administration":3094403.0,"transportation":2191732.0,"facilities":4505790.0,"other_operating":5121083.0,"capital":4579587.0,"teacher_pct":65.27,"admin_pct":6.54,"facilities_pct":9.52,"transport_pct":4.63,"other_pct":14.04,"non_teacher_pct":34.73},{"year":2011,"total":53034158.0,"operating":48406578.0,"teacher_salaries":31797545.0,"administration":3091574.0,"transportation":2242169.0,"facilities":4558032.0,"other_operating":5191546.0,"capital":4627580.0,"teacher_pct":65.69,"admin_pct":6.39,"facilities_pct":9.42,"transport_pct":4.63,"other_pct":13.88,"non_teacher_pct":34.31},{"year":2012,"total":55959804.0,"operating":51019749.0,"teacher_salaries":34218268.0,"administration":2939578.0,"transportation":2309244.0,"facilities":4652401.0,"other_operating":5245916.0,"capital":4940055.0,"teacher_pct":67.07,"admin_pct":5.76,"facilities_pct":9.12,"transport_pct":4.53,"other_pct":13.52,"non_teacher_pct":32.93},{"year":2013,"total":57116703.0,"operating":51953037.0,"teacher_salaries":34622326.0,"administration":3022104.0,"transportation":2357495.0,"facilities":4854915.0,"other_operating":5418236.0,"capital":5163665.0,"teacher_pct":66.64,"admin_pct":5.82,"facilities_pct":9.34,"transport_pct":4.54,"other_pct":13.66,"non_teacher_pct":33.36},{"year":2014,"total":58502360.0,"operating":53336872.0,"teacher_salaries":35692435.0,"administration":3077723.0,"transportation":2382781.0,"facilities":4918727.0,"other_operating":5511730.0,"capital":5165488.0,"teacher_pct":66.92,"admin_pct":5.77,"facilities_pct":9.22,"transport_pct":4.47,"other_pct":13.62,"non_teacher_pct":33.08},{"year":2015,"total":60371971.0,"operating":54481279.0,"teacher_salaries":36814952.0,"administration":3086691.0,"transportation":2379722.0,"facilities":4960772.0,"other_operating":5512801.0,"capital":5890692.0,"teacher_pct":67.57,"admin_pct":5.67,"facilities_pct":9.11,"transport_pct":4.37,"other_pct":13.29,"non_teacher_pct":32.43},{"year":2016,"total":61932508.0,"operating":55890888.0,"teacher_salaries":37672736.0,"administration":3119421.0,"transportation":2453411.0,"facilities":5033923.0,"other_operating":5803523.0,"capital":6041620.0,"teacher_pct":67.4,"admin_pct":5.58,"facilities_pct":9.01,"transport_pct":4.39,"other_pct":13.62,"non_teacher_pct":32.6},{"year":2017,"total":64699281.0,"operating":58604574.0,"teacher_salaries":39257506.0,"administration":3280098.0,"transportation":2553638.0,"facilities":5132292.0,"other_operating":6467616.0,"capital":6094707.0,"teacher_pct":66.99,"admin_pct":5.6,"facilities_pct":8.76,"transport_pct":4.36,"other_pct":14.3,"non_teacher_pct":33.01},{"year":2018,"total":66965049.0,"operating":60468902.0,"teacher_salaries":40465071.0,"administration":3445135.0,"transportation":2663892.0,"facilities":5318495.0,"other_operating":6649400.0,"capital":6496147.0,"teacher_pct":66.92,"admin_pct":5.7,"facilities_pct":8.8,"transport_pct":4.41,"other_pct":14.18,"non_teacher_pct":33.08},{"year":2019,"total":66198686.0,"operating":59709975.0,"teacher_salaries":40770084.0,"administration":3370421.0,"transportation":2491487.0,"facilities":5249143.0,"other_operating":6184199.0,"capital":6488711.0,"teacher_pct":68.28,"admin_pct":5.64,"facilities_pct":8.79,"transport_pct":4.17,"other_pct":13.11,"non_teacher_pct":31.72},{"year":2020,"total":71061009.0,"operating":63414103.0,"teacher_salaries":43318590.0,"administration":3512283.0,"transportation":2682835.0,"facilities":5708877.0,"other_operating":6360804.0,"capital":7646906.0,"teacher_pct":68.31,"admin_pct":5.54,"facilities_pct":9.0,"transport_pct":4.23,"other_pct":12.92,"non_teacher_pct":31.69},{"year":2021,"total":73682749.0,"operating":65672553.0,"teacher_salaries":43847532.0,"administration":3628868.0,"transportation":2902627.0,"facilities":5962868.0,"other_operating":7398150.0,"capital":8010196.0,"teacher_pct":66.77,"admin_pct":5.53,"facilities_pct":9.08,"transport_pct":4.42,"other_pct":14.21,"non_teacher_pct":33.23},{"year":2022,"total":78991116.0,"operating":69449699.0,"teacher_salaries":45454833.0,"administration":3924987.0,"transportation":3161138.0,"facilities":6380013.0,"other_operating":8390828.0,"capital":9541417.0,"teacher_pct":65.45,"admin_pct":5.65,"facilities_pct":9.19,"transport_pct":4.55,"other_pct":15.16,"non_teacher_pct":34.55},{"year":2023,"total":86036437.0,"operating":76097804.0,"teacher_salaries":50716178.0,"administration":4360637.0,"transportation":3359282.0,"facilities":6577850.0,"other_operating":8891174.0,"capital":9938633.0,"teacher_pct":66.65,"admin_pct":5.73,"facilities_pct":8.64,"transport_pct":4.41,"other_pct":14.57,"non_teacher_pct":33.35}],"summary":{"earliest_year":1900,"latest_year":2023,"teacher_pct_earliest":67.15,"teacher_pct_latest":66.65,"admin_pct_earliest":0.0,"admin_pct_latest":5.73}},"healthcare":{"label":"Healthcare","description":"Public health system spending by category and employment by sub-sector","sources":["CIHI NHEX 2025 \u2014 spending breakdown by use of funds, 1975\u20132024","StatCan SEPH 14-10-0220-01 \u2014 employment by healthcare NAICS, 2001\u20132025"],"nhex_series":[{"year":1975,"admin_bn":0.496,"hospitals_bn":10.045,"physicians_bn":3.587,"other_prof_bn":0.261,"public_health_bn":0.713,"other_inst_bn":1.593,"drugs_bn":0.302,"capital_bn":0.704,"total_known_bn":17.7,"clinical_bn":13.893,"admin_pct":2.8,"hospitals_pct":56.75,"physicians_pct":20.27,"clinical_pct":78.49},{"year":1976,"admin_bn":0.545,"hospitals_bn":11.709,"physicians_bn":4.038,"other_prof_bn":0.308,"public_health_bn":0.889,"other_inst_bn":1.997,"drugs_bn":0.414,"capital_bn":0.668,"total_known_bn":20.567,"clinical_bn":16.054,"admin_pct":2.65,"hospitals_pct":56.93,"physicians_pct":19.63,"clinical_pct":78.06},{"year":1977,"admin_bn":0.578,"hospitals_bn":12.486,"physicians_bn":4.457,"other_prof_bn":0.355,"public_health_bn":1.05,"other_inst_bn":2.349,"drugs_bn":0.513,"capital_bn":0.698,"total_known_bn":22.485,"clinical_bn":17.297,"admin_pct":2.57,"hospitals_pct":55.53,"physicians_pct":19.82,"clinical_pct":76.93},{"year":1978,"admin_bn":0.578,"hospitals_bn":13.457,"physicians_bn":5.007,"other_prof_bn":0.437,"public_health_bn":1.082,"other_inst_bn":2.734,"drugs_bn":0.633,"capital_bn":0.84,"total_known_bn":24.768,"clinical_bn":18.9,"admin_pct":2.34,"hospitals_pct":54.33,"physicians_pct":20.21,"clinical_pct":76.31},{"year":1979,"admin_bn":0.638,"hospitals_bn":14.7,"physicians_bn":5.552,"other_prof_bn":0.551,"public_health_bn":1.229,"other_inst_bn":3.162,"drugs_bn":0.749,"capital_bn":1.006,"total_known_bn":27.586,"clinical_bn":20.802,"admin_pct":2.31,"hospitals_pct":53.29,"physicians_pct":20.13,"clinical_pct":75.41},{"year":1980,"admin_bn":0.712,"hospitals_bn":16.86,"physicians_bn":6.406,"other_prof_bn":0.691,"public_health_bn":1.455,"other_inst_bn":3.642,"drugs_bn":0.899,"capital_bn":1.142,"total_known_bn":31.806,"clinical_bn":23.957,"admin_pct":2.24,"hospitals_pct":53.01,"physicians_pct":20.14,"clinical_pct":75.32},{"year":1981,"admin_bn":0.797,"hospitals_bn":19.878,"physicians_bn":7.466,"other_prof_bn":0.914,"public_health_bn":1.722,"other_inst_bn":4.292,"drugs_bn":1.097,"capital_bn":1.319,"total_known_bn":37.484,"clinical_bn":28.258,"admin_pct":2.13,"hospitals_pct":53.03,"physicians_pct":19.92,"clinical_pct":75.39},{"year":1982,"admin_bn":0.979,"hospitals_bn":23.584,"physicians_bn":8.631,"other_prof_bn":0.949,"public_health_bn":1.936,"other_inst_bn":5.059,"drugs_bn":1.323,"capital_bn":1.711,"total_known_bn":44.172,"clinical_bn":33.164,"admin_pct":2.22,"hospitals_pct":53.39,"physicians_pct":19.54,"clinical_pct":75.08},{"year":1983,"admin_bn":1.053,"hospitals_bn":25.929,"physicians_bn":9.867,"other_prof_bn":0.993,"public_health_bn":2.095,"other_inst_bn":5.582,"drugs_bn":1.582,"capital_bn":2.019,"total_known_bn":49.12,"clinical_bn":36.789,"admin_pct":2.14,"hospitals_pct":52.79,"physicians_pct":20.09,"clinical_pct":74.9},{"year":1984,"admin_bn":1.147,"hospitals_bn":27.433,"physicians_bn":10.801,"other_prof_bn":1.069,"public_health_bn":2.327,"other_inst_bn":5.837,"drugs_bn":1.825,"capital_bn":2.137,"total_known_bn":52.576,"clinical_bn":39.304,"admin_pct":2.18,"hospitals_pct":52.18,"physicians_pct":20.54,"clinical_pct":74.76},{"year":1985,"admin_bn":1.236,"hospitals_bn":29.017,"physicians_bn":11.808,"other_prof_bn":1.162,"public_health_bn":2.573,"other_inst_bn":6.119,"drugs_bn":2.167,"capital_bn":2.289,"total_known_bn":56.371,"clinical_bn":41.987,"admin_pct":2.19,"hospitals_pct":51.48,"physicians_pct":20.95,"clinical_pct":74.48},{"year":1986,"admin_bn":1.296,"hospitals_bn":31.405,"physicians_bn":13.087,"other_prof_bn":1.295,"public_health_bn":2.638,"other_inst_bn":5.945,"drugs_bn":2.56,"capital_bn":2.498,"total_known_bn":60.724,"clinical_bn":45.787,"admin_pct":2.13,"hospitals_pct":51.72,"physicians_pct":21.55,"clinical_pct":75.4},{"year":1987,"admin_bn":1.375,"hospitals_bn":33.81,"physicians_bn":14.421,"other_prof_bn":1.339,"public_health_bn":2.803,"other_inst_bn":6.23,"drugs_bn":2.899,"capital_bn":2.484,"total_known_bn":65.361,"clinical_bn":49.57,"admin_pct":2.1,"hospitals_pct":51.73,"physicians_pct":22.06,"clinical_pct":75.84},{"year":1988,"admin_bn":1.418,"hospitals_bn":36.434,"physicians_bn":15.606,"other_prof_bn":1.433,"public_health_bn":3.015,"other_inst_bn":6.88,"drugs_bn":3.296,"capital_bn":2.925,"total_known_bn":71.006,"clinical_bn":53.473,"admin_pct":2.0,"hospitals_pct":51.31,"physicians_pct":21.98,"clinical_pct":75.31},{"year":1989,"admin_bn":1.535,"hospitals_bn":39.947,"physicians_bn":16.725,"other_prof_bn":1.616,"public_health_bn":3.313,"other_inst_bn":7.588,"drugs_bn":3.809,"capital_bn":3.219,"total_known_bn":77.751,"clinical_bn":58.288,"admin_pct":1.97,"hospitals_pct":51.38,"physicians_pct":21.51,"clinical_pct":74.97},{"year":1990,"admin_bn":1.811,"hospitals_bn":40.425,"physicians_bn":18.042,"other_prof_bn":1.744,"public_health_bn":3.769,"other_inst_bn":10.121,"drugs_bn":4.398,"capital_bn":3.29,"total_known_bn":83.6,"clinical_bn":60.211,"admin_pct":2.17,"hospitals_pct":48.36,"physicians_pct":21.58,"clinical_pct":72.02},{"year":1991,"admin_bn":1.835,"hospitals_bn":42.91,"physicians_bn":19.887,"other_prof_bn":1.909,"public_health_bn":4.077,"other_inst_bn":11.649,"drugs_bn":5.03,"capital_bn":3.196,"total_known_bn":90.495,"clinical_bn":64.707,"admin_pct":2.03,"hospitals_pct":47.42,"physicians_pct":21.98,"clinical_pct":71.5},{"year":1992,"admin_bn":1.854,"hospitals_bn":44.665,"physicians_bn":20.344,"other_prof_bn":1.938,"public_health_bn":4.413,"other_inst_bn":12.414,"drugs_bn":5.612,"capital_bn":3.211,"total_known_bn":94.45,"clinical_bn":66.947,"admin_pct":1.96,"hospitals_pct":47.29,"physicians_pct":21.54,"clinical_pct":70.88},{"year":1993,"admin_bn":1.862,"hospitals_bn":44.672,"physicians_bn":20.451,"other_prof_bn":1.884,"public_health_bn":4.615,"other_inst_bn":12.282,"drugs_bn":5.855,"capital_bn":3.131,"total_known_bn":94.751,"clinical_bn":67.006,"admin_pct":1.97,"hospitals_pct":47.15,"physicians_pct":21.58,"clinical_pct":70.72},{"year":1994,"admin_bn":1.97,"hospitals_bn":43.681,"physicians_bn":20.901,"other_prof_bn":1.842,"public_health_bn":5.093,"other_inst_bn":12.43,"drugs_bn":5.931,"capital_bn":3.624,"total_known_bn":95.471,"clinical_bn":66.424,"admin_pct":2.06,"hospitals_pct":45.75,"physicians_pct":21.89,"clinical_pct":69.57},{"year":1995,"admin_bn":1.935,"hospitals_bn":43.196,"physicians_bn":20.833,"other_prof_bn":1.747,"public_health_bn":5.337,"other_inst_bn":12.896,"drugs_bn":6.467,"capital_bn":3.48,"total_known_bn":95.891,"clinical_bn":65.776,"admin_pct":2.02,"hospitals_pct":45.05,"physicians_pct":21.73,"clinical_pct":68.59},{"year":1996,"admin_bn":1.894,"hospitals_bn":43.505,"physicians_bn":21.111,"other_prof_bn":1.712,"public_health_bn":5.647,"other_inst_bn":13.088,"drugs_bn":6.387,"capital_bn":3.256,"total_known_bn":96.599,"clinical_bn":66.327,"admin_pct":1.96,"hospitals_pct":45.04,"physicians_pct":21.85,"clinical_pct":68.66},{"year":1997,"admin_bn":2.02,"hospitals_bn":44.143,"physicians_bn":22.014,"other_prof_bn":1.77,"public_health_bn":5.931,"other_inst_bn":13.576,"drugs_bn":6.733,"capital_bn":3.436,"total_known_bn":99.624,"clinical_bn":67.927,"admin_pct":2.03,"hospitals_pct":44.31,"physicians_pct":22.1,"clinical_pct":68.18},{"year":1998,"admin_bn":2.202,"hospitals_bn":46.634,"physicians_bn":23.069,"other_prof_bn":1.774,"public_health_bn":7.174,"other_inst_bn":14.26,"drugs_bn":7.47,"capital_bn":3.655,"total_known_bn":106.237,"clinical_bn":71.477,"admin_pct":2.07,"hospitals_pct":43.9,"physicians_pct":21.71,"clinical_pct":67.28},{"year":1999,"admin_bn":2.381,"hospitals_bn":49.072,"physicians_bn":24.288,"other_prof_bn":1.908,"public_health_bn":7.6,"other_inst_bn":15.068,"drugs_bn":8.469,"capital_bn":5.117,"total_known_bn":113.902,"clinical_bn":75.268,"admin_pct":2.09,"hospitals_pct":43.08,"physicians_pct":21.32,"clinical_pct":66.08},{"year":2000,"admin_bn":2.557,"hospitals_bn":53.42,"physicians_bn":25.851,"other_prof_bn":2.066,"public_health_bn":8.348,"other_inst_bn":16.255,"drugs_bn":9.871,"capital_bn":6.082,"total_known_bn":124.45,"clinical_bn":81.337,"admin_pct":2.05,"hospitals_pct":42.93,"physicians_pct":20.77,"clinical_pct":65.36},{"year":2001,"admin_bn":2.77,"hospitals_bn":56.717,"physicians_bn":27.744,"other_prof_bn":2.114,"public_health_bn":9.573,"other_inst_bn":17.473,"drugs_bn":11.311,"capital_bn":6.638,"total_known_bn":134.338,"clinical_bn":86.574,"admin_pct":2.06,"hospitals_pct":42.22,"physicians_pct":20.65,"clinical_pct":64.44},{"year":2002,"admin_bn":3.015,"hospitals_bn":60.886,"physicians_bn":29.597,"other_prof_bn":2.035,"public_health_bn":9.893,"other_inst_bn":18.512,"drugs_bn":12.651,"capital_bn":7.196,"total_known_bn":143.785,"clinical_bn":92.517,"admin_pct":2.1,"hospitals_pct":42.34,"physicians_pct":20.58,"clinical_pct":64.34},{"year":2003,"admin_bn":3.28,"hospitals_bn":65.292,"physicians_bn":31.853,"other_prof_bn":2.035,"public_health_bn":11.662,"other_inst_bn":19.582,"drugs_bn":13.955,"capital_bn":8.114,"total_known_bn":155.773,"clinical_bn":99.179,"admin_pct":2.11,"hospitals_pct":41.91,"physicians_pct":20.45,"clinical_pct":63.67},{"year":2004,"admin_bn":3.435,"hospitals_bn":70.0,"physicians_bn":33.832,"other_prof_bn":2.069,"public_health_bn":11.867,"other_inst_bn":21.159,"drugs_bn":15.273,"capital_bn":8.57,"total_known_bn":166.205,"clinical_bn":105.901,"admin_pct":2.07,"hospitals_pct":42.12,"physicians_pct":20.36,"clinical_pct":63.72},{"year":2005,"admin_bn":3.725,"hospitals_bn":73.649,"physicians_bn":36.22,"other_prof_bn":1.905,"public_health_bn":13.665,"other_inst_bn":22.023,"drugs_bn":16.526,"capital_bn":9.969,"total_known_bn":177.682,"clinical_bn":111.775,"admin_pct":2.1,"hospitals_pct":41.45,"physicians_pct":20.38,"clinical_pct":62.91},{"year":2006,"admin_bn":3.853,"hospitals_bn":78.797,"physicians_bn":39.062,"other_prof_bn":1.983,"public_health_bn":14.837,"other_inst_bn":23.077,"drugs_bn":17.761,"capital_bn":10.133,"total_known_bn":189.503,"clinical_bn":119.842,"admin_pct":2.03,"hospitals_pct":41.58,"physicians_pct":20.61,"clinical_pct":63.24},{"year":2007,"admin_bn":4.073,"hospitals_bn":84.116,"physicians_bn":42.181,"other_prof_bn":2.182,"public_health_bn":15.988,"other_inst_bn":24.271,"drugs_bn":18.817,"capital_bn":14.812,"total_known_bn":206.44,"clinical_bn":128.479,"admin_pct":1.97,"hospitals_pct":40.75,"physicians_pct":20.43,"clinical_pct":62.24},{"year":2008,"admin_bn":3.876,"hospitals_bn":90.042,"physicians_bn":46.246,"other_prof_bn":2.404,"public_health_bn":16.873,"other_inst_bn":25.496,"drugs_bn":19.902,"capital_bn":12.679,"total_known_bn":217.519,"clinical_bn":138.692,"admin_pct":1.78,"hospitals_pct":41.39,"physicians_pct":21.26,"clinical_pct":63.76},{"year":2009,"admin_bn":3.833,"hospitals_bn":95.28,"physicians_bn":50.007,"other_prof_bn":2.671,"public_health_bn":17.313,"other_inst_bn":27.03,"drugs_bn":21.351,"capital_bn":13.861,"total_known_bn":231.345,"clinical_bn":147.957,"admin_pct":1.66,"hospitals_pct":41.19,"physicians_pct":21.62,"clinical_pct":63.96},{"year":2010,"admin_bn":3.817,"hospitals_bn":101.175,"physicians_bn":53.697,"other_prof_bn":2.842,"public_health_bn":17.833,"other_inst_bn":28.486,"drugs_bn":21.792,"capital_bn":15.247,"total_known_bn":244.889,"clinical_bn":157.714,"admin_pct":1.56,"hospitals_pct":41.31,"physicians_pct":21.93,"clinical_pct":64.4},{"year":2011,"admin_bn":3.81,"hospitals_bn":103.53,"physicians_bn":57.105,"other_prof_bn":2.991,"public_health_bn":18.568,"other_inst_bn":30.502,"drugs_bn":22.283,"capital_bn":15.325,"total_known_bn":254.115,"clinical_bn":163.626,"admin_pct":1.5,"hospitals_pct":40.74,"physicians_pct":22.47,"clinical_pct":64.39},{"year":2012,"admin_bn":4.405,"hospitals_bn":105.406,"physicians_bn":59.069,"other_prof_bn":3.309,"public_health_bn":18.393,"other_inst_bn":31.689,"drugs_bn":22.303,"capital_bn":15.705,"total_known_bn":260.279,"clinical_bn":167.784,"admin_pct":1.69,"hospitals_pct":40.5,"physicians_pct":22.69,"clinical_pct":64.46},{"year":2013,"admin_bn":4.617,"hospitals_bn":108.652,"physicians_bn":61.874,"other_prof_bn":3.281,"public_health_bn":17.774,"other_inst_bn":32.606,"drugs_bn":22.35,"capital_bn":14.874,"total_known_bn":266.028,"clinical_bn":173.807,"admin_pct":1.74,"hospitals_pct":40.84,"physicians_pct":23.26,"clinical_pct":65.33},{"year":2014,"admin_bn":4.6,"hospitals_bn":111.041,"physicians_bn":64.465,"other_prof_bn":3.3,"public_health_bn":18.292,"other_inst_bn":33.758,"drugs_bn":23.206,"capital_bn":13.739,"total_known_bn":272.403,"clinical_bn":178.807,"admin_pct":1.69,"hospitals_pct":40.76,"physicians_pct":23.67,"clinical_pct":65.64},{"year":2015,"admin_bn":4.562,"hospitals_bn":113.591,"physicians_bn":67.237,"other_prof_bn":4.424,"public_health_bn":18.583,"other_inst_bn":36.442,"drugs_bn":24.347,"capital_bn":13.937,"total_known_bn":283.122,"clinical_bn":185.251,"admin_pct":1.61,"hospitals_pct":40.12,"physicians_pct":23.75,"clinical_pct":65.43},{"year":2016,"admin_bn":4.637,"hospitals_bn":115.248,"physicians_bn":70.016,"other_prof_bn":4.909,"public_health_bn":19.133,"other_inst_bn":37.425,"drugs_bn":24.804,"capital_bn":13.196,"total_known_bn":289.369,"clinical_bn":190.173,"admin_pct":1.6,"hospitals_pct":39.83,"physicians_pct":24.2,"clinical_pct":65.72},{"year":2017,"admin_bn":5.186,"hospitals_bn":119.579,"physicians_bn":72.268,"other_prof_bn":5.32,"public_health_bn":19.794,"other_inst_bn":39.127,"drugs_bn":25.386,"capital_bn":12.741,"total_known_bn":299.4,"clinical_bn":197.166,"admin_pct":1.73,"hospitals_pct":39.94,"physicians_pct":24.14,"clinical_pct":65.85},{"year":2018,"admin_bn":5.361,"hospitals_bn":124.593,"physicians_bn":74.201,"other_prof_bn":5.677,"public_health_bn":20.974,"other_inst_bn":41.03,"drugs_bn":26.318,"capital_bn":13.364,"total_known_bn":311.518,"clinical_bn":204.47,"admin_pct":1.72,"hospitals_pct":40.0,"physicians_pct":23.82,"clinical_pct":65.64},{"year":2019,"admin_bn":5.392,"hospitals_bn":128.933,"physicians_bn":77.06,"other_prof_bn":6.088,"public_health_bn":22.745,"other_inst_bn":43.1,"drugs_bn":27.208,"capital_bn":14.167,"total_known_bn":324.692,"clinical_bn":212.081,"admin_pct":1.66,"hospitals_pct":39.71,"physicians_pct":23.73,"clinical_pct":65.32},{"year":2020,"admin_bn":5.766,"hospitals_bn":133.014,"physicians_bn":73.961,"other_prof_bn":5.862,"public_health_bn":23.652,"other_inst_bn":45.725,"drugs_bn":28.26,"capital_bn":17.377,"total_known_bn":333.617,"clinical_bn":212.837,"admin_pct":1.73,"hospitals_pct":39.87,"physicians_pct":22.17,"clinical_pct":63.8},{"year":2021,"admin_bn":6.703,"hospitals_bn":138.056,"physicians_bn":78.865,"other_prof_bn":6.631,"public_health_bn":25.288,"other_inst_bn":50.345,"drugs_bn":29.408,"capital_bn":18.248,"total_known_bn":353.544,"clinical_bn":223.552,"admin_pct":1.9,"hospitals_pct":39.05,"physicians_pct":22.31,"clinical_pct":63.23},{"year":2022,"admin_bn":7.386,"hospitals_bn":154.619,"physicians_bn":85.488,"other_prof_bn":7.801,"public_health_bn":33.813,"other_inst_bn":57.767,"drugs_bn":30.604,"capital_bn":20.973,"total_known_bn":398.451,"clinical_bn":247.908,"admin_pct":1.85,"hospitals_pct":38.81,"physicians_pct":21.46,"clinical_pct":62.22},{"year":2023,"admin_bn":8.089,"hospitals_bn":171.807,"physicians_bn":93.288,"other_prof_bn":8.629,"public_health_bn":36.76,"other_inst_bn":63.628,"drugs_bn":32.878,"capital_bn":25.375,"total_known_bn":440.453,"clinical_bn":273.724,"admin_pct":1.84,"hospitals_pct":39.01,"physicians_pct":21.18,"clinical_pct":62.15},{"year":2024,"admin_bn":8.304,"hospitals_bn":182.151,"physicians_bn":103.692,"other_prof_bn":9.196,"public_health_bn":35.836,"other_inst_bn":69.509,"drugs_bn":34.029,"capital_bn":27.918,"total_known_bn":470.637,"clinical_bn":295.04,"admin_pct":1.76,"hospitals_pct":38.7,"physicians_pct":22.03,"clinical_pct":62.69},{"year":2025,"admin_bn":8.517,"hospitals_bn":189.386,"physicians_bn":106.88,"other_prof_bn":9.525,"public_health_bn":37.891,"other_inst_bn":72.229,"drugs_bn":34.439,"capital_bn":29.384,"total_known_bn":488.251,"clinical_bn":305.791,"admin_pct":1.74,"hospitals_pct":38.79,"physicians_pct":21.89,"clinical_pct":62.63}],"seph_series":[{"year":2001,"health_total":1326917.0,"ambulatory":318505.0,"physician_offices":81212.0,"hospitals":515574.0,"nursing":277089.0,"social_assistance":215749.0},{"year":2002,"health_total":1363135.0,"ambulatory":333347.0,"physician_offices":85395.0,"hospitals":524311.0,"nursing":284675.0,"social_assistance":220801.0},{"year":2003,"health_total":1392640.0,"ambulatory":347686.0,"physician_offices":87201.0,"hospitals":534728.0,"nursing":283509.0,"social_assistance":226717.0},{"year":2004,"health_total":1405007.0,"ambulatory":356504.0,"physician_offices":88989.0,"hospitals":534018.0,"nursing":282682.0,"social_assistance":231803.0},{"year":2005,"health_total":1448336.0,"ambulatory":369108.0,"physician_offices":85807.0,"hospitals":545906.0,"nursing":291575.0,"social_assistance":241748.0},{"year":2006,"health_total":1483796.0,"ambulatory":382153.0,"physician_offices":85754.0,"hospitals":549487.0,"nursing":300000.0,"social_assistance":252156.0},{"year":2007,"health_total":1506445.0,"ambulatory":385516.0,"physician_offices":86925.0,"hospitals":556984.0,"nursing":305883.0,"social_assistance":258061.0},{"year":2008,"health_total":1578655.0,"ambulatory":407470.0,"physician_offices":91581.0,"hospitals":572785.0,"nursing":324242.0,"social_assistance":274157.0},{"year":2009,"health_total":1625703.0,"ambulatory":420533.0,"physician_offices":96137.0,"hospitals":579978.0,"nursing":356727.0,"social_assistance":268465.0},{"year":2010,"health_total":1663320.0,"ambulatory":429692.0,"physician_offices":98830.0,"hospitals":588913.0,"nursing":367504.0,"social_assistance":277211.0},{"year":2011,"health_total":1700113.0,"ambulatory":447428.0,"physician_offices":101844.0,"hospitals":588258.0,"nursing":379284.0,"social_assistance":285143.0},{"year":2012,"health_total":1731516.0,"ambulatory":454505.0,"physician_offices":106613.0,"hospitals":599625.0,"nursing":388092.0,"social_assistance":289295.0},{"year":2013,"health_total":1772472.0,"ambulatory":473002.0,"physician_offices":107834.0,"hospitals":608925.0,"nursing":395102.0,"social_assistance":295443.0},{"year":2014,"health_total":1806318.0,"ambulatory":492051.0,"physician_offices":108267.0,"hospitals":614044.0,"nursing":393506.0,"social_assistance":306717.0},{"year":2015,"health_total":1863690.0,"ambulatory":506594.0,"physician_offices":111393.0,"hospitals":624965.0,"nursing":412506.0,"social_assistance":319625.0},{"year":2016,"health_total":1933264.0,"ambulatory":525834.0,"physician_offices":110445.0,"hospitals":643466.0,"nursing":428605.0,"social_assistance":335360.0},{"year":2017,"health_total":1982498.0,"ambulatory":549273.0,"physician_offices":114322.0,"hospitals":645057.0,"nursing":440373.0,"social_assistance":347795.0},{"year":2018,"health_total":2042919.0,"ambulatory":581223.0,"physician_offices":118677.0,"hospitals":643974.0,"nursing":449512.0,"social_assistance":368211.0},{"year":2019,"health_total":2104734.0,"ambulatory":607320.0,"physician_offices":121146.0,"hospitals":648735.0,"nursing":462364.0,"social_assistance":386315.0},{"year":2020,"health_total":2103321.0,"ambulatory":624992.0,"physician_offices":120880.0,"hospitals":645483.0,"nursing":471307.0,"social_assistance":361539.0},{"year":2021,"health_total":2197105.0,"ambulatory":663987.0,"physician_offices":124811.0,"hospitals":668608.0,"nursing":476639.0,"social_assistance":387870.0},{"year":2022,"health_total":2257548.0,"ambulatory":683471.0,"physician_offices":126341.0,"hospitals":675386.0,"nursing":487443.0,"social_assistance":411247.0},{"year":2023,"health_total":2349162.0,"ambulatory":704498.0,"physician_offices":128375.0,"hospitals":702004.0,"nursing":508966.0,"social_assistance":433693.0},{"year":2024,"health_total":2432615.0,"ambulatory":721463.0,"physician_offices":132096.0,"hospitals":735245.0,"nursing":521739.0,"social_assistance":454169.0},{"year":2025,"health_total":2495771.0,"ambulatory":743679.0,"physician_offices":136361.0,"hospitals":745539.0,"nursing":534396.0,"social_assistance":472157.0}],"seph_indexed":{"health_total":[{"year":2001,"idx":100.0},{"year":2002,"idx":102.7},{"year":2003,"idx":105.0},{"year":2004,"idx":105.9},{"year":2005,"idx":109.2},{"year":2006,"idx":111.8},{"year":2007,"idx":113.5},{"year":2008,"idx":119.0},{"year":2009,"idx":122.5},{"year":2010,"idx":125.4},{"year":2011,"idx":128.1},{"year":2012,"idx":130.5},{"year":2013,"idx":133.6},{"year":2014,"idx":136.1},{"year":2015,"idx":140.5},{"year":2016,"idx":145.7},{"year":2017,"idx":149.4},{"year":2018,"idx":154.0},{"year":2019,"idx":158.6},{"year":2020,"idx":158.5},{"year":2021,"idx":165.6},{"year":2022,"idx":170.1},{"year":2023,"idx":177.0},{"year":2024,"idx":183.3},{"year":2025,"idx":188.1}],"physician_offices":[{"year":2001,"idx":100.0},{"year":2002,"idx":105.2},{"year":2003,"idx":107.4},{"year":2004,"idx":109.6},{"year":2005,"idx":105.7},{"year":2006,"idx":105.6},{"year":2007,"idx":107.0},{"year":2008,"idx":112.8},{"year":2009,"idx":118.4},{"year":2010,"idx":121.7},{"year":2011,"idx":125.4},{"year":2012,"idx":131.3},{"year":2013,"idx":132.8},{"year":2014,"idx":133.3},{"year":2015,"idx":137.2},{"year":2016,"idx":136.0},{"year":2017,"idx":140.8},{"year":2018,"idx":146.1},{"year":2019,"idx":149.2},{"year":2020,"idx":148.8},{"year":2021,"idx":153.7},{"year":2022,"idx":155.6},{"year":2023,"idx":158.1},{"year":2024,"idx":162.7},{"year":2025,"idx":167.9}],"hospitals":[{"year":2001,"idx":100.0},{"year":2002,"idx":101.7},{"year":2003,"idx":103.7},{"year":2004,"idx":103.6},{"year":2005,"idx":105.9},{"year":2006,"idx":106.6},{"year":2007,"idx":108.0},{"year":2008,"idx":111.1},{"year":2009,"idx":112.5},{"year":2010,"idx":114.2},{"year":2011,"idx":114.1},{"year":2012,"idx":116.3},{"year":2013,"idx":118.1},{"year":2014,"idx":119.1},{"year":2015,"idx":121.2},{"year":2016,"idx":124.8},{"year":2017,"idx":125.1},{"year":2018,"idx":124.9},{"year":2019,"idx":125.8},{"year":2020,"idx":125.2},{"year":2021,"idx":129.7},{"year":2022,"idx":131.0},{"year":2023,"idx":136.2},{"year":2024,"idx":142.6},{"year":2025,"idx":144.6}],"nursing":[{"year":2001,"idx":100.0},{"year":2002,"idx":102.7},{"year":2003,"idx":102.3},{"year":2004,"idx":102.0},{"year":2005,"idx":105.2},{"year":2006,"idx":108.3},{"year":2007,"idx":110.4},{"year":2008,"idx":117.0},{"year":2009,"idx":128.7},{"year":2010,"idx":132.6},{"year":2011,"idx":136.9},{"year":2012,"idx":140.1},{"year":2013,"idx":142.6},{"year":2014,"idx":142.0},{"year":2015,"idx":148.9},{"year":2016,"idx":154.7},{"year":2017,"idx":158.9},{"year":2018,"idx":162.2},{"year":2019,"idx":166.9},{"year":2020,"idx":170.1},{"year":2021,"idx":172.0},{"year":2022,"idx":175.9},{"year":2023,"idx":183.7},{"year":2024,"idx":188.3},{"year":2025,"idx":192.9}],"social_assistance":[{"year":2001,"idx":100.0},{"year":2002,"idx":102.3},{"year":2003,"idx":105.1},{"year":2004,"idx":107.4},{"year":2005,"idx":112.1},{"year":2006,"idx":116.9},{"year":2007,"idx":119.6},{"year":2008,"idx":127.1},{"year":2009,"idx":124.4},{"year":2010,"idx":128.5},{"year":2011,"idx":132.2},{"year":2012,"idx":134.1},{"year":2013,"idx":136.9},{"year":2014,"idx":142.2},{"year":2015,"idx":148.1},{"year":2016,"idx":155.4},{"year":2017,"idx":161.2},{"year":2018,"idx":170.7},{"year":2019,"idx":179.1},{"year":2020,"idx":167.6},{"year":2021,"idx":179.8},{"year":2022,"idx":190.6},{"year":2023,"idx":201.0},{"year":2024,"idx":210.5},{"year":2025,"idx":218.8}],"ambulatory":[{"year":2001,"idx":100.0},{"year":2002,"idx":104.7},{"year":2003,"idx":109.2},{"year":2004,"idx":111.9},{"year":2005,"idx":115.9},{"year":2006,"idx":120.0},{"year":2007,"idx":121.0},{"year":2008,"idx":127.9},{"year":2009,"idx":132.0},{"year":2010,"idx":134.9},{"year":2011,"idx":140.5},{"year":2012,"idx":142.7},{"year":2013,"idx":148.5},{"year":2014,"idx":154.5},{"year":2015,"idx":159.1},{"year":2016,"idx":165.1},{"year":2017,"idx":172.5},{"year":2018,"idx":182.5},{"year":2019,"idx":190.7},{"year":2020,"idx":196.2},{"year":2021,"idx":208.5},{"year":2022,"idx":214.6},{"year":2023,"idx":221.2},{"year":2024,"idx":226.5},{"year":2025,"idx":233.5}]},"summary":{"nhex_earliest_year":1975,"nhex_latest_year":2025,"admin_pct_earliest":2.8,"admin_pct_latest":1.74,"hospitals_pct_latest":38.79,"physicians_pct_latest":21.89,"clinical_pct_latest":62.63,"health_total_2001":1326917.0,"physician_offices_2001":81212.0,"health_total_latest":2495771.0,"physician_offices_latest":136361.0}},"public_admin":{"label":"Public Administration","description":"Government employment per 1,000 Canadians by level of government","source":"StatCan SEPH 14-10-0220-01 + population 17-10-0005-01","seph_series":[{"year":2001,"pa_total":870049.0,"federal":257068.0,"provincial":240330.0,"local":332331.0,"aboriginal":null,"total_economy":null},{"year":2002,"pa_total":865559.0,"federal":263838.0,"provincial":240588.0,"local":318749.0,"aboriginal":null,"total_economy":null},{"year":2003,"pa_total":903565.0,"federal":266502.0,"provincial":242117.0,"local":350079.0,"aboriginal":null,"total_economy":null},{"year":2004,"pa_total":914810.0,"federal":267406.0,"provincial":238984.0,"local":362212.0,"aboriginal":null,"total_economy":null},{"year":2005,"pa_total":937001.0,"federal":271002.0,"provincial":249006.0,"local":372984.0,"aboriginal":null,"total_economy":null},{"year":2006,"pa_total":954095.0,"federal":276413.0,"provincial":255587.0,"local":377921.0,"aboriginal":null,"total_economy":null},{"year":2007,"pa_total":980664.0,"federal":285852.0,"provincial":258596.0,"local":392385.0,"aboriginal":null,"total_economy":null},{"year":2008,"pa_total":1024705.0,"federal":296369.0,"provincial":268276.0,"local":416318.0,"aboriginal":null,"total_economy":null},{"year":2009,"pa_total":1045593.0,"federal":297401.0,"provincial":273247.0,"local":429620.0,"aboriginal":null,"total_economy":null},{"year":2010,"pa_total":1052604.0,"federal":296830.0,"provincial":280507.0,"local":430069.0,"aboriginal":null,"total_economy":null},{"year":2011,"pa_total":1053390.0,"federal":294176.0,"provincial":282986.0,"local":431348.0,"aboriginal":null,"total_economy":null},{"year":2012,"pa_total":1044527.0,"federal":284092.0,"provincial":285310.0,"local":423308.0,"aboriginal":null,"total_economy":null},{"year":2013,"pa_total":1043595.0,"federal":274469.0,"provincial":285267.0,"local":432560.0,"aboriginal":null,"total_economy":null},{"year":2014,"pa_total":1044327.0,"federal":276418.0,"provincial":283437.0,"local":430503.0,"aboriginal":null,"total_economy":null},{"year":2015,"pa_total":1044687.0,"federal":277964.0,"provincial":279972.0,"local":432867.0,"aboriginal":null,"total_economy":null},{"year":2016,"pa_total":1070541.0,"federal":283394.0,"provincial":287920.0,"local":441451.0,"aboriginal":null,"total_economy":null},{"year":2017,"pa_total":1101929.0,"federal":295519.0,"provincial":294030.0,"local":455348.0,"aboriginal":null,"total_economy":null},{"year":2018,"pa_total":1117182.0,"federal":304518.0,"provincial":302265.0,"local":451554.0,"aboriginal":null,"total_economy":null},{"year":2019,"pa_total":1142130.0,"federal":316778.0,"provincial":303764.0,"local":459270.0,"aboriginal":null,"total_economy":null},{"year":2020,"pa_total":1135251.0,"federal":330206.0,"provincial":309459.0,"local":433466.0,"aboriginal":null,"total_economy":null},{"year":2021,"pa_total":1191681.0,"federal":351358.0,"provincial":317605.0,"local":459398.0,"aboriginal":null,"total_economy":null},{"year":2022,"pa_total":1236498.0,"federal":372997.0,"provincial":328164.0,"local":467686.0,"aboriginal":null,"total_economy":null},{"year":2023,"pa_total":1292570.0,"federal":384801.0,"provincial":342709.0,"local":492653.0,"aboriginal":null,"total_economy":null},{"year":2024,"pa_total":1316301.0,"federal":383693.0,"provincial":347964.0,"local":507840.0,"aboriginal":null,"total_economy":null},{"year":2025,"pa_total":1321914.0,"federal":370617.0,"provincial":347473.0,"local":525611.0,"aboriginal":null,"total_economy":null}],"percapita_series":[{"year":2001,"pa_total":28.05,"federal":8.29,"provincial":7.75,"local":10.71},{"year":2002,"pa_total":27.6,"federal":8.41,"provincial":7.67,"local":10.16},{"year":2003,"pa_total":28.56,"federal":8.42,"provincial":7.65,"local":11.06},{"year":2004,"pa_total":28.64,"federal":8.37,"provincial":7.48,"local":11.34},{"year":2005,"pa_total":29.06,"federal":8.41,"provincial":7.72,"local":11.57},{"year":2006,"pa_total":29.29,"federal":8.49,"provincial":7.85,"local":11.6},{"year":2007,"pa_total":29.82,"federal":8.69,"provincial":7.86,"local":11.93},{"year":2008,"pa_total":30.82,"federal":8.91,"provincial":8.07,"local":12.52},{"year":2009,"pa_total":31.09,"federal":8.84,"provincial":8.13,"local":12.77},{"year":2010,"pa_total":30.95,"federal":8.73,"provincial":8.25,"local":12.65},{"year":2011,"pa_total":30.68,"federal":8.57,"provincial":8.24,"local":12.56},{"year":2012,"pa_total":30.09,"federal":8.18,"provincial":8.22,"local":12.19},{"year":2013,"pa_total":29.75,"federal":7.82,"provincial":8.13,"local":12.33},{"year":2014,"pa_total":29.47,"federal":7.8,"provincial":8.0,"local":12.15},{"year":2015,"pa_total":29.26,"federal":7.79,"provincial":7.84,"local":12.12},{"year":2016,"pa_total":29.65,"federal":7.85,"provincial":7.97,"local":12.22},{"year":2017,"pa_total":30.15,"federal":8.09,"provincial":8.05,"local":12.46},{"year":2018,"pa_total":30.13,"federal":8.21,"provincial":8.15,"local":12.18},{"year":2019,"pa_total":30.36,"federal":8.42,"provincial":8.07,"local":12.21},{"year":2020,"pa_total":29.85,"federal":8.68,"provincial":8.14,"local":11.4},{"year":2021,"pa_total":31.16,"federal":9.19,"provincial":8.31,"local":12.01},{"year":2022,"pa_total":31.75,"federal":9.58,"provincial":8.43,"local":12.01},{"year":2023,"pa_total":32.27,"federal":9.61,"provincial":8.56,"local":12.3},{"year":2024,"pa_total":31.9,"federal":9.3,"provincial":8.43,"local":12.31},{"year":2025,"pa_total":31.74,"federal":8.9,"provincial":8.34,"local":12.62}],"summary":{"earliest_year":2001,"latest_year":2025,"pa_per1k_earliest":28.05,"pa_per1k_latest":31.74,"federal_per1k_earliest":8.29,"federal_per1k_latest":8.9,"provincial_per1k_earliest":7.75,"provincial_per1k_latest":8.34,"local_per1k_earliest":10.71,"local_per1k_latest":12.62}}};
+
+const C = {
+  teal: '#3A5F6F', tealL: '#4A8FA6', red: '#A13F3F', redL: '#C05050',
+  gold: '#B8860B', goldL: '#D4A017', green: '#3A6B3A', greenL: '#5A9B5A',
+  gray: '#8A8A8A', grayL: '#BBBBBB', orange: '#C06020', purple: '#6B4B8A',
+};
+const FONT = { family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif" };
+
+function baseOpts() {
+  return {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, position: 'bottom',
+        labels: { font: { ...FONT, size: 10 }, padding: 8, boxWidth: 10 } },
+      tooltip: { mode: 'index', intersect: false },
+    },
+    scales: {
+      x: { ticks: { font: { ...FONT, size: 9 }, maxRotation: 45, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+      y: { ticks: { font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' } },
+    },
+  };
+}
+
+// ── 1a. Education stacked bar ────────────────────────────────────────────────
+(function() {
+  const raw = RAW.education.series.filter(e => e.year >= 1975 && e.admin_pct != null);
+  const labels = raw.map(e => e.year);
+  new Chart(document.getElementById('eduStackChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Teacher Salaries', data: raw.map(e => e.teacher_pct), backgroundColor: C.teal, stack: 's' },
+        { label: 'Administration',   data: raw.map(e => e.admin_pct),   backgroundColor: C.red,  stack: 's' },
+        { label: 'Facilities',       data: raw.map(e => e.facilities_pct), backgroundColor: C.gold, stack: 's' },
+        { label: 'Transportation',   data: raw.map(e => e.transport_pct),  backgroundColor: C.grayL, stack: 's' },
+        { label: 'Other Operating',  data: raw.map(e => e.other_pct),   backgroundColor: C.orange, stack: 's' },
+      ],
+    },
+    options: {
+      ...baseOpts(),
+      scales: {
+        x: { stacked: true, ticks: { font: { ...FONT, size: 9 }, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+        y: { stacked: true, min: 0, max: 100,
+             ticks: { callback: v => v + '%', font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' } },
+      },
+      plugins: {
+        ...baseOpts().plugins,
+        tooltip: { mode: 'index', intersect: false,
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${(+ctx.raw).toFixed(1)}%` } },
+      },
+    },
+  });
+})();
+
+// ── 1b. Education line chart ─────────────────────────────────────────────────
+(function() {
+  const raw = RAW.education.series.filter(e => e.year >= 1975 && e.admin_pct != null);
+  const labels = raw.map(e => e.year);
+  new Chart(document.getElementById('eduLineChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Teacher Salaries %', data: raw.map(e => e.teacher_pct),
+          borderColor: C.teal, backgroundColor: 'transparent', tension: .35, pointRadius: 0, borderWidth: 2.5 },
+        { label: '"Other" Non-Instructional %', data: raw.map(e => e.other_pct),
+          borderColor: C.orange, backgroundColor: 'transparent', tension: .35, pointRadius: 0, borderWidth: 2.5 },
+        { label: 'Administration %', data: raw.map(e => e.admin_pct),
+          borderColor: C.red, backgroundColor: 'transparent', tension: .35, pointRadius: 0, borderWidth: 2, borderDash: [5,3] },
+        { label: 'Facilities %', data: raw.map(e => e.facilities_pct),
+          borderColor: C.gold, backgroundColor: 'transparent', tension: .35, pointRadius: 0, borderWidth: 1.5, borderDash: [3,3] },
+      ],
+    },
+    options: {
+      ...baseOpts(),
+      scales: {
+        x: { ticks: { font: { ...FONT, size: 9 }, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+        y: { min: 0, max: 75,
+             ticks: { callback: v => v + '%', font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' } },
+      },
+      plugins: {
+        ...baseOpts().plugins,
+        tooltip: { mode: 'index', intersect: false,
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${(+ctx.raw).toFixed(1)}%` } },
+      },
+    },
+  });
+})();
+
+// ── 2a. NHEX dual-axis line chart ────────────────────────────────────────────
+(function() {
+  const nhex = RAW.healthcare.nhex_series;
+  const labels = nhex.map(e => e.year);
+  new Chart(document.getElementById('nhexChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Clinical Care % (L)', data: nhex.map(e => e.clinical_pct), yAxisID: 'y',
+          borderColor: C.teal, backgroundColor: 'rgba(58,95,111,0.07)', fill: true, tension: .35, pointRadius: 0, borderWidth: 2.5 },
+        { label: 'Hospitals % (L)', data: nhex.map(e => e.hospitals_pct), yAxisID: 'y',
+          borderColor: C.tealL, backgroundColor: 'transparent', tension: .35, pointRadius: 0, borderWidth: 1.5, borderDash: [4,3] },
+        { label: 'Physicians % (L)', data: nhex.map(e => e.physicians_pct), yAxisID: 'y',
+          borderColor: C.green, backgroundColor: 'transparent', tension: .35, pointRadius: 0, borderWidth: 1.5, borderDash: [4,3] },
+        { label: 'Administration % (R)', data: nhex.map(e => e.admin_pct), yAxisID: 'y2',
+          borderColor: C.red, backgroundColor: 'transparent', tension: .35, pointRadius: 1, borderWidth: 2, borderDash: [5,3] },
+      ],
+    },
+    options: {
+      ...baseOpts(),
+      scales: {
+        x: { ticks: { font: { ...FONT, size: 9 }, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+        y: { min: 0, max: 90,
+             ticks: { callback: v => v + '%', font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' },
+             title: { display: true, text: 'Clinical / Hospital / Physician %', font: { ...FONT, size: 9 } } },
+        y2: { position: 'right', min: 0, max: 6,
+              ticks: { callback: v => v + '%', font: { ...FONT, size: 10 } }, grid: { display: false },
+              title: { display: true, text: 'Admin %', font: { ...FONT, size: 9 } } },
+      },
+      plugins: {
+        ...baseOpts().plugins,
+        tooltip: { mode: 'index', intersect: false,
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${(+ctx.raw).toFixed(2)}%` } },
+      },
+    },
+  });
+})();
+
+// ── 2b. SEPH healthcare indexed line chart ───────────────────────────────────
+(function() {
+  const idx = RAW.healthcare.seph_indexed;
+  const yrs = idx.health_total.map(e => e.year);
+
+  function ds(key, label, color, dash) {
+    const map = {};
+    (idx[key] || []).forEach(e => { map[e.year] = e.idx; });
+    return {
+      label, data: yrs.map(y => map[y] ?? null),
+      borderColor: color, backgroundColor: 'transparent',
+      tension: .3, pointRadius: 0, borderWidth: 2.5,
+      ...(dash ? { borderDash: dash } : {}),
+    };
+  }
+
+  new Chart(document.getElementById('healthSephChart'), {
+    type: 'line',
+    data: {
+      labels: yrs,
+      datasets: [
+        ds('social_assistance', 'Social Assistance (+119%)',          C.red),
+        ds('nursing',           'Nursing & Residential Care (+93%)',  C.orange),
+        ds('health_total',      'Total Health & Social Asst. (+88%)', C.gray),
+        ds('physician_offices', 'Physician Offices (+68%)',           C.teal,  [5,3]),
+        ds('hospitals',         'Hospitals (+45%)',                    C.tealL, [3,3]),
+      ],
+    },
+    options: {
+      ...baseOpts(),
+      scales: {
+        x: { ticks: { font: { ...FONT, size: 9 }, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+        y: { min: 80,
+             ticks: { font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' },
+             title: { display: true, text: '2001 = 100', font: { ...FONT, size: 9 } } },
+      },
+    },
+  });
+})();
+
+// ── 3a. Public admin per-capita line ─────────────────────────────────────────
+(function() {
+  const pa = RAW.public_admin.percapita_series;
+  const labels = pa.map(e => e.year);
+  new Chart(document.getElementById('paChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Total Pub. Admin', data: pa.map(e => e.pa_total),
+          borderColor: C.gray, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2.5 },
+        { label: 'Federal', data: pa.map(e => e.federal),
+          borderColor: C.red, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2 },
+        { label: 'Provincial/Territorial', data: pa.map(e => e.provincial),
+          borderColor: C.teal, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2, borderDash: [5,3] },
+        { label: 'Local/Municipal', data: pa.map(e => e.local),
+          borderColor: C.orange, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2, borderDash: [3,3] },
+      ],
+    },
+    options: {
+      ...baseOpts(),
+      scales: {
+        x: { ticks: { font: { ...FONT, size: 9 }, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+        y: { ticks: { font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' },
+             title: { display: true, text: 'Employees per 1,000 Canadians', font: { ...FONT, size: 9 } } },
+      },
+      plugins: {
+        ...baseOpts().plugins,
+        tooltip: { mode: 'index', intersect: false,
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${(+ctx.raw).toFixed(1)} per 1,000` } },
+      },
+    },
+  });
+})();
+
+// ── 3b. Public admin absolute ────────────────────────────────────────────────
+(function() {
+  const pa = RAW.public_admin.seph_series;
+  const labels = pa.map(e => e.year);
+  new Chart(document.getElementById('paAbsChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Federal', data: pa.map(e => e.federal ? +(e.federal/1000).toFixed(1) : null),
+          borderColor: C.red, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2 },
+        { label: 'Provincial/Territorial', data: pa.map(e => e.provincial ? +(e.provincial/1000).toFixed(1) : null),
+          borderColor: C.teal, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2, borderDash: [5,3] },
+        { label: 'Local/Municipal', data: pa.map(e => e.local ? +(e.local/1000).toFixed(1) : null),
+          borderColor: C.orange, backgroundColor: 'transparent', tension: .3, pointRadius: 0, borderWidth: 2, borderDash: [3,3] },
+      ],
+    },
+    options: {
+      ...baseOpts(),
+      scales: {
+        x: { ticks: { font: { ...FONT, size: 9 }, maxTicksLimit: 14 }, grid: { color: '#E8E2D5' } },
+        y: { ticks: { callback: v => v + 'k', font: { ...FONT, size: 10 } }, grid: { color: '#E8E2D5' },
+             title: { display: true, text: 'Thousands of employees', font: { ...FONT, size: 9 } } },
+      },
+      plugins: {
+        ...baseOpts().plugins,
+        tooltip: { mode: 'index', intersect: false,
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${(+ctx.raw).toFixed(1)}k` } },
+      },
+    },
+  });
+})();
+</script>
+</body>
+</html>

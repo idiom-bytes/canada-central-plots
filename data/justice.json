@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "latest_year": "2023/2024",
+    "remand_latest": 19334,
+    "sentenced_latest": 5895,
+    "remand_share_latest": 76.6,
+    "remand_share_earliest": 22.5,
+    "earliest_year": "1978/1979",
+    "crossover_year": "2004/2005",
+    "remand_growth_pct": 538,
+    "source": "Statistics Canada Table 35-10-0154-01 (average counts of adults in provincial/territorial correctional programs)"
+  },
+  "series": [
+    {
+      "year": "1978/1979",
+      "remand": 3030.0,
+      "sentenced": 10428.0,
+      "total_custody": 13479.0,
+      "remand_share": 22.5
+    },
+    {
+      "year": "1979/1980",
+      "remand": 2948.0,
+      "sentenced": 10393.0,
+      "total_custody": 13363.0,
+      "remand_share": 22.1
+    },
+    {
+      "year": "1980/1981",
+      "remand": 2997.0,
+      "sentenced": 10832.0,
+      "total_custody": 13851.0,
+      "remand_share": 21.7
+    },
+    {
+      "year": "1981/1982",
+      "remand": 3144.0,
+      "sentenced": 11950.0,
+      "total_custody": 15126.0,
+      "remand_share": 20.8
+    },
+    {
+      "year": "1982/1983",
+      "remand": 3497.0,
+      "sentenced": 13608.0,
+      "total_custody": 17149.0,
+      "remand_share": 20.4
+    },
+    {
+      "year": "1983/1984",
+      "remand": 3248.0,
+      "sentenced": 13283.0,
+      "total_custody": 16542.0,
+      "remand_share": 19.6
+    },
+    {
+      "year": "1984/1985",
+      "remand": 3304.0,
+      "sentenced": 13467.0,
+      "total_custody": 16777.0,
+      "remand_share": 19.7
+    },
+    {
+      "year": "1985/1986",
+      "remand": 3424.0,
+      "sentenced": 12690.0,
+      "total_custody": 16178.0,
+      "remand_share": 21.2
+    },
+    {
+      "year": "1986/1987",
+      "remand": 3674.0,
+      "sentenced": 12076.0,
+      "total_custody": 15787.0,
+      "remand_share": 23.3
+    },
+    {
+      "year": "1987/1988",
+      "remand": 3965.0,
+      "sentenced": 12071.0,
+      "total_custody": 16077.0,
+      "remand_share": 24.7
+    },
+    {
+      "year": "1988/1989",
+      "remand": 4202.0,
+      "sentenced": 12181.0,
+      "total_custody": 16436.0,
+      "remand_share": 25.6
+    },
+    {
+      "year": "1989/1990",
+      "remand": 4701.0,
+      "sentenced": 12986.0,
+      "total_custody": 17735.0,
+      "remand_share": 26.6
+    },
+    {
+      "year": "1990/1991",
+      "remand": 4713.0,
+      "sentenced": 13170.0,
+      "total_custody": 17935.0,
+      "remand_share": 26.4
+    },
+    {
+      "year": "1991/1992",
+      "remand": 4947.0,
+      "sentenced": 13925.0,
+      "total_custody": 18940.0,
+      "remand_share": 26.2
+    },
+    {
+      "year": "1992/1993",
+      "remand": 5111.0,
+      "sentenced": 14135.0,
+      "total_custody": 19367.0,
+      "remand_share": 26.6
+    },
+    {
+      "year": "1993/1994",
+      "remand": 5130.0,
+      "sentenced": 14252.0,
+      "total_custody": 19482.0,
+      "remand_share": 26.5
+    },
+    {
+      "year": "1994/1995",
+      "remand": 5327.0,
+      "sentenced": 14317.0,
+      "total_custody": 19812.0,
+      "remand_share": 27.1
+    },
+    {
+      "year": "1995/1996",
+      "remand": 5266.0,
+      "sentenced": 14240.5,
+      "total_custody": 19729.7,
+      "remand_share": 27.0
+    },
+    {
+      "year": "1996/1997",
+      "remand": 5734.1,
+      "sentenced": 13523.1,
+      "total_custody": 19524.9,
+      "remand_share": 29.8
+    },
+    {
+      "year": "1997/1998",
+      "remand": 6109.0,
+      "sentenced": 12574.1,
+      "total_custody": 18955.6,
+      "remand_share": 32.7
+    },
+    {
+      "year": "1998/1999",
+      "remand": 6490.5,
+      "sentenced": 12476.9,
+      "total_custody": 19220.6,
+      "remand_share": 34.2
+    },
+    {
+      "year": "1999/2000",
+      "remand": 6660.6,
+      "sentenced": 11400.3,
+      "total_custody": 18574.1,
+      "remand_share": 36.9
+    },
+    {
+      "year": "2000/2001",
+      "remand": 7401.4,
+      "sentenced": 10914.6,
+      "total_custody": 18724.0,
+      "remand_share": 40.4
+    },
+    {
+      "year": "2001/2002",
+      "remand": 7943.8,
+      "sentenced": 10900.6,
+      "total_custody": 19148.4,
+      "remand_share": 42.2
+    },
+    {
+      "year": "2002/2003",
+      "remand": 8703.7,
+      "sentenced": 10555.0,
+      "total_custody": 19579.3,
+      "remand_share": 45.2
+    },
+    {
+      "year": "2003/2004",
+      "remand": 9173.6,
+      "sentenced": 9851.1,
+      "total_custody": 19342.4,
+      "remand_share": 48.2
+    },
+    {
+      "year": "2004/2005",
+      "remand": 9787.0,
+      "sentenced": 9691.5,
+      "total_custody": 19792.4,
+      "remand_share": 50.2
+    },
+    {
+      "year": "2005/2006",
+      "remand": 11040.3,
+      "sentenced": 9476.2,
+      "total_custody": 20794.0,
+      "remand_share": 53.8
+    },
+    {
+      "year": "2006/2007",
+      "remand": 12168.9,
+      "sentenced": 9982.7,
+      "total_custody": 22434.8,
+      "remand_share": 54.9
+    },
+    {
+      "year": "2007/2008",
+      "remand": 12972.7,
+      "sentenced": 9799.3,
+      "total_custody": 23086.4,
+      "remand_share": 57.0
+    },
+    {
+      "year": "2008/2009",
+      "remand": 13548.0,
+      "sentenced": 9931.2,
+      "total_custody": 23790.3,
+      "remand_share": 57.7
+    },
+    {
+      "year": "2009/2010",
+      "remand": 13739.3,
+      "sentenced": 10045.1,
+      "total_custody": 24092.2,
+      "remand_share": 57.8
+    },
+    {
+      "year": "2010/2011",
+      "remand": 13086.3,
+      "sentenced": 10921.6,
+      "total_custody": 24434.7,
+      "remand_share": 54.5
+    },
+    {
+      "year": "2011/2012",
+      "remand": 13369.3,
+      "sentenced": 11137.6,
+      "total_custody": 24814.4,
+      "remand_share": 54.6
+    },
+    {
+      "year": "2012/2013",
+      "remand": 13739.0,
+      "sentenced": 11137.7,
+      "total_custody": 25184.6,
+      "remand_share": 55.2
+    },
+    {
+      "year": "2013/2014",
+      "remand": 11494.1,
+      "sentenced": 9888.0,
+      "total_custody": 21703.8,
+      "remand_share": 53.8
+    },
+    {
+      "year": "2014/2015",
+      "remand": 13650.3,
+      "sentenced": 10363.6,
+      "total_custody": 24455.3,
+      "remand_share": 56.8
+    },
+    {
+      "year": "2015/2016",
+      "remand": 14898.9,
+      "sentenced": 10091.4,
+      "total_custody": 25405.4,
+      "remand_share": 59.6
+    },
+    {
+      "year": "2016/2017",
+      "remand": 15416.5,
+      "sentenced": 9709.7,
+      "total_custody": 25447.5,
+      "remand_share": 61.4
+    },
+    {
+      "year": "2017/2018",
+      "remand": 14832.7,
+      "sentenced": 9545.2,
+      "total_custody": 24680.5,
+      "remand_share": 60.8
+    },
+    {
+      "year": "2018/2019",
+      "remand": 14778.4,
+      "sentenced": 8708.2,
+      "total_custody": 23783.2,
+      "remand_share": 62.9
+    },
+    {
+      "year": "2019/2020",
+      "remand": 15505.3,
+      "sentenced": 7946.7,
+      "total_custody": 23894.1,
+      "remand_share": 66.1
+    },
+    {
+      "year": "2020/2021",
+      "remand": 12752.5,
+      "sentenced": 5881.2,
+      "total_custody": 18950.2,
+      "remand_share": 68.4
+    },
+    {
+      "year": "2021/2022",
+      "remand": 14414.5,
+      "sentenced": 5798.3,
+      "total_custody": 20438.5,
+      "remand_share": 71.3
+    },
+    {
+      "year": "2022/2023",
+      "remand": 16193.9,
+      "sentenced": 5915.7,
+      "total_custody": 22318.5,
+      "remand_share": 73.2
+    },
+    {
+      "year": "2023/2024",
+      "remand": 19334.5,
+      "sentenced": 5895.1,
+      "total_custody": 25349.8,
+      "remand_share": 76.6
+    }
+  ]
+}

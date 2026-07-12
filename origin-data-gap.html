@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Origin Data Gap | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/datagap.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1180px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    /* hero */
+    .hero{background:linear-gradient(135deg,#8B2020,#B83232);color:#fff;border-radius:var(--radius-lg);padding:2rem 1.75rem;margin:1.5rem 0 1rem;box-shadow:0 4px 20px rgba(139,32,32,.25)}
+    @media(min-width:768px){.hero{padding:2.75rem 2.5rem}}
+    .hero-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;opacity:.85;margin:0 0 0.75rem}
+    .hero h1{font-size:1.75rem;font-weight:800;line-height:1.12;margin:0 0 1rem}
+    @media(min-width:768px){.hero h1{font-size:2.6rem}}
+    .hero-big{display:flex;align-items:center;gap:1rem;margin:1.25rem 0 0.5rem;flex-wrap:wrap}
+    .hero-num{font-size:3.5rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+    @media(min-width:768px){.hero-num{font-size:5rem}}
+    .hero-num-label{font-size:0.95rem;opacity:.9;max-width:340px;line-height:1.4}
+    .hero p{font-size:0.9375rem;line-height:1.7;opacity:.95;margin:0.75rem 0 0;max-width:760px}
+
+    .section-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:1.75rem 0 0.75rem}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 .25rem}
+    .stat-value{font-size:2rem;font-weight:800;line-height:1;margin:0}
+    .stat-value.alarm{color:var(--color-alarm)}.stat-value.teal{color:var(--color-teal)}.stat-value.amber{color:var(--color-amber)}
+    .stat-label{font-size:0.6875rem;color:var(--color-text-secondary);margin:.25rem 0 0;line-height:1.4}
+
+    .grid2{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:900px){.grid2{grid-template-columns:1fr 1fr}}
+    .card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem}
+    .card h2{font-size:1rem;font-weight:700;margin:0 0 0.25rem}
+    .card .sub{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 1rem;line-height:1.5}
+    .chart-wrap{position:relative;height:260px}
+
+    /* methodology pipeline */
+    .pipe{display:flex;flex-direction:column;gap:0}
+    .pipe-step{display:flex;gap:1rem;align-items:flex-start;padding:0.85rem 0;border-bottom:1px solid var(--color-cream-dark)}
+    .pipe-step:last-child{border-bottom:none}
+    .pipe-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--color-teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8125rem}
+    .pipe-step.final .pipe-num{background:var(--color-alarm)}
+    .pipe-body{flex:1;min-width:0}
+    .pipe-stage{font-size:0.875rem;font-weight:700;margin:0}
+    .pipe-detail{font-size:0.75rem;color:var(--color-text-secondary);margin:2px 0 0;line-height:1.4}
+    .pipe-n{font-size:1.1rem;font-weight:800;color:var(--color-teal);white-space:nowrap;font-variant-numeric:tabular-nums}
+    .pipe-step.final .pipe-n{color:var(--color-alarm)}
+    .pipe-unit{font-size:0.625rem;color:var(--color-text-tertiary);display:block;font-weight:600;text-align:right}
+
+    .prose{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.75rem;margin-bottom:1rem;font-size:0.9375rem;line-height:1.75;color:var(--color-text-secondary)}
+    .prose h2{font-size:1.1rem;color:var(--color-text-primary);margin:0 0 0.75rem}
+    .prose p{margin:0 0 0.9rem}
+    .prose strong{color:var(--color-text-primary)}
+    .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:1rem 0;font-size:0.875rem;line-height:1.65;color:var(--color-alarm-dark)}
+    .callout.teal{border-left-color:var(--color-teal);background:#EAF0F2;color:var(--color-teal)}
+
+    table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    th{text-align:left;font-size:0.625rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-tertiary);font-weight:700;padding:0.5rem 0.6rem;border-bottom:2px solid var(--color-beige)}
+    td{padding:0.55rem 0.6rem;border-bottom:1px solid var(--color-cream-dark);vertical-align:top}
+    tr:hover td{background:var(--color-cream)}
+    .yr-cell{font-weight:700;color:var(--color-teal)}
+    .chip{display:inline-block;font-size:0.5625rem;font-weight:700;text-transform:uppercase;padding:1px 6px;border-radius:9999px;background:var(--color-alarm-dark);color:#fff;margin:1px 2px 1px 0}
+    .terms{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:.5rem}
+    .term{font-size:0.75rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:9999px;background:var(--color-cream);border:1px solid var(--color-beige-dark);color:var(--color-text-secondary)}
+    .term b{color:var(--color-alarm)}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.5rem}
+    .loading{text-align:center;padding:3rem;color:var(--color-text-tertiary)}
+    /* merged: timeline, two-box, checklist, button */
+    .tl{list-style:none;margin:.5rem 0;padding:0;position:relative}
+    .tl:before{content:"";position:absolute;left:78px;top:6px;bottom:6px;width:2px;background:var(--color-beige-dark)}
+    .tl li{position:relative;display:grid;grid-template-columns:60px 1fr;column-gap:2.25rem;padding:.5rem 0}
+    .tl .yr{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;color:var(--color-text-tertiary);font-size:.85rem}
+    .tl .dot{position:absolute;left:72px;top:10px;width:14px;height:14px;border-radius:50%;background:#8a857a;border:3px solid var(--color-white)}
+    .tl li.ret .dot{background:var(--color-teal)}.tl li.ret .yr{color:var(--color-teal)}
+    .tl .ev{font-size:.85rem;color:var(--color-text-secondary);margin:0}.tl .ev b{color:var(--color-text-primary)}
+    /* the 30-year void, made visual */
+    .tl li.gap{align-items:center;padding:.4rem 0}
+    .tl li.gap .dot{display:none}
+    .tl li.gap .yr{display:flex;align-items:center;justify-content:flex-end;color:var(--color-alarm);font-size:.8rem}
+    .tl li.gap .ev{border:2px dashed var(--color-beige-dark);border-radius:12px;background:repeating-linear-gradient(135deg,var(--color-cream-dark),var(--color-cream-dark) 10px,var(--color-white) 10px,var(--color-white) 20px);min-height:140px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1rem;gap:.3rem}
+    .tl li.gap .ev .big{font-size:1.9rem;font-weight:800;color:var(--color-alarm);line-height:1}
+    .tl li.gap .ev .small{font-size:.72rem;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.08em;font-weight:700;max-width:280px}
+    .two{display:grid;grid-template-columns:1fr;gap:.75rem;margin:1rem 0}
+    @media(min-width:680px){.two{grid-template-columns:1fr 1fr}}
+    .box{border-radius:var(--radius-lg);padding:1rem 1.2rem;border:1px solid var(--color-beige)}
+    .box.teal{background:#EAF0F2;border-color:#cddde1}
+    .box.grey{background:var(--color-cream-dark);border-color:var(--color-beige-dark)}
+    .box.red{background:linear-gradient(135deg,#8B2020,#B83232);color:#fff;border-radius:var(--radius-lg);box-shadow:0 4px 20px rgba(139,32,32,.25)}
+    .box h3{margin:0 0 .35rem;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+    .box.teal h3{color:var(--color-teal)}.box.grey h3{color:var(--color-text-secondary)}
+    .box p{font-size:.85rem;margin:0}
+    .todo{list-style:none;margin:1rem 0;padding:0}
+    .todo li{display:grid;grid-template-columns:28px 1fr;gap:.8rem;padding:.75rem 0;border-bottom:1px solid var(--color-cream-dark)}
+    .todo li:last-child{border-bottom:none}
+    .todo .mk{width:24px;height:24px;border-radius:6px;border:2px solid var(--color-beige-dark);background:var(--color-white)}
+    .todo .t{font-weight:700;color:var(--color-text-primary);font-size:.92rem;margin:0 0 2px}.todo .w{font-size:.82rem;color:var(--color-text-secondary);margin:0}
+    .btn{display:inline-block;font-size:.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-teal);padding:.45rem .95rem;border-radius:999px;margin:.4rem 0}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="overview.html">Overview</a>
+    <a href="immigration-volumes.html">Volumes</a>
+    <a href="asylum-channel.html">Asylum</a>
+    <a href="policy-timeline.html">Policy</a>
+    <a href="policy-crime-impact.html">Policy Impact</a>
+    <a href="canada-vs-uk.html">Canada vs UK</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a class="active" href="origin-data-gap.html">Data Gap</a>
+    <a href="justice-backlog.html">Justice</a>
+    <a href="lobbying-influence.html">Lobbying</a>
+    <a href="hate-crime.html">Hate Crime</a>
+    <a href="asylum-cost.html">Cost</a>
+    <a href="enforcement.html">Enforcement</a>
+    <a href="narrative-gap.html">Narrative Gap</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <p class="hero-tag">Methodology &amp; Key Finding</p>
+    <h1>Canada does not record who commits these crimes.</h1>
+    <p>We assembled a decade-long database of Canadian sexual-exploitation, human-trafficking and child-exploitation cases. Then we asked a simple question the official statistics cannot answer: <strong>what was the offender's immigration status or country of origin?</strong></p>
+    <div class="hero-big">
+      <span class="hero-num" id="heroSilent">—</span>
+      <span class="hero-num-label">of distinct cases give <strong>no</strong> indication of the offender's immigration status or country of origin.</span>
+    </div>
+  </div>
+
+  <div id="app" style="display:none">
+
+    <p class="section-tag">Why this gap exists</p>
+    <div class="prose">
+      <h2>The data was never collected, by design</h2>
+      <p>Statistics Canada's <strong>Uniform Crime Reporting Survey</strong> the national record of police-reported crime, does not capture the accused's citizenship, immigration status, or country of birth. Neither courts nor the Correctional Service publish offender nationality in any routine, aggregated form. There is no Canadian equivalent of the offender-origin breakdowns that, after years of public pressure, were eventually published in the United Kingdom's grooming-gang reviews.</p>
+      <p>That leaves <strong>news coverage as the only public signal</strong> of who is involved. So we measured it directly across every case in our database. The result: coverage almost never states it either.</p>
+      <div class="callout">
+        <strong>This is the finding, not a side note.</strong> The absence of origin data means no one — neither those who suspect a link to immigration nor those who deny it — can measure it. The question is rendered <em>unanswerable by the structure of the data itself</em>. A democracy cannot debate what it refuses to count.
+      </div>
+      <div class="callout teal">
+        <strong>The UK precedent.</strong> Britain spent years insisting offender ethnicity in grooming-gang cases was not recorded or not relevant. When the data was finally compelled into the open, it reshaped the national debate. Canada is at the stage the UK was a decade ago: the data is simply not kept.
+      </div>
+      <p style="font-size:0.8125rem;color:var(--color-text-tertiary);margin-bottom:0">A note on interpretation: these figures measure <em>what is reported and recorded</em>, not the share of crime attributable to any group. They show the measurement gap — not its direction.</p>
+    </div>
+
+    <p class="section-tag">The numbers, from our own database</p>
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>Origin identified vs. silent</h2>
+        <p class="sub">Across all distinct cases, share where coverage named any immigration status or nationality.</p>
+        <div class="chart-wrap"><canvas id="silentChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>How we built the database</h2>
+        <p class="sub">Assembled from a decade of Canadian news coverage &mdash; going after the reporting itself, not official tables alone, to capture which outlets cover these cases, in which cities, and how often. Coverage is gathered, filtered to Canada, and de-duplicated across outlets into distinct cases.</p>
+        <div class="pipe" id="pipe"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <h2>The few words Canadian coverage does use</h2>
+      <p class="sub">On the rare occasions origin surfaces at all, these are the only terms that appear — and how many cases each shows up in.</p>
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin-bottom:.35rem">Immigration status terms</div>
+      <div class="terms" id="statusTerms"></div>
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin:1rem 0 .35rem">Nationality / origin terms</div>
+      <div class="terms" id="natTerms"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <h2>The rare exceptions</h2>
+      <p class="sub">Every case in the database where coverage gave any clue to the offender's status or origin. This short list <em>is</em> the entirety of the public record on the question.</p>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Year</th><th>Headline</th><th>Origin terms</th><th>Source</th></tr></thead>
+          <tbody id="excBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="foot" id="foot"></p>
+  </div>
+
+  <div class="loading" id="loading">Loading…</div>
+
+  <!-- ===== MERGED: cultural background ===== -->
+  <p class="section-tag">Why Canada stopped counting &mdash; the cultural background</p>
+  <div class="card" style="margin-bottom:1rem">
+    <p style="font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.7"><strong>Background, not argument.</strong> The gap above is a measurement fact; the reason behind it is historical. For roughly three decades Canada <strong>deliberately did not collect</strong> crime data disaggregated by race or origin &mdash; a settled policy, debated and re-affirmed, not an oversight.</p>
+    <ul class="tl">
+      <li><span class="yr">1945</span><span class="dot"></span><p class="ev"><b>Framing.</b> Statistics Canada generally uses &ldquo;visible minority&rdquo; and multiculturalism categories rather than the language of &ldquo;race.&rdquo;</p></li>
+      <li><span class="yr">1988</span><span class="dot"></span><p class="ev"><b>Canadian Multiculturalism Act</b> enacted &mdash; multiculturalism becomes official policy and national self-image.</p></li>
+      <li><span class="yr">1990</span><span class="dot"></span><p class="ev"><b>The plan, and its reversal.</b> The Canadian Centre for Justice Statistics announces it will record the race of accused and victims through the UCR. After public debate &mdash; and with some police services declining &mdash; the Chief Statistician withdraws it within weeks.</p></li>
+      <li class="gap"><span class="yr">1992<br>&ndash;2020</span><span class="dot"></span><div class="ev"><span class="big">~30 years of silence</span><span class="small">No national crime data disaggregated by race or origin &mdash; collected or published</span></div></li>
+      <li class="ret"><span class="yr">2017</span><span class="dot"></span><p class="ev"><b>Ontario <i>Anti-Racism Act</i></b> &mdash; enables race-based data collection in public services to identify systemic racism.</p></li>
+      <li class="ret"><span class="yr">2020</span><span class="dot"></span><p class="ev"><b>UCR initiative begins.</b> StatCan and the Chiefs of Police commit to collecting Indigenous and racialized identity data (&ldquo;PIRID&rdquo;).</p></li>
+      <li class="ret"><span class="yr">2024</span><span class="dot"></span><p class="ev"><b>UCR updated</b> to collect Indigenous and racialized identity; pilot stage, <b>national data not expected before ~2027.</b></p></li>
+    </ul>
+    <div class="callout">
+      <strong>The culture beneath it:</strong> the original opposition came largely from racialized communities, who feared the figures would be used against them &mdash; so the silence began as a <em>protective</em> instinct. Since 2020 the logic has reversed: advocates now argue that without data, systemic disparities cannot be addressed. The same value has been read both ways.
+    </div>
+  </div>
+
+  <!-- ===== MERGED: distinction + how others do it ===== -->
+  <p class="section-tag">The distinction &mdash; and how other democracies report it</p>
+  <div class="card" style="margin-bottom:1rem">
+    <p style="font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.7"><strong>One distinction is easy to miss.</strong> (a) Race and (b) Origin are <strong>not interchangeable</strong>. A citizen and an immigrant may share a racialized identity. Two immigrants from different countries may be recorded identically on race. A full race-data program would leave the origin question exactly where it is now... unmeasured.</br></br> Therefore (a) &ldquo;Race &middot; Indigenous Identity &rdquo; and (b) &ldquo;Country of Origin &middot; Immigration Status&rdquo; are <strong>two different questions</strong> and reporting either, in aggregate, <strong>has never been an issue in peer democracies</strong>. The only reason Canada cannot answer the origin question is that it has chosen not to record it.</p>
+    <div class="two">
+      <div class="box teal"><h3>Data: Race &middot; Indigenous identity</h3><p>Canada's reform reintroduced this data collection via the UCR since 2017 (pilot; ~2027) so it could detect systemic racism.</div>
+      <div class="box red"><h3>Data: Immigration status &middot; Country of birth &middot; Nationality</h3><p>What Chapter 1 is about. <b>This data is not collected</b>, <b>not part of the current initiative</b>, no field, no publication, no plan.</p></div>
+    </div>
+    <h2 style="margin-top:1.25rem">The solution already exists - Canada could adopt it</h2>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Country</th><th>What it publishes</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><b>Germany</b><br><span style="font-size:.7rem;color:var(--color-text-tertiary)">BKA</span></td><td>Annual police statistics (PKS) tabulate <b>suspects by nationality</b> and residence status, with a population-adjusted rate (TVBZ).</td><td><a href="https://www.bka.de/DE/AktuelleInformationen/StatistikenLagebilder/PolizeilicheKriminalstatistik/PKS2024/PKSTabellen/BundTVNationalitaet/bundTVNationalitaet.html">PKS 2024</a></td></tr>
+          <tr><td><b>Denmark</b><br><span style="font-size:.7rem;color:var(--color-text-tertiary)">DST / Justits.</span></td><td><i>Kriminalitet og herkomst</i> &mdash; <b>convictions indexed by origin</b>, age-standardised.</td><td><a href="https://www.dst.dk/da/Statistik/nyheder-analyser-publ/Publikationer/VisPub?cid=47883">DST</a></td></tr>
+          <tr><td><b>Norway</b><br><span style="font-size:.7rem;color:var(--color-text-tertiary)">SSB</span></td><td>Charge/sanction rates by <b>immigrant group</b> &mdash; over- and under-representation, adjusted for age/sex.</td><td><a href="https://www.ssb.no/en/sosiale-forhold-og-kriminalitet/artikler-og-publikasjoner/crime-and-punishment-among-immigrants-and-the-remaining-norwegian-population--328011">SSB</a></td></tr>
+          <tr><td><b>Netherlands</b><br><span style="font-size:.7rem;color:var(--color-text-tertiary)">CBS</span></td><td>Registered crime by <b>migration background</b>, decomposed by background characteristics.</td><td><a href="https://longreads.cbs.nl/integratie-en-samenleven-2024/criminaliteit/">CBS</a></td></tr>
+          <tr><td><b>Sweden</b><br><span style="font-size:.7rem;color:var(--color-text-tertiary)">Brå</span></td><td>Suspects by <b>Swedish vs foreign background</b>, with controls for age, sex, education, income.</td><td><a href="https://bra.se/rapporter/arkiv/2021-08-25-misstankta-for-brott-bland-personer-med-inrikes-respektive-utrikes-bakgrund">Brå 2021:9</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>This is the template Canada could adopt.</b> Aggregate reporting of offending by national origin or immigrant background is a normal official statistic across Western Europe, each with population denominators and explicit caveats. <br/></div>
+  </div>
+
+  <!-- ===== MERGED: recommendations ===== -->
+  <p class="section-tag">Recommendations</p>
+  <div class="card" style="margin-bottom:1rem">
+    <p style="font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.7">None of the following is technically difficult or unprecedented. Each is already done by Canada in another domain, or by peer democracies in this one. <b>They remain unimplemented as a matter of choice.</b></p>
+    <ul class="todo">
+      <li><span class="mk"></span><div><p class="t">Add country-of-birth and immigration-status fields to the UCR</p><p class="w">The same survey now being expanded to record race could carry these variables in the same update.</p></div></li>
+      <li><span class="mk"></span><div><p class="t">Publish offender origin in aggregate, with denominators</p><p class="w">Canada already publishes <b>population</b> by religion, ethnic origin and place of birth down to the neighbourhood through the Census.</p></div></li>
+      <li><span class="mk"></span><div><p class="t">Link justice records to immigration records</p><p class="w">StatCan already runs the <b>Longitudinal Immigration Database (IMDB)</b>, linking landings to tax data. A justice &times; immigration linkage is the same technique.</p></div></li>
+      <li><span class="mk"></span><div><p class="t">Publish a recurring &ldquo;crime by origin&rdquo; statistic</p><p class="w">Exactly what Germany, Denmark, Norway, the Netherlands and Sweden already release on a schedule.</p></div></li>
+      <li><span class="mk"></span><div><p class="t">Do it to a rigorous, non-inflammatory standard</p><p class="w">Rates with denominators, age- and sex-standardised, aggregate-only with small-cell suppression never a claim about any group.</p></div></li>
+    </ul>
+    <div class="callout">The problem isn't a high or low statistic. The problem is that it's impossible to measure it. <strong>A democracy that publishes the religion of the family next door, but not the immigration status of a convicted trafficker, has made a choice about what it is willing to know.</strong></div>
+  </div>
+</div>
+
+<script>
+const DB = window.DATAGAP_DB;
+function fmt(n){return (n||0).toLocaleString('en-CA');}
+
+function go(){
+  if(!DB){document.getElementById('loading').textContent='The data could not be loaded — please refresh the page.';return;}
+  const m=DB.meta;
+  document.getElementById('heroSilent').textContent=m.silent_pct+'%';
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+
+  document.getElementById('statGrid').innerHTML=[
+    {t:'Distinct cases',v:fmt(m.total_cases),c:'teal',l:'Canadian exploitation/trafficking cases</br>2016–2026'},
+    {t:'Silent on origin',v:m.silent_pct+'%',c:'alarm',l:'No status or nationality in coverage'},
+    {t:'Status named',v:m.status_mentioned+' cases',c:'amber',l:'Mention immigration status ('+m.status_rate_pct+'%)'},
+    {t:'Nationality named',v:m.nationality_mentioned+' cases',c:'amber',l:'Mention a country of origin ('+m.nationality_rate_pct+'%)'},
+  ].map(c=>`<div class="stat-card ${c.c}"><p class="stat-tag">${c.t}</p><p class="stat-value ${c.c}">${c.v}</p><p class="stat-label">${c.l}</p></div>`).join('');
+
+  new Chart(document.getElementById('silentChart'),{
+    type:'doughnut',
+    data:{labels:['Silent on origin','Origin identified'],
+      datasets:[{data:[m.total_cases-m.any_identified,m.any_identified],
+        backgroundColor:['#B83232','#3A7A4A'],borderWidth:3,borderColor:'#FEFEFE'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.raw)+' cases'}}}}
+  });
+
+  document.getElementById('pipe').innerHTML=DB.pipeline.map((s,i)=>{
+    const final=i===DB.pipeline.length-1?' final':'';
+    return `<div class="pipe-step${final}">
+      <div class="pipe-num">${i+1}</div>
+      <div class="pipe-body"><p class="pipe-stage">${s.stage}</p><p class="pipe-detail">${s.detail}</p></div>
+      <div style="text-align:right"><span class="pipe-n">${fmt(s.n)}</span><span class="pipe-unit">${s.unit}</span></div>
+    </div>`;
+  }).join('');
+
+  const termHtml=o=>Object.keys(o).length?Object.entries(o).map(([k,v])=>`<span class="term">${k} <b>${v}</b></span>`).join(''):'<span class="term" style="opacity:.6">none</span>';
+  document.getElementById('statusTerms').innerHTML=termHtml(DB.status_terms);
+  document.getElementById('natTerms').innerHTML=termHtml(DB.nationality_terms);
+
+  document.getElementById('excBody').innerHTML=DB.exceptions.map(c=>{
+    const chips=c.terms.map(t=>`<span class="chip">${t}</span>`).join('');
+    return `<tr><td class="yr-cell">${c.year||'—'}</td><td>${esc(c.title)}</td><td>${chips}</td><td><a href="${c.url}" target="_blank" rel="noopener">${esc(c.source||'link')}</a></td></tr>`;
+  }).join('');
+
+  document.getElementById('foot').textContent='Source: Canada Central database — '+fmt(m.total_cases)+' distinct Canadian sexual-exploitation/trafficking cases (2016–2026), assembled from a decade of Canadian news coverage. Offender origin or status was recorded only where the coverage itself stated it. The structural point about the Uniform Crime Reporting Survey reflects Statistics Canada CCJS data dictionaries, which contain no field for accused citizenship, immigration status, or country of birth.';
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+go();
+</script>
+</body>
+</html>

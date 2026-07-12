@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enforcement: Running to Stand Still | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1180px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+    .page-header{padding:1.75rem 0 1rem}
+    .page-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.5rem}
+    .page-title{font-size:1.875rem;font-weight:800;margin:0 0 0.5rem;line-height:1.15}
+    @media(min-width:640px){.page-title{font-size:2.5rem}}
+    .page-subtitle{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:840px}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    @media(min-width:768px){.stat-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
+    .stat-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1rem 1.25rem;border-top:3px solid var(--color-beige)}
+    .stat-card.alarm{border-top-color:var(--color-alarm);background:var(--color-alarm-light)}
+    .stat-card.teal{border-top-color:var(--color-teal)}
+    .stat-card.success{border-top-color:var(--color-success);background:var(--color-success-light)}
+    .stat-card.amber{border-top-color:var(--color-amber);background:var(--color-amber-light)}
+    .stat-tag{font-size:0.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin:0 0 .25rem}
+    .stat-value{font-size:1.6rem;font-weight:800;line-height:1.05;margin:0}
+    @media(min-width:640px){.stat-value{font-size:1.9rem}}
+    .stat-value.alarm{color:var(--color-alarm)}.stat-value.teal{color:var(--color-teal)}.stat-value.success{color:var(--color-success)}.stat-value.amber{color:var(--color-amber)}
+    .stat-label{font-size:0.6875rem;color:var(--color-text-secondary);margin:.25rem 0 0;line-height:1.4}
+    .charts-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:1024px){.charts-grid{grid-template-columns:1fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem}
+    .chart-title{font-size:0.9375rem;font-weight:700;margin:0 0 0.2rem;line-height:1.3}
+    .chart-subtitle{font-size:0.6875rem;color:var(--color-text-tertiary);margin:0 0 0.85rem;line-height:1.4}
+    .chart-wrap{position:relative;height:320px}
+    .prose{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.75rem;margin-bottom:1rem;font-size:0.9375rem;line-height:1.75;color:var(--color-text-secondary)}
+    .prose h2{font-size:1.1rem;color:var(--color-text-primary);margin:0 0 0.75rem}
+    .prose p{margin:0 0 0.9rem}.prose strong{color:var(--color-text-primary)}
+    .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.5rem 0;font-size:0.875rem;line-height:1.65;color:var(--color-alarm-dark)}
+    .caveat{border-left:4px solid var(--color-teal);background:#EAF0F2;padding:1rem 1.25rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.5rem 0;font-size:0.8125rem;line-height:1.65;color:var(--color-text-secondary)}
+    .caveat strong{color:var(--color-teal)}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.25rem}
+    .loading{text-align:center;padding:3rem;color:var(--color-text-tertiary)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links">
+    <a href="overview.html">Overview</a>
+    <a href="immigration-volumes.html">Volumes</a>
+    <a href="asylum-channel.html">Asylum</a>
+    <a href="policy-timeline.html">Policy</a>
+    <a href="policy-crime-impact.html">Policy Impact</a>
+    <a href="canada-vs-uk.html">Canada vs UK</a>
+    <a href="exploitation-record.html">Exploitation</a>
+    <a href="origin-data-gap.html">Data Gap</a>
+    <a href="justice-backlog.html">Justice</a>
+    <a href="lobbying-influence.html">Lobbying</a>
+    <a href="hate-crime.html">Hate Crime</a>
+    <a href="asylum-cost.html">Cost</a>
+    <a class="active" href="enforcement.html">Enforcement</a>
+    <a href="narrative-gap.html">Narrative Gap</a>
+    <a href="reports.html">Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-tag">Narrative vs. Reality · Enforcement</p>
+    <h1 class="page-title">Running to Stand Still</h1>
+    <p class="page-subtitle">A fair correction to a common talking point: Canada is <strong>not</strong> deporting no one. CBSA removals hit a record ~23,000 in 2025 &mdash; the most in over a decade. The problem is arithmetic: removals are outpaced by new removable cases and a backlog that keeps doubling. Even record enforcement is losing ground, because the pressure is upstream &mdash; in intake, not at the exit.</p>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h2 class="chart-title">Removals vs. new removable cases</h2>
+        <p class="chart-subtitle">CBSA removals by calendar year (bars) against the ~24,500 new removable cases expected each year (line).</p>
+        <div class="chart-wrap"><canvas id="remChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">The backlogs feeding the exit, 2022 → 2025</h2>
+        <p class="chart-subtitle">Cases waiting in the immigration system — each eventually produces removable cases.</p>
+        <div class="chart-wrap"><canvas id="backlogChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>What the official numbers show</h2>
+      <p id="lede"></p>
+      <div class="callout" id="callout"></div>
+      <p id="hist"></p>
+      <div class="caveat" id="caveat"></div>
+      <p style="margin-bottom:0">The lesson is directional: you cannot remove your way out of an intake problem. The exit door is working harder than ever and still falling behind, because the <a href="policy-timeline.html">decisions that opened the channel</a> are upstream of it. See how it all connects in the <a href="overview.html">overview</a>.</p>
+    </div>
+
+    <p class="foot" id="foot"></p>
+  </div>
+  <div class="loading" id="loading">Loading…</div>
+</div>
+
+<script>
+// CBSA removals (calendar year) and system backlogs. Sources: CBSA Departmental Results Report
+// 2024-25, CBSA ministerial transition / QP notes 2025, IRB.
+const REMOVALS=[{y:'2023',v:15207},{y:'2024',v:17357},{y:'2025',v:23160}];
+const NEW_CASES=24500;            // new removable cases expected annually
+const INVENTORY=31000;            // removals-in-progress inventory (Nov 2025)
+const WARRANTS=33000;             // outstanding non-compliance removal warrants
+const BACKLOGS=[                  // 2022 vs 2025
+  {k:'Immigration screening', a:23000, b:165000},
+  {k:'IRB asylum pending',    a:70000, b:270000},
+];
+function f(n){return Math.round(n).toLocaleString('en-CA');}
+
+function go(){
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+  const r2025=REMOVALS[REMOVALS.length-1].v;
+
+  document.getElementById('statGrid').innerHTML=[
+    {t:'Removals in 2025',v:f(r2025),c:'success',l:'a record — up 33% over 2024, highest in over a decade'},
+    {t:'New removable cases / year',v:'~'+f(NEW_CASES),c:'alarm',l:'expected for the foreseeable future — still outpaces removals'},
+    {t:'Removal-in-progress inventory',v:'~'+f(INVENTORY),c:'alarm',l:'roughly doubled in five years, despite record removals'},
+    {t:'Outstanding non-compliance warrants',v:'~'+f(WARRANTS),c:'amber',l:'10,000+ open over a year — people who evaded removal'},
+  ].map(c=>`<div class="stat-card ${c.c}"><p class="stat-tag">${c.t}</p><p class="stat-value ${c.c}">${c.v}</p><p class="stat-label">${c.l}</p></div>`).join('');
+
+  // Removals vs new cases (bar + line)
+  new Chart(document.getElementById('remChart'),{
+    data:{labels:REMOVALS.map(d=>d.y),datasets:[
+      {type:'bar',label:'CBSA removals',data:REMOVALS.map(d=>d.v),backgroundColor:'#3A7A4A',borderWidth:0,order:2},
+      {type:'line',label:'~ New removable cases / year',data:REMOVALS.map(()=>NEW_CASES),borderColor:'#B83232',borderDash:[6,4],borderWidth:2,pointRadius:0,fill:false,order:1},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+f(c.raw)}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:v=>f(v),font:{size:10}}},x:{ticks:{font:{size:11}}}}}
+  });
+
+  // Backlogs 2022 vs 2025 (grouped)
+  new Chart(document.getElementById('backlogChart'),{
+    type:'bar',
+    data:{labels:BACKLOGS.map(d=>d.k),datasets:[
+      {label:'2022',data:BACKLOGS.map(d=>d.a),backgroundColor:'#C8C0B0',borderWidth:0},
+      {label:'2025',data:BACKLOGS.map(d=>d.b),backgroundColor:'#B83232',borderWidth:0},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+f(c.raw)}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:v=>f(v),font:{size:10}}},x:{ticks:{font:{size:10}}}}}
+  });
+
+  document.getElementById('lede').innerHTML=
+    `CBSA removed <strong>${f(r2025)}</strong> people in 2025 &mdash; up 33% over 2024 (${f(REMOVALS[1].v)}) and 2023 (${f(REMOVALS[0].v)}), the most in over a decade, and it removes <strong>92%</strong> of priority irregular failed claimants. Enforcement is genuinely ramping up. But roughly <strong>${f(NEW_CASES)} new removable cases</strong> are expected every year, so even a record year barely matches the inflow &mdash; and the removals-in-progress inventory has still <strong>doubled to ~${f(INVENTORY)}</strong>.`;
+  document.getElementById('callout').innerHTML=
+    `<strong>The exit door works; the room keeps filling faster.</strong> Behind removals sit the backlogs that feed them: immigration screening rose from ~23,000 cases (2022) to <strong>~165,000</strong> (2025), and the IRB asylum inventory from ~70,000 to <strong>~270,000</strong>. Add ~${f(WARRANTS)} outstanding warrants for people who simply didn't show up. Record removals cannot drain a tank that fills from upstream.`;
+  document.getElementById('hist').innerHTML=
+    `This is an improvement on the low point: the Auditor General found in 2020 that CBSA had lost track of ~34,700 people under removal orders. Enforcement has since been rebuilt &mdash; but it was scaled up <em>after</em> the intake decisions of 2016&ndash;2023, and it is structurally chasing a number set somewhere else.`;
+  document.getElementById('caveat').innerHTML=
+    `<strong>Reading this fairly.</strong> &ldquo;Removals&rdquo; count all inadmissible foreign nationals (failed claimants, criminality, overstays), not asylum cases alone. Figures shift between calendar and fiscal-year reporting, so we use calendar years for the trend. The point is not that CBSA is idle &mdash; it is the opposite: even at record output, the system cannot keep pace with policy-driven intake.`;
+  document.getElementById('foot').textContent='Sources: CBSA Departmental Results Report 2024-25; CBSA ministerial transition and Question Period notes, 2025; CBSA removal statistics; Immigration and Refugee Board inventory figures; Office of the Auditor General of Canada, Spring 2020 (Immigration Removals). Removal counts include all inadmissibility grounds. Compiled by Canada Central.';
+}
+go();
+</script>
+</body>
+</html>

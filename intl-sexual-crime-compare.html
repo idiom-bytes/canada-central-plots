@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canada vs. Europe — recorded sexual-violence trends (standalone preview)</title>
+<style>
+  :root{--cream:#F0ECE3;--ink:#2D2D2D;--mut:#5a544a;--red:#B83232;--navy:#1D3A6B;--teal:#3A5F6F;--line:#cdc6b8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:2rem;margin:.2rem 0 .3rem}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6E6A62;margin:0}
+  .sub{color:var(--mut);font-size:1.05rem;margin:.2rem 0 1rem;max-width:760px}
+  .warn{background:#fbf3ee;border:1px solid #e3c4ad;border-left:5px solid var(--red);border-radius:8px;padding:.85rem 1rem;margin:1rem 0;font-size:.95rem}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 22px rgba(0,0,0,.06);padding:1.1rem 1.2rem;margin:1.1rem 0}
+  .cap{font-size:.78rem;color:#9a9384;margin:.5rem 0 0}
+  .chart-wrap{position:relative;width:100%;height:420px}
+  .chart-wrap.bar{height:360px}
+  h2{font-family:Georgia,serif;font-size:1.3rem;margin:1.6rem 0 .4rem}
+  ul{margin:.4rem 0 .4rem 1.1rem;padding:0}
+  li{margin:.25rem 0}
+  .ann{font-size:.92rem;color:var(--mut)}
+  .ann b{color:var(--ink)}
+  .box{background:#eef2f3;border:1px solid #cddde1;border-radius:10px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.95rem}
+  .src{font-size:.8rem;color:#9a9384;border-top:1px solid var(--line);margin-top:1.5rem;padding-top:.8rem}
+  code{background:#efe9dd;padding:.05rem .3rem;border-radius:4px;font-size:.85em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Standalone preview · not yet linked into the report</p>
+  <h1>Recorded sexual violence: Canada vs. Europe</h1>
+  <p class="sub">A like-for-like attempt at the comparison the viral “Rape of Europe” chart gets wrong — using <strong>rates per 100,000</strong> and <strong>trend shape</strong>, with every legal/recording change marked, instead of raw counts.</p>
+
+  <div class="warn">
+    <strong>Read this first.</strong> Country <em>levels</em> are <strong>not comparable</strong> — definitions and recording rules differ enormously (Canada has no “rape” offence; England &amp; Wales records very broadly; Poland very narrowly). Rising numbers are driven substantially by <strong>law changes and greater willingness to report</strong>, not necessarily by rising incidence. This is <strong>recorded crime</strong>, not victimization, and says <strong>nothing about offender origin.</strong>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:.2rem">1 · Trend shape (indexed, 2013 = 100)</h2>
+    <div class="chart-wrap"><canvas id="idxChart"></canvas></div>
+    <p class="cap" id="idxCap"></p>
+  </div>
+
+  <div class="box">
+    <strong>Why a country can be high here but flat in the index (or vice-versa).</strong>
+    This chart shows <em>growth</em> since 2013, not the actual rate. A country starting from a low base (France: 17/100k in 2013) shows huge growth yet can still end <em>below</em> a country that started high and grew slowly (Canada: 59→87). Indexing hides the starting level — so see the absolute rates below.
+  </div>
+
+  <h2>What moved the lines — legal &amp; recording changes</h2>
+  <p class="ann">The jumps below line up with policy and recording changes, not with sudden real-world surges:</p>
+  <ul class="ann" id="annList"></ul>
+
+  <div class="card">
+    <h2 style="margin-top:.2rem">2 · Latest rate per 100,000 — why levels can’t be compared</h2>
+    <div class="warn" style="margin-top:.2rem">The spread here is an <strong>artifact of definitions</strong>, not danger. England &amp; Wales and Sweden look extreme because they record broadly; Poland looks near-zero because it records narrowly. Do <strong>not</strong> read this as “country X is N× more dangerous.”</div>
+    <div class="chart-wrap bar"><canvas id="rateChart"></canvas></div>
+    <p class="cap" id="rateCap"></p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:.2rem">3 · Actual rate per 100,000 over time (absolute)</h2>
+    <div class="warn" style="margin-top:.2rem">Same definition caveat as the bar: lines sit at different heights mostly because the offences are <strong>defined differently</strong> (Canada = broad “sexual assault”; France/Germany/Poland = narrow “rape”). Compare <em>shapes over time</em>, not heights.</div>
+    <div class="chart-wrap"><canvas id="absChart"></canvas></div>
+    <p class="cap" id="absCap"></p>
+  </div>
+
+  <div class="box">
+    <strong>Was Canada already high before any of this? Yes.</strong>
+    Canada’s recorded sexual-assault rate was <strong>~82/100,000 in 1998</strong>, <em>fell</em> to a low of ~57 around 2014, then climbed back to ~87 by 2024. So the recent rise is largely a <strong>return toward late-1990s levels</strong> (plus the 2017 reporting/recording effect) — not a new phenomenon, and it predates the immigration-policy period the report examines.
+  </div>
+
+  <div class="box">
+    <strong>What this does and doesn’t show.</strong>
+    <ul style="margin-top:.4rem">
+      <li><b>Does:</b> recorded sexual-violence rates rose across most of the West over the decade — Canada included — broadly tracking reporting and legal change.</li>
+      <li><b>Doesn’t:</b> prove incidence rose, rank countries by safety, or link any trend to immigration. None of these series carry offender origin.</li>
+    </ul>
+  </div>
+
+  <p class="src" id="src"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="data/intl_crime_compare.js"></script>
+<script>
+const D=window.INTL_CRIME||{countries:{},annotations:[],meta:{}};
+const BASE=2013;
+const COL={
+  'Canada':'#B83232','England & Wales':'#1D3A6B','Sweden':'#C47A3F','France':'#3A7A4A',
+  'Germany':'#3A5F6F','Netherlands':'#6E6A62','Spain':'#9c7b53','Poland':'#b0a892'
+};
+const order=['Canada','England & Wales','Sweden','France','Germany','Netherlands','Spain','Poland'];
+const names=order.filter(n=>D.countries[n]);
+const YEARS=[];for(let y=2008;y<=2024;y++)YEARS.push(y);
+
+function rateAt(c,y){const i=c.years.indexOf(y);return i>=0?c.rate[i]:null;}
+
+// ---- chart 1: indexed to 2013 ----
+const idxDs=names.map(n=>{
+  const c=D.countries[n];const b=rateAt(c,BASE);
+  const emph=(n==='Canada');
+  return {label:n,data:YEARS.map(y=>{const r=rateAt(c,y);return (r!=null&&b)?Math.round(r/b*100):null;}),
+    borderColor:COL[n],backgroundColor:COL[n],borderWidth:emph?3.4:1.8,
+    tension:.25,pointRadius:0,spanGaps:true,borderDash:(n==='Canada')?[]:( ['Spain','Poland','Netherlands'].includes(n)?[5,4]:[])};
+});
+new Chart(document.getElementById('idxChart'),{type:'line',data:{labels:YEARS,datasets:idxDs},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:14}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.raw==null?'—':c.raw+' (2013=100)')}}},
+    scales:{y:{title:{display:true,text:'Indexed · 2013 = 100'}},x:{ticks:{font:{size:10}}}}}});
+document.getElementById('idxCap').textContent=D.meta.metric+' · base year '+BASE+' = 100. Canada = sexual assault level 1 (definition differs).';
+
+// ---- annotations list ----
+document.getElementById('annList').innerHTML=(D.annotations||[])
+  .slice().sort((a,b)=>a.year-b.year)
+  .map(a=>`<li><b>${a.year} · ${a.country}:</b> ${a.label}</li>`).join('');
+
+// ---- chart 2: latest rate per 100k (sorted desc) ----
+const latest=names.map(n=>{const c=D.countries[n];const y=c.years[c.years.length-1];return {n,y,v:c.rate[c.rate.length-1]};})
+  .sort((a,b)=>b.v-a.v);
+new Chart(document.getElementById('rateChart'),{type:'bar',
+  data:{labels:latest.map(d=>d.n),datasets:[{data:latest.map(d=>d.v),
+    backgroundColor:latest.map(d=>COL[d.n]||'#999')}]},
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+' per 100k ('+latest[c.dataIndex].y+')'}}},
+    scales:{x:{title:{display:true,text:'Recorded rate per 100,000 (latest year)'}}}}});
+document.getElementById('rateCap').textContent='Latest available year per country. Definitions differ — levels are not comparable.';
+
+// ---- chart 3: absolute rate per 100k over time (1998–2024) ----
+const YEARS2=[];for(let y=1998;y<=2024;y++)YEARS2.push(y);
+const absDs=names.map(n=>{
+  const c=D.countries[n];const emph=(n==='Canada');
+  return {label:n,data:YEARS2.map(y=>rateAt(c,y)),
+    borderColor:COL[n],backgroundColor:COL[n],borderWidth:emph?3.4:1.8,
+    tension:.25,pointRadius:0,spanGaps:true,
+    borderDash:(n==='Canada')?[]:(['Spain','Poland','Netherlands'].includes(n)?[5,4]:[])};
+});
+new Chart(document.getElementById('absChart'),{type:'line',data:{labels:YEARS2,datasets:absDs},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:14}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.raw==null?'—':c.raw+'/100k')}}},
+    scales:{y:{title:{display:true,text:'Recorded rate per 100,000'}},x:{ticks:{font:{size:10},maxTicksLimit:14}}}}});
+document.getElementById('absCap').textContent='Canada 1998–2024 (StatCan); Europe 2008/2013–2024 (Eurostat/ONS). Heights reflect differing definitions — read the shapes.';
+
+document.getElementById('src').innerHTML='Sources: Eurostat <code>crim_off_cat</code> (rape, ICCS 03011, per 100k); ONS (England &amp; Wales, derived); Statistics Canada UCR 35-10-0177 (sexual assault level 1). Built by <code>pipeline/fetch_intl_sexual_crime.py</code>.';
+</script>
+</body>
+</html>

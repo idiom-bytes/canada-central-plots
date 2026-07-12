@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "title": "Foreign Direct Investment Inflows to Canada by Sector",
+    "source": "Statistics Canada, Table 36-10-0026-01",
+    "unit": "C$ billions",
+    "frequency": "Annual (aggregated from quarterly flows)",
+    "coverage": "2007\u20132025"
+  },
+  "sectors": [
+    "Manufacturing",
+    "Trade & Transportation",
+    "Energy & Mining",
+    "Finance & Insurance",
+    "Management of Companies",
+    "Other"
+  ],
+  "kiss_green_sectors": [
+    "Manufacturing",
+    "Trade & Transportation"
+  ],
+  "kiss_red_sectors": [
+    "Other",
+    "Management of Companies",
+    "Finance & Insurance",
+    "Energy & Mining"
+  ],
+  "sector_series": [
+    {
+      "year": 2007,
+      "Manufacturing": 65.37,
+      "Trade & Transportation": 7.68,
+      "Energy & Mining": 16.73,
+      "Finance & Insurance": 12.43,
+      "Management of Companies": 10.95,
+      "Other": 12.32,
+      "total": 125.48
+    },
+    {
+      "year": 2008,
+      "Manufacturing": 17.69,
+      "Trade & Transportation": 4.0,
+      "Energy & Mining": 13.32,
+      "Finance & Insurance": 9.96,
+      "Management of Companies": 11.91,
+      "Other": 8.8,
+      "total": 65.68
+    },
+    {
+      "year": 2009,
+      "Manufacturing": 3.79,
+      "Trade & Transportation": 3.21,
+      "Energy & Mining": 12.41,
+      "Finance & Insurance": 4.43,
+      "Management of Companies": 0.13,
+      "Other": 1.98,
+      "total": 25.95
+    },
+    {
+      "year": 2010,
+      "Manufacturing": 2.2,
+      "Trade & Transportation": 2.13,
+      "Energy & Mining": 9.86,
+      "Finance & Insurance": 4.64,
+      "Management of Companies": 4.59,
+      "Other": 5.83,
+      "total": 29.26
+    },
+    {
+      "year": 2011,
+      "Manufacturing": 16.82,
+      "Trade & Transportation": 0.72,
+      "Energy & Mining": 15.59,
+      "Finance & Insurance": -0.42,
+      "Management of Companies": 2.59,
+      "Other": 3.96,
+      "total": 39.25
+    },
+    {
+      "year": 2012,
+      "Manufacturing": 12.15,
+      "Trade & Transportation": 10.48,
+      "Energy & Mining": 9.15,
+      "Finance & Insurance": 0.27,
+      "Management of Companies": 6.78,
+      "Other": 4.25,
+      "total": 43.08
+    },
+    {
+      "year": 2013,
+      "Manufacturing": 28.24,
+      "Trade & Transportation": 5.9,
+      "Energy & Mining": 22.37,
+      "Finance & Insurance": 9.7,
+      "Management of Companies": 1.45,
+      "Other": 3.8,
+      "total": 71.46
+    },
+    {
+      "year": 2014,
+      "Manufacturing": 12.36,
+      "Trade & Transportation": 7.73,
+      "Energy & Mining": 16.88,
+      "Finance & Insurance": 3.32,
+      "Management of Companies": 15.2,
+      "Other": 9.7,
+      "total": 65.19
+    },
+    {
+      "year": 2015,
+      "Manufacturing": 3.48,
+      "Trade & Transportation": 9.23,
+      "Energy & Mining": 3.03,
+      "Finance & Insurance": 0.22,
+      "Management of Companies": 13.97,
+      "Other": 26.12,
+      "total": 56.06
+    },
+    {
+      "year": 2016,
+      "Manufacturing": 4.36,
+      "Trade & Transportation": 11.65,
+      "Energy & Mining": 10.8,
+      "Finance & Insurance": 9.18,
+      "Management of Companies": 5.09,
+      "Other": 6.72,
+      "total": 47.8
+    },
+    {
+      "year": 2017,
+      "Manufacturing": 10.68,
+      "Trade & Transportation": 11.98,
+      "Energy & Mining": -4.88,
+      "Finance & Insurance": 4.54,
+      "Management of Companies": -0.07,
+      "Other": 7.3,
+      "total": 29.55
+    },
+    {
+      "year": 2018,
+      "Manufacturing": 15.74,
+      "Trade & Transportation": 3.71,
+      "Energy & Mining": 5.65,
+      "Finance & Insurance": 2.54,
+      "Management of Companies": 5.43,
+      "Other": 15.72,
+      "total": 48.8
+    },
+    {
+      "year": 2019,
+      "Manufacturing": 18.48,
+      "Trade & Transportation": -1.01,
+      "Energy & Mining": 25.63,
+      "Finance & Insurance": 7.95,
+      "Management of Companies": 7.16,
+      "Other": 8.86,
+      "total": 67.06
+    },
+    {
+      "year": 2020,
+      "Manufacturing": 7.93,
+      "Trade & Transportation": 10.37,
+      "Energy & Mining": -9.29,
+      "Finance & Insurance": 5.53,
+      "Management of Companies": 7.42,
+      "Other": 12.36,
+      "total": 34.33
+    },
+    {
+      "year": 2021,
+      "Manufacturing": 22.59,
+      "Trade & Transportation": 10.42,
+      "Energy & Mining": 15.0,
+      "Finance & Insurance": 7.93,
+      "Management of Companies": 6.09,
+      "Other": 15.02,
+      "total": 77.05
+    },
+    {
+      "year": 2022,
+      "Manufacturing": 13.1,
+      "Trade & Transportation": 6.53,
+      "Energy & Mining": 13.16,
+      "Finance & Insurance": 9.46,
+      "Management of Companies": 14.42,
+      "Other": 3.65,
+      "total": 60.32
+    },
+    {
+      "year": 2023,
+      "Manufacturing": 16.13,
+      "Trade & Transportation": 10.47,
+      "Energy & Mining": 6.87,
+      "Finance & Insurance": 6.04,
+      "Management of Companies": 8.03,
+      "Other": 17.66,
+      "total": 65.21
+    },
+    {
+      "year": 2024,
+      "Manufacturing": 43.15,
+      "Trade & Transportation": 11.5,
+      "Energy & Mining": 17.09,
+      "Finance & Insurance": 1.63,
+      "Management of Companies": 0.47,
+      "Other": 17.75,
+      "total": 91.58
+    },
+    {
+      "year": 2025,
+      "Manufacturing": 11.19,
+      "Trade & Transportation": 23.64,
+      "Energy & Mining": 9.63,
+      "Finance & Insurance": 11.13,
+      "Management of Companies": 14.52,
+      "Other": 23.52,
+      "total": 93.64
+    }
+  ],
+  "kiss_series": [
+    {
+      "year": 2007,
+      "green": 73.05,
+      "red": 52.43,
+      "total": 125.48
+    },
+    {
+      "year": 2008,
+      "green": 21.69,
+      "red": 43.99,
+      "total": 65.68
+    },
+    {
+      "year": 2009,
+      "green": 7.0,
+      "red": 18.95,
+      "total": 25.95
+    },
+    {
+      "year": 2010,
+      "green": 4.33,
+      "red": 24.92,
+      "total": 29.26
+    },
+    {
+      "year": 2011,
+      "green": 17.54,
+      "red": 21.72,
+      "total": 39.25
+    },
+    {
+      "year": 2012,
+      "green": 22.63,
+      "red": 20.45,
+      "total": 43.08
+    },
+    {
+      "year": 2013,
+      "green": 34.13,
+      "red": 37.33,
+      "total": 71.46
+    },
+    {
+      "year": 2014,
+      "green": 20.09,
+      "red": 45.1,
+      "total": 65.19
+    },
+    {
+      "year": 2015,
+      "green": 12.71,
+      "red": 43.34,
+      "total": 56.06
+    },
+    {
+      "year": 2016,
+      "green": 16.0,
+      "red": 31.8,
+      "total": 47.8
+    },
+    {
+      "year": 2017,
+      "green": 22.66,
+      "red": 6.89,
+      "total": 29.55
+    },
+    {
+      "year": 2018,
+      "green": 19.46,
+      "red": 29.35,
+      "total": 48.8
+    },
+    {
+      "year": 2019,
+      "green": 17.47,
+      "red": 49.59,
+      "total": 67.06
+    },
+    {
+      "year": 2020,
+      "green": 18.3,
+      "red": 16.03,
+      "total": 34.33
+    },
+    {
+      "year": 2021,
+      "green": 33.01,
+      "red": 44.04,
+      "total": 77.05
+    },
+    {
+      "year": 2022,
+      "green": 19.63,
+      "red": 40.69,
+      "total": 60.32
+    },
+    {
+      "year": 2023,
+      "green": 26.61,
+      "red": 38.6,
+      "total": 65.21
+    },
+    {
+      "year": 2024,
+      "green": 54.64,
+      "red": 36.94,
+      "total": 91.58
+    },
+    {
+      "year": 2025,
+      "green": 34.84,
+      "red": 58.8,
+      "total": 93.64
+    }
+  ]
+}

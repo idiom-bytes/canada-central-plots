@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policy vs. Crime: Did the Changes Weaken the System? | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="data/crime_rates.js"></script>
+  <script src="data/policy_events.js"></script>
+  <script src="data/gazette_events.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-alarm:#B83232;--color-alarm-dark:#8B2020;--color-alarm-light:#F8ECEC;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    a{color:var(--color-teal)}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-links{display:flex;gap:1.1rem;font-size:0.875rem;font-weight:600;flex-wrap:wrap}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-alarm)}
+    .page{flex:1;padding:0 1rem 2rem;max-width:1060px;margin:0 auto;width:100%}
+    @media(min-width:640px){.page{padding:0 1.5rem 3rem}}
+
+    .hero{padding:2.25rem 0 1rem}
+    .hero-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-alarm);margin:0 0 0.6rem}
+    .hero-title{font-size:2rem;font-weight:800;margin:0 0 0.75rem;line-height:1.12}
+    @media(min-width:640px){.hero-title{font-size:2.6rem}}
+    .hero-lede{font-size:1.05rem;color:var(--color-text-secondary);line-height:1.65;margin:0;max-width:800px}
+    .hero-lede strong{color:var(--color-text-primary)}
+
+    .keyrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0 0.5rem}
+    @media(min-width:768px){.keyrow{grid-template-columns:repeat(4,1fr)}}
+    .key{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:0.9rem 1rem;border-top:3px solid var(--color-alarm)}
+    .key .v{font-size:1.5rem;font-weight:800;color:var(--color-alarm);line-height:1;margin:0}
+    .key .l{font-size:0.6875rem;color:var(--color-text-secondary);margin:0.3rem 0 0;line-height:1.4}
+
+    .sech{font-size:1.4rem;font-weight:800;margin:1.9rem 0 0.25rem}
+    .secsub{font-size:0.875rem;color:var(--color-text-secondary);margin:0 0 1rem;max-width:780px;line-height:1.6}
+
+    .card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem 1.4rem;margin:1rem 0}
+    .chart-wrap{position:relative;height:340px}
+
+    /* events rail */
+    .rail-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;font-weight:600;margin:0.25rem 0 0.9rem;color:var(--color-text-secondary)}
+    .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+    .d-weakened{background:#B83232}.d-strengthened{background:#3A7A4A}.d-mixed{background:#C47A3F}.d-unknown{background:#B7AE9E}
+    .rail{position:relative;height:96px;border-bottom:2px solid var(--color-beige);margin:0.5rem 0 0.25rem}
+    .rail-ev{position:absolute;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%);cursor:pointer;border:1.5px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+    .rail-ev:hover{width:15px;height:15px;z-index:5}
+    .rail-axis{display:flex;justify-content:space-between;font-size:0.625rem;color:var(--color-text-tertiary);font-weight:600}
+
+    .filters{display:flex;gap:0.4rem;flex-wrap:wrap;margin:0.5rem 0 0.75rem}
+    .pill{font-size:0.72rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:999px;border:1px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);cursor:pointer}
+    .pill.active{background:var(--color-teal);color:#fff;border-color:var(--color-teal)}
+
+    table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    th{text-align:left;font-size:0.625rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);font-weight:700;padding:0.5rem 0.6rem;border-bottom:2px solid var(--color-beige);white-space:nowrap}
+    td{padding:0.55rem 0.6rem;border-bottom:1px solid var(--color-cream-dark);vertical-align:top}
+    tr:hover td{background:var(--color-cream)}
+    .yr{font-weight:700;color:var(--color-teal);white-space:nowrap}
+    .tag{display:inline-block;font-size:0.5625rem;font-weight:700;text-transform:uppercase;padding:1px 6px;border-radius:999px;white-space:nowrap}
+    .tag.weakened{background:#F8ECEC;color:var(--color-alarm)}
+    .tag.strengthened{background:#EAF2EC;color:var(--color-success)}
+    .tag.mixed{background:#FDF3E7;color:var(--color-amber)}
+    .tag.unknown{background:#ECE8E0;color:var(--color-text-tertiary)}
+    .src-b{font-size:0.5625rem;color:var(--color-text-tertiary);font-weight:600}
+
+    .assess{display:grid;grid-template-columns:1fr;gap:1rem;margin:1rem 0}
+    @media(min-width:760px){.assess{grid-template-columns:1fr 1fr}}
+    .acard{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem 1.4rem;border-left:4px solid var(--color-alarm)}
+    .acard h3{font-size:0.95rem;margin:0 0 0.5rem}
+    .acard p{font-size:0.85rem;line-height:1.6;color:var(--color-text-secondary);margin:0}
+    .acard p strong{color:var(--color-text-primary)}
+
+    .method{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.4rem 1.6rem;margin:1.25rem 0 0;font-size:0.85rem;line-height:1.7;color:var(--color-text-secondary)}
+    .method h2{font-size:1.05rem;color:var(--color-text-primary);margin:0 0 0.6rem}
+    .method li{margin:0 0 0.4rem}.method strong{color:var(--color-text-primary)}
+    .foot{font-size:0.6875rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1rem}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+  <div class="navbar-links"></div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <p class="hero-tag">The Core Question · Policy vs. Crime</p>
+    <h1 class="hero-title">Did the Policy Changes Weaken the System?</h1>
+    <p class="hero-lede">This is the question the whole investigation builds toward. We place Canada's police-reported rates for <strong>human trafficking, kidnapping, sexual assault and child exploitation</strong> directly against the dated decisions &mdash; Acts, Orders in Council, regulations and court rulings &mdash; that changed how the immigration and justice systems screen, detain, prosecute and remove. The aim is to see whether system-weakening events line up with measurable harm. We are careful about what that can and cannot prove.</p>
+  </div>
+
+  <div class="keyrow" id="keyrow"></div>
+
+  <h2 class="sech">The crime trends</h2>
+  <p class="secsub">Police-reported rate per 100,000, indexed to 100 in 2014 so four very differently-sized crimes can be read on one scale. All four rose over the decade.</p>
+  <div class="card">
+    <div class="chart-wrap"><canvas id="crimeChart"></canvas></div>
+  </div>
+
+  <h2 class="sech">The policy events, on the same timeline</h2>
+  <p class="secsub">Each dot is a dated decision affecting screening, asylum, enforcement, removal or the courts. Position = date; colour = whether it <em>weakened</em> or <em>strengthened</em> the system's capacity. Hover for the event.</p>
+  <div class="card">
+    <div class="rail-legend">
+      <span><span class="dot d-weakened"></span>Weakened</span>
+      <span><span class="dot d-strengthened"></span>Strengthened</span>
+      <span><span class="dot d-mixed"></span>Mixed</span>
+      <span><span class="dot d-unknown"></span>Unassessed (regulation)</span>
+    </div>
+    <div class="rail" id="rail"></div>
+    <div class="rail-axis" id="railAxis"></div>
+  </div>
+
+  <h2 class="sech">What the overlay does &mdash; and doesn't &mdash; show</h2>
+  <div class="assess" id="assess"></div>
+
+  <h2 class="sech">Every event</h2>
+  <p class="secsub">The full dated record behind the rail. Filter by effect or source. Each links to its primary citation.</p>
+  <div class="card">
+    <div class="filters" id="filters"></div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Date</th><th>Event</th><th>Instrument</th><th>Effect</th><th>Domain</th><th>Source</th></tr></thead>
+        <tbody id="evBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="method">
+    <h2>Method &amp; limits (read this)</h2>
+    <ul>
+      <li><strong>Correlation is not causation.</strong> That a weakening event preceded a rise in a crime rate does not prove it caused it. Reporting practices, public awareness, offence codification, policing capacity and many other factors move these rates. We show the temporal relationship; we do not assert a causal one.</li>
+      <li><strong>Rates are police-reported</strong> (StatCan UCR) and undercount true prevalence; trafficking and child-exploitation offences were codified relatively recently, so we index from 2014 rather than inception.</li>
+      <li><strong>"Effect" is our reading of each event's direction</strong> on system capacity, stated factually in each summary. Recent Gazette regulations are marked "unassessed" where their direction can't be judged from the citation alone.</li>
+      <li><strong>The subject is decisions and institutions</strong>, not migrants. Most system-weakening events were executive instruments (no parliamentary vote) &mdash; see the <a href="policy-timeline.html">Policy Timeline</a>.</li>
+    </ul>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+// ---- canonical nav (15) ----
+const NAV=[['Overview','overview.html'],['Volumes','immigration-volumes.html'],['Asylum','asylum-channel.html'],['Policy','policy-timeline.html'],['Policy Impact','policy-crime-impact.html'],['Canada vs UK','canada-vs-uk.html'],['Exploitation','exploitation-record.html'],['Data Gap','origin-data-gap.html'],['Justice','justice-backlog.html'],['Lobbying','lobbying-influence.html'],['Hate Crime','hate-crime.html'],['Cost','asylum-cost.html'],['Enforcement','enforcement.html'],['Narrative Gap','narrative-gap.html'],['Reports','reports.html']];
+document.querySelector('.navbar-links').innerHTML=NAV.map(([l,h])=>`<a${h==='policy-crime-impact.html'?' class="active"':''} href="${h}">${l}</a>`).join('');
+
+const CR=window.CRIME_RATES;
+const EVENTS=[
+  ...((window.POLICY_EVENTS&&window.POLICY_EVENTS.events)||[]).map(e=>({...e,src:'Curated'})),
+  ...((window.GAZETTE_EVENTS&&window.GAZETTE_EVENTS.events)||[]).map(e=>({...e,src:'Gazette'})),
+].filter(e=>e.year).sort((a,b)=>(a.date||''+a.year).localeCompare(b.date||''+b.year));
+
+const CCOL={trafficking:'#B83232',kidnapping:'#8B2020',child_sexual:'#C47A3F',sexual_assault:'#3A5F6F'};
+const DCOL={weakened:'#B83232',strengthened:'#3A7A4A',mixed:'#C47A3F',unknown:'#B7AE9E'};
+function rateAt(key,y){const s=CR.series[key];const i=s.years.indexOf(y);return i>=0?s.rate[i]:null;}
+
+function go(){
+  if(!CR){document.querySelector('.page').insertAdjacentHTML('afterbegin','<p style="padding:2rem;color:#8A8A8A">The data could not be loaded — please refresh the page.</p>');return;}
+
+  // key stats
+  const order=['trafficking','kidnapping','child_sexual','sexual_assault'];
+  document.getElementById('keyrow').innerHTML=order.map(k=>{
+    const m=CR.meta[k];
+    return `<div class="key"><p class="v">+${m.change_10yr_pct}%</p><p class="l">${CR.labels[k]} &mdash; police-reported rate, 2014&ndash;2024</p></div>`;
+  }).join('');
+
+  // indexed crime chart 2014-2024
+  const YRS=[];for(let y=2014;y<=2024;y++)YRS.push(y);
+  const ds=order.map(k=>{
+    const base=rateAt(k,2014);
+    return {label:CR.labels[k],data:YRS.map(y=>{const r=rateAt(k,y);return (r!=null&&base)?Math.round(r/base*100):null;}),
+      borderColor:CCOL[k],backgroundColor:CCOL[k],borderWidth:2.5,tension:.25,pointRadius:0,pointHoverRadius:4};
+  });
+  new Chart(document.getElementById('crimeChart'),{type:'line',
+    data:{labels:YRS,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw+' (2014=100)'}}},
+      scales:{y:{title:{display:true,text:'Indexed to 2014 = 100'},beginAtZero:false},x:{ticks:{font:{size:10}}}}}
+  });
+
+  // events rail 2012-2026
+  const MIN=2012,MAX=2026;
+  function frac(e){const d=e.date&&e.date.length>=7?new Date(e.date+'T00:00:00'):null;
+    const yv=d?(d.getUTCFullYear()+d.getUTCMonth()/12):e.year; return Math.max(0,Math.min(1,(yv-MIN)/(MAX-MIN)));}
+  // vertical jitter by lane to reduce overlap
+  const rail=document.getElementById('rail');
+  rail.innerHTML=EVENTS.map((e,i)=>{
+    const left=(frac(e)*100).toFixed(1);
+    const top=12+ (i%6)*13;  // 6 lanes
+    return `<div class="rail-ev" style="left:${left}%;top:${top}px;background:${DCOL[e.direction]||'#B7AE9E'}" title="${e.year} · ${e.title.replace(/"/g,'&quot;')} (${e.direction})"></div>`;
+  }).join('');
+  let axis='';for(let y=MIN;y<=MAX;y+=2)axis+=`<span>${y}</span>`;
+  document.getElementById('railAxis').innerHTML=axis;
+
+  // assessment
+  const weak=EVENTS.filter(e=>e.direction==='weakened');
+  const strong=EVENTS.filter(e=>e.direction==='strengthened');
+  const weakEarly=weak.filter(e=>e.year<=2022).length, strongLate=strong.filter(e=>e.year>=2023).length;
+  const trafC=CR.meta.trafficking.change_10yr_pct, childC=CR.meta.child_sexual.change_10yr_pct;
+  document.getElementById('assess').innerHTML=`
+    <div class="acard"><h3>The timing lines up &mdash; loosening first, brakes late</h3><p>Of the system-<strong>weakening</strong> events, <strong>${weakEarly} of ${weak.length}</strong> fall in 2012&ndash;2022. The <strong>strengthening</strong> events cluster late: <strong>${strongLate} of ${strong.length}</strong> land in 2023&ndash;2026 (bail reform C-48, the study-permit cap, Bill C-12). Over the same window every tracked crime rose &mdash; trafficking <strong>+${trafC}%</strong>, child sexual violations <strong>+${childC}%</strong>.</p></div>
+    <div class="acard" style="border-left-color:var(--color-teal)"><h3>What this can't establish</h3><p>This is a <strong>temporal overlay, not a causal model</strong>. The brakes are recent &mdash; too recent for their effect to show in data that ends in 2024. And rising police-reported rates partly reflect better detection and reporting. The honest finding is narrower but real: <strong>the system was being loosened during the years these crimes climbed, and the corrections came only after.</strong></p></div>`;
+
+  renderTable('all','all');
+  buildFilters();
+  document.getElementById('foot').textContent='Crime: Statistics Canada Table 35-10-0177-01 (police-reported, rate/100k). Events: '+EVENTS.length+' dated immigration, asylum and enforcement decisions (2004&ndash;2026) — Acts of Parliament, Orders in Council, regulations and court rulings — each with a primary-source citation from the Canada Gazette, Parliament or the courts. Compiled by Canada Central.';
+}
+
+let fDir='all',fSrc='all';
+function buildFilters(){
+  const dirs=['all','weakened','strengthened','mixed','unknown'];
+  const srcs=['all','Curated','Gazette'];
+  document.getElementById('filters').innerHTML=
+    dirs.map(d=>`<span class="pill dir ${d===fDir?'active':''}" data-d="${d}">${d}</span>`).join('')+
+    '<span style="width:12px"></span>'+
+    srcs.map(s=>`<span class="pill src ${s===fSrc?'active':''}" data-s="${s}">${s}</span>`).join('');
+  document.querySelectorAll('.pill.dir').forEach(p=>p.onclick=()=>{fDir=p.dataset.d;buildFilters();renderTable(fDir,fSrc);});
+  document.querySelectorAll('.pill.src').forEach(p=>p.onclick=()=>{fSrc=p.dataset.s;buildFilters();renderTable(fDir,fSrc);});
+}
+function renderTable(dir,src){
+  const rows=EVENTS.filter(e=>(dir==='all'||e.direction===dir)&&(src==='all'||e.src===src));
+  document.getElementById('evBody').innerHTML=rows.map(e=>`<tr>
+    <td class="yr">${e.date||e.year}</td>
+    <td>${esc(e.title)}<div style="font-size:0.6875rem;color:#8A8A8A;margin-top:2px">${esc(e.summary||'')}</div></td>
+    <td>${esc(e.instrument||'')}${e.parliamentary_vote===false?'<div class="src-b">no vote</div>':(e.parliamentary_vote===true?'<div class="src-b">Act of Parliament</div>':'')}</td>
+    <td><span class="tag ${e.direction}">${e.direction}</span></td>
+    <td style="font-size:0.75rem">${esc(e.domain||'')}</td>
+    <td>${e.source_url?`<a href="${e.source_url}" target="_blank" rel="noopener">${esc(e.citation||e.src)}</a>`:esc(e.citation||e.src)}<div class="src-b">${e.src}</div></td>
+  </tr>`).join('')||'<tr><td colspan="6" style="color:#8A8A8A;padding:1rem">No events match.</td></tr>';
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+go();
+</script>
+</body>
+</html>

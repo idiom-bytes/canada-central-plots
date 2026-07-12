@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demographic variables in Canadian official statistics: Census vs. crime data</title>
+<style>
+  body{margin:0;background:#d9d3c7;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:18px 12px;gap:10px}
+  .toolbar{font-size:12px;color:#5a544a}
+  .toolbar button{font:inherit;font-weight:700;background:#3A5F6F;color:#fff;border:0;border-radius:999px;padding:6px 13px;cursor:pointer}
+  svg{width:100%;max-width:1600px;height:auto;box-shadow:0 10px 40px rgba(0,0,0,.18);border-radius:12px;background:#F0ECE3}
+</style>
+</head>
+<body>
+<div class="toolbar">Screenshot the card below, right-click → “Save image as…”, or <button onclick="dl()">Download PNG</button></div>
+
+<svg id="ig" width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+  <defs><style>.h1{font-family:Georgia,'Times New Roman',serif;font-weight:700}</style></defs>
+
+  <rect width="1600" height="900" fill="#F0ECE3"/>
+  <rect x="0" y="0" width="1600" height="8" fill="#3A5F6F"/>
+
+  <!-- header -->
+  <text x="800" y="60" text-anchor="middle" font-size="15" fill="#6E6A62" letter-spacing="3" font-weight="700">CANADIAN OFFICIAL STATISTICS</text>
+  <text x="800" y="106" text-anchor="middle" class="h1" font-size="38" fill="#2D2D2D">Which demographic variables are recorded and published?</text>
+  <text x="800" y="140" text-anchor="middle" font-size="20" fill="#5a544a">Census of Population compared with police-reported crime statistics.</text>
+
+  <!-- ===== LEFT: CENSUS ===== -->
+  <rect x="48" y="174" width="720" height="500" rx="14" fill="#ffffff" stroke="#cdc6b8"/>
+  <rect x="48" y="174" width="720" height="66" rx="14" fill="#3A5F6F"/>
+  <rect x="48" y="210" width="720" height="30" fill="#3A5F6F"/>
+  <!-- census/statistics icon: bar chart -->
+  <g transform="translate(92,190)">
+    <rect x="0" y="21" width="8" height="13" rx="1.5" fill="#ffffff"/>
+    <rect x="12" y="12" width="8" height="22" rx="1.5" fill="#ffffff"/>
+    <rect x="24" y="2"  width="8" height="32" rx="1.5" fill="#ffffff"/>
+  </g>
+  <text x="408" y="206" text-anchor="middle" font-size="13" fill="#cfe0e6" letter-spacing="2" font-weight="700">CENSUS OF POPULATION</text>
+  <text x="408" y="230" text-anchor="middle" class="h1" font-size="21" fill="#ffffff">Collected and published</text>
+  <g font-size="22" fill="#2D2D2D">
+    <g transform="translate(0,308)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0">Religion</text></g>
+    <g transform="translate(0,368)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0">Ethnic or cultural origin</text></g>
+    <g transform="translate(0,428)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0">Place of birth</text></g>
+    <g transform="translate(0,488)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0">Immigration status</text></g>
+    <g transform="translate(0,548)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0">Visible-minority group</text></g>
+    <g transform="translate(0,608)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0">Language, income, education</text></g>
+  </g>
+  <text x="408" y="652" text-anchor="middle" font-size="14" fill="#5a544a">Published as aggregate tables, down to small geographic areas.</text>
+
+  <!-- ===== RIGHT: CRIME ===== -->
+  <rect x="832" y="174" width="720" height="500" rx="14" fill="#ffffff" stroke="#cdc6b8"/>
+  <rect x="832" y="174" width="720" height="66" rx="14" fill="#6E6A62"/>
+  <rect x="832" y="210" width="720" height="30" fill="#6E6A62"/>
+  <!-- police icon: shield with badge star -->
+  <g transform="translate(880,188)">
+    <path d="M16,0 L31,5 V18 C31,29 24,35 16,38 C8,35 1,29 1,18 V5 Z" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M16,11 L17.6,15.6 L22.2,17 L17.6,18.4 L16,23 L14.4,18.4 L9.8,17 L14.4,15.6 Z" fill="#ffffff"/>
+  </g>
+  <text x="1192" y="206" text-anchor="middle" font-size="13" fill="#e3dfd6" letter-spacing="2" font-weight="700">POLICE-REPORTED CRIME</text>
+  <text x="1192" y="230" text-anchor="middle" class="h1" font-size="21" fill="#ffffff">What is recorded</text>
+  <g font-size="22">
+    <g transform="translate(784,308)"><circle cx="104" cy="-7" r="15" fill="none" stroke="#b7b0a2" stroke-width="2.5"/><line x1="96" y1="-7" x2="112" y2="-7" stroke="#b7b0a2" stroke-width="3.5" stroke-linecap="round"/><text x="138" y="0" fill="#6b6b6b">Religion</text></g>
+    <g transform="translate(784,368)"><circle cx="104" cy="-7" r="15" fill="none" stroke="#b7b0a2" stroke-width="2.5"/><line x1="96" y1="-7" x2="112" y2="-7" stroke="#b7b0a2" stroke-width="3.5" stroke-linecap="round"/><text x="138" y="0" fill="#6b6b6b">Ethnic or cultural origin</text></g>
+    <g transform="translate(784,428)"><circle cx="104" cy="-7" r="15" fill="none" stroke="#b7b0a2" stroke-width="2.5"/><line x1="96" y1="-7" x2="112" y2="-7" stroke="#b7b0a2" stroke-width="3.5" stroke-linecap="round"/><text x="138" y="0" fill="#6b6b6b">Place of birth</text></g>
+    <g transform="translate(784,488)"><circle cx="104" cy="-7" r="15" fill="none" stroke="#b7b0a2" stroke-width="2.5"/><line x1="96" y1="-7" x2="112" y2="-7" stroke="#b7b0a2" stroke-width="3.5" stroke-linecap="round"/><text x="138" y="0" fill="#6b6b6b">Immigration status</text></g>
+    <g transform="translate(784,548)"><circle cx="104" cy="-7" r="15" fill="none" stroke="#b7b0a2" stroke-width="2.5"/><line x1="96" y1="-7" x2="112" y2="-7" stroke="#b7b0a2" stroke-width="3.5" stroke-linecap="round"/><text x="138" y="0" fill="#6b6b6b">Nationality or citizenship</text></g>
+    <g transform="translate(784,608)"><circle cx="104" cy="-7" r="15" fill="#3A5F6F"/><path d="M97,-7 l5,6 l9,-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="138" y="0" fill="#2D2D2D">Age and sex of accused</text></g>
+  </g>
+  <text x="1192" y="652" text-anchor="middle" font-size="14" fill="#5a544a">Origin variables are not part of the dataset.</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#5a544a">
+    <circle cx="556" cy="716" r="11" fill="#3A5F6F"/><path d="M550,716 l4,5 l7,-9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="576" y="721">Recorded &amp; published</text>
+    <circle cx="800" cy="716" r="11" fill="none" stroke="#b7b0a2" stroke-width="2.2"/><line x1="794" y1="716" x2="806" y2="716" stroke="#b7b0a2" stroke-width="2.6" stroke-linecap="round"/><text x="820" y="721">Not collected</text>
+  </g>
+
+  <!-- summary -->
+  <text x="800" y="778" text-anchor="middle" font-size="19" fill="#2D2D2D">The Census publishes detailed personal characteristics in aggregate. Crime Statistics, does not.</text>
+  <text x="800" y="810" text-anchor="middle" font-size="16" fill="#6E6A62">Many EU countries publish crime by origin in aggregate: Germany, Denmark, Norway, Netherlands, Sweden.</text>
+
+  <line x1="48" y1="852" x2="1552" y2="852" stroke="#cdc6b8"/>
+  <text x="48" y="880" font-size="13" fill="#9a9384">Sources: Statistics Canada - 2021 Census of Population (Form 2A-L); police-reported crime (UCR) and courts (ICCS).</text>
+</svg>
+
+<script>
+function dl(){
+  const svg=document.getElementById('ig');
+  const xml=new XMLSerializer().serializeToString(svg);
+  const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
+  const img=new Image();
+  img.width=1600; img.height=900;
+  img.onload=function(){
+    const s=2;
+    const c=document.createElement('canvas');
+    c.width=1600*s; c.height=900*s;
+    const ctx=c.getContext('2d');
+    ctx.fillStyle='#F0ECE3'; ctx.fillRect(0,0,c.width,c.height);
+    ctx.setTransform(s,0,0,s,0,0);
+    ctx.drawImage(img,0,0,1600,900);
+    c.toBlob(function(b){
+      if(!b){alert('Export failed — please screenshot the card instead.');return;}
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(b);
+      a.download='census-vs-crime-variables.png';
+      a.click();
+    },'image/png');
+  };
+  img.onerror=function(){alert('Export failed — please screenshot the card instead.');};
+  img.src=url;
+}
+</script>
+</body>
+</html>
