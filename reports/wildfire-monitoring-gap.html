@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Monitoring Gap | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --accent: #2E4B3E;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--accent)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1100px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem}
+
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-bottom:2rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat.key{border-top-color:#8B2E2E}
+    .hero-stat .big{font-size:1.85rem;font-weight:800;color:var(--accent);line-height:1.2}
+    .hero-stat.key .big{color:#8B2E2E}
+    @media(min-width:640px){.hero-stat .big{font-size:2.25rem}}
+    .hero-stat .label{font-size:0.7rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:600;margin-top:6px;line-height:1.35}
+
+    /* Vertical report sections */
+    .report-section{margin-bottom:2.5rem;padding-top:0.5rem;border-top:1px solid var(--color-beige)}
+    .report-section:first-of-type{border-top:none}
+    .section-eyebrow{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin:0 0 0.35rem}
+    .section-title{font-size:1.25rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.5rem;line-height:1.3}
+    @media(min-width:640px){.section-title{font-size:1.4375rem}}
+    .section-intro{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.65;margin:0 0 1rem;max-width:800px}
+
+    .chart-row{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:860px){.chart-row.two{grid-template-columns:1fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 4px;color:var(--color-text-primary)}
+    .chart-card .sub{font-size:0.75rem;color:var(--color-text-secondary);margin:0 0 12px;line-height:1.55}
+    .chart-wrap{position:relative;height:320px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem}
+    .accountability h4{font-size:0.8125rem;font-weight:700;color:var(--color-text-primary);margin:1.1rem 0 0.4rem}
+    .accountability h4:first-child{margin-top:0}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#fde8e8;border-color:#f5c6c6;color:#8B2E2E}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+    .entity-tag.disputed{background:#e0f2fe;border-color:#bae6fd;color:#0369a1}
+    .entity-tag.confirmed{background:#e6f4ea;border-color:#bfe3c9;color:#1e6b3a}
+    .entity-tag.unconfirmed{background:#f3f0e8;border-color:#e0d8c3;color:#8A7A4A}
+
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.55}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+
+    .guardrail{background:#fdf6ec;border:1px solid #eadfc8;border-radius:var(--radius-md);padding:1rem 1.25rem}
+    .guardrail h4{margin:0 0 0.4rem;font-size:0.8125rem;font-weight:700;color:#92400e}
+    .guardrail p{margin:0 0 0.4rem;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6}
+    .guardrail p:last-child{margin:0}
+
+    .case-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:8px}
+    @media(min-width:768px){.case-list{grid-template-columns:1fr 1fr 1fr}}
+    .case-list li{background:var(--color-cream);border:1px solid var(--color-beige);border-radius:var(--radius-md);padding:0.7rem 0.85rem;font-size:0.75rem;color:var(--color-text-secondary);line-height:1.5}
+    .case-list li strong{color:var(--color-text-primary);display:block;margin-bottom:2px;font-size:0.8125rem}
+    .case-list li .src{display:block;margin-top:4px;color:var(--color-text-tertiary);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
+
+    .timeline-list{list-style:none;margin:0 0 1rem;padding:0}
+    .timeline-list li{display:grid;grid-template-columns:88px 1fr;gap:12px;padding:0.6rem 0;border-bottom:1px solid var(--color-cream-dark);font-size:0.8125rem}
+    .timeline-list li:last-child{border-bottom:none}
+    .timeline-list .tl-date{font-weight:700;color:var(--accent);font-size:0.75rem}
+    .timeline-list .tl-amount{font-weight:700;color:var(--color-text-primary)}
+    .timeline-list .tl-note{color:var(--color-text-secondary);display:block;margin-top:2px;font-size:0.75rem;line-height:1.5}
+
+    .verdict-block{background:var(--color-cream-dark);border-radius:var(--radius-md);padding:1rem 1.25rem;margin-top:1rem}
+    .verdict-block h4{margin:0 0 0.5rem;font-size:0.8125rem;font-weight:700;color:var(--accent)}
+    .verdict-block p{margin:0 0 0.6rem;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.65}
+    .verdict-block ul{margin:0.4rem 0 0;padding-left:1.1rem}
+    .verdict-block li{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.6;margin-bottom:0.3rem}
+
+    .closing-hero{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:640px){.closing-hero{grid-template-columns:1fr 1fr}}
+    .closing-hero .hero-stat .big{font-size:1.85rem}
+    @media(min-width:640px){.closing-hero .hero-stat .big{font-size:2.25rem}}
+    .closing-math code{background:var(--color-cream);border:1px solid var(--color-beige);padding:1px 5px;border-radius:3px;font-size:0.75rem}
+    .closing-line{font-size:0.9375rem;font-weight:700;color:var(--color-text-primary);line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-beige)}
+
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--accent);color:var(--color-white);border-color:var(--accent)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige);max-height:520px;overflow-y:auto}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{position:sticky;top:0;text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.5rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .data-table tr.in-progress td{color:var(--color-text-tertiary);font-style:italic}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="https://canada-central.com/participation">MP Participation</a>
+      <a href="../index.html">Statistics</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+
+      <h1 class="page-title">The Monitoring Gap</h1>
+      <p class="page-subtitle">Source: BC Wildfire Service (live incident records, 1950&ndash;2026) &middot; Statistics Canada &middot; federal union &amp; government reporting, 2026</p>
+      <p class="page-desc">In 2026, France's Interior Ministry announced <strong>420 arrests, including 166 minors</strong>, for deliberately or accidentally starting wildfires &mdash; a rolling, published tally. Canada has no equivalent: no federal or provincial agency publishes an annual count of wildfire-arson arrests. This report goes to the primary source &mdash; BC Wildfire Service's own incident-by-incident records, over 200,000 fires back to 1950 &mdash; to ask what the real trend actually is. It finds something more concrete than an arrest count: the share of BC wildfires with <strong>no recorded cause at all</strong> was stable at 4&ndash;14% every year through 1998, then jumped to <strong>38.2% in 1999 and 50.8% in 2000</strong> and stayed elevated for over a decade. At the same time, federal agencies responsible for wildfire coordination, mapping, and weather monitoring saw budget and staffing cuts in 2026, and the specialized aircraft that fight these fires from the air didn't grow to match the worsening seasons either &mdash; for its own, separate reason. Each section below walks through one piece of that story with the data behind it.</p>
+
+      <div class="hero-stats" id="heroStats"></div>
+
+      <!-- SECTION: Who tracks this -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 1</div>
+        <h2 class="section-title">Who tracks this, and what got smaller?</h2>
+        <p class="section-intro">BC Wildfire Service keeps unusually good incident-level records &mdash; every fire back to 1950 is tagged Person, Lightning, or Unknown. That data shows the real gap isn't "too much arson" &mdash; it's that Canada's capacity to even <em>record</em> a cause, and to coordinate/monitor the response once a fire starts, has been inconsistent for decades and was cut further in 2026.</p>
+
+        <div class="accountability">
+          <h4>Government Operations Centre (Public Safety Canada)</h4>
+          <p><span class="entity-tag govt">Federal</span> <span class="entity-tag disputed">Disputed cut</span> Canada's 24/7 emergency-coordination centre for all-hazard events, including wildfires. In January 2026, around 60 of its roughly 110&ndash;130 staff received workforce-adjustment letters.</p>
+          <div class="quote-block">
+            "Gutting it by almost half."
+            <span class="attr">&mdash; Sharon DeSousa, National President, Public Service Alliance of Canada (PSAC) &middot; Global News, 2026-07-23</span>
+          </div>
+          <p>The Emergency Preparedness Minister's office disputes the scale, saying the centre's core workforce fell by only 10 people, from 110 to 100. Both figures come from the same cut, tied to the federal government's Comprehensive Expenditure Review targeting $60B in savings &mdash; timed to land during one of the most intense wildfire seasons in Canadian history.</p>
+
+          <h4>Natural Resources Canada &mdash; satellite wildfire mapping</h4>
+          <p><span class="entity-tag govt">Federal</span> At least 17 remote-sensing staff, who produce federal satellite-based wildfire mapping, received workforce-adjustment notices in the same round of cuts. The union representing them raised the mapping-capacity risk directly.</p>
+          <div class="quote-block">
+            Cuts "raise questions about Canada's future wildfire-mapping capacity."
+            <span class="attr">&mdash; Stéphanie Fréchette, VP, Professional Institute of the Public Service of Canada (PIPSC) &middot; The Hill Times, 2026-07-22</span>
+          </div>
+
+          <h4>Environment and Climate Change Canada &mdash; weather monitoring</h4>
+          <p><span class="entity-tag govt">Federal</span> ECCC disbanded its weather radar research team and ended the 230-transmitter Weatheradio public alert network in March 2026, also under the Expenditure Review. Both feed into fire-weather risk prediction. (A separate, broader claim that Canada's weather-station count has fallen by half since the 1980s could not be independently verified from a primary source and is not used as a figure in this report.)</p>
+
+          <h4 style="color:#8B2E2E">So how much did any of this actually save?</h4>
+          <div id="savingsSummary"></div>
+
+          <h4>Enforcement is case-by-case, not systematized</h4>
+          <p>No Canadian agency &mdash; federal, provincial, or RCMP &mdash; publishes an annual aggregate count of wildfire-arson arrests or charges. What exists is individual prosecutions, reported one at a time:</p>
+          <ul class="case-list" id="caseList"></ul>
+          <p style="margin-top:0.85rem">Alberta RCMP put it plainly in June 2025: they said they weren't aware of <strong>any</strong> arson charges connected to that season's wildfires &mdash; not because there was no fire activity, but because no one was centrally counting.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: The 1999 Collapse -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 2</div>
+        <h2 class="section-title">The 1999 collapse: what we found &mdash; and didn't</h2>
+        <p class="section-intro">This is a sudden break, not a slow decline, and it deserves an explanation rather than just a chart. Here's the exact discontinuity, year by year, followed by what we could confirm about why it happened and what remains an open question.</p>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>Unknown-Cause Fires, Year by Year (1990&ndash;2015)</h3>
+            <p class="sub">The unknown-cause rate was stable at 4&ndash;14% every year through 1998, then jumped to 38.2% in 1999 and 50.8% in 2000, peaking at 78.1% in 2011.</p>
+            <div class="chart-wrap"><canvas id="chartCollapse"></canvas></div>
+          </div>
+        </div>
+
+        <div class="accountability" style="border-left-color:#8B2E2E">
+          <h4 style="color:#8B2E2E;margin-top:0">What's confirmed</h4>
+          <div id="collapseConfirmed"></div>
+          <h4>What's unconfirmed &mdash; and flagged as such</h4>
+          <p id="collapseHypothesis"></p>
+          <h4>What would close the gap</h4>
+          <p id="collapseFoi"></p>
+        </div>
+      </section>
+
+      <!-- SECTION: Monitoring gap by decade -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 3</div>
+        <h2 class="section-title">Smoothing the noise: the gap by decade</h2>
+        <p class="section-intro">Zooming out from single years to full decades shows the 1999 jump wasn't a blip that faded &mdash; unrecorded causes stayed the dominant category for twenty years, and the human-caused share (measured only against fires whose cause WAS identified) hasn't shown a one-directional trend either up or down.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>Unrecorded Causes vs. Human-Caused Share, by Decade</h3>
+            <p class="sub">Bars (right axis): % of fires with no recorded cause. Line (left axis): of fires that WERE identified, the % that were human-caused (Person &divide; [Person+Lightning]).</p>
+            <div class="chart-wrap"><canvas id="chartQuality"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: 75 years of fires -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 4</div>
+        <h2 class="section-title">Seventy-five years of BC wildfires, by cause</h2>
+        <p class="section-intro">Every recorded BC wildfire since 1950, stacked by official cause. "Unknown" means BC Wildfire Service could not determine how the fire started &mdash; it is not evidence either way about arson. 2026 is season-to-date and shown separately since it is not yet complete.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>BC Wildfires by Cause, 1950&ndash;2026</h3>
+            <div class="chart-wrap"><canvas id="chartTimeline"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Area burned -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 5</div>
+        <h2 class="section-title">Fire count and area burned tell different stories</h2>
+        <p class="section-intro">A handful of extreme lightning-caused seasons dominate total hectares burned, even though human-caused fires are often more numerous. Judging "how bad" a season is by count alone, or by area alone, gives two different answers.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>Hectares Burned by Cause, 1950&ndash;2026</h3>
+            <div class="chart-wrap"><canvas id="chartArea"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Human cause breakdown -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 6</div>
+        <h2 class="section-title">When humans start fires, how?</h2>
+        <p class="section-intro">Of BC wildfires with a known cause (2016&ndash;2025), what kind of human activity started them. Arson/suspicious is a real but small slice &mdash; campfires, open burning, and vehicles/equipment combined account for far more.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>BC Human-Caused Wildfires, by Sub-Category (2016&ndash;2025)</h3>
+            <p class="sub" id="causesSub"></p>
+            <div class="chart-wrap"><canvas id="chartCauses"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Water bombers -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 7</div>
+        <h2 class="section-title">Did firefighting capacity keep up? The water bombers</h2>
+        <p class="section-intro">If wildfires have been a growing problem since at least 1999, did Canada's aerial firefighting fleet and funding grow to match it? The honest answer is nuanced: suppression <em>spending</em> rose roughly in step with area burned &mdash; but the specialized amphibious water-bomber <em>fleet</em> stagnated, and not primarily because governments withheld money.</p>
+
+        <div class="chart-row two">
+          <div class="chart-card">
+            <h3>Water Bomber Fleet by Province</h3>
+            <p class="sub">Current snapshot (2023&ndash;2026), not a clean multi-decade time series &mdash; see the note below the chart.</p>
+            <div class="chart-wrap"><canvas id="chartFleet"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>The Manufacturing Gap</h3>
+            <p class="sub">Years CL-215/CL-415-type aircraft were actually being built. The highlighted bar is nine years with zero new large scoopers built anywhere in the world.</p>
+            <div class="chart-wrap"><canvas id="chartManufacturing"></canvas></div>
+          </div>
+        </div>
+        <p class="section-intro" id="fleetNote" style="margin-top:-0.5rem"></p>
+
+        <div class="accountability">
+          <h4 style="margin-top:0">Federal funding timeline</h4>
+          <ul class="timeline-list" id="fundingTimeline"></ul>
+
+          <h4>What experts say</h4>
+          <div id="expertQuotes"></div>
+
+          <h4 id="ontarioCutHeading" style="display:none">A budget cut, mid-crisis</h4>
+          <p id="ontarioCutNote"></p>
+        </div>
+
+        <div class="verdict-block">
+          <h4>The verdict</h4>
+          <p id="verdictSummary"></p>
+          <p style="font-weight:700;color:var(--color-text-primary);margin-bottom:0.3rem">What we could not verify:</p>
+          <ul id="verdictCaveats"></ul>
+        </div>
+      </section>
+
+      <!-- SECTION: Has the fleet grown or shrunk -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 8</div>
+        <h2 class="section-title">Has Canada's bomber fleet actually grown or shrunk?</h2>
+        <p class="section-intro">No public registry — Canadian or international — publishes a clean year-by-year fleet count. We reconstructed what we could from provincial news archives and history pages: 2&ndash;3 data points per province. It's thin, and we're labeling it that way, but it points somewhere specific.</p>
+
+        <div class="accountability" style="border-left-color:#8A7A4A">
+          <p><span class="entity-tag unconfirmed">Medium confidence</span> <span id="fleetTrendConfidence"></span></p>
+        </div>
+
+        <div class="chart-row two">
+          <div class="chart-card">
+            <h3>Provincial Fleet Size Over Time</h3>
+            <p class="sub">Every data point we could confirm, by province. Gaps between points are unknown — don't read a straight line between them.</p>
+            <div class="chart-wrap"><canvas id="chartFleetTrend"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Canada's Fleet in International Context</h3>
+            <p class="sub">Fleet sizes only (not dollars, to avoid mixing currencies). The US bar shows the most dramatic documented fleet contraction found anywhere in this research.</p>
+            <div class="chart-wrap"><canvas id="chartFleetIntl"></canvas></div>
+          </div>
+        </div>
+
+        <div class="accountability">
+          <h4 style="margin-top:0">The real story may be aging, not shrinking</h4>
+          <p id="fleetRealStory"></p>
+          <h4>BC's specific capability downgrade</h4>
+          <p id="fleetBcDowngrade"></p>
+          <h4>What a water bomber actually costs</h4>
+          <ul class="timeline-list" id="fleetUnitCosts"></ul>
+          <p id="fleetCostGaps"></p>
+          <h4>Retirements</h4>
+          <p id="fleetRetirements"></p>
+        </div>
+      </section>
+
+      <!-- SECTION: Total federal funding -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 9</div>
+        <h2 class="section-title">What has Ottawa actually spent, 2000&ndash;2026?</h2>
+        <p class="section-intro">The aerial-firefighting funding above is one narrow slice. Zooming out to ALL federal wildfire-related spending — disaster reimbursement, interagency coordination, Indigenous emergency management, research — surfaces a bigger finding: nobody, including Parliament's own research service, has ever added it up.</p>
+
+        <div class="accountability" style="border-left-color:#4A6FA5">
+          <p id="fundingGapNote"></p>
+        </div>
+
+        <div class="chart-row two">
+          <div class="chart-card">
+            <h3>Federal Wildfire-Related Budget Commitments by Year</h3>
+            <p class="sub">Every explicit federal wildfire-related commitment found in budgets 2000&ndash;2026. Grey bars mark years searched with NO wildfire-specific item found &mdash; those gaps may mean nothing happened, or just that it wasn't itemized separately. Both are possible; we can't tell which from public documents.</p>
+            <div class="chart-wrap"><canvas id="chartFundingByYear"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Disaster Payouts: Past vs. Projected</h3>
+            <p class="sub" id="dfaaChartSub"></p>
+            <div class="chart-wrap"><canvas id="chartDfaa"></canvas></div>
+          </div>
+        </div>
+
+        <div class="accountability">
+          <h4 style="margin-top:0">Where the money actually goes</h4>
+          <div id="fundingBreakdown"></div>
+          <h4>Federal vs. provincial responsibility</h4>
+          <p id="federalProvincialNote"></p>
+          <h4>"The only G7 country without one"</h4>
+          <div class="quote-block" id="senateQuote"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: Homes and damage -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 10</div>
+        <h2 class="section-title">What did it actually cost? Homes and damage since 2000</h2>
+        <p class="section-intro" id="damageIntro"></p>
+
+        <div class="chart-row two">
+          <div class="chart-card">
+            <h3>Insured Damage by Major Event</h3>
+            <p class="sub">Bars use insured damage where reported; total/economic damage where insured figures weren't found. Figures mix nominal and inflation-adjusted dollars across different years &mdash; treat as order-of-magnitude, not precisely comparable.</p>
+            <div class="chart-wrap"><canvas id="chartDamage"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Homes &amp; Structures Destroyed by Major Event</h3>
+            <div class="chart-wrap"><canvas id="chartStructures"></canvas></div>
+          </div>
+        </div>
+
+        <div class="accountability">
+          <h4 style="margin-top:0">The decade comparison</h4>
+          <p id="decadeComparisonNote"></p>
+          <h4>A cost category the property numbers miss entirely</h4>
+          <p id="smokeCostNote"></p>
+          <h4>Why there's no clean running total</h4>
+          <p id="damageGapNote"></p>
+        </div>
+      </section>
+
+      <!-- SECTION: The Tally -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 11</div>
+        <h2 class="section-title">The tally: investment vs. cost</h2>
+        <p class="section-intro" id="tallyFraming"></p>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>What's Been Invested vs. What It's Cost</h3>
+            <p class="sub">Logarithmic scale &mdash; the gap between these figures spans orders of magnitude, so a normal scale would flatten every investment bar to invisible. Hover any bar for its exact scope and time period; these mix federal-only spending, national totals, private insurance payouts, and health-system costs, so they are NOT all directly additive against each other.</p>
+            <div class="chart-wrap" style="height:420px"><canvas id="chartTally"></canvas></div>
+          </div>
+        </div>
+
+        <div class="accountability">
+          <h4 style="margin-top:0">The most direct comparison</h4>
+          <p id="tallyScaleNote"></p>
+          <h4>Who actually carries this cost</h4>
+          <p id="tallyCitizenNote"></p>
+        </div>
+      </section>
+
+      <!-- SECTION: Provincial benchmark -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 12</div>
+        <h2 class="section-title">How does BC compare nationally?</h2>
+        <p class="section-intro">Statistics Canada's general Arson [2110] crime category, by province, most recent year. This is NOT wildfire-specific &mdash; it includes structure and vehicle arson &mdash; but it is the closest thing Canada has to a systematic, published, year-over-year arson count, which is exactly what does not exist for wildfires specifically.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3 id="benchmarkTitle">Arson Rate per 100,000 Population, by Province</h3>
+            <div class="chart-wrap"><canvas id="chartBenchmark"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: What we're left with -->
+      <section class="report-section">
+        <div class="section-eyebrow">Section 13</div>
+        <h2 class="section-title">What we're left with</h2>
+        <p class="section-intro">Every number in this report has been an estimate of a problem's scale. This last one is different — it's an estimate of the fix's scale, and it's the smallest number in the entire report.</p>
+
+        <div class="closing-hero">
+          <div class="hero-stat">
+            <div class="big">$4M / yr</div>
+            <div class="label">The only CONFIRMED savings figure, across all three 2026 cuts</div>
+          </div>
+          <div class="hero-stat key">
+            <div class="big" id="closingRangeStat"></div>
+            <div class="label">Labeled ESTIMATE across all the cuts, disputed and unconfirmed included</div>
+          </div>
+        </div>
+
+        <div class="accountability closing-math">
+          <h4 style="margin-top:0">Show the math</h4>
+          <p id="closingMathText"></p>
+          <p id="closingAssumptionText" style="font-style:italic"></p>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>The Estimate, Next to What a Bad Season Costs</h3>
+            <p class="sub">Logarithmic scale. Both ends of the estimate round to roughly the same thing next to real wildfire damage.</p>
+            <div class="chart-wrap"><canvas id="chartClosing"></canvas></div>
+          </div>
+        </div>
+
+        <p class="closing-line" id="closingLine"></p>
+      </section>
+
+      <!-- Guardrail -->
+      <section class="report-section">
+        <div class="guardrail" id="guardrailBlock"></div>
+      </section>
+
+      <!-- Data table -->
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title">Every BC Wildfire Season, 1950&ndash;2026</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"hero":[{"label":"GOC emergency-coordination staff cut, per PSAC (govt disputes: says ~9%)","value":"~50%","accent":"key"},{"label":"BC unknown-cause fires, 1998 \u2192 1999 (one-year jump)","value":"7.1% \u2192 38.2%","accent":"key"},{"label":"Of BC fires with a known cause, 2016-2025, human-caused","value":"50.1%","accent":"neutral"},{"label":"BC wildfires officially attributed to arson, 2016-2025","value":"3.8%","accent":"neutral"},{"label":"Canadian agencies publishing an annual wildfire-arson arrest count (vs. France's 420)","value":"0","accent":"key"}],"bc_timeline":[{"year":1950,"person":842,"lightning":340,"unknown":254,"total":1436,"human_caused_pct":58.6,"human_caused_pct_known":71.2,"unknown_pct":17.7,"in_progress":false},{"year":1951,"person":976,"lightning":569,"unknown":254,"total":1799,"human_caused_pct":54.3,"human_caused_pct_known":63.2,"unknown_pct":14.1,"in_progress":false},{"year":1952,"person":1005,"lightning":430,"unknown":304,"total":1739,"human_caused_pct":57.8,"human_caused_pct_known":70.0,"unknown_pct":17.5,"in_progress":false},{"year":1953,"person":523,"lightning":562,"unknown":189,"total":1274,"human_caused_pct":41.1,"human_caused_pct_known":48.2,"unknown_pct":14.8,"in_progress":false},{"year":1954,"person":484,"lightning":115,"unknown":108,"total":707,"human_caused_pct":68.5,"human_caused_pct_known":80.8,"unknown_pct":15.3,"in_progress":false},{"year":1955,"person":638,"lightning":420,"unknown":190,"total":1248,"human_caused_pct":51.1,"human_caused_pct_known":60.3,"unknown_pct":15.2,"in_progress":false},{"year":1956,"person":983,"lightning":493,"unknown":377,"total":1853,"human_caused_pct":53.0,"human_caused_pct_known":66.6,"unknown_pct":20.3,"in_progress":false},{"year":1957,"person":716,"lightning":302,"unknown":222,"total":1240,"human_caused_pct":57.7,"human_caused_pct_known":70.3,"unknown_pct":17.9,"in_progress":false},{"year":1958,"person":1471,"lightning":1147,"unknown":421,"total":3039,"human_caused_pct":48.4,"human_caused_pct_known":56.2,"unknown_pct":13.9,"in_progress":false},{"year":1959,"person":1006,"lightning":181,"unknown":282,"total":1469,"human_caused_pct":68.5,"human_caused_pct_known":84.8,"unknown_pct":19.2,"in_progress":false},{"year":1960,"person":1203,"lightning":1160,"unknown":269,"total":2632,"human_caused_pct":45.7,"human_caused_pct_known":50.9,"unknown_pct":10.2,"in_progress":false},{"year":1961,"person":1320,"lightning":1427,"unknown":352,"total":3099,"human_caused_pct":42.6,"human_caused_pct_known":48.1,"unknown_pct":11.4,"in_progress":false},{"year":1962,"person":703,"lightning":619,"unknown":211,"total":1533,"human_caused_pct":45.9,"human_caused_pct_known":53.2,"unknown_pct":13.8,"in_progress":false},{"year":1963,"person":1001,"lightning":1146,"unknown":196,"total":2343,"human_caused_pct":42.7,"human_caused_pct_known":46.6,"unknown_pct":8.4,"in_progress":false},{"year":1964,"person":679,"lightning":278,"unknown":164,"total":1121,"human_caused_pct":60.6,"human_caused_pct_known":71.0,"unknown_pct":14.6,"in_progress":false},{"year":1965,"person":1451,"lightning":1006,"unknown":229,"total":2686,"human_caused_pct":54.0,"human_caused_pct_known":59.1,"unknown_pct":8.5,"in_progress":false},{"year":1966,"person":1251,"lightning":376,"unknown":339,"total":1966,"human_caused_pct":63.6,"human_caused_pct_known":76.9,"unknown_pct":17.2,"in_progress":false},{"year":1967,"person":2017,"lightning":955,"unknown":241,"total":3213,"human_caused_pct":62.8,"human_caused_pct_known":67.9,"unknown_pct":7.5,"in_progress":false},{"year":1968,"person":798,"lightning":707,"unknown":141,"total":1646,"human_caused_pct":48.5,"human_caused_pct_known":53.0,"unknown_pct":8.6,"in_progress":false},{"year":1969,"person":1435,"lightning":644,"unknown":235,"total":2314,"human_caused_pct":62.0,"human_caused_pct_known":69.0,"unknown_pct":10.2,"in_progress":false},{"year":1970,"person":1862,"lightning":1807,"unknown":333,"total":4002,"human_caused_pct":46.5,"human_caused_pct_known":50.7,"unknown_pct":8.3,"in_progress":false},{"year":1971,"person":1296,"lightning":1334,"unknown":265,"total":2895,"human_caused_pct":44.8,"human_caused_pct_known":49.3,"unknown_pct":9.2,"in_progress":false},{"year":1972,"person":1178,"lightning":582,"unknown":144,"total":1904,"human_caused_pct":61.9,"human_caused_pct_known":66.9,"unknown_pct":7.6,"in_progress":false},{"year":1973,"person":1869,"lightning":811,"unknown":181,"total":2861,"human_caused_pct":65.3,"human_caused_pct_known":69.7,"unknown_pct":6.3,"in_progress":false},{"year":1974,"person":1711,"lightning":715,"unknown":133,"total":2559,"human_caused_pct":66.9,"human_caused_pct_known":70.5,"unknown_pct":5.2,"in_progress":false},{"year":1975,"person":1173,"lightning":1420,"unknown":117,"total":2710,"human_caused_pct":43.3,"human_caused_pct_known":45.2,"unknown_pct":4.3,"in_progress":false},{"year":1976,"person":665,"lightning":161,"unknown":67,"total":893,"human_caused_pct":74.5,"human_caused_pct_known":80.5,"unknown_pct":7.5,"in_progress":false},{"year":1977,"person":1178,"lightning":555,"unknown":121,"total":1854,"human_caused_pct":63.5,"human_caused_pct_known":68.0,"unknown_pct":6.5,"in_progress":false},{"year":1978,"person":1063,"lightning":1143,"unknown":102,"total":2308,"human_caused_pct":46.1,"human_caused_pct_known":48.2,"unknown_pct":4.4,"in_progress":false},{"year":1979,"person":1699,"lightning":1947,"unknown":203,"total":3849,"human_caused_pct":44.1,"human_caused_pct_known":46.6,"unknown_pct":5.3,"in_progress":false},{"year":1980,"person":964,"lightning":659,"unknown":120,"total":1743,"human_caused_pct":55.3,"human_caused_pct_known":59.4,"unknown_pct":6.9,"in_progress":false},{"year":1981,"person":898,"lightning":1760,"unknown":79,"total":2737,"human_caused_pct":32.8,"human_caused_pct_known":33.8,"unknown_pct":2.9,"in_progress":false},{"year":1982,"person":1147,"lightning":949,"unknown":109,"total":2205,"human_caused_pct":52.0,"human_caused_pct_known":54.7,"unknown_pct":4.9,"in_progress":false},{"year":1983,"person":1094,"lightning":488,"unknown":123,"total":1705,"human_caused_pct":64.2,"human_caused_pct_known":69.2,"unknown_pct":7.2,"in_progress":false},{"year":1984,"person":988,"lightning":1962,"unknown":113,"total":3063,"human_caused_pct":32.3,"human_caused_pct_known":33.5,"unknown_pct":3.7,"in_progress":false},{"year":1985,"person":1411,"lightning":1961,"unknown":236,"total":3608,"human_caused_pct":39.1,"human_caused_pct_known":41.8,"unknown_pct":6.5,"in_progress":false},{"year":1986,"person":1106,"lightning":921,"unknown":167,"total":2194,"human_caused_pct":50.4,"human_caused_pct_known":54.6,"unknown_pct":7.6,"in_progress":false},{"year":1987,"person":1822,"lightning":1438,"unknown":217,"total":3477,"human_caused_pct":52.4,"human_caused_pct_known":55.9,"unknown_pct":6.2,"in_progress":false},{"year":1988,"person":1250,"lightning":522,"unknown":179,"total":1951,"human_caused_pct":64.1,"human_caused_pct_known":70.5,"unknown_pct":9.2,"in_progress":false},{"year":1989,"person":1200,"lightning":2028,"unknown":292,"total":3520,"human_caused_pct":34.1,"human_caused_pct_known":37.2,"unknown_pct":8.3,"in_progress":false},{"year":1990,"person":1030,"lightning":2016,"unknown":209,"total":3255,"human_caused_pct":31.6,"human_caused_pct_known":33.8,"unknown_pct":6.4,"in_progress":false},{"year":1991,"person":1082,"lightning":760,"unknown":171,"total":2013,"human_caused_pct":53.8,"human_caused_pct_known":58.7,"unknown_pct":8.5,"in_progress":false},{"year":1992,"person":1234,"lightning":2344,"unknown":227,"total":3805,"human_caused_pct":32.4,"human_caused_pct_known":34.5,"unknown_pct":6.0,"in_progress":false},{"year":1993,"person":779,"lightning":611,"unknown":107,"total":1497,"human_caused_pct":52.0,"human_caused_pct_known":56.0,"unknown_pct":7.1,"in_progress":false},{"year":1994,"person":984,"lightning":2887,"unknown":184,"total":4055,"human_caused_pct":24.3,"human_caused_pct_known":25.4,"unknown_pct":4.5,"in_progress":false},{"year":1995,"person":926,"lightning":344,"unknown":204,"total":1474,"human_caused_pct":62.8,"human_caused_pct_known":72.9,"unknown_pct":13.8,"in_progress":false},{"year":1996,"person":509,"lightning":725,"unknown":124,"total":1358,"human_caused_pct":37.5,"human_caused_pct_known":41.2,"unknown_pct":9.1,"in_progress":false},{"year":1997,"person":402,"lightning":688,"unknown":85,"total":1175,"human_caused_pct":34.2,"human_caused_pct_known":36.9,"unknown_pct":7.2,"in_progress":false},{"year":1998,"person":720,"lightning":1756,"unknown":189,"total":2665,"human_caused_pct":27.0,"human_caused_pct_known":29.1,"unknown_pct":7.1,"in_progress":false},{"year":1999,"person":501,"lightning":599,"unknown":681,"total":1781,"human_caused_pct":28.1,"human_caused_pct_known":45.5,"unknown_pct":38.2,"in_progress":false},{"year":2000,"person":605,"lightning":842,"unknown":1497,"total":2944,"human_caused_pct":20.6,"human_caused_pct_known":41.8,"unknown_pct":50.8,"in_progress":false},{"year":2001,"person":716,"lightning":479,"unknown":1486,"total":2681,"human_caused_pct":26.7,"human_caused_pct_known":59.9,"unknown_pct":55.4,"in_progress":false},{"year":2002,"person":825,"lightning":872,"unknown":1543,"total":3240,"human_caused_pct":25.5,"human_caused_pct_known":48.6,"unknown_pct":47.6,"in_progress":false},{"year":2003,"person":879,"lightning":1514,"unknown":2035,"total":4428,"human_caused_pct":19.9,"human_caused_pct_known":36.7,"unknown_pct":46.0,"in_progress":false},{"year":2004,"person":629,"lightning":1713,"unknown":1670,"total":4012,"human_caused_pct":15.7,"human_caused_pct_known":26.9,"unknown_pct":41.6,"in_progress":false},{"year":2005,"person":533,"lightning":385,"unknown":1414,"total":2332,"human_caused_pct":22.9,"human_caused_pct_known":58.1,"unknown_pct":60.6,"in_progress":false},{"year":2006,"person":923,"lightning":1536,"unknown":2196,"total":4655,"human_caused_pct":19.8,"human_caused_pct_known":37.5,"unknown_pct":47.2,"in_progress":false},{"year":2007,"person":639,"lightning":919,"unknown":2476,"total":4034,"human_caused_pct":15.8,"human_caused_pct_known":41.0,"unknown_pct":61.4,"in_progress":false},{"year":2008,"person":801,"lightning":1175,"unknown":2681,"total":4657,"human_caused_pct":17.2,"human_caused_pct_known":40.5,"unknown_pct":57.6,"in_progress":false},{"year":2009,"person":843,"lightning":2183,"unknown":3457,"total":6483,"human_caused_pct":13.0,"human_caused_pct_known":27.9,"unknown_pct":53.3,"in_progress":false},{"year":2010,"person":650,"lightning":992,"unknown":2344,"total":3986,"human_caused_pct":16.3,"human_caused_pct_known":39.6,"unknown_pct":58.8,"in_progress":false},{"year":2011,"person":406,"lightning":210,"unknown":2197,"total":2813,"human_caused_pct":14.4,"human_caused_pct_known":65.9,"unknown_pct":78.1,"in_progress":false},{"year":2012,"person":634,"lightning":942,"unknown":2102,"total":3678,"human_caused_pct":17.2,"human_caused_pct_known":40.2,"unknown_pct":57.2,"in_progress":false},{"year":2013,"person":516,"lightning":1299,"unknown":1760,"total":3575,"human_caused_pct":14.4,"human_caused_pct_known":28.4,"unknown_pct":49.2,"in_progress":false},{"year":2014,"person":597,"lightning":818,"unknown":1316,"total":2731,"human_caused_pct":21.9,"human_caused_pct_known":42.2,"unknown_pct":48.2,"in_progress":false},{"year":2015,"person":567,"lightning":1238,"unknown":1199,"total":3004,"human_caused_pct":18.9,"human_caused_pct_known":31.4,"unknown_pct":39.9,"in_progress":false},{"year":2016,"person":528,"lightning":485,"unknown":1091,"total":2104,"human_caused_pct":25.1,"human_caused_pct_known":52.1,"unknown_pct":51.9,"in_progress":false},{"year":2017,"person":528,"lightning":777,"unknown":1024,"total":2329,"human_caused_pct":22.7,"human_caused_pct_known":40.5,"unknown_pct":44.0,"in_progress":false},{"year":2018,"person":569,"lightning":1526,"unknown":1109,"total":3204,"human_caused_pct":17.8,"human_caused_pct_known":27.2,"unknown_pct":34.6,"in_progress":false},{"year":2019,"person":1017,"lightning":404,"unknown":447,"total":1868,"human_caused_pct":54.4,"human_caused_pct_known":71.6,"unknown_pct":23.9,"in_progress":false},{"year":2020,"person":1265,"lightning":280,"unknown":376,"total":1921,"human_caused_pct":65.9,"human_caused_pct_known":81.9,"unknown_pct":19.6,"in_progress":false},{"year":2021,"person":1175,"lightning":1005,"unknown":812,"total":2992,"human_caused_pct":39.3,"human_caused_pct_known":53.9,"unknown_pct":27.1,"in_progress":false},{"year":2022,"person":1175,"lightning":1218,"unknown":834,"total":3227,"human_caused_pct":36.4,"human_caused_pct_known":49.1,"unknown_pct":25.8,"in_progress":false},{"year":2023,"person":1110,"lightning":1671,"unknown":1161,"total":3942,"human_caused_pct":28.2,"human_caused_pct_known":39.9,"unknown_pct":29.5,"in_progress":false},{"year":2024,"person":947,"lightning":1213,"unknown":1084,"total":3244,"human_caused_pct":29.2,"human_caused_pct_known":43.8,"unknown_pct":33.4,"in_progress":false},{"year":2025,"person":1065,"lightning":754,"unknown":1103,"total":2922,"human_caused_pct":36.4,"human_caused_pct_known":58.5,"unknown_pct":37.7,"in_progress":false},{"year":2026,"person":415,"lightning":455,"unknown":29,"total":899,"human_caused_pct":46.2,"human_caused_pct_known":47.7,"unknown_pct":3.2,"in_progress":true}],"bc_area_burned":[{"year":1950,"person_ha":139961.9,"lightning_ha":14928.5,"unknown_ha":188448.2,"total_ha":343338.6,"in_progress":false},{"year":1951,"person_ha":98221.8,"lightning_ha":45342.6,"unknown_ha":26516.7,"total_ha":170081.1,"in_progress":false},{"year":1952,"person_ha":15672.1,"lightning_ha":23334.4,"unknown_ha":22665.6,"total_ha":61672.1,"in_progress":false},{"year":1953,"person_ha":2327.3,"lightning_ha":1590.7,"unknown_ha":11785.4,"total_ha":15703.4,"in_progress":false},{"year":1954,"person_ha":3934.8,"lightning_ha":53.1,"unknown_ha":225.3,"total_ha":4213.2,"in_progress":false},{"year":1955,"person_ha":9560.9,"lightning_ha":2441.8,"unknown_ha":6967.0,"total_ha":18969.7,"in_progress":false},{"year":1956,"person_ha":73622.6,"lightning_ha":7140.1,"unknown_ha":146319.3,"total_ha":227082.0,"in_progress":false},{"year":1957,"person_ha":7575.9,"lightning_ha":3039.2,"unknown_ha":1758.4,"total_ha":12373.5,"in_progress":false},{"year":1958,"person_ha":448717.2,"lightning_ha":372354.0,"unknown_ha":34897.0,"total_ha":855968.2,"in_progress":false},{"year":1959,"person_ha":63275.7,"lightning_ha":37888.5,"unknown_ha":8449.8,"total_ha":109614.0,"in_progress":false},{"year":1960,"person_ha":32645.3,"lightning_ha":79591.6,"unknown_ha":3978.5,"total_ha":116215.4,"in_progress":false},{"year":1961,"person_ha":185287.6,"lightning_ha":289368.7,"unknown_ha":8441.0,"total_ha":483097.3,"in_progress":false},{"year":1962,"person_ha":9363.2,"lightning_ha":3702.2,"unknown_ha":5525.1,"total_ha":18590.5,"in_progress":false},{"year":1963,"person_ha":11524.7,"lightning_ha":6880.4,"unknown_ha":598.5,"total_ha":19003.6,"in_progress":false},{"year":1964,"person_ha":2653.6,"lightning_ha":161.5,"unknown_ha":330.4,"total_ha":3145.5,"in_progress":false},{"year":1965,"person_ha":18098.6,"lightning_ha":100504.2,"unknown_ha":2698.0,"total_ha":121300.8,"in_progress":false},{"year":1966,"person_ha":8854.2,"lightning_ha":11416.4,"unknown_ha":2079.1,"total_ha":22349.7,"in_progress":false},{"year":1967,"person_ha":60028.8,"lightning_ha":39765.4,"unknown_ha":2303.3,"total_ha":102097.5,"in_progress":false},{"year":1968,"person_ha":10902.6,"lightning_ha":2199.2,"unknown_ha":628.9,"total_ha":13730.7,"in_progress":false},{"year":1969,"person_ha":45659.3,"lightning_ha":111168.3,"unknown_ha":7105.7,"total_ha":163933.3,"in_progress":false},{"year":1970,"person_ha":39501.8,"lightning_ha":52298.5,"unknown_ha":13609.7,"total_ha":105410.0,"in_progress":false},{"year":1971,"person_ha":54243.9,"lightning_ha":290541.0,"unknown_ha":6557.5,"total_ha":351342.4,"in_progress":false},{"year":1972,"person_ha":12197.7,"lightning_ha":12706.8,"unknown_ha":697.4,"total_ha":25601.9,"in_progress":false},{"year":1973,"person_ha":21168.8,"lightning_ha":10891.1,"unknown_ha":1373.0,"total_ha":33432.9,"in_progress":false},{"year":1974,"person_ha":15098.9,"lightning_ha":4204.0,"unknown_ha":1717.0,"total_ha":21019.9,"in_progress":false},{"year":1975,"person_ha":14771.8,"lightning_ha":8870.0,"unknown_ha":700.0,"total_ha":24341.8,"in_progress":false},{"year":1976,"person_ha":35356.4,"lightning_ha":14592.6,"unknown_ha":7134.7,"total_ha":57083.7,"in_progress":false},{"year":1977,"person_ha":2687.0,"lightning_ha":289.0,"unknown_ha":820.5,"total_ha":3796.5,"in_progress":false},{"year":1978,"person_ha":9299.3,"lightning_ha":39882.2,"unknown_ha":902.3,"total_ha":50083.8,"in_progress":false},{"year":1979,"person_ha":20159.2,"lightning_ha":8571.7,"unknown_ha":714.5,"total_ha":29445.4,"in_progress":false},{"year":1980,"person_ha":23411.9,"lightning_ha":38886.8,"unknown_ha":3279.2,"total_ha":65577.9,"in_progress":false},{"year":1981,"person_ha":22030.2,"lightning_ha":84220.3,"unknown_ha":342.7,"total_ha":106593.2,"in_progress":false},{"year":1982,"person_ha":25026.7,"lightning_ha":323177.4,"unknown_ha":491.0,"total_ha":348695.1,"in_progress":false},{"year":1983,"person_ha":65904.9,"lightning_ha":460.0,"unknown_ha":1012.9,"total_ha":67377.8,"in_progress":false},{"year":1984,"person_ha":8375.8,"lightning_ha":11123.2,"unknown_ha":409.1,"total_ha":19908.1,"in_progress":false},{"year":1985,"person_ha":228955.8,"lightning_ha":74670.9,"unknown_ha":9130.2,"total_ha":312756.9,"in_progress":false},{"year":1986,"person_ha":10543.2,"lightning_ha":5754.5,"unknown_ha":963.5,"total_ha":17261.2,"in_progress":false},{"year":1987,"person_ha":25202.4,"lightning_ha":7985.2,"unknown_ha":1805.6,"total_ha":34993.2,"in_progress":false},{"year":1988,"person_ha":9719.1,"lightning_ha":858.3,"unknown_ha":905.0,"total_ha":11482.4,"in_progress":false},{"year":1989,"person_ha":15295.7,"lightning_ha":7459.2,"unknown_ha":2626.7,"total_ha":25381.6,"in_progress":false},{"year":1990,"person_ha":37173.2,"lightning_ha":35506.5,"unknown_ha":3102.1,"total_ha":75781.8,"in_progress":false},{"year":1991,"person_ha":8082.7,"lightning_ha":13785.2,"unknown_ha":2840.9,"total_ha":24708.8,"in_progress":false},{"year":1992,"person_ha":12648.4,"lightning_ha":14892.9,"unknown_ha":2911.5,"total_ha":30452.8,"in_progress":false},{"year":1993,"person_ha":3024.9,"lightning_ha":1783.2,"unknown_ha":375.3,"total_ha":5183.4,"in_progress":false},{"year":1994,"person_ha":5596.3,"lightning_ha":14944.2,"unknown_ha":922.8,"total_ha":21463.3,"in_progress":false},{"year":1995,"person_ha":17182.8,"lightning_ha":28365.6,"unknown_ha":2531.6,"total_ha":48080.0,"in_progress":false},{"year":1996,"person_ha":6417.0,"lightning_ha":14089.1,"unknown_ha":162.8,"total_ha":20668.9,"in_progress":false},{"year":1997,"person_ha":2554.3,"lightning_ha":326.6,"unknown_ha":79.0,"total_ha":2959.9,"in_progress":false},{"year":1998,"person_ha":6362.4,"lightning_ha":62532.0,"unknown_ha":158.7,"total_ha":69053.1,"in_progress":false},{"year":1999,"person_ha":3137.9,"lightning_ha":318.0,"unknown_ha":493.9,"total_ha":3949.9,"in_progress":false},{"year":2000,"person_ha":11306.5,"lightning_ha":6191.1,"unknown_ha":355.5,"total_ha":17853.1,"in_progress":false},{"year":2001,"person_ha":4488.8,"lightning_ha":4983.5,"unknown_ha":1197.4,"total_ha":10669.7,"in_progress":false},{"year":2002,"person_ha":4043.1,"lightning_ha":4216.8,"unknown_ha":3535.9,"total_ha":11795.8,"in_progress":false},{"year":2003,"person_ha":81519.2,"lightning_ha":183167.2,"unknown_ha":2813.4,"total_ha":267499.8,"in_progress":false},{"year":2004,"person_ha":2359.8,"lightning_ha":218112.3,"unknown_ha":454.9,"total_ha":220927.1,"in_progress":false},{"year":2005,"person_ha":7397.1,"lightning_ha":27097.3,"unknown_ha":39258.8,"total_ha":73753.2,"in_progress":false},{"year":2006,"person_ha":9033.2,"lightning_ha":129697.8,"unknown_ha":747.5,"total_ha":139478.5,"in_progress":false},{"year":2007,"person_ha":12150.8,"lightning_ha":17243.1,"unknown_ha":11164.5,"total_ha":40558.3,"in_progress":false},{"year":2008,"person_ha":8578.1,"lightning_ha":4572.1,"unknown_ha":257.2,"total_ha":13407.4,"in_progress":false},{"year":2009,"person_ha":26085.1,"lightning_ha":220716.2,"unknown_ha":1444.9,"total_ha":248246.1,"in_progress":false},{"year":2010,"person_ha":10424.5,"lightning_ha":326731.7,"unknown_ha":927.8,"total_ha":338084.1,"in_progress":false},{"year":2011,"person_ha":1086.6,"lightning_ha":11379.7,"unknown_ha":313.2,"total_ha":12779.5,"in_progress":false},{"year":2012,"person_ha":5515.8,"lightning_ha":96509.8,"unknown_ha":494.5,"total_ha":102520.1,"in_progress":false},{"year":2013,"person_ha":4624.3,"lightning_ha":13630.9,"unknown_ha":617.6,"total_ha":18872.8,"in_progress":false},{"year":2014,"person_ha":7657.8,"lightning_ha":334560.3,"unknown_ha":27590.2,"total_ha":369808.4,"in_progress":false},{"year":2015,"person_ha":50515.9,"lightning_ha":223736.8,"unknown_ha":7107.0,"total_ha":281359.7,"in_progress":false},{"year":2016,"person_ha":92597.5,"lightning_ha":7058.1,"unknown_ha":2570.1,"total_ha":102225.6,"in_progress":false},{"year":2017,"person_ha":213961.6,"lightning_ha":987938.1,"unknown_ha":14302.2,"total_ha":1216201.9,"in_progress":false},{"year":2018,"person_ha":121506.9,"lightning_ha":1221383.6,"unknown_ha":13977.9,"total_ha":1356868.4,"in_progress":false},{"year":2019,"person_ha":4864.9,"lightning_ha":15637.9,"unknown_ha":845.9,"total_ha":21348.7,"in_progress":false},{"year":2020,"person_ha":1059.9,"lightning_ha":11336.6,"unknown_ha":3100.1,"total_ha":15496.6,"in_progress":false},{"year":2021,"person_ha":294473.7,"lightning_ha":573852.0,"unknown_ha":1269.9,"total_ha":869595.5,"in_progress":false},{"year":2022,"person_ha":22490.5,"lightning_ha":112676.3,"unknown_ha":136.0,"total_ha":135302.8,"in_progress":false},{"year":2023,"person_ha":55691.3,"lightning_ha":2813665.3,"unknown_ha":27139.3,"total_ha":2896495.9,"in_progress":false},{"year":2024,"person_ha":18001.1,"lightning_ha":1054712.5,"unknown_ha":8916.6,"total_ha":1081630.1,"in_progress":false},{"year":2025,"person_ha":91821.1,"lightning_ha":788771.0,"unknown_ha":26009.1,"total_ha":906601.1,"in_progress":false},{"year":2026,"person_ha":80033.7,"lightning_ha":244581.7,"unknown_ha":61880.6,"total_ha":386496.0,"in_progress":true}],"bc_decade_summary":[{"decade":"1950s","person":8644,"lightning":4559,"unknown":2601,"total":15804,"human_caused_pct":54.7,"human_caused_pct_known":65.5,"unknown_pct":16.5},{"decade":"1960s","person":11858,"lightning":8318,"unknown":2377,"total":22553,"human_caused_pct":52.6,"human_caused_pct_known":58.8,"unknown_pct":10.5},{"decade":"1970s","person":13694,"lightning":10475,"unknown":1666,"total":25835,"human_caused_pct":53.0,"human_caused_pct_known":56.7,"unknown_pct":6.4},{"decade":"1980s","person":11880,"lightning":12688,"unknown":1635,"total":26203,"human_caused_pct":45.3,"human_caused_pct_known":48.4,"unknown_pct":6.2},{"decade":"1990s","person":8167,"lightning":12730,"unknown":2181,"total":23078,"human_caused_pct":35.4,"human_caused_pct_known":39.1,"unknown_pct":9.5},{"decade":"2000s","person":7393,"lightning":11618,"unknown":20455,"total":39466,"human_caused_pct":18.7,"human_caused_pct_known":38.9,"unknown_pct":51.8},{"decade":"2010s","person":6012,"lightning":8691,"unknown":14589,"total":29292,"human_caused_pct":20.5,"human_caused_pct_known":40.9,"unknown_pct":49.8},{"decade":"2020s","person":6737,"lightning":6141,"unknown":5370,"total":18248,"human_caused_pct":36.9,"human_caused_pct_known":52.3,"unknown_pct":29.4}],"cause_recording_collapse":{"yearly_window_1990_2015":[{"year":1990,"unknown_pct":6.4,"total":3255},{"year":1991,"unknown_pct":8.5,"total":2013},{"year":1992,"unknown_pct":6.0,"total":3805},{"year":1993,"unknown_pct":7.1,"total":1497},{"year":1994,"unknown_pct":4.5,"total":4055},{"year":1995,"unknown_pct":13.8,"total":1474},{"year":1996,"unknown_pct":9.1,"total":1358},{"year":1997,"unknown_pct":7.2,"total":1175},{"year":1998,"unknown_pct":7.1,"total":2665},{"year":1999,"unknown_pct":38.2,"total":1781},{"year":2000,"unknown_pct":50.8,"total":2944},{"year":2001,"unknown_pct":55.4,"total":2681},{"year":2002,"unknown_pct":47.6,"total":3240},{"year":2003,"unknown_pct":46.0,"total":4428},{"year":2004,"unknown_pct":41.6,"total":4012},{"year":2005,"unknown_pct":60.6,"total":2332},{"year":2006,"unknown_pct":47.2,"total":4655},{"year":2007,"unknown_pct":61.4,"total":4034},{"year":2008,"unknown_pct":57.6,"total":4657},{"year":2009,"unknown_pct":53.3,"total":6483},{"year":2010,"unknown_pct":58.8,"total":3986},{"year":2011,"unknown_pct":78.1,"total":2813},{"year":2012,"unknown_pct":57.2,"total":3678},{"year":2013,"unknown_pct":49.2,"total":3575},{"year":2014,"unknown_pct":48.2,"total":2731},{"year":2015,"unknown_pct":39.9,"total":3004}],"last_normal_year":{"year":1998,"unknown_pct":7.1},"spike_year":{"year":1999,"unknown_pct":38.2},"year_after":{"year":2000,"unknown_pct":50.8},"peak_year":{"year":2011,"unknown_pct":78.1},"context":{"finding":"BC's own wildfire records show a sudden, sustained collapse in cause-recording, not a gradual decline. The share of fires with no recorded cause was stable at 4-14% every year from at least 1990 through 1998, then jumped to 38.2% in 1999 and 50.8% in 2000 \u2014 and stayed elevated (40-78% depending on year) for over a decade, only partially recovering in the 2020s (~29%).","confirmed_context":[{"claim":"BC's forest service lost approximately 1,006 positions \u2014 roughly 25% of its workforce \u2014 in under a decade starting in the early 2000s; field inspections by compliance and enforcement staff fell 46% between fiscal years 2001/02 and 2004/05.","confidence":"confirmed","source":"Sierra Club BC / Canadian Centre for Policy Alternatives report (2010), cited in The Narwhal, \"B.C.'s natural resource officers unequipped to deal with forestry and wildfire crimes\" (2024)","caveat":"This documented staffing collapse begins in 2001/02 \u2014 two to three years AFTER the unknown-cause rate had already jumped in 1999-2000. It plausibly explains why the gap PERSISTED through the 2000s and 2010s, but does not by itself explain why the discontinuity started when it did."}],"unconfirmed_hypothesis":"Some public references describe BC Wildfire Service's per-season historical incident data as beginning in 1999, which raises the possibility that a fire-reporting database or methodology change around 1999 changed how 'cause unknown' was recorded or defaulted \u2014 separate from, or in addition to, any staffing effect. We could not verify this against official dataset lineage documentation or BC Forest Service Protection Branch annual reports for 1998/99-2000/01, which are not currently accessible on the public web. This is flagged explicitly as UNCONFIRMED, not a finding.","what_would_close_the_gap":"A freedom-of-information request to BC Wildfire Service for (a) Forest Service Protection Branch annual reports/business plans, fiscal years 1998/99 through 2000/01, and (b) data-dictionary or lineage documentation for the historical incident dataset, would directly test both explanations above."}},"bcws_cause_breakdown":{"period":"2016-2025","source":"BC Wildfire Service, via Black Press (Kimberley Bulletin / Barriere Star Journal, 2026-07-14, quoting BCWS communications officer John Paolozzi); independently corroborated by Northern Beat (Jeff Davies, 2024-08-22, direct BCWS FOI data request, 2013-2023).","categories":[{"label":"Lightning","pct":63.0},{"label":"Open burning","pct":8.1},{"label":"Campfire","pct":6.5},{"label":"Unknown / undetermined","pct":6.9},{"label":"Arson / suspicious","pct":3.8},{"label":"Vehicle / equipment","pct":3.8},{"label":"Other human causes","pct":7.9}]},"data_quality_note":"BC's FIRE_CAUSE field carries only three values \u2014 Person, Lightning, Unknown \u2014 with no arson sub-code. The Unknown share itself has swung sharply by decade (from roughly 10-17% in the 1950s-1980s to over 50% in the 2000s, settling near 20-30% recently), which would distort any 'human-caused %' computed against ALL fires. Every human-caused percentage in this report is computed against fires with a KNOWN cause (Person + Lightning) unless labelled otherwise, so swings in how much goes unrecorded don't get mistaken for a real change in who starts fires.","statcan_arson_benchmark":{"national_trend":[{"year":1998,"incidents":12935},{"year":1999,"incidents":12716},{"year":2000,"incidents":13657},{"year":2001,"incidents":14353},{"year":2002,"incidents":12967},{"year":2003,"incidents":13642},{"year":2004,"incidents":12846},{"year":2005,"incidents":13053},{"year":2006,"incidents":13204},{"year":2007,"incidents":13015},{"year":2008,"incidents":13371},{"year":2009,"incidents":13404},{"year":2010,"incidents":12234},{"year":2011,"incidents":10401},{"year":2012,"incidents":11096},{"year":2013,"incidents":8915},{"year":2014,"incidents":8528},{"year":2015,"incidents":8967},{"year":2016,"incidents":8546},{"year":2017,"incidents":8549},{"year":2018,"incidents":8049},{"year":2019,"incidents":8218},{"year":2020,"incidents":8931},{"year":2021,"incidents":10164},{"year":2022,"incidents":9821},{"year":2023,"incidents":11032},{"year":2024,"incidents":10610},{"year":2025,"incidents":10889}],"provincial_latest":[{"province":"Nunavut","incidents":62,"rate_per_100k":148.22},{"province":"Saskatchewan","incidents":1333,"rate_per_100k":105.21},{"province":"Northwest Territories","incidents":33,"rate_per_100k":71.82},{"province":"Manitoba","incidents":832,"rate_per_100k":55.11},{"province":"New Brunswick","incidents":446,"rate_per_100k":51.28},{"province":"British Columbia","incidents":1826,"rate_per_100k":32.05},{"province":"Newfoundland & Labrador","incidents":171,"rate_per_100k":31.1},{"province":"Alberta","incidents":1494,"rate_per_100k":29.71},{"province":"Prince Edward Island","incidents":53,"rate_per_100k":29.02},{"province":"Quebec","incidents":2521,"rate_per_100k":27.83},{"province":"Nova Scotia","incidents":237,"rate_per_100k":21.68},{"province":"Yukon","incidents":10,"rate_per_100k":20.71},{"province":"Ontario","incidents":1866,"rate_per_100k":11.48}],"latest_year":2025,"note":"StatCan tracks arson as a Criminal Code violation nationally but does NOT distinguish wildland/forest arson from structure or vehicle arson. Used here only as a general benchmark, not as a wildfire-specific figure."},"france_arrest_trend":{"note":"France's Interior Ministry publishes a rolling, cumulative in-season arrest tally for people accused of deliberately or accidentally starting wildfires. No Canadian federal or provincial agency publishes an equivalent aggregate figure.","seasons":[{"year":2022,"arrests":48,"minors":null,"source":"The Inquirer, 2022-09-23 (end-of-season total)"},{"year":2026,"arrests":420,"minors":166,"source":"French Interior Minister Laurent Nunez; corroborated by europesays.com/News.Az (2026-08-05, interim figure 402/156) and Anadolu Agency (2026-07-28, 162 arrests, 13,566 fire starts, 116,085 ha burned season-to-date)"}],"canada_equivalent_aggregate_tracking":false},"monitoring_cuts_2026":[{"system":"Government Operations Centre (Public Safety Canada)","role":"Federal 24/7 situational-awareness and coordination centre for emergency response, including wildfires.","claim":"~60 employees (of ~110-130) received workforce-adjustment letters in January 2026 \u2014 \"gutting it by almost half.\"","claimant":"Sharon DeSousa, national president, Public Service Alliance of Canada (PSAC)","government_response":"Emergency Preparedness Minister's office says the core workforce dropped by only 10 (from 110 to 100).","status":"disputed","context":"Cuts stem from the government-wide Comprehensive Expenditure Review targeting $60B in savings over five years; timing coincided with one of the most intense wildfire seasons in Canadian history.","source":"Global News, 2026-07-23; corroborated by Yahoo News Canada, rabble.ca, Play 103.7/Harvard Media","savings_estimate":"NO confirmed dollar savings figure found anywhere in public reporting \u2014 not from government, PSAC, or news coverage. Public Safety Canada's departmental plan references $1.18B for \"emergency management strategies\" broadly, but that is a program allocation, not a savings figure tied to these specific cuts."},{"system":"NRCan remote-sensing / satellite wildfire mapping unit","role":"Federal satellite-based wildfire mapping and monitoring.","claim":"At least 17 remote-sensing employees received workforce-adjustment notices; 200+ PIPSC members affected at NRCan overall.","claimant":"St\u00e9phanie Fr\u00e9chette, VP, Professional Institute of the Public Service of Canada (PIPSC)","government_response":null,"status":"no specific percentage cited \u2014 reported as headcount only","context":"Part of the same Comprehensive Expenditure Review; union raised explicit concerns about Canada's future wildfire-mapping capacity.","source":"The Hill Times, 2026-07-22","savings_estimate":"NO confirmed dollar savings figure for this specific team. NRCan's 2026-27 Departmental Plan shows department-WIDE Expenditure Review reductions of $266.4M (2026-27) rising to $557.9M (2028-29), with ~807 FTEs cut by 2028-29 \u2014 but this is the entire department's target, not an itemized figure for the remote-sensing/wildfire-mapping team."},{"system":"Environment and Climate Change Canada (ECCC) weather monitoring","role":"Weather radar research and the Weatheradio public alert network, both inputs to fire-weather risk prediction.","claim":"ECCC disbanded its weather radar research team and ended the 230-transmitter Weatheradio network in March 2026.","claimant":null,"government_response":null,"status":"confirmed cuts to specific programs, not a headcount percentage","context":"Part of the Comprehensive Expenditure Review. A broader claim that Canada's weather-station count has fallen by roughly half since the 1980s could not be independently verified from a primary source and is NOT used as a figure in this report.","source":"The Globe and Mail, 2026-03; Nelson Star, 2026-03-21","savings_estimate":"The ONE confirmed figure in this entire set: Weatheradio cost ~$4M/year to operate (ECCC spokespeople, corroborated independently by CBC and The Globe and Mail), against a ~$2.5M decommissioning cost over two years \u2014 implying roughly $4M/year in net savings once decommissioning is absorbed, though no government document states a net savings figure explicitly. The separate radar-research-team disbandment has NO dollar figure anywhere \u2014 The Globe and Mail notes only the government-wide $60B target, with no team-specific breakdown."}],"cuts_savings_summary":{"question":"How much was actually saved per year from the 2026 wildfire-monitoring cuts?","answer":"Mostly unknown \u2014 and that absence is itself a finding. Of the three cuts documented above, only ONE has any confirmed dollar savings figure anywhere in public reporting: ECCC's Weatheradio shutdown, at roughly $4M/year. The Government Operations Centre and NRCan remote-sensing cuts have NO confirmed savings figure at all, despite extensive searching of government documents, union statements, and news coverage. No department-level breakdown of the $60B, five-year Comprehensive Expenditure Review has been published that would show what Public Safety Canada, NRCan, or ECCC specifically saved.","only_confirmed_figure":{"program":"ECCC Weatheradio network","annual_savings_estimate":4000000,"decommissioning_cost":2500000,"decommissioning_period":"2 years","confidence":"confirmed operating cost, from two independently corroborating ECCC spokespeople (CBC, The Globe and Mail); the NET annual savings figure is our inference from operating cost minus decommissioning cost, not a government-stated figure"},"comparison":"$4M/year is roughly 6% of the annualized $316.7M/5-year federal aerial-firefighting commitment (~$63M/year), and a rounding error against the $325M/year PBO projects for wildfires' share of federal disaster-assistance costs alone. If this is representative of what these staffing cuts actually saved, the government gutted wildfire-critical monitoring capacity \u2014 during one of the worst fire seasons on record \u2014 for a sum too small to appear in any of the cost figures elsewhere in this report.","cer_context":{"total_5yr":60000000000,"annual_disclosed":[{"year":"2026-27","amount":9000000000},{"year":"2027-28","amount":10000000000},{"year":"2028-29","amount":13000000000}],"note":"Government-wide totals only. No published table maps specific dollar targets to Public Safety Canada, NRCan, or ECCC individually within this $60B.","source":"Budget 2025 / Fall Economic Statement; departmental plans"}},"cuts_estimate":{"assumption":{"fully_loaded_salary_low":100000,"fully_loaded_salary_high":115000,"note":"Rough fully-loaded federal public-service compensation per FTE, including benefits/overhead (~20-25% above base salary). This figure is NOT sourced to a specific Treasury Board document \u2014 it is a standard planning-level assumption, stated explicitly here so it can be checked, challenged, or replaced with a better one."},"inputs":{"goc":{"confidence":"disputed headcount, estimated dollars","headcount_low":10,"headcount_low_source":"government (\"core workforce\" figure)","headcount_high":60,"headcount_high_source":"PSAC union claim"},"nrcan":{"confidence":"disputed headcount, estimated dollars","headcount_low":17,"headcount_high":17,"headcount_source":"PIPSC (\"at least 17\")"},"radar_team":{"confidence":"VERY LOW confidence \u2014 no source states a headcount or budget for this team at all","headcount_low":5,"headcount_high":15,"headcount_source":"No public source \u2014 government, union, or news \u2014 gives a headcount or budget for ECCC's disbanded weather radar research team specifically. The only qualitative anchor found: Dr. David Sills (Canadian Severe Storms Laboratory), quoted saying the team \"had gotten small... and now it's not there at all.\" The 5-15 range here is our own rough guess at what \"small\" plausibly means for a specialized federal research team, NOT a sourced figure of any kind.","context":"For scale, not attribution: ECCC's cuts overall affect roughly 1,000 employees / ~840 FTE reductions department-wide, with ECCC's OWN budget reductions rising to $91M/year from 2026-27 (cumulative $1.3B by 2030). This team's disbandment happened inside that much larger, department-wide reduction \u2014 there's no way to isolate its specific share from public sources. The team's research supported Canada's $180.4M radar hardware modernization (32 dual-polarization radars + 1 training radar, completed 2023-2024).","source":"The Globe and Mail, CBC, Prince Albert Daily Herald, CP24 \u2014 2026-03 through 2026-06 coverage"},"confirmed":{"label":"ECCC Weatheradio network \u2014 the one fully confirmed, sourced figure in this entire estimate","amount":4000000}},"goc_estimate":{"low":1000000,"high":6900000},"nrcan_estimate":{"low":1700000,"high":1955000},"radar_team_estimate":{"low":500000,"high":1725000},"total_low":7200000,"total_high":14580000,"pct_of_fort_mcmurray_2016":{"low":0.081,"high":0.164},"pct_of_bc_2023_season":{"low":1.0,"high":2.02},"closing_line":"Take the low end, the high end, or reject the estimate entirely and use only the $4M that's actually confirmed \u2014 every version of this number is a rounding error against what a single bad wildfire season costs."},"named_bc_arson_cases":[{"name":"David Travis","location":"Nelson, BC","detail":"Pleaded guilty to 3 counts of arson; lit 4 fires in July 2024; sentenced Dec 2025 to 2 years less a day.","source":"CBC"},{"name":"Angela Elise Cornish","location":"Kamloops / Monte Lake, BC","detail":"4 arson charges following a joint RCMP / BC Wildfire Service investigation.","source":"Global News"},{"name":"Christopher White","location":"Mission, BC","detail":"3 arson counts following an RCMP Forest Crimes unit + BCWS investigation.","source":"Global News"}],"politifact_guardrail":{"claim_checked":"Viral claim that dozens of Canada's 2023 wildfires were arson.","rating":"False","finding":"Only 2 of the cited examples were actually confirmed 2023 wildfire arson cases; most cited incidents were structure fires or older, unrelated events. RCMP told PolitiFact it does not determine fire cause centrally \u2014 each province investigates independently.","source":"PolitiFact, 2023-07-20","why_it_matters":"Included as an explicit guardrail: the honest finding of this report is a tracking/enforcement gap, not evidence of a Canadian arson epidemic comparable to France's."},"alberta_context":{"cause_split_2024":{"human_pct":50,"lightning_pct":47,"under_investigation_pct":3,"source":"CIFFC, 2024, via news summary"},"rcmp_statement":"Alberta RCMP stated in June 2025 they were not aware of any arson charges relating to wildfires that season.","source":"Canadian Press, 2025-06"},"water_bombers":{"fleet_by_province":[{"province":"Quebec","count":14,"types":"CL-215 / CL-215T / CL-415","note":null,"source":"AFP fact-check via Yahoo News, 2026"},{"province":"Ontario","count":9,"types":"CL-415 (part of an 80-aircraft fleet incl. helicopters)","note":"at least one CL-415 grounded in 2024 for lack of trained pilots, not lack of airframes","source":"CBC, 2024"},{"province":"Manitoba","count":11,"types":"7 CL-215, 4 CL-415","note":"fleet averages roughly 40 years old","source":"CBC / Fire Fighting in Canada, 2023"},{"province":"Newfoundland & Labrador","count":7,"types":"2 CL-215, 5 CL-415","note":"one CL-415 sat out of service since 2018","source":"Fire Fighting in Canada, 2023"},{"province":"Saskatchewan","count":6,"types":"3 CL-215, 3 CL-215T","note":null,"source":"Fire Fighting in Canada, 2023"},{"province":"Alberta","count":4,"types":"CL-215, built 1986-88; no CL-415s","note":"plus 14 other contracted air tankers and 30 long-term-contract helicopters","source":"Fire Fighting in Canada, 2023"},{"province":"British Columbia","count":0,"types":"no CL-215/415s in BC's own fleet","note":"relies on 27 contracted fixed-wing aircraft (Conair Q400s, Convairs, Air Tractor Fireboss); BC only retired its legacy Electra/Convair piston fleet in 2020-2022","source":"CBC/Radio-Canada, 'Is Canada ready for a fiery future?', 2023"}],"national_estimates":[{"label":"CL-215/415-type aircraft on Canada's civil register","value":79,"period":"2023","source":"Skies Mag"},{"label":"\"Dispatch-ready\" core fleet aircraft","value":106,"period":"2023","source":"CBC, citing aviation analyst John Gradek"},{"label":"High-performance water bombers specifically (of the 106 above)","value":60,"period":"2023","source":"CBC, citing John Gradek"},{"label":"Canadair-type aircraft called \"absolutely insufficient\"","value":55,"period":"2023","source":"Fire Fighting in Canada"},{"label":"Distinct firefighting aircraft active in a 3-month window, incl. 63 water bombers","value":73,"period":"2026","source":"AFP fact-check"}],"manufacturing_timeline":[{"start":1969,"end":1990,"label":"CL-215 production","detail":"125 built, sold to 11 countries; Quebec an original 1969 launch customer"},{"start":1993,"end":2015,"label":"CL-415 production","detail":"95 built"},{"start":2015,"end":2024,"label":"PRODUCTION HALTED","detail":"Bombardier exits; rights sold to Viking Air / De Havilland Canada in 2016; zero new large scoopers built anywhere in the world for 9 years"},{"start":2024,"end":2028,"label":"Restart forced by a foreign order","detail":"EU/France orders 22 aircraft in 2024, forcing De Havilland to rebuild a 50,000+-part supply chain and stand up a new Calgary factory; order book grows to ~40 aircraft (France, Greece, Portugal, Alberta); first delivery not until 2028, to Greece"},{"start":2028,"end":2031,"label":"Alberta's order queue","detail":"Alberta ordered 5 DHC-515s in Feb 2026 for C$400M \u2014 first delivery not until spring 2031, a 5-year lead time, regardless of the money being available today"}],"federal_funding_timeline":[{"date":"2021","amount_label":"$129M","note":"Budget 2021 aerial-firefighting-related funding; criticized by the Fraser Institute as disproportionate to a (since-superseded) reading of long-run fire trends","source":"Federal budget documents / Fraser Institute commentary"},{"date":"2025-12-01","amount_label":"$257.6M over 4 years","note":"NRCan funding announced to LEASE firefighting aircraft","source":"canada.ca, Public Safety Canada"},{"date":"2026-02-20","amount_label":"$316.7M over 5 years","note":"Revised figure, redirected through CIFFC; not clearly stated anywhere whether this is additive to the Dec 2025 announcement or a restatement of the same money","source":"canada.ca, Public Safety Canada"},{"date":"2026-05","amount_label":"10 aircraft + 2 support assets leased, 150 days","note":"CIFFC leased 4 Dash 8-400AT air tankers, helicopters, and a spotter plane from Conair/Coldstream/VIH, May 1 - Sept 27, 2026 \u2014 this buys LEASE ACCESS to existing privately-owned aircraft, not new national fleet capacity","source":"canada.ca, Public Safety Canada"}],"suppression_spending_trend":{"source":"Hope, Coops et al., PLOS ONE, \"Wildfire Suppression Costs for Canada under a Changing Climate\"","note":"Total wildfire SUPPRESSION spending has risen roughly in step with area burned since 1970 \u2014 this is operational firefighting spending, not capital investment in the aerial fleet, which stagnated separately because of the 2015-2024 manufacturing gap above, not primarily because governments withheld money.","period_estimates":[{"period":"1970-2009 (annual range)","value_label":"$216M \u2013 $1B+","context":"2009 CAD; averaged $537M/year"},{"period":"1970 \u2192 2010 (10-yr average change)","value_label":"+176%","context":"tracking a comparable +177% rise in area burned over the same window"},{"period":"Recent decade (~2015-2025)","value_label":"$800M \u2013 $1.4B / year","context":"exceeded $1B in 6 of the last 10 years"}]},"ontario_budget_cut":{"fy_2025_26_budget":271000000,"fy_2026_27_budget":150000000,"note":"Ontario cut its emergency forestry firefighting budget for 2026-27 despite having burned through nearly double the NEW budget's size the year before -- and after its own 2022 Auditor General found wildland fire response times often exceeded four hours.","source":"Ontario budget estimates; Ontario Auditor General, 2022"},"expert_commentary":[{"quote":"Absolutely insufficient.","attribution":"John Gradek, aviation analyst, McGill University, on Canada's ~55-aircraft Canadair-type fleet","date":"2023","source":"Fire Fighting in Canada"},{"quote":"Not yet a strategy.","attribution":"John Gradek, on the May 2026 10-aircraft federal lease","date":"2026","source":"The Conversation"},{"quote":"The underlying trend line has been rising for over 60 years, and the last several seasons have accelerated well beyond it... a pattern of underbudgeting... a clear lack of national coordination of our assets and capabilities.","attribution":"James Moore, former federal minister","date":"2026-08","source":"BNN Bloomberg"}],"verdict":{"verdict":"nuanced \u2014 not simple negligence, but not adequate either","summary":"Total wildfire suppression SPENDING has grown roughly in step with area burned since 1970. But the specialized amphibious water-bomber FLEET stagnated for a genuine, verifiable reason: production of the CL-415 stopped in 2015 and no new large scooper aircraft were built ANYWHERE IN THE WORLD for 9 years, until a 2024 European order forced De Havilland to rebuild a supply chain from scratch. Even with money committed today, Canada cannot buy new large scoopers faster than a 2028-2031 delivery horizon \u2014 Alberta ordered and paid in Feb 2026 and won't receive its first aircraft until spring 2031. Recent federal money (Dec 2025 - Feb 2026, $257.6M to $316.7M) buys LEASE ACCESS to existing private aircraft for a single season, not new fleet capacity. A separate, compounding problem is personnel, not airframes: Ontario has grounded water bombers it already owns for lack of trained pilots, and cut its own emergency forestry budget for 2026-27 to barely half of what it actually spent the year before.","what_could_not_be_verified":["No single authoritative time series of total national water-bomber fleet count at clean 1990/2000/2010/2020 benchmarks exists in public sources \u2014 only scattered snapshots, mostly from 2023-2026, plus origin-era production totals from 1969-2015. A clean multi-decade fleet-count trend line is not something we could build from open sources.","Whether the $257.6M (Dec 2025) and $316.7M (Feb 2026) federal figures are the same money restated or genuinely additive is not clearly stated in any single government source.","No confirmed instances of Canada leasing or importing aircraft from the US or Europe during peak fire season were found \u2014 this was checked directly and could not be substantiated, so it is not asserted anywhere in this report."]}},"water_bomber_fleet_trend":{"confidence_note":"No public registry (Canadian or international) gives a clean deliveries-minus-retirements fleet count by year for any Canadian jurisdiction. The provincial trend points below are reconstructed from news archives and provincial history pages -- medium confidence, 2-3 points per province, NOT a government-published series. Treat gaps between points as unknown, not as a straight line.","provincial_trend_points":[{"province":"Manitoba","points":[{"year":1977,"count":7,"types":"CL-215"},{"year":2012,"count":7,"types":"4 CL-415 + 3 CL-215"}],"note":"Net fleet size unchanged in 35 years \u2014 re-engined, not expanded."},{"province":"Ontario","points":[{"year":1991,"count":9,"types":"CL-215"},{"year":2026,"count":9,"types":"CL-415"}],"note":"Flat at 9 aircraft for at least 35 years."},{"province":"Saskatchewan","points":[{"year":1980,"count":3,"types":"Canso"},{"year":1997,"count":2,"types":"CL-215"},{"year":2026,"count":6,"types":"3 CL-215 + 3 CL-215T"}],"note":"The one clear expansion case found: grew from 2 to 6 aircraft since 1997."}],"real_story_hypothesis":"The clearer pattern across all three provinces may be fleet AGING, not fleet shrinkage: raw airframe counts are flat-to-modestly-up over 25-45 years, but the aircraft themselves are extraordinarily old \u2014 Manitoba's remaining CL-215s date to 1977, Alberta's to 1986-88, and some Quebec CL-215s reportedly are still flying at 53+ years old as of 2023.","bc_capability_downgrade":{"finding":"BC owns no CL-215/415-class aircraft at all \u2014 it contracts Conair (private), which owns 4 CL-215s. BC's historic large-capacity asset was the Martin Mars scoopers \u2014 the largest water bombers ever used in Canada, WWII-era flying-boat conversions \u2014 retired in 2015 and NOT replaced with anything of equal per-aircraft capacity. Aircraft COUNT may have risen with smaller contracted aircraft since, but per-aircraft capacity fell.","source":"Castanet; BC Wildfire Service"},"unit_costs":[{"label":"CL-415, 2014 unit cost","amount":36900000,"currency":"USD","source":"Wikipedia (sourced figure, not independently re-verified)"},{"label":"Manitoba, Feb 2010: 4 new CL-415s (~$31.5M/unit)","amount":126000000,"currency":"USD","source":"confirmed, multiple outlets"},{"label":"Alberta, Feb 2026: 5 DHC-515s (~C$80M/unit)","amount":400000000,"currency":"CAD","source":"FlightGlobal, confirmed"},{"label":"Manitoba, 2025: 3 DHC-515s \u2014 DOWN PAYMENT only","amount":80000000,"currency":"CAD","note":"total contract cost still under negotiation as of reporting","source":"CBC"}],"original_purchase_price_gap":"No confirmed original CL-215 purchase price (1969-70 era) was found for any Canadian province. The only figure located was France's first Securite Civile order (10 aircraft, GBP 4M, ~1969) \u2014 not Canadian, only a rough proxy.","lease_disclosure_gap":"The federal May 2026 lease of 10 aircraft + 2 support assets (150-day contracts) has no disclosed per-aircraft or per-contract dollar figure separate from the broader $316.7M/5-year program total, despite multiple outlets covering the announcement. This appears to be genuine non-disclosure, not a research gap.","retirements":{"confirmed_writeoffs":[{"aircraft":"C-FIZU (CL-415)","date":"2013-07-03","location":"Moosehead Lake","source":"Transportation Safety Board of Canada, report A13A0075"}],"capability_downgrade":"BC's Martin Mars retirement (2015) is the clearest case of retirement without like-for-like replacement \u2014 a real capacity downgrade, even though no aggregate 'X retired, Y replaced' figure exists anywhere in public sources."},"international_comparison":[{"country":"France","fleet_size":11,"detail":"12 CL-415s delivered 1995-2007, now 11 after a 2025 crash, average age 27.1 years \u2014 described as the oldest firefighting assets in France. Expanding via rescEU-funded DHC-515 orders to 14 by 2028, 16 by 2032-33.","note":"Alberta's single 5-aircraft order is nearly half of France's ENTIRE current national scooper fleet."},{"country":"EU / rescEU program","fleet_size":null,"detail":"Targeting 24 DHC-515s total, 12 EU-financed. Greece ordered 7 (~EUR360M, ~EUR51M/unit); Croatia ordered 2 (~EUR105M, ~EUR52.5M/unit) \u2014 both roughly comparable per-unit to Alberta's ~C$80M order."},{"country":"United States","fleet_size":9,"detail":"The federal large-airtanker exclusive-use fleet collapsed from 44 aircraft (2002) to 9 (2012) after fatal crashes grounded aging military-surplus P2Vs.","note":"The most dramatic documented fleet contraction found for any country in this research \u2014 80% of the fleet lost in a decade."},{"country":"Australia","fleet_size":6,"detail":"No dedicated amphibious-scooper fleet comparable to Canada's; relies on ~150 contracted mixed aircraft nationally, with only 6 Large Air Tankers.","note":"A structurally different model (broad contract pool vs. Canada's provincially-owned dedicated scoopers) \u2014 not directly comparable without this caveat."}]},"federal_funding_history":{"note":"No PBO, Auditor General, journalist, or academic source has summed ALL federal wildfire-related spending (DFAA + CIFFC + Indigenous Services Canada + NRCan + aerial firefighting + Parks Canada) into one running total for any period -- including the Library of Parliament's own June 2025 wildfire portrait report, which contains zero dollar figures. This is a confirmed, genuine gap: spending is fragmented across at least five departments/programs with different fiscal years, cost-sharing formulas, and disclosure practices.","dfaa":{"description":"Disaster Financial Assistance Arrangements -- the main federal program reimbursing provinces for disaster recovery costs, established 1970. The federal cost-share rises with provincial per-capita costs (50% -> 75% -> 90%).","cumulative_since_1970_label":"$14B+ (PBO); other federal citations range $8.9B-$9.6B depending on methodology -- no single authoritative figure","avg_annual_2010_2024":881000000,"avg_annual_projected_2025_2034":1800000000,"wildfire_share_projected_avg_annual":325000000,"wildfire_share_pct_of_total_projected":18,"source":"Parliamentary Budget Officer, \"Projecting the Cost of the DFAA Program,\" 2025-10","notable_wildfire_payments":[{"event":"2016 Fort McMurray, AB","amount":385394638,"source":"Public Safety Canada, 2026-05 breakdown"},{"event":"2017 BC wildfires","amount":591000000,"note":"$175M advance (Jan 2018) + $416M confirmed disaster payment","source":"canada.ca; The Globe and Mail"},{"event":"2014 NWT wildfires","amount":20300000,"note":"$15M interim (2020) + $5.3M final (2021)","source":"canada.ca"},{"event":"2024 Jasper, AB","amount":19600000,"note":"advance payment","source":"canada.ca, 2025-02"},{"event":"2024 BC wildfires/floods","amount":35000000,"note":"combined, approximate","source":"canada.ca"}]},"ciffc":{"founded":1982,"founding_context":"Established after resource shortages in the 1979-81 fire seasons.","federal_share_note":"The federal government funds one-third of CIFFC's base operating costs; provinces/territories fund the remaining two-thirds plus 100% of collaborative project costs.","total_budget_found":false},"indigenous_services_canada":{"programs":[{"name":"FireSmart renewal/expansion","amount_label":"$57.2M over 5 years","date":"Budget 2024"},{"name":"Non-Structural Mitigation and Preparedness Program","amount_label":"$18M ongoing","date":"2026-27"},{"name":"Capacity Enhancement Funding (Emergency Management Coordinators)","amount_label":"$12.98M ongoing","date":"2026-27"}],"oag_finding":{"report":"OAG Report 8, \"Emergency Management in First Nations Communities,\" 2022-08","finding":"ISC spent 3.5x more responding to emergencies than preventing them. Over 13 years, First Nations had 1,300+ emergencies, 580+ evacuations, 130,000+ people affected. ISC had a backlog of 112 approved-but-unfunded mitigation infrastructure projects."}},"nrcan":{"current_annual_label":"$13M+ per year (NRCan's own stated figure for wildfire research, knowledge exchange, CIFFC support, and CWFIS)","historical_note":"In the 1990s, the Canadian Forest Service was cut from 2,200 to 700 staff, reducing research and forest-management capacity.","source":"NRCan; The Walrus; \"Fifty years of wildland fire science in Canada,\" Canadian Journal of Forest Research"},"budget_line_items":[{"year":2019,"amount":38500000,"amount_label":"$38.5M","detail":"NRCan wildland fire management, part of a $156M broader emergency-management package"},{"year":2022,"amount":346100000,"amount_label":"$346.1M over 5 years","detail":"NRCan + ISC, equipment/training for 1,000 wildland firefighters"},{"year":2022,"amount":169900000,"amount_label":"$169.9M over 5 years","detail":"WildFireSat satellite program"},{"year":2024,"amount":57200000,"amount_label":"$57.2M over 5 years","detail":"ISC FireSmart renewal"},{"year":2025,"amount":316700000,"amount_label":"$316.7M over 5 years","detail":"CIFFC aerial firefighting surge capacity (see the water bomber section above)"},{"year":2025,"amount":104000000,"amount_label":"$104M","detail":"\"Resilient Communities through FireSmart\" multi-province program"},{"year":2026,"amount":47800000,"amount_label":"$47.8M over 5 years","detail":"Parks Canada wildfire preparedness"}],"no_wildfire_specific_item_found_years":[2000,2005,2010,2015,2021],"federal_vs_provincial":{"forest_land_managed_by_provinces_pct":90,"forest_land_managed_federally_pct":4,"forest_land_privately_owned_pct":6,"federal_emergency_trigger_share_pct":10,"note":"Federal engagement is triggered in roughly 10% of emergencies where a province/territory is overwhelmed. Provinces/territories own the majority of firefighting capacity."},"senate_finding":{"report":"Senate Standing Committee on Agriculture and Forestry, \"Canada on Fire,\" 2026-06","finding":"Canada is the only G7 country without a national wildfire coordinating body.","source":"sencanada.ca; CBC"}},"damage_events":[{"year":2003,"event":"Okanagan Mountain Park fire, Kelowna, BC","structures":240,"structures_label":"~240 homes","insured_damage":null,"total_damage":200000000,"damage_basis":"total damages; not clearly split insured/uninsured in available sourcing","source":"CBC, Wildfire Today"},{"year":2011,"event":"Slave Lake, AB","structures":433,"structures_label":"433 structures (374 town + 59 rural district)","insured_damage":null,"total_damage":700000000,"damage_basis":"reported ~$700-750M; unclear insured/total split","source":"Wikipedia, Accomsure"},{"year":2016,"event":"Fort McMurray, AB (\"The Beast\")","structures":2400,"structures_label":"~2,400 homes/buildings","insured_damage":3700000000,"damage_basis":"nominal 2016 dollars; IBC's 10-yr retrospective restates this at ~$4.7-4.8B in 2025 dollars","total_damage":8900000000,"total_damage_note":"~$8.9-9B total direct+indirect (Conference Board of Canada) \u2014 Canada's costliest insured disaster until 2024","source":"IBC, CBC, The Globe and Mail"},{"year":2017,"event":"BC wildfire season (overall)","structures":500,"structures_label":"500+ structures (299 homes)","insured_damage":649000000,"damage_basis":"secondary-sourced; not confirmed on an IBC primary page","total_damage":null,"source":"Wikipedia; Accomsure"},{"year":2018,"event":"BC wildfire season (overall)","structures":140,"structures_label":"140 structures (50 homes)","insured_damage":null,"damage_basis":"no IBC insured-loss figure located, despite one of BC's worst seasons by area burned","total_damage":615000000,"total_damage_note":"province spent $615M on SUPPRESSION, not property damage","source":"Wikipedia, energeticcity.ca"},{"year":2021,"event":"Lytton, BC","structures":null,"structures_label":"~90% of the village (97% of properties damaged); 2 deaths","insured_damage":78000000,"damage_basis":"2021 IBC estimate, later restated to $102M (2024/2025) citing rebuild delays","total_damage":null,"total_damage_note":"60% of residents had no fire insurance","source":"CBC/IBC"},{"year":2023,"event":"McDougall Creek (Kelowna/West Kelowna) + Bush Creek East (Shuswap), BC","structures":400,"structures_label":"~400 homes BC-wide; 70 in West Kelowna + 20 in Westbank First Nation from the Okanagan Lake fires alone","insured_damage":720000000,"damage_basis":"two BC fires \u2014 costliest insured event in BC history, 10th-worst disaster nationally by payout","total_damage":945000000,"total_damage_note":"national wildfire-only insured total for 2023 (BC+NWT+NS combined)","source":"IBC, CBC"},{"year":2024,"event":"Jasper, AB","structures":358,"structures_label":"358 homes/businesses (~1/3 of the townsite)","insured_damage":1300000000,"damage_basis":"revised up from an initial $880M estimate \u2014 2nd-costliest wildfire event in Canadian history","total_damage":null,"source":"IBC (multiple releases), CBC"},{"year":2025,"event":"Flin Flon MB / La Ronge SK fires (national) + BC season","structures":450,"structures_label":"BC: 450+ homes (Shuswap/Okanagan)","insured_damage":300000000,"damage_basis":"two major national fires; full-year Canada all-peril insured total was $2.4B, wildfire-only share not isolated","total_damage":null,"total_damage_note":"2nd-worst wildfire season on record nationally: 8.3M+ hectares burned, 6,000+ fires","source":"IBC/CatIQ, Global News"},{"year":2026,"event":"Cariboo + Okanagan Indian Band reserve fires, BC (season in progress)","structures":350,"structures_label":"350+ buildings (provisional, mid-season)","insured_damage":null,"damage_basis":"not yet finalized; 3,447 km2 burned in BC as of 2026-08-08","total_damage":null,"source":"energeticcity.ca"}],"damage_trend":{"ibc_decade_comparison":{"catastrophic_wildfire_events":{"2006_2015":2,"2016_2025":16},"wildfire_insured_losses":{"2006_2015":734000000,"2016_2025":8100000000,"pct_increase":1004},"burned_area_pct_increase":81,"burned_area_2016_2025_ha":46600000,"source":"IBC / CatIQ decade comparison"},"all_peril_cumulative":{"2006_2015":14000000000,"2016_2025":37000000000,"note":"wildfire + flood + storm + hail combined, inflation-adjusted","source":"IBC"},"smoke_health_costs":{"cumulative_2014_2025":231000000000,"avg_annual":19000000000,"avg_annual_premature_deaths":2500,"note":"A different cost category entirely (health, not structures) \u2014 included to show how incomplete a structures/insured-damage total is as a 'total cost of wildfire' figure.","source":"Canadian Climate Institute"},"projection":{"claim":"Wildfire financial losses could more than double by 2030 given current housing-development patterns in fire-exposed areas.","source":"Canadian Climate Institute"},"data_quality_note":"No clean 2000-2026 running total of homes lost or damage exists. Every figure here is a post-hoc, event-level number published after a specific fire/season by IBC, CatIQ, or a province -- not a systematic year-by-year series. BC Wildfire Service does not appear to publish an official year-over-year 'structures destroyed' table; the BC per-season structure counts above are reconstructed from post-season news reporting, not a primary government dataset. 'Insured' vs 'total economic' vs 'reported damage' are inconsistently distinguished in older sources (2003, 2011) -- flagged where the split is unclear. Figures in nominal vs. inflation-adjusted ('2025 dollars') terms are not directly comparable across years without picking one basis."},"tally":{"framing_note":"This is not a single apples-to-apples grand total \u2014 it can't be, because the investment and cost figures below come from different scopes (federal-only spending vs. national suppression spending vs. private insurance payouts vs. health-system costs) and different time windows. They're shown side by side on purpose: even without forcing a false precise total, the order-of-magnitude gap between what's spent and what it costs is visible on its own.","investments":[{"label":"Federal aerial firefighting funding","amount":316700000,"scope":"federal, multi-year \u2014 a LEASE commitment, not a purchase","period":"2025-2030 (5 yrs total)"},{"label":"DFAA wildfire share (projected)","amount":325000000,"scope":"federal, national, annual average","period":"2025-2034, per year"},{"label":"Explicit federal wildfire budget commitments identified","amount":1080200000,"scope":"federal \u2014 sum of every announced multi-year commitment we could find","period":"2019-2026, cumulative announcements"},{"label":"NRCan wildfire research","amount":13000000,"scope":"federal, annual run rate","period":"ongoing"}],"costs":[{"label":"National wildfire suppression spending","amount":1100000000,"amount_low":800000000,"amount_high":1400000000,"scope":"national (mostly provincial), annual \u2014 shown as the range midpoint","period":"recent decade, per year"},{"label":"Wildfire insured losses, decade cumulative","amount":8100000000,"scope":"private insurance payouts, national","period":"2016-2025, 10-yr cumulative"},{"label":"Fort McMurray 2016 alone (total economic damage)","amount":8900000000,"scope":"single event, total direct + indirect cost","period":"2016"},{"label":"Wildfire smoke health costs, cumulative","amount":231000000000,"scope":"national, health system + productivity loss","period":"2014-2025, 12-yr cumulative"}],"scale_comparison":{"note":"The single most directly comparable pair: the $316.7M federal aerial-firefighting commitment (2025-2030, itself a LEASE, not a purchase) is smaller than the insured damage from ONE fire season in BC alone in 2023 ($720M), and equal to roughly 3.6% of the Fort McMurray fire's total economic cost in a SINGLE year (2016).","aerial_funding_pct_of_fort_mcmurray":3.6},"citizen_burden_note":"Federal spending is a small supplement to a much larger national cost, not the backbone of it \u2014 provinces own the majority of firefighting capacity and directly bear most suppression costs, while property owners, insurers, and the health system absorb the damage. That structure means the gap above isn't only a story about federal underfunding: it's that the people actually paying for wildfires \u2014 through insurance premiums, uninsured losses like Lytton's, provincial taxes, and smoke-related health costs \u2014 are carrying a bill that dwarfs any single government's wildfire budget line, federal or provincial."},"metadata":{"title":"The Monitoring Gap","subtitle":"Canada cut wildfire-monitoring capacity as the crisis grew","last_updated":"2026-08-10","sources":["BC Wildfire Service, Fire Incident Locations - Historical & Current (BC Data Catalogue, WFS, live-fetched)","Statistics Canada, Table 35-10-0177-01, Arson [2110] violation category","Black Press / Northern Beat, BC Wildfire Service cause sub-category breakdown 2013-2025","Global News, The Hill Times, The Globe and Mail, Nelson Star \u2014 2026 federal monitoring-capacity cuts reporting","BBC News, europesays.com/News.Az, Anadolu Agency, The Inquirer \u2014 France Interior Ministry wildfire-arson arrest figures","PolitiFact, 2023-07-20 fact-check","CBC/Radio-Canada, Fire Fighting in Canada, Skies Mag, AFP fact-check \u2014 Canadian water bomber fleet snapshots, 2023-2026","FlightGlobal, Canadian Affairs \u2014 De Havilland DHC-515 production restart and delivery timelines, 2026","canada.ca / Public Safety Canada \u2014 federal aerial firefighting funding announcements, Dec 2025-May 2026","Hope et al., PLOS ONE \u2014 wildfire suppression cost trends under a changing climate","The Conversation, BNN Bloomberg \u2014 expert commentary on aerial firefighting capacity, 2026","Parliamentary Budget Officer \u2014 DFAA cost projections, 2025-10","Office of the Auditor General of Canada \u2014 Emergency Management in First Nations Communities, 2022-08","Insurance Bureau of Canada / CatIQ \u2014 wildfire insured-loss and decade-comparison data","Canadian Climate Institute \u2014 wildfire smoke health-cost and financial-loss projections","Senate Standing Committee on Agriculture and Forestry \u2014 \"Canada on Fire,\" 2026-06","FlightGlobal, CBC, Skies Mag \u2014 Alberta/Manitoba water bomber purchase costs, 2010-2026","Government of Saskatchewan (1997), Ontario Aviation and Fire Management Branch archives, Wikipedia CL-215/CL-415 \u2014 provincial fleet history data points","Transportation Safety Board of Canada \u2014 CL-415 write-off report A13A0075","AerialFire, Selectra, Wildfire Today, National Aerial Firefighting Centre \u2014 international water bomber fleet comparison (France, EU/rescEU, US, Australia)","CBC News, The Globe and Mail \u2014 ECCC Weatheradio operating/decommissioning cost figures, 2026","PIPSC press statements; NRCan 2026-27 Departmental Plan \u2014 Comprehensive Expenditure Review context"]}};
+
+function renderHero() {
+  const wrap = document.getElementById('heroStats');
+  wrap.innerHTML = DATA.hero.map(h => {
+    const cls = h.accent === 'key' ? 'key' : '';
+    return '<div class="hero-stat ' + cls + '"><div class="big">' + h.value + '</div><div class="label">' + h.label + '</div></div>';
+  }).join('');
+}
+
+function renderCases() {
+  const list = document.getElementById('caseList');
+  list.innerHTML = DATA.named_bc_arson_cases.map(c =>
+    '<li><strong>' + c.name + '</strong> &mdash; ' + c.location + '<br>' + c.detail + '<span class="src">' + c.source + '</span></li>'
+  ).join('');
+}
+
+function renderSavings() {
+  const s = DATA.cuts_savings_summary;
+  const f = s.only_confirmed_figure;
+  document.getElementById('savingsSummary').innerHTML =
+    '<p>' + s.answer + '</p>' +
+    '<div class="quote-block">Only confirmed figure: <strong>' + f.program + '</strong> — ~$' + (f.annual_savings_estimate/1e6).toFixed(0) + 'M/year operating cost, against a ~$' + (f.decommissioning_cost/1e6).toFixed(1) + 'M decommissioning cost over ' + f.decommissioning_period + '.' +
+      '<span class="attr">' + f.confidence + '</span></div>' +
+    '<p>' + s.comparison + '</p>' +
+    '<p style="font-size:0.75rem;color:var(--color-text-tertiary)">Comprehensive Expenditure Review, government-wide: ' +
+      s.cer_context.annual_disclosed.map(y => y.year + ': $' + (y.amount/1e9).toFixed(0) + 'B').join(', ') +
+      ' (' + '$' + (s.cer_context.total_5yr/1e9).toFixed(0) + 'B over 5 years total). ' + s.cer_context.note + '</p>';
+}
+
+function renderCollapse() {
+  const ctx = DATA.cause_recording_collapse.context;
+  document.getElementById('collapseConfirmed').innerHTML = ctx.confirmed_context.map(item =>
+    '<p><span class="entity-tag confirmed">Confirmed</span> ' + item.claim + '</p>' +
+    '<div class="quote-block">' + item.caveat + '<span class="attr">Source: ' + item.source + '</span></div>'
+  ).join('');
+  document.getElementById('collapseHypothesis').innerHTML =
+    '<span class="entity-tag unconfirmed">Unconfirmed</span> ' + ctx.unconfirmed_hypothesis;
+  document.getElementById('collapseFoi').textContent = ctx.what_would_close_the_gap;
+}
+
+function renderCausesSub() {
+  const b = DATA.bcws_cause_breakdown;
+  document.getElementById('causesSub').textContent = 'Period: ' + b.period + '. Source: ' + b.source;
+}
+
+function renderWaterBombers() {
+  const wb = DATA.water_bombers;
+
+  const zero = wb.fleet_by_province.find(f => f.count === 0);
+  document.getElementById('fleetNote').innerHTML =
+    '<strong>' + zero.province + '</strong> operates zero CL-215/415-type water bombers of its own — ' + zero.note + '. ' +
+    'National estimates of the total fleet vary by survey: ' +
+    wb.national_estimates.map(e => e.value + ' ' + e.label.toLowerCase() + ' (' + e.period + ')').join('; ') + '.';
+
+  document.getElementById('fundingTimeline').innerHTML = wb.federal_funding_timeline.map(t =>
+    '<li><span class="tl-date">' + t.date + '</span><span><span class="tl-amount">' + t.amount_label + '</span><span class="tl-note">' + t.note + ' — ' + t.source + '</span></span></li>'
+  ).join('');
+
+  document.getElementById('expertQuotes').innerHTML = wb.expert_commentary.map(q =>
+    '<div class="quote-block">"' + q.quote + '"<span class="attr">&mdash; ' + q.attribution + ' &middot; ' + q.source + ', ' + q.date + '</span></div>'
+  ).join('');
+
+  const oc = wb.ontario_budget_cut;
+  document.getElementById('ontarioCutHeading').style.display = 'block';
+  document.getElementById('ontarioCutNote').innerHTML =
+    'Ontario\'s emergency forestry firefighting budget: <strong>$' + (oc.fy_2025_26_budget/1e6).toFixed(0) + 'M (2025-26) &rarr; $' + (oc.fy_2026_27_budget/1e6).toFixed(0) + 'M (2026-27)</strong>. ' + oc.note + ' (' + oc.source + ')';
+
+  document.getElementById('verdictSummary').textContent = wb.verdict.summary;
+  document.getElementById('verdictCaveats').innerHTML = wb.verdict.what_could_not_be_verified.map(c => '<li>' + c + '</li>').join('');
+}
+
+function renderClosing() {
+  const ce = DATA.cuts_estimate;
+  const fmt = (n) => '$' + (n/1e6).toFixed(1) + 'M';
+
+  document.getElementById('closingRangeStat').textContent = fmt(ce.total_low) + '–' + fmt(ce.total_high) + ' / yr';
+
+  const i = ce.inputs;
+  document.getElementById('closingMathText').innerHTML =
+    '<strong>Confirmed:</strong> ' + i.confirmed.label + ': <code>' + fmt(i.confirmed.amount) + '/yr</code>.<br>' +
+    '<strong>Disputed headcount, estimated dollars:</strong> Government Operations Centre, ' + i.goc.headcount_low + ' staff (' + i.goc.headcount_low_source + ') to ' + i.goc.headcount_high + ' staff (' + i.goc.headcount_high_source + ') &rarr; <code>' + fmt(ce.goc_estimate.low) + '–' + fmt(ce.goc_estimate.high) + '/yr</code>; NRCan remote-sensing, ' + i.nrcan.headcount_low + ' staff (' + i.nrcan.headcount_source + ') &rarr; <code>' + fmt(ce.nrcan_estimate.low) + '–' + fmt(ce.nrcan_estimate.high) + '/yr</code>.<br>' +
+    '<strong>Very low confidence — no source states a headcount at all:</strong> ECCC radar research team, ' + i.radar_team.headcount_low + '&ndash;' + i.radar_team.headcount_high + ' staff (our own rough guess at what "small" means — see note below) &rarr; <code>' + fmt(ce.radar_team_estimate.low) + '–' + fmt(ce.radar_team_estimate.high) + '/yr</code>.<br>' +
+    '<strong>Sum: <code>' + fmt(ce.total_low) + '–' + fmt(ce.total_high) + '/yr</code></strong>.';
+  document.getElementById('closingAssumptionText').innerHTML =
+    'Salary assumption: ' + DATA.cuts_estimate.assumption.note + '<br><br>Radar team headcount: ' + i.radar_team.headcount_source + '<br><br>Scale context: ' + i.radar_team.context;
+
+  document.getElementById('closingLine').textContent = ce.closing_line;
+}
+
+function initClosingChart() {
+  const ce = DATA.cuts_estimate;
+  const rows = [
+    {label: 'Estimated cuts savings (low)', amount: ce.total_low, color: '#2E4B3E'},
+    {label: 'Estimated cuts savings (high)', amount: ce.total_high, color: '#2E4B3E'},
+    {label: "BC's 2023 wildfire season (insured damage)", amount: 720_000_000, color: '#8B2E2E'},
+    {label: 'Fort McMurray 2016 (total economic cost)', amount: 8_900_000_000, color: '#8B2E2E'},
+  ];
+  new Chart(document.getElementById('chartClosing').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.label),
+      datasets: [{label: 'Amount ($, log scale)', data: rows.map(r => r.amount), backgroundColor: rows.map(r => r.color), borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {label: (item) => {
+          const r = rows[item.dataIndex];
+          return r.amount >= 1e9 ? '$' + (r.amount/1e9).toFixed(1) + 'B' : '$' + (r.amount/1e6).toFixed(1) + 'M';
+        }}}
+      },
+      scales: {
+        x: {type: 'logarithmic', title: {display: true, text: 'Amount ($, logarithmic scale)', font: {size: 11}}},
+        y: {ticks: {font: {size: 10}}}
+      }
+    }
+  });
+}
+
+function renderGuardrail() {
+  const g = DATA.politifact_guardrail;
+  document.getElementById('guardrailBlock').innerHTML =
+    '<h4>A note on interpretation — PolitiFact, ' + g.source.split(', ')[1] + '</h4>' +
+    '<p><strong>Claim checked:</strong> ' + g.claim_checked + ' <strong>Rating: ' + g.rating + '.</strong></p>' +
+    '<p>' + g.finding + '</p>' +
+    '<p><strong>Why it matters here:</strong> ' + g.why_it_matters + '</p>';
+}
+
+function initCollapseChart() {
+  const rows = DATA.cause_recording_collapse.yearly_window_1990_2015;
+  const spikeYear = DATA.cause_recording_collapse.spike_year.year;
+  new Chart(document.getElementById('chartCollapse').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: rows.map(r => r.year),
+      datasets: [{
+        label: 'Fires with NO recorded cause (%)',
+        data: rows.map(r => r.unknown_pct),
+        borderColor: '#8B2E2E',
+        backgroundColor: rows.map(r => r.year === spikeYear ? '#8B2E2E' : 'rgba(139,46,46,0.5)'),
+        pointRadius: rows.map(r => r.year === spikeYear ? 7 : 3),
+        pointBackgroundColor: rows.map(r => r.year === spikeYear ? '#8B2E2E' : 'rgba(139,46,46,0.6)'),
+        tension: 0.2,
+        fill: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}},
+      scales: {
+        x: {title: {display: true, text: 'Year (1999 = the jump)', font: {size: 11}}},
+        y: {title: {display: true, text: 'No recorded cause (%)', font: {size: 11}}, min: 0, max: 100}
+      }
+    }
+  });
+}
+
+function initQualityChart() {
+  const rows = DATA.bc_decade_summary;
+  new Chart(document.getElementById('chartQuality').getContext('2d'), {
+    data: {
+      labels: rows.map(r => r.decade),
+      datasets: [
+        {type: 'bar', label: 'Fires with NO recorded cause (%)', data: rows.map(r => r.unknown_pct), backgroundColor: 'rgba(138,138,138,0.6)', yAxisID: 'y1', borderRadius: 4},
+        {type: 'line', label: 'Human-caused, of KNOWN-cause fires (%)', data: rows.map(r => r.human_caused_pct_known), borderColor: '#8B2E2E', backgroundColor: '#8B2E2E', yAxisID: 'y', tension: 0.25, pointRadius: 5, pointBackgroundColor: '#8B2E2E'}
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {position: 'top', labels: {font: {size: 11}}}},
+      scales: {
+        y: {position: 'left', title: {display: true, text: 'Human-caused, of known-cause fires (%)', font: {size: 10}}, min: 0, max: 100},
+        y1: {position: 'right', title: {display: true, text: 'No recorded cause (%)', font: {size: 10}}, min: 0, max: 100, grid: {display: false}},
+        x: {}
+      }
+    }
+  });
+}
+
+function initTimelineChart() {
+  const rows = DATA.bc_timeline;
+  new Chart(document.getElementById('chartTimeline').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.year + (r.in_progress ? ' (to date)' : '')),
+      datasets: [
+        {label: 'Human-caused', data: rows.map(r => r.person), backgroundColor: 'rgba(139,46,46,0.75)', stack: 's'},
+        {label: 'Lightning', data: rows.map(r => r.lightning), backgroundColor: 'rgba(58,111,143,0.7)', stack: 's'},
+        {label: 'Unknown / undetermined', data: rows.map(r => r.unknown), backgroundColor: 'rgba(138,138,138,0.55)', stack: 's'},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {position: 'top', labels: {font: {size: 11}}}},
+      scales: {
+        x: {stacked: true, ticks: {maxTicksLimit: 20, font: {size: 9}}},
+        y: {stacked: true, title: {display: true, text: '# Fires', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function initAreaChart() {
+  const rows = DATA.bc_area_burned;
+  new Chart(document.getElementById('chartArea').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.year + (r.in_progress ? ' (to date)' : '')),
+      datasets: [
+        {label: 'Human-caused (ha)', data: rows.map(r => r.person_ha), backgroundColor: 'rgba(139,46,46,0.75)', stack: 's'},
+        {label: 'Lightning (ha)', data: rows.map(r => r.lightning_ha), backgroundColor: 'rgba(58,111,143,0.7)', stack: 's'},
+        {label: 'Unknown (ha)', data: rows.map(r => r.unknown_ha), backgroundColor: 'rgba(138,138,138,0.55)', stack: 's'},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {position: 'top', labels: {font: {size: 11}}}},
+      scales: {
+        x: {stacked: true, ticks: {maxTicksLimit: 20, font: {size: 9}}},
+        y: {stacked: true, title: {display: true, text: 'Hectares burned', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function initCausesChart() {
+  const cats = DATA.bcws_cause_breakdown.categories.filter(c => c.label !== 'Lightning');
+  const colors = cats.map(c => c.label.startsWith('Arson') ? '#8B2E2E' : c.label.startsWith('Unknown') ? '#8A8A8A' : '#2E4B3E');
+  new Chart(document.getElementById('chartCauses').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: cats.map(c => c.label),
+      datasets: [{label: '% of all BC wildfires, 2016–2025', data: cats.map(c => c.pct), backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}},
+      scales: {x: {title: {display: true, text: '% of all BC wildfires', font: {size: 11}}, beginAtZero: true}}
+    }
+  });
+}
+
+function initFleetChart() {
+  const rows = [...DATA.water_bombers.fleet_by_province].sort((a,b) => b.count - a.count);
+  const colors = rows.map(r => r.count === 0 ? '#8A8A8A' : '#2E4B3E');
+  new Chart(document.getElementById('chartFleet').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.province),
+      datasets: [{label: 'CL-215/415-type water bombers', data: rows.map(r => r.count), backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}},
+      scales: {x: {title: {display: true, text: '# aircraft', font: {size: 11}}, beginAtZero: true, ticks: {stepSize: 2}}}
+    }
+  });
+}
+
+function initManufacturingChart() {
+  const rows = DATA.water_bombers.manufacturing_timeline;
+  const colors = rows.map(r => r.label === 'PRODUCTION HALTED' ? '#8B2E2E' : '#2E4B3E');
+  new Chart(document.getElementById('chartManufacturing').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.label),
+      datasets: [{
+        label: 'Period',
+        data: rows.map(r => [r.start, r.end]),
+        backgroundColor: colors,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {
+          label: (item) => rows[item.dataIndex].start + '–' + rows[item.dataIndex].end + ': ' + rows[item.dataIndex].detail
+        }}
+      },
+      scales: {
+        x: {title: {display: true, text: 'Year', font: {size: 11}}, min: 1965, max: 2032},
+        y: {ticks: {font: {size: 10}}}
+      }
+    }
+  });
+}
+
+function renderFleetTrend() {
+  const ft = DATA.water_bomber_fleet_trend;
+  document.getElementById('fleetTrendConfidence').textContent = ft.confidence_note;
+  document.getElementById('fleetRealStory').textContent = ft.real_story_hypothesis;
+  document.getElementById('fleetBcDowngrade').innerHTML =
+    ft.bc_capability_downgrade.finding + ' (' + ft.bc_capability_downgrade.source + ')';
+
+  document.getElementById('fleetUnitCosts').innerHTML = ft.unit_costs.map(c =>
+    '<li><span class="tl-date">' + c.currency + '</span><span><span class="tl-amount">$' + (c.amount/1e6).toFixed(1) + 'M</span><span class="tl-note">' + c.label + (c.note ? ' — ' + c.note : '') + ' — ' + c.source + '</span></span></li>'
+  ).join('');
+  document.getElementById('fleetCostGaps').innerHTML =
+    '<strong>Original purchase price:</strong> ' + ft.original_purchase_price_gap + '<br><strong>Lease pricing:</strong> ' + ft.lease_disclosure_gap;
+
+  const wo = ft.retirements.confirmed_writeoffs.map(w => w.aircraft + ', ' + w.date + ', ' + w.location + ' (' + w.source + ')').join('; ');
+  document.getElementById('fleetRetirements').innerHTML =
+    '<strong>Confirmed write-offs:</strong> ' + wo + '<br><strong>Capability downgrade:</strong> ' + ft.retirements.capability_downgrade;
+}
+
+function initFleetTrendChart() {
+  const provs = DATA.water_bomber_fleet_trend.provincial_trend_points;
+  const colors = ['#2E4B3E', '#4A6FA5', '#8B2E2E'];
+  new Chart(document.getElementById('chartFleetTrend').getContext('2d'), {
+    type: 'line',
+    data: {
+      datasets: provs.map((p, i) => ({
+        label: p.province,
+        data: p.points.map(pt => ({x: pt.year, y: pt.count})),
+        borderColor: colors[i % colors.length],
+        backgroundColor: colors[i % colors.length],
+        pointRadius: 6,
+        tension: 0,
+      }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {position: 'top', labels: {font: {size: 11}}},
+        tooltip: {callbacks: {label: (item) => {
+          const p = provs[item.datasetIndex];
+          const pt = p.points[item.dataIndex];
+          return p.province + ' ' + pt.year + ': ' + pt.count + ' aircraft (' + pt.types + ')';
+        }}}
+      },
+      scales: {
+        x: {type: 'linear', title: {display: true, text: 'Year', font: {size: 11}}, ticks: {stepSize: 5}},
+        y: {title: {display: true, text: '# aircraft', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function initFleetIntlChart() {
+  const rows = DATA.water_bomber_fleet_trend.international_comparison.filter(c => c.fleet_size != null);
+  const extra = [
+    {country: 'US federal fleet, 2002 peak', fleet_size: 44},
+  ];
+  const all = [extra[0], ...rows.map(r => ({country: r.country === 'United States' ? 'US federal fleet, 2012 (after collapse)' : r.country, fleet_size: r.fleet_size}))];
+  const colors = all.map(r => r.country.startsWith('US') ? '#8B2E2E' : '#2E4B3E');
+  new Chart(document.getElementById('chartFleetIntl').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: all.map(r => r.country),
+      datasets: [{label: '# aircraft', data: all.map(r => r.fleet_size), backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}},
+      scales: {x: {title: {display: true, text: '# aircraft', font: {size: 11}}, beginAtZero: true}}
+    }
+  });
+}
+
+function initBenchmarkChart() {
+  const rows = DATA.statcan_arson_benchmark.provincial_latest;
+  const colors = rows.map(r => r.province === 'British Columbia' ? '#2E4B3E' : '#C8C0B0');
+  document.getElementById('benchmarkTitle').textContent = 'Arson Rate per 100,000 Population, by Province (' + DATA.statcan_arson_benchmark.latest_year + ')';
+  new Chart(document.getElementById('chartBenchmark').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.province),
+      datasets: [{label: 'Arson incidents per 100,000 population', data: rows.map(r => r.rate_per_100k), backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}},
+      scales: {x: {title: {display: true, text: 'Rate per 100,000 population', font: {size: 11}}, beginAtZero: true}}
+    }
+  });
+}
+
+function renderFunding() {
+  const f = DATA.federal_funding_history;
+  document.getElementById('fundingGapNote').innerHTML = '<span class="entity-tag unconfirmed">Confirmed gap</span> ' + f.note;
+
+  const dfaa = f.dfaa, isc = f.indigenous_services_canada, ciffc = f.ciffc, nrcan = f.nrcan;
+  document.getElementById('fundingBreakdown').innerHTML =
+    '<p><strong>DFAA (disaster reimbursement):</strong> ' + dfaa.cumulative_since_1970_label + ' paid out since 1970. Notable wildfire-specific payments: ' +
+      dfaa.notable_wildfire_payments.map(p => p.event + ' ($' + (p.amount/1e6).toFixed(1) + 'M)').join('; ') + '.</p>' +
+    '<p><strong>CIFFC:</strong> founded ' + ciffc.founded + '. ' + ciffc.federal_share_note + ' No total CIFFC operating budget figure found publicly.</p>' +
+    '<p><strong>Indigenous Services Canada:</strong> ' + isc.programs.map(p => p.name + ' (' + p.amount_label + ', ' + p.date + ')').join('; ') + '. ' + isc.oag_finding.finding + ' (' + isc.oag_finding.report + ')</p>' +
+    '<p><strong>NRCan:</strong> ' + nrcan.current_annual_label + '. ' + nrcan.historical_note + '</p>';
+
+  document.getElementById('federalProvincialNote').innerHTML =
+    f.federal_vs_provincial.forest_land_managed_by_provinces_pct + '% of Canada\'s forest land is managed by provinces/territories, ' +
+    f.federal_vs_provincial.forest_land_managed_federally_pct + '% federally, ' + f.federal_vs_provincial.forest_land_privately_owned_pct + '% privately. ' + f.federal_vs_provincial.note;
+
+  document.getElementById('senateQuote').innerHTML =
+    '"' + f.senate_finding.finding + '"<span class="attr">&mdash; ' + f.senate_finding.report + '</span>';
+}
+
+function renderDamage() {
+  const trend = DATA.damage_trend;
+  document.getElementById('damageIntro').textContent =
+    'Every major wildfire disaster in Canada since 2000, with homes/structures destroyed and damage estimates where they were ever published. There is no single, systematic year-by-year total — every number below is a one-off figure released after a specific fire by an insurer, insurance-industry data service, or provincial government.';
+
+  const dc = trend.ibc_decade_comparison;
+  document.getElementById('decadeComparisonNote').innerHTML =
+    'Catastrophic wildfire events in Canada rose from <strong>' + dc.catastrophic_wildfire_events['2006_2015'] + ' (2006-2015)</strong> to <strong>' + dc.catastrophic_wildfire_events['2016_2025'] + ' (2016-2025)</strong>. Wildfire insured losses rose from <strong>$' + Math.round(dc.wildfire_insured_losses['2006_2015']/1e6) + 'M</strong> to <strong>$' + (dc.wildfire_insured_losses['2016_2025']/1e9).toFixed(1) + 'B</strong> — a ' + dc.wildfire_insured_losses.pct_increase + '% increase — while burned area rose ' + dc.burned_area_pct_increase + '%. (' + dc.source + ')';
+
+  const sc = trend.smoke_health_costs;
+  document.getElementById('smokeCostNote').innerHTML =
+    'Wildfire smoke has cost an estimated <strong>$' + (sc.cumulative_2014_2025/1e9).toFixed(0) + 'B</strong> cumulatively in health costs, 2014-2025 (~$' + (sc.avg_annual/1e9).toFixed(0) + 'B/year, ~' + sc.avg_annual_premature_deaths.toLocaleString() + ' premature deaths/year). ' + sc.note + ' (' + sc.source + ')';
+
+  document.getElementById('damageGapNote').textContent = trend.data_quality_note;
+}
+
+function initFundingByYearChart() {
+  const items = DATA.federal_funding_history.budget_line_items.map(it => ({year: it.year, amount: it.amount, label: it.amount_label, detail: it.detail, found: true}));
+  const gaps = DATA.federal_funding_history.no_wildfire_specific_item_found_years.map(y => ({year: y, amount: 0, label: 'No item found', detail: 'Searched but no wildfire-specific commitment located', found: false}));
+  const rows = [...items, ...gaps].sort((a,b) => a.year - b.year || a.amount - b.amount);
+  const colors = rows.map(r => r.found ? '#4A6FA5' : '#C8C0B0');
+  new Chart(document.getElementById('chartFundingByYear').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => String(r.year)),
+      datasets: [{label: 'Amount ($)', data: rows.map(r => r.amount), backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {label: (item) => {
+          const r = rows[item.dataIndex];
+          return r.found ? (r.label + ': ' + r.detail) : 'No wildfire-specific item found this year';
+        }}}
+      },
+      scales: {
+        y: {title: {display: true, text: 'Amount ($, mixed terms — see tooltip)', font: {size: 11}}, beginAtZero: true},
+        x: {}
+      }
+    }
+  });
+}
+
+function initDfaaChart() {
+  const dfaa = DATA.federal_funding_history.dfaa;
+  document.getElementById('dfaaChartSub').textContent = 'Source: ' + dfaa.source + '. Wildfires are projected at ~' + dfaa.wildfire_share_pct_of_total_projected + '% of total DFAA spend, 2025-2034 — the second-costliest disaster category after floods.';
+  new Chart(document.getElementById('chartDfaa').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: [['2010–2024','avg (all disasters)'], ['2025–2034','projected avg (all disasters)'], ['2025–2034','projected avg (wildfire share)']],
+      datasets: [{label: 'Annual DFAA cost ($)', data: [dfaa.avg_annual_2010_2024, dfaa.avg_annual_projected_2025_2034, dfaa.wildfire_share_projected_avg_annual], backgroundColor: ['#8A8A8A','#4A6FA5','#8B2E2E'], borderRadius: 4}]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false}},
+      scales: {y: {title: {display: true, text: '$ per year', font: {size: 11}}, beginAtZero: true}}
+    }
+  });
+}
+
+function initDamageChart() {
+  const rows = DATA.damage_events;
+  const values = rows.map(r => r.insured_damage ?? r.total_damage ?? 0);
+  const colors = rows.map(r => r.insured_damage != null ? '#8B2E2E' : (r.total_damage != null ? '#C8C0B0' : '#E8E2D5'));
+  new Chart(document.getElementById('chartDamage').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.year + ' ' + r.event.split(',')[0].split('(')[0].trim()),
+      datasets: [{label: 'Damage ($)', data: values, backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {label: (item) => {
+          const r = rows[item.dataIndex];
+          return (r.insured_damage != null ? 'Insured: ' : 'Total: ') + '$' + values[item.dataIndex].toLocaleString() + ' — ' + r.damage_basis;
+        }}}
+      },
+      scales: {
+        x: {ticks: {font: {size: 9}, maxRotation: 45, minRotation: 45}},
+        y: {title: {display: true, text: 'Damage ($)', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function initStructuresChart() {
+  const rows = DATA.damage_events.filter(r => r.structures != null);
+  new Chart(document.getElementById('chartStructures').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.year + ' ' + r.event.split(',')[0].split('(')[0].trim()),
+      datasets: [{label: 'Structures destroyed', data: rows.map(r => r.structures), backgroundColor: '#2E4B3E', borderRadius: 4}]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {label: (item) => rows[item.dataIndex].structures_label}}
+      },
+      scales: {
+        x: {ticks: {font: {size: 9}, maxRotation: 45, minRotation: 45}},
+        y: {title: {display: true, text: '# structures', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function renderTally() {
+  const t = DATA.tally;
+  document.getElementById('tallyFraming').textContent = t.framing_note;
+  document.getElementById('tallyScaleNote').textContent = t.scale_comparison.note;
+  document.getElementById('tallyCitizenNote').textContent = t.citizen_burden_note;
+}
+
+function initTallyChart() {
+  const t = DATA.tally;
+  const rows = [
+    ...t.investments.map(r => ({...r, kind: 'Invested'})),
+    ...t.costs.map(r => ({...r, kind: 'Cost'})),
+  ].sort((a, b) => a.amount - b.amount);
+  const colors = rows.map(r => r.kind === 'Invested' ? '#4A6FA5' : '#8B2E2E');
+  new Chart(document.getElementById('chartTally').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.label),
+      datasets: [{label: 'Amount ($, log scale)', data: rows.map(r => r.amount), backgroundColor: colors, borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {label: (item) => {
+          const r = rows[item.dataIndex];
+          const amt = r.amount >= 1e9 ? '$' + (r.amount/1e9).toFixed(1) + 'B' : '$' + (r.amount/1e6).toFixed(0) + 'M';
+          return [r.kind + ': ' + amt, r.scope, r.period];
+        }}}
+      },
+      scales: {
+        x: {type: 'logarithmic', title: {display: true, text: 'Amount ($, logarithmic scale)', font: {size: 11}}},
+        y: {ticks: {font: {size: 9}}}
+      }
+    }
+  });
+}
+
+function buildTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Season</th><th class="num">Human-caused</th><th class="num">Lightning</th><th class="num">Unknown</th><th class="num">Total Fires</th><th class="num">% Human (known-cause)</th><th class="num">% Unrecorded Cause</th><th class="num">Hectares Burned</th></tr></thead><tbody>';
+  const areaByYear = {};
+  DATA.bc_area_burned.forEach(r => areaByYear[r.year] = r.total_ha);
+  const rows = [...DATA.bc_timeline].sort((a,b) => b.year - a.year);
+  rows.forEach(r => {
+    const cls = r.in_progress ? ' class="in-progress"' : '';
+    const label = r.year + (r.in_progress ? ' (to date)' : '');
+    html += '<tr' + cls + '>';
+    html += '<td>' + label + '</td>';
+    html += '<td class="num">' + r.person.toLocaleString() + '</td>';
+    html += '<td class="num">' + r.lightning.toLocaleString() + '</td>';
+    html += '<td class="num">' + r.unknown.toLocaleString() + '</td>';
+    html += '<td class="num">' + r.total.toLocaleString() + '</td>';
+    html += '<td class="num">' + (r.human_caused_pct_known !== null ? r.human_caused_pct_known + '%' : '—') + '</td>';
+    html += '<td class="num">' + (r.unknown_pct !== null ? r.unknown_pct + '%' : '—') + '</td>';
+    html += '<td class="num">' + (areaByYear[r.year] !== undefined ? areaByYear[r.year].toLocaleString(undefined,{maximumFractionDigits:0}) : '—') + '</td>';
+    html += '</tr>';
+  });
+  const completed = DATA.bc_timeline.filter(r => !r.in_progress);
+  const totPerson = completed.reduce((s,r)=>s+r.person,0);
+  const totLightning = completed.reduce((s,r)=>s+r.lightning,0);
+  const totUnknown = completed.reduce((s,r)=>s+r.unknown,0);
+  const totAll = totPerson + totLightning + totUnknown;
+  const totKnown = totPerson + totLightning;
+  html += '</tbody><tfoot><tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)">';
+  html += '<td>1950–2025 total</td>';
+  html += '<td class="num">' + totPerson.toLocaleString() + '</td>';
+  html += '<td class="num">' + totLightning.toLocaleString() + '</td>';
+  html += '<td class="num">' + totUnknown.toLocaleString() + '</td>';
+  html += '<td class="num">' + totAll.toLocaleString() + '</td>';
+  html += '<td class="num">' + (totKnown ? Math.round(1000*totPerson/totKnown)/10 : 0) + '%</td>';
+  html += '<td class="num">' + Math.round(1000*totUnknown/totAll)/10 + '%</td>';
+  html += '<td class="num">—</td>';
+  html += '</tr></tfoot>';
+  table.innerHTML = html;
+}
+
+function copyTable() {
+  const areaByYear = {};
+  DATA.bc_area_burned.forEach(r => areaByYear[r.year] = r.total_ha);
+  const rows = [['Season','Human-caused','Lightning','Unknown','Total Fires','% Human (known-cause)','% Unrecorded Cause','Hectares Burned']];
+  [...DATA.bc_timeline].sort((a,b) => b.year - a.year).forEach(r => {
+    rows.push([r.year + (r.in_progress ? ' (to date)' : ''), r.person, r.lightning, r.unknown, r.total, r.human_caused_pct_known ?? '', r.unknown_pct ?? '', areaByYear[r.year] ?? '']);
+  });
+  const text = rows.map(r => r.join('\t')).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const areaByYear = {};
+  DATA.bc_area_burned.forEach(r => areaByYear[r.year] = r.total_ha);
+  const rows = [['Season','Human-caused','Lightning','Unknown','Total Fires','% Human (known-cause)','% Unrecorded Cause','Hectares Burned']];
+  [...DATA.bc_timeline].sort((a,b) => b.year - a.year).forEach(r => {
+    rows.push([r.year + (r.in_progress ? ' (to date)' : ''), r.person, r.lightning, r.unknown, r.total, r.human_caused_pct_known ?? '', r.unknown_pct ?? '', areaByYear[r.year] ?? '']);
+  });
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bc_wildfire_causes_1950_2026.csv';
+  a.click();
+}
+
+// Initialize
+renderHero();
+renderCases();
+renderSavings();
+renderCollapse();
+renderCausesSub();
+renderWaterBombers();
+renderFleetTrend();
+renderFunding();
+renderDamage();
+renderTally();
+renderClosing();
+renderGuardrail();
+initCollapseChart();
+initQualityChart();
+initTimelineChart();
+initAreaChart();
+initCausesChart();
+initFleetChart();
+initManufacturingChart();
+initFleetTrendChart();
+initFleetIntlChart();
+initFundingByYearChart();
+initDfaaChart();
+initDamageChart();
+initStructuresChart();
+initTallyChart();
+initBenchmarkChart();
+initClosingChart();
+buildTable();
+</script>
+
+</body>
+</html>
