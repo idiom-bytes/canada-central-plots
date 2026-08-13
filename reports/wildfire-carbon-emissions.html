@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Carbon Nobody Counts | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --accent: #2E4B3E;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--accent)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1100px;margin:0 auto;width:100%}
+    .breadcrumb{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    .breadcrumb a{color:var(--accent);text-decoration:none;font-weight:600}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem}
+
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-bottom:2rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat.key{border-top-color:#8B2E2E}
+    .hero-stat .big{font-size:1.7rem;font-weight:800;color:var(--accent);line-height:1.2}
+    .hero-stat.key .big{color:#8B2E2E}
+    @media(min-width:640px){.hero-stat .big{font-size:2.1rem}}
+    .hero-stat .label{font-size:0.7rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:600;margin-top:6px;line-height:1.35}
+
+    .report-section{margin-bottom:2.5rem;padding-top:0.5rem;border-top:1px solid var(--color-beige)}
+    .report-section:first-of-type{border-top:none}
+    .section-eyebrow{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin:0 0 0.35rem}
+    .section-title{font-size:1.25rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.5rem;line-height:1.3}
+    @media(min-width:640px){.section-title{font-size:1.4375rem}}
+    .section-intro{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.65;margin:0 0 1rem;max-width:800px}
+
+    .chart-row{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
+    @media(min-width:860px){.chart-row.two{grid-template-columns:1fr 1fr}}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 4px;color:var(--color-text-primary)}
+    .chart-card .sub{font-size:0.75rem;color:var(--color-text-secondary);margin:0 0 12px;line-height:1.55}
+    .chart-wrap{position:relative;height:320px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem}
+    .accountability h4{font-size:0.8125rem;font-weight:700;color:var(--color-text-primary);margin:1.1rem 0 0.4rem}
+    .accountability h4:first-child{margin-top:0}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .accountability ul{margin:0 0 0.75rem;padding-left:1.1rem}
+    .accountability li{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin-bottom:0.35rem}
+
+    .guardrail{background:#fdf6ec;border:1px solid #eadfc8;border-radius:var(--radius-md);padding:1rem 1.25rem}
+    .guardrail h4{margin:0 0 0.4rem;font-size:0.8125rem;font-weight:700;color:#92400e}
+    .guardrail p{margin:0 0 0.4rem;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6}
+    .guardrail p:last-child{margin:0}
+
+    .verdict-block{background:var(--color-cream-dark);border-radius:var(--radius-md);padding:1rem 1.25rem;margin-top:1rem}
+    .verdict-block h4{margin:0 0 0.5rem;font-size:0.8125rem;font-weight:700;color:var(--accent)}
+    .verdict-block p{margin:0 0 0.6rem;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.65}
+    .verdict-block p:last-child{margin-bottom:0}
+    .verdict-block code{background:var(--color-cream);border:1px solid var(--color-beige);padding:1px 5px;border-radius:3px;font-size:0.75rem}
+
+    .scenario-cards{display:grid;grid-template-columns:1fr;gap:1rem;margin:1rem 0}
+    @media(min-width:760px){.scenario-cards{grid-template-columns:1fr 1fr}}
+    .scenario-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem 1.5rem;border-top:4px solid var(--accent)}
+    .scenario-card.aggressive{border-top-color:#8B2E2E}
+    .scenario-card h4{margin:0 0 0.5rem;font-size:0.875rem;font-weight:700;color:var(--color-text-primary)}
+    .scenario-card .range{font-size:1.65rem;font-weight:800;color:var(--accent);margin:0.25rem 0}
+    .scenario-card.aggressive .range{color:#8B2E2E}
+    .scenario-card p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0}
+
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--accent);color:var(--color-white);border-color:var(--accent)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige);max-height:520px;overflow-y:auto}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{position:sticky;top:0;text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.5rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="../index.html">Statistics</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+
+      <p class="breadcrumb"><a href="canada-is-burning.html">Canada Is Letting Itself Burn</a> &rsaquo; Chapter 3</p>
+      <h1 class="page-title">The Carbon Nobody Counts</h1>
+      <p class="page-subtitle">Source: Environment and Climate Change Canada, National Inventory Report 1990&ndash;2023 &middot; Copernicus CAMS &middot; Byrne et al., <em>Nature</em> 2024 &middot; Canadian National Fire Database</p>
+      <p class="page-desc">Canada's official 2023 greenhouse gas total was <strong>694 megatonnes of CO2</strong> &mdash; the number reported to the UN and measured against Canada's climate targets. It does not include a single tonne of CO2 from wildfires. Canada reports wildfire emissions separately, under a UN provision for natural disturbances, and doesn't count them nationally. Independent estimates put the CO2 from 2023's wildfire season alone at <strong>1.76 to 3 billion tonnes</strong> &mdash; two-and-a-half to over three times Canada's entire annual economy, in one fire season, unaccounted for. This chapter lays out the official numbers, the wildfire numbers nobody counts, and two honestly-labeled scenarios for what closing that gap could be worth.</p>
+
+      <div class="hero-stats" id="heroStats"></div>
+
+      <section class="report-section">
+        <div class="section-eyebrow">Section 1</div>
+        <h2 class="section-title">The elephant nobody counts</h2>
+        <p class="section-intro">Canada's official national GHG total, 1990&ndash;2023 (ECCC's National Inventory Report). Every bar here is entirely non-wildfire: energy, transport, buildings, industry, agriculture, waste.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>Canada's Official GHG Total by Sector, 1990&ndash;2023</h3>
+            <div class="chart-wrap"><canvas id="chartGhgTimeline"></canvas></div>
+          </div>
+        </div>
+        <div class="accountability" style="margin-top:1rem">
+          <h4>Why wildfire CO2 isn't in that chart at all</h4>
+          <p id="notCountedFinding"></p>
+          <h4>International scrutiny</h4>
+          <p id="notCountedScrutiny"></p>
+        </div>
+      </section>
+
+      <section class="report-section">
+        <div class="section-eyebrow">Section 2</div>
+        <h2 class="section-title">How big, really?</h2>
+        <p class="section-intro">Four independent estimates of Canada's 2023 wildfire CO2 output, next to Canada's official national total and its largest single sector (oil &amp; gas) for scale. Byrne et al. is the only peer-reviewed figure and is used to calibrate the scenario model below.</p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>2023 Wildfire CO2 Estimates vs. Canada's Official Totals</h3>
+            <p class="sub">Dashed reference lines: Canada's 2023 national total (694 Mt) and oil &amp; gas sector (208 Mt).</p>
+            <div class="chart-wrap"><canvas id="chartEstimates"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-section">
+        <div class="section-eyebrow">Section 3</div>
+        <h2 class="section-title">Where it actually comes from</h2>
+        <p class="section-intro" id="causeAreaFinding"></p>
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>Hectares Burned by Cause, Nationally, 2005&ndash;2024</h3>
+            <div class="chart-wrap"><canvas id="chartCauseArea"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-section">
+        <div class="section-eyebrow">Section 4</div>
+        <h2 class="section-title">Two scenarios</h2>
+        <p class="section-intro" id="methodologyNote"></p>
+
+        <div class="scenario-cards">
+          <div class="scenario-card">
+            <h4>Scenario 1 &mdash; Cut human-caused area burned 90% <span style="font-weight:400;color:var(--color-text-tertiary)">(no major infrastructure required)</span></h4>
+            <div class="range" id="s1Range"></div>
+            <p id="s1Takeaway"></p>
+          </div>
+          <div class="scenario-card aggressive">
+            <h4>Scenario 2 &mdash; Cut ALL area burned 90% <span style="font-weight:400;color:var(--color-text-tertiary)">(requires major infrastructure)</span></h4>
+            <div class="range" id="s2Range"></div>
+            <p id="s2Takeaway"></p>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <h3>Avoided CO2 per Scenario, vs. Canada's Emissions Ceilings</h3>
+            <p class="sub">Bars show the low-high range for each scenario. Dashed lines: oil &amp; gas sector (208 Mt) and national total (694 Mt).</p>
+            <div class="chart-wrap"><canvas id="chartScenarios"></canvas></div>
+          </div>
+        </div>
+
+        <div class="verdict-block">
+          <h4>Show the math</h4>
+          <p id="calibrationText"></p>
+          <p id="baselineText"></p>
+          <h4>Reality check</h4>
+          <p id="realityCheck"></p>
+          <h4>The important caveat</h4>
+          <p id="importantCaveat"></p>
+        </div>
+      </section>
+
+      <section class="report-section">
+        <div class="section-eyebrow">Section 5</div>
+        <h2 class="section-title">Comparing the interventions</h2>
+        <p class="section-intro" id="interventionFraming"></p>
+        <div class="data-table-wrap">
+          <table class="data-table" id="interventionTable"></table>
+        </div>
+        <div class="accountability" style="margin-top:1rem">
+          <h4 style="margin-top:0">The takeaway</h4>
+          <p id="interventionTakeaway"></p>
+        </div>
+      </section>
+
+      <section class="report-section">
+        <div class="section-eyebrow">Data</div>
+        <h2 class="section-title">Every province, in full</h2>
+        <p class="section-intro">Official GHG emissions by province/territory, 1990, 2005 and 2023 (ECCC National Inventory Report). This is total provincial emissions from all sources — not wildfire-specific, since no official provincial wildfire-carbon time series is public (see the methodology note above).</p>
+        <div class="table-section">
+          <div class="table-header">
+            <h2 class="table-title">GHG Emissions by Province/Territory (Mt CO2e)</h2>
+            <div class="table-actions">
+              <button class="btn-sm" onclick="copyTable()">Copy</button>
+              <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+            </div>
+          </div>
+          <div class="data-table-wrap">
+            <table class="data-table" id="dataTable"></table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"national_ghg_timeline":[{"year":1990,"total_mt":606.5,"by_sector":{"Oil and gas":117.3,"Transport":117.9,"Buildings":71.6,"Electricity":94.4,"Heavy industry":97.1,"Agriculture":50.7,"Waste and others":57.5}},{"year":1991,"total_mt":601.5,"by_sector":{"Oil and gas":118.6,"Transport":113.3,"Buildings":70.9,"Electricity":95.7,"Heavy industry":96.9,"Agriculture":50.8,"Waste and others":55.3}},{"year":1992,"total_mt":619.3,"by_sector":{"Oil and gas":127.9,"Transport":115.3,"Buildings":72.8,"Electricity":102.1,"Heavy industry":94.2,"Agriculture":53.0,"Waste and others":54.0}},{"year":1993,"total_mt":624.1,"by_sector":{"Oil and gas":136.5,"Transport":118.3,"Buildings":76.4,"Electricity":92.9,"Heavy industry":93.6,"Agriculture":54.3,"Waste and others":52.1}},{"year":1994,"total_mt":646.1,"by_sector":{"Oil and gas":142.1,"Transport":124.4,"Buildings":76.8,"Electricity":94.9,"Heavy industry":99.1,"Agriculture":55.9,"Waste and others":52.9}},{"year":1995,"total_mt":664.9,"by_sector":{"Oil and gas":149.6,"Transport":126.5,"Buildings":77.6,"Electricity":98.0,"Heavy industry":100.0,"Agriculture":58.5,"Waste and others":54.7}},{"year":1996,"total_mt":685.8,"by_sector":{"Oil and gas":157.4,"Transport":129.2,"Buildings":83.9,"Electricity":97.9,"Heavy industry":102.9,"Agriculture":60.1,"Waste and others":54.4}},{"year":1997,"total_mt":701.5,"by_sector":{"Oil and gas":158.7,"Transport":133.4,"Buildings":81.4,"Electricity":109.1,"Heavy industry":102.8,"Agriculture":60.9,"Waste and others":55.2}},{"year":1998,"total_mt":708.0,"by_sector":{"Oil and gas":162.9,"Transport":136.5,"Buildings":73.1,"Electricity":121.7,"Heavy industry":99.2,"Agriculture":61.0,"Waste and others":53.6}},{"year":1999,"total_mt":718.4,"by_sector":{"Oil and gas":169.8,"Transport":140.5,"Buildings":77.0,"Electricity":118.8,"Heavy industry":97.0,"Agriculture":61.2,"Waste and others":54.1}},{"year":2000,"total_mt":746.1,"by_sector":{"Oil and gas":177.6,"Transport":141.6,"Buildings":83.6,"Electricity":128.4,"Heavy industry":97.0,"Agriculture":62.2,"Waste and others":55.7}},{"year":2001,"total_mt":738.9,"by_sector":{"Oil and gas":180.7,"Transport":141.8,"Buildings":80.3,"Electricity":128.7,"Heavy industry":91.7,"Agriculture":61.9,"Waste and others":53.8}},{"year":2002,"total_mt":745.7,"by_sector":{"Oil and gas":186.1,"Transport":143.9,"Buildings":84.7,"Electricity":123.1,"Heavy industry":92.0,"Agriculture":61.8,"Waste and others":54.1}},{"year":2003,"total_mt":763.6,"by_sector":{"Oil and gas":189.7,"Transport":149.0,"Buildings":89.9,"Electricity":126.9,"Heavy industry":90.6,"Agriculture":63.6,"Waste and others":53.9}},{"year":2004,"total_mt":763.6,"by_sector":{"Oil and gas":190.9,"Transport":153.7,"Buildings":88.5,"Electricity":118.1,"Heavy industry":92.8,"Agriculture":64.7,"Waste and others":54.9}},{"year":2005,"total_mt":758.7,"by_sector":{"Oil and gas":194.5,"Transport":156.2,"Buildings":84.6,"Electricity":115.9,"Heavy industry":87.8,"Agriculture":65.7,"Waste and others":54.0}},{"year":2006,"total_mt":754.9,"by_sector":{"Oil and gas":202.2,"Transport":157.1,"Buildings":79.5,"Electricity":111.2,"Heavy industry":87.8,"Agriculture":64.3,"Waste and others":52.8}},{"year":2007,"total_mt":774.4,"by_sector":{"Oil and gas":206.5,"Transport":162.0,"Buildings":85.3,"Electricity":117.9,"Heavy industry":85.9,"Agriculture":64.2,"Waste and others":52.6}},{"year":2008,"total_mt":757.8,"by_sector":{"Oil and gas":202.8,"Transport":162.6,"Buildings":85.2,"Electricity":108.3,"Heavy industry":84.2,"Agriculture":63.6,"Waste and others":51.1}},{"year":2009,"total_mt":714.3,"by_sector":{"Oil and gas":197.9,"Transport":161.5,"Buildings":83.6,"Electricity":93.2,"Heavy industry":71.1,"Agriculture":60.6,"Waste and others":46.4}},{"year":2010,"total_mt":728.0,"by_sector":{"Oil and gas":203.4,"Transport":165.0,"Buildings":81.3,"Electricity":94.7,"Heavy industry":74.9,"Agriculture":60.6,"Waste and others":48.1}},{"year":2011,"total_mt":737.7,"by_sector":{"Oil and gas":210.1,"Transport":163.9,"Buildings":85.7,"Electricity":85.9,"Heavy industry":81.1,"Agriculture":61.5,"Waste and others":49.5}},{"year":2012,"total_mt":741.1,"by_sector":{"Oil and gas":216.2,"Transport":164.1,"Buildings":84.2,"Electricity":82.4,"Heavy industry":81.2,"Agriculture":63.4,"Waste and others":49.6}},{"year":2013,"total_mt":750.1,"by_sector":{"Oil and gas":223.0,"Transport":166.7,"Buildings":85.2,"Electricity":79.8,"Heavy industry":79.9,"Agriculture":65.2,"Waste and others":50.3}},{"year":2014,"total_mt":747.5,"by_sector":{"Oil and gas":227.7,"Transport":164.3,"Buildings":85.7,"Electricity":75.2,"Heavy industry":82.1,"Agriculture":64.3,"Waste and others":48.2}},{"year":2015,"total_mt":742.1,"by_sector":{"Oil and gas":226.0,"Transport":162.3,"Buildings":84.7,"Electricity":74.5,"Heavy industry":79.7,"Agriculture":65.7,"Waste and others":49.2}},{"year":2016,"total_mt":724.8,"by_sector":{"Oil and gas":208.0,"Transport":161.9,"Buildings":85.7,"Electricity":75.2,"Heavy industry":76.8,"Agriculture":66.7,"Waste and others":50.5}},{"year":2017,"total_mt":737.7,"by_sector":{"Oil and gas":216.5,"Transport":164.9,"Buildings":87.9,"Electricity":72.5,"Heavy industry":77.6,"Agriculture":67.3,"Waste and others":51.0}},{"year":2018,"total_mt":747.0,"by_sector":{"Oil and gas":223.1,"Transport":168.9,"Buildings":91.9,"Electricity":62.6,"Heavy industry":79.7,"Agriculture":69.0,"Waste and others":51.8}},{"year":2019,"total_mt":747.4,"by_sector":{"Oil and gas":222.4,"Transport":169.0,"Buildings":93.8,"Electricity":61.6,"Heavy industry":79.3,"Agriculture":69.3,"Waste and others":52.0}},{"year":2020,"total_mt":682.2,"by_sector":{"Oil and gas":204.4,"Transport":142.1,"Buildings":88.2,"Electricity":53.8,"Heavy industry":75.4,"Agriculture":70.1,"Waste and others":48.2}},{"year":2021,"total_mt":693.6,"by_sector":{"Oil and gas":211.1,"Transport":148.6,"Buildings":84.8,"Electricity":52.5,"Heavy industry":78.1,"Agriculture":69.3,"Waste and others":49.2}},{"year":2022,"total_mt":699.9,"by_sector":{"Oil and gas":209.4,"Transport":155.1,"Buildings":88.3,"Electricity":49.0,"Heavy industry":78.1,"Agriculture":70.1,"Waste and others":49.9}},{"year":2023,"total_mt":694.0,"by_sector":{"Oil and gas":208.0,"Transport":156.6,"Buildings":82.7,"Electricity":48.8,"Heavy industry":78.3,"Agriculture":69.4,"Waste and others":50.2}}],"national_ghg_latest_total_mt":694.0,"provincial_ghg":[{"province":"Newfoundland and Labrador","mt_1990":9.5,"mt_2005":10.3,"mt_2023":7.9},{"province":"Prince Edward Island","mt_1990":1.8,"mt_2005":1.9,"mt_2023":1.6},{"province":"Nova Scotia","mt_1990":19.6,"mt_2005":22.0,"mt_2023":13.5},{"province":"New Brunswick","mt_1990":16.1,"mt_2005":19.8,"mt_2023":11.5},{"province":"Quebec","mt_1990":84.3,"mt_2005":84.5,"mt_2023":78.9},{"province":"Ontario","mt_1990":178.2,"mt_2005":202.4,"mt_2023":158.7},{"province":"Manitoba","mt_1990":18.3,"mt_2005":20.7,"mt_2023":21.3},{"province":"Saskatchewan","mt_1990":48.5,"mt_2005":80.5,"mt_2023":73.9},{"province":"Alberta","mt_1990":176.6,"mt_2005":250.5,"mt_2023":263.4},{"province":"British Columbia","mt_1990":51.2,"mt_2005":63.3,"mt_2023":60.4},{"province":"Yukon","mt_1990":0.6,"mt_2005":0.6,"mt_2023":0.7},{"province":"Northwest Territories","mt_1990":1.8,"mt_2005":1.7,"mt_2023":1.4},{"province":"Nunavut (NU)[A]","mt_1990":null,"mt_2005":0.6,"mt_2023":0.7},{"province":"\"Note: [A] 1990 emissions data for the Northwest Territories include emissions for Nunavut","mt_1990":null,"mt_2005":null,"mt_2023":null}],"wildfire_not_counted":{"finding":"Canada's official greenhouse gas total \u2014 the number reported to the UN and measured against Canada's climate targets \u2014 does NOT include CO2 from wildfires. Emissions from natural disturbances (wildfire, insect outbreaks) on managed forest land are tracked but reported SEPARATELY from the headline inventory, under UNFCCC guidance that treats them as largely outside direct human control. Canada is unusual internationally in excluding ALL wildfire-related forest emissions this way, not just severe stand-replacing crown fires.","scrutiny":"During UNFCCC technical review of Canada's 2021 inventory submission, international reviewers flagged that Canada had not sufficiently justified treating all such fire emissions as fully non-anthropogenic. One independent analysis estimates the exclusion may understate Canada's true annual footprint by roughly 80 Mt CO2e/year even in an average, non-record year.","sources":["Natural Resources Canada, 'Canada's forest greenhouse gas reporting'","Canadian Climate Institute (440megatonnes.ca), 'How forest fires affect Canada's climate progress'","World Resources Institute, wri.org/insights/canada-wildfire-emissions"]},"wildfire_2023_estimates":[{"source":"Copernicus Atmosphere Monitoring Service (CAMS/GFAS)","value_mt_co2":1760,"value_mt_carbon":480,"note":"Full calendar-year 2023 estimate \u2014 roughly 5x the 2003-2022 average, and 23% of ALL global wildfire carbon emissions that year.","citation":"Copernicus Atmosphere Monitoring Service, 2024"},{"source":"Byrne et al., Nature (2024) \u2014 peer-reviewed, satellite CO-inversion","value_mt_co2":2374,"value_mt_carbon":647,"range_mt_carbon":[570,727],"note":"May-September 2023 (captures the vast majority of the season). The most rigorous, peer-reviewed estimate found; used to calibrate the scenario model below.","citation":"Byrne, B. et al., 'Carbon emissions from the 2023 Canadian wildfires,' Nature (2024)"},{"source":"World Resources Institute / Global Forest Watch","value_mt_co2":3000,"note":"Full-year estimate \u2014 described as roughly 4x global aviation's 2022 emissions, and larger than global tropical forest-loss carbon that year.","citation":"World Resources Institute, wri.org/insights/canada-wildfire-emissions"},{"source":"Canada's own National Inventory Report (supplementary, non-headline figure)","value_mt_co2":1000,"note":"NRCan's own supplementary estimate \u2014 reported separately from Canada's official 694 Mt national total, not counted in it. Would rank as the world's 8th-largest emitter if counted as a country.","citation":"Natural Resources Canada; Canadian Climate Institute (440megatonnes.ca)"}],"national_cause_area":[{"year":2005,"human_ha":68991,"lightning_ha":1578601,"unknown_ha":40797,"total_ha":1688389,"human_pct_of_total":4.1},{"year":2006,"human_ha":287807,"lightning_ha":1776816,"unknown_ha":3552,"total_ha":2068174,"human_pct_of_total":13.9},{"year":2007,"human_ha":213819,"lightning_ha":1346072,"unknown_ha":12268,"total_ha":1572159,"human_pct_of_total":13.6},{"year":2008,"human_ha":118116,"lightning_ha":1523888,"unknown_ha":639,"total_ha":1642643,"human_pct_of_total":7.2},{"year":2009,"human_ha":41047,"lightning_ha":678187,"unknown_ha":1541,"total_ha":720775,"human_pct_of_total":5.7},{"year":2010,"human_ha":288385,"lightning_ha":2879600,"unknown_ha":4152,"total_ha":3172137,"human_pct_of_total":9.1},{"year":2011,"human_ha":215809,"lightning_ha":1486474,"unknown_ha":605800,"total_ha":2308083,"human_pct_of_total":9.4},{"year":2012,"human_ha":112701,"lightning_ha":1393235,"unknown_ha":31697,"total_ha":1537634,"human_pct_of_total":7.3},{"year":2013,"human_ha":62782,"lightning_ha":4145551,"unknown_ha":813,"total_ha":4209146,"human_pct_of_total":1.5},{"year":2014,"human_ha":45495,"lightning_ha":4193480,"unknown_ha":37244,"total_ha":4276219,"human_pct_of_total":1.1},{"year":2015,"human_ha":141138,"lightning_ha":3292087,"unknown_ha":10616,"total_ha":3443841,"human_pct_of_total":4.1},{"year":2016,"human_ha":118446,"lightning_ha":700087,"unknown_ha":491709,"total_ha":1310242,"human_pct_of_total":9.0},{"year":2017,"human_ha":225551,"lightning_ha":3229713,"unknown_ha":14903,"total_ha":3470167,"human_pct_of_total":6.5},{"year":2018,"human_ha":288439,"lightning_ha":1950383,"unknown_ha":14839,"total_ha":2253661,"human_pct_of_total":12.8},{"year":2019,"human_ha":40402,"lightning_ha":871326,"unknown_ha":756234,"total_ha":1667961,"human_pct_of_total":2.4},{"year":2020,"human_ha":135180,"lightning_ha":77462,"unknown_ha":4218,"total_ha":216860,"human_pct_of_total":62.3},{"year":2021,"human_ha":553217,"lightning_ha":3456464,"unknown_ha":29191,"total_ha":4038871,"human_pct_of_total":13.7},{"year":2022,"human_ha":66305,"lightning_ha":1293117,"unknown_ha":177339,"total_ha":1536761,"human_pct_of_total":4.3},{"year":2023,"human_ha":496177,"lightning_ha":15301231,"unknown_ha":857859,"total_ha":16655266,"human_pct_of_total":3.0},{"year":2024,"human_ha":55397,"lightning_ha":5161847,"unknown_ha":60943,"total_ha":5278188,"human_pct_of_total":1.0}],"cause_area_split_summary":{"period":"2005-2024","human_ha":3575204,"lightning_ha":56335621,"unknown_ha":3156354,"total_ha":63067177,"human_pct_of_area":5.7,"avg_annual_total_ha":3153359,"avg_annual_human_ha":178760,"finding":"Nationally, human-caused fires account for the MAJORITY of fires by count but only a small fraction of area burned \u2014 lightning fires, concentrated in remote, sparsely-monitored northern land, burn far more area per fire on average because they're detected and reached more slowly. This matters directly for the CO2 scenarios below: cutting human-caused ignitions cuts a lot of FIRES, but not much of the AREA that actually determines carbon output."},"scenario_model":{"methodology":"A CO2-per-hectare-burned factor is calibrated by dividing two independent, credible 2023 wildfire-CO2 estimates (Copernicus CAMS and the peer-reviewed Byrne et al. 2024 Nature study) by NFDB's own reported area burned in 2023 \u2014 keeping area and cause data internally consistent \u2014 then applying that factor to NFDB's 2015-2024 average annual area burned, by cause. This is a labeled ESTIMATE, not an official government figure: no authoritative Canada-wide avoided-emissions model for wildfire prevention/suppression investment currently exists publicly.","calibration":{"nfdb_2023_area_burned_ha":16655266,"copernicus_2023_estimate_mt_co2":1760,"byrne_2023_estimate_mt_co2":2372,"implied_factor_low_t_co2_per_ha":105.7,"implied_factor_high_t_co2_per_ha":142.4},"baseline_2015_2024":{"avg_annual_total_area_burned_ha":3987182,"avg_annual_human_caused_area_burned_ha":212025,"human_share_of_area_pct":5.3},"scenario_1_arson_crackdown":{"label":"Cut human-caused (arson & other human-ignition) area burned by 90%","avoided_mt_co2_low":20.2,"avoided_mt_co2_high":27.2,"pct_of_national_total_low":2.9,"pct_of_national_total_high":3.9,"pct_of_oil_gas_sector_low":9.7,"pct_of_oil_gas_sector_high":13.1,"takeaway":"Even eliminating 90% of human-ignited area burned offsets only 3-4% of Canada's ENTIRE annual national emissions total, because humans start the majority of fires by count but only around 6% of total area burned \u2014 lightning fires in remote, under-monitored land drive the rest. Arson reduction alone does not meaningfully move Canada's carbon math."},"scenario_2_prevention_response":{"label":"Cut ALL area burned (any cause) 90% via prevention, early detection, and rapid suppression investment","avoided_mt_co2_low":379.3,"avoided_mt_co2_high":511.0,"pct_of_national_total_low":54.7,"pct_of_national_total_high":73.6,"multiple_of_oil_gas_sector_low":1.82,"multiple_of_oil_gas_sector_high":2.46,"takeaway":"A cause-agnostic 90% cut to area burned \u2014 treating wildfire monitoring and initial-attack capacity as seriously as any other emissions lever \u2014 would avoid CO2 equivalent to 1.8x-2.5x Canada's ENTIRE oil & gas sector's annual emissions, or 55-74% of the country's whole official national total."},"reality_check":"90% is a hypothetical ceiling, not a forecast \u2014 nobody is proposing eliminating 90% of area burned overnight. The closest real-world benchmark found: a Kootenay National Park case study found rapid initial attack can cut burn PROBABILITY by up to 78% in that specific setting \u2014 smaller and more localized, but directionally real.","important_caveat":"Because wildfire CO2 is not counted in Canada's official national total or climate targets, this is a magnitude comparison for public accountability, not a literal accounting mechanism \u2014 avoiding wildfire emissions would not currently free up 'room' under Canada's targets the way cutting oil & gas emissions would, precisely because wildfire emissions were never charged against those targets in the first place. That gap is itself part of the story."},"intervention_comparison":{"framing":"The two scenarios in the previous section span very different policy asks. This ranks the actual interventions by whether they require major new infrastructure, what they'd plausibly achieve, and how confident we are in that number.","interventions":[{"name":"Harsher sentencing & enforcement targeting human-caused ignition","requires_major_infrastructure":false,"mechanism":"Deterrence \u2014 raises the cost of arson and negligent ignition specifically.","avoided_mt_co2_low":20.2,"avoided_mt_co2_high":27.2,"pct_of_national_total":"2.9-3.9%","confidence":"Moderate \u2014 the area-burned math is solid; whether harsher sentencing actually achieves a 90% cut in human-ignited area is unverified and modeled as a ceiling, not a prediction."},{"name":"Monitoring/enforcement staffing to close the unknown-cause reporting gap","requires_major_infrastructure":false,"mechanism":"Investigative capacity & reporting discipline \u2014 enables attribution and prosecution; does not by itself extinguish fires faster.","avoided_mt_co2_low":null,"avoided_mt_co2_high":null,"pct_of_national_total":null,"annual_unattributed_area_ha":157818,"confidence":"Not independently quantified as a CO2 lever. ~157,818 ha/year currently goes unattributed nationally, and the corrected fire-size finding above shows unknown-cause fires are only modestly larger than human-caused ones (not lightning-sized), which is at least consistent with a real, un-investigated pool of human-scale fires \u2014 but we have no way to independently confirm what share of that pool is actually human-ignited without a province-by-province investigation. Its clearest, most defensible value is enabling the sentencing lever above (you can't prosecute a fire you never attributed) and enabling more reliable versions of this exact kind of analysis in provinces without an independent verification source."},{"name":"Full prevention, early-detection & rapid-suppression infrastructure investment (cause-agnostic)","requires_major_infrastructure":true,"mechanism":"Faster detection and initial attack on ALL fires, regardless of cause \u2014 aircraft, satellite monitoring, staffing at scale.","avoided_mt_co2_low":379.3,"avoided_mt_co2_high":511.0,"pct_of_national_total":"54.7-73.6%","confidence":"Low-moderate \u2014 a hypothetical ceiling (90% cut to ALL area burned), not a costed plan. The closest real benchmark, a Kootenay National Park case study, found rapid initial attack cut burn PROBABILITY up to 78% in one localized setting."}],"takeaway":"The two levers that don't require major infrastructure \u2014 harsher sentencing and closing the reporting gap \u2014 are the most immediately actionable, but only the sentencing lever has a directly quantified (if uncertain) CO2 payoff, and it's small: 3-4% of Canada's national total. The lever with the largest potential payoff (cause-agnostic prevention and rapid response) is also the one that requires the infrastructure this report's Chapter 1 found Canada cutting, not building, in 2026."}};
+
+function renderHero() {
+  const sm = DATA.scenario_model;
+  const s2 = sm.scenario_2_prevention_response;
+  const stats = [
+    {label: "Canada's official 2023 GHG total (does NOT include wildfire CO2)", value: `${DATA.national_ghg_latest_total_mt} Mt`, accent: 'neutral'},
+    {label: '2023 wildfire CO2 estimates — not counted in that total', value: '1.76–3.0 Gt', accent: 'key'},
+    {label: "2023 wildfire emissions vs. Canada's ENTIRE annual economy (Byrne et al., peer-reviewed)", value: '3.4x', accent: 'key'},
+    {label: 'Oil & gas sector, 2023 — 30% of the official national total', value: '208 Mt', accent: 'neutral'},
+    {label: 'Scenario 2 avoided CO2 vs. oil & gas sector’s ENTIRE annual output', value: `${s2.multiple_of_oil_gas_sector_low}x–${s2.multiple_of_oil_gas_sector_high}x`, accent: 'key'},
+  ];
+  document.getElementById('heroStats').innerHTML = stats.map(s =>
+    `<div class="hero-stat ${s.accent === 'key' ? 'key' : ''}"><div class="big">${s.value}</div><div class="label">${s.label}</div></div>`
+  ).join('');
+}
+
+function renderText() {
+  document.getElementById('notCountedFinding').textContent = DATA.wildfire_not_counted.finding;
+  document.getElementById('notCountedScrutiny').textContent = DATA.wildfire_not_counted.scrutiny;
+  document.getElementById('causeAreaFinding').textContent = DATA.cause_area_split_summary.finding;
+  document.getElementById('methodologyNote').textContent = DATA.scenario_model.methodology;
+
+  const s1 = DATA.scenario_model.scenario_1_arson_crackdown;
+  const s2 = DATA.scenario_model.scenario_2_prevention_response;
+  document.getElementById('s1Range').textContent = `${s1.avoided_mt_co2_low}–${s1.avoided_mt_co2_high} Mt CO2/yr`;
+  document.getElementById('s1Takeaway').textContent = s1.takeaway;
+  document.getElementById('s2Range').textContent = `${s2.avoided_mt_co2_low}–${s2.avoided_mt_co2_high} Mt CO2/yr`;
+  document.getElementById('s2Takeaway').textContent = s2.takeaway;
+
+  const c = DATA.scenario_model.calibration;
+  document.getElementById('calibrationText').innerHTML =
+    `Calibration: NFDB's own 2023 area burned was <code>${c.nfdb_2023_area_burned_ha.toLocaleString('en-CA')} ha</code>. ` +
+    `Dividing Copernicus's 2023 estimate (<code>${c.copernicus_2023_estimate_mt_co2} Mt CO2</code>) and Byrne et al.'s (<code>${c.byrne_2023_estimate_mt_co2} Mt CO2</code>) by that area gives an implied factor of <code>${c.implied_factor_low_t_co2_per_ha}–${c.implied_factor_high_t_co2_per_ha} tCO2/ha</code>.`;
+  const b = DATA.scenario_model.baseline_2015_2024;
+  document.getElementById('baselineText').innerHTML =
+    `Applied to the 2015-2024 average: <code>${b.avg_annual_total_area_burned_ha.toLocaleString('en-CA')} ha/yr</code> burned nationally, of which only <code>${b.avg_annual_human_caused_area_burned_ha.toLocaleString('en-CA')} ha/yr</code> (${b.human_share_of_area_pct}%) is human-caused.`;
+  document.getElementById('realityCheck').textContent = DATA.scenario_model.reality_check;
+  document.getElementById('importantCaveat').textContent = DATA.scenario_model.important_caveat;
+
+  document.getElementById('interventionFraming').textContent = DATA.intervention_comparison.framing;
+  document.getElementById('interventionTakeaway').textContent = DATA.intervention_comparison.takeaway;
+}
+
+function buildInterventionTable() {
+  const rows = DATA.intervention_comparison.interventions;
+  const table = document.getElementById('interventionTable');
+  const thead = '<thead><tr><th>Intervention</th><th>Major infrastructure?</th><th>Mechanism</th><th class="num">Avoided CO2 (Mt/yr)</th><th>Confidence</th></tr></thead>';
+  const tbody = '<tbody>' + rows.map(r => `<tr>
+    <td><strong>${r.name}</strong></td>
+    <td>${r.requires_major_infrastructure ? '<span style="color:#8B2E2E;font-weight:700">Yes</span>' : '<span style="color:#2E4B3E;font-weight:700">No</span>'}</td>
+    <td style="max-width:260px">${r.mechanism}</td>
+    <td class="num">${r.avoided_mt_co2_low != null ? r.avoided_mt_co2_low + '–' + r.avoided_mt_co2_high : (r.annual_unattributed_area_ha ? r.annual_unattributed_area_ha.toLocaleString('en-CA') + ' ha/yr unattributed' : '—')}</td>
+    <td style="max-width:320px;font-size:0.75rem;color:var(--color-text-secondary)">${r.confidence}</td>
+  </tr>`).join('') + '</tbody>';
+  table.innerHTML = thead + tbody;
+}
+
+function initGhgTimelineChart() {
+  const rows = DATA.national_ghg_timeline;
+  const sectors = Object.keys(rows[0].by_sector);
+  const colors = ['#2E4B3E', '#3A5F6F', '#8B6914', '#8B2E2E', '#7C5A9D', '#4A7C59', '#8A8A8A'];
+  new Chart(document.getElementById('chartGhgTimeline').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.year),
+      datasets: sectors.map((s, i) => ({
+        label: s, data: rows.map(r => r.by_sector[s]), backgroundColor: colors[i % colors.length], stack: 's'
+      }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {position: 'top', labels: {font: {size: 9}, boxWidth: 10}}},
+      scales: {
+        x: {stacked: true, ticks: {maxTicksLimit: 17, font: {size: 9}}},
+        y: {stacked: true, title: {display: true, text: 'Mt CO2e', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function initEstimatesChart() {
+  const rows = DATA.wildfire_2023_estimates;
+  new Chart(document.getElementById('chartEstimates').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.source.split(' (')[0].split(' — ')[0].split(', ')[0]),
+      datasets: [{label: '2023 wildfire CO2 (Mt)', data: rows.map(r => r.value_mt_co2), backgroundColor: '#8B2E2E', borderRadius: 4}]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {callbacks: {label: c => rows[c.dataIndex].note}}
+      },
+      scales: {x: {title: {display: true, text: 'Mt CO2', font: {size: 11}}, beginAtZero: true}}
+    },
+    plugins: [{
+      id: 'refLines',
+      afterDraw(chart) {
+        const {ctx, chartArea, scales} = chart;
+        [[694, '#2D2D2D', 'National total (694 Mt)'], [208, '#8A8A8A', 'Oil & gas (208 Mt)']].forEach(([val, color, label]) => {
+          const x = scales.x.getPixelForValue(val);
+          ctx.save();
+          ctx.strokeStyle = color; ctx.setLineDash([5, 4]); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(x, chartArea.top); ctx.lineTo(x, chartArea.bottom); ctx.stroke();
+          ctx.restore();
+        });
+      }
+    }]
+  });
+}
+
+function initCauseAreaChart() {
+  const rows = DATA.national_cause_area;
+  new Chart(document.getElementById('chartCauseArea').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.year),
+      datasets: [
+        {label: 'Human-caused (ha)', data: rows.map(r => r.human_ha), backgroundColor: 'rgba(139,46,46,0.8)', stack: 's'},
+        {label: 'Lightning (ha)', data: rows.map(r => r.lightning_ha), backgroundColor: 'rgba(58,111,143,0.75)', stack: 's'},
+        {label: 'Unknown (ha)', data: rows.map(r => r.unknown_ha), backgroundColor: 'rgba(138,138,138,0.6)', stack: 's'},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {position: 'top', labels: {font: {size: 11}}}},
+      scales: {
+        x: {stacked: true, ticks: {font: {size: 9}}},
+        y: {stacked: true, title: {display: true, text: 'Hectares burned', font: {size: 11}}, beginAtZero: true}
+      }
+    }
+  });
+}
+
+function initScenariosChart() {
+  const s1 = DATA.scenario_model.scenario_1_arson_crackdown;
+  const s2 = DATA.scenario_model.scenario_2_prevention_response;
+  new Chart(document.getElementById('chartScenarios').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: ['Scenario 1: cut human-caused area 90%', 'Scenario 2: cut ALL area burned 90%'],
+      datasets: [
+        {label: 'Avoided CO2, low estimate (Mt/yr)', data: [s1.avoided_mt_co2_low, s2.avoided_mt_co2_low], backgroundColor: '#4A7C59', borderRadius: 4},
+        {label: 'Avoided CO2, high estimate (Mt/yr)', data: [s1.avoided_mt_co2_high, s2.avoided_mt_co2_high], backgroundColor: '#2E4B3E', borderRadius: 4},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {position: 'top', labels: {font: {size: 11}}}},
+      scales: {y: {title: {display: true, text: 'Avoided CO2 (Mt/yr)', font: {size: 11}}, beginAtZero: true}}
+    },
+    plugins: [{
+      id: 'refLines2',
+      afterDraw(chart) {
+        const {ctx, chartArea, scales} = chart;
+        [[694, '#2D2D2D'], [208, '#8A8A8A']].forEach(([val, color]) => {
+          const y = scales.y.getPixelForValue(val);
+          if (y < chartArea.top) return;
+          ctx.save();
+          ctx.strokeStyle = color; ctx.setLineDash([5, 4]); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(chartArea.left, y); ctx.lineTo(chartArea.right, y); ctx.stroke();
+          ctx.restore();
+        });
+      }
+    }]
+  });
+}
+
+function buildTable() {
+  const rows = DATA.provincial_ghg;
+  const table = document.getElementById('dataTable');
+  let thead = '<thead><tr><th>Province/Territory</th><th class="num">1990 (Mt)</th><th class="num">2005 (Mt)</th><th class="num">2023 (Mt)</th><th class="num">Change 1990-2023</th></tr></thead>';
+  let tbody = '<tbody>' + rows.map(r => {
+    const chg = (r.mt_1990 && r.mt_2023) ? Math.round((r.mt_2023 / r.mt_1990 - 1) * 100) : null;
+    return `<tr><td>${r.province}</td><td class="num">${r.mt_1990 ?? '—'}</td><td class="num">${r.mt_2005 ?? '—'}</td><td class="num">${r.mt_2023 ?? '—'}</td><td class="num">${chg != null ? (chg > 0 ? '+' : '') + chg + '%' : '—'}</td></tr>`;
+  }).join('') + '</tbody>';
+  table.innerHTML = thead + tbody;
+}
+
+function copyTable() {
+  const rows = DATA.provincial_ghg;
+  const lines = ['Province\t1990 (Mt)\t2005 (Mt)\t2023 (Mt)'];
+  rows.forEach(r => lines.push(`${r.province}\t${r.mt_1990 ?? ''}\t${r.mt_2005 ?? ''}\t${r.mt_2023 ?? ''}`));
+  navigator.clipboard.writeText(lines.join('\n'));
+  const btn = event.target;
+  btn.classList.add('copied'); btn.textContent = 'Copied!';
+  setTimeout(() => { btn.classList.remove('copied'); btn.textContent = 'Copy'; }, 1500);
+}
+
+function downloadCSV() {
+  const rows = DATA.provincial_ghg;
+  const lines = ['Province,1990 (Mt),2005 (Mt),2023 (Mt)'];
+  rows.forEach(r => lines.push(`${r.province},${r.mt_1990 ?? ''},${r.mt_2005 ?? ''},${r.mt_2023 ?? ''}`));
+  const blob = new Blob([lines.join('\n')], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'canada-ghg-emissions-by-province.csv';
+  a.click();
+}
+
+renderHero();
+renderText();
+initGhgTimelineChart();
+initEstimatesChart();
+initCauseAreaChart();
+initScenariosChart();
+buildInterventionTable();
+buildTable();
+</script>
+</body>
+</html>
