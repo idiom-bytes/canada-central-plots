@@ -4667,6 +4667,98 @@
       "wolastoqey_url": "https://www.torys.com/our-latest-thinking/publications/2026/05/scc-declines-to-hear-wolastoqey-nation-appeal"
     }
   },
+  "recon": {
+    "quote_source": {
+      "speaker": "Aaron Pete, Chief of Chawathil First Nation (per The Hub's author page)",
+      "medium": "Video interview posted on X by Sitka Media (link supplied by the report's author); transcript produced by automatic speech recognition, so names and some numbers are garbled.",
+      "x_url": "https://x.com/sitkamedia/status/2098475436833747038",
+      "hub_url": "https://thehub.ca/author/aaronpete/"
+    },
+    "claims": [
+      {
+        "claim": "Communities lack staff and funds, so lawyers and consultants fill gaps a municipality would fill in-house.",
+        "verdict": "Supported in principle",
+        "record": "Governance guidance and case law treat consultation capacity funding as a recognised need. A Saugeen decision linked the duty to consult to capacity funding, and a University of Calgary study found insufficient capacity funding pushes costs onto project proponents. No public data shows how much each nation spends on outside professionals.",
+        "url": "https://fngovernance.org/Consultation_Funding_FactSheet"
+      },
+      {
+        "claim": "Federal and provincial processes require lawyers by design, such as specific-claims tribunals and treaty negotiation.",
+        "verdict": "Supported",
+        "record": "The Specific Claims Tribunal is a court-like body that can award up to $150 million, and treaty negotiation is a legal process. BC's treaty negotiations were funded for decades by negotiation support loans: about $707 million allocated since 1993 (about $551 million as loans), with the loans forgiven federally from 2019-20. How that money was split between lawyers, consultants and staff is not published in the sources found.",
+        "url": "https://amp.cbc.ca/news/indigenous/budget-2019-treaty-loans-forgiven-1.5063128"
+      },
+      {
+        "claim": "Advisers push a confrontational approach instead of a good deal for everyone.",
+        "verdict": "Not verifiable",
+        "record": "This is a claim about motives and cannot be tested from documents. What the record shows: the child-welfare tribunal case ran from at least 2007 through the 2016 ruling and beyond, and Ottawa also spent on the other side. The Justice Department reported $5.26 million on the tribunal case (2007 to Dec 2019) while documents obtained by the Caring Society showed more than $8 million, and Federal Court costs were withheld.",
+        "url": "https://www.aptnnews.ca/national-news/federal-government-holding-back-true-cost-of-fighting-first-nations-children-at-tribunal/"
+      },
+      {
+        "claim": "Most of the money that goes to lawyers for specific claims does not improve anyone's life.",
+        "verdict": "Not verified",
+        "record": "No public source breaks down specific-claims settlements by what was spent on legal fees versus community programs. For the one large class action where fees are public, the court cut counsel fees from a negotiated $55 million to $40 million (about 0.17% of the $23.4 billion settlement). That is small relative to the award, but it was paid from public funds and is separate from the nations' own legal costs.",
+        "url": "https://amp.cbc.ca/news/politics/federal-court-approves-40-million-legal-fees-child-welfare-1.7068704"
+      },
+      {
+        "claim": "BCAFN and UBCIC are a large bureaucracy for 204 First Nations who are about 4% of the population, and it is not improving members' living conditions.",
+        "verdict": "Not verified",
+        "record": "The figures are garbled in the transcript and were not confirmed. BC has about 200 First Nations (this report's data lists 199 bands). The organizations' own funding by source was not found, and neither is a registered charity (see below), so there is no standard public return to check.",
+        "url": null
+      }
+    ],
+    "fees": {
+      "child_welfare_requested_m": 80,
+      "child_welfare_deal_m": 55,
+      "child_welfare_awarded_m": 40,
+      "tribunal_official_m": 5.26,
+      "tribunal_atip_min_m": 8.0,
+      "bc_treaty_support_allocated_m": 707,
+      "bc_treaty_support_loans_m": 551,
+      "bc_treaty_support_grants_m": 156,
+      "fees_pct_of_settlement": 0.17,
+      "requested_pct_of_settlement": 0.34,
+      "fees_url": "https://amp.cbc.ca/news/politics/federal-court-approves-40-million-legal-fees-child-welfare-1.7068704",
+      "deal_url": "https://www.cbc.ca/lite/story/1.7025474",
+      "tribunal_url": "https://www.aptnnews.ca/national-news/federal-government-holding-back-true-cost-of-fighting-first-nations-children-at-tribunal/",
+      "treaty_url": "https://amp.cbc.ca/news/indigenous/budget-2019-treaty-loans-forgiven-1.5063128",
+      "treaty_url2": "https://bctreaty.ca/?p=2254"
+    },
+    "conditions": {
+      "ltdwa_count": 40,
+      "ltdwa_communities": 37,
+      "ltdwa_asof": "May 2026",
+      "ltdwa_url": "https://waterportal.ca/water-news/first-nations-drinking-water-advisories-2026/",
+      "ltdwa_isc_url": "https://www.sac-isc.gc.ca/eng/1614387410146",
+      "foster_care_indigenous_pct": 53.8,
+      "foster_care_child_pop_pct": 7.7,
+      "foster_care_url": "https://globalnews.ca/news/9145379/indigenous-kids-overrepresented-foster-care",
+      "per_capita_indigenous_pct_in_care": 3.2,
+      "per_capita_non_indigenous_pct_in_care": 0.2,
+      "ag_grants_outcomes": "The Auditor General found the department did not know whether 10-year grants were closing gaps with other Canadians (May 2026)."
+    },
+    "filings_check": {
+      "method": "Name search of the CRA's list of charities (apps.cra-arc.gc.ca) on 2026-10-19. A group that is a not-for-profit society or corporation rather than a registered charity files no public T3010 return.",
+      "not_found": [
+        "Assembly of First Nations",
+        "First Nations Summit",
+        "Union of BC Indian Chiefs",
+        "Coastal First Nations - Great Bear Initiative",
+        "First Nations Major Projects Coalition",
+        "Indian Resource Council",
+        "Indigenous Climate Action"
+      ],
+      "found": [
+        {
+          "name": "MakeWay Foundation and MakeWay Charitable Society (formerly Tides Canada)",
+          "note": "Both registered in Vancouver. A third-party aggregator reports about $25.8M revenue for the year to March 2024, and MakeWay says it supported 70 Indigenous governments. The T3010 line items were not retrieved because the CRA site would not render in automated browsing.",
+          "url": "https://makeway.org/2024annualreport/",
+          "url2": "https://www.causeiq.com/organizations/makeway-foundation,980404212"
+        }
+      ],
+      "caveat": "A name search can miss organizations registered under a different legal name. The AFN's own audited statements were not located in this research.",
+      "cra_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?request_locale=en"
+    }
+  },
   "overlaps": [
     {
       "dispute": "Kitselas and K'omoks treaties",
