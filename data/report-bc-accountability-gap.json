@@ -4667,6 +4667,188 @@
       "wolastoqey_url": "https://www.torys.com/our-latest-thinking/publications/2026/05/scc-declines-to-hear-wolastoqey-nation-appeal"
     }
   },
+  "overlaps": [
+    {
+      "dispute": "Kitselas and K'omoks treaties",
+      "who": "Nine Allied Tribes, Lax Kw'alaams, Wei Wai Kum vs the treaty nations and BC",
+      "what": "In April 2026 a coalition said it was ready to block major projects, including the corridors feeding the Port of Prince Rupert, and take legal action unless BC paused the treaties. They said the agreements reach into their territory and they were not consulted. Lax Kw'alaams said it does not oppose the treaty process itself.",
+      "status": "K'omoks Treaty Act passed on a free vote (May 2026 report); Kitselas Treaty Act not expected back for a vote until fall. BC's minister said overlap is not new and urged more talks.",
+      "url": "https://www.castanetkamloops.net/news/BC/610140/Overlapping-claims-are-behind-protests-from-First-Nations-against-two-treaties",
+      "url2": "https://energeticcity.ca/2026/05/28/a-first-nation-treaty-decades-in-making-faces-further-delays-says-b-c-minister/"
+    },
+    {
+      "dispute": "Cowichan vs Musqueam and Tsawwassen (Richmond)",
+      "who": "Cowichan Tribes, Stz'uminus, Penelakut, Halalt vs Musqueam and Tsawwassen",
+      "what": "Musqueam and Tsawwassen were two of six defendants opposing the claim. The court found the Cowichan's evidence of occupation more persuasive. Musqueam said it 'fundamentally disagrees' with the judgment. The judge wrote that all parties have continued interests around the south arm of the Fraser and that the findings will affect relationships among them (para. 3726).",
+      "status": "All parties have appealed; BC and Cowichan have begun negotiations.",
+      "url": "https://www.coastreporter.net/real-estate/tsawwassen-first-nation-reviews-ruling-on-cowichan-nation-claims-11107099",
+      "url2": "https://www.canlii.org/en/bc/bcsc/doc/2025/2025bcsc1490/2025bcsc1490.html"
+    },
+    {
+      "dispute": "Gitanyow vs Nisga'a",
+      "who": "Gitanyow vs Nisga'a Lisims Government",
+      "what": "Gitanyow filed a 2003 claim to about 6,200 km2 that overlaps Nisga'a treaty lands; the Nisga'a were added as a party. Gitanyow argues overlaps must be resolved before treaties are concluded.",
+      "status": "Long-running; legal commentators count dozens of overlap cases tied to modern treaty negotiations.",
+      "url": "https://ablawg.ca/2024/09/23/modern-treaties-shared-territories-and-party-status-in-aboriginal-title-litigation/",
+      "url2": "https://gitanyowchiefs.com/?p=7697"
+    },
+    {
+      "dispute": "Tahltan vs Taku River Tlingit (Shesley River area)",
+      "who": "Tahltan Nation vs Taku River Tlingit First Nation",
+      "what": "After Taku River Tlingit declared an Indigenous protected area, the Tahltan said part of it, the Shesley River area, is Tahltan territory and that they had not consented (2024 report). The Tahltan also fully support the Eskay Creek mine, which Alaska tribal nations downstream have opposed.",
+      "status": "Tahltan said they would meet their neighbour. Eskay Creek has all permits and is targeting a 2027 restart.",
+      "url": "https://canadianminingjournal.com/news/alaska-tribes-seek-rights-in-british-columbia-to-protect-unuk-river-watershed-from-gold-mining",
+      "url2": "https://www.cbc.ca/1.7107190"
+    },
+    {
+      "dispute": "Wet'suwet'en hereditary chiefs vs elected councils",
+      "who": "Hereditary house chiefs vs elected band councils",
+      "what": "Two governance systems claim to speak for the same people. Eight of nine hereditary house chiefs opposed Coastal GasLink; 20 elected councils along the route signed benefits agreements. The Union of BC Indian Chiefs sided with the hereditary chiefs.",
+      "status": "Contested since 2019-20; elected chiefs also disputed the 2020 title memorandum between hereditary chiefs, Ottawa and BC.",
+      "url": "https://www.pressreader.com/canada/the-province/20190121/281522227276290",
+      "url2": "https://www.plant.ca/general/wetsuweten-pact-with-ottawa-and-bc-disputed-by-elected-chiefs-192614/"
+    },
+    {
+      "dispute": "Okanagan Nation Alliance civil claim",
+      "who": "Okanagan Nation Alliance vs BC and Canada",
+      "what": "A civil claim challenging BC's treaty process over overlapping claims; the BC Treaty Commission's Chief Commissioner called for negotiation rather than litigation.",
+      "status": "Reported in the 2020s; current status not checked.",
+      "url": "https://amp.cbc.ca/news/indigenous/first-nations-alliance-launches-court-challenge-of-b-c-treaty-process-1.2734282",
+      "url2": null
+    },
+    {
+      "dispute": "Haida title (Haida Gwaii)",
+      "who": "Council of the Haida Nation, BC, Canada",
+      "what": "The 2024 Rising Tide agreement recognizes Haida title to Haida Gwaii. Its preamble states the Haida have no overlap with other Indigenous nations' interests on terrestrial Haida Gwaii; that is the Haida position written into the agreement, not a tribunal finding. No objection from other nations was found. Critics question how private land and parks fit.",
+      "status": "Provincial Act in force; a federal counterpart agreement followed in Feb 2025; transition issues remain.",
+      "url": "https://nationalmagazine.ca/en-ca/articles/hot-topics-in-law/2024/will-the-haida-s-rising-tide-agreement-raise-all-boats",
+      "url2": "https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/consulting-with-first-nations/agreements/draft_haida_title_lands_agreement_27march2024_bilateral.pdf"
+    }
+  ],
+  "overlap_context": {
+    "scale": "A University of Victoria source says every BC First Nation has at least one overlap area with another, because most nations never signed treaties.",
+    "scale_url": "https://dspace.library.uvic.ca/server/api/core/bitstreams/9d0735a8-8ad0-4775-82a0-d0ff42da197b/content",
+    "ancillary": "Overlap matters for the consent question: if two nations assert title to the same land, a deal with one can be challenged by the other."
+  },
+  "bc_projects": [
+    {
+      "project": "Pacific NorthWest LNG (Lelu Island)",
+      "year": 2017,
+      "outcome": "Cancelled by Petronas and partners",
+      "stated_reason": "The company cited changes in market conditions. Some Lax Kw'alaams members camped on the site for most of a year in protest, while leaders of other nearby nations supported the project. An industry CEO blamed delays by BC and Ottawa. BC's energy minister said it was global pricing.",
+      "url": "https://www.cbc.ca/news/canada/british-columbia/pacific-northwest-lng-project-in-port-edward-b-c-no-longer-proceeding-1.4220936",
+      "url2": "https://www.cbc.ca/lite/story/1.4224651"
+    },
+    {
+      "project": "New Prosperity gold-copper mine (Fish Lake)",
+      "year": 2014,
+      "outcome": "Rejected twice by Ottawa (2010, 2014); courts upheld; final appeal refused 2020",
+      "stated_reason": "A federal panel found significant, irreversible effects on water, fisheries and Tsilhqot'in cultural heritage. Taseko's court challenges failed; the Supreme Court refused leave in 2020.",
+      "url": "https://biv.com/article/2020/05/new-prosperity-mine-dead-tsilhqotin",
+      "url2": "https://www.mining.com/?p=773103"
+    },
+    {
+      "project": "Site C dam",
+      "year": 2018,
+      "outcome": "Built; Treaty 8 challenges did not stop it",
+      "stated_reason": "The Federal Court of Appeal and BC Court of Appeal dismissed challenges in early 2017. In 2018 the BC Supreme Court refused an injunction but ordered the Treaty 8 infringement claim to be tried. The final outcome of that trial was not confirmed.",
+      "url": "https://amp.cbc.ca/news/canada/british-columbia/site-c-west-moberly-first-nation-injunction-1.4877673",
+      "url2": "https://biv.com/article/2017/02/bc-court-appeal-dismisses-another-site-c-legal-cha"
+    },
+    {
+      "project": "Coastal GasLink pipeline",
+      "year": 2019,
+      "outcome": "Built despite hereditary-chief opposition",
+      "stated_reason": "Benefits agreements were signed with 20 elected band councils along the route; eight of nine Wet'suwet'en hereditary house chiefs opposed. The dispute is about who has authority, not only about the project.",
+      "url": "https://www.pressreader.com/canada/the-province/20190121/281522227276290",
+      "url2": null
+    },
+    {
+      "project": "Eskay Creek mine",
+      "year": 2026,
+      "outcome": "Permitted in a first joint regulatory decision with the Tahltan Nation",
+      "stated_reason": "Tahltan support the mine and co-decided on it. Alaska tribal nations downstream, who are not parties to the BC decision, have asked BC and Canada for recognition and a pause.",
+      "url": "https://canadianminingjournal.com/news/alaska-tribes-seek-rights-in-british-columbia-to-protect-unuk-river-watershed-from-gold-mining",
+      "url2": null
+    }
+  ],
+  "orgs": {
+    "caveat": "This is a high-level map from public documents, not a ranking. Funding is shown only where a public document gave it; 'not found' means the sources reviewed did not break it down.",
+    "groups": [
+      {
+        "group": "Elected band councils",
+        "kind": "Government (Indian Act)",
+        "speaks_for": "Their registered members on reserve and often off-reserve. The legal counterpart for most federal funding and programs.",
+        "funding": "Mainly federal transfers plus own-source revenue; they file the financial statements this report examines in sections 1-2.",
+        "notes": "In BC about 200 bands, many not covered by the transparency Act because of treaty or self-government.",
+        "url": null
+      },
+      {
+        "group": "Hereditary chiefs and houses",
+        "kind": "Traditional governance",
+        "speaks_for": "Their houses and clans, and in several cases the title-holding nation (for example the Wet'suwet'en).",
+        "funding": "Not found for the groups reviewed; the Office of the Wet'suwet'en was set up to represent the nation in treaty talks.",
+        "notes": "Contested alongside elected councils in the Wet'suwet'en case.",
+        "url": "https://www.plant.ca/general/wetsuweten-pact-with-ottawa-and-bc-disputed-by-elected-chiefs-192614/"
+      },
+      {
+        "group": "Assembly of First Nations (AFN) and BC Assembly of First Nations (BCAFN)",
+        "kind": "Political body of chiefs",
+        "speaks_for": "Chiefs of member First Nations (AFN: over 600 bands nationally; BCAFN is the BC regional body).",
+        "funding": "Audited statements are adopted by the chiefs in assembly (BCAFN's 2024-25 statements by KPMG, Oct 2025). Revenue by source was not found in the documents reviewed.",
+        "notes": "Speaks for governments, not individual members.",
+        "url": "https://www.bcafn.ca/sites/default/files/uploads/resolutions/2025_22_AGM_Resolution_ADOPTION%20OF%20THE%202024-2025%20AUDITED%20FINANCIAL%20STATEMENTS.pdf"
+      },
+      {
+        "group": "First Nations Summit and Union of BC Indian Chiefs (UBCIC)",
+        "kind": "Political bodies of chiefs",
+        "speaks_for": "The Summit: about 150 First Nations taking part, focused on the treaty process. UBCIC (founded 1969): nations that reject the current treaty process and defend title and rights.",
+        "funding": "Not found.",
+        "notes": "With the BCAFN they form the First Nations Leadership Council under a 2005 accord. Some bands belong to more than one.",
+        "url": "https://en.wikipedia.org/wiki/First_Nations_Summit"
+      },
+      {
+        "group": "First Nations Health Authority (FNHA)",
+        "kind": "Service organization created by tripartite agreement (2011)",
+        "speaks_for": "BC First Nations for health governance and delivery.",
+        "funding": "Federal funding agreement of roughly $380 million a year for 2013-2023 (about $4.7 billion), plus BC support.",
+        "notes": "A public service body, not an advocacy group.",
+        "url": "https://sac-isc.gc.ca/eng/1584706392620/1584706415366"
+      },
+      {
+        "group": "Coastal First Nations - Great Bear Initiative",
+        "kind": "Alliance of nations (non-profit society)",
+        "speaks_for": "Nine to ten member First Nations on the north and central coast and Haida Gwaii. Its board has one representative from each member.",
+        "funding": "Grants and contributions of $16.9 million in the year to March 2022 (from $10.6 million in FY2020). Partners named: governments of Canada and BC, Coast Funds, BC Hydro, the Gordon and Betty Moore Foundation, MakeWay, the Wilburforce Foundation, Nature United, The Nature Conservancy, Rogers and others. The split by funder was not given.",
+        "notes": "An alliance of First Nation governments, not a nation or band itself. It is not 'in name only', but it is a mixed public and private-philanthropy funded body.",
+        "url": "https://coastalfirstnations.ca/wp-content/uploads/2024/12/CFN-Annual-Report-2021-22.pdf"
+      },
+      {
+        "group": "First Nations Major Projects Coalition",
+        "kind": "Alliance (industry-participation focus)",
+        "speaks_for": "Nearly 85 member nations, mostly in BC, seeking equity in major projects.",
+        "funding": "Federal: $2.6 million (2021) and $13.5 million (2022) from Natural Resources Canada. It backed the federal Indigenous loan guarantee program.",
+        "notes": "Supports Indigenous ownership of resource projects.",
+        "url": "https://www.canada.ca/en/natural-resources-canada/news/2022/07/canada-invests-in-the-first-nations-major-projects-coalition-to-advance-indigenous-participation-in-natural-resource-projects.html"
+      },
+      {
+        "group": "Indian Resource Council and National Coalition of Chiefs",
+        "kind": "Pro-development advocacy",
+        "speaks_for": "The IRC advocates federal policy to expand First Nations economic development (led by Stephen Buffalo). The Coalition: 50-plus chiefs and Metis leaders who opposed Bill C-69 and Bill C-48.",
+        "funding": "Not found. Much coverage comes from think-tank commentary, so treat framing as advocacy.",
+        "notes": "Membership lists were not found.",
+        "url": "https://www.fraserinstitute.org/commentary/trudeau-government-should-listen-chiefs-and-support-natural-resource-development"
+      },
+      {
+        "group": "Indigenous-led environmental groups and funders (for example Raven Trust, Indigenous Climate Action, Tides Canada / MakeWay)",
+        "kind": "NGOs and intermediary funders",
+        "speaks_for": "Their own boards and supporters, often alongside affected nations.",
+        "funding": "Foundations such as Rockefeller Brothers, Moore, Packard, Hewlett and the Nature Conservancy, per the Northern Beat reporting used in section 7. Grant-level records are in public tax filings but were not compiled here.",
+        "notes": "Foreign philanthropy is lawful and reported; whether it should shape land-use talks is a political question.",
+        "url": "https://northernbeat.ca/news/us-money-behind-anti-resource-activism-in-bc-as-american-oil-exports-grew/"
+      }
+    ]
+  },
   "foreign_funding": {
     "source": "Northern Beat (Rob Shaw/ staff), 'US money behind anti-resource activism in BC', citing Vivian Krause's US tax-filing research",
     "url": "https://northernbeat.ca/news/us-money-behind-anti-resource-activism-in-bc-as-american-oil-exports-grew/",
