@@ -1,0 +1,982 @@
+{
+ "province": "YT",
+ "fetched": "2026-10-19",
+ "bands": [
+  {
+   "band": "490",
+   "name": "Aishihik",
+   "address": "",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "491",
+   "name": "Carcross/Tagish First Nation",
+   "address": "PO BOX 130, CARCROSS, YT, Y0B 1B0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "493",
+   "name": "Champagne",
+   "address": "",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "507",
+   "name": "Champagne and Aishihik First Nations",
+   "address": "1 Allen Place, PO BOX 5310, HAINES JUNCTION, YT, Y0B 1L0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "504",
+   "name": "Dease River",
+   "address": "PO BOX 79, GOOD HOPE LAKE, BC, V0C 2Z0",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-09-18"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-09-18"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-09-25"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-09-25"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-12-16"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-12-16"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-12-04"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-12-04"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-03-06"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-03-06"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-03-08"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-03-08"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "495",
+   "name": "First Nation of Nacho Nyak Dun",
+   "address": "PO BOX 220, MAYO, YT, Y0B 1M0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "503",
+   "name": "Kluane First Nation",
+   "address": "PO BOX 20, BURWASH LANDING, YT, Y0B 1V0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "500",
+   "name": "Kwanlin Dun First Nation",
+   "address": "35 McIntyre Drive, WHITEHORSE, YT, Y1A 6H6",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "502",
+   "name": "Liard First Nation",
+   "address": "PO BOX 328, WATSON LAKE, YT, Y0A 1C0",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements Daylu Dena Council",
+     "received": "2014-09-25"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "2015-09-09"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dena Council",
+     "received": "2014-09-25"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "2015-07-17"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements Daylu Dena Council",
+     "received": "2015-11-12"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dena Council",
+     "received": "2015-11-12"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements Daylu Dena Council",
+     "received": "2016-11-10"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dena Council",
+     "received": "2016-11-10"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements Daylu Dena Council",
+     "received": "2017-10-26"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dena Council",
+     "received": "2017-10-26"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements Daylu Dena Council",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dena Council",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements Daylu Dene Council",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dene Council",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements Daylu Dene Council",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses Daylu Dene Council",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses Liard First Nation",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "492",
+   "name": "Little Salmon/Carmacks First Nation",
+   "address": "PO BOX 135, CARMACKS, YT, Y0B 1C0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "497",
+   "name": "Ross River Dena Council",
+   "address": "GENERAL DELIVERY, ROSS RIVER, YT, Y0B 1S0",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-09-19"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-09-18"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-09-02"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-09-02"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-09-21"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-09-21"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-10-16"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-10-16"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-09-28"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-09-28"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-12-05"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-12-05"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-09-07"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-09-07"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-09-18"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-04-01"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-04-01"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-02-27"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2026-02-27"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "498",
+   "name": "Selkirk First Nation",
+   "address": "PO BOX 40, PELLY CROSSING, YT, Y0B 1P0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "508",
+   "name": "Ta'an Kwach'an",
+   "address": "117 Industrial Road, Whitehorse, YT, Y1A 2T8",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "501",
+   "name": "Taku River Tlingit",
+   "address": "PO BOX 132, ATLIN, BC, V0W 1A0",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-07-28"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-07-28"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-12-16"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-12-16"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-01-27"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-01-27"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-10-20"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-10-20"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-03-02"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-03-02"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-03-02"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-03-02"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-05-13"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-05-12"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-10-05"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-10-05"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-01-27"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-05-09"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "499",
+   "name": "Teslin Tlingit Council",
+   "address": "PO BOX 133, TESLIN, YT, Y0A 1B0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "494",
+   "name": "Tr'ond\u00ebk Hw\u00ebch'in",
+   "address": "PO BOX 599, DAWSON CITY, YT, Y0B 1G0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "496",
+   "name": "Vuntut Gwitchin First Nation",
+   "address": "PO BOX 94, OLD CROW, YT, Y0B 1N0",
+   "filings": [
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "506",
+   "name": "White River First Nation",
+   "address": "GENERAL DELIVERY, BEAVER CREEK, YT, Y0B 1A0",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-08-22"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-08-22"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-08-18"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-08-18"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-29"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-23"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-23"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-10-12"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-10-12"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-03-11"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-03-11"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-07-26"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-07-26"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-04-07"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-04-07"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-06-05"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-06-05"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-05-06"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-05-06"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  }
+ ]
+}
