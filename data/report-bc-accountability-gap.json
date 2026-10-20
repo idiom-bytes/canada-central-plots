@@ -4759,6 +4759,280 @@
       "cra_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?request_locale=en"
     }
   },
+  "fee_table": {
+    "note": "Fee shares are computed as fees divided by the headline compensation figure, so they are approximate: headline figures differ between sources and some include non-cash items. In the three cases where this could be confirmed, the fees were paid by Canada separately from the compensation fund. Canada is the defendant, so both the compensation and the plaintiffs' legal fees are public money.",
+    "rows": [
+      {
+        "case": "First Nations child welfare (CHRT)",
+        "comp_label": "about $23.4 billion",
+        "comp_m": 23400,
+        "fee_m": 40,
+        "asked_m": 80,
+        "deal_m": 55,
+        "who_pays": "Canada, from public funds; none from compensation",
+        "review": "Five firms sought $80M; Ottawa argued $40-50M; they agreed $55M; the Federal Court approved $40M, warning against windfalls.",
+        "url": "https://amp.cbc.ca/news/politics/federal-court-approves-40-million-legal-fees-child-welfare-1.7068704"
+      },
+      {
+        "case": "Federal Indian Day Schools",
+        "comp_label": "$1.47 billion available, plus a $200M legacy fund",
+        "comp_m": 1470,
+        "fee_m": 55,
+        "asked_m": null,
+        "deal_m": 55,
+        "who_pays": "Canada; none from survivors' compensation or the legacy fund",
+        "review": "Fees of $55M approved with the settlement by the Federal Court (Aug 19 2019).",
+        "url": "https://ochapowace.com/news/notice-of-settlement-approval---federal-indian-day-school-class-action"
+      },
+      {
+        "case": "Sixties Scoop",
+        "comp_label": "about $750 million (sources range $550-800M)",
+        "comp_m": 750,
+        "fee_m": 75,
+        "asked_m": null,
+        "deal_m": 75,
+        "who_pays": "Canada, negotiated after the settlement so claimants' amounts were not reduced",
+        "review": "The Federal Court judge called his half 'fair and reasonable' and under 10% of the payout. The Ontario judge called $75M 'excessive and unreasonable' and de-linked fees from the settlement.",
+        "url": "https://lawtimesnews.com/news/general/sixties-scoop-settlement-sheds-light-on-class-action-fee-calculations/263119"
+      },
+      {
+        "case": "'Indian hospitals' abuse class action",
+        "comp_label": "about $5 billion (per headline)",
+        "comp_m": 5000,
+        "fee_m": 40,
+        "asked_m": null,
+        "deal_m": null,
+        "who_pays": "Not confirmed (article not read)",
+        "review": "Headline only: Federal Court approves $40M fees for class counsel. The article was paywalled and not read, so treat this row as provisional.",
+        "url": "https://www.law360.ca/ca/articles/2358292"
+      }
+    ],
+    "iap": {
+      "case": "Residential schools, Independent Assessment Process (per claim)",
+      "rate_pct": 15,
+      "text": "Canada pays 15% of the amount awarded as a contribution towards legal fees (Canada.ca FAQ). It is a per-claim rate, not a share of a total.",
+      "url": "https://www.canada.ca/en/news/archive/2012/07/faq-indian-residential-schools-settlement-agreement-september-19-2012-deadlines.html",
+      "court_note": "A Manitoba court ruled in 2015 that contingency-fee arrangements with 'form fillers' for IAP claims were void and that claimants owe no fees for processing their claims.",
+      "court_url": "https://www.wawataynews.ca/node/11168"
+    },
+    "not_found": "No published breakdown was found for how settlement or negotiation money, once received by a band government or organization, divides between professional fees, administration and services to members. Class-action payouts go to individuals; specific-claims, treaty and many other funds go to governments."
+  },
+  "parcels": {
+    "known": [
+      {
+        "item": "A ministry briefing dated Sept 10 2026 says 'approximately 400 parcels' are committed for transfer through treaty and reconciliation agreements.",
+        "url": "https://northernbeat.ca/opinion/rob-shaw-secret-documents-reveal-bc-ndp-government-land-returns-plan-for-first-nations/"
+      },
+      {
+        "item": "Cabinet approved the policy in July by a 'request for a decision'; the briefing's stage is sharing final policy intentions with First Nations, with legislation drafted over fall and winter and Forest Act amendments planned for spring 2027.",
+        "url": "https://northernbeat.ca/opinion/rob-shaw-secret-documents-reveal-bc-ndp-government-land-returns-plan-for-first-nations/"
+      },
+      {
+        "item": "One proposal would add First Nations land transfers to the list of uses (roads, pipelines, parks) where harvest rights can be reduced without compensation until cumulative cuts exceed 5% of a licence's annual allowable cut. Another would remove the six-year limit on special-purpose land designations.",
+        "url": "https://northernbeat.ca/opinion/rob-shaw-secret-documents-reveal-bc-ndp-government-land-returns-plan-for-first-nations/"
+      },
+      {
+        "item": "The aim stated in the briefing is to transfer land 'unencumbered' by removing forest tenure harvesting rights. Forest companies that asked for details had to sign non-disclosure agreements.",
+        "url": "https://northernbeat.ca/opinion/rob-shaw-secret-documents-reveal-bc-ndp-government-land-returns-plan-for-first-nations/"
+      },
+      {
+        "item": "The BC NDP calls the documents 'a set of draft ideas from the ministry'. Premier Eby said the transfers reflect existing treaties and reconciliation commitments, some decades old, and that the legislation is about reducing costs to taxpayers.",
+        "url": "https://www.ctvnews.ca/vancouver/article/bcs-eby-says-proposed-indigenous-land-transfer-legislation-is-about-saving-money/"
+      },
+      {
+        "item": "Global News reports the plan was put on hold when the election was called. The Council of Forest Industries said it is unfair for government to ask businesses to absorb the costs.",
+        "url": "https://globalnews.ca/news/12104278/bc-ndp-defends-actions-reports-secret-land-deal/"
+      }
+    ],
+    "unknown": [
+      "Where the parcels are, and their combined area.",
+      "How many are treaty land (already in public accounts) and how many come from reconciliation agreements outside treaties.",
+      "How many are already public, for example through the Lake Babine and K'omoks incremental treaties and the 2023 Cheslatta transfer the NDP cites.",
+      "What interest passes (title, tenure or another form). The coverage read for this report does not say.",
+      "The dollar cost or saving: the briefing gives no estimate, citing 'ongoing fiscal constraints' and a $13 billion deficit.",
+      "Whether 400 is a ceiling. No source describes an end point or total."
+    ],
+    "compare": "For scale, Northern Beat reports the 2024 shishalh agreement involved about six square kilometres of public land and $104 million in compensation, disclosed only after the election.",
+    "best_step_check": "The claim that the NDP calls these transfers 'the best step toward reconciliation' was searched for and not found in the coverage reviewed. What is documented is the government's framing as honouring existing treaties and commitments and resolving claims by agreement, and that it reduces cost.",
+    "readings": {
+      "supporters": "Agreements are how governments have settled land claims for decades; they give certainty to the land base and investors; the commitments already exist in treaties and agreements; compensation rules should not block them.",
+      "critics": "The public cannot see where the land is, how much there is or what it costs; the compensation change shifts costs to forestry firms and workers; the rule change was developed before voters could see it; and no end point has been stated."
+    }
+  },
+  "dripa": {
+    "timeline": [
+      {
+        "date": "Dec 5 2025",
+        "event": "BC Court of Appeal (2-1) rules the Declaration Act brings the UN Declaration into BC law and that rights under it can be litigated; the mineral claims system conflicted with it.",
+        "url": "https://www.bdplaw.com/insights/bcca-on-gitxaala-what-does-undrip-mean-for-resource-development-in-british-columbia-and-canada"
+      },
+      {
+        "date": "Jan 2026",
+        "event": "Premier Eby says the ruling means every provincial law could be challenged, and that government will amend the Act. He adds that section 35 of the Constitution 'will always be there' for nations to challenge laws or make title claims.",
+        "url": "https://cfjctoday.com/?p=1079751"
+      },
+      {
+        "date": "Feb 6 2026",
+        "event": "BC asks the Supreme Court of Canada to hear the appeal, saying 'core democratic values' are at stake.",
+        "url": "https://nationalnewswatch.com/2026/02/06/b-c-asks-top-court-to-hear-dripa-appeal-saying-core-democratic-values-at-stake"
+      },
+      {
+        "date": "Apr 2026",
+        "event": "Eby calls changing the Act 'non-negotiable', then proposes suspending its key elements for up to three years and says the bill would be a confidence vote. First Nations leaders oppose it.",
+        "url": "https://www.timescolonist.com/local-news/bc-faces-complete-opposition-after-telling-first-nations-of-plan-to-suspend-dripa-12095355"
+      },
+      {
+        "date": "May 2026",
+        "event": "Eby backs down and defers the issue to the fall session, after First Nations opposition.",
+        "url": "https://vicnews.com/2026/05/29/dripa-worries-budget-woes-bring-b-c-legislatures-spring-session-to-a-close/"
+      },
+      {
+        "date": "May 21 2026",
+        "event": "The Supreme Court of Canada grants BC leave to appeal (case 42200). No hearing date is set; one source expects 2027.",
+        "url": "https://sequoialegal.ca/articles/aboriginal-law/2368/"
+      },
+      {
+        "date": "Oct 2026",
+        "event": "No fall-session DRIPA bill was found in the sources searched. This report could not confirm one has been tabled.",
+        "url": "https://bcballot.ca/platforms/issues/dripa-and-indigenous-relations/"
+      }
+    ],
+    "government_view": "Eby says the ruling exposes all provincial law to challenge, and that the issue is 'core democratic values'.",
+    "fn_view": "First Nations leaders opposed suspending the Act; a leaked transcript reported by media shows leaders accusing the premier of 'colonialism'.",
+    "industry_view": "The Fraser Institute links a fall in mineral claims to the uncertainty; an industry survey attributes an earlier fall partly to financing and maturing projects."
+  },
+  "scorecard": {
+    "scale": "0 = confidently not working (the published evidence shows the stated goal is unmet or not measurable). 5 = mixed, or unknowable on published information. 10 = confidently working (documented, verified and public).",
+    "caveat": "These scores are an editorial judgement of the evidence in this report, not a measurement. They score whether the published record shows the stated goal being met, not whether the goal is right. Confidence is how much public evidence supports the score. Reasonable readers will differ, and the 'what would move it up' column says what evidence would change each score.",
+    "items": [
+      {
+        "area": "Financial-transparency law",
+        "section": "1-2",
+        "score": 2,
+        "conf": "High",
+        "rhetoric": "First Nations governments are accountable to members and taxpayers under the FNFTA.",
+        "record": "34 of 578 nations filed on time in 2024-25; enforcement stopped in 2015.",
+        "up": "Enforcement or an open amendment."
+      },
+      {
+        "area": "Federal spending to results",
+        "section": "3",
+        "score": 3,
+        "conf": "Medium",
+        "rhetoric": "Historic investment is closing gaps.",
+        "record": "Spending rose from about $10B to $41-64B a year; the Auditor General found the department could not show its grants were closing gaps.",
+        "up": "Spending by purpose and by nation, tied to outcomes."
+      },
+      {
+        "area": "Health and living conditions",
+        "section": "4, 19",
+        "score": 3,
+        "conf": "Medium",
+        "rhetoric": "Investment should improve wellbeing.",
+        "record": "BC First Nations life expectancy 67.2 in 2021 (down, mostly 2020-21); 40 long-term water advisories; 53.8% of children in care, against 7.7% of the child population; some indicators improved.",
+        "up": "The 2026/27 health update showing recovery."
+      },
+      {
+        "area": "Treaty land (public process)",
+        "section": "5",
+        "score": 6,
+        "conf": "Medium",
+        "rhetoric": "Treaties bring certainty and are public, voted on and legislated.",
+        "record": "135,425 ha committed in public accounts; four treaties completed since negotiations began in 1993.",
+        "up": "More completions on a stated timeline."
+      },
+      {
+        "area": "Non-treaty land returns (the 400 parcels)",
+        "section": "6",
+        "score": 2,
+        "conf": "High",
+        "rhetoric": "Honours decades-old commitments and brings certainty.",
+        "record": "No list, area or cost published; the briefing reached the public through a leak; industry was asked to sign NDAs.",
+        "up": "Publish the list, area, cost and end point."
+      },
+      {
+        "area": "Aboriginal title and private property",
+        "section": "7",
+        "score": 4,
+        "conf": "Medium",
+        "rhetoric": "Private property is protected; title claims bring certainty.",
+        "record": "No private title voided; every party is appealing Cowichan; the courts differ on title over private land.",
+        "up": "Appeal decisions."
+      },
+      {
+        "area": "DRIPA and Gitxaala",
+        "section": "8",
+        "score": 3,
+        "conf": "High",
+        "rhetoric": "The Act aligns BC law with the UN Declaration.",
+        "record": "The government that passed it sought to narrow it after a court said it is litigable, then deferred; the Supreme Court of Canada will decide.",
+        "up": "A clear Supreme Court ruling and a settled legislative position."
+      },
+      {
+        "area": "Funders and representation",
+        "section": "9, 17",
+        "score": 3,
+        "conf": "Medium",
+        "rhetoric": "Organizations speak for First Nations.",
+        "record": "Most groups speak for governments, are not registered charities and do not publish funding by source.",
+        "up": "A representation register with funding by source."
+      },
+      {
+        "area": "Class-action settlements",
+        "section": "11-12",
+        "score": 6,
+        "conf": "Medium",
+        "rhetoric": "Justice and compensation for survivors.",
+        "record": "Individuals are paid directly; fees were paid by Canada separately and judges cut or questioned two of four fee requests; no single ledger of accrued, approved and paid amounts.",
+        "up": "A settlements ledger."
+      },
+      {
+        "area": "Negotiated money (treaty loans, specific claims)",
+        "section": "12, 18",
+        "score": 2,
+        "conf": "Medium",
+        "rhetoric": "Capacity funding lets nations negotiate as equals.",
+        "record": "About $707M advanced for treaty negotiation, mostly loans later forgiven; no published split between professional fees and services.",
+        "up": "Publish the split."
+      },
+      {
+        "area": "Oversight and audits",
+        "section": "13",
+        "score": 3,
+        "conf": "Medium",
+        "rhetoric": "Public money is monitored.",
+        "record": "Only 39% of sampled grant files held every required monitoring report; the FSIN audit dispute is unresolved.",
+        "up": "Complete monitoring and resolved disputes."
+      },
+      {
+        "area": "Overlapping claims",
+        "section": "15",
+        "score": 3,
+        "conf": "Medium",
+        "rhetoric": "Agreements bring certainty to the land base.",
+        "record": "Disputes among First Nations (Kitselas/K'omoks, Cowichan/Musqueam, Gitanyow/Nisga'a) persist and no public overlap map exists.",
+        "up": "A public overlap map and a resolution process."
+      },
+      {
+        "area": "Project certainty",
+        "section": "14, 16",
+        "score": 4,
+        "conf": "Medium",
+        "rhetoric": "Agreements and consultation unlock economic potential.",
+        "record": "Court rulings quashed some approvals over consultation; others failed for market reasons; Cedar LNG shows Indigenous ownership working.",
+        "up": "Consistent, early consultation and ownership models."
+      },
+      {
+        "area": "Overall strategy and end point",
+        "section": "21",
+        "score": 2,
+        "conf": "Medium",
+        "rhetoric": "Agreements are the route to certainty.",
+        "record": "Several parallel tracks (treaties, 400 parcels, DRIPA, settlements, courts) with no published end state, total commitment or measure of success was found.",
+        "up": "A published end state, total cost and yearly measures."
+      }
+    ]
+  },
   "overlaps": [
     {
       "dispute": "Kitselas and K'omoks treaties",
@@ -4935,7 +5209,7 @@
         "group": "Indigenous-led environmental groups and funders (for example Raven Trust, Indigenous Climate Action, Tides Canada / MakeWay)",
         "kind": "NGOs and intermediary funders",
         "speaks_for": "Their own boards and supporters, often alongside affected nations.",
-        "funding": "Foundations such as Rockefeller Brothers, Moore, Packard, Hewlett and the Nature Conservancy, per the Northern Beat reporting used in section 7. Grant-level records are in public tax filings but were not compiled here.",
+        "funding": "Foundations such as Rockefeller Brothers, Moore, Packard, Hewlett and the Nature Conservancy, per the Northern Beat reporting used in section 9. Grant-level records are in public tax filings but were not compiled here.",
         "notes": "Foreign philanthropy is lawful and reported; whether it should shape land-use talks is a political question.",
         "url": "https://northernbeat.ca/news/us-money-behind-anti-resource-activism-in-bc-as-american-oil-exports-grew/"
       }
