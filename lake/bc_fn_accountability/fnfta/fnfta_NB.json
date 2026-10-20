@@ -1,0 +1,2061 @@
+{
+ "province": "NB",
+ "fetched": "2026-10-19",
+ "bands": [
+  {
+   "band": "11",
+   "name": "Bilijk",
+   "address": "77 French Village Road, Kingsclear First Nation, NB, E3E 1K3",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-11-04"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-11-04"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-10-02"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-10-02"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-23"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-23"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-10-05"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-10-05"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-08-03"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-08-03"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-08-26"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-08-26"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-11-17"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-11-17"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-01-14"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-05-05"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-07-28"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-07-28"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-09-08"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-09-08"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-10-04"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-10-04"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-09-19"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-09-19"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "4",
+   "name": "Buctouche MicMac",
+   "address": "9 Reserve Road, Buctouche Reserve, NB, E4S 4G2",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-10-06"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-10-06"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-02"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-02"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-07-31"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-07-31"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-08-01"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-08-01"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-11-15"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-11-15"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-11-17"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-11-17"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-04-08"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-04-08"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-02-08"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-02-08"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-02-10"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2026-02-10"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "8",
+   "name": "Eel River Bar First Nation",
+   "address": "11 Main Street, Unit 201, Eel River Bar, NB, E8C 1A1",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-11-24"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-11-24"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-07-28"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-07-28"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-07-25"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-07-25"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-08-03"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-08-03"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-08-27"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-08-27"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-05-18"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-05-18"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-04-05"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-04-08"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-02-07"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-02-07"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-11-04"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-11-10"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "3",
+   "name": "Elsipogtog First Nation",
+   "address": "373 Big Cove Road, Elsipogtog First Nation, NB, E4W 2S3",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-09-12"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-09-12"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-08-25"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-08-25"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-16"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-16"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-31"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-31"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-08-21"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-08-21"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-09-05"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-09-05"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-04-22"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-03-22"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-07-27"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-07-27"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-07-27"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-07-31"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-11-07"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-11-07"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-01-07"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-01-07"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-12-01"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-12-01"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "5",
+   "name": "Esgenoopetitj First Nation",
+   "address": "621 Bayview Drive, Burnt Church First Nation, NB, E9G 2A5",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-10-02"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-10-02"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-11-06"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-11-06"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-10-20"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-10-20"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-10-20"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-10-20"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-02-07"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-06-30"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-10-22"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-10-22"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-05-18"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-04-16"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-05-04"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-05-04"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-05-30"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-05-30"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-06-04"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-06-04"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-08-26"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-08-26"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "9",
+   "name": "Fort Folly",
+   "address": "PO Box 1007, Dorchester, NB, E4K 3V5",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-08-08"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-08-08"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-07-26"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-07-26"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-07-27"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-07-27"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-08-14"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-08-14"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-08-27"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-08-27"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-08-17"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-08-17"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-08-20"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-08-20"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-01-07"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-01-07"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-02-07"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-02-07"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "10",
+   "name": "Indian Island",
+   "address": "61 Indian Island Drive, Indian Island, NB, E4W 1S9",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-08-11"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-08-11"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-07-28"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-07-28"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-08-16"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-08-16"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-09-13"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-09-13"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-08-07"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-08-07"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-08-20"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-08-20"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-08-28"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-08-28"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-08-28"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-08-28"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-07-24"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-07-24"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-08-01"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-08-01"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-08-10"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2026-08-10"
+    }
+   ]
+  },
+  {
+   "band": "6",
+   "name": "Madawaska Maliseet First Nation",
+   "address": "1771 Principale Street, Madawaska Maliseet First Nation, NB, E7C 1W9",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-08-28"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-08-28"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-08-27"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-08-27"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-25"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-25"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-09-25"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-09-25"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-07-15"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-07-15"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-08-01"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-08-01"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-10-18"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-10-18"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-10-19"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-10-19"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-11-13"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-11-13"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-08-25"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-08-25"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "14",
+   "name": "Metepenagiag Mi'kmaq Nation",
+   "address": "PO Box 293, Metepenagiag Mi'kmaq Nation, NB, E9E 2P2",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-09-08"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-09-08"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-09-29"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-09-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-23"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-23"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-09-25"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-09-25"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-12-10"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-12-10"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-10-30"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-10-30"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-04-29"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-04-29"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-02-23"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-02-23"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-12-09"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-12-09"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-02-02"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-02-02"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-08-07"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-08-07"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "7",
+   "name": "Natoaganeg",
+   "address": "47 Church Road, Eel Ground, NB, E1V 4E6",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-10-09"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-10-09"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-09-09"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-09-09"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-29"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-09-29"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-09-29"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-11-02"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-11-02"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-12-02"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-12-02"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-09-14"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-09-14"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-03-14"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-03-14"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-09-11"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-09-11"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-05-16"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-05-16"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-03-12"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-03-12"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-06-17"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2026-06-17"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "12",
+   "name": "Oromocto First Nation",
+   "address": "PO Box 417, 4 Hiawatha Avenue, Oromocto, NB, E2V 2J2",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-08-08"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-08-08"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-07-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-04"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-04"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-07-25"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-07-25"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-09-10"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-09-10"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-04-29"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-04-29"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-03-28"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-03-28"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-07-25"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-07-25"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-02-14"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-02-14"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-02-27"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-03-10"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-12-09"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-12-09"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "13",
+   "name": "Pabineau",
+   "address": "1290 Pabineau Falls Road, Pabineau First Nation, NB, E2A 7M3",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-11-24"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-11-24"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-08-11"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-08-07"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-04"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-04"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-09-05"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-09-05"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-10-04"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-10-17"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-08-27"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-08-27"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2020-10-02"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-10-02"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-08-20"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-08-20"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-05-28"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-05-28"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-10-05"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-10-05"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-03-13"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-03-13"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-08-10"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2026-08-10"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "15",
+   "name": "Saint Mary's",
+   "address": "150 Cliffe Street, Fredericton, NB, E3A 0A1",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-07-31"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-07-31"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-08-05"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-08-05"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-15"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-07-29"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-21"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-21"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-11-05"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-11-05"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-12-19"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-12-19"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-04-15"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-04-15"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-10-28"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-01-13"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-07-31"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-07-31"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-01-28"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-01-28"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-09-19"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-09-19"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "16",
+   "name": "Tobique",
+   "address": "13156 Route105, Tobique First Nation, NB, E7H 5M7",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-08-29"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-08-29"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-09-09"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-09-09"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-08-11"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-08-11"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-09-19"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-09-19"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2018-09-27"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2018-09-27"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-10-25"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-10-25"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-04-15"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-04-15"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-02-11"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-02-11"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-06-06"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-06-06"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-06-06"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-06-06"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-08-01"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-08-01"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "2026-02-26"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2026-02-26"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  },
+  {
+   "band": "17",
+   "name": "Woodstock",
+   "address": "3 Wulastook Court, Woodstock First Nation, NB, E7M 4K6",
+   "filings": [
+    {
+     "fy": "2013-2014",
+     "doc": "Audited consolidated financial statements",
+     "received": "2014-07-31"
+    },
+    {
+     "fy": "2013-2014",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2014-07-31"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Audited consolidated financial statements",
+     "received": "2015-07-24"
+    },
+    {
+     "fy": "2014-2015",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2015-07-24"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Audited consolidated financial statements",
+     "received": "2016-07-29"
+    },
+    {
+     "fy": "2015-2016",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2016-07-29"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Audited consolidated financial statements",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2016-2017",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2017-08-02"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-02-07"
+    },
+    {
+     "fy": "2017-2018",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2019-02-07"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Audited consolidated financial statements",
+     "received": "2019-11-07"
+    },
+    {
+     "fy": "2018-2019",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2020-02-28"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Audited consolidated financial statements",
+     "received": "2021-04-29"
+    },
+    {
+     "fy": "2019-2020",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2021-04-29"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Audited consolidated financial statements",
+     "received": "2022-02-28"
+    },
+    {
+     "fy": "2020-2021",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2022-02-28"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Audited consolidated financial statements",
+     "received": "2023-07-25"
+    },
+    {
+     "fy": "2021-2022",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2023-07-25"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Audited consolidated financial statements",
+     "received": "2024-04-11"
+    },
+    {
+     "fy": "2022-2023",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2024-04-11"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Audited consolidated financial statements",
+     "received": "2025-07-28"
+    },
+    {
+     "fy": "2023-2024",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "2025-07-28"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2024-2025",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Audited consolidated financial statements",
+     "received": "Not yet posted"
+    },
+    {
+     "fy": "2025-2026",
+     "doc": "Schedule of Remuneration and Expenses",
+     "received": "Not yet posted"
+    }
+   ]
+  }
+ ]
+}
