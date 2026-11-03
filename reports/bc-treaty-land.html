@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Land Ledger | Canada Central</title>
+  <meta name="description" content="A viral claim said BC committed 334,000 acres of Crown land to First Nations, including Hatley Castle, with no public say. The core number checks out. Almost everything built around it needs a footnote. A source-verified investigation.">
+  <meta name="robots" content="index,follow">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Report",
+    "headline":"The Land Ledger",
+    "description":"A source-verified investigation into BC's provincial Crown land commitments to First Nations under active treaty negotiations: the Public Accounts number, the Victoria/Te'mexw case study, and public access precedent on already-effective treaties.",
+    "author":{"@type":"Organization","name":"Canada Central"},
+    "publisher":{"@type":"Organization","name":"Canada Central"},
+    "inLanguage":"en-CA",
+    "datePublished":"2026-08-12",
+    "isAccessibleForFree":true,
+    "about":["BC treaty negotiations","Crown land","First Nations treaty settlements","BC Public Accounts","Te'mexw Treaty Association"],
+    "citation":["BC Public Accounts 2021/22-2025/26, Note 28","BC Treaty Commission Final Agreement fact sheets","Ministry of Indigenous Relations and Reconciliation TTA Treaty Area and Treaty Lands map (June 2026)","Statistics Canada Table 32-10-0047-01"]
+  }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --color-teal:#3A5F6F;--color-accent:#4A6FA5;--color-accent-dark:#345080;--color-accent-light:#EBF0F8;
+      --color-amber:#C47A3F;--color-amber-light:#FDF3E7;--color-success:#3A7A4A;--color-success-light:#EAF2EC;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);line-height:1.65}
+    a{color:var(--color-teal)}
+    .topbar{position:sticky;top:0;z-index:100;background:var(--color-cream);border-bottom:1px solid var(--color-beige);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 1.2rem;gap:1rem}
+    .topbar-brand{font-weight:800;font-size:0.95rem;color:var(--color-text-primary);text-decoration:none}
+    .topbar-jump{font-size:0.8rem;padding:0.35rem 0.6rem;border:1px solid var(--color-beige-dark);border-radius:var(--radius-md);background:var(--color-white);max-width:55vw}
+    @media(min-width:980px){.topbar-jump{display:none}}
+    .topbar-links{font-size:0.8rem;font-weight:600}
+    .topbar-links a{color:var(--color-text-secondary);text-decoration:none;margin-left:1rem}
+
+    .wrap{display:block;max-width:1180px;margin:0 auto;padding:0 1rem}
+    @media(min-width:980px){.wrap{display:grid;grid-template-columns:250px 1fr;gap:2.5rem;padding:0 1.5rem}}
+    .toc{display:none}
+    @media(min-width:980px){.toc{display:block;position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:1.5rem 0;font-size:0.8125rem}}
+    .toc-h{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.6rem}
+    .toc a{display:block;color:var(--color-text-secondary);text-decoration:none;padding:0.3rem 0.6rem;border-left:2px solid transparent;line-height:1.35;margin-bottom:1px}
+    .toc a:hover{color:var(--color-text-primary)}
+    .toc a.active{color:var(--color-accent);border-left-color:var(--color-accent);font-weight:700;background:var(--color-accent-light)}
+    .toc .num{color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;margin-right:0.4rem}
+
+    main{padding:1.5rem 0 4rem;min-width:0}
+    .hero h1{font-size:1.9rem;font-weight:800;line-height:1.12;margin:0.5rem 0 0.75rem}
+    @media(min-width:640px){.hero h1{font-size:2.6rem}}
+    .hero .lede{font-size:1.1rem;color:var(--color-text-secondary);margin:0;max-width:720px}
+    .hero .lede strong{color:var(--color-text-primary)}
+    .kicker{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--color-accent);margin:0}
+
+    section{scroll-margin-top:70px;padding:2rem 0 0.5rem;border-top:1px solid var(--color-beige);margin-top:2rem}
+    section.lead{border-top:none;margin-top:1.5rem}
+    .ch-num{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.25rem}
+    h2{font-size:1.5rem;font-weight:800;margin:0 0 0.5rem;line-height:1.2}
+    @media(min-width:640px){h2{font-size:1.8rem}}
+    p{font-size:0.975rem;color:var(--color-text-secondary);margin:0 0 0.9rem}
+    p strong{color:var(--color-text-primary)}
+
+    .disclaimer{background:var(--color-white);border:1px solid var(--color-beige);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.6rem;margin:1rem 0}
+    .disclaimer h2{font-size:1.15rem}
+    .disclaimer ul{margin:0.5rem 0 0;padding-left:1.1rem}
+    .disclaimer li{font-size:0.9rem;color:var(--color-text-secondary);margin:0 0 0.5rem}
+    .disclaimer li strong{color:var(--color-text-primary)}
+
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+    @media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+    .stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:0.9rem 1.1rem;border-top:3px solid var(--color-accent)}
+    .stat.grey{border-top-color:var(--color-text-tertiary)}.stat.amber{border-top-color:var(--color-amber)}
+    .stat .v{font-size:1.5rem;font-weight:800;color:var(--color-accent);line-height:1;margin:0}
+    .stat.grey .v{color:var(--color-text-tertiary)}.stat.amber .v{color:var(--color-amber)}
+    .stat .l{font-size:0.6875rem;color:var(--color-text-secondary);margin:0.3rem 0 0;line-height:1.4}
+
+    .finding{background:linear-gradient(135deg,#345080,#4A6FA5);color:#fff;border-radius:var(--radius-lg);padding:1.6rem 1.75rem;margin:1rem 0;box-shadow:0 4px 20px rgba(74,111,165,.3)}
+    .finding-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#fff;opacity:.85;margin:0 0 0.75rem}
+    .finding-big{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:0}
+    .finding-num{font-size:2.6rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+    @media(min-width:768px){.finding-num{font-size:3.4rem}}
+    .finding-label{font-size:0.95rem;opacity:.92;max-width:420px;line-height:1.45;color:#fff}
+    .finding p{font-size:0.9rem;line-height:1.65;color:#fff;opacity:.95;margin:0.9rem 0 0;max-width:720px}
+
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.1rem 1.25rem;margin:1rem 0}
+    .chart-card .cap{font-size:0.7rem;color:var(--color-text-tertiary);margin:0.7rem 0 0}
+    .chart-wrap{position:relative;height:220px;width:100%;min-width:0}
+    .chart-wrap canvas{max-width:100%}
+    .deep{display:inline-block;font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--color-accent);padding:0.4rem 0.85rem;border-radius:999px;margin:0.35rem 0.4rem 0.5rem 0}
+    .deep:hover{background:var(--color-accent-dark)}
+    .callout{border-left:4px solid var(--color-accent);background:var(--color-accent-light);padding:0.9rem 1.15rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.9rem 0;font-size:0.9rem;color:var(--color-accent-dark);line-height:1.6}
+    .callout.amber{border-left-color:var(--color-amber);background:var(--color-amber-light);color:#8a5624}
+
+    .index-grid{display:grid;grid-template-columns:1fr;gap:0.5rem;margin:0.75rem 0}
+    @media(min-width:680px){.index-grid{grid-template-columns:1fr 1fr}}
+    .index-grid a{background:var(--color-white);border:1px solid var(--color-beige);border-radius:var(--radius-md);padding:0.6rem 0.85rem;text-decoration:none;color:var(--color-text-primary);font-size:0.85rem;font-weight:600}
+    .index-grid a:hover{border-color:var(--color-accent)}
+    .index-grid a span{display:block;font-size:0.72rem;color:var(--color-text-tertiary);font-weight:400;margin-top:2px}
+    .foot{font-size:0.7rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.5rem;border-top:1px solid var(--color-beige);padding-top:1rem}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-brand" href="https://canada-central.com">Canada Central</a>
+  <select class="topbar-jump" id="jump" aria-label="Jump to section"></select>
+  <span class="topbar-links"><a href="../index.html">Statistics</a><a href="../reports.html">Reports</a></span>
+</div>
+
+<div class="wrap">
+  <nav class="toc" id="toc" aria-label="Table of contents"><p class="toc-h">The report</p></nav>
+
+  <main>
+    <div class="hero">
+      <p class="kicker">An objective, source-based data investigation &middot; August 2026</p>
+      <h1>The Land Ledger</h1>
+      <p class="lede">A social media post went viral claiming British Columbia had committed <strong>334,000 acres of Crown land</strong> to First Nations &mdash; including Hatley Castle &mdash; with limited or no public access, and no public say. We went and read the actual documents: five years of Public Accounts, the treaty maps, the fact sheets, the treaty text itself. <strong>The core number checks out.</strong> Almost everything built around it &mdash; the trend, the Victoria parcels, the access claim &mdash; needs a footnote the original post didn't include.</p>
+    </div>
+
+    <section class="lead" id="method">
+      <div class="disclaimer">
+        <p class="ch-num">Before you read</p>
+        <h2>How this investigation is built, and what it does not claim</h2>
+        <p>Treaty land is one of the most consequential and least-understood parts of BC public policy, and a subject that invites strong feelings on every side. The standards we hold ourselves to:</p>
+        <ul>
+          <li><strong>Primary documents only for every headline figure</strong> &mdash; five years of BC Public Accounts PDFs, BC Treaty Commission Final Agreement fact sheets, and official treaty text, extracted directly rather than taken from screenshots or news summaries.</li>
+          <li><strong>We correct the viral claim's numbers where they're wrong, and say so plainly where they're right.</strong> The 135,425 ha figure and the 47%-of-Metro-Vancouver comparison both check out. The "rising" framing and the Hatley Castle attribution don't.</li>
+          <li><strong>We keep document scopes distinct.</strong> Provincial Crown land, federal Crown land, existing reserve land, and private land are four different legal categories. Conflating them is where most of the confusion in this story originated.</li>
+          <li><strong>We do not adopt policy opinions from any side.</strong> This report describes what land is committed, to whom, under what process, and what happens to public access &mdash; not whether the treaty process itself should exist or be reformed.</li>
+          <li><strong>We report live, unresolved disputes as unresolved</strong> &mdash; including an active First Nation-vs-First Nation legal claim over one of the most visible parcels in this story.</li>
+        </ul>
+        <p style="margin:0.6rem 0 0;font-size:0.85rem">Every chapter below links to a full interactive dashboard with the underlying data, sources and a downloadable table.</p>
+      </div>
+    </section>
+
+    <section id="commitment">
+      <p class="ch-num">Chapter 1 &middot; The numbers</p>
+      <h2>135,425 hectares &mdash; verified, but not the whole story</h2>
+      <div class="finding">
+        <p class="finding-tag">Key correction</p>
+        <div class="finding-big">
+          <span class="finding-num">&minus;2.3%</span>
+          <span class="finding-label">The province's committed-treaty-land total has <strong>fallen</strong>, not risen, for two straight fiscal years &mdash; from a 2023/24 peak of 138,591 ha to 135,425 ha today.</span>
+        </div>
+        <p>The most-cited number from the viral post is accurate. The "committed and growing" framing built around it isn't.</p>
+      </div>
+      <div class="stats" id="ch1Stats"></div>
+      <p>Every year, BC's Public Accounts disclose a running list &mdash; Note 28 &mdash; of provincial Crown land committed under active treaty negotiations. As of 2025/26, that's <strong>135,425 hectares</strong> across <strong>20 First Nations and treaty tables</strong>, verified word-for-word against the official government PDF. What the viral framing leaves out: the number peaked in 2023/24 and has been falling since, and it's dwarfed by the <strong>232,746 hectares</strong> already transferred, land in hand, under BC's four completed treaties &mdash; about 1.7&times; more than what's still pending.</p>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+        <p class="cap">Note 28 total committed hectares by fiscal year (BC Public Accounts, 2021/22&ndash;2025/26).</p>
+      </div>
+      <div class="callout">The capital transfer money that usually comes with a treaty is disclosed as, "in most cases," a <strong>federal</strong> cost &mdash; not a provincial one. The land is BC's to commit; the cheque is mostly Ottawa's.</div>
+      <a class="deep" href="bc-treaty-commitment.html">Deep dive: The Commitment &rarr;</a>
+    </section>
+
+    <section id="victoria">
+      <p class="ch-num">Chapter 2 &middot; Victoria / Te&rsquo;mexw case study</p>
+      <h2>Victoria's fine print: what's actually new, and what Songhees already holds</h2>
+      <div class="finding">
+        <p class="finding-tag">Key correction</p>
+        <div class="finding-big">
+          <span class="finding-num">$0</span>
+          <span class="finding-label">Hatley Castle is <strong>federal</strong> land (Department of National Defence) &mdash; it is not counted in the 135,425 ha provincial figure at all.</span>
+        </div>
+        <p>The viral post's map is real and traced to its source &mdash; a Ministry of Indigenous Relations poster, June 2026. But it conflates two different documents with two different legal scopes.</p>
+      </div>
+      <div class="stats" id="ch2Stats"></div>
+      <p>The Te&rsquo;mexw table &mdash; five Nations (Malahat, Scia&rsquo;new, Snaw-naw-as, Songhees, T&rsquo;Sou-ke) &mdash; accounts for <strong>1,916.7 hectares</strong> of the province-wide total, spread across their entire South Island territory, not concentrated in Victoria. Of what's actually shown in the viral Victoria map, only a handful of small parcels &mdash; a parking lot beside the Legislature, a waterfront dock, a strip of Discovery Island park &mdash; are genuine new provincial commitments. Hatley Park (federal land, ~229 ha) and Songhees' existing reserve holdings are something else entirely &mdash; and Hatley Park's proposed transfer is now contested by a separate legal claim from Esquimalt Nation, a distinct First Nation, filed March 27, 2026 and still unresolved.</p>
+      <div class="callout amber">Esquimalt Nation and Songhees Nation are both successor communities of the Lekwungen people, split into separate Indian Act bands in the late 1800s. Their dispute over Hatley Park is First Nation vs. First Nation, not government vs. First Nation.</div>
+      <a class="deep" href="bc-treaty-victoria.html">Deep dive: Victoria's Fine Print &rarr;</a>
+    </section>
+
+    <section id="access">
+      <p class="ch-num">Chapter 3 &middot; Public access</p>
+      <h2>After the ink dries: what happens to public access</h2>
+      <div class="finding">
+        <p class="finding-tag">Key correction</p>
+        <div class="finding-big">
+          <span class="finding-num">2 of 4</span>
+          <span class="finding-label">BC's four already-effective modern treaties contain a documented, named example of public access being narrowed &mdash; but all four also carry explicit access-preserving guarantees.</span>
+        </div>
+        <p>The "no public access" claim is real precedent, not invention &mdash; but it's not the norm either. Both things are true at once.</p>
+      </div>
+      <div class="stats" id="ch3Stats"></div>
+      <p>Treaty settlement land becomes ordinary fee-simple private property &mdash; the same legal category as any house or farm in BC &mdash; and every one of the four completed treaties (Nisga&rsquo;a, Tsawwassen, Maa-nulth, Tla&rsquo;amin) writes in explicit public-access guarantees beyond that default. (Yale's Final Agreement was ratified but BC's own Public Accounts say no effective date has been agreed &mdash; see Chapter 1 &mdash; so it's excluded from this already-effective set.) But real, disclosed exceptions exist too: Tla&rsquo;amin's treaty designated all of Ahgykson (Harwood Island) as private land with restricted access, on the treaty's own effective date. Nisga&rsquo;a's treaty lets the Nation close certain non-village roads. Both are negotiated, disclosed terms &mdash; not surprises buried in fine print.</p>
+      <div class="callout">BC's existing reserve land (~473,485 ha) is already about <strong>3.5&times;</strong> larger than the pending 135,425 ha commitment. Once transferred, treaty settlement land leaves the reserve system entirely and becomes private land.</div>
+      <a class="deep" href="bc-treaty-access.html">Deep dive: After the Ink Dries &rarr;</a>
+    </section>
+
+    <section id="explore">
+      <p class="ch-num">Explore the evidence</p>
+      <h2>Every chapter, in full</h2>
+      <p>Each view below is a standalone interactive dashboard with its own sources and downloadable data.</p>
+      <div class="index-grid">
+        <a href="bc-treaty-commitment.html">The Commitment<span>The Note 28 numbers, verified and trended</span></a>
+        <a href="bc-treaty-victoria.html">Victoria's Fine Print<span>The Te&rsquo;mexw/Songhees case study</span></a>
+        <a href="bc-treaty-access.html">After the Ink Dries<span>Public access precedent on effective treaties</span></a>
+      </div>
+      <p class="foot" id="foot"></p>
+    </section>
+  </main>
+</div>
+
+<script>
+const CH=[['method','Before you read'],['commitment','1 · The numbers'],['victoria','2 · Victoria case study'],
+  ['access','3 · Public access'],['explore','Explore the evidence']];
+document.getElementById('toc').insertAdjacentHTML('beforeend',
+  CH.map(([id,t],i)=>`<a href="#${id}" data-id="${id}"><span class="num">${i===0||i===CH.length-1?'·':i}</span>${t.replace(/^\d+ · /,'')}</a>`).join(''));
+const jump=document.getElementById('jump');
+jump.innerHTML='<option>Jump to…</option>'+CH.map(([id,t])=>`<option value="${id}">${t}</option>`).join('');
+jump.onchange=()=>{const el=document.getElementById(jump.value);if(el)el.scrollIntoView();};
+const links={};document.querySelectorAll('.toc a').forEach(a=>links[a.dataset.id]=a);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  Object.values(links).forEach(a=>a.classList.remove('active'));
+  if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+
+const DATA = {"metadata":{"title":"The Land Ledger","last_updated":"2026-08-12","sources":["BC Public Accounts 2021/22-2025/26, Note 28 (gov.bc.ca)","BC Treaty Commission Final Agreement fact sheets (gov.bc.ca)","Ministry of Indigenous Relations and Reconciliation, TTA Treaty Area and Treaty Lands map (June 2026)","Statistics Canada Table 32-10-0047-01","Encyclopedia of British Columbia (KnowBC)","CHEK News, Times Colonist, Daily Hive, The Epoch Times (Aug 9-12 2026)"]},"trend":[{"fiscal_year":"2021/22","hectares":129397.0,"nations_count":18},{"fiscal_year":"2022/23","hectares":132980.0,"nations_count":19},{"fiscal_year":"2023/24","hectares":138590.6,"nations_count":20},{"fiscal_year":"2024/25","hectares":137591.3,"nations_count":20},{"fiscal_year":"2025/26","hectares":135425.3,"nations_count":20}],"note28_total_2025_26":135425.3,"completed_treaties_total_ha":232746.0,"benchmarks":{"acres_total":334642,"farmland_total_value_estimate":3540000000},"temexw_status":{"current_stage":"Stage 5 of 6 (Negotiation to Finalize a Treaty)","esquimalt_claim_filed":"2026-03-27"},"reserve_land":{"bc_reserve_hectares":473485.0,"ratio_reserve_to_pending":3.5},"access_precedent_restriction_count":2};
+
+document.getElementById('ch1Stats').innerHTML = [
+  ['135,425 ha','Committed, 2025/26 (verified)','accent'],
+  ['20','First Nations / treaty tables','accent'],
+  ['232,746 ha','Already transferred (4 treaties)','grey'],
+  ['~$3.5B','Illustrative value (see caveat)','amber'],
+].map(s=>`<div class="stat ${s[2]==='accent'?'':s[2]}"><p class="v">${s[0]}</p><p class="l">${s[1]}</p></div>`).join('');
+
+document.getElementById('ch2Stats').innerHTML = [
+  ['1,916.7 ha','Te’mexw total (5 Nations, territory-wide)','accent'],
+  ['229 ha','Hatley Park — federal, not in the count','grey'],
+  ['Stage 5 of 6','Te’mexw treaty negotiation status','accent'],
+  ['Mar 27, 2026','Esquimalt Nation claim filed','amber'],
+].map(s=>`<div class="stat ${s[2]==='accent'?'':s[2]}"><p class="v">${s[0]}</p><p class="l">${s[1]}</p></div>`).join('');
+
+document.getElementById('ch3Stats').innerHTML = [
+  ['4 of 4','Effective treaties default to fee simple','accent'],
+  ['2 of 4','Have a named access-restriction clause','amber'],
+  ['3.5×','BC reserve land vs. pending commitment','grey'],
+  ['0','Extinguishment clauses in modern treaties','accent'],
+].map(s=>`<div class="stat ${s[2]==='accent'?'':s[2]}"><p class="v">${s[0]}</p><p class="l">${s[1]}</p></div>`).join('');
+
+const CHARTS=[];
+const mk=(el,cfg)=>{if(el){cfg.options=Object.assign({responsive:true,maintainAspectRatio:false},cfg.options||{});const c=new Chart(el,cfg);CHARTS.push(c);return c;}};
+window.addEventListener('load',()=>{requestAnimationFrame(()=>CHARTS.forEach(c=>{try{c.resize();}catch(e){}}));});
+
+const T = DATA.trend;
+mk(document.getElementById('trendChart'), {
+  type:'bar',
+  data:{ labels:T.map(d=>d.fiscal_year), datasets:[{
+    data:T.map(d=>d.hectares),
+    backgroundColor:T.map(d=>d.fiscal_year==='2023/24' ? 'rgba(74,111,165,0.9)' : 'rgba(74,111,165,0.45)'),
+    borderRadius:3
+  }]},
+  options:{ plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw.toLocaleString()+' ha'}}},
+    scales:{ y:{ticks:{font:{size:9}}}, x:{ticks:{font:{size:9}}} } }
+});
+
+document.getElementById('foot').textContent='Sources: BC Public Accounts 2021/22–2025/26 (Note 28), BC Treaty Commission Final Agreement fact sheets, Ministry of Indigenous Relations and Reconciliation (TTA Treaty Area and Treaty Lands map, June 2026), Statistics Canada Table 32-10-0047-01, and news coverage from CHEK News, Times Colonist, Daily Hive and The Epoch Times, Aug 9–12 2026. Each linked chapter carries its own full citations. Compiled by Canada Central.';
+</script>
+</body>
+</html>
