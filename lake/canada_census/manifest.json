@@ -1,0 +1,102 @@
+[
+  {
+    "kind": "questionnaire",
+    "title": "2021 Census long-form questionnaire (Form 2A-L) — full instrument incl. religion (Q30), ethnic/cultural origin, Indigenous identity, place of birth",
+    "fname": "census2021_2AL_questionnaire.html",
+    "url": "https://www.statcan.gc.ca/en/statistical-programs/instrument/3901_Q2_V6",
+    "page": "https://www12.statcan.gc.ca/census-recensement/2021/ref/questionnaire/index-eng.cfm",
+    "shows": "Every question put to a 25% sample of households, including religion, ethnic/cultural origins, Indigenous identity, and place of birth.",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 78422,
+    "ok": true
+  },
+  {
+    "kind": "guide",
+    "title": "Religion Reference Guide, 2021 Census",
+    "fname": "census2021_religion_reference_guide.pdf",
+    "url": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/016/98-500-x2021016-eng.pdf",
+    "page": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/016/98-500-x2021016-eng.cfm",
+    "shows": "Religion is collected and disseminated; 200+ denominations classifiable.",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 429220,
+    "ok": true
+  },
+  {
+    "kind": "guide",
+    "title": "Ethnic or Cultural Origin Reference Guide, 2021 Census",
+    "fname": "census2021_ethnic_origin_reference_guide.pdf",
+    "url": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/008/98-500-x2021008-eng.pdf",
+    "page": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/008/98-500-x2021008-eng.cfm",
+    "shows": "Hundreds of ethnic/cultural origins coded and published.",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 430886,
+    "ok": true
+  },
+  {
+    "kind": "guide",
+    "title": "Visible Minority and Population Group Reference Guide, 2021 Census",
+    "fname": "census2021_visible_minority_reference_guide.pdf",
+    "url": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/006/98-500-x2021006-eng.pdf",
+    "page": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/006/98-500-x2021006-eng.cfm",
+    "shows": "A derived 'population group' / visible-minority classification, published by geography.",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 437211,
+    "ok": true
+  },
+  {
+    "kind": "release",
+    "title": "The Daily — A rich portrait of the country's religious and ethnocultural diversity (2022-10-26)",
+    "fname": "census2021_thedaily_diversity.html",
+    "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/221026/dq221026b-eng.htm",
+    "page": "https://www150.statcan.gc.ca/n1/daily-quotidien/221026/dq221026b-eng.htm",
+    "shows": "Official release of religion + ethnocultural data, with geographic breakdowns.",
+    "status": null,
+    "content_type": null,
+    "bytes": 0,
+    "ok": false,
+    "error": "<urlopen error _ssl.c:1000: The handshake operation timed out>"
+  },
+  {
+    "kind": "table",
+    "title": "Religion by visible minority and generation status (98-10-0342-01)",
+    "fname": "census2021_religion_by_vismin_generation_98100342.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100342-eng.zip",
+    "page": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810034201",
+    "shows": "Religion crossed with visible minority and generation status, by geography.",
+    "status": null,
+    "content_type": null,
+    "bytes": 0,
+    "ok": false,
+    "error": "<urlopen error _ssl.c:1000: The handshake operation timed out>"
+  },
+  {
+    "kind": "table",
+    "title": "Visible minority by place of birth and generation status (98-10-0326-01)",
+    "fname": "census2021_vismin_by_birthplace_generation_98100326.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100326-eng.zip",
+    "page": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810032601",
+    "shows": "Visible minority crossed with place of birth and generation status, by geography.",
+    "status": null,
+    "content_type": null,
+    "bytes": 0,
+    "ok": false,
+    "error": "<urlopen error _ssl.c:1000: The handshake operation timed out>"
+  },
+  {
+    "kind": "table",
+    "title": "Visible minority by ethnic or cultural origin (98-10-0337-01)",
+    "fname": "census2021_vismin_by_ethnicorigin_98100337.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100337-eng.zip",
+    "page": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810033701",
+    "shows": "Visible minority crossed with ethnic/cultural origin, by geography.",
+    "status": null,
+    "content_type": null,
+    "bytes": 0,
+    "ok": false,
+    "error": "<urlopen error _ssl.c:1000: The handshake operation timed out>"
+  }
+]

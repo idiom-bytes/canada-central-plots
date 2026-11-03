@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "description": "US venture capital annual totals (NVCA/PitchBook Venture Monitor)",
+    "currency": "USD",
+    "unit": "billions",
+    "primary_source": "PitchBook-NVCA Venture Monitor Q1 2026 (most recent; includes retroactive revisions)",
+    "notes": "Annual figures are revised across report editions as PitchBook confirms more deals. Values here are from the Q1-2026 report (most recent), which has the best retrospective coverage. Deal counts vary significantly across editions.",
+    "extracted": "2026-05-20"
+  },
+  "data": [
+    { "year": 2016, "value_usd_b": 83.7,  "deals": 11332, "confidence": "high",   "source": "NVCA Q1-2026 annual chart" },
+    { "year": 2017, "value_usd_b": 93.6,  "deals": 12116, "confidence": "high",   "source": "NVCA Q1-2026 annual chart" },
+    { "year": 2018, "value_usd_b": 149.7, "deals": 12954, "confidence": "high",   "source": "NVCA Q1-2026 annual chart" },
+    { "year": 2019, "value_usd_b": 156.5, "deals": 14012, "confidence": "high",   "source": "NVCA Q1-2026 annual chart" },
+    { "year": 2020, "value_usd_b": 175.5, "deals": 18338, "confidence": "medium", "source": "NVCA Q1-2026 annual chart. Note: Q4-2025 report shows $149.5B/15,250 deals for 2020 — significant discrepancy. 2020 deal count is unusually high in Q1-2026 edition, possibly reflecting different angel/micro-VC inclusion." },
+    { "year": 2021, "value_usd_b": 358.1, "deals": 15464, "confidence": "high",   "source": "NVCA Q1-2026 annual chart. Consistent across reports ($358.1–358.7B range)." },
+    { "year": 2022, "value_usd_b": 236.2, "deals": 14202, "confidence": "high",   "source": "NVCA Q1-2026 annual chart. Consistent across reports ($235–236B range)." },
+    { "year": 2023, "value_usd_b": 167.3, "deals": 17021, "confidence": "high",   "source": "NVCA Q1-2026 annual chart. Note: Q4-2025 shows $168.8B; Q2-2025 shows $164.7B. Deal count also varies significantly (14,090–17,021) across reports." },
+    { "year": 2024, "value_usd_b": 212.6, "deals": 15377, "confidence": "high",   "source": "NVCA Q1-2026 annual chart. Consistent range $212.6–215.4B across reports." },
+    { "year": 2025, "value_usd_b": 339.4, "deals": null,  "confidence": "high",   "source": "NVCA Q4-2025 report (full-year final). Q1-2026 report shows $321.6B — revision in progress. Use $339.4B as more complete figure from the dedicated annual report." }
+  ],
+  "megadeal_series": {
+    "description": "Annual count and value of VC deals ≥$1B (from NVCA Q1-2025 report)",
+    "data": [
+      { "year": 2015, "count": 85,  "value_usd_b": 26.2 },
+      { "year": 2016, "count": 110, "value_usd_b": 26.0 },
+      { "year": 2017, "count": 98,  "value_usd_b": 24.4 },
+      { "year": 2018, "count": 221, "value_usd_b": 64.4 },
+      { "year": 2019, "count": 259, "value_usd_b": 66.3 },
+      { "year": 2020, "count": 274, "value_usd_b": 79.3 },
+      { "year": 2021, "count": 863, "value_usd_b": 206.3 },
+      { "year": 2022, "count": 530, "value_usd_b": 106.8 },
+      { "year": 2023, "count": 350, "value_usd_b": 75.0 },
+      { "year": 2024, "count": 376, "value_usd_b": 121.7 }
+    ]
+  }
+}

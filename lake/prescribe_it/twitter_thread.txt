@@ -1,0 +1,300 @@
+THREAD: The government spent $250 million on a prescription app that barely anyone used. Then Liberals blocked Parliament from seeing the contract. Here's what we know. 🧵
+
+───────────────────────────────────────
+
+1/ THE SETUP
+
+Canada Health Infoway — a federal arm's-length corporation — was given $300 million in 2017 to build PrescribeIT: a digital system to replace faxed prescriptions.
+
+The tech was built by TELUS Health on TELUS's own proprietary platform.
+
+After 9 years: fewer than 5% of Canadian prescriptions were ever sent through it.
+
+───────────────────────────────────────
+
+2/ THE NUMBERS
+
+To put that in perspective:
+
+  Denmark:  >90% e-prescribing adoption
+  USA:      >90% e-prescribing adoption
+  Germany:  mandatory national system
+
+  Canada (PrescribeIT): <5% after $250 million and 9 years.
+
+On February 12, 2026, Infoway announced it was shutting the whole thing down. Effective May 29.
+
+───────────────────────────────────────
+
+3/ WHAT I BUILT
+
+I built an interactive relationship graph that maps this entire network: every person, every institution, every lobbying contact, every conflict of interest.
+
+26 nodes. 32 edges. Hover for details. Click to expand. Filter by relationship type (lobbying, revolving door, contracts, corporate, parliamentary). Every risk card linked to its source.
+
+It's a single HTML file. No backend. No tracking. Just data.
+
+You can view it here:
+https://idiom-bytes.github.io/canada-central-plots/prescribe-it-dashboard.html
+
+The full structured research document with every source:
+https://github.com/idiom-bytes/canada-central-plots/blob/main/prescribe-it-CONTEXT.md
+
+───────────────────────────────────────
+
+4/ WHERE THE MONEY WENT
+
+TELUS Health collected millions in licensing and service fees every year since 2017.
+
+When PrescribeIT shut down, TELUS kept the intellectual property — the core technology built with your tax dollars.
+
+The government cannot continue or redeploy the service without TELUS's permission.
+
+───────────────────────────────────────
+
+5/ PARLIAMENT ASKS
+
+Conservative MP Matt Strauss moved a motion at the Health Committee ordering production of:
+
+  - The 2017 TELUS Health contract
+  - All amendments over 9 years
+  - IP ownership agreements
+  - The termination notice
+  - Every payment made to TELUS since 2017
+
+───────────────────────────────────────
+
+6/ THE LIBERAL RESPONSE
+
+Liberal MP Sonia Sidhu moved an amendment specifically to DELETE the PrescribeIT materials from the motion.
+
+The contract. The amendments. The IP agreements. The termination notice. The full payment history.
+
+All of it. Gone.
+
+───────────────────────────────────────
+
+7/ THE BLOCK
+
+Before a vote could even happen, a Bloc MP moved to adjourn debate.
+
+The adjournment passed 5-0.
+
+Meeting ended. No vote. No documents.
+
+Where did $250 million go? What did TELUS's contract actually say?
+
+Parliament still doesn't know.
+
+───────────────────────────────────────
+
+8/ WHAT'S NEXT
+
+A Standing Order 106(4) special meeting was scheduled for April 15, 2026 to revisit the blocked motion.
+
+That's tomorrow.
+
+───────────────────────────────────────
+
+9/ LOBBYIST #1
+
+Now here's where it gets interesting.
+
+Charles Harnick — former Ontario Attorney General — registered as a consultant lobbyist for TELUS Health in September 2016.
+
+That's the exact month Infoway's PrescribeIT RFP was under evaluation.
+
+His registration explicitly targeted Health Canada and Government Procurement.
+
+TELUS won the contract in May 2017.
+
+───────────────────────────────────────
+
+10/ LOBBYIST #2
+
+Stuart Barnable — former Chief of Staff in the Senate of Canada — was a paid lobbyist for TELUS Health until February 17, 2026.
+
+That's the same month PrescribeIT's shutdown was announced.
+
+When the program died, so did the need for his registration.
+
+───────────────────────────────────────
+
+11/ LOBBYIST #3
+
+Don Boudria — a former Liberal cabinet minister — was a registered consultant lobbyist for TELUS Corp (parent of TELUS Health) while the Liberal government was funding PrescribeIT.
+
+Liberal insider. Liberal government. TELUS contract.
+
+───────────────────────────────────────
+
+12/ THE TRIPLE CONFLICT
+
+Then there's Jocelyne Voisin.
+
+She is the Senior Assistant Deputy Minister at Health Canada — the official who oversees federal contributions to Canada Health Infoway.
+
+She also sits on Infoway's Board of Directors.
+
+AND TELUS Health's in-house lobbyists met with her on June 19, 2025.
+
+She is on both sides of the funder-funded relationship, while being lobbied by the company at the centre of the $250M controversy.
+
+───────────────────────────────────────
+
+13/ THIS ISN'T NEW
+
+This isn't PrescribeIT's first failure. It's Infoway's pattern.
+
+The 2009 Auditor General found:
+
+  - Infoway missed all 8 of its own program targets
+  - 13 of 35 sampled contracts signed AFTER work began
+  - One contract ballooned from $144K to $726K with no competitive bid
+  - Infoway told Parliament 38% of doctors would have EMR access to secure $500M
+    The real number was 22%
+
+───────────────────────────────────────
+
+14/ AND THEN THEY GOT MORE MONEY
+
+A 2011 audit commissioned by Infoway's OWN board confirmed:
+
+  - Missed self-established targets in all 8 major program areas
+  - Only 16% of $2.168 billion was spent on actually helping clinicians adopt the systems
+
+Then the federal government gave them $300 million more for PrescribeIT.
+
+───────────────────────────────────────
+
+15/ ZERO OVERSIGHT
+
+No Auditor General has reviewed Canada Health Infoway since 2009/2011.
+
+PrescribeIT ran its entire lifecycle — 9 years, $250 million — without a single independent OAG audit.
+
+Total federal funding to Infoway since 2001: over $2.65 billion.
+
+───────────────────────────────────────
+
+16/ THE FEE THAT KILLED IT
+
+In January 2025, Infoway started charging pharmacies $0.20 per prescription.
+
+The Canadian Pharmacists Association surveyed 1,300+ pharmacists:
+65% said they would quit PrescribeIT if the fee was implemented.
+
+Infoway implemented it anyway.
+
+The program collapsed shortly after.
+
+───────────────────────────────────────
+
+17/ THE STRUCTURAL PROBLEM
+
+PrescribeIT is not covered by Treasury Board procurement rules.
+
+Infoway — as an arm's-length not-for-profit — runs its own procurement.
+
+Parliament cannot compel Infoway directly. The government says it doesn't control Infoway's contracts.
+
+$250 million. Zero Treasury Board oversight. Zero ATIP access to the contract.
+
+───────────────────────────────────────
+
+18/ WHAT'S HIDDEN
+
+What Parliament still doesn't know:
+
+  - What TELUS Health was actually paid over 9 years
+  - How a private telecom ended up owning publicly-funded health infrastructure
+  - Whether taxpayers face termination penalties
+  - Why the 2024 private-sector sale process failed entirely
+
+These are the documents Liberals voted to keep hidden.
+
+───────────────────────────────────────
+
+19/ BACK TO THE DARK AGES
+
+Meanwhile, doctors are back to faxing prescriptions.
+
+Alberta pharmacists handling controlled substances are back to physical secure prescription pads.
+
+"I feel like we're going back to the dark ages."
+— Ontario family doctor, February 2026
+
+───────────────────────────────────────
+
+20/ THE FULL PICTURE
+
+  $250M+ in federal spending
+  <5% prescription adoption at shutdown
+  TELUS keeps the IP built with public money
+  No OAG audit since 2009
+  A former Ontario AG lobbying during the RFP evaluation
+  A former Liberal cabinet minister lobbying for TELUS
+  A Health Canada ADM sitting on Infoway's board while being lobbied by TELUS
+  Liberals blocking Parliament from seeing the contract
+
+What is even the point of Parliament?
+
+───────────────────────────────────────
+
+21/ DO YOUR OWN INVESTIGATION
+
+I also built a reusable tool so anyone with Claude Code can run the same kind of investigation on ANY government contract, lobbying relationship, or corporate-government nexus.
+
+It's a Claude Code slash command called /investigate. You give it a topic, some names, and optionally some links. It:
+
+  1. Launches 3 parallel research agents (core facts, lobbying registry, conflicts/media)
+  2. Pulls every lobbying registration, communication report, and revolving-door connection it can find
+  3. Builds an interactive HTML dashboard with the relationship graph
+  4. Writes a structured CONTEXT.md with every finding cited
+
+Example:
+
+  /investigate SNC-Lavalin government lobbying and deferred prosecution agreement
+
+  /investigate McKinsey consulting contracts with Canadian federal government
+
+  /investigate ArriveCAN app contract — GC Strategies, Botler AI, CBSA
+
+The skill file is open source:
+https://github.com/idiom-bytes/canada-central-plots/blob/main/SKILL.md
+
+Copy it to ~/.claude/commands/investigate.md and it's available globally.
+
+───────────────────────────────────────
+
+22/ WHY THIS ISN'T AI SLOP
+
+The tool doesn't summarize news articles. It goes to primary sources first:
+
+  - lobbycanada.gc.ca — actual registration records and communication reports
+  - ourcommons.ca — committee minutes and written questions
+  - open.canada.ca — grants and contributions data
+  - parl.gc.ca — Hansard and bill text
+
+Everything is saved to disk before anything is written to the dashboard. You can audit every source file.
+
+It also documents what it couldn't find. The "2-hour filibuster" framing in the original tip? Not verified in Hansard. What IS in the record: a Liberal amendment to strip contract records, followed by a procedural adjournment that prevented a vote.
+
+That distinction matters. The concern is real and documented. The specific framing wasn't in the record — so it's flagged as unverified.
+
+AI slop tells you what you want to hear. This tells you what the record actually shows — and where the gaps are.
+
+───────────────────────────────────────
+
+23/ SOURCES
+
+  HESA committee minutes — ourcommons.ca/documentviewer/en/45-1/HESA/meeting-25/minutes
+  Lobbying registry — lobbycanada.gc.ca
+  Globe and Mail shutdown investigation
+  CBC News — cbc.ca/news/canada/london/prescribe-it-9.7127925
+  Canadian Pharmacists Association — pharmacists.ca
+  2009 Auditor General findings — cmaj.ca/content/183/8/893
+
+Nothing in this thread is speculation. Everything is cited.
+
+/end

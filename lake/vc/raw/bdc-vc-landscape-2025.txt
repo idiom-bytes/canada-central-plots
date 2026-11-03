@@ -1,0 +1,3522 @@
+Canada’s
+Venture Capital
+Landscape
+May 2025
+
+1
+
+Table
+of contents
+Message from the Executive Vice President, BDC Capital...........................3
+Executive summary..................................................................................................5
+VC investment in Canada: A mixed picture....................................................7
+Prolonged exit activity slowdown.................................................................... 18
+Struggling VC returns.......................................................................................... 21
+A continually evolving GP landscape............................................................. 26
+Fundraising activity losing steam.................................................................... 28
+$11.5 billion of dry powder available...............................................................30
+Shorter runways, but up rounds are on the rise........................................... 31
+Conclusion: Bracing for exceptional uncertainty.......................................... 35
+
+This study is based on information that
+was analyzed and interpreted by BDC.
+Any error or omission is BDC’s sole
+responsibility. Reliance on and use
+of the information herein is the
+reader’s responsibility.
+
+© Business Development Bank of Canada, 2025
+
+2
+
+Message
+from the
+Executive
+Vice President,
+BDC Capital
+Geneviève Bouthillier
+Executive Vice President,
+BDC Capital
+Foreign capital remains a crucial
+component of the Canadian VC landscape,
+particularly for larger deals. Let’s face it:
+the risk of foreign capital retrenchment amid
+global uncertainties is real and as you’ll see
+in our report, we’re already feeling it. This
+year’s report is a collective wake-up call;
+it underscores the need for increased
+Although there has been a slight uptick in
+domestic investment to sustain local
+optimism within the venture capital (VC)
+innovation. Venture capital has become
+industry due to modest economic growth,
+even more pivotal in enabling Canadian
+trade uncertainties are presenting new
+enterprises to thrive independently, and
+challenges that are undermining investor
+in reducing Canada’s reliance on external
+confidence. Despite these headwinds, VC
+markets. As the most active VC investor
+investment activity in Canada saw a notable by number of rounds, BDC Capital seeks to
+10% increase, breaking a two-year decline
+build a strong pipeline for economic growth
+1
+with $7.9 billion invested. This is great news and global competitiveness, and ultimately,
+as VC investments are closely linked to
+a more sustainable VC ecosystem. From
+innovation and productivity, both crucial
+very early stage through expansion, our
+drivers of economic growth.
+commitment to supporting innovative
+Canadian companies remains steadfast.
+VC investments fuel the development and
+commercialization of new technologies and
+business models. A thriving VC ecosystem
+not only supports individual businesses but
+creates a ripple effect on the broader
+economy, generating employment,
+increasing competitiveness, and driving
+GDP growth. There is no better time for
+businesses to streamline operations and
+create more efficient processes.
+Welcome to the 2025 edition of our annual
+report on Canada’s Venture Capital
+Landscape. This comprehensive analysis
+aims to provide a detailed overview of the
+current state of the Canadian venture
+capital ecosystem, while highlighting key
+evolving trends for 2025.
+
+1 This report is based on the CVCA’s year-end 2024 Canadian Venture Capital Market Overview. On May 14th, the CVCA has subsequently
+published revised data for 2024, increasing the total dollars invested to $8.5 billion for the year. The overall conclusions remain consistent.
+
+3
+
+Message from the Executive Vice
+President, BDC Capital (cont.)
+We understand that a thriving and healthy
+ecosystem requires balanced funding
+across all stages of the startup lifecycle
+to ensure that promising companies are
+not hindered in their growth. Therefore,
+after launching our new Seed Venture Fund
+to enhance access to seed capital in
+underserved regions, we committed nearly
+$1 billion to help Canada’s next generation
+of global champions access the capital they
+need to grow. The additional $500 million
+to our Growth Venture Fund and $450
+million to our Growth Equity Partners
+program will help entrepreneurs buoy
+against the current chilling effect within
+the investment ecosystem.
+
+“As we navigate these
+complexities, it is
+imperative for Canadian
+investors to play a more
+active role in supporting
+homegrown innovators.
+It is our duty to foster
+Canada’s culture of
+innovation, here and now”.
+The current environment is tough, with
+significant capital locked in unicorns
+awaiting favorable conditions for exits.
+Alongside weak exit activity through
+mergers and acquisitions (M&As), and
+a challenged initial public offering (IPO)
+market, a healthy number of established
+GPs is surfacing. However, we are seeing
+less first-time managers2, which
+compromises the path to market
+maturation. While we may not have a
+crystal ball, we can confidently identify key
+trends that are shaping the landscape and
+
+2
+
+should be considered as 2025 unfolds:
+Artificial intelligence (AI), hit a peak,
+commanding 30% of all VC investments.
+Increased adoption across a wide range
+of industries indicates that AI is well
+positioned to drive innovation and value
+creation in the years ahead. And with exit
+activity remaining sluggish, secondaries
+can provide a viable liquidity option
+to unlock capital for new investments.
+Unsurprisingly, the VC landscape is likely
+to experience even higher market volatility
+due to geopolitical instability, trade tensions
+and economic uncertainties. This stresses
+the importance of remaining committed
+to a long-term vision and, more broadly,
+to supporting entrepreneurs working in
+strategic and promising sectors that enable
+Canada’s economic autonomy: the mining
+sector, mineral resources, defense tech, life
+sciences, agri-food, to name a few.
+We hope this report will serve as a valuable
+resource for understanding the current
+dynamics and prospects of the Canadian
+VC ecosystem. Given the risk of foreign
+capital pulling back, it is crucial for
+Canadian investors to step up and support
+local innovation and growth within Canada.
+Together, we can create the space for
+our innovators to unlock their potential
+and succeed.
+
+Emerging managers are first time managers, who closed fund I, and developing managers are those who closed funds II and/or III.
+
+4
+
+Executive summary
+Optimism in the Canadian VC ecosystem
+improved slightly in 2024. This happened
+against a mixed macroeconomic backdrop
+of decreasing interest rates and inflation,
+and modest economic expansion. However,
+trade uncertainty and tariffs started eroding
+enthusiasm towards the year’s end and
+into 2025.
+
+AI captured a third of the market
+
+Apart from the growth equity stage,
+investments decreased at all stages, both in
+terms of dollars invested and deal volumes.
+This was in contrast to 2023, when
+investments in late-stage companies and
+growth equity experienced dramatic
+declines. The record 2024 increase in
+growth equity is partly attributable to the
+low 2023 baseline and to the outsized
+impact of the Clio deal.
+
+Foreign investors, particularly from the U.S.,
+claim a greater portion of the investment
+share at later and growth-equity stages.
+Deals involving only Canadian investors
+accounted for 61% of the market, but only
+22% of dollars invested.
+
+Over half of all VC investments in Canada
+(57%) went towards the information and
+communication technology (ICT) sector last
+year. Life sciences and the energy and
+clean technology (ECT) sectors came
+second and third in investments. ECT lost
+4% in market share, potentially in
+With $7.9 billion invested, VC investment
+activity increased by 10% last year, breaking anticipation of the new U.S. administration’s
+pullback from clean energy.
+a two-year decline. However, investors
+remained cautious and selective. They
+AI hit a new high, commanding 30% of all
+targeted fewer, higher-quality deals,
+VC investments.3 Increased adoption across
+prioritizing companies with solid business
+various industries indicates that AI is well
+models and strong growth potential.
+positioned to drive innovation and value
+Excluding the $1.24 billion outlier deal of
+creation in the years ahead.
+Vancouver-based legal tech company
+Clio—the largest round ever recorded in
+Risk of foreign capital
+Canadian tech history—total investment
+decreased by 6% in 2024. This is a relatively pulling back
+better outcome than the double-digit
+The Canadian ecosystem continues to be
+declines of the past two years.
+strongly dependent on foreign capital.
+
+2024 VC investments were
+driven by growth-equity
+stage transactions.
+Looking ahead, a persistent downturn
+across seed, early- and later-stage
+investments could impact the quantity and
+quality of Canadian start-ups, limiting their
+ability to scale and bring innovations to the
+market.
+
+3
+
+According to PitchBook data.
+
+U.S. investors contributed to a third of all
+deals by volume in 2024, on a downward
+trajectory. With the uncertainty around
+tariffs, there is an increased risk that foreign
+capital—including U.S. investments—will
+pull back from the Canadian market.
+In this context, domestic investors have a
+critical role to play in capitalizing
+homegrown innovation and
+counterbalancing the dependency on
+foreign capital, notably U.S. capital.
+
+5
+
+Executive summary (cont.)
+Backing Canadian champions with
+Canadian capital has never been more
+important, especially when it comes to latestage companies which might relocate or
+be acquired by foreign buyers in the
+absence of consistent domestic funding.
+
+Lacklustre M&A activity is making it harder
+for GPs to generate distributed to paid-in
+capital (DPI) for their investors, affecting
+future fundraising activity.
+
+Adequate available capital and
+sharp rise in up rounds
+
+This is a key moment for
+The GP landscape continued to evolve last
+the Canadian ecosystem
+year. The share of established managers
+to rise to the challenge and expanded, while that of emerging managers
+contracted. This could become worrisome,
+direct more capital towards given the essential role that emerging
+managers play in the ecosystem.
+domestic innovation.
+Nevertheless, the funds-of-funds stream
+Venture capital is a powerful innovation
+engine for economic growth, playing a
+critical role in job creation, productivity
+gains and competitiveness. Accelerating
+domestic investments will not only help
+Canada weather the current trade and
+economic turmoil, but it will also help us
+drive long-term prosperity and growth.
+
+Sliding returns and low
+market liquidity
+Exit activity through M&As remained weak,
+except for a few big-ticket deals, while
+the IPO drought continued.
+Only 7% of Canadian unicorns exited in
+2024. This created a tough market, with
+significant capital locked in, while
+potentially awaiting more favourable
+conditions or strategic opportunities to
+realize returns.
+As a result, secondaries became a popular
+option for market liquidity, allowing
+investors to sell their stake in a portfolio
+company to another buyer. If this trend
+continues, it will help increase liquidity and
+attract new investors into the ecosystem.
+Canada’s net 10-year internal rate of return
+(IRR) dropped to 10%, widening the gap
+with the U.S. If the industry’s net returns
+continue to deteriorate and fall into the
+single digits, institutional investors may shift
+their allocation to other asset classes,
+constraining funding for both General
+partners (GP) and entrepreneurs.
+
+announced in the renewed 2021 Venture
+Capital Catalyst Initiative (VCCI) could help
+mitigate this challenge since one of its
+mandates is to support emerging fund
+managers. Market liquidity constraints were
+reflected in the low amount of dollars
+raised: just $2 billion across 17 funds.
+Despite the scarcity of liquidity, dry
+powder—the amount of committed, but
+unallocated capital a VC manager has on
+hand—remains adequate for the market’s
+needs in the near term. Canadianheadquartered VC investors are currently
+sitting on $11.5 billion of dry powder, which
+means that investors have reasonable
+capital availability to deploy in the near
+future.
+
+Dry powder remains
+adequate for the market’s
+needs in the near term
+Amid this rather bleak context, the bright
+spot was a substantial increase in up rounds
+and a notable decline in down rounds
+within BDC’s direct portfolio. This means
+that more start-ups are raising funds at
+higher valuations, which suggests some
+positive momentum in valuations.
+
+6
+
+VC investment
+in Canada:
+A mixed picture
+10% increase in VC funding
+after a two-year decline
+
+Furthermore, when comparing 2024
+investment levels to pre-pandemic levels
+(2015-19), we note a substantial 111%
+increase in Canadian VC activity (Figure 1),
+With $7.9 billion invested, VC funding
+well above the growth of VC investment
+bounced back in 2024, posting a 10%
+around the world, which increased by only
+increase after two years of decline. Even if
+27%. Global VC investment activity spans
+we remove Vancouver-based legal tech
+early-stage, emerging and established
+company Clio’s $1.24 billion outlier deal
+markets, reflecting its large and diverse
+from the calculations, Canadian VC-backed scale. Combining different growth rates for
+companies still raised only 6% less in 2024, these markets makes the resulting average
+a stark contrast to the 30% declines
+more difficult to compare with the growth
+recorded in 2022 and 2023.
+rate of a single market. This is why the
+increase in Canada’s VC activity can seem
+more significant when compared to the
+global VC investment activity.
+
+The Bank of Canada cut
+interest rates five times
+in 2024, from 5% to 3.25%,
+which pumped some
+optimism into the
+VC market.
+
+Figure 1: Canadian versus global VC investment growth from the
+pre-pandemic period to 2024 ($ billions)
+Canada (CAD)
+
+Global (USD)
+7.9
+
+111%
+
+27%
+
+316.6
+
+247.8
+
+3.8
+
+5-year
+2024
+pre-pandemic
+average 2015-19
+
+5-year
+pre-pandemic
+average 2015-19
+
+2024
+
+Sources: CVCA, Crunchbase, BDC analysis
+
+7
+
+Fewer deals, but larger checks
+
+Fewer deals and larger checks pushed
+the average deal size to $13.3 million, 27%
+higher than the 2023 average. Even without
+Clio, the average deal size surpassed the
+2023 average, suggesting that investors
+targeted higher-quality deals to cautiously
+maximize returns and minimize risks.
+
+In 2024, the number of transactions
+declined by 13.6% to 592 in Canada,
+reverting closer to the pre-pandemic
+average of 527 deals a year.
+
+Figure 2: Evolution of VC activity
+Amount invested ($ billions)
+
+Deal count
+
+Average deal size ($ millions)
+
+30
+
+846
+755
+
+25
+20
+
+685
+538
+
+531
+
+530
+
+566
+
+592
+523
+
+470
+
+15.7
+
+15
+10.5
+10
+6.6
+5
+0
+
+3.8
+
+7.2
+
+7.9
+
+4.6
+
+3.0
+
+3.8
+
+3.8
+
+2015
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+5.6
+
+7.2
+
+8.1
+
+7.2
+
+11.6
+
+8.8
+
+18.6
+
+13.9
+
+10.5
+
+13.3
+
+Sources: CVCA, BDC analysis
+
+Higher dependency on foreign
+capital for larger deals
+Foreign investors took part in 39% of all
+Canadian deals in 2024, representing 3%
+lower share compared to the previous year.
+Their participation in Canadian deals has
+been constantly declining since 2022.
+In terms of dollars invested, foreign
+investors in syndicate with Canadian
+investors accounted for 78% of all deals.
+
+Deals involving only Canadian investors
+made up 61% of transactions but only 22%
+of the total deal value, suggesting that
+Canadian-only deals tend to have lower
+average deal sizes than deals with foreign
+participation. Across stages, Canadian-only
+deals accounted for 40% of seed-stage
+rounds, 20% of early-stage rounds, 16%
+of late-stage rounds and 14% of growthequity rounds.4
+
+“Analysis: Foreign Investor Participation in the Canadian VC Ecosystem,” CVCA, March 20th, 2025,
+https://central.cvca.ca/analysis-foreign-investor-participation-in-canadian-vc-ecosystem
+4
+
+8
+
+Unsurprisingly, given the deeper local
+knowledge and connections required
+for early-stage ventures, foreign investors
+are more active in later-stage rounds, while
+Canadian investors are more involved
+in early-stage deals.
+
+Foreign investors, particularly those from
+the United States, account for a significant
+share of the VC investment in Canada.
+Anecdotaly U.S. investors tend to command
+over 50% of the deal size. Based on this
+estimate, U.S investment accounts for 40%
+of the total VC investment in Canada. This
+indicates an increased dependence on U.S.
+capital compared to the period before the
+pandemic—when U.S. investors contributed
+around 30% of the total deal value.
+
+Figure 3: Foreign and Canadian investor participation, by deal count
+Canadian investors only
+
+Foreign + Canadian investors
+
+34%
+
+33%
+
+68%
+
+67%
+
+2018
+
+2019
+
+33%
+48%
+
+43%
+
+42%
+
+39%
+
+52%
+
+57%
+
+58%
+
+61%
+
+2021
+
+2022
+
+2023
+
+2024
+
+67%
+
+2020
+
+Sources: CVCA, BDC analysis
+
+Figure 4: Foreign and Canadian investor participation,
+by dollars invested
+Canadian investors only
+
+64%
+
+Foreign + Canadian investors
+
+71%
+
+59%
+83%
+
+36%
+
+2018
+
+29%
+
+2019
+
+78%
+
+26%
+
+22%
+
+2023
+
+2024
+
+83%
+
+41%
+
+2020
+
+74%
+
+17%
+
+17%
+
+2021
+
+2022
+
+Sources: CVCA, BDC analysis
+
+9
+
+U.S. remains the most active
+foreign investor
+The U.S. continued to be the most active
+investor in Canadian VC in 2024, despite
+a slight decline over the past few years. U.S.
+investors participated in 32% of the deals.
+
+European investor presence remained
+relatively stable, while Asian participation
+has gradually increased to reach 6% in
+2024. This is the highest level in recent
+years, indicating growing interest from
+Asian investors for the Canadian market.
+
+Figure 5: Breakdown of foreign VC investors in Canada (by deal count)
+U.S.
+
+Europe
+
+Asia
+
+26%
+
+34%
+
+32%
+
+2019
+
+2020
+
+7%
+
+7%
+
+3%
+
+2%
+
+2018
+
+8%
+
+6%
+
+3%
+
+2%
+
+35%
+
+24%
+
+23%
+
+3%
+
+37%
+
+2021
+
+2022
+
+6%
+
+5%
+
+4%
+
+2%
+
+6%
+
+2023
+
+2024
+
+Sources: CVCA, BDC analysis
+
+Canadian VC to GDP
+ratio saw an uptick
+Canadian VC investments as a share of GDP
+grew steadily until 2019, contracted in 2020
+due to the onset of pandemic, and surged
+in 2021 with record low interest rates.
+
+After a two-year decline, it now appears
+to have stabilized and resumed growth at
+a level higher than before the pandemic.
+VC investments as a share of GDP in
+Canada reached 0.35% in 2024 (Figure 6).
+
+Figure 6: VC investment as a share of GDP in Canada
+0.70%
+
+0.48%
+0.35%
+0.29%
+0.32%
+
+0.21%
+0.10%
+
+0.12%
+
+0.13%
+
+2014
+
+2015
+
+2016
+
+0.16%
+
+2017
+
+0.24%
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Sources: PitchBook, OECD, BDC analysis
+
+10
+
+Canada moved up two spots and now ranks
+6th among a sample of OECD nations
+for its share of VC investment to GDP,
+just above the median (Figure 7). This was
+driven by slightly lower GDP growth but
+higher total venture capital investments
+in 2024.
+
+Venture capital’s increasing importance
+to GDP underscores its vital role in the
+economy as a growth stimulator. A strong
+VC ecosystem contributes to creating
+wealth, powering innovation and job
+creation, and advancing a country’s
+competitiveness and prosperity.
+
+Changes in venture capital investments
+as a percentage of GDP varied significantly
+across OECD countries last year. The U.S.
+has been leading the way by a large margin,
+followed by Sweden and Switzerland.
+Canada, too, was among the top players
+(Figure 8).
+
+Historically, the growth of VC investments
+has been correlated with GDP growth.
+As a result, the trajectory for VC’s share
+of GDP will depend on macroeconomic
+evolutions and their impact on the
+VC ecosystem and investor appetite.
+
+Ireland and Israel suffered the most
+significant decreases, losing nearly half
+their VC investments as a share of GDP.
+
+Figure 7: VC investments as a share of GDP in the OECD, 2024
+United States
+
+0.86%
+
+Israel
+
+0.81%
+
+Sweden
+
+0.77%
+
+United Kingdom
+
+0.52%
+
+Switzerland
+
+0.50%
+
+Canada
+
+0.35%
+
+Finland
+
+0.32%
+
+Denmark
+
+0.29%
+
+France
+
+0.24%
+
+Australia
+
+0.19%
+
+South Korea
+
+0.17%
+
+Germany
+
+0.16%
+
+New Zealand
+
+0.14%
+
+Ireland
+
+0.13%
+
+India
+
+0.12%
+
+Sources: PitchBook, OECD, BDC analysis
+
+11
+
+Figure 8: Change in VC investment as a share of GDP, 2023 to 2024
+0.18%
+
+United States
+0.06%
+
+Sweden
+Switzerland
+
+0.04%
+
+Canada
+
+0.03%
+
+India
+
+0.01%
+
+Australia
+
+0.01%
+
+Germany
+
+0.01%
+-0.02%
+
+United Kingdom
+Finland
+
+-0.03%
+
+France
+
+-0.04%
+
+New Zealand
+
+-0.04%
+
+South Korea
+
+-0.07%
+
+Denmark
+Ireland
+Israel
+
+-0.09%
+-0.13%
+-0.15%
+
+Sources: PitchBook, OECD, BDC analysis
+
+12
+
+86% of VC activity is concentrated
+in three provinces
+Ontario, British Columbia and Quebec
+cumulatively accounted for 86% of total
+VC activity by value last year, up from 77%
+in 2019. This trend is similar in terms
+of number of deals across the regions.
+
+With 32% of dollars
+invested and 43% of deals,
+Ontario continues to lead
+Canadian VC activity.
+
+Looking at the five-year compound annual
+growth rate (CAGR), the Prairies grew
+at 40%, followed by British Columbia
+at 28% and Ontario at 13%.
+Quebec’s five-year CAGR growth was flat
+at 0.3% after spikes in activity in 2021 and
+2022. This is largely the result of weak exit
+activity in the province, with funding rounds
+closing at a slower pace.5
+
+Investment networks thrive on connections.
+In some of these regions, there’s a dense
+network of VCs, angels and successful
+entrepreneurs who contribute to increased
+investment activity. Smaller regions, such as
+Atlantic Canada, lack this critical mass,
+British Columbia came second, outpacing
+making it harder for start-ups to access
+Quebec and almost matching Ontario in
+funding. Investors often prefer to invest
+terms of dollars invested. This was primarily
+where they have existing relationships and
+driven by the Clio mega deal. Activity in the
+perceive start-ups outside major hubs as
+Prairies was also promising, primarily fueled
+riskier, associating proximity to established
+by the strong momentum in Alberta’s
+markets and talent pools with increased
+investment community.
+chances of success.
+
+Figure 9: Regional VC activity, by dollars invested
+Ontario
+
+Quebec
+
+B.C.
+
+6.5
+100%
+
+Prairies
+4.5
+11%
+
+5%
+
+80%
+
+17%
+
+19%
+
+70%
+60%
+
+10.5
+
+7.2
+
+2%
+6%
+
+2%
+10%
+
+21%
+
+17%
+
+20%
+
+27%
+
+29%
+
+50%
+
+15.6
+3%
+
+10%
+
+90%
+
+Atlantic
+7.9
+2%
+9%
+
+3%
+11%
+18%
+
+27%
+
+31%
+
+21%
+25%
+
+40%
+30%
+20%
+
+50%
+
+43%
+
+37%
+
+47%
+
+44%
+
+32%
+
+10%
+0%
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Sources: CVCA, BDC analysis
+
+Decline across all stages
+except for growth equity
+VC activity fell across all stages except
+for growth equity (Figures 10 and 11). Seed
+investments were the most affected, with
+a 45% decrease in capital invested and
+an 18% drop in the number of deals. Early
+and later stages saw more moderate drops
+in capital invested and in deal count.
+
+Growth equity was the biggest winner and
+recorded the most notable shift from the
+previous year, with a 15-fold increase in
+capital invested across eight deals. Clio’s
+Series F accounted for 84% of the total
+$1.5 billion of growth equity capital invested
+in 2024. Even if the Clio deal is excluded,
+growth equity still delivered a strong
+performance, jumping from $91 million to
+$240 million invested. This increase comes
+after a particularly bad year for growth
+equity investments, which had declined
+96% in 2023.
+
+Réseau Capital, Quebec Venture Capital and Private Equity Market Overview: Q3-2024. Montreal: Réseau Capital, 2024), Report.
+https://reseaucapital.com/en/news/overview-of-the-quebec-venture-capital-and-development-capital-market-for-q3-2024/
+5
+
+13
+
+Figure 10: Capital invested, by stage
+2023
+
+2024
+
+3500
+
+-8%
+
+3000
+
+-11%
+
+2500
+2000
+
++1534%
+
+1500
+
+-45%
+
+1000
+500
+0
+Seed stage
+
+Early stage
+
+Later stage
+
+Growth equity
+
+Sources: CVCA, BDC analysis
+
+Figure 11: Deal count, by stage
+2023
+
+2024
+
+450
+400
+
+-18%
+
+350
+300
+250
+
+-10%
+
+200
+150
+
+-10%
+
+100
+
++167%
+
+50
+0
+Seed stage
+
+Early stage
+
+Later stage
+
+Growth equity
+
+Sources: CVCA, BDC analysis
+
+14
+
+Life sciences gaining market
+share; ECT losing ground
+
+The ECT space lost 4% in market share
+last year. However, investors’ interest in
+alternative energy equipment has surged,
+reflecting a broader shift towards
+The ICT sector remained dominant,
+sustainable innovation and regulatory
+commanding more than half of all the
+dollars invested (57%) in 2024, followed by support for clean energy solutions.
+life sciences (18%) and the ECT sector (16%). This sub-sector accounted for 35% of
+ECT investments in 2024.
+Investment in the ICT sector is concentrated
+The average deal sizes were higher for
+in the Internet software and services area,
+ECT and life sciences companies when
+which accounted for 76% of total ICT
+compared to 2023, as deal volumes
+investment, the highest share recorded
+contracted. For the ICT sector, the deal
+since 2013.
+sizes were in line with the previous year,
+The life sciences sector gained 1% in market after adjusting for Clio’s outlier deal.
+share last year, with the rise of AI-driven
+drug discovery, remote patient monitoring
+and next-generation diagnostics fueling
+capital inflows into the space. Sub-sectors
+such as e-health, medical devices,
+therapeutic drugs and biologics continued
+to attract investments.
+
+The ECT sector posted the
+highest average deal size
+at $12.4 million, followed
+by the ICT sector, with an
+adjusted deal size of $12
+million, and life sciences
+at $11.3 million.
+
+Figure 12: VC investment activity, by sector (dollars invested)
+ICT
+
+Life sciences
+
+100%
+
+ECT
+
+12%
+
+90%
+
+9%
+
+80%
+70%
+
+27%
+
+60%
+
+Other
+6%
+
+10%
+
+20%
+
+16%
+
+18%
+
+14%
+
+7%
+12%
+
+14%
+11%
+
+17%
+
+18%
+
+64%
+
+62%
+
+57%
+
+57%
+
+50%
+40%
+30%
+
+52%
+
+20%
+10%
+0%
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Sources: CVCA, BDC analysis
+
+In Ontario, eight out of every 10 dollars
+went to the ICT sector. Companies in the
+life sciences sector continued to attract
+significant investments in Quebec,
+particularly in healthcare and biotechnology.
+Continuing the trend of previous years,
+ICT was the leading sector in almost
+all regions.
+
+15
+
+Figure 13: Regional VC activity, by sector, 2024 ($ millions invested)
+ICT
+
+ECT
+
+Life sciences
+2.262
+
+100%
+
+Others
+1.859
+
+2.258
+
+11%
+
+90%
+
+146
+18%
+
+21%
+31%
+
+9%
+
+80%
+
+414
+
+45%
+14%
+
+70%
+
+36%
+
+14%
+
+60%
+50%
+40%
+
+25%
+
+80%
+65%
+
+30%
+
+55%
+
+46%
+
+20%
+29%
+
+10%
+0%
+Ontario
+
+Quebec
+
+B.C.
+
+Prairies
+
+Atlantic
+
+Sources: CVCA, BDC analysis
+
+AI secured one third
+of investments
+Investments in AI companies reached
+a new high in 2024, amassing 30% of
+Canada’s VC investments6 after a decade
+of volatility.
+
+Despite the overall increase, a significant
+portion of AI investments remains
+concentrated in a few leading firms.
+More than half of total investments in AI
+was directed at two companies: Cohere
+and Tenstorrent, both from Ontario.
+
+Figure 14: Share of Canadian VC investments in AI companies
+35%
+30%
+
+30%
+26%
+25%
+
+23%
+20%
+
+20%
+16%
+
+17%
+
+21%
+16%
+
+16%
+
+15%
+10%
+
+10%
+
+11%
+
+5%
+0%
+
+2014
+
+2015
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Sources: PitchBook, BDC analysis
+
+6
+
+According to PitchBook data for VC investments based on value.
+
+16
+
+A few big-ticket deals drove
+venture debt to record levels
+The value of venture debt deals peaked
+at its highest level in eight years, reaching
+$881.4 million, while the deal count hit
+a low, with only 35 deals for the year. Six
+of these deals accounted for 38% of total
+venture debt value, indicating larger deals
+focused on fewer companies. Considering
+their larger size, these deals are likely with
+late-stage companies commanding higher
+valuations and looking to bridge the round
+with venture debt to avoid a potential
+down round.
+
+Fewer deals and bigger cheques have been
+a persistent trend in the ecosystem since
+2020, contrasting with the 2017-19 period
+marked by a higher volume of venture
+debt transactions.
+
+Figure 15: Venture debt in Canada
+$ millions
+
+Deal count
+
+Average deal size ($ millions)
+
+1000
+900
+
+881.4
+
+139
+
+800
+
+115
+
+700
+
+776.5
+
+100
+
+500
+378.7
+
+400
+300
+125.6
+
+192.1
+
+171.1
+
+80
+
+441.7
+
+439.2
+
+60
+
+67
+57
+
+53
+
+52
+
+40
+
+35
+
+100
+0
+
+140
+120
+
+108
+
+600
+
+200
+
+160
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+0.9
+
+1.7
+
+1.6
+
+7.1
+
+6.6
+
+13.6
+
+8.5
+
+25.2
+
+20
+0
+
+Sources: CVCA, BDC analysis
+
+17
+
+Prolonged exit
+activity slowdown
+Except for a few big-ticket deals, exit
+activity remained limited in 2024. The value
+of M&A deals nearly halved last year, though
+deal volume was steady (Figure 16). Three
+quarters (74%) of M&A value came from one
+deal—Astra Zeneca’s acquisition of Fusion
+Pharma which was valued at $3.3 billion.
+The IPO drought continued, with no
+VC-backed company making it to the
+public markets in 2024. After nearly a
+decade of historically low interest rates,
+leading to a peak in IPO listings in 2021,
+the technology IPO market collapsed in
+2022. The slowdown has extended well
+into 2024 (Figure 17).
+As a result, start-ups still face challenges
+in finding exit avenues near the same
+valuations recorded a few years ago,
+especially when it comes to going public.
+
+Persistent sluggishness
+in the exit market could
+make LPs hesitant to
+invest in new funds, further
+slowing down the entire VC
+ecosystem.
+Weak exit activity also means that limited
+partners (LPs) are distribution-starved.
+This is why secondaries have become
+a more popular liquidity option, allowing
+investors to sell their stake in a portfolio
+company to another buyer. In 2024, total
+disclosed secondary deals were valued
+at close to $800 million across five deals.7
+
+Figure 16: Evolution of the M&A market
+$ millions
+
+Deal count
+
+9,000
+
+8,036
+
+52
+
+8,000
+
+60
+50
+
+7,000
+6,000
+
+39
+
+36
+
+5,256
+31
+
+5,000
+
+33
+
+36
+
+35
+4,381
+
+4,000
+3,000
+2,000
+1,000
+0,000
+
+40
+30
+20
+
+1,033
+
+2018
+
+1,429
+702
+2019
+
+2020
+
+10
+
+697
+2021
+
+2022
+
+2023
+
+2024
+
+0
+
+Sources: CVCA, BDC analysis
+
+7
+
+Source: CVCA
+
+18
+
+Figure 17: Number of VC-backed IPOs in Canada
+12
+
+12
+10
+8
+6
+
+6
+
+4
+
+4
+
+3
+
+3
+
+2
+
+3
+1
+
+1
+
+0
+
+0
+
+2014
+
+2015
+
+0
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+0
+
+2022
+
+2023
+
+2024
+
+Sources: PitchBook, BDC analysis
+
+Median exit value decreased considerably
+due to unfavourable market conditions,
+reaching $30 million, the lowest level since
+2021. Contrastingly, median exit value more
+than doubled in the U.S. in 2024. The U.S.’s
+larger VC market probably explains why they
+tend to have higher median exit values.
+
+Figure 18: Canada vs U.S. median exit values ($ millions)
+Canada
+
+U.S.
+
+2017
+
+18.1
+
+259.7
+
+190.6
+
+156.4
+
+130.5
+29.8
+
+790.6
+
+43.1
+
+2018
+
+2019
+
+31.5
+
+2020
+
+232.7
+89.4
+
+2021
+
+39.5
+
+86.0
+
+2022
+
+92.1
+
+115.5
+
+2023
+
+30.0
+
+2024
+
+Sources: PitchBook, BDC analysis
+
+19
+
+Liquidity remains tied up
+in unicorns
+The Canadian tech ecosystem experienced
+a significant surge in unicorns in 2021 and
+2022. An all-time high number of Canadian
+start-ups achieved unicorn status in 2021
+and this trend continued into 2022 when
+several companies reached the $1 billion
+valuation mark.
+
+Despite this rapid growth, there have been
+relatively few exits, such as IPOs or
+acquisitions, among these unicorns.
+Companies are staying private longer. Our
+analysis shows that only 7% of Canadian
+unicorns exited in 2024, which suggests
+that a substantial amount of capital remains
+invested in these companies, potentially
+awaiting more favourable market conditions
+or strategic opportunities to exit.
+
+Figure 19: Canada's cumulative unicorn count, new entrants and exits
+New entrants
+
+Exits
+
+Year end unicorns
+
+Exits share
+
+35
+67%
+30
+4
+
+3
+25
+
+3
+
+1
+
+2
+
+50%
+12
+
+20
+
+4
+
+15
+27
+
+26
+19
+
+10
+
+19%
+5
+
+0
+
+26
+
+3
+
+3
+
+2
+
+2
+
+10%
+
+10%
+
+2022
+
+2023
+
+7%
+
+2
+
+1
+2019
+
+17
+
+2020
+
+2021
+
+2024
+
+Sources: PitchBook, BDC analysis
+Note: Our analysis includes new unicorns (rounds with post-valuations of more than $1 billion). For each subsequent year,
+we add new entrants and carry over companies that did not have an exit activity in the previous year.
+
+20
+
+Struggling
+VC returns
+The performance of the
+VC asset class is declining
+
+Among the global private asset classes,
+private equity stood out with the highest
+returns over the 5-year and 10-year periods.
+
+On a global scale, venture capital returns
+have been low compared to other private
+asset classes. The 1-year and 3-year global
+VC returns have been negative, primarily as
+a result of valuation adjustments after the
+2021 bubble. Even with 5-year and 10-year
+VC returns still in the double digits, there is
+a strong possibility that 5-year returns will fall
+into single digits if valuations do not recover.
+
+Global 10-year VC returns
+ranked 5th amongst eight
+private asset classes, down
+from second best in 2023.
+
+Figure 20: Global VC returns (IRR) compared to other private capital
+asset classes
+Private equity
+
+Venture capital
+
+Real estate
+
+Real assets
+
+Private debt
+
+Funds of funds
+
+Secondaries
+
+Private capital
+
+20.00%
+
+15.00%
+
+10.00%
+
+5.00%
+
+0.00%
+1-year
+
+3-year
+
+5-year
+
+10-year
+
+-5.00%
+
+Source: PitchBook, data as of June 30, 2024
+
+21
+
+The Canada-U.S. performance
+gap widened
+Canada’s VC performance deteriorated last
+year but remained in the double digits, with
+the VC 10-year net internal rate of return
+(IRR) at 10% (Figure 21).
+
+the gap between Canadian and U.S. returns
+to over 450 basis points. The main driver
+was lower Canadian valuations compared
+to the U.S. For example, Canadian
+pre-money Series A and B valuations
+were, respectively, 2.6% and 15% lower
+than U.S. valuations, while Series C+
+Canadian valuations were 28% lower.8
+
+Canada experienced a sharp decline of 210
+basis points, while U.S. returns contracted
+by only 70 basis points, thus deepening
+
+Despite contracting, U.S. IRR performance
+still fares well when compared to global
+VC returns, while Canada lags behind.
+
+Figure 21: 10-year VC net IRR in Canada and the U.S.
+Canada
+
+U.S.
+20.8%
+17.2%
+
+10.9%
+
+12.8%
+9.4%
+
+5.3%
+
+4.6%
+
+2015
+
+2016
+
+9.0%
+
+8.5%
+
+18.6%
+
+14.6%
+9.3%
+
+19.5%
+16.4%
+
+15.3%
+12.1%
+
+10.8%
+
+14.6%
+10.0%
+
+5.7%
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Sources: : Cambridge Associates, U.S. VC benchmark preliminary data as of September 2024;
+BDC Capital fund investment data for VC funds headquartered in Canada and foreign-based funds with significant
+Canadian investment exposure, as of September 2024.
+Note: BDC improved its methodology for calculating performance. As a result, this year's data cannot be directly
+compared with data from previous reports.
+
+Post-2020 vintages are
+expected to see volatility
+in their returns
+To analyze VC asset class performance,
+we assessed three performance metrics
+across vintages:
+– Internal rate of return (IRR)
+– Total value to paid-in capital (TVPI)
+– Distributed to paid-in capital (DPI)
+Pre-2011 returns are weak, reflecting the
+Canadian VC market’s nascent and evolving
+situation during that period. Vintages from
+2011 to 2016 are the best performers across
+quartiles—having gone through a full 10- to
+12-year investment lifecycle. These vintages
+also rode the 2021 boom, when valuations
+peaked for the asset class. Performance
+of the 2017-2019 cohort is a mixed bag,
+reflecting the fact that investments were
+made during the fairly normal pre-pandemic
+period as well as at the peak of the market.
+
+8
+
+Post 2020 funds are at the early stage
+of their lifecycle, and many continue
+to find themselves at the bottom of their
+J-curve (Figure 22, 2020-22 and 2023-24
+vintage groups).
+The J-curve refers to the typical return
+pattern of investments, meaning that a fund
+will incur losses in its initial years due
+to initial costs, fees and early-stage
+investments. The fund will eventually
+mature and deliver returns, generating
+a J-shaped curve.
+Compared to 2023, the 2024 IRRs across
+vintage cohorts have contracted, except
+for the 2020-22 cohort. The 2020-22
+cohort performance improved for median
+quartile funds by 1.3%, which could be
+attributed to improved valuations in 2024
+versus 2023. At the same time, 2014-16
+and 2017-19 vintage cohorts suffered a
+contraction of -0.3% to -2.6%, respectively
+at a median level.
+
+Neville, Ashley. Fundraising Insights Across Borders: VCAA March 2025. Carta Insights. 2025
+
+22
+
+Figure 22: IRR across vintages
+Lower quartile
+
+Median quartile
+
+30.0%
+
+24.4%
+
+20.6%
+
+20.0%
+10.0%
+
+Upper quartile
+
+0.9%
+
+4.0%
+
+7.9%
+
+12.4%
+8.4%
+
+14.6%
+6.5%
+
+4.7%
+
+9.1%
+
+13.0%
+7.0%
+0.8%
+
+0.0%
+-10.0%
+
+0.0% 0.0%
+
+-7.2%
+
+-20.0%
+-30.0%
+-30.2%
+
+-40.0%
+13
+
+11
+
+20
+
+24
+
+28
+
+19
+
+Pre-2011
+
+2011-13
+
+2014-16
+
+2017-19
+
+2020-22
+
+2023-24
+
+Source: BDC analysis
+BDC Capital fund investment data for VC funds headquartered in Canada and foreign-based funds with significant
+Canadian investment exposure, as of September 2024.
+The number of funds in each vintage cohort is displayed above the vintage years.
+Note: BDC improved its methodology for calculating performance using reported fund financials instead of BDC's
+valuation policy. As a result, this year's data cannot be directly compared with data from previous reports.
+
+Mature funds are awaiting to
+convert TVPI into DPI
+The median TVPI for funds in the 2023-24
+vintage bracket is less than one. This is due
+to their relatively short existence, which
+prevents them from realizing write-ups.
+
+Funds that are 6- to 8-years-old still hold
+multiple active investments. As a result,
+their challenge is not returning enough
+capital to existing LPs, which can hinder
+GPs from successfully closing subsequent
+funds. These funds are strategically waiting
+for favourable market conditions to exit and
+convert their TVPI into DPI.
+
+Funds that have been active for at least
+11 years (2013 and younger) are still
+struggling to convert TVPI into DPI due to
+the sluggish exit activity in the ecosystem,
+whether through M&As or IPOs.
+
+23
+
+Figure 23: TVPI across vintages
+Lower quartile
+
+Median quartile
+
+Upper quartile
+
+4.00
+3.49
+
+3.50
+
+3.33
+
+3.00
+2.50
+1.89
+
+2.00
+
+1.67
+
+1.50
+
+1.50
+
+1.85
+
+1.58
+
+1.57
+1.35
+
+1.21
+
+1.07
+
+1.34
+0.90
+
+1.00
+
+1.01
+
+1.13
+0.80 0.86
+
+1.00
+
+0.50
+0.00
+13
+
+11
+
+20
+
+24
+
+28
+
+19
+
+Pre-2011
+
+2011-13
+
+2014-16
+
+2017-19
+
+2020-22
+
+2023-24
+
+Source: BDC Capital fund investment data for VC funds headquartered in Canada and foreign-based funds with
+significant Canadian investment exposure, as of September 2024.
+Number of funds in each vintage cohort is displayed in the graph just above the vintage grouping.
+Note: BDC improved its methodology for calculating performance. As a result, this year's data cannot be directly
+compared with data from previous reports.
+
+Figure 24: DPI across vintages
+Lower quartile
+
+Median quartile
+
+Upper quartile
+
+1.80
+1.64
+
+1.60
+
+1.52
+
+1.40
+
+1.25
+
+1.20
+1.03
+
+1.00
+0.80
+
+0.93
+0.82
+
+0.74
+0.64
+
+0.60
+0.36
+
+0.40
+
+0.33
+
+0.20
+0.00
+
+0.14
+0.02
+
+0.00 0.00 0.00
+
+0.00 0.00 0.00
+
+13
+
+11
+
+20
+
+24
+
+28
+
+19
+
+Pre-2011
+
+2011-13
+
+2014-16
+
+2017-19
+
+2020-22
+
+2023-24
+
+Source: BDC Capital fund investment data for VC funds headquartered in Canada and foreign-based funds with
+significant Canadian investment exposure, as of September 2024.
+Number of funds in each vintage cohort is displayed in the graph just above the vintage grouping.
+Note: BDC improved its methodology for calculating performance using reported fund financials instead of BDC's
+valuation policy. As a result, this year's data cannot be directly compared with data from previous reports.
+
+24
+
+to 2023, the ECT sector was more
+ICT and ECT returns contracted; Similar
+resilient, with a moderate 130 basis points
+life sciences expanded
+contraction. Life sciences companies
+IRR in the ICT sector suffered a sharp 300
+basis points contraction in 2024. This was
+the sector’s second consecutive year
+of decline in terms of 10-year returns,
+a consequence of valuation readjustments
+after the 2021 peak.
+
+continued to outperform ECT and ICT
+in terms of returns and share of
+VC investment.
+
+Figure 25: 10-year gross IRR by sector in Canada
+2023
+
+2024
+
+25.00%
+
+23.6%
+22.3%
+18.9%
+
+20.00%
+
+15.9%
+15.00%
+12.1%
+
+10.9%
+
+10.00%
+
+5.00%
+
+0.00%
+ECT
+
+ICT
+
+Life sciences
+
+Source: BDC data and analysis, as of December 31, 2023, and December 31, 2024.
+Note: BDC direct and underlying companies are used as a proxy for sector performance.
+
+25
+
+A continually
+evolving
+GP landscape
+GPs continue to focus on ICT
+The ICT sector remained the most active
+in terms of capital deployment by GPs,
+as some early-stage funds neared the end
+of their lifecycle.
+We continue to note gaps in the number
+of private active funds across the life
+sciences sector, in the pre-seed, seed, late
+venture and growth equity stages. Bridging
+these gaps is essential to keep capital
+flowing to innovators in this space. A lack
+of GPs limits pipeline development and
+the emergence of Canadian champions.
+
+Gaps have also increased in the ECT sector,
+creating opportunities in stages similar
+to those in the life sciences sector. ECT
+fund sizes also remain relatively moderate
+to small compared to the other sectors.
+Increasing fund activity in this sector would
+help Canada reach its net-zero emissions
+objective by 2050.
+
+Early venture
+Pre-seed/
+seed
+
+Stage focus
+
+Late venture/
+growth equity
+
+Figure 26: GP presence, by stage and sector
+
+Life sciences
+
+ICT
+
+ECT
+
+Generalist/emerging vertical
+
+Sources: BDC internal data, PitchBook. Data include Canadian private independent VC funds that closed with a fund size
+of $10M or more and BDC Capital direct funds. Excludes PE funds, private debt, funds of funds, government funds and
+accelerators. Graphic presents only the most recent fund for each respective GP that is no older than 12 years
+(2012 vintage).
+Note: Bubble size represents actual/target fund size—not all capital may be deployed in Canada.
+Bright colors are active funds that are no older than five years.
+Faded colors are active funds that are 6-12 years old.
+
+26
+
+A growing share of
+established managers
+
+First-time managers make up almost
+a third of the manager mix, providing
+a healthy pipeline of GPs maturing
+to developing GPs. First-time managers
+and developing managers are considered
+emerging managers. A robust pipeline
+of emerging managers is essential
+to maintain the Canadian market
+on its path towards maturity.
+
+As VC investment in Canada evolved,
+so did the manager mix in the ecosystem,
+with established managers accounting
+for 20% of all active GPs (Figure 27).
+The increasing number of established GPs
+underscores the fact that Canada is
+creating progressively more sustainable
+franchises that can reach an ever-growing
+number of LPs.
+
+Figure 27: Active GPs in Canada, by maturity
+First time
+
+Developing
+
+Established
+82
+
+76
+
+51
+37
+
+35
+46%
+
+2016
+
+2017
+
+42%
+
+45%
+
+2018
+
+2019
+
+48%
+50%
+
+51%
+
+46%
+
+36%
+
+32%
+
+35%
+
+34%
+
+58%
+
+43%
+
+44%
+
+41%
+
+12%
+
+47%
+
+49%
+
+54%
+
+49%
+
+12%
+
+7%
+
+20%
+
+59
+
+12%
+
+5%
+
+6%
+
+2015
+
+43
+
+17%
+17%
+
+14%
+
+60
+
+89
+
+88
+
+31%
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Sources: BDC internal data, PitchBook
+Note: Data includes Canadian private independent VC funds that closed with a fund size of $10M or more. Excludes
+PE funds, private debt, funds of funds, government funds and accelerators. It also excludes GPs where the most recent
+fund vintage is older than five years.
+
+27
+
+Fundraising activity
+losing steam
+Median fundraising time
+remains high
+Challenging macroeconomic conditions
+continued to impact fundraising.
+The median time to fundraise remained
+at 4 years for the second consecutive year.
+However, 12 GPs closed funds in 2024,
+which was higher than the previous year.
+(Figure 28).
+
+Figure 28: Fundraising velocity in Canada
+Median years since last fundraise
+
+Number of GPs
+
+5.0
+
+4.0
+
+5.0
+4.0
+
+3.0
+
+4.0
+
+3.0
+
+3.0
+
+3.0
+
+4.0
+
+4.5
+4.0
+3.5
+
+3.0
+
+3.0
+2.5
+2.0
+1.5
+1.0
+0.5
+
+2015
+1
+
+2016
+7
+
+2017
+7
+
+2018
+9
+
+2019
+11
+
+2020
+8
+
+2021
+17
+
+2022
+14
+
+2023
+10
+
+2024
+12
+
+0.0
+
+Sources: BDC internal Data, PitchBook
+Note: Data includes Canadian private independent VC funds that closed with a fund size of $10M or more. Excludes PE
+funds, private debt, funds of funds, government funds and accelerators. It also excludes GPs where the most recent fund
+vintage is older than five years.
+
+28
+
+Dollars raised and average
+funds sizes, at the lowest level
+since 2020
+Despite an increasing number of GPs closing
+funds, the total capital raised in 2024 was
+lower than in 2023. Average fund sizes also
+fell during the year to $115.3 million, its
+lowest level since 2020 (Figure 29).
+
+The decrease in M&A and IPO activity
+is limiting liquidity. In the absence of exits,
+LPs face constraints in their ability to commit
+to new funds, which affects fundraising
+activity in the market.
+
+Figure 29: Fundraising activity by fund count, total dollars raised
+and average fund size
+Count of funds per vintage
+
+7.0
+
+Average fund size ($ millions)
+35
+
+33
+
+6.0
+
+30
+
+5.0
+
+25
+
+25
+
+20
+
+4.0
+16
+
+17
+
+6.3
+
+3.0
+2.0
+
+9
+
+1.0
+0.0
+
+0.8
+
+10
+3.5
+1.3
+
+1.4
+
+17
+
+12
+
+17
+
+20
+15
+
+3.5
+
+2.3
+
+Count of funds
+
+Total dollars raised per vintage ($ billions)
+
+10
+2.7
+2.0
+
+1.3
+
+2015
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+87.9
+
+124.5
+
+86.9
+
+135.4
+
+176.9
+
+104.9
+
+189.3
+
+139.1
+
+160.5
+
+115.3
+
+5
+0
+
+Sources: BDC internal data, PitchBook, BDC analysis
+Note: Total dollars raised is the sum of the fund sizes of all funds in a same vintage year. Assuming that the vintage of
+a fund is the year of its first capital call.
+
+29
+
+$11.5 billion
+of dry powder
+available
+We estimate that Canadian-headquartered
+VC investors are currently sitting on
+$11.5 billion of dry powder. This amount
+includes private Canadian-headquartered
+GPs as well as BDC Capital direct funds,
+public sector VC investors and some
+of the most active domestic pension
+funds (Figure 30).
+
+Additionally, U.S. investors’ dry powder is
+close to its peak at $422 billion. Our
+analysis indicates that close to 2%
+of this amount is deployed in Canada.
+However, this allocation could be adjusted
+following the trade uncertainty and potential
+tariffs, which could impact capital
+availability in Canada.
+
+Historically, over 50%
+of Canadian investors’
+dry powder has been
+deployed in Canada.
+Figure 30: Dry powder across Canadian VCs ($ billions)
+4.1
+
+11.5
+
+Other investors
+
+Total
+
+5.7
+
+1.7
+
+BDC Capital
+
+Private GPs
+
+Sources: BDC internal data and analysis, PitchBook
+Note: BDC improved its methodology for calculating dry powder. As a result, this year's data cannot be directly
+compared with data from previous reports.
+
+30
+
+Shorter runways,
+but up rounds
+are on the rise
+Cash runways remain
+under pressure
+The cash runway of companies is
+contracting across stages. The largest drop
+was observed for later-stage companies,
+which recorded median runways
+of 16 months, a significant decline
+from a high of 24 months in 2022.
+
+Efficient cash management
+and sound business
+practices will be key as
+companies navigate longer
+fundraising cycles and
+tighter capital markets.
+
+The same trend was also noted across seed
+and early-stage companies, each losing
+two months compared to the previous year.
+
+Figure 31: Median cash runways across stages (number of months)
+Seed
+
+Early stage
+
+Later stage
+
+22
+
+24
+19.5
+
+15.5
+
+17
+16
+
+10
+
+2019
+
+15
+13
+
+14
+12
+
+2020
+
+2021
+
+14
+
+12
+12
+
+2022
+
+16
+
+2023
+
+10
+2024
+
+Source: BDC internal data and analysis
+
+31
+
+Uptick in new investments
+
+Looking across stages, new investments
+in early and late-stage companies gained
+traction in terms of value, while follow-on
+In contrast to 2023 when investors were
+investments at the seed stage increased
+doubling down on existing portfolio
+compared to 2023. For example,
+investments with follow-ons, 2024 saw
+substantial improvement in new investment 70% of seed-stage dollars were invested
+in new companies. The percentage was
+value and deal count (Figure 32). This shift
+83% for early-stage companies.
+towards fresh deals indicates a higher risk
+appetite, with investors actively pursuing
+riskier opportunities.
+
+Figure 32: New and follow-on investments mix in BDC's direct portfolio
+New
+
+Follow-on
+
+By deal count
+
+By value
+
+54%
+
+47%
+
+46%
+
+53%
+
+2023
+
+2024
+
+32%
+69%
+
+68%
+31%
+2023
+
+Across stages, by deal count
+
+Across stages, by value
+
+15%
+
+27%
+
+22%
+52%
+
+65%
+
+Seed
+
+2024
+
+83%
+
+70%
+46%
+
+35%
+
+2023
+2024
+Early stage
+
+37%
+77%
+
+78%
+
+8%
+2023
+
+30%
+
+75%
+
+85%
+48%
+
+17%
+54%
+
+92%
+73%
+
+2024
+
+2023
+2024
+Late stage
+
+25%
+
+23%
+2023
+
+Seed
+
+2024
+
+2023
+2024
+Early stage
+
+63%
+
+2023
+2024
+Late stage
+
+Source: BDC internal data and analysis
+
+32
+
+Valuations show
+encouraging momentum
+
+rounds were down rounds, compared
+to 31% in 2023 (Figure 33).
+The momentum in valuation was especially
+strong at the seed and early-stage levels.
+Late-stage companies remained under
+valuation pressure, struggling to raise funds
+at higher valuations.
+
+Our data shows a positive shift in
+valuations, with an uptick in the share
+of up rounds. The number of down rounds
+decreased, after a significant increase
+recorded in 2023. Only 18% of investment
+
+Figure 33: Investment rounds in BDC's direct portfolio,
+by valuation status
+Debt
+
+Down round
+
+Flat
+
+Up round
+
+18%
+39%
+
+38%
+
+45%
+
+42%
+
+55%
+
+36%
+
+4%
+
+8%
+
+10%
+
+31%
+
+33%
+
+18%
+
+22%
+
+28%
+
+2023
+
+2024
+
+17%
+
+0%
+10%
+
+25%
+
+36%
+
+34%
+
+25%
+
+17%
+
+2023
+
+2024
+
+9%
+
+2023
+
+Seed & early stage
+
+2024
+Late stage
+
+Source: BDC internal data and analysis
+
+Step-up multiples remain weak
+at later stages
+
+Last year, the lowest step-up multiple
+since 2018 was recorded for companies
+moving from the early to the late stage.
+Late-stage companies had a disappointing
+performance, raising at nearly the same
+valuation as the previous round. For
+companies to grow into their valuations, it is
+imperative that they not only demonstrate
+revenue growth but also profitability.
+
+We noted a downward shift in valuation
+growth from the seed to early stage and
+from the early stage to the late stage.
+
+Figure 34: Step-up multiples
+Seed to early stage
+
+Early to late stage
+
+7.5x
+
+5.3x
+
+3.0x
+
+1.3x
+
+1.6x
+1.5x
+
+2018
+
+2.0x
+
+2019
+
+Sources: PitchBook, BDC analysis
+
+1.1x
+
+1.5x
+1.1x
+
+2020
+
+2021
+
+2022
+
+1.9x
+1.7x
+
+1.3x
+1.0x
+
+2023
+
+2024
+
+33
+
+AI valuations over $100 million
+are on the rise
+Analyzing the 2023-24 cohort reveals
+a notable shift in investment priorities,
+with AI poised to spearhead the next wave
+of innovation and value creation within
+the Canadian venture capital ecosystem.
+
+As investors favour AI, companies that have
+yet to integrate AI in their business models
+face greater risks. Specifically, most of the
+companies in the 2021-22 cohort, valued
+at over $15 billion, are non-AI companies.
+These firms may encounter valuation
+markdowns, making them less attractive
+and diminishing their prospects for future
+fundraising and exit opportunities.
+
+For the first time, AI companies accounted
+for 25% of all VC-backed Canadian firms
+with valuations of over $100 million,
+marking a 13% increase compared
+to the 2021-22 cohort.
+
+Figure 35: Share of AI and non-AI companies with valuations
+over $100 million
+AI
+
+Non-AI
+
+Company count by cohort
+
+Combined valuation ($ billions), by cohort
+
+26
+
+17.2
+
+88%
+
+12
+
+9
+
+90%
+75%
+
+78%
+22%
+
+2019-2020
+
+12%
+
+2021-2022
+
+25%
+
+2023-2024
+
+1.7
+
+69%
+31%
+
+2019-2020
+
+2.3
+
+10%
+
+2021-2022
+
+64%
+36%
+
+2023-2024
+
+Sources: PitchBook, BDC analysis
+Note: Company count includes companies with more than $100 million in valuation.
+
+34
+
+Conclusion:
+Bracing for
+exceptional
+uncertainty
+Our report depicts an evolving Canadian
+VC industry amid a highly uncertain
+macroeconomic environment.
+On the positive side, growth-equity stage
+transactions drove total investments up
+by 10% in 2024, valuations saw an uptick
+and there is still adequate dry powder
+available in the ecosystem.
+However, exit activity remained lacklustre
+and the IPO drought continued. If the
+recent volatility in public market persists,
+it will further constrain exits.
+A sluggish exit market means that GPs will
+continue to find it challenging to generate
+DPIs for investors. This will impact
+fundraising and further limit entrepreneurs’
+access to funding.
+
+Domestic investment is imperative given
+the unpredictability of this outlook and
+the risk of foreign capital pulling back amid
+global headwinds.
+VC investments provide a steady pipeline
+of high-potential companies that have
+the potential to boost innovation, create
+value and improve global competitiveness.
+Made-in-Canada innovations and
+technologies could also help increase
+the productivity of traditional sectors
+of the economy.
+It has never been more important to increase
+the flow of Canadian dollars to support
+Canadian innovation and business scale-up.
+Without domestic funding, this innovation
+pipeline risks drying up.
+
+Canadian investors across
+the board—government
+VCs, private VCs, pension
+funds and corporate
+VCs—need to step up
+and support Canadian
+innovators, across the
+Looking ahead, trade tensions and tariffs
+are complicating economic and investment funding cycle.
+With $1 billion in funding announced,
+the fourth VCCI round has the potential
+to stimulate market liquidity. Lower interest
+rates could also support higher valuations
+and help revive the M&A market—improving
+the asset class’s returns. At the same time,
+a weaker Canadian dollar might accentuate
+Canadian businesses’ vulnerability to being
+acquired by foreign buyers.
+
+conditions. Lingering uncertainty could
+impact investors’ appetite for risk, thus
+limiting entrepreneurs’ access to capital.
+
+There is untapped potential to enhance
+the Canadian secondary market, which
+will come with the twin benefits of providing
+liquidity to existing investors while attracting
+new investors into the ecosystem.
+
+35
+
+Conclusion: Bracing for exceptional
+uncertainty (cont.)
+There is also an opportunity to boost
+Canada’s growth, self-reliance
+and productivity. VC-backed companies
+with significant scale (over $100 million
+in revenues) should look at the domestic
+market for growth opportunities, business
+partners and supply chains. This will
+help generate liquidity and support the
+Canadian economy.
+
+Earlier this year, we committed close
+to $1 billion to companies in the late- and
+growth-equity stages. This was a direct
+response to the findings of our previous
+VC Landscape report showing that capital
+invested into late-stage companies had
+been cut almost in half in 2023, while
+equity-stage investments had decreased
+by 96%.
+
+Companies should
+continue to focus on
+We hope that our efforts, combined with
+efficient cash management, those of other key actors across the country,
+will help empower entrepreneurs and
+as capital availability
+propel the Canadian VC industry forward.
+remains challenging.
+The year ahead will
+As entrepreneurs and investors alike brace
+for heightened volatility, BDC is here to help test the resilience and
+and ensure that Canadian innovation is not the capacity of the
+penalized amid the turmoil. For example,
+VC ecosystem to
+in early March 2025, BDC launched
+a $500 million Pivot to Grow envelope
+adapt
+and
+pivot.
+providing financing, loan deferrals and
+
+We will continue to keep a close eye on the
+market and adjust our response as needed.
+
+advisory services to businesses impacted
+by the effects of the U.S. tariffs.
+
+At the same time, we should not forget that
+some of the most incredible innovations
+and success stories are born during times of
+As Canada’s most active investor in terms
+of deal volume, we calibrate our investments uncertainty.
+to align with ecosystem dynamics
+We believe in the ecosystem’s potential to
+and market demands. We invest across
+generate more Canadian-born innovations,
+the business growth cycle, from pre-seed
+and we remain ready to step up our support
+to growth stages.
+and spur the growth of the next generation
+of Canadian champions.
+For instance, we launched our $50 million
+Seed Venture Fund in 2023 to fill a gap
+in seed capital for Canadian software
+companies in underserved regions.
+
+36
+
+BDC is by your side every step
+of the way
+L
+ earn more about our different funds and our support for the
+Canadian venture capital ecosystem.
+
+For more information
+1 888 INFO-BDC (1 888 463-6232)
+info@bdc.ca
+bdc.ca
+Ce document est aussi disponible en français.
+ISBN: 978-1-990813-74-0
+ST-VCLANDSCAPE-E2505
+
+37
+
+

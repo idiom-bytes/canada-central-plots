@@ -1,0 +1,232 @@
+THREAD: France just announced 420 arrests for wildfire arson this season. Canada has arrested zero — because nobody's counting. So I pulled BC's own fire records back to 1950 to find the real story. What I found is stranger than an arson epidemic. 🧵
+
+Dashboard: https://plots.canada-central.com/reports/wildfire-monitoring-gap.html
+
+───────────────────────────────────────
+
+1/ THE TRIGGER
+
+France's Interior Ministry announced 420 arrests in 2026, including 166 minors, for deliberately or accidentally starting wildfires. Up from 48 in 2022.
+
+It's a rolling, published tally. France counts this every season.
+
+Does Canada have anything like it? I went looking.
+
+───────────────────────────────────────
+
+2/ THE ANSWER: NO
+
+No Canadian agency — federal, provincial, or RCMP — publishes an annual count of wildfire-arson arrests.
+
+Alberta RCMP said it plainly in June 2025: they weren't aware of ANY arson charges connected to that season's wildfires.
+
+Not because nothing happened. Because nobody was centrally counting.
+
+───────────────────────────────────────
+
+3/ SO I WENT TO THE SOURCE
+
+BC Wildfire Service keeps unusually good records — every fire since 1950, tagged Person, Lightning, or Unknown. Over 200,000 incidents.
+
+I pulled all of it directly from BC's live data catalogue (not a news summary, the actual government dataset) and built the full history myself.
+
+───────────────────────────────────────
+
+4/ WHAT I FOUND WASN'T ARSON. IT WAS A CLIFF.
+
+The share of BC wildfires with NO recorded cause was stable at 4-14% every single year from at least 1990 through 1998.
+
+Then in one year:
+
+  1998: 7.1% unknown
+  1999: 38.2% unknown
+  2000: 50.8% unknown
+
+That's not a trend. That's a cliff.
+
+───────────────────────────────────────
+
+5/ AND IT NEVER WENT BACK
+
+The unknown-cause rate stayed elevated — 40% to 78% depending on the year — for the next TWENTY YEARS. It peaked at 78.1% in 2011.
+
+It's only partially recovered recently, sitting around 29% in the 2020s.
+
+For two decades, BC couldn't tell you how most of its "known-cause" gap fires started.
+
+───────────────────────────────────────
+
+6/ I WENT LOOKING FOR WHY — HERE'S WHAT'S CONFIRMED
+
+BC's forest service lost ~1,006 positions — roughly 25% of its workforce — in under a decade starting in the early 2000s. Field inspections by compliance/enforcement staff fell 46% between 2001/02 and 2004/05.
+(Sierra Club BC / CCPA, cited in The Narwhal, 2024)
+
+That explains why the gap PERSISTED.
+
+───────────────────────────────────────
+
+7/ BUT IT DOESN'T EXPLAIN WHY IT STARTED
+
+Those cuts begin in 2001/02 — two to three years AFTER the jump already happened in 1999-2000.
+
+I found a lead (BC's per-season incident data may trace to a 1999 system change) but couldn't verify it — the primary sources (Forest Service Protection Branch annual reports, 1998/99-2000/01) aren't accessible on the public web anymore.
+
+I'm flagging this as UNCONFIRMED, not burying it.
+
+───────────────────────────────────────
+
+8/ WHAT WOULD CLOSE THE GAP
+
+A freedom-of-information request to BC Wildfire Service for those 1998/99-2000/01 annual reports, plus data-dictionary documentation for the historical incident dataset.
+
+That's a real, specific ask — not a vague "more research needed."
+
+───────────────────────────────────────
+
+9/ MEANWHILE, IN 2026, THE CUTS KEEP COMING
+
+Government Operations Centre (Canada's 24/7 emergency-coordination centre): ~60 of ~110-130 staff got workforce-adjustment letters in January 2026.
+
+"Gutting it by almost half."
+— Sharon DeSousa, PSAC National President, July 2026
+
+The government disputes it — says only 10 people, core staff 110→100.
+
+Same cut. Different math.
+
+───────────────────────────────────────
+
+10/ AND NRCAN'S SATELLITE MAPPING TEAM
+
+At least 17 remote-sensing staff — the people who produce Canada's satellite-based wildfire mapping — got workforce-adjustment notices in the same round.
+
+"Raise questions about Canada's future wildfire-mapping capacity."
+— PIPSC VP Stéphanie Fréchette, The Hill Times, July 2026
+
+───────────────────────────────────────
+
+11/ AND ECCC'S WEATHER MONITORING
+
+Environment and Climate Change Canada disbanded its weather radar research team and ended the 230-transmitter Weatheradio network in March 2026.
+
+Both feed fire-weather risk prediction.
+
+All three cuts trace to the same $60B Comprehensive Expenditure Review — landing during one of the most intense wildfire seasons in Canadian history.
+
+───────────────────────────────────────
+
+12/ SO I ASKED A BIGGER QUESTION: DID THE PLANES KEEP UP?
+
+If this has been a growing problem since 1999, did Canada's water bomber fleet and funding grow with it?
+
+The honest answer surprised me. It's not simple negligence — but it's not adequate either.
+
+───────────────────────────────────────
+
+13/ BRITISH COLUMBIA — GROUND ZERO FOR WILDFIRES — OWNS ZERO WATER BOMBERS
+
+Not one CL-215 or CL-415. BC relies entirely on 27 contracted aircraft.
+
+Quebec has 14. Manitoba's fleet averages ~40 years old. Alberta's are 1986-88 builds. Newfoundland had a CL-415 sitting out of service since 2018.
+
+National fleet estimates range 55-106 aircraft depending who's counting — there's no single clean number.
+
+───────────────────────────────────────
+
+14/ HERE'S THE PART THAT SURPRISED ME: IT'S NOT MOSTLY A MONEY PROBLEM
+
+CL-415 production stopped in 2015. For NINE YEARS, zero new large water-scooper aircraft were built ANYWHERE IN THE WORLD.
+
+Production only restarted in 2024 — after Europe (not Canada) placed a 22-aircraft order and forced De Havilland to rebuild a 50,000+-part supply chain from scratch.
+
+───────────────────────────────────────
+
+15/ EVEN WITH MONEY TODAY, YOU CAN'T BUY YOUR WAY OUT
+
+Alberta ordered 5 new water bombers in February 2026 for $400 million.
+
+First delivery: spring 2031. A five-year wait, no matter how fast the cheque clears.
+
+Canada is capacity-constrained by a global manufacturing bottleneck it didn't cause and can't buy its way around.
+
+───────────────────────────────────────
+
+16/ WHAT THE FEDERAL MONEY ACTUALLY BUYS
+
+Dec 2025: $257.6M over 4 years announced.
+Feb 2026: revised to $316.7M over 5 years, redirected through CIFFC.
+(Nobody has clarified if that's the same money restated or new money.)
+
+May 2026: 10 aircraft LEASED for 150 days from a private operator.
+
+That's short-term lease access to EXISTING aircraft. Not new fleet capacity.
+
+───────────────────────────────────────
+
+17/ "NOT YET A STRATEGY"
+
+"Absolutely insufficient." — John Gradek, McGill aviation analyst, on Canada's ~55-aircraft fleet, 2023
+
+"Not yet a strategy." — same analyst, on the May 2026 lease deal
+
+"A pattern of underbudgeting... a clear lack of national coordination."
+— James Moore, former federal minister, August 2026
+
+───────────────────────────────────────
+
+18/ AND ONTARIO CUT ITS OWN BUDGET, MID-CRISIS
+
+Ontario's emergency forestry firefighting budget: $271M (2025-26) → $150M (2026-27).
+
+Ontario burned through nearly DOUBLE the new budget's size the year before.
+
+Its own 2022 Auditor General found wildland fire response times often exceeded four hours.
+
+───────────────────────────────────────
+
+19/ ONE MORE THING — I'M NOT CLAIMING AN ARSON EPIDEMIC
+
+PolitiFact already fact-checked a viral "Canada wildfire arson epidemic" claim in 2023 and rated it FALSE. Most cited examples weren't actually 2023 wildfire arson.
+
+I built this to include that guardrail on purpose. The real story here is a tracking and capacity gap — not a crime wave.
+
+───────────────────────────────────────
+
+20/ THE FULL PICTURE
+
+  Unknown-cause fires: 7% → 38% in one year (1999), stayed high for 20 years
+  0 Canadian agencies track wildfire-arson arrests annually, vs. France's 420
+  BC: 0 water bombers of its own
+  9 years — zero new large scoopers built worldwide (2015-2024)
+  $60B Expenditure Review cutting emergency coordination mid-crisis
+  Ontario cut its own firefighting budget nearly in half for 2026-27
+
+None of these numbers are estimates. Every one is sourced, and every gap in the evidence is labeled as a gap, not smoothed over.
+
+───────────────────────────────────────
+
+21/ WHAT I BUILT
+
+An interactive report with 8 sections, each with its own charts pulled live from the actual BC Wildfire Service dataset (not a static screenshot — the pipeline downloads and recomputes it) plus Statistics Canada's arson data.
+
+Full data table, every season 1950-2026, downloadable as CSV.
+
+https://plots.canada-central.com/reports/wildfire-monitoring-gap.html
+
+───────────────────────────────────────
+
+22/ SOURCES
+
+  BC Wildfire Service — Fire Incident Locations, Historical & Current (BC Data Catalogue, live data)
+  Statistics Canada — Table 35-10-0177-01 (Arson)
+  Sierra Club BC / CCPA (2010), via The Narwhal, 2024 — forest service staffing cuts
+  Global News, 2026-07-23 — Government Operations Centre cuts
+  The Hill Times, 2026-07-22 — NRCan remote-sensing cuts
+  The Globe and Mail / Nelson Star, 2026-03 — ECCC weather monitoring cuts
+  FlightGlobal, Canadian Affairs — De Havilland DHC-515 production timeline
+  canada.ca / Public Safety Canada — federal aerial firefighting funding announcements
+  Hope et al., PLOS ONE — wildfire suppression cost trends
+  Fire Fighting in Canada, CBC/Radio-Canada, Skies Mag, AFP fact-check — fleet snapshots
+  PolitiFact, 2023-07-20 — arson-epidemic fact-check
+
+This is still growing — more sections coming as the research does.

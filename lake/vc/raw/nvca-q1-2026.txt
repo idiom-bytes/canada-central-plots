@@ -1,0 +1,4857 @@
+Q1
+2026
+
+Venture
+Monitor
+The definitive review of the US venture capital ecosystem
+
+Sponsored by
+
+Sponsored by
+
+Contents
+Market overview
+NVCA policy highlights
+
+4
+6
+
+PitchBook Data, Inc.
+NIZAR TARHUNI Executive Vice President of Research and Market Intelligence
+PAUL CONDRA Senior Director, Global Head of Private Markets Research
+
+Analysis
+
+Dealmaking7
+A word from J.P. Morgan
+
+9
+
+Regional spotlight
+
+11
+
+AI spotlight
+
+12
+
+Female founders
+
+15
+
+A word from Dentons Global Venture Technology Group
+
+17
+
+Investor trends
+
+20
+
+KYLE STANFORD, CAIA Director, VC Research
+EMILY ZHENG Senior Research Analyst, Venture Capital
+KAIDI GAO Senior Research Analyst, Venture Capital
+pbinstitutionalresearch@pitchbook.com
+
+Data
+CALEB WILKINS Data Analyst
+
+Publishing
+Report and cover design by JOSIE DOAN, MEGAN WOODARD, and ADRIANA HANSEN
+
+National Venture Capital Association (NVCA)
+BOBBY FRANKLIN President & CEO
+SHILOH TILLEMANN-DICK Research Director
+EVAN KELLER Director of Communications
+ROBIN CEPPOS Communications Manager
+KYLIE LAPSLEY Special Projects Manager
+
+Contact NVCA
+
+Venture debt
+
+22
+
+nvca.org
+nvca@nvca.org
+
+A word from EisnerAmper
+
+24
+
+J.P. Morgan Commercial Banking
+
+Exits27
+Fundraising30
+
+ANDREW KRESSE Co-Head of Innovation Economy
+JOHN CHINA Co-Head of Innovation Economy
+PAMELA ALDSWORTH Co-Head of Venture Capital Relationships
+CARLY RODDY Co-Head of Venture Capital Relationships
+GINGER CHAMBLESS Head of Market Insights
+
+Contact J.P. Morgan
+
+Methodology33
+
+jpmorgan.com/innovationeconomy
+
+References34
+
+Dentons Global Venture Technology and Emerging
+Growth Companies Group
+VICTOR H. BOYAJIAN Global Chair
+
+Contact Dentons
+dentonsventurebeyond.com
+victor.boyajian@dentons.com
+
+EisnerAmper
+PETER COGAN Managing Partner, Financial Services
+
+Contact EisnerAmper
+www.eisneramper.com/vc
+peter.cogan@eisneramper.com
+
+2
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+We are the bank of the
+innovation economy
+We’re here to help you grow—at every stage. Decades
+of venture expertise, an expansive investor network
+and solutions that evolve with your business.
+Explore our startup banking solutions at jpmorgan.com/InnovationEconomy
+
+© 2026 JPMorgan Chase & Co. All rights reserved. JPMorgan Chase Bank, N.A. Member FDIC. Visit jpmorgan.com/cb-disclaimer for full disclosures and disclaimers related to this content. 2861150
+
+Sponsored by
+
+Market overview
+AI operating in much more startup-friendly early-stage market
+
+Startup friendly
+
+Investor friendly
+
+AI versus non-AI Early-Stage VC Dealmaking Indicator by quarter
+100
+90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+Q1
+2021
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2022
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2023
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2024
+AI
+
+Q1
+
+Q2
+
+2025
+
+Q3
+
+Q4
+
+Q1
+2026
+
+Non-AI
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Q1 2026 was one for the record
+books. The $267.2 billion in quarterly
+deal value topped all full-year totals
+except for those of 2021 and 2025,
+and the $347.3 billion in exit value set
+a quarterly high, already placing 2026
+as the second-highest year for exit
+value ever. However, if you exclude
+the five largest deals and exits in Q1,
+those figures fall by 73.2% and 86.6%,
+respectively. Concentration has defined
+VC in recent years, but Q1 marked a new
+extreme. Four deals above $15 billion
+were completed, including OpenAI’s
+$122 billion financing, and xAI’s merger
+with SpaceX was the largest VC-backed
+exit of a US company ever, though the
+narrative was muted because SpaceX
+is gearing up for an estimated $1.5
+trillion+ IPO later this year.
+Beneath the top-line figures, the market
+remains much the same as it was in
+2025. Liquidity continues to be tight
+for most of the market, and there has
+not been significant movement in IPO
+
+4
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+xAI and Wiz exits represent 81.2% of Q1 exit value
+Share of VC exit value by quarter
+100%
+
+Remaining exit value
+
+90%
+
+Top five exit value
+
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+0%
+Q1
+2021
+
+Q3
+
+Q1
+2022
+
+Q3
+
+Q1
+
+Q3
+
+2023
+
+Q1
+2024
+
+Q3
+
+Q1
+2025
+
+Q3
+
+Q1
+2026
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+registrations. The onset of the war
+in Iran has added another obstacle
+to opening the IPO window. After
+tariffs and a government shutdown
+weighed on 2025’s new listings, Q1
+2026 contended with fresh policy
+and geopolitical risks. The public
+software-as-a-service- and AI-induced
+
+market volatility in late February
+revealed a market on edge—and that
+investors are searching for reasons to
+sell amid the uncertainty. VC-backed
+tech startups continue to struggle with
+elevated past valuations, uncertain
+market conditions, and looming
+mega-IPOs.
+
+Sponsored by
+
+Five firms raise 73.1% of new commitments
+
+$195.6 billion invested in five companies
+
+Share of venture capital raised in Q1 2026
+
+Top five deals as a share of all VC deal value by quarter
+80%
+
+$300
+$250
+
+11.5%
+
+60%
+
+$200
+Top five firms by
+capital raised
+
+15.4%
+
+Next 10 firms by
+capital raised
+73.1%
+
+Remaining firms
+
+40%
+
+$150
+$100
+
+20%
+
+$50
+$0
+
+0%
+Q1
+
+Q3
+
+2021
+
+Q1
+
+Q3
+
+2022
+
+Q1
+
+Q3
+
+2023
+
+Remaining deal value ($B)
+
+Q1
+2024
+
+Q3
+
+Q1
+2025
+
+Q3
+
+Q1
+2026
+
+Top five deal value ($B)
+
+Top five share of all deal value
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+To say the market underneath is
+unchanged from the past few years
+does not discount the strength at the
+very top. Potential IPOs from SpaceX,
+Anthropic, OpenAI, Databricks, and
+Stripe would provide an enormous
+windfall; the top three listings could
+near $2.5 trillion in exit value, more
+than the total of all the IPOs in this
+century. However, this potential masks
+challenges that still characterize the
+market. The median VC IRR for North
+American fund vintages since 2019
+sits in the single digits, and the median
+distributions to paid-in multiple for
+vintages over the past decade remains
+below 1x. Until there is a broader move
+to unlock liquidity, a large portion of the
+venture market will remain constrained.
+Looking ahead to the rest of 2026,
+annual records for deal value and exits
+will undeniably be a theme. Fundraising
+
+5
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+is on a different trajectory. 73.1% of
+the capital committed in Q1 went to
+five VC firms, and emerging managers
+continue to struggle mightily with
+attracting capital. As LPs look ahead,
+the uncertainty in public equity markets
+will likely weigh on their willingness
+and ability to commit capital to new VC
+funds. This will not impact megafunds
+nearly as much as smaller vehicles and
+firms, which will rely more heavily on
+smaller, less flexible LPs. More funds
+over $1 billion closed in Q1 than during
+all of 2025, and we expect megafund
+counts to continue to surge toward
+2022 highs.
+VC has entered the era of consensus
+deals, and that dynamic will likely
+persist. Across all stages and series,
+a small portion of companies is vastly
+outraising the rest. As concentration
+continues to build in funds, those with
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+dry powder will pile into the perceived
+“top” deals, pushing valuations and
+deal sizes higher. The median seed
+pre-money valuation has risen to $18.4
+million, which is more than double
+the figure of 2021. The fast pace of
+development in AI puts a premium on
+capital, and those companies with the
+agility afforded by larger cash bases
+and large fund investors have leverage
+to move fast and win.
+For liquidity’s sake, 2026 was supposed
+to build on monetary easing and deliver
+several more rate cuts that could have
+raised risk appetite among investors and
+driven demand for growth tech stocks.
+Wall Street is currently pricing in zero rate
+cuts for the rest of the year. Uncertainty in
+the market—and the potential economic
+pressure that could weigh on liquidity
+and investment in AI-related sectors—is a
+burden the market must now carry.
+
+NVCA policy highlights
+Taxes: California continues to anchor the
+state tax conversation. A proposed November
+2026 ballot measure would impose a one-time
+5% wealth tax on residents above ~$1 billion
+in net worth, applied to unrealized gains,
+creating liquidity pressure on illiquid startup
+equity; dual-class structures complicate
+valuation and could overstate taxable value.
+Updated sourcing rules expand look-through
+provisions for management fees, potentially
+treating more revenue as California-sourced
+for firms with California-based LPs. A federal
+reconciliation package is expected this year
+and likely to include a tax title.
+Capital markets: The SEC is focused on
+private market structure, highlighting
+secondaries, continuation funds, SPVs,
+and tender offers as alternative liquidity
+mechanisms in a constrained exit
+environment. The agency is advancing a
+push toward “responsible retailization,”1
+emphasizing valuation discipline and
+governance as private assets reach a broader
+investor base. Proposed changes to the “small
+entity” threshold could reshape how regulatory
+burdens are applied.
+Merger and competition policy: DOJ
+leadership changes have introduced
+uncertainty into federal merger enforcement,
+with signals toward a more transactional
+approach, though enforcement remains active
+in major tech cases. States are increasingly
+asserting themselves as independent
+enforcers. Ongoing litigation over revised
+HSR rules adds uncertainty around filing
+requirements and deal timelines.
+Blockchain and crypto: The SEC has
+clarified that blockchain-based securities
+remain subject to existing securities law
+while providing a more workable structuring
+framework. Chair Atkins has signaled
+openness to an “innovation exemption,”2 but
+legislative clarity remains limited. Congress
+6
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+is negotiating market structure legislation,
+with unresolved issues leaving agencies to set
+near-term direction.
+AI: A recent executive order calls for a
+minimally burdensome national AI framework
+and signals willingness to challenge restrictive
+state laws. NIST is accelerating standards
+development focused on agent security,
+interoperability, and risk mitigation. Continued
+state legislative activity is setting up
+potential legal conflicts over the federal-state
+authority balance.
+Deep tech/emerging tech: SBIR/STTR
+reauthorization stabilizes a key early-stage
+research & development funding source after
+the program stalled in September 2025, with
+updates including expanded international
+due diligence and commercialization
+pathways. The administration is also
+exploring a national robotics strategy tied to
+manufacturing reshoring.
+Cybersecurity: The White House released a
+six-pillar cyber strategy spanning offensive
+capabilities, regulatory harmonization, and
+critical infrastructure protection. NVCA
+held a briefing with the FBI on increasing
+sophistication among state-sponsored actors
+and their growing focus on infrastructure and
+persistent access.
+National security and international
+investment: Defense procurement continues
+to shift toward faster, commercially driven
+acquisition with reduced barriers for
+
+nontraditional contractors. The Department
+of the Treasury is exploring a “Known Investor
+Program” to streamline CFIUS reviews for
+trusted partners. NVCA has advocated for
+reducing friction while maintaining national
+security safeguards.
+Healthcare: FDA modernization is a growing
+priority, with signals toward streamlining
+approvals and integrating AI into regulatory
+processes. HHS is working in parallel to
+accelerate AI adoption in clinical care while
+reducing regulatory barriers and clarifying
+oversight frameworks.
+IP: At the USPTO’s first oversight hearing this
+administration, Director Squires highlighted a
+pro-IP, pro-AI modernization posture, including
+an AI-powered trademark classification tool,
+AI-assisted prior-art search, and a focus on
+backlog reduction and eligibility reform. The
+sharpest questioning centered on proposed
+PTAB rule reforms and questions about
+executive influence at the agency.
+Energy: Federal energy policy remains focused
+on permitting reform and preserving existing
+tax incentives; comprehensive reform is
+unlikely, but incremental changes may occur
+through must-pass legislation. Permitting
+delays continue to constrain venture-backed
+projects, while rising electricity demand
+is driving interest in firm power sources
+including nuclear, geothermal, and longduration storage. Transmission expansion and
+domestic supply chains are becoming central
+underwriting considerations for investors.
+
+Bobby Franklin
+President & CEO, NVCA
+Bobby Franklin is the President & CEO of NVCA, the venture community’s trade
+association focused on empowering the next generation of transformative USbased companies. Based in Washington, DC, with an office in San Francisco,
+NVCA acts as the voice of the US VC and startup community by advocating for
+public policy that supports the US entrepreneurial ecosystem.
+
+Sponsored by
+
+Dealmaking
+High concentration as top five deals capture 73.2% of Q1 deal value
+VC deal activity
+19,689
+
+11,332
+
+12,116
+
+12,954
+
+14,012
+
+18,338
+15,464
+
+14,202
+
+17,021
+
+15,377
+
+4,594
+$83.7
+
+$93.6
+
+$149.7
+
+$156.5
+
+$175.5
+
+$358.1
+
+$236.2
+
+$167.3
+
+$212.6
+
+$321.6
+
+$267.2
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026
+
+Deal count
+
+Estimated deal count
+
+Deal value ($B)
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+7
+
+VC dollars are flowing to fewer
+companies in larger amounts at
+increasingly elevated valuations.
+This dynamic is evident across every
+stage of the market, not just among
+marquee names.
+
+Q1 2026 is a record quarter for dealmaking
+
+Median pre-money valuations and deal
+sizes have steadily expanded across
+series. The median Series A pre-money
+valuation reached $62 million in Q1—
+nearly triple the $21 million recorded
+in 2020—while the median Series A
+deal size rose to $19.6 million from
+$7.5 million over the same period.
+At Series C, the moves were even
+more striking: The median pre-money
+valuation surged to $579 million from
+$167.2 million in 2020, and the median
+deal size expanded to $75 million from
+$35 million. These are not incremental
+changes but a sustained shift in the
+cost to participate at each stage of the
+venture lifecycle. Half of early-stage
+deals now exceed $10 million, the
+highest share of large early-stage deals
+in the past decade.
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+VC deal activity by quarter
+$300
+
+6,000
+
+$250
+
+5,000
+
+$200
+
+4,000
+
+$150
+
+3,000
+
+$100
+
+2,000
+
+$50
+
+1,000
+
+$0
+
+0
+Q1
+2021
+
+Q3
+
+Q1
+
+Q3
+
+2022
+
+Q1
+2023
+
+Deal value ($B)
+
+Q3
+
+Q1
+
+Q3
+
+2024
+Deal count
+
+Q1
+
+Q3
+
+2025
+
+Q1
+2026
+
+Estimated deal count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+The wide gap between median and
+average deal sizes tells an equally
+important story. At Series A, the Q1
+2026 median of $19.6 million sits
+well below the average of $39.6
+million; at Series C, the $75 million
+median sits well below the average
+of $124.6 million. The persistent and
+
+widening divergence between median
+and average deal sizes reflects an
+increasingly bifurcated market.
+Over the past four quarters, deal counts
+have increased most notably for the
+early stage due to two tailwinds. First,
+aging dry powder is creating pressure
+
+Sponsored by
+
+Valuations surge, especially for Series D+
+
+Median deal value expands across series
+
+Median VC pre-money valuation ($M) by series
+
+Median VC deal value ($M) by series
+
+$2,500
+
+$2,395.4
+
+$2,000
+
+$200
+
+$190.0
+
+$150
+
+$1,500
+$100
+$1,000
+
+$75.0
+
+Seed
+
+A
+
+B
+
+C
+
+D+
+
+$40.0
+$19.6
+$3.0
+
+Seed
+
+A
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+as the significant capital raised for
+early-stage investing has yet to be
+deployed. Second, the most active firms
+have materially accelerated their pace
+of seed and early-stage investments:
+In Q1, Andreessen Horowitz and Y
+Combinator each made 46 investments,
+General Catalyst made 25, and Sequoia
+Capital made 22. Together, these trends
+reflect a structural shift in how leading
+managers are approaching portfolio
+construction, favoring volume and
+velocity at the earliest stages.
+The early-stage resilience is real, but it
+will take years before those investments
+are realized. The market’s more
+immediate liquidity problem remains
+unsolved—particularly as the aggregate
+post-money valuation of unicorns has
+crossed $5.8 trillion. 44.6% of those
+unicorns had their first VC round in
+2016 or earlier, meaning that the early
+investors and employees of nearly
+
+8
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+B
+
+C
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+$0
+2017
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+$0
+
+$50
+
+2016
+
+$579.0
+$203.0
+$62.0
+$18.4
+
+$500
+
+D+
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Uptick in large early-stage deals
+Share of early-stage VC deal count by size bucket
+100%
+
+$25M+
+
+90%
+
+$10M-$25M
+
+80%
+
+$5M-$10M
+
+70%
+60%
+
+$1M-$5M
+
+50%
+
+$500K-$1M
+
+40%
+
+<$500K
+
+30%
+20%
+10%
+0%
+2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+half of all unicorns have been waiting
+more than a decade to realize returns.
+The result is a market increasingly
+defined by divergence: abundant capital
+and rising valuations at the top and a
+
+growing cohort of mature companies
+with no clear path to liquidity at
+the bottom.
+
+Sponsored by
+
+Sponsored by
+
+A WORD FROM J.P. MORGAN
+
+Our views on venture
+Record quarterly investment amid
+shifting venture landscape
+Recent trends in venture include
+record levels of capital deployment
+across fewer deals and significant
+sector concentration. Mega-rounds in
+AI & machine learning (ML) startups
+have been the primary driver behind
+the investment surge. According
+to PitchBook, in the first quarter of
+2026, the top five deals (for OpenAI,
+Anthropic, xAI, Waymo, and Databricks)
+garnered nearly three-quarters of the
+total venture investment. This level of
+concentration is without precedent in
+modern venture history. The market’s
+bifurcation is also reflected in a
+widening gap in valuation premiums
+between AI and non-AI companies.
+In this environment, early-stage
+and first-time financings have been
+steady but relatively subdued. Stable
+investment activity across lower deal
+counts suggests that the discerning
+approach by VCs over the past couple
+of years continues to hold with a
+clear preference for category leaders
+with strong unit economics. Outside
+of AI, sectors receiving significant
+investor interest and increased levels
+of funding include defense tech and
+cybersecurity as geopolitical tensions
+remain elevated.
+AI remains the central theme, but the
+narrative evolves
+In recent months, the prevailing
+narrative around AI has evolved from
+the technology’s ability to broadly
+benefit the economy and business
+productivity to a heightened focus
+
+9
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Ginger Chambless
+Head of Market Insights, Commercial Banking, J.P. Morgan
+Ginger Chambless is a Managing Director and Head of Market
+Insights for JPMorgan Chase Commercial Banking. In this
+role, she produces curated thought leadership content for
+commercial banking clients and internal teams. Her content
+focuses on economic and market insights, industry trends, and the capital markets.
+Additional contributors: Pamela Aldsworth, Co-Head of Venture Capital
+Relationships, and Carly Roddy, Co-Head of Venture Capital Relationships
+
+on sectors most at risk of disruption.
+For software-as-a-service specifically,
+rapid advancements in models and
+agents shifted the focus from AI
+as a productivity tool and sector
+tailwind to an existential threat of
+disintermediation. This has caused
+jitters throughout both private and
+public markets, sending public software
+equity multiples to 10-year lows.
+
+These factors challenge software
+sector investment sentiment in the
+near term, especially as investors have
+become acutely focused on return
+profiles amid the build-out of AI. We
+expect startups with mission-critical
+platforms and clear AI road maps will
+continue to get a strong reception while
+risks stay elevated for companies with
+less differentiated offerings.
+
+While the functionality of agentic AI
+has improved exponentially, history
+tells us that adoption and business
+model disruption will likely occur
+over time rather than abruptly as
+accuracy and safety standards are
+considered. Nonetheless, there are
+some early signs of AI affecting the
+business landscape and labor markets
+specifically. According to the February
+Challenger Report, AI was cited as the
+cause of 8% of job cut plans in the first
+quarter of 2026, up from 5% in 2025
+and 3% in 2023.3 In the technology
+sector specifically, announced job cuts
+YTD are up 51% over the prior year
+and account for more than 20% of US
+economy-wide layoffs.
+
+Geopolitical and tariff developments
+complicate the macroeconomic outlook
+While the Supreme Court ruling against
+International Emergency Economic
+Powers Act (IEEPA) tariffs in February
+was anticipated, the duration and
+extent of the conflict in the Middle East
+has unsettled markets as the surge in
+energy prices adds downside risk to the
+economic outlook. Both developments
+have the potential to affect the path of
+inflation with implications for consumer
+affordability and the Federal Reserve’s
+(the Fed’s) approach to interest
+rate policy.
+
+Sponsored by
+
+Given the effective closure of the Strait
+of Hormuz for several weeks—the key
+shipping channel out of the Persian
+Gulf through which 20% of global
+oil and gas trade volumes transit—
+oil prices have spiked to four-year
+highs. In addition to energy supply
+disruption, the availability of certain
+chemicals such as helium and industrial
+metals critical for technologies has
+also been constrained. This supply
+shock emphasizes the importance of
+maintaining a diversified supply chain
+to support business continuity and limit
+overall cost pressures.
+The path forward for tariffs also
+remains in flux following the Supreme
+Court’s ruling against IEEPA. The Trump
+administration’s subsequent enactment
+of 10% global tariffs under Section 122
+of the Trade Act of 1974 is set to expire
+in July, after which it is widely expected
+that the previous tariff regime will be
+reconstructed by other legal authorities.
+The US Trade Representative recently
+announced Section 301 investigations
+into the “acts, policies, and practices” of
+several economies related to structural
+excess capacity in manufacturing
+sectors, including technology.4 The
+investigation will assess whether
+these actions are “unreasonable or
+discriminatory and burden or restrict
+US commerce.” The economies under
+review include China, the European
+Union, Singapore, Korea, Vietnam,
+Mexico, Japan, and India. With the
+investigation potentially resulting in
+more targeted tariffs on technology
+imports, some pull forward of
+shipments could occur over the next
+few months.
+Leading up to the conflict in the Middle
+East, data on economic activity had
+been broadly consistent with our
+
+10
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+expectation for steady GDP growth in
+the 2% area, sticky inflation, and labor
+market stabilization. Given recent
+geopolitical developments and energy
+supply shock, we see downside risks
+to our growth forecast and upside risks
+to inflation. With these crosscurrents,
+we expect the Fed will hold rates in the
+3.50% to 3.75% range over the course
+of the year.
+From a founder perspective, there is
+a growing level of uncertainty caused
+by the state of geopolitics and the
+change taking place across industries,
+most notably from AI. This could slow
+strategic decision-making across
+products and services in addition to
+affecting how founders run and fund
+their operations.
+The IPO and M&A outlook navigates
+another patch of volatility
+Coming into the year, our constructive
+macro and market outlook reflected
+reduced policy uncertainty, fiscal
+tailwinds from tax refunds, and
+continued easing from the Fed. These
+drivers were coming together to
+create benign conditions for increased
+IPO volumes, M&A, and capital
+raising broadly.
+Geopolitical events and AI-disruption
+concerns have increased equity market
+volatility and clouded the near-term
+outlook for IPOs. However, according to
+David Bauer, head of Americas Equity
+Capital Markets for J.P. Morgan, the
+US IPO forward calendar still looks
+positive. There is a healthy pipeline
+across sectors, particularly consumer,
+energy, industrials, and technology.
+Within the tech sector, it is worth noting
+that this may mean only the largest
+private companies are realistically
+evaluating a listing in the near term.
+
+Sponsored by
+
+In an environment with increased
+volatility and headline risk, issuers are
+taking a more cautious approach to
+testing the market.
+M&A activity across the tech sector
+has also experienced a pause in
+momentum. Small tuck-in deals by
+sponsors are still happening, but
+until software valuations see a more
+sustainable recovery, activity could
+remain subdued.
+Bauer advises boards to continue
+prioritizing readiness and valuation
+discipline to mitigate execution risk
+when an exit opportunity presents itself.
+Market sentiment could quickly shift,
+as seen in the months following the
+“Liberation Day” dislocation. Plus, the
+SEC continues to alleviate its reviewprocess bottleneck caused by the sixweek government shutdown at the end
+of last year.
+We are seeing elevated engagement
+among investors, and conversations
+around the near-term calendar continue
+to be productive. It will be important to
+watch how companies take advantage
+of the issuance windows when they
+open. These listings can potentially
+serve as a benchmark for the remainder
+of the year, in terms of the liquidity
+generated and whether a positive
+feedback loop is created for others to
+test the market.
+
+© 2026 JPMorgan Chase & Co. All rights
+reserved. JPMorgan Chase Bank, N.A.
+Member FDIC. Visit jpmorgan.com/
+cb-disclaimer for full disclosures and
+disclaimers related to this content.
+
+Sponsored by
+
+Regional spotlight
+Mega-financings push more than $244 billion into tech hubs in Q1
+Q1 2026 VC deal activity by ecosystem
+
+Early-stage activity pacing
+high in hubs
+
+90.9% of VC dollars went to
+hubs in Q1
+
+Share of VC deal count by market breakout
+
+Share of VC deal value by market breakout
+
+Seattle
+Deal count: 69
+Deal value: $1.5B
+
+Total
+
+47.6%
+
+52.4%
+
+Total
+
+90.9%
+
+9.1%
+
+Venture growth
+
+52.6%
+
+47.4%
+
+Venture growth
+
+98.0%
+
+2.0%
+
+Late-stage VC
+
+45.0%
+
+55.0%
+
+Late-stage VC
+
+75.9%
+
+24.1%
+
+Early-stage VC
+
+52.6%
+
+47.4%
+
+Early-stage VC
+
+70.0%
+
+30.0%
+
+Pre-seed/seed
+
+43.5%
+
+56.5%
+
+Pre-seed/seed
+
+Boston
+Deal count: 181
+Deal value: $5.4B
+Philadelphia
+New York City
+
+Deal count: 207
+Deal value: $2.8B
+
+Deal count: 490
+Deal value: $11.4B
+
+Bay Area
+Deal count: 669
+Deal value: $221.1B
+
+Denver
+
+Washington, DC
+
+Deal count: 95
+Deal value: $0.8B
+
+Deal count: 83
+Deal value: $1.0B
+
+Los Angeles
+Deal count: 189
+Deal value: $3.5B
+
+Austin
+Deal count: 102
+Deal value: $4.9B
+Other cities
+
+Miami
+
+Deal count: 3,022
+Deal value: $13.5B
+
+Deal count: 100
+Deal value: $1.4B
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+53.9%
+
+Bay Area, NY, LA, Boston
+
+Bay Area, NY, LA, Boston
+
+Outside hub markets
+
+Outside hub markets
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+11
+
+46.1%
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+AI spotlight
+Q1 deal value nearly reaches aggregate of prior five quarters
+AI & ML VC deal activity by quarter
+$250
+
+2,000
+
+$200
+
+1,500
+
+$150
+
+1,000
+
+$100
+
+500
+
+$50
+$0
+
+0
+Q1
+2021
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2022
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+2023
+
+2024
+
+Deal value ($B)
+
+Deal count
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+2025
+
+Q4
+
+Q1
+2026
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+12
+
+The statement “AI is the new VC” is
+difficult to challenge. AI companies’
+proportion of all completed deals has
+risen every quarter but one since 2022.
+42.5% of deal count in Q1 involved an AI
+startup. As large as that figure seems,
+especially compared with AI’s 14.6%
+share a decade ago, it still understates
+investors’ heightened focus on AI. More
+than half (51.7%) of the megadeals
+completed during Q1 involved AI
+companies, and the market value of AI
+startups is now only outpaced by that of
+software-as-a-service startups, which
+greatly overlap with AI companies and
+hold a large amount of value from 2021
+deals that has likely deteriorated since.
+
+88.8% of Q1 deal value went to AI
+
+The AI trade in VC has been driven
+by enthusiasm for the technology’s
+future; its ability to immediately create
+efficiencies for young companies; and,
+largely, FOMO. The speed with which
+AI deals are getting done far outpaces
+non-AI dealmaking. AI companies that
+
+closed rounds in Q1 did so roughly half
+a year sooner than non-AI companies.
+VC firms are not the only ones deploying
+capital into AI at scale, either. Beyond
+the megacap public hyperscalers,
+smaller and more traditional corporate
+VC firms (CVCs) have shifted their
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+AI & ML VC deal activity as a share of all VC deal activity
+88.8%
+
+90%
+80%
+70%
+
+63.5%
+
+60%
+50%
+40%
+
+41.4%
+
+42.5%
+
+2025
+
+2026
+
+30%
+20%
+10%
+0%
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+Share of deal value
+
+2021
+
+2022
+
+2023
+
+2024
+
+Share of deal count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+focus to AI to harness the strategic and
+financial gains the technology could
+deliver for their parent organizations.
+In Q1, more than half of CVC deals
+were in AI.
+
+Sponsored by
+
+AI valuation step-ups charging higher
+
+AI valuations significantly higher
+
+Median AI and non-AI VC valuation step-up
+
+Median AI and non-AI VC pre-money valuation ($M) by series
+
+2.5x
+
+2.2x
+1.9x
+
+2.0x
+
+1.5x
+
+1.5x
+
+1.6x
+
+AI
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+Seed
+
+A
+AI
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+AI VC market value as a share of all VC market value
+
+C
+
+$1,285.0
+
+$4,700.0
+
+$507.3
+
+$606.5
+
+B
+
+Non-AI
+
+45% of VC market value is held by AI companies
+
+$174.0
+
+$42.4
+
+$78.0
+
+0x
+
+$18.0
+
+$18.7
+
+0.5x
+
+$270.8
+
+1.0x
+
+D+
+
+Non-AI
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+AI companies raise second VC rounds at
+higher rate
+Share of first-time-financed AI and non-AI companies that raised
+a second round
+80%
+
+$2
+
+10%
+
+$0
+
+0%
+
+60%
+
+30%
+20%
+
+AI share of all VC market value
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+The next phase of AI momentum and
+VC deployment is already underway.
+With OpenAI and Anthropic on the IPO
+doorstep, the rest of 2026 may begin to
+reveal the returns that AI investments
+can generate. Those two IPOs could
+serve as a catalyst for additional
+companies to file and generate
+liquidity—provided their listings receive
+a strong reception and sustain a
+
+13
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+positive performance. The chase for AI
+runs throughout the venture lifecycle.
+AI is the most invested vertical at every
+stage. AI companies move through the
+early venture lifecycle at much higher
+rates than non-AI companies, and at
+higher valuation step-ups, reflecting
+strong investor conviction for AI even at
+the earliest stages.
+
+AI
+
+2026
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+0%
+
+2025
+
+7.5%
+4.2% 0.6%
+0.1%
+
+10%
+
+2017
+
+2022
+
+All VC market value ($T)
+
+70%
+
+2016
+
+AI VC market value ($T)
+
+2026
+
+40%
+
+2025
+
+20%
+
+2024
+
+$4
+
+2023
+
+50%
+
+2021
+
+30%
+
+2020
+
+$6
+
+2019
+
+40%
+
+2018
+
+$8
+
+2017
+
+50%
+
+2016
+
+$10
+
+Non-AI
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+The IPOs of OpenAI and Anthropic
+will not be ordinary. They will likely be
+transformational listings that chart a
+path for AI investment more broadly.
+The structural position of these
+companies within AI places significant
+weight on their success, as a growing
+number of businesses are being built on
+the models they have developed.
+
+Sponsored by
+
+AI synergies pressure CVCs to keep pace
+AI & ML VC deal activity as a share of all VC deal activity with CVC investor participation
+94.6%
+
+100%
+90%
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+0%
+
+75.4%
+
+48.3%
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+Share of deal count
+
+2022
+
+2023
+
+2024
+
+2025
+
+55.4%
+
+2026
+
+Share of deal value
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+AI companies raising faster, creating FOMO
+Median time (years) between VC rounds for AI and non-AI companies
+2.0
+1.8
+
+1.8
+1.6
+
+1.8
+
+1.5
+
+1.4
+
+1.3
+
+1.2
+1.0
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+AI
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026
+
+Non-AI
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+14
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Sponsored by
+
+Female founders
+OpenAI and Anthropic drive Q1 deal value
+
+Muted deal count for all-female teams
+
+VC deal activity in companies with at least one female founder
+
+VC deal activity in companies with all-female founding teams
+
+5,267
+
+3,505
+
+3,663 3,362
+
+487
+
+582
+
+900
+
+733
+
+670
+
+828
+166
+
+Deal count
+
+Deal value ($B)
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+$3.3
+
+$4.1
+
+$3.1
+
+$5.0
+
+$7.5
+
+$3.5
+
+$3.6
+
+$3.3
+
+$2.3
+
+$1.3
+
+$113.4
+
+$46.0
+
+$69.4
+
+$46.7
+
+$43.6
+
+$27.2
+
+$26.8
+
+$24.3
+
+2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+
+$18.0
+
+2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+
+$11.3
+
+$1.7
+
+664
+
+Deal value ($B)
+
+Deal count
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Female-founded companies make up 19.9%
+of all deals
+
+Only 0.6% of capital was invested in all-female
+teams in Q1 2026
+
+Female-founded company deal count as a share of all VC
+deal count
+
+Female-founded company deal value as a share of all VC
+deal value
+
+30%
+
+70%
+
+25%
+
+60%
+
+21.4%
+
+20%
+
+19.9%
+
+61.9%
+
+50%
+40%
+
+15%
+
+35.3%
+
+30%
+
+5%
+
+20%
+10%
+
+0%
+
+1.0% 0.6%
+
+All female founders
+
+At least one female founder
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+All female founders
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+0%
+
+2026
+
+5.3% 5.0%
+
+2025
+
+10%
+
+15
+
+969
+
+814
+
+$165.6
+
+2,361
+
+2,739
+
+1,144
+3,905
+
+3,611
+3,105
+
+1,232
+
+4,804
+
+At least one female founder
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+77.9% of first-time financings in Q1 went to
+all-male teams
+
+Female-founded startups held their greatest
+portion of later-stage deals in Q1 2026
+
+Share of first-time financing VC deal count by founder gender mix
+
+Share of VC deal count for female-founded companies by stage
+
+100%
+
+100%
+
+Early-stage VC
+
+70%
+
+30%
+
+30%
+
+20%
+
+20%
+
+10%
+
+10%
+
+0%
+
+0%
+2016
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Venture growth captured 94.1% of Q1 deal
+value for female-founded startups
+
+San Francisco CSA leads deal count for
+all-female teams
+
+Share of VC deal value for female-founded companies by stage
+
+Top five CSAs by trailing 12-month VC deal count for companies
+with all-female founding teams
+
+100%
+
+Venture growth
+
+90%
+
+Late-stage VC
+
+80%
+70%
+
+Early-stage VC
+
+60%
+
+Pre-seed/seed
+
+50%
+40%
+30%
+20%
+
+CSA
+
+Deal count
+
+San Jose-San Francisco-Oakland, CA
+
+214
+
+New York-Newark, NY-NJ-CT-PA
+
+206
+
+Los Angeles-Long Beach, CA
+
+99
+
+Philadelphia-Reading-Camden, PA-NJ-DE-MD
+
+54
+
+Boston-Worcester-Providence, MA-RI-NH-CT
+
+53
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+Note: The San Diego MSA is excluded from the Los Angeles-Long Beach CSA.
+The Austin MSA is included in CSA rankings.
+
+10%
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2019
+
+2020
+
+2018
+
+2016
+
+2017
+
+0%
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+16
+
+2026
+
+40%
+
+2025
+
+40%
+
+Pre-seed/seed
+
+2024
+
+50%
+
+2023
+
+60%
+
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+
+60%
+50%
+
+2022
+
+All female founders
+
+2021
+
+70%
+
+Late-stage VC
+
+80%
+
+2020
+
+All male founders
+
+2019
+
+80%
+
+Venture growth
+
+90%
+
+2018
+
+90%
+
+2017
+
+Mix
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Sponsored by
+
+Sponsored by
+
+A WORD FROM DENTONS GLOBAL VENTURE TECHNOLOGY GROUP
+
+Early-stage reset: Capital concentration
+and the new bar for Series A
+Dentons’ Global Venture Technology
+Group Global Chair Victor H. Boyajian
+sat down with Amy Wu Martin, partner
+at Menlo Ventures, and Graham Brown,
+managing partner at Lerer Hippeau,
+to discuss how early-stage venture is
+evolving. While the number of rounds
+has declined, overall capital remains
+strong—but is increasingly concentrated
+in a small subset of companies,
+particularly in AI. Boyajian, Martin, and
+Brown’s conversation explores how
+this shift is affecting founders’ access
+to capital, what investors now expect
+at the Series A stage, and how signals
+of product-market fit are being redefined
+in a more selective environment.
+Boyajian (Dentons, NY/SF): Venture
+markets have been under pressure,
+with fewer rounds and more selective
+capital deployment. At the same time,
+we’re seeing significant capital flowing
+into AI-driven companies. How do
+you interpret what’s happening at the
+early stage?
+Martin (Menlo Ventures, NY): While
+the number of raises has declined,
+total venture capital has not. In fact,
+more capital was deployed in 2025
+than in 2024.
+What’s changed is the concentration of
+capital. A smaller number of companies
+are raising a larger share of capital—
+particularly in AI, where infrastructure
+and model-layer companies are raising
+historically large rounds. The power
+law has become more extreme. Capital
+isn’t disappearing; it’s becoming
+more concentrated.
+
+17
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Victor H. Boyajian
+Global Chair, Dentons Global Venture Technology Group
+Dentons is one of the world’s largest law firms at the
+intersection of tech, law, and policy. Victor leads a global
+team focused on representing emerging growth technology
+companies, venture capital firms, corporate strategic and
+private equity firms in a broad array of matters from Silicon Valley and New York to
+London and Singapore and beyond.
+Amy Wu Martin
+Partner, Menlo Ventures
+Amy Wu Martin is a partner at Menlo Ventures, where she
+leads consumer and AI application investments, including
+Suno, Higgsfield AI, ShopMy, Alta, Good Job Games, OpenFX,
+and Flora AI. Prior to working at Menlo, Amy was a partner
+at Lightspeed Venture Partners, senior VP at Warner Bros. Discovery, and CFO at
+Welcome Software (acquired by Optimizely).
+Graham Brown
+Managing Partner, Lerer Hippeau
+Graham Brown is a managing partner at Lerer Hippeau, where
+he’s been investing in early-stage companies for over a
+decade. He previously held roles at SoftBank Capital, Polaris
+Partners, and Life Line Screening. Graham holds a master’s
+degree from Columbia Business School and a bachelor’s degree from Colby College.
+
+Brown (Lerer Hippeau, NY): There has
+certainly been an imbalance between
+volume and capital. A huge number
+of talented folks are launching new
+companies, and making fast progress
+at the AI application layer is easier and
+faster than ever before. At the same
+time, capital is increasingly being
+concentrated among a small number
+of perceived winners who are receiving
+disproportionate shares. The disparity
+is being driven principally by specialized
+talent scarcity and computing costs
+
+at the infrastructure and foundation
+model layers.
+Boyajian: For founders outside of
+those infrastructure and model-layer
+companies, we’re hearing that
+access to capital has become more
+difficult. How should they think about
+this environment?
+Martin: It depends on the type of
+company. Infrastructure and model-layer
+companies require significant up-front
+
+Sponsored by
+
+capital, which explains the size of
+those rounds.
+At the application layer, companies can
+be more capital efficient, with lower
+costs to build and launch products.
+What’s changed is that when companies
+show early success, investors are
+willing to allocate more capital to those
+perceived early winners—accelerating
+go-to-market and widening the gap
+within a category.
+Brown: At the same time, it’s never
+been easier to start and scale a
+company, particularly at the application
+layer. Better tooling and new model
+capabilities are spurring unprecedented
+growth for companies at the earliest
+stages. Founders can go further with
+less capital, but we’re seeing more
+competition than ever, especially in
+areas with low barriers to entry.
+Boyajian: Let’s talk about the transition
+from seed to Series A. What has
+changed in how companies position
+themselves for that next round?
+Brown: Companies need to show more
+progress, but it’s not just about hitting a
+revenue number. The takeaway isn’t “get
+to $3 million and you can raise a Series
+A.” The rate of progress matters—how
+quickly you’re growing—and where you
+sit relative to others in your category.
+We’re also seeing a reversion from
+the previous cycle, where graduation
+rates from seed to Series A were
+unusually high.
+Martin: The benchmarks for strong
+performance have shifted. In many
+cases, exceptional growth now looks
+like going from $0 to $3 million to $15
+million to $60 million in annual recurring
+revenue over a relatively short period.
+
+18
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+But more importantly, it’s about the
+quality of that growth. Early revenue is
+easier to generate today, particularly
+with enterprise experimentation. What
+matters is how customers are using
+the product. There’s a big difference
+between “this is one of many tools”
+and “we can’t operate without this.”
+That level of reliance is a much
+stronger signal.
+Boyajian: How are you thinking about
+product-market fit in this environment?
+Martin: At the application layer, we focus
+on customer references and evidence
+of real value creation—clear return on
+investment and strong feedback. In
+consumer or “prosumer” businesses,
+retention is the key metric and the best
+proxy for product-market fit.
+Brown: Ultimately, revenue, growth,
+and speed are all proxies for the same
+question: What value is the product
+delivering to the customer? That’s
+always been the most important
+factor, but with more experimentation
+across the market, it’s harder to
+distinguish between early signals and
+durable traction.
+Boyajian: Talent was mentioned earlier.
+How are you thinking about founding
+teams, particularly in the context of AI?
+Martin: For infrastructure and
+model-layer companies, concentration
+of research talent is critical and often
+the key factor in investment decisions.
+More broadly, in our strongestperforming companies, founders remain
+CEOs. Bringing in an external CEO early
+would be a red flag.
+Brown: We see the same: We’re backing
+founders to build companies. What’s
+
+Sponsored by
+
+changed is the composition of founding
+teams, especially in technical areas.
+AI fluency is more important, and the
+best teams are able to move much
+faster than in prior cycles. At the earliest
+stages, a team’s ability to win is always
+the primary signal for us.
+Boyajian: As you look across sectors—
+AI, robotics, payments, defense
+tech (to name a few that we see
+often)—are there particular areas
+you’re prioritizing?
+Martin: Menlo is a generalist fund, so
+we look across all of those categories.
+Each partner, though, specializes in
+thesis areas.
+Brown: Same for us. We invest
+broadly but try to get ahead of
+where a category becomes widely
+recognized. By the time a theme or
+road map has been discussed broadly,
+competition is already there, so we aim
+to identify opportunities before they
+become consensus.
+Boyajian: What advice would you give
+founders navigating this environment?
+Brown: Focus on demonstrating durable
+progress and momentum—not just
+hitting milestones, but how quickly
+you’re getting there and what separates
+you within your category. Expectations
+have shifted, particularly at the
+Series A stage.
+Martin: It’s not just about growth—it’s
+about how meaningful that growth
+is. Strong customer validation and
+evidence that the product is becoming
+essential to users are what will
+differentiate companies.
+
+Innovation.
+Acceleration.
+Disruption.
+Dentons Global Venture Technology
+A top ranked boutique on
+a global platform
+Top 10 | 2025
+VentureBeyond.
+dentonsventurebeyond.com
+
+© 2026 Dentons. Dentons is a global legal practice providing client services worldwide through its member firms and affiliates.
+Please see dentons.com for Legal Notices.
+
+Sponsored by
+
+Investor trends
+CVC deal counts hold steady
+VC deal activity with CVC investor participation by quarter
+$250
+
+1,400
+1,200
+
+$200
+
+1,000
+
+$150
+
+800
+
+$100
+
+600
+400
+
+$50
+
+200
+
+$0
+
+0
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2021
+
+Q2
+
+Q3
+
+Q4
+
+2022
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2023
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2024
+
+Deal value ($B)
+
+Deal count
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2025
+
+Q1
+2026
+
+Estimated deal count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Crossover deal count holds while deal value
+jumps, highlighting megadeals’ impact
+
+Less than a quarter of deals include a
+CVC investor
+
+VC deal activity with crossover investor participation by quarter
+
+Deal activity with CVC investor participation as a share of all VC
+deal activity
+
+$250
+
+500
+
+100%
+
+$200
+
+400
+
+80%
+
+$150
+
+300
+
+60%
+
+$100
+
+200
+
+40%
+
+$50
+
+100
+
+20%
+
+$0
+
+0
+
+0%
+
+Deal value ($B)
+
+2026
+
+Deal count
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+20
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Share of deal value
+
+2026
+
+Q1
+
+2025
+
+2025
+
+Q3
+
+2024
+
+Q1
+
+2023
+
+2024
+
+Q3
+
+2022
+
+2023
+
+Q1
+
+2021
+
+Q3
+
+2020
+
+2022
+
+Q1
+
+2019
+
+Q3
+
+21.1%
+
+2018
+
+Q1
+
+23.4%
+
+2017
+
+2021
+
+Q3
+
+65.0%
+
+2016
+
+Q1
+
+89.9%
+
+Share of deal count
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+PE firms active in just 15.5% of VC deals
+
+CVC deal value driven by AI hype
+
+Share of VC deal count by investor type
+
+Share of VC deal value by investor type
+
+30%
+
+100%
+80%
+60%
+
+15%
+
+15.5%
+
+10%
+
+10.8%
+9.0%
+
+40%
+
+1.3%
+
+0%
+
+CVC investor
+
+PE investor
+
+Government/SWF
+
+Asset manager
+
+CVC investor
+
+Other tourist investor
+
+Government/SWF
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+PE investor
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Asset manager
+
+Other tourist investor
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Late-stage VC has the highest nontraditional
+investor deal count
+
+Nontraditional investor deal values decline for
+nearly all stages
+
+VC deal count with nontraditional investor participation by stage
+
+VC deal value ($B) with nontraditional investor participation
+by stage
+
+3,000
+
+$200
+
+2,500
+
+$194.3
+
+$150
+
+1,500
+
+304
+293
+181
+108
+
+1,000
+500
+
+$100
+$50
+
+$38.0
+$14.7
+$3.0
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+2016
+
+$0
+
+0
+
+Pre-seed/seed
+
+Early-stage VC
+
+Pre-seed/seed
+
+Early-stage VC
+
+Late-stage VC
+
+Venture growth
+
+Late-stage VC
+
+Venture growth
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+2026
+
+2,000
+
+21
+
+2021
+
+2020
+
+2016
+
+2026
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+0%
+
+27.0%
+
+20%
+
+2019
+
+5%
+
+2018
+
+23.4%
+
+20%
+
+2017
+
+25%
+
+89.9%
+89.0%
+85.0%
+79.0%
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+Venture debt
+Muted venture debt counts for Q1 2026
+Venture debt deal activity
+1,650
+1,399
+
+892
+
+1,016
+
+873
+
+1,151
+
+1,061
+
+1,172
+
+1,108
+
+1,046
+
+126
+$19.7
+$12.5
+
+$12.3
+
+$27.8
+
+$26.4
+
+$32.3
+
+$42.0
+
+$37.2
+
+$29.2
+
+$61.5
+
+$68.8
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Deal value ($B)
+
+2026
+
+Deal count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Tech drives high fraction of VC loan activity
+
+Healthcare loan activity declines significantly
+
+Tech venture debt deal activity
+
+Healthcare venture debt deal activity
+
+1,451
+
+307
+
+918
+115
+
+174
+
+206
+
+219
+
+230
+
+210
+
+259
+192
+
+Deal count
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+22
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+$3.9
+2022
+
+$7.1
+
+$5.4
+2021
+
+2025
+
+$3.0
+2020
+
+$5.3
+
+$3.7
+2019
+
+2024
+
+$6.2
+2018
+
+$2.9
+
+$2.9
+2017
+
+Deal value ($B)
+
+2023
+
+$1.5
+2016
+
+2026
+
+$61.3
+2025
+
+$33.1
+2022
+
+$57.2
+
+$32.8
+2021
+
+2024
+
+$21.0
+2020
+
+$26.6
+
+$19.8
+2019
+
+2023
+
+$20.1
+
+$9.3
+2017
+
+2018
+
+$9.9
+2016
+
+Deal value ($B)
+
+18
+$0.4
+
+721
+
+966
+
+935
+
+266
+
+248
+
+$19.3
+
+730
+
+859
+
+1,018
+
+2026
+
+1,246
+1,000
+
+Deal count
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+Early-stage VC
+
+Pre-seed/seed
+
+Early-stage VC
+
+Late-stage VC
+
+Venture growth
+
+Late-stage VC
+
+Venture growth
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+2026
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Early-stage average soars while median
+remains low
+
+Decade highs for median and average
+late-stage loan sizes
+
+Median and average early-stage venture debt deal value ($M)
+
+Median and average late-stage venture debt deal value ($M)
+
+$195.3
+
+$200
+
+$68.2
+
+$70
+
+$59.3
+
+$60
+$150
+
+$50
+$40
+$30
+
+$69.5
+
+$20
+
+Average
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+$10.8
+
+Median
+
+2025
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+$0
+2017
+
+2026
+
+2024
+
+2023
+
+2022
+
+2021
+
+2020
+
+2019
+
+2018
+
+2017
+
+2016
+
+Median
+
+2025
+
+$3.5 $8.1
+
+$0
+
+$8.0
+
+$10
+
+2016
+
+$50
+
+2026
+
+$100
+
+23
+
+2025
+
+2016
+
+2025
+
+Pre-seed/seed
+
+2024
+
+$0
+2023
+
+0
+
+2022
+
+$10
+2021
+
+100
+
+2020
+
+$20
+
+2019
+
+200
+
+2018
+
+$30
+
+2017
+
+300
+
+2026
+
+$40
+
+2024
+
+400
+
+2023
+
+$50
+
+2022
+
+500
+
+2021
+
+$60
+
+2020
+
+600
+
+2019
+
+Venture debt deal value ($B) by stage
+
+2018
+
+Venture debt deal count by stage
+
+2017
+
+Venture growth captures the most debt value
+
+2016
+
+Venture growth continues to lead debt count
+
+Average
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+Sponsored by
+
+A WORD FROM EISNERAMPER
+
+The real value in the venture ecosystem
+For decades, professional services
+firms focused on building their
+advantage by controlling how work
+got done: Work faster. Work cheaper.
+Protect the margin.
+Those advantages were sustained
+through structural moats: proprietary
+tools, expensive information sources,
+and large pools of lower-cost labor.
+Firms that controlled execution could
+capture and protect the economic value
+of the work itself. AI is dismantling
+those moats.
+The capabilities reshaping how work
+gets done are no longer controlled
+by a handful of firms. They are being
+embedded directly into the tools we
+use in the market today: accounting
+systems, HR software, cap table
+platforms, collaboration tools,
+financial systems, and increasingly
+the operational software that runs
+manufacturing, logistics, and other
+parts of the modern economy.
+As those capabilities become
+embedded in everyday workflows,
+execution advantages that once
+differentiated firms will essentially
+disappear. Efficiency can no longer be
+hoarded—and, increasingly, it can no
+longer be avoided.
+When the ability to execute faster
+and more cheaply becomes widely
+accessible—and the structural moats
+disappear—the economic value of the
+transaction itself compresses. This
+pattern has appeared repeatedly across
+industries as technology has lowered
+the cost of executing work.
+
+24
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Ryan Keating
+Industry Leader, Venture Services
+Ryan leads EisnerAmper’s Venture Practice, connecting
+founders, funds, and operators across the venture
+ecosystem. A former venture fund GP with experience raising
+capital and investing in startups, he and his team have
+served more than 1,000 early-stage and venture-backed companies. Ryan brings 25+
+years of experience across venture-backed companies and major technology and
+consulting firms.
+
+Brokerage commissions are a great
+example. For decades, investors paid
+sizable fees simply to execute trades.
+Then the structure of the brokerage
+industry changed. New entrants
+built technology-first platforms that
+challenged Wall Street incumbents
+and reshaped the economics of the
+business. As trading tools became
+widely accessible, the advantages that
+traditional brokerage firms once held
+disappeared. Execution fees declined
+year after year until trades became
+essentially free.
+The brokerage industry didn’t disappear.
+The value simply moved up the stack.
+But into where?
+Advice and research, platforms and
+technology, access to opportunity, and
+navigation across the market itself.
+There was a time when tax and
+accounting professionals competed
+on the speed of calculation. Before
+spreadsheets and calculators became
+commonplace, the ability to run numbers
+faster than someone else was a real
+competitive advantage. Once those
+
+tools became universal, that advantage
+disappeared almost overnight. The
+tax and accounting profession didn’t
+disappear. When execution becomes
+easy, value moves up the stack.
+The same dynamic is now reshaping
+the infrastructure surrounding
+venture-backed companies and the
+funds that invest in them. As technology
+continues to transform the operational
+work that keeps the venture ecosystem
+running (such as closing books, running
+payroll, managing banking, producing
+dashboards, and preparing board/
+investor materials), the effort required
+to execute those activities continues
+to decrease.
+But this shift did not start with AI. The
+real value in professional services has
+always existed above the transaction—
+in judgment, relationships, client
+engagement methodology, and the
+ability to help clients navigate complex
+decisions. Clients’ growing awareness
+of AI and the rapid adoption/embedding
+of AI capabilities across the tools that
+companies already use are simply
+making that reality impossible to ignore.
+
+Sponsored by
+
+When transactions compress, value
+migrates upward. In venture, that
+upward shift is particularly important.
+Capital will always power the venture
+ecosystem. But the real value—the
+enterprise value that is created—
+depends on the decisions that founders
+and investors make once that capital
+is deployed and set in motion. These
+impactful decisions rarely occur at the
+transaction layer. Instead, the greatest
+value is created above it. This is where
+experience, judgment, relationships,
+and strategic guidance shape the
+decisions that determine outcomes.
+These decisions include when to raise
+capital, how to scale effectively, how
+to build the right investor and partner
+relationships, and how to navigate an
+ecosystem that grows more complex
+every year.
+Today’s venture ecosystem is broader
+than ever. Thousands of venture-backed
+companies operate around the world,
+connected to an expanding network
+of investors that include venture
+funds, emerging managers, corporate
+venture, family offices, angel networks,
+and global investors. Capital moves
+faster, information moves faster,
+and the consequences of mistakes
+compound faster.
+Recognizing this shift, EisnerAmper
+has been building its Venture Group,
+designed to support the venture
+ecosystem as a whole rather than
+serving its participants in isolation. The
+Venture Group operates across three
+interconnected pillars: the portfolio
+companies building businesses, the
+
+25
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+investment funds backing those
+companies, and the people who
+participate across both sides of the
+ecosystem as founders, investors,
+and operators.
+Each pillar represents a different
+dimension of the venture network. But
+the real value lives in the connections
+between them. Because our colleagues
+operate across all three pillars of the
+ecosystem every day, we sit inside that
+network. We watch capital, experience,
+relationships, and opportunity
+move between founders, funds, and
+operators in real time. Founders meet
+founders. Investors meet investors.
+New relationships form as smaller
+communities emerge inside the broader
+venture ecosystem.
+This generation of founders and
+emerging managers isn’t operating
+through RFPs or formal processes.
+Social networks and connections have
+become intrinsic parts of their lives,
+and they want to work with people they
+know and trust. Introductions move in
+every direction: founders to investors,
+investors to founders, founders to
+founders, and investors to investors.
+Being inside that flow allows us to be
+intentional and deliberate in connecting
+insights, relationships, capital, and
+experience in ways that create value
+far beyond any single engagement.
+I like to think of this dynamic as the
+“swirl”: a continuous exchange of
+opportunity moving across the venture
+ecosystem. For founders, that means
+working with advisors who understand
+
+Sponsored by
+
+the operational realities of building
+companies and the capital markets
+that support them. For funds, it means
+partnering with professionals who
+can manage fund operations and
+understand both the companies in
+which those funds invest and the wider
+venture landscape.
+The best venture service providers
+don’t behave like vendors; they behave
+like partners. Put more simply: The
+best advisors act like they’re already
+on the cap table. They approach
+every decision and recommendation
+as if the outcome of the company
+directly affects them. That mindset
+changes how problems are solved, how
+opportunities surface, and how the
+entire ecosystem functions. When that
+level of trust develops, something else
+begins to happen: Founders introduce
+investors, investors introduce founders,
+and opportunities circulate (swirl)
+naturally across the network.
+This happens because the ecosystem
+runs on trust and relationships rather
+than on a gatekept insider network.
+None of these forces was created by
+AI, but AI is accelerating them. Firms
+that continue to compete primarily
+on executing the work—no matter
+how efficiently—will find themselves
+competing for a shrinking share of the
+value. That value is steadily moving
+upward into strategy, forward-looking
+guidance, judgment, relationships, and
+ecosystem navigation. The firms that
+thrive will be those that help founders
+and investors navigate the venture
+ecosystem itself.
+
+Sponsored by
+
+Exits
+2026 is already the second-largest year for exits
+VC exit activity
+2,068
+
+1,083
+
+1,109
+
+1,370
+
+1,320
+
+1,578
+
+1,484
+
+1,302
+
+1,287
+
+1,198
+
+399
+$99.6
+
+$143.9
+
+$179.7
+
+$301.5
+
+$337.7
+
+$865.1
+
+$151.2
+
+$117.0
+
+$154.8
+
+$286.9
+
+$347.3
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026
+
+Exit count
+
+Estimated exit count
+
+Exit value ($B)
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+With only one quarter completed, 2026
+is already breaking exit records. Q1
+generated $347.3 billion in exit value,
+the highest quarterly total on record by
+a wide margin. 2026 already has the
+second-highest annual exit value in
+history, trailing only 2021.
+
+SpaceX’s $250 billion acquisition of xAI accounts for 72% of Q1
+exit value
+VC exit activity by quarter
+$400
+
+600
+
+$350
+
+500
+
+$300
+
+400
+
+$250
+These figures do not, however, reflect
+the current state of VC exit activity,
+which remains largely frozen. A single
+transaction accounts for 72% of the
+quarter’s exit value: SpaceX’s $250 billion
+acquisition of xAI. Both are Elon Musk’s
+companies, making this less a traditional
+acquisition than a consolidation of
+affiliated assets. Excluding it, the
+quarter’s underlying exit environment
+looks considerably more modest at $97.3
+billion, which is still the highest quarter
+since Q4 2021. The concentration
+problem runs deeper still: 86.8% of Q1
+acquisitions had undisclosed valuations,
+implying significant markdowns and
+limited returns for investors. That said,
+any liquidity in an extended stalemate is
+valuable, even at a discount.
+
+27
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+$200
+
+300
+
+$150
+
+200
+
+$100
+
+100
+
+$50
+$0
+
+0
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+2021
+
+2022
+
+2023
+
+Exit value ($B)
+
+2024
+Exit count
+
+2025
+
+2026
+
+Estimated exit count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+The quarter’s top acquisitions were
+centered on the AI strategy. Google
+finalized its $32 billion acquisition
+of cybersecurity company Wiz, the
+largest corporate acquisition of a
+VC-backed company on record.
+Marvell Technology’s $6 billion
+
+acquisition of Celestial AI addresses
+the high-bandwidth, low-latency
+connectivity demands of large-scale AI
+deployments. Cybersecurity firm Palo
+Alto Networks’ $3.4 billion acquisition
+of observability platform Chronosphere
+targets the challenges of monitoring
+
+Sponsored by
+
+AI acquisitions drive Q1 exit value
+Quarterly VC exit value ($B) by type
+$400
+
+Buyout
+Public listing
+
+$300
+
+Acquisition
+$200
+
+$100
+
+$0
+Q1
+2021
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+2022
+
+Q4
+
+Q1
+
+Q2
+
+2023
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+2024
+
+Q1
+
+Q2
+
+Q3
+
+2025
+
+Q4
+
+Q1
+2026
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+and securing massive volumes of
+AI-related data.
+The IPO market continued its measured
+recovery in Q1. The quarter’s 15 VCbacked IPOs put 2026 on pace for 60
+listings—above 2025’s 50 but well short
+of what is needed to clear the yearslong backlog. 40% of the quarter’s IPOs
+were in biotech & pharma, driven by the
+listing companies’ focused paths to
+commercialization, advancing clinical
+trials, and more disciplined capital
+requirements. This represents a notable
+shift from the platform-heavy wave of
+2021, when companies went public on
+the promise of their science rather than
+the strength of their products.
+Two of Q1’s largest IPOs,
+EquipmentShare and BitGo, capture a
+pattern that defined 2025 listings and
+is expected to continue in 2026. These
+companies were either profitable or
+operated in sectors closely aligned
+with the Trump administration’s policy
+priorities, such as AI, crypto, aerospace,
+
+28
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+The IPO window has not fully reopened yet
+VC exit activity via IPO by quarter
+60
+
+$180
+$160
+
+50
+
+$140
+$120
+
+40
+
+$100
+
+30
+
+$80
+$60
+
+20
+
+$40
+
+10
+
+$20
+$0
+
+0
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+2021
+
+2022
+
+2023
+Exit value ($B)
+
+2024
+
+2025
+
+2026
+
+Exit count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+and defense. Construction rental firm
+EquipmentShare, which reported a
+2025 net income of $40 million, was
+profitable at the time of its listing. As
+a digital asset infrastructure company,
+BitGo reflects the crypto tailwind, with
+$8.1 million in net income on $10 billion
+in revenue for the first nine months of
+
+2025. Both companies listed in January,
+were priced above their marketed
+ranges, and saw initial enthusiasm
+quickly fade—a pattern that has become
+yet another reason the IPO pipeline
+remains thin.
+
+Sponsored by
+
+The most consequential variable
+for 2026’s IPO outlook has yet to
+materialize. Potential listings from
+SpaceX, OpenAI, and Anthropic—each
+of which would rank among the largest
+IPOs in history—could reshape the
+
+exit landscape entirely, for better or
+worse. Strong reception would serve
+as a catalyst, reaffirming public market
+appetite for high-growth, venture-backed
+businesses and encouraging additional
+companies to file. The risk, however, is
+
+equally significant: If these mega-IPOs
+absorb available underwriting capacity
+and institutional allocation, the resulting
+crowding-out effect could push the
+return of IPOs into 2027, further
+straining VC’s liquidity needs.
+
+Increasing number of acquisitions with undisclosed values implies smaller exits
+Top VC startup acquirers by acquisition count since 2022
+Databricks
+Snowflake
+Alphabet
+NVIDIA
+Salesforce
+IBM
+OpenAI
+Coinbase Global
+Qualcomm
+Cisco Systems
+Cloudflare
+Ginkgo Bioworks
+Stripe
+Vista Equity Partners
+Datadog
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+Acquisition with disclosed value
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+Acquisition with undisclosed value
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Unicorns are now valued at over $5.8 trillion
+Unicorn count and aggregate post-money valuation ($B)
+1,000
+
+$7,000
+
+900
+
+$6,000
+
+800
+700
+
+$5,000
+
+600
+
+$4,000
+
+500
+400
+
+$3,000
+
+300
+
+$2,000
+
+200
+
+$1,000
+
+100
+0
+
+$0
+2016
+
+2017
+
+2018
+
+2019
+
+Active unicorn count
+
+2020
+
+2021
+
+New unicorn count
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026
+
+Aggregate post-money valuation
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+29
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Sponsored by
+
+Fundraising
+2026 fundraising starts strong, but capital is heavily concentrated in a few large players
+VC fundraising activity
+1,609
+
+1,793
+1,395
+1,059
+
+951
+635
+
+689
+
+803
+
+795
+
+626
+
+172
+$47.8
+
+$51.1
+
+$48.6
+
+$78.7
+
+$69.6
+
+$94.0
+
+$169.5
+
+$223.5
+
+$110.1
+
+$106.2
+
+$66.7
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Capital raised ($B)
+
+2026
+
+Fund count
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+In Q1 2026, $47.8 billion was raised
+across 172 funds. Compared with the
+full-year 2025 total of $66.7 billion,
+the Q1 figure suggests the fundraising
+market is recovering. The headline
+number is distorted, however, by
+extreme capital concentration within a
+handful of large managers.
+Six managers—Andreessen Horowitz,
+Thrive Capital, Founders Fund, Battery
+Ventures, Kleiner Perkins, and Lux
+Capital—together raised $36.4 billion,
+or 76.2% of the quarter’s total capital,
+meaning the remaining funds closed
+during the quarter accounted for less
+than 25% of the Q1 capital raised.
+This concentration is not new—it was
+building throughout 2025—and carries
+meaningful implications. As AI-driven
+companies sustain capital-intensive
+development cycles and continue to
+delay public listings, large funds are
+well positioned to support portfolio
+companies through extended holding
+periods without forcing premature
+
+30
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+Despite YoY improvement, net distributions remain in
+the negatives
+VC cash flows ($B)
+$200
+$150
+$100
+$50
+$0
+-$50
+-$100
+-$150
+-$200
+2015
+
+2016
+
+2017
+
+2018
+
+2019
+
+Contributions
+
+2020
+
+Distributions
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Net cash flow
+
+PitchBook-NVCA Venture Monitor • As of September 30, 2025
+
+liquidity events. A core risk to the
+market, however, is compounding
+concentration at both the fund and
+company level. A significant share
+of capital is being deployed into AI
+companies whose valuations, in many
+cases, rest more on anticipated growth
+trajectories than on realized financial
+
+performance. A meaningful correction
+in AI sentiment or fundamentals would
+reverberate broadly across the venture
+ecosystem, not only dampening returns
+but also weighing further on alreadythin liquidity.
+
+Sponsored by
+
+The bulk of dry powder sits in funds from recent vintages
+VC dry powder ($B)
+$350
+
+Total
+$278.5
+
+$300
+
+2025
+
+$250
+
+2024
+
+$200
+
+2023
+
+$150
+
+2022
+
+Dry powder
+by vintage
+
+2021
+
+$100
+
+2020
+
+$50
+
+2019
+
+$0
+2015
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2018
+
+PitchBook-NVCA Venture Monitor • As of September 30, 2025
+
+These dynamics reflect a market
+bifurcating at an accelerating pace.
+Experienced firms captured 90.9% of
+capital raised in Q1 2026, up from 73.7%
+for full-year 2025 and the highest share
+on record in this dataset. Established
+managers have always held a structural
+advantage in LP fundraising—brand
+and track record are durable edges—
+but that share has now climbed
+to a level at which the fundraising
+market is practically closed to most
+emerging managers.
+The squeeze extends beyond emerging
+managers. Even established firms
+with strong track records have faced
+LP resistance amid shifting regulatory
+frameworks, heightened geopolitical
+tensions, and overallocation to venture.
+For emerging and first-time managers,
+conditions are considerably more
+severe—LP commitments remain
+scarce for all but those with a clear,
+differentiated edge.
+Beneath the headline fundraising figure,
+fund sizes are contracting across
+most of the market. The median fund
+size fell to $15.3 million in Q1 2026
+
+31
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+The median fund size is shrinking
+Median and average VC fund size ($M)
+$289.7
+
+$300
+$250
+$200
+$150
+
+$120.2
+
+$100
+$50
+
+$25.0
+
+$15.3
+
+2025
+
+2026
+
+$0
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+Median
+
+2021
+
+2022
+
+2023
+
+2024
+
+Average
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+from $25 million in 2025—and with
+25th percentile figures also declining
+while the 75th percentile holds flat, the
+compression is broad, sparing only
+the top of the market. The emerging
+manager figures warrant a closer
+read: Not all managers classified as
+emerging represent new entrants to the
+industry—spinouts from established
+platforms and new vehicles launched
+by known investors are included in the
+
+data. Conviction Partners, founded by
+former Greylock partner Sarah Guo,
+closed two funds in 2025; Seligman
+Ventures, a first-time fund with
+institutional lineage, closed in Q1 2026.
+For managers that are genuinely new
+to the market, the threshold has risen
+materially—a differentiated strategy and
+a clear manager-strategy fit are now
+prerequisites, not advantages.
+
+Sponsored by
+
+Median fund closing time drops to decade low, signaling concentration in established managers
+Median and average time (months) to close for VC funds
+20
+
+18.3
+
+18
+16
+
+15.0
+
+14
+
+11.1
+
+12
+10
+
+8.0
+
+8
+6
+4
+2
+0
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+2021
+Median
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026
+
+Average
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Annualized first-time fund count on track to
+exceed 2025 level
+
+Established managers are making up a
+historically high share of total capital raised
+
+VC first-time fundraising activity
+
+Share of venture capital raised by manager experience
+
+461
+
+100%
+
+478
+398
+
+274
+
+247
+
+50%
+
+10%
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+The data on the time to close funds
+reinforces the bifurcation in the
+fundraising market. The median time
+to close a US VC fund fell from 15
+months in 2025 to eight months in Q1
+2026—not because fundraising has
+become easier, but because the funds
+
+32
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+that are closing quickly are those with
+strong LP relationships and established
+reputations. Until distributions improve
+and LP appetite broadens, the structural
+divide between managers that can
+raise and those that cannot is unlikely
+to narrow.
+
+2026
+
+2025
+
+2024
+
+2023
+
+2021
+
+0%
+2022
+
+Fund count
+
+20%
+
+2019
+
+Capital raised ($B)
+
+30%
+
+2020
+
+2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+
+40%
+
+2018
+
+29
+
+2017
+
+$7.3
+
+$7.1
+
+$20.0
+
+$18.5
+
+$24.3
+
+$10.4
+
+$9.8
+
+$12.4
+
+$12.2
+
+Emerging firm
+
+60%
+
+223
+106
+
+$7.1
+
+80%
+
+2016
+
+277
+
+Experienced firm
+
+70%
+
+$2.1
+
+215
+
+264
+
+90%
+
+PitchBook-NVCA Venture Monitor • As of March 31, 2026
+
+Sponsored by
+
+Methodology
+Deals
+We include equity investments into startup
+companies from an outside source.
+Investment does not necessarily have to be
+taken from an institutional investor. This can
+include investment from individual angel
+investors, angel groups, seed funds, VC firms,
+corporate venture firms, corporate investors,
+and institutions, among others. Investments
+received as part of an accelerator program
+are not included; however, if the accelerator
+continues to invest in follow-on rounds, those
+further financings are included. All financings
+are of companies headquartered in the US,
+with any reference to “ecosystem” defined
+as the combined statistical area (CSA).
+We include deals that include partial debt
+and equity.
+Pre-seed/seed: When the investors and/or
+press release state that a round is a pre-seed
+or seed financing, it is tagged as such. If the
+company is under 2 years old and the round
+is the first institutional investment in the
+company, the deal will be tagged as pre-seed
+unless otherwise stated. Regulatory filings
+under $10 million for deals where investors
+are unknown are classified as seed unless
+pre-seed parameters are met.
+Early stage: Rounds are generally classified
+as Series A or B (which we typically aggregate
+together as early stage) either by the series
+of stock issued in the financing or, if that
+information is unavailable, by a series of
+factors, including the age of the company,
+prior financing history, company status, and
+participating investors.
+Late stage: Rounds are generally classified
+as Series C or D or later (which we typically
+aggregate together as late stage) either by
+the series of stock issued in the financing or,
+if that information is unavailable, by a series
+
+33
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+of factors, including the age of the company,
+prior financing history, company status, and
+participating investors.
+Venture growth: Rounds are generally
+classified as Series E or later (which we
+typically aggregate together as venture
+growth) either by the series of stock issued
+in the financing or, if that information is
+unavailable, by a series of factors, including
+the age of the company, number of VC rounds,
+company status, and participating investors.
+Nontraditional investors: “CVC” includes
+rounds executed by established CVC arms
+as well as direct equity investments by
+corporations into VC-backed companies.
+“PE” includes VC deals by investors whose
+primary classification is PE/buyout,
+growth, mezzanine, or other private equity.
+“Crossover” investors are a subset of
+nontraditional investors—specifically asset
+managers, hedge funds, mutual funds, and
+sovereign wealth funds—that have been
+active in VC investment across any stage.
+They are referred to as crossover because
+they are likely to be participating at the late
+stages immediately prior to an exit.
+Venture debt: The venture debt dataset is
+inclusive of all types of debt products raised
+by VC-backed companies, regardless of the
+stage of company. In mixed equity-and-debt
+transactions, equity is excluded when the
+amount is of known value. Financings that
+are solely debt are included in this dataset,
+though not incorporated into the deal activity
+dataset used throughout the report. Mixed
+equity-and-debt transactions are included in
+both datasets.
+Exits
+We include the first majority liquidity event
+for holders of equity securities of venture-
+
+backed companies. This includes events
+where there is a public market for the shares
+(IPO) or the acquisition of the majority of
+the equity by another entity (corporate or
+financial acquisition). This does not include
+secondary sales, further sales after the initial
+liquidity event, or bankruptcies. M&A value
+is based on reported or disclosed figures,
+with no estimation used to assess the value
+of transactions for which the actual deal
+size is unknown. IPO value is based on the
+pre-money valuation of the company at its
+IPO price. One slight methodology update is
+the categorical change from “IPO” to “public
+listings” to accommodate the different ways
+we track VC-backed companies’ transitions
+to the public markets. To give readers a fuller
+picture of the companies that go public,
+this updated grouping includes IPOs, direct
+listings, and reverse mergers via SPACs.
+Fundraising
+We define VC funds as pools of capital raised
+for the purpose of investing in the equity
+of startup companies. In addition to funds
+raised by traditional VC firms, PitchBook
+also includes funds raised by any institution
+with the primary intent stated earlier. Funds
+identifying as growth-stage vehicles are
+classified as PE funds and are not included
+in this report. A fund’s location is determined
+by the country in which the fund’s investment
+team is based; if that information is not
+explicitly known, the HQ country of the fund’s
+GP is used. Only funds based in the US that
+have held their final close are included in the
+fundraising numbers. The entirety of a fund’s
+committed capital is attributed to the year
+of the final close of the fund. Interim close
+amounts are not recorded in the year of the
+interim close.
+
+Sponsored by
+
+References
+
+34
+
+1:
+
+“SEC Announces Roundtable on Private Markets Valuation as Retail Investor Access Accelerates,” US Securities and Exchange Commission,
+February 26, 2026.
+
+2:
+
+“Remarks at the Investor Advisory Committee Meeting,” US Securities and Exchange Commission, Paul S. Atkins, March 12, 2026.
+
+3:
+
+“Challenger Report: February Cuts Plunge, YTD Hiring Falls 56%,” Challenger, Gray & Christmas, March 5, 2026.
+
+4:
+
+“USTR Initiates Section 301 Investigations Relating to Structural Excess Capacity and Production in Manufacturing Sectors,” Office of the United
+States Trade Representative, March 11, 2026.
+
+PITCHBOOK-NVCA VENTURE MONITOR
+
+A Perfect Partnership
+PitchBook and the National
+Venture Capital Association
+
+The PitchBook and National Venture Capital
+Association (NVCA) partnership utilizes the
+most accurate, most comprehensive data to
+advance the US venture capital community.
+
+The PitchBook-NVCA Venture Monitor
+PitchBook and NVCA partner quarterly to produce the
+Venture Monitor Report and webinar. The report provides a
+deep dive into venture capital activity, offering insights to
+help inform your investment strategy.
+
+NVCA Member Benefits
+
+PitchBook Access
+
+Platform Discounts
+
+NVCA members receive complimentary
+access to PitchBook that includes
+five advanced searches and five
+profile views per month. Members are
+automatically set up with access.
+
+Price deals with confidence. Our preand post-money valuations, public and
+private comps, cap tables, and series
+terms give you unparalleled insight into
+private companies.
+
+Log in today to:
+
+Find promising investors quickly.
+You can zero in on other firms
+or strategic acquirers whose
+investment preferences match your
+portfolio company.
+
+Fundraise faster. You can target
+limited partners that will likely be
+interested in your fund with insight into
+their mandates, commitment history,
+investment preferences, and target and
+actual allocations.
+Conduct better due diligence. When
+you’re evaluating a company, you can
+dive deep into its round-by-round
+financing history, executive team, and
+market traction.
+
+Reach out to partners@pitchbook.com
+with any questions.
+
+NVCA member firms are eligible for
+discounts on new or existing PitchBook
+subscriptions. Contact your account
+manager or partners@pitchbook.com
+for more information.
+
+

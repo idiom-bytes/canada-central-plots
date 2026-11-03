@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "description": "Major individual VC deals — US and Canada — relevant to the Q1 2026 comparison report",
+    "currency": "USD unless marked CAD",
+    "extracted": "2026-05-20"
+  },
+  "us_megadeals_q1_2026": [
+    { "company": "OpenAI",    "amount_usd_b": 122.0, "stage": "Late-stage VC",  "sector": "AI/ML",           "city": "San Francisco", "quarter": "Q1-2026", "source": "NVCA Q1-2026 + KPMG Q1-2026" },
+    { "company": "Anthropic", "amount_usd_b": 30.6,  "stage": "Series G",       "sector": "AI/ML",           "city": "San Francisco", "quarter": "Q1-2026", "source": "KPMG Q1-2026" },
+    { "company": "xAI",       "amount_usd_b": 20.0,  "stage": "Series E",       "sector": "AI/ML",           "city": "Palo Alto",      "quarter": "Q1-2026", "source": "KPMG Q1-2026" },
+    { "company": "Waymo",     "amount_usd_b": 16.0,  "stage": "Series D",       "sector": "Transportation",  "city": "Mountain View",  "quarter": "Q1-2026", "source": "KPMG Q1-2026" },
+    { "company": "Databricks","amount_usd_b": 7.0,   "stage": "Late-stage VC",  "sector": "Database/AI",     "city": "San Francisco", "quarter": "Q1-2026", "source": "KPMG Q1-2026" },
+    { "company": "Polymarket","amount_usd_b": 2.6,   "stage": "Series D",       "sector": "Fintech",         "city": "New York",       "quarter": "Q1-2026", "source": "KPMG Q1-2026" },
+    { "company": "Shield AI", "amount_usd_b": 2.25,  "stage": "Series G",       "sector": "Defense/AI",      "city": "San Diego",      "quarter": "Q1-2026", "source": "KPMG Q1-2026" },
+    { "company": "Saronic",   "amount_usd_b": 1.75,  "stage": "Series D",       "sector": "Defense tech",    "city": "Austin",         "quarter": "Q1-2026", "source": "KPMG Q1-2026 Americas chart" },
+    { "company": "Skild AI",  "amount_usd_b": 1.4,   "stage": "Series C",       "sector": "AI/ML",           "city": "Pittsburgh",     "quarter": "Q1-2026", "source": "KPMG Q1-2026 Americas chart" },
+    { "company": "Cerebras",  "amount_usd_b": 1.1,   "stage": "Series H",       "sector": "AI chips",        "city": "Sunnyvale",      "quarter": "Q1-2026", "source": "KPMG Q1-2026 Americas chart" }
+  ],
+  "us_notable_prior_quarters": [
+    { "company": "OpenAI",         "amount_usd_b": 40.0,  "quarter": "Q1-2025", "stage": "Venture Growth", "source": "NVCA Q1-2025: 'largest deal from Q1 was OpenAI's $40B venture-growth-stage financing'" },
+    { "company": "Anthropic",      "amount_usd_b": 4.5,   "quarter": "Q1-2025", "note": "Two rounds totaling $4.5B", "source": "NVCA Q1-2025" },
+    { "company": "Infinite Reality","amount_usd_b": 3.0,  "quarter": "Q1-2025", "source": "NVCA Q1-2025" },
+    { "company": "Groq",           "amount_usd_b": 1.5,   "quarter": "Q1-2025", "source": "NVCA Q1-2025" },
+    { "company": "Scale AI",       "amount_usd_b": 14.3,  "quarter": "Q2-2025", "note": "Second-largest VC deal ever at time", "source": "NVCA Q2-2025" },
+    { "company": "Anthropic",      "amount_usd_b": 15.0,  "quarter": "Q4-2025", "stage": "Late-stage", "note": "Largest Q4 2025 deal", "source": "NVCA Q4-2025" },
+    { "company": "Project Prometheus","amount_usd_b": 6.2, "quarter": "Q4-2025", "stage": "Early-stage", "note": "Founded less than a year ago", "source": "NVCA Q4-2025" }
+  ],
+  "canada_notable_deals": [
+    { "company": "Waabi",   "amount_cad_m": null, "amount_usd_m": 750, "quarter": "Q1-2026", "sector": "Autonomous driving", "stage": "Series C", "city": "Toronto", "source": "KPMG Q1-2026: 'one of the largest VC raises ever for a Canadian startup'", "confidence": "high" },
+    { "company": "Taalas",  "amount_cad_m": null, "amount_usd_m": 169, "quarter": "Q1-2026", "sector": "Semiconductors",   "city": null,       "source": "KPMG Q1-2026", "confidence": "high" },
+    { "company": "Cohere",  "amount_cad_m": 930,  "amount_usd_m": 689, "quarter": "2025",    "sector": "Enterprise AI/LLMs","stage": null,     "city": "Toronto", "source": "BDC 2025: 'Cohere raised $689M USD from Nvidia/AMD' — 2025 timing from prior research. Note: may be Q3 or Q4 2025.", "confidence": "medium" },
+    { "company": "Clio",    "amount_cad_m": 1240, "amount_usd_m": 893, "quarter": "Q3-2024", "sector": "Legaltech",         "stage": "Series F","city": "Vancouver", "source": "CVCA Year-End 2024 + BDC: '$1.24B Series F, 84% of all growth equity in 2024'", "confidence": "high" },
+    { "company": "Fusion Pharmaceuticals","amount_cad_m": 3259,"amount_usd_m": 2347,"quarter": "Q1-2024","sector": "Life Sciences","note": "Acquired by AstraZeneca — largest Canadian VC exit 2024", "source": "CVCA Year-End 2024", "confidence": "high" }
+  ],
+  "us_q1_2026_decomposition": {
+    "description": "Breakdown of the $267.2B US Q1 2026 total — 3 segments for chart",
+    "segments": [
+      { "label": "OpenAI",                   "amount_usd_b": 122.0, "note": "Single round, direct from NVCA + KPMG" },
+      { "label": "Anthropic + xAI + Waymo",  "amount_usd_b": 66.6,  "note": "Anthropic $30.6B + xAI $20B + Waymo $16B" },
+      { "label": "Other",                    "amount_usd_b": 78.6,  "note": "$267.2B − $122.0B − $66.6B. Includes Databricks $7B plus all remaining deals. ex-top-5 = $71.6B is a separate reference figure." }
+    ],
+    "total": 267.2,
+    "top_5_total": 195.6,
+    "ex_top_5": 71.6
+  }
+}

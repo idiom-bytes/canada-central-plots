@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en-US" class="no-js">
+  <head><meta charset="utf-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
+</script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2B2E43">
+  <meta name="color-scheme" content="dark light">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="facebook-domain-verification" content="nlshttcvffuo2es1noonll0s114zt6" />
+  <meta name="facebook-domain-verification" content="0quo9yh3dgglwf8hr5fx13jb8y68jy" />
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v28.6 (Yoast SEO v28.6) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<title>Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest - Northern Beat</title>
+<link data-rocket-prefetch href="https://connect.facebook.net" rel="dns-prefetch">
+<link data-rocket-prefetch href="https://www.googletagmanager.com" rel="dns-prefetch">
+<link data-rocket-prefetch href="https://northernbeatnews.substack.com" rel="dns-prefetch">
+<link data-rocket-preload as="style" data-wpr-hosted-gf-parameters="family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Noto+Serif&display=swap" href="https://northernbeat.ca/app/cache/fonts/1/google-fonts/css/2/b/e/8da1e7e1f3e43f2b2114f00803119.css" rel="preload">
+<link crossorigin data-rocket-preload as="font" href="https://northernbeat.ca/app/cache/fonts/1/google-fonts/fonts/s/notosans/v42/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce2VDSyA.woff2" rel="preload">
+<link crossorigin data-rocket-preload as="font" href="https://northernbeat.ca/app/cache/fonts/1/google-fonts/fonts/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTx8cK.woff2" rel="preload">
+<link data-wpr-hosted-gf-parameters="family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Noto+Serif&display=swap" href="https://northernbeat.ca/app/cache/fonts/1/google-fonts/css/2/b/e/8da1e7e1f3e43f2b2114f00803119.css" media="print" onload="this.media=&#039;all&#039;" rel="stylesheet">
+<noscript data-wpr-hosted-gf-parameters=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&#038;family=Noto+Serif&#038;display=swap"></noscript>
+<style id="rocket-critical-css">html{-webkit-text-size-adjust:100%;line-height:1.15}h1{font-size:2em;margin:.67em 0}a{background-color:transparent}strong{font-weight:bolder}img{border-style:none}button,input{font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button{text-transform:none}[type=submit],button{-webkit-appearance:button}[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}[type=checkbox]{box-sizing:border-box;padding:0}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{box-sizing:border-box;font-size:100%;scroll-behavior:smooth}*,:after,:before{box-sizing:inherit}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:Noto Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;font-weight:400;line-height:1.5;margin:0;padding:0}@media (prefers-reduced-motion:reduce){*,:after,:before{-webkit-animation-duration:1ms!important;animation-duration:1ms!important;-webkit-animation-iteration-count:1!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}.alignnone{height:auto;margin-left:0;margin-right:0;max-width:100%}body{background:#2b2e43;color:#fff}body a{color:#20a39f}.is-dark-theme{background:#2b2e43;color:#fff}.is-dark-theme a{color:#20a39f}button,input{font-family:inherit}button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;border:0;border-radius:0;line-height:1;padding:0}[type=text]{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#fff;border:1px solid #cacaca;border-radius:0;box-shadow:inset 0 1px 2px rgba(63,69,58,.1);box-sizing:border-box;color:#3f453a;display:block;font-family:inherit;font-size:1rem;font-weight:400;height:2.4375rem;line-height:1.5;margin:0 0 1rem;padding:.5rem;width:100%}[type=submit]{-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:0}::-moz-placeholder{color:#cacaca}:-ms-input-placeholder{color:#cacaca}::placeholder{color:#cacaca}[type=checkbox]{margin:0 0 1rem}label>[type=checkbox]{margin-right:.5rem}label{color:inherit;display:block;font-size:.875rem;font-weight:400;line-height:1.8;margin:0}.input-group{align-items:stretch;display:flex;margin-bottom:1rem;width:100%}.input-group>:first-child,.input-group>:last-child,.input-group>:last-child.input-group-button>*{border-radius:0 0 0 0}.input-group-button,.input-group-button input,.input-group-field{margin:0;white-space:nowrap}.input-group-field{border-radius:0;flex:1 1 0px;min-width:0}.input-group-button{display:flex;flex:0 0 auto;padding-bottom:0;padding-top:0;text-align:center}.input-group-button input{align-self:stretch;font-size:1rem;height:auto;padding-bottom:0;padding-top:0}img{-ms-interpolation-mode:bicubic;user-drag:none;display:inline-block;height:auto;max-width:100%;vertical-align:middle}blockquote,div,form,h1,h2,li,p,ul{margin:0;padding:0}p{text-rendering:optimizeLegibility;font-size:inherit;line-height:1.6;margin-bottom:1rem}strong{line-height:inherit}strong{font-weight:700}h1,h2{text-rendering:optimizeLegibility;color:inherit;font-family:"Noto Serif",Noto Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;font-style:normal;font-weight:400}h1{font-size:1.75rem}h1,h2{line-height:1.2;margin-bottom:.5rem;margin-top:0}h2{font-size:1.4375rem}@media print,screen and (min-width:40em){h1{font-size:1.9375rem}h2{font-size:1.6875rem}}@media screen and (min-width:75em){h1{font-size:1.9375rem}h2{font-size:1.6875rem}}a{color:#20a39f;line-height:inherit;text-decoration:none}a img{border:0}ul{line-height:1.6;list-style-position:outside;margin-bottom:1rem}li{font-size:inherit}ul{list-style-type:disc}ul{margin-left:1.25rem}blockquote{border-left:1px solid;margin:0 0 1rem;padding:.5625rem 1.25rem 0 1.1875rem}blockquote,blockquote p{color:inherit;line-height:1.6}blockquote{opacity:.7}@media screen and (min-width:75em){body{font-size:110%}}.button,.has-button>a,.search-form .search-submit{-webkit-appearance:none;border:1px transparent;border-radius:0;display:inline-block;font-family:inherit;font-size:.9rem;font-weight:700;letter-spacing:.04em;line-height:1;line-height:1.2;margin:0 0 1rem;overflow:hidden;padding:.9rem 1rem;position:relative;text-align:center;text-decoration:none;text-transform:uppercase;transform:translateZ(0);vertical-align:middle}.button,.has-button>a,.search-form .search-submit{background-color:#20a39f;color:#fff}.button:after,.has-button>a:after,.search-form .search-submit:after{background-image:radial-gradient(circle,#000 10%,transparent 10.01%);background-position:50%;background-repeat:no-repeat;content:"";display:block;height:100%;left:0;opacity:0;position:absolute;top:0;transform:scale(10);width:100%}.switch{color:#fff;font-size:.875rem;font-weight:700;height:2rem;margin-bottom:1rem;outline:0;position:relative}.switch__input{margin-bottom:0;opacity:0;position:absolute}.switch__paddle{background:#cacaca;border-radius:0;color:inherit;display:block;font-weight:inherit;height:2rem;position:relative;width:4rem}input+.switch__paddle{margin:0}.switch__paddle:after{background:#fff;border-radius:0;content:"";display:block;height:1.5rem;left:.25rem;position:absolute;top:.25rem;transform:translateZ(0);width:1.5rem}input:checked~.switch__paddle{background:#cacaca}input:checked~.switch__paddle:after{left:2.25rem}.switch--theme__paddle{border-radius:100px;height:1rem;position:relative;top:.5rem}.switch--theme__paddle:after{background-position:50%;background-repeat:no-repeat;border-radius:100px;box-shadow:0 0 5px rgba(0,0,0,.5);height:1.75rem;left:-.3rem;position:relative;top:-.35rem;width:1.75rem}.is-dark-theme .switch--theme__paddle:after{background-color:#666;background-image:url(https://northernbeat.ca/app/themes/northernbeat/dist/images/moon.svg)}.menu{display:flex;flex-wrap:wrap;font-weight:700;list-style:none;margin:0;padding:0;position:relative}.menu a{display:block;line-height:1;padding:.75rem 1rem;text-decoration:none}.menu a{margin-bottom:0}.menu{flex-direction:row;flex-wrap:wrap}.menu--vertical{flex-direction:column;flex-wrap:nowrap}.hero{position:relative}.hero>img{max-height:90vh;-o-object-fit:cover;object-fit:cover;width:100%}.hero__caption{display:block;font-size:.8rem;padding:1rem 1.25rem;text-align:right}@media print,screen and (min-width:40em){.hero__caption{bottom:1rem;color:#fff;margin:0;padding:0;position:absolute;right:1.5rem;text-shadow:1px 1px 1px rgba(0,0,0,.5);width:50%;width:calc(100% - 3rem)}}@media print,screen and (min-width:64em){.hero__caption{width:33%}}.accordion{margin-bottom:1rem}.accordion__header{background-color:transparent;border-bottom:1px solid #e6e6e6;border-top:1px solid #e6e6e6;color:inherit;display:block;font-family:inherit;font-size:1rem;font-weight:700;line-height:1.2;margin-bottom:0;padding:1rem 1rem 1rem 3rem;position:relative;text-decoration:none;text-transform:uppercase}.accordion__header:after{border-left:.313rem solid transparent;border-right:.313rem solid transparent;border-top:.313rem solid;content:"";height:0;left:1.25rem;margin-top:-.25rem;position:absolute;top:50%;width:0}.accordion__header:first-child,.accordion__header:last-of-type:not([aria-selected=true]){border-radius:0 0 0 0}.accordion__header[aria-selected=true]{background-color:transparent;color:inherit}.accordion__header[aria-selected=true]:after{border-bottom:.313rem solid;border-top:0}.accordion__panel{background-color:transparent;color:inherit;font-size:inherit;font-size:.9rem;opacity:.8;outline:none;overflow:hidden;padding-top:1rem}.accordion__panel:last-child{border-radius:0 0 0 0}.accordion__panel[aria-hidden=true]{height:0;visibility:hidden}.accordion__panel[aria-hidden=false]{visibility:visible}.accordion__inner{padding:0}.accordion__inner>:last-child{margin-bottom:0}.icon--text{display:inline-block;font-size:2rem;font-weight:400;line-height:0}:root{--base-font-size:18px;--zoom-icon-background:rgba(25,41,56,.94);--zoom-icon-color:#fff;--lightbox-background:rgba(0,0,0,.85);--lightbox-z-index:1337;--caption-background:rgba(0,0,0,.8);--caption-color:#eee;--counter-background:transparent;--counter-color:#fff;--button-background:transparent;--button-navigation-background:rgba(0,0,0,.5);--button-color:#fff;--loader-color:#fff;--slide-max-height:calc(100vh - 2.77778em);--slide-max-width:100vw}.offcanvas__toggle{background-color:transparent;margin-bottom:0}.is-dark-theme .offcanvas__toggle{color:#fff}.offcanvas__toggle__text{display:none}@media print,screen and (min-width:40em){.offcanvas__toggle__text{display:inline}}.header--entry{display:flex;flex-flow:row wrap;flex-direction:column;margin-left:auto;margin-right:auto;max-width:75rem;padding:2rem .625rem}@media print,screen and (min-width:40em){.header--entry{padding-left:1rem;padding-right:1rem}}@media print,screen and (min-width:64em){.header--entry{padding-bottom:4rem;padding-top:4rem}}.footer--site__bg>img{bottom:0;left:0;-o-object-fit:cover;object-fit:cover;position:absolute;right:0;top:0}.is-dark-theme .footer--site__bg-light{display:none}.footer--site__logo-light{display:none}.is-dark-theme .footer--site__logo-light{display:none}.header--site{background:#232537;box-shadow:0 4px 5px 0 rgba(63,69,58,.14),0 1px 10px 0 rgba(63,69,58,.12),0 2px 4px -1px rgba(63,69,58,.2);color:#fff;left:0;position:-webkit-sticky;position:sticky;right:0;top:0;z-index:4}.header--site a{color:#20a39f}.is-dark-theme .header--site{background:#232537;color:#fff}.is-dark-theme .header--site a{color:#20a39f}.is-dark-theme .header--site .has-button>a{background-color:#20a39f;color:#fff}.header--site .has-button{margin-right:1rem}.header--site__inner{align-items:center;display:flex;flex-flow:row wrap;margin-left:auto;margin-right:auto;max-width:75rem;padding:.5rem}@media print,screen and (min-width:40em){.header--site__inner{padding-left:1rem;padding-right:1rem}}.header--site__toggle{flex:0 0 auto;margin-left:.625rem;margin-right:.625rem;width:auto}@media print,screen and (min-width:64em){.header--site__toggle{flex:1 1 0;margin-left:1rem;margin-right:1rem;width:auto}}.header--site__brand{flex:0 0 auto;margin-left:.625rem;margin-right:.625rem;max-width:23.75rem;min-width:12.5rem;text-align:center;width:auto}.header--site__logo-light{display:none}.is-dark-theme .header--site__logo-light{display:none}.header--site__logo-dark{display:inline}.is-dark-theme .header--site__logo-dark{display:inline}@media screen and (max-width:63.99875em){.header--site__navigation{display:none!important}}@media print,screen and (min-width:40em){.header--site__navigation{align-items:center;display:flex;flex:1 1 0;margin-left:1rem;margin-right:1rem;width:auto}.header--site__navigation>nav{margin-left:auto}.header--site__navigation>.switch{margin-bottom:0}}@media screen and (min-width:40em) and (max-width:63.99875em){.header--site__navigation>.switch{display:none!important}}.header--site__title{background:#232537;color:#fff;left:40%;line-height:0;margin:0;max-height:62px;padding:1rem 2rem;position:absolute;right:0;top:0;z-index:5}.header--site__title a{color:#20a39f}.is-dark-theme .header--site__title{background:#232537;color:#fff}.is-dark-theme .header--site__title a{color:#20a39f}@media print,screen and (min-width:40em){.header--site__title{-webkit-clip-path:polygon(0 0,100% 0,100% 75%,50% 100%,0 75%);clip-path:polygon(0 0,100% 0,100% 75%,50% 100%,0 75%);left:50%;max-height:none;max-width:300px;padding-bottom:3.5rem;right:auto;right:unset;transform:translateX(-50%)}}@media print,screen and (min-width:64em){.header--site__title{max-width:384px}}.header--site__title-link{display:block}.menu--primary{justify-content:flex-end}.offcanvas{background:#232537;color:#fff;height:100%;max-width:18.75rem;overflow:auto;position:fixed;right:100%;top:0;transform:translateX(0);width:100%;will-change:translateX;z-index:10}.offcanvas a{color:#20a39f}.is-dark-theme .offcanvas{background:#232537;color:#fff}.is-dark-theme .offcanvas a{color:#20a39f}.offcanvas__overlay{opacity:0;visibility:hidden}.offcanvas__head{padding-bottom:2rem;padding-left:1rem;padding-right:1rem}.offcanvas__controls{padding:.5rem;text-align:right}.offcanvas__content{padding-bottom:1.25rem;padding-top:1.25rem}.offcanvas__extra{padding:1.25rem .75rem}.offcanvas__title{color:#fff}.offcanvas__logo-light{display:none}.is-dark-theme .offcanvas__logo-light{display:none}.offcanvas__logo-dark{display:inline}.is-dark-theme .offcanvas__logo-dark{display:inline}.document{max-width:100vw;overflow-x:hidden;overflow-y:visible}.bio__meta :last-child{margin-bottom:0}.input-group-field{height:100%;padding-bottom:.7rem;padding-top:.7rem}.is-dark-theme .input-group-button>input[type=submit]{background-color:#20a39f}.scrim{background-image:linear-gradient(180deg,transparent 2%,rgba(0,0,0,.25));bottom:0;left:0;position:absolute;right:0;top:0}@media print,screen and (min-width:40em){.block--accordion__inner>.accordion{display:none}}</style><link rel="preload" data-rocket-preload as="image" href="https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov.jpg" imagesrcset="https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov.jpg 1920w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-640x220.jpg 640w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-1280x439.jpg 1280w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-768x264.jpg 768w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-1536x527.jpg 1536w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-480x165.jpg 480w" imagesizes="(max-width: 1920px) 100vw, 1920px" fetchpriority="high">
+	<meta name="description" content="David Eby government cedes governance, negotiates Aboriginal title with Tahltan Nation over 11 per cent of province&#039;s mineral-rich northwest" />
+	<link rel="canonical" href="https://northernbeat.ca/news/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest" />
+	<meta property="og:description" content="David Eby government cedes governance, negotiates Aboriginal title with Tahltan Nation over 11 per cent of province&#039;s mineral-rich northwest" />
+	<meta property="og:url" content="https://northernbeat.ca/news/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest/" />
+	<meta property="og:site_name" content="Northern Beat" />
+	<meta property="article:published_time" content="2026-07-04T00:22:44+00:00" />
+	<meta property="article:modified_time" content="2026-07-05T23:04:41+00:00" />
+	<meta property="og:image" content="https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg" />
+	<meta property="og:image:width" content="1920" />
+	<meta property="og:image:height" content="1213" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="Fran Yanor" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@FranYanor" />
+	<meta name="twitter:site" content="@BeatNorthern" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Fran Yanor" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="22 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"NewsArticle","@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#article","isPartOf":{"@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/"},"author":{"name":"Fran Yanor","@id":"https:\/\/northernbeat.ca\/#\/schema\/person\/9431cea5eb3ce4181afcfef23c41eaad"},"headline":"Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest","datePublished":"2026-07-04T00:22:44+00:00","dateModified":"2026-07-05T23:04:41+00:00","mainEntityOfPage":{"@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/"},"wordCount":4797,"publisher":{"@id":"https:\/\/northernbeat.ca\/#organization"},"image":{"@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#primaryimage"},"thumbnailUrl":"https:\/\/northernbeat.ca\/app\/uploads\/2025\/11\/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg","inLanguage":"en-US","copyrightYear":"2026","copyrightHolder":{"@id":"https:\/\/northernbeat.ca\/#organization"}},{"@type":"WebPage","@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/","url":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/","name":"Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest - Northern Beat","isPartOf":{"@id":"https:\/\/northernbeat.ca\/#website"},"primaryImageOfPage":{"@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#primaryimage"},"image":{"@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#primaryimage"},"thumbnailUrl":"https:\/\/northernbeat.ca\/app\/uploads\/2025\/11\/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg","datePublished":"2026-07-04T00:22:44+00:00","dateModified":"2026-07-05T23:04:41+00:00","description":"David Eby government cedes governance, negotiates Aboriginal title with Tahltan Nation over 11 per cent of province's mineral-rich northwest","breadcrumb":{"@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#primaryimage","url":"https:\/\/northernbeat.ca\/app\/uploads\/2025\/11\/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg","contentUrl":"https:\/\/northernbeat.ca\/app\/uploads\/2025\/11\/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg","width":1920,"height":1213},{"@type":"BreadcrumbList","@id":"https:\/\/northernbeat.ca\/news\/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/northernbeat.ca\/"},{"@type":"ListItem","position":2,"name":"Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest"}]},{"@type":"WebSite","@id":"https:\/\/northernbeat.ca\/#website","url":"https:\/\/northernbeat.ca\/","name":"Northern Beat","description":"Stories you can trust about BC politics, policies, leadership, and more","publisher":{"@id":"https:\/\/northernbeat.ca\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/northernbeat.ca\/search\/{search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https:\/\/northernbeat.ca\/#organization","name":"Northern Beat News","url":"https:\/\/northernbeat.ca\/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/northernbeat.ca\/#\/schema\/logo\/image\/","url":"https:\/\/northernbeat.ca\/app\/uploads\/2022\/02\/northern-beat-trust.png","contentUrl":"https:\/\/northernbeat.ca\/app\/uploads\/2022\/02\/northern-beat-trust.png","width":2432,"height":1127,"caption":"Northern Beat News"},"image":{"@id":"https:\/\/northernbeat.ca\/#\/schema\/logo\/image\/"},"sameAs":["https:\/\/x.com\/BeatNorthern","https:\/\/substack.com\/@northernbeatnews"],"description":"Online news, British Columbia, Canada","email":"info@northernbeat.ca","legalName":"Northern Beat News","foundingDate":"2021-01-01","numberOfEmployees":{"@type":"QuantitativeValue","minValue":"1","maxValue":"10"}},{"@type":"Person","@id":"https:\/\/northernbeat.ca\/#\/schema\/person\/9431cea5eb3ce4181afcfef23c41eaad","name":"Fran Yanor","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/northernbeat.ca\/app\/uploads\/2026\/01\/fran-bio-pic-96x96.jpg","url":"https:\/\/northernbeat.ca\/app\/uploads\/2026\/01\/fran-bio-pic-96x96.jpg","contentUrl":"https:\/\/northernbeat.ca\/app\/uploads\/2026\/01\/fran-bio-pic-96x96.jpg","caption":"Fran Yanor"},"description":"Fran Yanor a legislative journalist, and the editor and founder of Northern Beat.","sameAs":["https:\/\/x.com\/FranYanor"],"url":"https:\/\/northernbeat.ca\/news\/author\/frannorthernbeat-ca\/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel='preconnect' href='https://fonts.googleapis.com' />
+<script data-api-url="https://northernbeat.ca/wp-json/wordpress-popular-posts" data-debug="0" data-lang="0" data-post="14841" data-sampling-rate="10" data-sampling="0" data-token="8e3c8149af" id="wpp-js" src="https://northernbeat.ca/app/plugins/wordpress-popular-posts/assets/js/wpp.min.js?ver=7.4.3"></script>
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="wp-block-button-inline-css">
+.wp-block-button__link{align-content:center;box-sizing:border-box;cursor:pointer;display:inline-block;height:100%;text-align:center;word-break:break-word}.wp-block-button__link.aligncenter{text-align:center}.wp-block-button__link.alignright{text-align:right}:where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padding:calc(.667em + 2px) calc(1.333em + 2px);text-decoration:none}.wp-block-button[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons>.wp-block-button.has-custom-width{max-width:none}.wp-block-buttons>.wp-block-button.has-custom-width .wp-block-button__link{width:100%}.wp-block-buttons>.wp-block-button.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-buttons>.wp-block-button[class*=wp-block-button__width]{width:calc(var(--wp--block-button--width)*1% - var(--wp--style--block-gap, .5em)*(1 - var(--wp--block-button--width)/100))}.wp-block-buttons>.wp-block-button.wp-block-button__width-25{width:calc(25% - var(--wp--style--block-gap, .5em)*.75)}.wp-block-buttons>.wp-block-button.wp-block-button__width-50{width:calc(50% - var(--wp--style--block-gap, .5em)*.5)}.wp-block-buttons>.wp-block-button.wp-block-button__width-75{width:calc(75% - var(--wp--style--block-gap, .5em)*.25)}.wp-block-buttons>.wp-block-button.wp-block-button__width-100{flex-basis:100%;width:100%}.wp-block-buttons.is-vertical>.wp-block-button[class*=wp-block-button__width]{width:calc(var(--wp--block-button--width)*1%)}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-25{width:25%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-50{width:50%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-75{width:75%}.wp-block-button.is-style-squared,.wp-block-button__link.wp-block-button.is-style-squared{border-radius:0}.wp-block-button.no-border-radius,.wp-block-button__link.no-border-radius{border-radius:0!important}:root :where(.wp-block-button .wp-block-button__link.is-style-outline),:root :where(.wp-block-button.is-style-outline>.wp-block-button__link){border:2px solid;padding:.667em 1.333em}:root :where(.wp-block-button .wp-block-button__link.is-style-outline:not(.has-text-color)),:root :where(.wp-block-button.is-style-outline>.wp-block-button__link:not(.has-text-color)){color:currentColor}:root :where(.wp-block-button .wp-block-button__link.is-style-outline:not(.has-background)),:root :where(.wp-block-button.is-style-outline>.wp-block-button__link:not(.has-background)){background-color:transparent;background-image:none}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/button/style.min.css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-image-inline-css">
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:rgba(90,90,90,.25);border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto rgba(90,90,90,.25);outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:rgba(90,90,90,.25);border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .wp-lightbox-close-button{align-items:center;cursor:pointer;display:flex;font-family:inherit;gap:8px;justify-content:center;line-height:1;min-height:40px;min-width:40px;padding:0 4px;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .wp-lightbox-close-button:focus,.wp-lightbox-overlay .wp-lightbox-close-button:hover,.wp-lightbox-overlay .wp-lightbox-close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .wp-lightbox-close-button:has(.wp-lightbox-close-text:not([hidden])) .wp-lightbox-close-icon svg{height:1em;width:1em}.wp-lightbox-overlay .wp-lightbox-close-icon svg{display:block}.wp-lightbox-overlay .wp-lightbox-navigation-button-next,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{align-items:center;bottom:16px;cursor:pointer;display:flex;font-family:inherit;gap:4px;justify-content:center;line-height:1;min-height:40px;min-width:40px;padding:0 8px;position:absolute;z-index:2000002}.wp-lightbox-overlay .wp-lightbox-navigation-button-next[hidden],.wp-lightbox-overlay .wp-lightbox-navigation-button-prev[hidden]{display:none}@media (min-width:960px){.wp-lightbox-overlay .wp-lightbox-navigation-button-next,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{bottom:50%;transform:translateY(-50%)}}.wp-lightbox-overlay .wp-lightbox-navigation-button-next:focus,.wp-lightbox-overlay .wp-lightbox-navigation-button-next:hover,.wp-lightbox-overlay .wp-lightbox-navigation-button-next:not(:hover):not(:active):not(.has-background),.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:focus,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:hover,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:not(:hover):not(:active):not(.has-background){background:none;border:none;padding:0 8px}.wp-lightbox-overlay .wp-lightbox-navigation-button-next:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg{display:block;height:1.5em;width:1.5em}.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{left:calc(env(safe-area-inset-left) + 16px)}.wp-lightbox-overlay .wp-lightbox-navigation-button-next{right:calc(env(safe-area-inset-right) + 16px)}.wp-lightbox-overlay .wp-lightbox-navigation-icon svg{vertical-align:middle}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:2000001}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/image/style.min.css */
+</style>
+<style id="wp-block-media-text-inline-css">
+.wp-block-media-text{box-sizing:border-box;direction:ltr;display:grid;grid-template-columns:50% 1fr;grid-template-rows:auto}.wp-block-media-text.has-media-on-the-right{grid-template-columns:1fr 50%}.wp-block-media-text.is-vertically-aligned-top>.wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-top>.wp-block-media-text__media{align-self:start}.wp-block-media-text.is-vertically-aligned-center>.wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-center>.wp-block-media-text__media,.wp-block-media-text>.wp-block-media-text__content,.wp-block-media-text>.wp-block-media-text__media{align-self:center}.wp-block-media-text.is-vertically-aligned-bottom>.wp-block-media-text__content,.wp-block-media-text.is-vertically-aligned-bottom>.wp-block-media-text__media{align-self:end}.wp-block-media-text>.wp-block-media-text__media{grid-column:1;grid-row:1;margin:0}.wp-block-media-text>.wp-block-media-text__content{direction:ltr;grid-column:2;grid-row:1;padding:0 8%;word-break:break-word}.wp-block-media-text.has-media-on-the-right>.wp-block-media-text__media{grid-column:2;grid-row:1}.wp-block-media-text.has-media-on-the-right>.wp-block-media-text__content{grid-column:1;grid-row:1}.wp-block-media-text__media a{display:block}.wp-block-media-text__media img,.wp-block-media-text__media video{height:auto;max-width:unset;vertical-align:middle;width:100%}.wp-block-media-text.is-image-fill>.wp-block-media-text__media{background-size:cover;height:100%;min-height:250px}.wp-block-media-text.is-image-fill>.wp-block-media-text__media>a{display:block;height:100%}.wp-block-media-text.is-image-fill>.wp-block-media-text__media img{clip:rect(0,0,0,0);border:0;height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.wp-block-media-text.is-image-fill-element>.wp-block-media-text__media{height:100%;min-height:250px;position:relative}.wp-block-media-text.is-image-fill-element>.wp-block-media-text__media>a{display:block;height:100%}.wp-block-media-text.is-image-fill-element>.wp-block-media-text__media img{height:100%;-o-object-fit:cover;object-fit:cover;position:absolute;width:100%}@media (max-width:600px){.wp-block-media-text.is-stacked-on-mobile{grid-template-columns:100%!important}.wp-block-media-text.is-stacked-on-mobile>.wp-block-media-text__media{grid-column:1;grid-row:1}.wp-block-media-text.is-stacked-on-mobile>.wp-block-media-text__content{grid-column:1;grid-row:2}}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/media-text/style.min.css */
+</style>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id="wp-block-buttons-inline-css">
+.wp-block-buttons{box-sizing:border-box}.wp-block-buttons.is-vertical{flex-direction:column}.wp-block-buttons.is-vertical>.wp-block-button:last-child{margin-bottom:0}.wp-block-buttons>.wp-block-button{display:inline-block;margin:0}.wp-block-buttons.is-content-justification-left{justify-content:flex-start}.wp-block-buttons.is-content-justification-left.is-vertical{align-items:flex-start}.wp-block-buttons.is-content-justification-center{justify-content:center}.wp-block-buttons.is-content-justification-center.is-vertical{align-items:center}.wp-block-buttons.is-content-justification-right{justify-content:flex-end}.wp-block-buttons.is-content-justification-right.is-vertical{align-items:flex-end}.wp-block-buttons.is-content-justification-space-between{justify-content:space-between}.wp-block-buttons.aligncenter{text-align:center}.wp-block-buttons:not(.is-content-justification-space-between,.is-content-justification-right,.is-content-justification-left,.is-content-justification-center) .wp-block-button.aligncenter{margin-left:auto;margin-right:auto;width:100%}.wp-block-buttons[style*=text-decoration] .wp-block-button,.wp-block-buttons[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-buttons .wp-block-button__link{width:100%}.wp-block-button.aligncenter{text-align:center}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/buttons/style.min.css */
+</style>
+<style id="wp-block-post-title-inline-css">
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/post-title/style.min.css */
+</style>
+<style id="wp-block-quote-inline-css">
+.wp-block-quote{box-sizing:border-box;overflow-wrap:break-word}.wp-block-quote.is-large:where(:not(.is-style-plain)),.wp-block-quote.is-style-large:where(:not(.is-style-plain)){margin-bottom:1em;padding:0 1em}.wp-block-quote.is-large:where(:not(.is-style-plain)) p,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p{font-size:1.5em;font-style:italic;line-height:1.6}.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer{font-size:1.125em;text-align:right}.wp-block-quote>cite{display:block}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/quote/style.min.css */
+</style>
+<style id="wp-block-spacer-inline-css">
+.wp-block-spacer{clear:both}
+/*# sourceURL=https://northernbeat.ca/wp/wp-includes/blocks/spacer/style.min.css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link data-minify="1" rel='preload'  href='https://northernbeat.ca/app/cache/min/1/app/plugins/wordpress-popular-posts/assets/css/wpp.css?ver=1790273619' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+
+<link data-minify="1" rel='preload'  href='https://northernbeat.ca/app/cache/min/1/app/themes/northernbeat/dist/styles/app.main.css?ver=1790273619' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<script data-minify="1" id="sage/js/main-js" src="https://northernbeat.ca/app/cache/min/1/app/themes/northernbeat/dist/scripts/app.main.js?ver=1790273619"></script>
+            <style id="wpp-loading-animation-styles">@-webkit-keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}@keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}.wpp-widget-block-placeholder,.wpp-shortcode-placeholder{margin:0 auto;width:60px;height:3px;background:#dd3737;background:linear-gradient(90deg,#dd3737 0%,#571313 10%,#dd3737 100%);background-size:200% auto;border-radius:3px;-webkit-animation:bgslide 1s infinite linear;animation:bgslide 1s infinite linear}</style>
+            <link rel="icon" href="https://northernbeat.ca/app/uploads/2025/12/cropped-7f7b8a95-79b2-46b0-ac7f-1bdee84fc438_901x901-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://northernbeat.ca/app/uploads/2025/12/cropped-7f7b8a95-79b2-46b0-ac7f-1bdee84fc438_901x901-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://northernbeat.ca/app/uploads/2025/12/cropped-7f7b8a95-79b2-46b0-ac7f-1bdee84fc438_901x901-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://northernbeat.ca/app/uploads/2025/12/cropped-7f7b8a95-79b2-46b0-ac7f-1bdee84fc438_901x901-1-270x270.png" />
+<style id="wp-custom-css">
+.widget--sidebar__part {
+	display: block !important;
+}
+</style>
+<script type="text/rocketlazyloadscript">
+/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+(function(w){"use strict";if(!w.loadCSS){w.loadCSS=function(){}}
+var rp=loadCSS.relpreload={};rp.support=(function(){var ret;try{ret=w.document.createElement("link").relList.supports("preload")}catch(e){ret=!1}
+return function(){return ret}})();rp.bindMediaToggle=function(link){var finalMedia=link.media||"all";function enableStylesheet(){link.media=finalMedia}
+if(link.addEventListener){link.addEventListener("load",enableStylesheet)}else if(link.attachEvent){link.attachEvent("onload",enableStylesheet)}
+setTimeout(function(){link.rel="stylesheet";link.media="only x"});setTimeout(enableStylesheet,3000)};rp.poly=function(){if(rp.support()){return}
+var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"&&!link.getAttribute("data-loadcss")){link.setAttribute("data-loadcss",!0);rp.bindMediaToggle(link)}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,500);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}else if(w.attachEvent){w.attachEvent("onload",function(){rp.poly();w.clearInterval(run)})}}
+if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}
+else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
+</script>  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-CR1Z0HSSDG"></script>
+<script type="text/rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CR1Z0HSSDG');
+</script>
+
+<!-- Meta Pixel Code -->
+<script type="text/rocketlazyloadscript">
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1158134744722737');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1158134744722737&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <style>
+  .wp-block-pullquote p { font-size: 1rem; }
+  .pagination li:first-child, .pagination li:last-child {
+	display: none;
+  }
+  .pagination li {
+	display: inline-block;
+  }
+	.widget--home__description,
+	.widget--sidebar__description {
+		font-size: 0.9rem;
+	}
+  </style>
+	<style id="core-block-supports-inline-css">
+.wp-container-core-buttons-is-layout-fe48e5de{justify-content:center;}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+
+<style id="rocket-lazyrender-inline-css">[data-wpr-lazyrender] {content-visibility: auto;}</style><meta name="generator" content="WP Rocket 3.23.5.1" data-wpr-features="wpr_delay_js wpr_minify_js wpr_async_css wpr_preconnect_external_domains wpr_auto_preload_fonts wpr_automatic_lazy_rendering wpr_oci wpr_minify_css wpr_cdn wpr_preload_links wpr_host_fonts_locally wpr_desktop" /></head>
+  <body class="wp-singular post-template-default single single-post postid-14841 single-format-standard wp-embed-responsive wp-theme-northernbeat backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest">
+		<!--[if IE]>
+	  <div class="alert alert-warning">
+		You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/" rel="nofollow">upgrade your browser</a> to improve your experience.	  </div>
+	<![endif]-->
+	
+<header  class="header header--site">
+  <div  class="header--site__inner">
+		<div  class="header--site__toggle">
+			<button class="button offcanvas__toggle offcanvas__open" aria-controls="offcanvas-1" aria-label="Open primary menu">
+  <span aria-hidden="true">
+    <span class="icon icon--text">☰</span>
+    <span class="offcanvas__toggle__text">Menu</span>
+   </span>
+</button>
+			<button class="search-menu-toggle" aria-label="Show Search Field">
+	<img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/mag-white.svg" class="search-menu-icon is-for-dark" width="24" height="24" alt="Search">	<img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/mag-black.svg" class="search-menu-icon is-for-light" width="24" height="24" alt="Search"></button>
+		</div>
+
+		<div  class="header--site__brand">
+
+			<span class="h1 header--site__title">
+				<a href="https://northernbeat.ca/" rel="home" class="header--site__title-link ">
+					<img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/logo.svg" class="header--site__logo-light" width="320" height="160" alt="Northern Beat">					<img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/logo-ondark.svg" class="header--site__logo-dark" width="320" height="160" alt="Northern Beat">				</a>
+			</span>
+		</div>
+
+		<div  class="header--site__navigation">
+			
+<nav class="nav nav--primary" aria-label="Primary Navigation">
+  <ul class="menu menu--primary" id="menu--primary"><li class="has-button menu-item menu-item--subscribe"><a target="_blank" href="https://northernbeatnews.substack.com/">Subscribe</a></li>
+</ul></nav>
+			<!-- Rounded switch -->
+<label class="switch switch--theme__container" aria-label="Dark theme toggle">
+  <input type="checkbox" class="switch__input switch--theme switch--theme__input">
+  <span class="switch__paddle switch--theme__paddle"></span>
+</label>
+		</div>
+
+		<div  class="header--site__search">
+			<button class="search-menu-close" aria-label="Close search menu">
+				<span class="icon icon--text" aria-hidden="true">&times;</span>
+			</button>
+			<form role="search" method="get" class="search-form" action="https://northernbeat.ca/">
+	<div class="input-group">
+		<input type="text" class="input-group-field" value="" name="s" id="s" placeholder="Search …">
+		<div class="input-group-button">
+      <input type="submit" class="search-submit"
+          value="Search" />
+		</div>
+	</div>
+</form>
+		</div>
+  </div>
+</header>
+
+<section  class="offcanvas" id="offcanvas-1" aria-hidden="true">
+  <div  class="offcanvas__controls">
+    <button class="button offcanvas__toggle offcanvas__close" aria-label="Close primary menu">
+      Close <span class="icon icon--text" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div  class="offcanvas__head">
+    <a href="https://northernbeat.ca/" rel="home" class="offcanvas__title">
+      <img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/logo.svg" class="offcanvas__logo-light" width="320" height="160" alt="Northern Beat">      <img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/logo-ondark.svg" class="offcanvas__logo-dark" width="320" height="160" alt="Northern Beat">    </a>
+  </div>
+  <div  class="offcanvas__content">
+    <ul class="menu menu--vertical menu--offcanvas" id="menu--offcanvas"><li class="menu-item menu-item--election-word-watch"><a href="https://northernbeat.ca/word-watch/">ELECTION &#8211; Word Watch</a></li>
+<li class="menu-item menu-item--election-factcheck"><a href="https://northernbeat.ca/election-fact-check/">ELECTION &#8211; FactCheck</a></li>
+<li class="menu-item menu-item--election-policy-primer"><a href="https://northernbeat.ca/party-policy-primer/">ELECTION &#8211; Policy Primer</a></li>
+<li class="menu-item menu-item--news-features"><a href="https://northernbeat.ca/news/">News Features</a></li>
+<li class="menu-item menu-item--columns-and-op-eds"><a href="https://northernbeat.ca/opinion/">Columns and Op-Eds</a></li>
+<li class="menu-item menu-item--profiles"><a href="https://northernbeat.ca/profile/">Profiles</a></li>
+<li class="menu-item menu-item--leg-briefs"><a href="https://northernbeat.ca/legislature/">Leg Briefs</a></li>
+<li class="menu-item menu-item--podcasts"><a href="https://northernbeat.ca/podcast/">Podcasts</a></li>
+<li class="menu-item menu-item--contact-us"><a href="https://northernbeat.ca/contact-us/">Contact Us</a></li>
+<li class="menu-item menu-item--subscribe"><a href="https://northernbeatnews.substack.com/">Subscribe</a></li>
+</ul>  </div>
+  <div  class="offcanvas__extra">
+    <form role="search" method="get" class="search-form" action="https://northernbeat.ca/">
+	<div class="input-group">
+		<input type="text" class="input-group-field" value="" name="s" id="s" placeholder="Search …">
+		<div class="input-group-button">
+      <input type="submit" class="search-submit"
+          value="Search" />
+		</div>
+	</div>
+</form>
+    <!-- Rounded switch -->
+<label class="switch switch--theme__container" aria-label="Dark theme toggle">
+  <input type="checkbox" class="switch__input switch--theme switch--theme__input">
+  <span class="switch__paddle switch--theme__paddle"></span>
+</label>
+  </div>
+</section>
+<div  class="offcanvas__overlay" aria-hidden="true"></div>
+	<div  role="document" class="document">
+	  
+
+
+<div  class="hero">
+  <span class="scrim"></span>
+  <img width="1920" height="659" src="https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov.jpg" class="attachment-xlarge size-xlarge" alt="" decoding="async" fetchpriority="high" srcset="https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov.jpg 1920w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-640x220.jpg 640w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-1280x439.jpg 1280w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-768x264.jpg 768w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-1536x527.jpg 1536w, https://northernbeat.ca/app/uploads/2026/07/Eby-Carney-across-table-Jn18-26-BC-Gov-480x165.jpg 480w" sizes="(max-width: 1920px) 100vw, 1920px" />  </div>
+
+
+<header  class="header header--entry header--post">
+  
+  <h1 class="title title--entry title--post">
+    Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest  </h1>
+
+  <div  class="header__archive-link">
+    
+<a href="https://northernbeat.ca/news/">
+  News Feature</a>
+  </div>
+
+  
+<div  class="author">
+  <p class="author__meta">
+    Written By <strong>
+
+					Fran Yanor & Warren Mirko				</strong><br>
+        Published <time datetime="2026-07-03T17:22:44-07:00">July 3, 2026</time>
+  </p>
+</div>
+</header>
+
+<main  class="main main--has-sidebar" id="main">
+
+  <article  class="main__article post-14841 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+	<div class="content content--post">
+	  
+<h2 id="h-secret-agreement-aims-to-recognize-11-per-cent-of-province-as-tahltan-title" class="wp-block-heading">Secret agreement aims to recognize 11 per cent of province as Tahltan title</h2>
+
+
+
+<div style="height:62px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p class="wp-block-paragraph">Without legislative approval or a public mandate, the BC NDP government—apparently enabled by the federal government—is negotiating a secret agreement with a tiny, remote Indigenous community that aims to recognize legally unproven Aboriginal title, transfer lands, share revenue and cede unprecdented governance authority over 11 per cent of the province in one of Canada&#8217;s most mineral-rich districts, containing an estimated value of known deposits exceeding C$1 trillion.</p>
+
+
+
+<p class="wp-block-paragraph">That’s trillion with a ‘t.’</p>
+
+
+
+<p class="wp-block-paragraph">The end goal of the so-called “foundation agreement” is the recognition of Tahltan Nation rights and title over “Tahltan territory,” defined repeatedly as its entire legally unproven territorial claim spanning 96,000 square kilometres, according to public documents and other&nbsp;<a href="https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/" target="_blank" rel="noreferrer noopener">heavily redacted files</a>&nbsp;obtained under a Freedom of Information request by the Public Land Use Society.</p>
+
+
+
+<p class="wp-block-paragraph">“The [foundation agreement] negotiations will be based upon recognition of Tahltan Aboriginal Title and Rights in Tahltan Territory,” reads a 2020 <a href="https://news.gov.bc.ca/files/Shared_Prosperity_Agreement.pdf" target="_blank" rel="noreferrer noopener">&#8220;shared prosperity agreement&#8221;</a> that defines the geographic area as &#8220;the traditional territory identified by the Tahltan.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Tahltan’s territorial claim spans an area larger than Portugal, including 70 per cent of the Golden Triangle, one of the <a href="https://northernbeat.ca/wp/wp-admin/post.php?post=14846&amp;action=edit" target="_blank" rel="noreferrer noopener">richest mineral districts</a> in Canada, which the BC Geological Survey estimated in 2021 to hold a total contained metal value of&nbsp;<a href="https://cmscontent.nrs.gov.bc.ca/geoscience/PublicationCatalogue/InformationCircular/BCGS_IC2022-05.pdf" target="_blank" rel="noreferrer noopener">C$1.28 trillion</a>.</p>
+
+
+
+<p class="wp-block-paragraph">In a&nbsp;<a href="https://tahltan.org/2025-bc-cabinet-and-first-nations-leadership-gathering/" target="_blank" rel="noreferrer noopener">statement</a>&nbsp;last November after meeting with the premier, the Tahltan reaffirmed the scope and the need to finalize and implement the agreement “to embed consent-based and shared decision-making across all resource, land, and environmental governance systems, and to invest in housing, health, and essential services in our communities.”</p>
+
+
+
+<p class="wp-block-paragraph">The foundation agreement goals are also apparently <a href="https://www.pm.gc.ca/en/news/backgrounders/2026/07/02/canada-british-columbia-cooperative-prosperity-agreement" target="_blank" rel="noreferrer noopener">shared by the federal government,</a> according to an agreement announced on July 2 between Ottawa and B.C. that commits the Carney government to determining &#8220;mechanisms to participate in and contribute to the Tahltan Foundation Agreement&#8230; including through separate agreements or arrangements.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Six years in the making, with no signed foundation agreement yet, the BC NDP government has already handed unprecedented jurisdiction to Tahltan with the province’s first consent-based decision-making agreements over approval of two multi-billion-dollar mining projects—Eskay Creek gold and silver mine and Red Chris gold and copper mine.</p>
+
+
+
+<p class="wp-block-paragraph">Consent-based decision-making under&nbsp;<a href="https://www2.gov.bc.ca/gov/content/governments/indigenous-people/new-relationship/united-nations-declaration-on-the-rights-of-indigenous-peoples/making-decisions-together#decisionmaking" target="_blank" rel="noreferrer noopener">Section 7</a>&nbsp;of the&nbsp;<em>Declaration on the Rights of indigenous Peoples Act&nbsp;</em>(<a href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/19044#section7" target="_blank" rel="noreferrer noopener">DRIPA</a>) enables agreements r<a href="https://northernbeat.ca/wp/wp-admin/post.php?post=14823&amp;action=edit" target="_blank" rel="noreferrer noopener">equiring the consent</a> of an Indigenous community for a project to proceed on its claimed territory, without any test of the claim in court. Withheld consent effectively amounts to a veto.&nbsp;</p>
+
+
+
+
+<aside class="block block--accordion  " id="block-1883615266">
+  
+  <div class="block__inner block--accordion__inner">
+
+      <div class="aside">
+                  <h2 class="aside__header show-for-sr">Golden Triangle metal deposits</h2>
+                <p><img decoding="async" class="alignnone size-medium wp-image-14847" src="https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-338x360.jpg" alt="" width="282" height="300" srcset="https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-338x360.jpg 338w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-676x720.jpg 676w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-768x818.jpg 768w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-253x270.jpg 253w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-1014x1080.jpg 1014w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey.jpg 1412w" sizes="(max-width: 282px) 100vw, 282px" /></p>
+<p>[BC Geological Survey]</p>
+      </div>
+
+      
+            <div class="accordion is-open-by-default">
+
+        <h2 id="accordion-header-block-1883615266" class="accordion__header">Golden Triangle metal deposits</h2>
+        <div id="accordion-panel-block-1883615266" class="accordion__panel">
+          <div class="accordion__inner">
+            <p><img decoding="async" class="alignnone size-medium wp-image-14847" src="https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-338x360.jpg" alt="" width="282" height="300" srcset="https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-338x360.jpg 338w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-676x720.jpg 676w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-768x818.jpg 768w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-253x270.jpg 253w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey-1014x1080.jpg 1014w, https://northernbeat.ca/app/uploads/2026/07/Metal-endownment-Golden-triangle-1.28B-BC-geological-Survey.jpg 1412w" sizes="(max-width: 282px) 100vw, 282px" /></p>
+<p>[BC Geological Survey]</p>
+          </div>
+        </div>
+
+      </div>
+      
+  </div>
+</aside>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/consulting-with-first-nations/agreements/tahltan-consolidated-shared-prosperity-agreement-final.pdf" target="_blank" rel="noreferrer noopener">Government documents</a>&nbsp;indicate these two consent-based decision-making deals are a template for more of the same and part of a wider “territory plan” that includes the building up and “recognition” of Tahltan’s government structures, improved shared revenue streams, “harmonization of the Parties’ respective jurisdictions and titles,” joint development of standards and processes regulating mining and natural resources, transfer of unspecified “agreed-to lands” related to reserve land expansion, natural resources and other tenures, all in pursuit of looks to be sovereign state-like powers.&nbsp;&nbsp;</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-governments-appear-to-accept-aboriginal-title-claim" class="wp-block-heading"><strong>Governments appear to accept Aboriginal title claim</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Premier David Eby and his cabinet officials do not appear to have ever publicly acknowledged the foundation agreement prior to disclosure of the FOI documents by Public Land Use Society in May.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Eby was cagey when asked at a press conference on June 19 if his government intended to recognize Aboriginal title across the whole area Tahltan has asserted as its territory. The foundation agreement will “provide a structure for us moving forward, including in relation to crucial economic development in Tahltan territory,” he said, noting it contains “11 mines and more than $30 billion in potential investment.”</p>
+
+
+
+<p class="wp-block-paragraph">The premier did say he spoke with the Prime Minister, asking for federal support, “because of the very strong title claim that the Tahltan has, but also because of the incredible opportunity of collaboration here with Tahltan central government for all of us.”</p>
+
+
+
+<p class="wp-block-paragraph">It’s unclear on what evidence Eby based his assessment of a “very strong title claim” given Tahltan has not proven its claim in court, nor has it been settled by treaty. Under Canadian law, a strong claim may trigger duty-to-consult, but asserted territory does not equate to proven Aboriginal title. Section 35 of the Constitution and related case law, to which the government proports to adhere, requires a specific <a href="https://northernbeat.ca/opinion/letting-the-eby-government-negotiate-aboriginal-title-is-perilous/" target="_blank" rel="noreferrer noopener">burden of proof</a> for recognition of Aboriginal title, a test the Tahltan claim has not met. </p>
+
+
+
+<p class="wp-block-paragraph">When asked if the province would go a similar route with the Tahltan as it did with Haida, when the B.C. and federal governments recognized the entirety of the Haida asserted claim as Aboriginal title (including over private property), then, supported a <a href="https://northernbeat.ca/opinion/covert-haida-bc-government-court-action-may-strip-landowner-protections/" target="_blank" rel="noreferrer noopener">court order</a> that gave <a href="https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/consulting-with-first-nations/agreements/final_gaayhllxid_giihlagalgang_rising_tide_haida_title_lands_agreement.pdf" target="_blank" rel="noreferrer noopener">Haida title</a> constitutional protection, the premier said the two situations were quite different. </p>
+
+
+
+<p class="wp-block-paragraph">However, in a July 2 press conference jointly hosted by Eby and Prime Minister Mark Carney, announcing a <a href="https://www.pm.gc.ca/en/news/backgrounders/2026/07/02/canada-british-columbia-cooperative-prosperity-agreement" target="_blank" rel="noreferrer noopener">&#8220;cooperative prosperity agreement&#8221;</a> between the two governments covering billions of dollars in multiple major projects, Canada commits to engaging with First Nations in the north west, including through &#8220;existing tripartite forums&#8221; and promises to support the Tahltan foundation agreement, possibly through a separate agreement. This could align with the process taken for Haida title. The federal government also announced $500 million in funding &#8220;to support&#8221; the Red Chris mine.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img decoding="async" width="1136" height="720" src="https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-1136x720.jpg" alt="" class="wp-image-14852" style="aspect-ratio:1.5777888650837908;width:616px;height:auto" srcset="https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-1136x720.jpg 1136w, https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-568x360.jpg 568w, https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-768x487.jpg 768w, https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-1536x974.jpg 1536w, https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-426x270.jpg 426w, https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site-1704x1080.jpg 1704w, https://northernbeat.ca/app/uploads/2026/07/Tahltan-territory-map-Tahltan-site.jpg 1920w" sizes="(max-width: 1136px) 100vw, 1136px" /><figcaption class="wp-element-caption">Tahltan assert territorial sovereignty over 96,000 square kilometres or 11 per cent of B.C.’s total land base, an area larger than the country of Portugal, containing 11 active mining projects expected to draw $30 billion in investment. [Tahltan Nation map]</figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">For Tahltan Central Government president Kerry Carlick, the question of recognition of title is not if, but when.</p>
+
+
+
+<p class="wp-block-paragraph">“We are moving forward rights and [recognition] of title. We do have jurisdiction in our territory. We are working towards that,” Carlick said at the same June 19 press event attended by the premier.</p>
+
+
+
+<p class="wp-block-paragraph">The Tahltan&nbsp;<a href="https://tahltan.org/central-government/" target="_blank" rel="noreferrer noopener">1910 declaration</a>&nbsp;lays it out: “We claim the sovereign right to all the country of our tribe — this country of ours which we have held intact from the encroachments of other tribes, from time immemorial, at the cost of our own blood.</p>
+
+
+
+<p class="wp-block-paragraph">The Tahltan Central Government is the administrative governing structure for the&nbsp;<a href="https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FNRegPopulation.aspx?BAND_NUMBER=682&amp;lang=eng" target="_blank" rel="noreferrer noopener">Tahltan</a>&nbsp;and&nbsp;<a href="https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FNRegPopulation.aspx?BAND_NUMBER=683&amp;lang=eng" target="_blank" rel="noreferrer noopener">Iskut</a>&nbsp;Indian bands representing two clans who together make up the Tahltan Nation with 636 people living on reserve and 2,444 registered members living elsewhere.</p>
+
+
+
+<p class="wp-block-paragraph">The most stubborn obstacle to securing recognition of Tahltan title may might not be having to prove it in court—both senior levels of government appear inexplicably eager to dispense with the constitutional standard of proof, as they did with&nbsp;<a href="https://northernbeat.ca/opinion/covert-haida-bc-government-court-action-may-strip-landowner-protections/" target="_blank" rel="noreferrer noopener">Haida title.</a>&nbsp;Nor have governments openly expressed any concern for the public interests or the usurping of its governance authority over Crown land. Rather, the biggest pushback may come from neighbouring Indigenous communities.</p>
+
+
+
+<p class="wp-block-paragraph">“The Tahltan Nation continues to affirm Aboriginal title over our vast territory, but we face serious challenges,” writes the Tahltan’s Carlick in a July 2025&nbsp;<a href="https://www.facebook.com/61576178351427/posts/-pillar-5-cultural-preservation-resource-stewardshiprooted-in-responsibility-dri/122124929294872611/" target="_blank" rel="noreferrer noopener">social media post.</a>&nbsp;“Overlapping territorial claims with neighbouring [First] Nations like the Kaska Dena and the Taku River Tlingit create real complications over who has the right to use, govern, and benefit from the land. These overlaps delay negotiations and threaten our ability to maintain full authority on our own territory.”</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-tahltan-consent-has-netted-billions-with-no-end-in-sight" class="wp-block-heading"><strong>Tahltan ‘consent’ has netted billions, with no end in sight</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Even without a finalized foundation agreement or formal recognition of Aboriginal title,&nbsp;the province has already funded the build-up of Tahltan government structures and ceded select Crown governance decision-making powers, netting the Tahltan a significant financial windfall.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">A provincial grant of $20 million 2020 kicked off negotiations towards the foundation agreement, with another undisclosed amount of funding in the works. An unknown amount financed Tahltan’s efforts to lead land-use planning in the region (more on this later). But it is Tahltan’s “consent” to Skeena Resources and Newmont to operate the Eskay Creek and Red Chris mines respectively that is worth billions.</p>
+
+
+
+<p class="wp-block-paragraph">A Tahltan document dated May 22, 2026 referenced&nbsp;<a href="https://www.projects.eao.gov.bc.ca/api/public/document/6a332e5eb3170cc5fed79583/download/TCG%20Notice%20of%20Decision-%20Red%20Chris%20Block%20Cave%20Amendment.pdf" target="_blank" rel="noreferrer noopener">two streams of funding</a>&nbsp;that will soon begin flowing into community coffers, one from the province, the other from mining proponent Newmont; both triggered by the band’s&nbsp;<a href="https://vancouversun.com/business/3-billion-red-chris-copper-and-gold-mine-approval-advances-b-c-s-critical-mineral-strategy" target="_blank" rel="noreferrer noopener">environmental approval</a>&nbsp;of the $3-billion Red Chris gold and copper mine amendment to convert production from an open pit to&nbsp;<a href="https://tahltan.org/red-chris-block-cave-information-package/" target="_blank" rel="noreferrer noopener">block cave.</a></p>
+
+
+
+<p class="wp-block-paragraph">Details of these revenue agreements are not yet public, but the Eskay Creek gold and silver mine agreement with the Tahltan set a high bar.&nbsp;</p>
+
+
+
+
+<aside class="block block--accordion  " id="block-1367464904">
+  
+  <div class="block__inner block--accordion__inner">
+
+      <div class="aside">
+                  <h2 class="aside__header show-for-sr">Tahltan veto</h2>
+                <p><a class="alignnone size-medium wp-image-14054" href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-&lt;img src=" target="_blank" rel="noopener"><img decoding="async" class="alignnone wp-image-14054" src="https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-570x360.jpg" alt="" width="237" height="149" srcset="https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-570x360.jpg 570w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-1140x720.jpg 1140w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-768x485.jpg 768w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-1536x970.jpg 1536w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-427x270.jpg 427w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-1709x1080.jpg 1709w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg 1920w" sizes="(max-width: 237px) 100vw, 237px" /></a></p>
+<p>Read: <a href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-&lt;img src=" target="_blank" rel="noopener">BC Government gives Tahltan a veto over mine development [Golden Triangle]</a><a href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/" target="_blank" rel="noopener"><!-- wp:image {"id":14852,"width":"616px","height":"auto","aspectRatio":"1.5777888650837908","sizeSlug":"large","linkDestination":"none","align":"center"} --></a></p>
+      </div>
+
+      
+            <div class="accordion is-open-by-default">
+
+        <h2 id="accordion-header-block-1367464904" class="accordion__header">Tahltan veto</h2>
+        <div id="accordion-panel-block-1367464904" class="accordion__panel">
+          <div class="accordion__inner">
+            <p><a class="alignnone size-medium wp-image-14054" href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-&lt;img src=" target="_blank" rel="noopener"><img decoding="async" class="alignnone wp-image-14054" src="https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-570x360.jpg" alt="" width="237" height="149" srcset="https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-570x360.jpg 570w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-1140x720.jpg 1140w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-768x485.jpg 768w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-1536x970.jpg 1536w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-427x270.jpg 427w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver-1709x1080.jpg 1709w, https://northernbeat.ca/app/uploads/2025/11/Eskey-Creek-Golden-triangle-map-Skeena-GoldSilver.jpg 1920w" sizes="(max-width: 237px) 100vw, 237px" /></a></p>
+<p>Read: <a href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-&lt;img src=" target="_blank" rel="noopener">BC Government gives Tahltan a veto over mine development [Golden Triangle]</a><a href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/" target="_blank" rel="noopener"><!-- wp:image {"id":14852,"width":"616px","height":"auto","aspectRatio":"1.5777888650837908","sizeSlug":"large","linkDestination":"none","align":"center"} --></a></p>
+          </div>
+        </div>
+
+      </div>
+      
+  </div>
+</aside>
+
+
+
+<p class="wp-block-paragraph">Operated by Skeena Resources and&nbsp;<a href="https://news.gov.bc.ca/releases/2026MCM0008-000078" target="_blank" rel="noreferrer noopener">jointly approved</a>&nbsp;in January by the province and Tahltan, Eskay Creek is the first official test drive of the BC NDP government’s consent-based agreement (<a href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/" target="_blank" rel="noreferrer noopener">aka a veto</a>) under DRIPA and will reportedly net the Tahltan about $2 billion in cash, jobs and other benefits over the 13-year life of the mine.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">An additional agreement commits the province to sharing a reported 37.5 per cent of a portion of its mineral tax revenues with the Tahltan community, which could reach a billion, more or less, depending on the price of silver and gold, and the profitability of the mine.</p>
+
+
+
+<p class="wp-block-paragraph">Beyond that, Tahltan has asked for a slew of infrastructure investments from the federal government as “critical to maintaining the support of the Tahltan people” for resource development of critical minerals, according to&nbsp;<a href="https://www.ourcommons.ca/Content/Committee/441/FINA/Brief/BR12565030/br-external/Jointly31-e.pdf" target="_blank" rel="noreferrer noopener">pre-budget submissions</a>&nbsp;to the House of Commons standing committee on Finance. The investments span transportation, emergency services, policing, health services, housing, ecological protection, and wildlife management.&nbsp;&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">On June 26, the federal government heeded that call with funding, possibly also triggered by approval of the Red Chris mine, when the Ministry of Mines and Resources&nbsp;<a href="https://www.canada.ca/en/natural-resources-canada/news/2026/06/minister-hodgson-accelerates-canadas-mining-sector.html" target="_blank" rel="noreferrer noopener">announced $2 million</a>&nbsp;“to co-develop, assess, and participate in decision-making on major critical mineral projects in Tahltan Territory.”</p>
+
+
+
+<p class="wp-block-paragraph">The Tahltan heralded the investment as a signal of confidence in its pursuit of its effective sovereignty. “It is about recognizing Tahltan Title and Rights, advancing consent-based decision-making, and ensuring the Tahltan Nation has a meaningful seat at the table when decisions are being made in Tahltan Territory,” according to&nbsp;<a href="https://www.facebook.com/photo?fbid=1449869750505275&amp;set=a.245694774256118" target="_blank" rel="noreferrer noopener">a statement</a>&nbsp;posted by the group. Arguably, if government will not allow development without Tahltan consent, Tahltan will essentially have the only “seat at the table.”</p>
+
+
+
+<p class="wp-block-paragraph">It’s unknown if Tahltan will pitch in to cover any infrastructure costs from their own revenue base or will contribute to costs of services community members access from other communities in the region.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Rural mayors, particularly in hub cities, have the long argued for a greater portion of regional resource development revenues to help defray costs of serving the sector and the surrounding communities that rely on their infrastructure, health care and other services. In 2023, northwest mayors finally succeeded in&nbsp;<a href="https://northernbeat.ca/news/northwest-communities-get-piece-of-natural-resources-action/" target="_blank" rel="noreferrer noopener">securing a commitment</a>&nbsp;from the Eby government for $250 million, dispersed to 21 communities over five years. A zero-to-hero victory for the municipalities involved, but a drop in the bucket compared to B.C.’s estimated total municipal&nbsp;<a href="https://www.ubcm.ca/sites/default/files/2024-09/UBCM%20Election%20Priorities_2024_BG_V11.pdf" target="_blank" rel="noreferrer noopener">C$24 billion infrastructure deficit,</a>&nbsp;and what has been earmarked for the Tahltan, which has no public service mandate, with a duty only to its extremely limited membership.</p>
+
+
+
+<p class="wp-block-paragraph">“I don&#8217;t want to take away from the fact that Skeena Resources willingly negotiated a deal with Tahltan who also willingly negotiated that deal with Skeena,” said Todd Stone, CEO of B.C.’s Association of Mineral Exploration, in an interview last January. “That is their right to do. But, more broadly speaking… it&#8217;s important for the province to retain its role as the final decision maker. And, by the way, the investment community around the world, it needs to see that certainty of authority.</p>
+
+
+
+<p class="wp-block-paragraph">“We believe that the ultimate, final authority on these decisions must rest with the Province of British Columbia, on behalf of the Crown and on behalf of the public interest,” Stone said.</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-minister-tells-opposition-use-google-to-learn-abou-t-government-agreement" class="wp-block-heading"><strong>Minister tells Opposition: ‘use Google’ to learn abou</strong>t<strong> government agreement</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Not only is the B.C. government incrementally ceding authority to Tahltan over Crown interests, BC NDP officials are not telling British Columbians they’re doing it.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The province has never publicly announced the foundation agreement, nor disclosed its terms. Nor has it consulted voters on whether it should hand one small Indigenous community veto power and billions in revenue over Crown resources in a strategically vital part of the province. Consequently, the public remains in the dark about whether the deal has been finalized, whether it requires federal approval, or how far B.C. will go in transferring decision-making governance powers or enabling those by granting the Tahltan fully territorial Aboriginal title with the assistance of the federal government.</p>
+
+
+
+
+
+<p class="wp-block-paragraph">When Opposition critic Scott McInnis asked the minister of Indigenous Relations for details on the “secret” Tahltan foundation agreement in question period in May, Spencer Chandra Herbert haughtily dismissed the question.</p>
+
+
+
+<p class="wp-block-paragraph">“Well, I don’t know what the member’s definition of ‘secret’ is. If you typed in Google: ‘Tahltan-B.C. government,’ you could find your way to one press release, two press releases, three press releases, all around what the member is talking about.”</p>
+
+
+
+<p class="wp-block-paragraph">“This process has actually been underway for quite a number of years,” said Herbert. “So I would encourage the member to try to use Google more than to use conspiracy theory when it is public.”</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:22% auto"><figure class="wp-block-media-text__media"><a href="https://drive.google.com/open?id=1_MIPgQJg-qaTK7J0ATVlMcYIMmxmpwif&amp;usp=drive_fs" target="_blank" rel=" noreferrer noopener"><img decoding="async" width="1153" height="547" src="https://northernbeat.ca/app/uploads/2026/07/Herbert-McIsaac-google-it-member-May-26-Hansard-TV.jpg" alt="" class="wp-image-14854 size-full" srcset="https://northernbeat.ca/app/uploads/2026/07/Herbert-McIsaac-google-it-member-May-26-Hansard-TV.jpg 1153w, https://northernbeat.ca/app/uploads/2026/07/Herbert-McIsaac-google-it-member-May-26-Hansard-TV-640x304.jpg 640w, https://northernbeat.ca/app/uploads/2026/07/Herbert-McIsaac-google-it-member-May-26-Hansard-TV-768x364.jpg 768w, https://northernbeat.ca/app/uploads/2026/07/Herbert-McIsaac-google-it-member-May-26-Hansard-TV-480x228.jpg 480w" sizes="(max-width: 1153px) 100vw, 1153px" /></a></figure><div class="wp-block-media-text__content">
+<p class="wp-block-paragraph">Watch the <a href="https://drive.google.com/open?id=1_MIPgQJg-qaTK7J0ATVlMcYIMmxmpwif&amp;usp=drive_fs" target="_blank" rel="noreferrer noopener">Question Period exchange </a>in May between Indigenous Relations Minister Spencer Chandra Herbet and Opposition critic Scott McIsaac on the foundation agreement.</p>
+</div></div>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p class="wp-block-paragraph">In fact, when asked to share the supposedly public agreement, Herbert&#8217;s ministry and government withheld more than 400 pages in its FOI disclosure to the Public Land Use Society, including all records directly concerning title recognition. And the very limited and glancing references to the foundation agreement that are publicly accessible took much more than a Google search to find.</p>
+
+
+
+<p class="wp-block-paragraph">The only direct public reference to the agreement was in backgrounder attached to <a href="https://news.gov.bc.ca/releases/2021EMLI0041-001128" target="_blank" rel="noreferrer noopener">a press release</a> from five years ago that characterized the foundation agreement as a “reconciliation agreement… to define the parties’ intergovernmental partnership and transparent ‘rules of the road.’&#8221; </p>
+
+
+
+<p class="wp-block-paragraph">The press release introduced a&nbsp;<a href="https://news.gov.bc.ca/files/Shared_Prosperity_Agreement.pdf" target="_blank" rel="noreferrer noopener">“shared prosperity agreement”</a>&nbsp;signed 15 months earlier between the BC government and Tahltan that laid out the framework for getting to a foundation agreement. The agreement itself was dated Mar. 30, 2020, mere days after COVID pandemic measures shut down the entire economy, when legislature was not sitting, and media, Opposition legislators, and the public’s attention were elsewhere.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">There was zero public notice, with not even an Order in Council from Cabinet authorizing it, as might be expected (and publicly available) to approve negotiations of this magnitude. And the agreement itself instructs signatories to “avoid the need for Provincial legislative changes to be made to implement the Interim Strategies.”</p>
+
+
+
+<p class="wp-block-paragraph">Another <a href="https://news.gov.bc.ca/releases/2021IRR0029-001165" target="_blank" rel="noreferrer noopener">related press release</a>&nbsp;was posted on June 15, 2021, again without fanfare. This one did not note the foundation agreement at all except via a link back to the first release. It did however announce two significant goals that would become key in negotiations towards the foundation agreement, namely seeking agreements with Tahltan on the Eskay Creek gold and silver mine and the Red Chris mine. It also mentioned consent decision-making under Section 7 of the&nbsp;<a href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/19044" target="_blank" rel="noreferrer noopener"><em>Declaration Act</em>,</a>&nbsp;but did not link to the Declaration or explain what consent-decision-making entails.</p>
+
+
+
+<p class="wp-block-paragraph">A&nbsp;<a href="https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/consulting-with-first-nations/agreements/tahltan-consolidated-shared-prosperity-agreement-final.pdf" target="_blank" rel="noreferrer noopener">second version</a>&nbsp;of the so-called prosperity agreement, with an amendment dated&nbsp;<a href="https://drive.google.com/file/d/17sHYWkiwB_2h9aTKHKldIdtcQfDDwinm/view?usp=sharing" target="_blank" rel="noreferrer noopener">July 28, 2021,</a>&nbsp;does not appear to have been publicized in any way, with the first appearance captured on the government website at its current url on June 4, 2024. The main difference between this version and the March 2020 original lies in the scale of decision-making. The 2020 version talked about “collaboration” between governments and “shared decision-making,” where the July 2021 update referenced “joint and consent-based decision-making—” essentially a transfer of governance authority from the province to Tahltan.</p>
+
+
+
+<p class="wp-block-paragraph">This amendment is significant. From collaborating on decisions, to handing over governance authority. The amendment was no doubt a nod to another deal former premier John Horgan was working on that time under the guidance of then attorney general David Eby—an agreement to give Tahltan consent-based decision-making over the Eskay Creek gold and silver mine, which&nbsp;<a href="https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/consulting-with-first-nations/agreements/declaration_act_consent_decision-making_agreement_for_eskay_creek_project.pdf" target="_blank" rel="noreferrer noopener">Horgan and several ministers signed</a>&nbsp;on June 6, 2022.</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-the-tahltan-are-running-land-use-show-in-northwest" class="wp-block-heading"><strong>The Tahltan are running land-use show in northwest</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Six years into negotiations on a foundation agreement with massive public policy and democratic governance implications, Tahltan’s authority appears to have expanded to what amounts to veto or de facto veto powers over select mining projects, mineral exploration permitting, and the land-use planning table. Many in the industry characterize land use planning and permitting processes under joint control of government and Tahltan as amateurish, rushed, and structurally biased with preconceived outcomes stacked against proponents.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Meanwhile the provincial government and Tahltan Nation are one year behind on their commitment to share a land-use plan for public engagement and all new mineral exploration permitting has been paused in the northwest until 2028, with the province <a href="https://globalnews.ca/news/11891299/mining-industry-issue-bc-government-extending-pause-new-mineral-claims/" target="_blank" rel="noreferrer noopener">reportedly saying</a>&nbsp;it needed time to complete land-use planning and provide long-term certainty for First Nations and industry.</p>
+
+
+
+<p class="wp-block-paragraph">Why has the province put the Tahltan in charge of land use planning for the whole region, asked the CEO of a mineral exploration company who declined to be identified out of fear of reprisal from the Tahltan. The owner of a company he said has spent $6 million over several years, working and employing residents in the region, he&nbsp;described one land-use planning meeting, billed as public consultation, a sham. Industry participants were not allowed to speak because the decisions had already been made behind closed doors, he said.&nbsp;He also questioned why the province was only consulting with Tahltan and not industry and community members and then putting together a plan that works for everybody.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">“It&#8217;s just Tahltan Central Government and the B.C. government putting together what works for the Tahltan.”&nbsp;</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img decoding="async" width="1260" height="720" src="https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC-1260x720.jpg" alt="" class="wp-image-11618" style="width:610px;height:auto" srcset="https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC-1260x720.jpg 1260w, https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC-630x360.jpg 630w, https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC-768x439.jpg 768w, https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC-1536x878.jpg 1536w, https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC-473x270.jpg 473w, https://northernbeat.ca/app/uploads/2024/02/Tahlatan-Nation-camp-support-Tahltan-Nation-Development-Corp-TNDC.jpg 1878w" sizes="(max-width: 1260px) 100vw, 1260px" /><figcaption class="wp-element-caption">Tahlatan Nation camp support site. [Tahltan Nation Development Corp]</figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">The Association for Mineral Exploration recently withdrew from a northwest land-use planning engagement session run by the provincial government and Tahltan, calling for transparency on agreements between Tahltan and the provincial government related to land-use planning. The organization continues to participate in the planning process but is calling for disclosure of a land-use planning map—already one year overdue—so its members can see which areas are proposed for conservation and which are open for mineral exploration.</p>
+
+
+
+<p class="wp-block-paragraph">“The fact that the public, communities and industry were shut out of that [land-use planning] process for literally years and were only invited into the process at the 11th Hour is totally unacceptable,” association president Stone said. “We need the province to step up and assert its authority as the Crown in defense of the public interest, and anything less than that is, frankly, a dereliction of responsibility on the part of the provincial government.”</p>
+
+
+
+<p class="wp-block-paragraph">The consequences are reaching the courts, where it has been alleged the province “impermissibly delegated” authority to the Tahltan. In a 2024&nbsp;<a href="https://torrmetals.com/site/assets/files/2811/2024-07-11-petition-to-the-court.pdf" target="_blank" rel="noreferrer noopener">petition</a>&nbsp;filed in the Supreme Court of British Columbia, Torr Metals Inc accused the province’s then-chief inspector of mines of delegating decision-making authority to the Tahltan when she denied an exploratory drilling permit for copper and gold within the Golden Triangle. The company stated the chief inspector “erred in law by failing to undertake the required balancing of aboriginal and non-aboriginal interests, as mandated by the Supreme Court of Canada in<a href="https://decisions.scc-csc.ca/scc-csc/scc-csc/en/item/2189/index.do" target="_blank" rel="noreferrer noopener">&nbsp;<em>Haida Nation v. Canada</em></a>…” and that there were no terms under which the B.C. government would issue a permit without Tahltan consent “regardless of the merits… thereby giving the [Tahltan Central Government] a&nbsp;<em>de facto</em>&nbsp;veto.”</p>
+
+
+
+<p class="wp-block-paragraph">The judge&nbsp;<a href="https://www.bccourts.ca/jdb-txt/sc/26/09/2026BCSC0966.htm">dismissed the petition</a>&nbsp;earlier this year, refusing to compel the ministry to divulge more records or open the mines inspector to cross examination over her decision to refuse to issue a permit. The court concluded that the province followed lawful procedures “absent evidence to the contrary.”&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">However,&nbsp;<em>Northern Beat</em>&nbsp;has spoken directly with other mineral exploration operators from across the province who&nbsp;<a href="https://icbaindependent.ca/wp-content/uploads/2026/01/LT-BC-re-Concerns-with-the-Tahltan-BC-Land-Stewardship-Planning-Project-22-Dec-202557.pdf">report</a>&nbsp;similar conditions of a prejudiced permitting process, consisting of endless delays, where decision-makers are paralyzed, awaiting de facto consent from Indigenous communities that sometimes never comes. Some proponents have compared the new regulatory set up they encountered as a pay-to-play extortion-type scheme enabled by government where indigenous groups demand payments upfront before they will even commit to consulting on a permit application, let alone approve it. Meanwhile, mineral prospectors, many small operators, try to hang on financially long enough to get approvals for notice of work permits just to drill a hole to see if there are minerals worth mining.</p>
+
+
+
+<p class="wp-block-paragraph">“It&#8217;s important that [prospectors] are successful, but it&#8217;s also equally important that when a mine is in its earliest stages that there&#8217;s a good relationship with the local First Nation,” said the premier when asked in April about the de facto veto mineral exploration operators were encountering. Two months later, his government extended its&nbsp;<a href="https://news.gov.bc.ca/releases/2026MCM0015-000649" target="_blank" rel="noreferrer noopener">pause on new mineral exploration</a>&nbsp;permitting in the northwest and north-central B.C.</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-mineral-permitting-process-mired-in-confusion-and-uncertainty-nbsp" class="wp-block-heading"><strong>Mineral permitting process mired in confusion and uncertainty&nbsp;</strong></h2>
+
+
+
+<p class="wp-block-paragraph">The mineral prospecting sector has been in upheaval since a 2024 BC Supreme Court decision found the mineral claims process was in breach of the province’s duty to consult and ruled Indigenous communities need to be consulted prior to a claim being staked. Previously, a prospector could go online, pick a site and stake a claim in minutes. Then in November 2025, the BC Appeal Court struck down the&nbsp;<em>Mineral Tenure Act</em>&nbsp;itself for breaching the Declaration Act, leaving open the possibility that any B.C. law could be similarly challenged.</p>
+
+
+
+<p class="wp-block-paragraph">Since then, parties on all sides grapple with <a href="https://northernbeat.ca/party-policy-primer/consult-consent-or-veto-why-is-this-important/?preview_id=14823&amp;preview_nonce=04c77aea1d&amp;preview=true" target="_blank" rel="noreferrer noopener">‘consult’ versus ‘consent,’ </a>how to properly adhere to the requirement and whether that means government or Indigenous groups are the final decision-makers.</p>
+
+
+
+<p class="wp-block-paragraph">Mineral exploration operators say consent-based decision-making leads to conflicts-of-interest when the decision-makers are equity shareholders in the mines, employee suppliers, priority contractors, community benefit recipients, Crown land-use planning partners, and the final governmental authority signing off on their own project’s environmental assessment.</p>
+
+
+
+<p class="wp-block-paragraph">“There is an inherent bias in having an interested party – the Tahltan Nation, which is directly involved in several mining projects in the area – co‑develop a plan that will govern third‑party interests,” wrote Brixton Metals in a&nbsp;<a href="https://icbaindependent.ca/wp-content/uploads/2026/01/LT-BC-re-Concerns-with-the-Tahltan-BC-Land-Stewardship-Planning-Project-22-Dec-202557.pdf" target="_blank" rel="noreferrer noopener">letter cc’d to the premier</a>&nbsp;last December. Brixton Metals said it has spent $70 million developing a mineral site in Tahltan’s asserted territory, including direct payments to the Tahltan Central Government and jobs to members.</p>
+
+
+
+<p class="wp-block-paragraph">“The Tahltan Nation must act in the interests of its members, not the general public; this creates obvious concerns for third parties seeking impartial processes for decisions affecting their operations. Failure to address this perceived impartiality undermines democratic principles and erodes investor confidence.”&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The Tahltan model is not confined to the northwest. Similar pockets of&nbsp;<a href="https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/environmental-assessments/environmental-assessment-process/act-regulations-agreements#consent_agreements" target="_blank" rel="noreferrer noopener">consent-based arrangements</a>&nbsp;have&nbsp;<a href="https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/consulting-with-first-nations/agreements/shishalh_foundation_agreement_qa_may_16_2025.pdf" target="_blank" rel="noreferrer noopener">been signed</a>&nbsp;or are&nbsp;<a href="https://northernbeat.ca/opinion/one-two-sucker-punch-bc-ottawa-bury-province-under-aboriginal-title-chaos/" target="_blank" rel="noreferrer noopener">in the works</a>&nbsp;across the province through&nbsp;<a href="https://www.fpbc.ca/webinar-recordings-archive/transitioning-to-forest-landscape-planning-and-alignment-with-dripa/" target="_blank" rel="noreferrer noopener">landscape planning,</a>&nbsp;<a href="https://northernbeat.ca/news/bc-ndp-blindside-ne-residents-again-with-mor-secret-land-negotiations/" target="_blank" rel="noreferrer noopener">conservation agreements,</a>&nbsp;<a href="https://tsilhqotin.ca/tsilhqotin-announce-historic-agreement-with-b-c-and-taseko-mines-for-te%E1%BA%91tan-biny-fish-lake/" target="_blank" rel="noreferrer noopener">resource project vetos,</a>&nbsp;<a href="https://globalnews.ca/news/11940907/bc-lawyer-closure-joffre-lakes-park-potentially-violates-canadian-charter/" target="_blank" rel="noreferrer noopener">provincial park closures,</a><a href="https://northernbeat.ca/opinion/bc-land-title-agreements-breach-public-trust-override-private-title/"> </a><a href="https://northernbeat.ca/opinion/bc-land-title-agreements-breach-public-trust-override-private-title/" target="_blank" rel="noreferrer noopener">land title deals,</a>&nbsp;<a href="https://northernbeat.ca/opinion/bc-forestry-policies-destroy-priceless-values-and-bias-the-regulatory-system/" target="_blank" rel="noreferrer noopener">forestry tenure transfers,</a>&nbsp;<a href="https://vancouversun.com/opinion/columnists/analysis-warns-bc-heritage-act-changes-could-kill-provinces-goal-expediting-housing-builds" target="_blank" rel="noreferrer noopener">archeology requirements,</a>&nbsp;<a href="https://www.biv.com/news/commentary/rob-shaw-bc-laws-leave-landowners-alone-with-costly-discoveries-of-indigenous-remains-11758297" target="_blank" rel="noreferrer noopener">development permitting</a>, and more, all in the name of reconciliation and the&nbsp;<em>Declaration Act</em>.</p>
+
+
+
+<p class="wp-block-paragraph">One agent who represents dozens of mineral prospectors in British Columbia said certainty is what’s missing in the permitting process. He said several of his clients have been well into the permitting process when they were hit with a slate of new conditions for approval because the Indigenous group asserting claim over the territory where the work was located had suddenly signed a land use agreement with the province.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">&nbsp;“They’re popping up all the time,” said Nicholas Gust. “Once [the First Nation] has the agreement in place, then they have all these new obligations that the government has agreed to with the Indian band that didn’t exist before.”&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Gust says the deals are done before the public or the proponents are even aware the agreements were being negotiated. “It’s strictly between government, Indigenous relations staff and the bands.”</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-sector-representatives-call-out-corrupted-regulatory-system" class="wp-block-heading"><strong>Sector representatives call out corrupted regulatory system</strong></h2>
+
+
+
+<p class="wp-block-paragraph">By granting the Tahltan governance authority — including the power to approve or block projects and shape the rules that regulate them — over territory from which they stand to substantially profit, the B.C. government has abandoned the fundamental principle that decision-makers should not have a direct financial interest in the outcomes they control. This creates a clear and structural conflict of interest that would be unacceptable in virtually any other regulatory context.&nbsp;&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">In Eskay Creek, the community benefits agreement from Skeena Resources was approved by Tahltan&nbsp;&nbsp;following a $40 million up front payment to the community, including&nbsp;<a href="https://www.biv.com/news/resources-agriculture/tahltan-members-raise-alarm-over-10k-offers-before-critical-mine-vote-11545927" target="_blank" rel="noreferrer noopener">$10,000 payments to each member</a>&nbsp;whose consent the province had made necessary for the project to proceed.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Critics say payments to statutory decision-makers to gain permitting approvals are extortion and bribery, and that just because an agreement is advanced in the name of reconciliation, should not mean it gets a pass on the standards and ethics guiding the governance of all our democratic institutions.</p>
+
+
+
+<p class="wp-block-paragraph">The similarities to the SNC-Lavalin affair are striking.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">SNC made payments to government officials to obtain commercial advantage in high value projects.&nbsp;In British Columbia, mining companies are making substantial payments — including direct cash transfers and long-term benefit agreements — to a so-called Indigenous government that now holds the power to craft land use planning in the region and approve or veto resource projects. The distinction in B.C. is that the provincial government is both granting and enforcing this process.</p>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 id="h-attorney-general-dismisses-40-million-upfront-payment-to-tahltan-as-terms-of-cooperation" class="wp-block-heading">Attorney general dismisses <strong>$40 million upfront payment to Tahltan as ‘terms of cooperation</strong>&#8216;</h2>
+
+
+
+<p class="wp-block-paragraph">Mineral exploration and mining executives worry privately that B.C. is creating a resource-approval system where the success of a proponent negotiating a multi-billion-dollar project that powers the province’s economy hangs on&nbsp;<a href="https://www.biv.com/news/economy-law-politics/bc-court-rules-province-failed-to-consult-first-nation-on-massive-gold-mine-12393469" target="_blank" rel="noreferrer noopener">the whim of a small community</a> with no duty to the public interest. A system where only the biggest players can afford to play by the increasingly exorbitant rules of consent. And that land-use approval for Crown-land development is now associated with private payments to the political community whose permission is required.</p>
+
+
+
+<p class="wp-block-paragraph">The&nbsp;<em>Extractive Sector Transparency Measures Act&nbsp;</em>fights corruption by forcing transparency around payments to “any government in Canada or in a foreign state.” But mere disclosure does not address the complex capture issues when the payee is also the decision-maker authority for the project.</p>
+
+
+
+<p class="wp-block-paragraph">In an interview in January, B.C. Attorney General Niki Sharma rejected the characterization of conflict-of-interest on the part of Tahltan and dismissed the $40 million upfront payment from Skeena Resources to Tahltan as business-as-usual.</p>
+
+
+
+<p class="wp-block-paragraph">“Those are things that are negotiated between industry and the First Nations governments. It&#8217;s not an uncommon thing for there be terms of cooperation, and sometimes the payments flow throughout different levels of steps and processes and procedures in the permitting and process of projects.”</p>
+
+
+
+<p class="wp-block-paragraph">Even when the entity whose consent is required is also statutory decision maker who will profit from the decision? Is that not buying the vote of the statutory decision-makers, she was asked.</p>
+
+
+
+<p class="wp-block-paragraph">“I disagree with that assessment,” Sharma said, shrugging it off as “a very common practice for industry and First Nations to sit down and have an economic benefits agreements for the work that’s happening on the land and that’s something that’s been a practice for probably decades in B.C.”&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Sharma expressed no concern about mulitple reports from the mining exploration industry that Tahltan were charging up to $40,000 to just to consider an application for a mineral claim permit and that some proponents in the northwest and elsewhere said they were facing seemingly&nbsp;<a href="https://vancouversun.com/business/local-business/mining-company-takes-b-c-to-court-over-permitting-delays" target="_blank" rel="noreferrer noopener">endless demands</a>&nbsp;in pursuit of permit approvals that never materialize.</p>
+
+
+
+<p class="wp-block-paragraph">“I don&#8217;t know the details of the particular arrangement, so I can&#8217;t comment on the particulars…” the attorney general said.&nbsp;&nbsp;“We think that the DRIPA has the framework for reconciliation through section 7 agreements that actually help to sort out decision-making from all parties and get to a yes quicker.”</p>
+
+
+
+<p class="wp-block-paragraph">Reaction on the ground suggests otherwise.</p>
+
+
+
+<p class="wp-block-paragraph">All these secret land-use negotiations between the provincial government and First Nations are scaring investment away from B.C. and industry is hurting, said exploration agent Gust, who also works in other Canadian and International jurisdictions.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;If this was being done in a way where the people knew about it, where they were consulted, they knew the outcome—if that&#8217;s what the people want, that&#8217;s fine,&#8221; he said.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;That&#8217;s not what&#8217;s happening here.&#8221;</p>
+	</div>
+	<footer>
+	  
+<div class="bio">
+      <p class="bio__image">
+      <img width="150" height="150" src="https://northernbeat.ca/app/uploads/2026/07/NB-logo-for-staff-bio-photo-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" srcset="https://northernbeat.ca/app/uploads/2026/07/NB-logo-for-staff-bio-photo-150x150.jpg 150w, https://northernbeat.ca/app/uploads/2026/07/NB-logo-for-staff-bio-photo-360x360.jpg 360w" sizes="(max-width: 150px) 100vw, 150px" />    </p>
+  
+  <p class="bio__meta">
+    Written By 
+		<strong>
+							Fran Yanor &amp; Warren Mirko					</strong>
+
+          <a class="social-links__link" target="_blank" rel="noreferrer noopener" href="mailto:Fran@northernbeat.ca">
+        Fran@northernbeat.ca      </a>
+    
+    
+                <a class="social-links__link is-icon" target="_blank" rel="noreferrer noopener" href="https://twitter.com/franyanor">
+        <img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/icon-twitter-white.svg" class="" width="24" height="24" alt="Twitter">      </a>
+    
+    
+          <a class="social-links__link is-icon" target="_blank" rel="noreferrer noopener" href="https://publiclanduse.ca">
+        <img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/icon-link-white.svg" class="" width="24" height="24" alt="Author Website">      </a>
+    
+    
+          <br>
+      Fran Yanor is the legislative journalist, editor and founder of Northern Beat. Warren Mirko is the executive director of Public Land Use Society.     
+    
+          </p>
+      <p class="bibliography">
+        Banner photo: BC Premier David Eby and Prime Minister Mark Carney in discussions on June 18. [BC Government livestream]      </p>
+</div>
+	  
+<div class="social-share">
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnorthernbeat.ca%2Fnews%2Fbacked-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest%2F&t=Backed+by+Ottawa%2C+BC+negotiates+governance%2C+Aboriginal+title+in+mineral-rich+northwest" target="_blank" rel="noopener noreferrer" class="button social-share__link ">
+    Share on Facebook<span class="show-for-sr">(opens new window)</span>
+  </a>
+
+  <a href="https://twitter.com/share?text=Backed by Ottawa, BC negotiates governance, Aboriginal title in mineral-rich northwest&url=https%3A%2F%2Fnorthernbeat.ca%2Fnews%2Fbacked-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest%2F" target="_blank" rel="noopener noreferrer" class="button social-share__link ">
+    Share on Twitter  <span class="show-for-sr">(opens new window)</span>
+  </a>
+
+
+</div>
+	  <hr>
+	  	</footer>
+	  </article>
+
+  	<aside class="sidebar sidebar--post">
+					
+				<aside class="sidebar--featured">
+			<h2 class="h3">Latest Posts</h2>
+				<ul class="wpp-list">
+
+		  <!-- the loop -->
+			
+				<li>
+					<span class="h4">
+							<a href="https://northernbeat.ca/opinion/rob-shaw-secret-documents-reveal-bc-ndp-government-land-returns-plan-for-first-nations/">
+								Rob Shaw: Secret documents reveal BC NDP government &#8216;Land Returns&#8217; plan&hellip;							</a>
+					</span>
+				</li>
+
+			
+				<li>
+					<span class="h4">
+							<a href="https://northernbeat.ca/opinion/cowichan-rulings-a-relentless-legal-strategy-wins-landowners-lose/">
+								Cowichan Rulings: A relentless legal strategy wins, landowners lose							</a>
+					</span>
+				</li>
+
+			
+				<li>
+					<span class="h4">
+							<a href="https://northernbeat.ca/opinion/duelling-political-parties-propose-relief-measures-for-small-businesses/">
+								Duelling political parties propose relief measures for small businesses							</a>
+					</span>
+				</li>
+
+			
+				<li>
+					<span class="h4">
+							<a href="https://northernbeat.ca/opinion/repeal-dripa-only-path-forward/">
+								Repeal DRIPA &#8211; It&#8217;s the only path forward							</a>
+					</span>
+				</li>
+
+			
+				<li>
+					<span class="h4">
+							<a href="https://northernbeat.ca/opinion/rob-shaw-parsing-the-truth-in-a-barrage-of-bc-ndp-political-attacks/">
+								Rob Shaw: Parsing the truth in a barrage of BC NDP&hellip;							</a>
+					</span>
+				</li>
+
+			
+				<li>
+					<span class="h4">
+							<a href="https://northernbeat.ca/news/lng-canada-tc-energy-expansions-double-gas-export-capacity/">
+								LNG Canada, TC Energy multi-billion expansions to double gas export capacity							</a>
+					</span>
+				</li>
+
+					  <!-- end of the loop -->
+
+					</ul>
+	</aside>
+							</aside><!-- /.sidebar -->
+  
+</main><!-- /.main -->
+		<aside class="related related-posts related-post">
+	  <h2 class="related__title">You may also enjoy</h2>
+					
+<div class="card card--wide card--cpt_opinion card--single-link">
+  <div class="card__section card__section--head">
+
+	<h2 class="card__title h3">
+	  <a class="card__title-link" href="https://northernbeat.ca/opinion/rob-shaw-secret-documents-reveal-bc-ndp-government-land-returns-plan-for-first-nations/">
+		Rob Shaw: Secret documents reveal BC NDP government &#8216;Land Returns&#8217; plan for&hellip;	  </a>
+	</h2>
+
+		  <p class="card__meta card__meta--category">
+		
+<a href="https://northernbeat.ca/opinion/">
+  Column / Op-Ed</a>
+	  </p>
+
+	  <p class="card__meta card__meta--head">
+		Written By <strong>Rob Shaw</strong><br>
+		Posted <time datetime="2026-10-15T07:17:41-07:00">October 15, 2026</time>
+	  </p>
+
+	  <p class="card__meta card__meta--head">
+		NDP cabinet agreed to co-develop land-back legislation with First Nations The B.C. NDP government has committed to hand over approximately 400 parcels of public Crown land to First Nations, while&hellip;	  </p>
+	  </div>
+
+  <div class="card__image">
+	<img width="360" height="360" src="https://northernbeat.ca/app/uploads/2026/10/confidential-folder-BC-gov-feature-grok-360x360.jpg" class="attachment-square size-square wp-post-image" alt="" decoding="async" srcset="https://northernbeat.ca/app/uploads/2026/10/confidential-folder-BC-gov-feature-grok-360x360.jpg 360w, https://northernbeat.ca/app/uploads/2026/10/confidential-folder-BC-gov-feature-grok-150x150.jpg 150w, https://northernbeat.ca/app/uploads/2026/10/confidential-folder-BC-gov-feature-grok-720x720.jpg 720w" sizes="(max-width: 360px) 100vw, 360px" />  </div>
+</div>
+					
+<div class="card card--wide card--cpt_opinion card--single-link">
+  <div class="card__section card__section--head">
+
+	<h2 class="card__title h3">
+	  <a class="card__title-link" href="https://northernbeat.ca/opinion/cowichan-rulings-a-relentless-legal-strategy-wins-landowners-lose/">
+		Cowichan Rulings: A relentless legal strategy wins, landowners lose	  </a>
+	</h2>
+
+		  <p class="card__meta card__meta--category">
+		
+<a href="https://northernbeat.ca/opinion/">
+  Column / Op-Ed</a>
+	  </p>
+
+	  <p class="card__meta card__meta--head">
+		Written By <strong>Fran Yanor</strong><br>
+		Posted <time datetime="2026-10-14T10:10:52-07:00">October 14, 2026</time>
+	  </p>
+
+	  <p class="card__meta card__meta--head">
+		No justice for private landowners locked out of Cowichan trial “The question of what remains of Aboriginal title after the granting of fee simple title to the same lands should&hellip;	  </p>
+	  </div>
+
+  <div class="card__image">
+	<img width="360" height="360" src="https://northernbeat.ca/app/uploads/2026/10/gavel-on-scales-e1791919401485-360x360.jpg" class="attachment-square size-square wp-post-image" alt="" decoding="async" srcset="https://northernbeat.ca/app/uploads/2026/10/gavel-on-scales-e1791919401485-360x360.jpg 360w, https://northernbeat.ca/app/uploads/2026/10/gavel-on-scales-e1791919401485-150x150.jpg 150w, https://northernbeat.ca/app/uploads/2026/10/gavel-on-scales-e1791919401485-300x300.jpg 300w, https://northernbeat.ca/app/uploads/2026/10/gavel-on-scales-e1791919401485-400x400.jpg 400w, https://northernbeat.ca/app/uploads/2026/10/gavel-on-scales-e1791919401485-600x600.jpg 600w" sizes="(max-width: 360px) 100vw, 360px" />  </div>
+</div>
+					
+<div class="card card--wide card--cpt_opinion card--single-link">
+  <div class="card__section card__section--head">
+
+	<h2 class="card__title h3">
+	  <a class="card__title-link" href="https://northernbeat.ca/opinion/duelling-political-parties-propose-relief-measures-for-small-businesses/">
+		Duelling political parties propose relief measures for small businesses	  </a>
+	</h2>
+
+		  <p class="card__meta card__meta--category">
+		
+<a href="https://northernbeat.ca/opinion/">
+  Column / Op-Ed</a>
+	  </p>
+
+	  <p class="card__meta card__meta--head">
+		Written By <strong>Rob Shaw</strong><br>
+		Posted <time datetime="2026-10-08T11:04:17-07:00">October 8, 2026</time>
+	  </p>
+
+	  <p class="card__meta card__meta--head">
+		There’s nothing like an election to get the blood flowing and the political promises moving. Such is the case when it comes to small business in the province. Several consequential&hellip;	  </p>
+	  </div>
+
+  <div class="card__image">
+	<img width="360" height="360" src="https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-360x360.jpg" class="attachment-square size-square wp-post-image" alt="" decoding="async" srcset="https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-360x360.jpg 360w, https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-720x720.jpg 720w, https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-150x150.jpg 150w, https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-768x768.jpg 768w, https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-270x270.jpg 270w, https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker-1080x1080.jpg 1080w, https://northernbeat.ca/app/uploads/2026/10/Portrait-collage-with-a-featured-speaker.jpg 1254w" sizes="(max-width: 360px) 100vw, 360px" />  </div>
+</div>
+			</aside>
+		</div><!-- /.content -->
+	
+
+<button style="display: none" class="button dialogmodal__open" aria-controls="modal-12347">
+	Open Popup 12347</button>
+
+<div class="dialogmodal" id="modal-12347" 
+	data-id="12347"
+	data-trigger="on_scroll" 
+	data-display-rules="per_post"
+						data-delay-by-view="2"
+										data-close-on-click="true"
+					>
+	<div  class="dialogmodal__modal" aria-labelledby="modal-title-12347">
+		<div  role="document">
+			<h2 class="dialogmodal__title show-for-sr" id="modal-title-12347">
+				Please Support Our Work			</h2>
+				<h2 class="has-text-align-center wp-block-post-title">Please Support Our Work</h2>
+
+
+<div class="wp-block-buttons is-content-justification-center is-layout-flex wp-container-core-buttons-is-layout-fe48e5de wp-block-buttons-is-layout-flex">
+<div class="wp-block-button"><a class="wp-block-button__link has-text-align-center wp-element-button" href="https://northernbeatnews.substack.com/" target="_blank" rel="noreferrer noopener">Subscribe</a></div>
+</div>
+
+
+
+<p class="wp-block-paragraph"></p>
+			<button class="dialogmodal__close" aria-label="Close">&times;</button>
+		</div>
+	</div>
+</div>
+
+					<input id="current_page_ID" type="hidden" value="14841"></input>
+	
+<footer data-wpr-lazyrender="1" class="footer footer--site">
+
+  <div  class="footer--site__bg footer--site__bg-dark">
+    <img width="2560" height="1709" src="https://northernbeat.ca/app/uploads/2021/11/northern-lights.jpg" class="attachment-full size-full" alt="Northern Lights" decoding="async" loading="lazy" srcset="https://northernbeat.ca/app/uploads/2021/11/northern-lights.jpg 2560w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-539x360.jpg 539w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-1079x720.jpg 1079w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-768x513.jpg 768w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-1536x1025.jpg 1536w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-2048x1367.jpg 2048w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-404x270.jpg 404w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-1618x1080.jpg 1618w" sizes="auto, (max-width: 2560px) 100vw, 2560px" />  </div>
+  <div  class="footer--site__bg footer--site__bg-light">
+    <img width="2560" height="1709" src="https://northernbeat.ca/app/uploads/2021/11/northern-lights.jpg" class="attachment-full size-full" alt="Northern Lights" decoding="async" loading="lazy" srcset="https://northernbeat.ca/app/uploads/2021/11/northern-lights.jpg 2560w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-539x360.jpg 539w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-1079x720.jpg 1079w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-768x513.jpg 768w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-1536x1025.jpg 1536w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-2048x1367.jpg 2048w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-404x270.jpg 404w, https://northernbeat.ca/app/uploads/2021/11/northern-lights-1618x1080.jpg 1618w" sizes="auto, (max-width: 2560px) 100vw, 2560px" />  </div>
+
+
+  <div  class="footer--site__inner">
+    <div  class="footer--site__navigation">
+      <h2 class="h4">Navigation</h2>
+      <ul class="menu menu--vertical menu--footer" id="menu--footer"><li class="menu-item menu-item--news-features"><a href="https://northernbeat.ca/news/">News Features</a></li>
+<li class="menu-item menu-item--profiles"><a href="https://northernbeat.ca/profile/">Profiles</a></li>
+<li class="menu-item menu-item--columns-and-op-eds"><a href="https://northernbeat.ca/opinion/">Columns and Op-Eds</a></li>
+<li class="menu-item menu-item--bc-roundup"><a href="https://northernbeat.ca/curated/">BC Roundup</a></li>
+<li class="menu-item menu-item--leg-briefs"><a href="https://northernbeat.ca/legislature/">Leg Briefs</a></li>
+<li class="menu-item menu-item--contact-us"><a href="https://northernbeat.ca/contact-us/">Contact Us</a></li>
+</ul>    </div>
+    <div  class="footer--site__content">
+      <h2 class="h4">Northern Beat</h2>
+      <p>Voice of the exhausted majority.</p>
+<p>Because understanding reality is enormously valuable and the first step to making the world a better place.</p>
+      <iframe src="https://northernbeatnews.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white; max-width: 100%;" frameborder="0" scrolling="no" loading="lazy"></iframe>
+    </div>
+    <div  class="footer--site__brand">
+      <p>
+        <img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/logo-iswhite.svg" class="footer--site__logo-light" width="320" height="160" alt="Northern Beat">        <img src="https://northernbeat.ca/app/themes/northernbeat/dist/images/logo-ondark.svg" class="footer--site__logo-dark" width="320" height="160" alt="Northern Beat">      </p>
+      <p>&copy; 2026 Northern Beat</p>
+    </div>
+  </div>
+</footer>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp/wp-*.php","/wp/wp-admin/*","/app/uploads/*","/app/*","/app/plugins/*","/app/themes/northernbeat/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://northernbeat.ca","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+  <script>"use strict";function wprRemoveCPCSS(){var preload_stylesheets=document.querySelectorAll('link[data-rocket-async="style"][rel="preload"]');if(preload_stylesheets&&0<preload_stylesheets.length)for(var stylesheet_index=0;stylesheet_index<preload_stylesheets.length;stylesheet_index++){var media=preload_stylesheets[stylesheet_index].getAttribute("media")||"all";if(window.matchMedia(media).matches)return void setTimeout(wprRemoveCPCSS,200)}var elem=document.getElementById("rocket-critical-css");elem&&"remove"in elem&&elem.remove()}window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><noscript><link data-minify="1" rel='stylesheet' id='wordpress-popular-posts-css-css' href='https://northernbeat.ca/app/cache/min/1/app/plugins/wordpress-popular-posts/assets/css/wpp.css?ver=1790273619' media='all' /><link data-minify="1" rel='stylesheet' id='sage/css/main-css' href='https://northernbeat.ca/app/cache/min/1/app/themes/northernbeat/dist/styles/app.main.css?ver=1790273619' media='all' /></noscript></body>
+</html>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1792404297 -->
