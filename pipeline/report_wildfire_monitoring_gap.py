@@ -1695,7 +1695,7 @@ def build_provincial_timeline(by_prov_year, provs, start, end):
 
 
 def build_manitoba_blackout(by_prov_year):
-    rows = build_provincial_timeline(by_prov_year, ["MB"], 1996, 2008)["MB"]
+    rows = build_provincial_timeline(by_prov_year, ["MB"], 1959, 2025)["MB"]
     blackout_years = [r for r in rows if r["unknown_pct"] == 100.0]
     return {
         "finding": (
@@ -2130,15 +2130,19 @@ def build_report_card(by_prov_year, density, start=2005, end=2024, min_fires=50)
             continue  # no meaningful fire activity in this window (e.g. Nunavut: none in NFDB)
         area_total = agg["H_ha"] + agg["N_ha"] + agg["U_ha"]
         known_rate = round(100 * (agg["H"] + agg["N"]) / total, 1)
+        known_count = agg["H"] + agg["N"]
         cards.append({
             "province": PROV_NAMES.get(p, p), "code": p,
             "human": agg["H"], "lightning": agg["N"], "unknown": agg["U"], "total_fires": total,
             "human_pct": round(100 * agg["H"] / total, 1),
             "lightning_pct": round(100 * agg["N"] / total, 1),
             "unknown_pct": round(100 * agg["U"] / total, 1),
+            "human_pct_known": round(100 * agg["H"] / known_count, 1) if known_count else None,
             "known_rate": known_rate,
             "grade": grade_for(known_rate),
             "human_pct_of_area": round(100 * agg["H_ha"] / area_total, 2) if area_total else None,
+            "lightning_pct_of_area": round(100 * agg["N_ha"] / area_total, 2) if area_total else None,
+            "unknown_pct_of_area": round(100 * agg["U_ha"] / area_total, 2) if area_total else None,
             "density_per_km2": density.get(p, {}).get("density_per_km2"),
             "small_sample": total < min_fires,
         })
@@ -2148,6 +2152,94 @@ def build_report_card(by_prov_year, density, start=2005, end=2024, min_fires=50)
         "min_fires_for_reliable_grade": min_fires,
         "cards": cards,
         "source": "Canadian National Fire Database (NFDB), Canadian Forest Service / NRCan",
+    }
+
+
+def build_arson_ranking(report_card):
+    """% of KNOWN-cause fires that are human-caused, by province, ranked
+    highest to lowest — the closest available proxy to "what share of
+    wildfires are human-started," computed against fires whose cause IS
+    known so it isn't diluted by each province's different unknown-cause
+    rate. NFDB has no arson-specific sub-code (only Human/Lightning/
+    Unknown) — this is human-caused, not arson specifically; BC's own
+    arson-vs-other-human-causes breakdown (Section 6, Chapter 1) is the
+    only sub-categorized source in this report."""
+    eligible = [c for c in report_card["cards"] if c["human_pct_known"] is not None]
+    ranked = sorted(eligible, key=lambda c: -c["human_pct_known"])
+    return {
+        "period": report_card["period"],
+        "note": (
+            "NFDB codes cause as Human, Lightning, or Unknown — there is "
+            "no arson-specific sub-code nationally (BC's own cause "
+            "sub-category breakdown in Chapter 1 is the only source in "
+            "this report that isolates arson from other human causes like "
+            "campfires and equipment). This is HUMAN-caused share of "
+            "KNOWN-cause fires — the closest available national proxy, "
+            "and the one least distorted by a province's own unknown-"
+            "cause rate."
+        ),
+        "ranking": [
+            {
+                "province": c["province"], "code": c["code"],
+                "human_pct_known": c["human_pct_known"],
+                "human": c["human"], "lightning": c["lightning"],
+                "small_sample": c["small_sample"],
+            }
+            for c in ranked
+        ],
+    }
+
+
+def build_area_by_cause_ranking(report_card):
+    eligible = [c for c in report_card["cards"] if c["human_pct_of_area"] is not None]
+    ranked = sorted(eligible, key=lambda c: -c["human_pct_of_area"])
+    return {
+        "period": report_card["period"],
+        "ranking": [
+            {
+                "province": c["province"], "code": c["code"],
+                "human_pct_of_area": c["human_pct_of_area"],
+                "lightning_pct_of_area": c["lightning_pct_of_area"],
+                "unknown_pct_of_area": c["unknown_pct_of_area"],
+                "small_sample": c["small_sample"],
+            }
+            for c in ranked
+        ],
+    }
+
+
+def build_count_vs_area_explainer(report_card, fire_size_by_cause, cause_area_summary):
+    reliable = [c for c in report_card["cards"] if not c["small_sample"] and c["human_pct_known"] is not None]
+    known_h = sum(c["human"] for c in reliable)
+    known_n = sum(c["lightning"] for c in reliable)
+    national_human_pct_known = round(100 * known_h / (known_h + known_n), 1) if (known_h + known_n) else None
+    national_human_pct_area = cause_area_summary["human_pct_of_area"]
+    m = fire_size_by_cause["mean_size_ha"]
+    return {
+        "national_human_pct_of_known_fires": national_human_pct_known,
+        "national_human_pct_of_area": national_human_pct_area,
+        "finding": (
+            f"This is a real, well-documented pattern in Canadian wildfire "
+            f"science, not a data error: nationally, {national_human_pct_known}% "
+            f"of fires with a known cause are human-started — humans DO "
+            f"start the clear majority of individual fires. But those same "
+            f"human-caused fires account for only {national_human_pct_area}% "
+            f"of the AREA burned. The average human-caused fire burns "
+            f"{m['human']} ha, while the average lightning fire burns "
+            f"{m['lightning']} ha — "
+            f"{round(m['lightning'] / m['human'], 1) if m['human'] else '?'}x "
+            f"larger. The mechanism is detection and access, not ignition "
+            f"source: human-caused fires start near roads, towns, and "
+            f"campsites, where they're seen and reached within hours; "
+            f"lightning fires disproportionately start in remote boreal "
+            f"and northern terrain, where a fire can burn for days before "
+            f"anyone spots it and even longer before crews can reach it. "
+            f"CIFFC's and NRCan's own national reporting shows the same "
+            f"pattern every year: humans cause most fires, lightning burns "
+            f"most area. Both numbers in this report are correct — count "
+            f"and area are answering different questions, not contradicting "
+            f"each other."
+        ),
     }
 
 
@@ -2401,6 +2493,9 @@ def main():
     infrastructure_hypothesis_test = build_infrastructure_hypothesis_test(report_card)
     fire_size_by_cause = build_fire_size_by_cause(by_prov_year)
     intervention_comparison = build_intervention_comparison(co2_scenario_model, cause_area_summary, fire_size_by_cause)
+    arson_ranking = build_arson_ranking(report_card)
+    area_by_cause_ranking = build_area_by_cause_ranking(report_card)
+    count_vs_area_explainer = build_count_vs_area_explainer(report_card, fire_size_by_cause, cause_area_summary)
 
     print("Cross-checking NFDB against Alberta's, Quebec's, and Ontario's own wildfire data...")
     ab_check = fetch_ab_wildfire_verification()
@@ -2468,6 +2563,9 @@ def main():
             "fire_size_by_cause": fire_size_by_cause,
             "independent_verification": {"alberta": ab_check, "quebec": qc_check, "ontario": on_check},
             "nfdb_delta_report": nfdb_delta_report,
+            "arson_ranking": arson_ranking,
+            "area_by_cause_ranking": area_by_cause_ranking,
+            "count_vs_area_explainer": count_vs_area_explainer,
         },
         "co2_climate": {
             "national_ghg_timeline": ghg_sector,

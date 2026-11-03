@@ -5260,6 +5260,339 @@
       "finding": "Manitoba's own fire-cause records show every single fire \u2014 100% \u2014 coded 'Unknown' for four consecutive seasons, 2000 through 2003 (2,842 fires total), immediately after four years (1996-1999) where cause was recorded for essentially every fire. It reverted to normal recording by 2005 \u2014 a complete, if temporary, cause-recording blackout, starker than BC's own partial cliff.",
       "years": [
         {
+          "year": 1959,
+          "human": 3,
+          "lightning": 3,
+          "unknown": 0,
+          "total": 6,
+          "unknown_pct": 0.0,
+          "human_pct_known": 50.0
+        },
+        {
+          "year": 1960,
+          "human": 10,
+          "lightning": 55,
+          "unknown": 0,
+          "total": 65,
+          "unknown_pct": 0.0,
+          "human_pct_known": 15.4
+        },
+        {
+          "year": 1961,
+          "human": 80,
+          "lightning": 69,
+          "unknown": 1,
+          "total": 150,
+          "unknown_pct": 0.7,
+          "human_pct_known": 53.7
+        },
+        {
+          "year": 1962,
+          "human": 18,
+          "lightning": 9,
+          "unknown": 0,
+          "total": 27,
+          "unknown_pct": 0.0,
+          "human_pct_known": 66.7
+        },
+        {
+          "year": 1963,
+          "human": 16,
+          "lightning": 15,
+          "unknown": 1,
+          "total": 32,
+          "unknown_pct": 3.1,
+          "human_pct_known": 51.6
+        },
+        {
+          "year": 1964,
+          "human": 49,
+          "lightning": 31,
+          "unknown": 0,
+          "total": 80,
+          "unknown_pct": 0.0,
+          "human_pct_known": 61.2
+        },
+        {
+          "year": 1965,
+          "human": 14,
+          "lightning": 0,
+          "unknown": 0,
+          "total": 14,
+          "unknown_pct": 0.0,
+          "human_pct_known": 100.0
+        },
+        {
+          "year": 1966,
+          "human": 2,
+          "lightning": 1,
+          "unknown": 0,
+          "total": 3,
+          "unknown_pct": 0.0,
+          "human_pct_known": 66.7
+        },
+        {
+          "year": 1967,
+          "human": 27,
+          "lightning": 40,
+          "unknown": 0,
+          "total": 67,
+          "unknown_pct": 0.0,
+          "human_pct_known": 40.3
+        },
+        {
+          "year": 1968,
+          "human": 198,
+          "lightning": 33,
+          "unknown": 0,
+          "total": 231,
+          "unknown_pct": 0.0,
+          "human_pct_known": 85.7
+        },
+        {
+          "year": 1969,
+          "human": 149,
+          "lightning": 140,
+          "unknown": 0,
+          "total": 289,
+          "unknown_pct": 0.0,
+          "human_pct_known": 51.6
+        },
+        {
+          "year": 1970,
+          "human": 219,
+          "lightning": 95,
+          "unknown": 0,
+          "total": 314,
+          "unknown_pct": 0.0,
+          "human_pct_known": 69.7
+        },
+        {
+          "year": 1971,
+          "human": 406,
+          "lightning": 81,
+          "unknown": 2,
+          "total": 489,
+          "unknown_pct": 0.4,
+          "human_pct_known": 83.4
+        },
+        {
+          "year": 1972,
+          "human": 305,
+          "lightning": 234,
+          "unknown": 0,
+          "total": 539,
+          "unknown_pct": 0.0,
+          "human_pct_known": 56.6
+        },
+        {
+          "year": 1973,
+          "human": 458,
+          "lightning": 154,
+          "unknown": 1,
+          "total": 613,
+          "unknown_pct": 0.2,
+          "human_pct_known": 74.8
+        },
+        {
+          "year": 1974,
+          "human": 253,
+          "lightning": 231,
+          "unknown": 1,
+          "total": 485,
+          "unknown_pct": 0.2,
+          "human_pct_known": 52.3
+        },
+        {
+          "year": 1975,
+          "human": 214,
+          "lightning": 142,
+          "unknown": 0,
+          "total": 356,
+          "unknown_pct": 0.0,
+          "human_pct_known": 60.1
+        },
+        {
+          "year": 1976,
+          "human": 703,
+          "lightning": 334,
+          "unknown": 0,
+          "total": 1037,
+          "unknown_pct": 0.0,
+          "human_pct_known": 67.8
+        },
+        {
+          "year": 1977,
+          "human": 575,
+          "lightning": 182,
+          "unknown": 0,
+          "total": 757,
+          "unknown_pct": 0.0,
+          "human_pct_known": 76.0
+        },
+        {
+          "year": 1978,
+          "human": 289,
+          "lightning": 78,
+          "unknown": 0,
+          "total": 367,
+          "unknown_pct": 0.0,
+          "human_pct_known": 78.7
+        },
+        {
+          "year": 1979,
+          "human": 254,
+          "lightning": 346,
+          "unknown": 0,
+          "total": 600,
+          "unknown_pct": 0.0,
+          "human_pct_known": 42.3
+        },
+        {
+          "year": 1980,
+          "human": 546,
+          "lightning": 491,
+          "unknown": 0,
+          "total": 1037,
+          "unknown_pct": 0.0,
+          "human_pct_known": 52.7
+        },
+        {
+          "year": 1981,
+          "human": 418,
+          "lightning": 221,
+          "unknown": 0,
+          "total": 639,
+          "unknown_pct": 0.0,
+          "human_pct_known": 65.4
+        },
+        {
+          "year": 1982,
+          "human": 285,
+          "lightning": 120,
+          "unknown": 0,
+          "total": 405,
+          "unknown_pct": 0.0,
+          "human_pct_known": 70.4
+        },
+        {
+          "year": 1983,
+          "human": 293,
+          "lightning": 213,
+          "unknown": 0,
+          "total": 506,
+          "unknown_pct": 0.0,
+          "human_pct_known": 57.9
+        },
+        {
+          "year": 1984,
+          "human": 396,
+          "lightning": 276,
+          "unknown": 0,
+          "total": 672,
+          "unknown_pct": 0.0,
+          "human_pct_known": 58.9
+        },
+        {
+          "year": 1985,
+          "human": 208,
+          "lightning": 136,
+          "unknown": 0,
+          "total": 344,
+          "unknown_pct": 0.0,
+          "human_pct_known": 60.5
+        },
+        {
+          "year": 1986,
+          "human": 153,
+          "lightning": 97,
+          "unknown": 0,
+          "total": 250,
+          "unknown_pct": 0.0,
+          "human_pct_known": 61.2
+        },
+        {
+          "year": 1987,
+          "human": 307,
+          "lightning": 179,
+          "unknown": 0,
+          "total": 486,
+          "unknown_pct": 0.0,
+          "human_pct_known": 63.2
+        },
+        {
+          "year": 1988,
+          "human": 373,
+          "lightning": 609,
+          "unknown": 0,
+          "total": 982,
+          "unknown_pct": 0.0,
+          "human_pct_known": 38.0
+        },
+        {
+          "year": 1989,
+          "human": 511,
+          "lightning": 700,
+          "unknown": 0,
+          "total": 1211,
+          "unknown_pct": 0.0,
+          "human_pct_known": 42.2
+        },
+        {
+          "year": 1990,
+          "human": 283,
+          "lightning": 279,
+          "unknown": 0,
+          "total": 562,
+          "unknown_pct": 0.0,
+          "human_pct_known": 50.4
+        },
+        {
+          "year": 1991,
+          "human": 205,
+          "lightning": 467,
+          "unknown": 0,
+          "total": 672,
+          "unknown_pct": 0.0,
+          "human_pct_known": 30.5
+        },
+        {
+          "year": 1992,
+          "human": 116,
+          "lightning": 182,
+          "unknown": 0,
+          "total": 298,
+          "unknown_pct": 0.0,
+          "human_pct_known": 38.9
+        },
+        {
+          "year": 1993,
+          "human": 95,
+          "lightning": 144,
+          "unknown": 0,
+          "total": 239,
+          "unknown_pct": 0.0,
+          "human_pct_known": 39.7
+        },
+        {
+          "year": 1994,
+          "human": 134,
+          "lightning": 421,
+          "unknown": 0,
+          "total": 555,
+          "unknown_pct": 0.0,
+          "human_pct_known": 24.1
+        },
+        {
+          "year": 1995,
+          "human": 262,
+          "lightning": 399,
+          "unknown": 1,
+          "total": 662,
+          "unknown_pct": 0.2,
+          "human_pct_known": 39.6
+        },
+        {
           "year": 1996,
           "human": 187,
           "lightning": 237,
@@ -5375,6 +5708,159 @@
           "total": 397,
           "unknown_pct": 0.0,
           "human_pct_known": 64.0
+        },
+        {
+          "year": 2009,
+          "human": 117,
+          "lightning": 67,
+          "unknown": 0,
+          "total": 184,
+          "unknown_pct": 0.0,
+          "human_pct_known": 63.6
+        },
+        {
+          "year": 2010,
+          "human": 245,
+          "lightning": 338,
+          "unknown": 0,
+          "total": 583,
+          "unknown_pct": 0.0,
+          "human_pct_known": 42.0
+        },
+        {
+          "year": 2011,
+          "human": 156,
+          "lightning": 159,
+          "unknown": 0,
+          "total": 315,
+          "unknown_pct": 0.0,
+          "human_pct_known": 49.5
+        },
+        {
+          "year": 2012,
+          "human": 204,
+          "lightning": 293,
+          "unknown": 0,
+          "total": 497,
+          "unknown_pct": 0.0,
+          "human_pct_known": 41.0
+        },
+        {
+          "year": 2013,
+          "human": 192,
+          "lightning": 302,
+          "unknown": 0,
+          "total": 494,
+          "unknown_pct": 0.0,
+          "human_pct_known": 38.9
+        },
+        {
+          "year": 2014,
+          "human": 115,
+          "lightning": 130,
+          "unknown": 0,
+          "total": 245,
+          "unknown_pct": 0.0,
+          "human_pct_known": 46.9
+        },
+        {
+          "year": 2015,
+          "human": 164,
+          "lightning": 295,
+          "unknown": 0,
+          "total": 459,
+          "unknown_pct": 0.0,
+          "human_pct_known": 35.7
+        },
+        {
+          "year": 2016,
+          "human": 106,
+          "lightning": 96,
+          "unknown": 0,
+          "total": 202,
+          "unknown_pct": 0.0,
+          "human_pct_known": 52.5
+        },
+        {
+          "year": 2017,
+          "human": 136,
+          "lightning": 421,
+          "unknown": 0,
+          "total": 557,
+          "unknown_pct": 0.0,
+          "human_pct_known": 24.4
+        },
+        {
+          "year": 2018,
+          "human": 232,
+          "lightning": 244,
+          "unknown": 0,
+          "total": 476,
+          "unknown_pct": 0.0,
+          "human_pct_known": 48.7
+        },
+        {
+          "year": 2019,
+          "human": 145,
+          "lightning": 132,
+          "unknown": 1,
+          "total": 278,
+          "unknown_pct": 0.4,
+          "human_pct_known": 52.3
+        },
+        {
+          "year": 2020,
+          "human": 80,
+          "lightning": 71,
+          "unknown": 0,
+          "total": 151,
+          "unknown_pct": 0.0,
+          "human_pct_known": 53.0
+        },
+        {
+          "year": 2021,
+          "human": 118,
+          "lightning": 368,
+          "unknown": 8,
+          "total": 494,
+          "unknown_pct": 1.6,
+          "human_pct_known": 24.3
+        },
+        {
+          "year": 2022,
+          "human": 51,
+          "lightning": 172,
+          "unknown": 1,
+          "total": 224,
+          "unknown_pct": 0.4,
+          "human_pct_known": 22.9
+        },
+        {
+          "year": 2023,
+          "human": 101,
+          "lightning": 197,
+          "unknown": 2,
+          "total": 300,
+          "unknown_pct": 0.7,
+          "human_pct_known": 33.9
+        },
+        {
+          "year": 2024,
+          "human": 115,
+          "lightning": 206,
+          "unknown": 0,
+          "total": 321,
+          "unknown_pct": 0.0,
+          "human_pct_known": 35.8
+        },
+        {
+          "year": 2025,
+          "human": 138,
+          "lightning": 301,
+          "unknown": 5,
+          "total": 444,
+          "unknown_pct": 1.1,
+          "human_pct_known": 31.4
         }
       ],
       "blackout_years": [
@@ -5506,9 +5992,12 @@
           "human_pct": 65.2,
           "lightning_pct": 34.8,
           "unknown_pct": 0.0,
+          "human_pct_known": 65.2,
           "known_rate": 100.0,
           "grade": "A",
           "human_pct_of_area": 5.12,
+          "lightning_pct_of_area": 94.88,
+          "unknown_pct_of_area": 0.0,
           "density_per_km2": 6.646,
           "small_sample": false,
           "verification": {
@@ -5526,9 +6015,12 @@
           "human_pct": 100.0,
           "lightning_pct": 0.0,
           "unknown_pct": 0.0,
+          "human_pct_known": 100.0,
           "known_rate": 100.0,
           "grade": "A",
           "human_pct_of_area": 100.0,
+          "lightning_pct_of_area": 0.0,
+          "unknown_pct_of_area": 0.0,
           "density_per_km2": 32.105,
           "small_sample": true,
           "verification": {
@@ -5546,9 +6038,12 @@
           "human_pct": 41.6,
           "lightning_pct": 58.2,
           "unknown_pct": 0.2,
+          "human_pct_known": 41.7,
           "known_rate": 99.8,
           "grade": "A",
           "human_pct_of_area": 11.4,
+          "lightning_pct_of_area": 88.27,
+          "unknown_pct_of_area": 0.33,
           "density_per_km2": 2.717,
           "small_sample": false,
           "verification": {
@@ -5566,9 +6061,12 @@
           "human_pct": 53.2,
           "lightning_pct": 46.2,
           "unknown_pct": 0.6,
+          "human_pct_known": 53.5,
           "known_rate": 99.4,
           "grade": "A",
           "human_pct_of_area": 8.05,
+          "lightning_pct_of_area": 91.94,
+          "unknown_pct_of_area": 0.01,
           "density_per_km2": 2.14,
           "small_sample": false,
           "verification": {
@@ -5586,9 +6084,12 @@
           "human_pct": 38.1,
           "lightning_pct": 59.8,
           "unknown_pct": 2.0,
+          "human_pct_known": 38.9,
           "known_rate": 98.0,
           "grade": "A",
           "human_pct_of_area": 4.57,
+          "lightning_pct_of_area": 94.91,
+          "unknown_pct_of_area": 0.51,
           "density_per_km2": 17.547,
           "small_sample": false,
           "verification": {
@@ -5606,9 +6107,12 @@
           "human_pct": 9.3,
           "lightning_pct": 88.7,
           "unknown_pct": 2.0,
+          "human_pct_known": 9.5,
           "known_rate": 98.0,
           "grade": "A",
           "human_pct_of_area": 0.37,
+          "lightning_pct_of_area": 99.6,
+          "unknown_pct_of_area": 0.03,
           "density_per_km2": 0.039,
           "small_sample": false,
           "verification": {
@@ -5626,9 +6130,12 @@
           "human_pct": 87.0,
           "lightning_pct": 10.6,
           "unknown_pct": 2.4,
+          "human_pct_known": 89.1,
           "known_rate": 97.6,
           "grade": "A",
           "human_pct_of_area": 13.47,
+          "lightning_pct_of_area": 71.17,
+          "unknown_pct_of_area": 15.36,
           "density_per_km2": 1.466,
           "small_sample": false,
           "verification": {
@@ -5646,9 +6153,12 @@
           "human_pct": 62.0,
           "lightning_pct": 34.6,
           "unknown_pct": 3.5,
+          "human_pct_known": 64.2,
           "known_rate": 96.5,
           "grade": "A",
           "human_pct_of_area": 4.4,
+          "lightning_pct_of_area": 61.87,
+          "unknown_pct_of_area": 33.73,
           "density_per_km2": 7.873,
           "small_sample": false,
           "verification": {
@@ -5666,9 +6176,12 @@
           "human_pct": 83.1,
           "lightning_pct": 5.2,
           "unknown_pct": 11.6,
+          "human_pct_known": 94.1,
           "known_rate": 88.4,
           "grade": "B",
           "human_pct_of_area": 87.24,
+          "lightning_pct_of_area": 3.34,
+          "unknown_pct_of_area": 9.42,
           "density_per_km2": 12.127,
           "small_sample": false,
           "verification": {
@@ -5686,9 +6199,12 @@
           "human_pct": 19.8,
           "lightning_pct": 61.0,
           "unknown_pct": 19.2,
+          "human_pct_known": 24.5,
           "known_rate": 80.8,
           "grade": "C",
           "human_pct_of_area": 0.99,
+          "lightning_pct_of_area": 77.15,
+          "unknown_pct_of_area": 21.87,
           "density_per_km2": 0.102,
           "small_sample": false,
           "verification": {
@@ -5706,9 +6222,12 @@
           "human_pct": 75.5,
           "lightning_pct": 1.3,
           "unknown_pct": 23.2,
+          "human_pct_known": 98.3,
           "known_rate": 76.8,
           "grade": "C",
           "human_pct_of_area": 96.42,
+          "lightning_pct_of_area": 0.26,
+          "unknown_pct_of_area": 3.32,
           "density_per_km2": 20.452,
           "small_sample": false,
           "verification": {
@@ -5726,9 +6245,12 @@
           "human_pct": 23.1,
           "lightning_pct": 30.4,
           "unknown_pct": 46.5,
+          "human_pct_known": 43.2,
           "known_rate": 53.5,
           "grade": "D",
           "human_pct_of_area": 10.37,
+          "lightning_pct_of_area": 87.89,
+          "unknown_pct_of_area": 1.74,
           "density_per_km2": 6.103,
           "small_sample": false,
           "verification": {
@@ -5910,6 +6432,214 @@
         }
       ],
       "finding": "NFDB's error is not evenly distributed. Of the four provinces we could independently check, 3 (Alberta, Quebec, Ontario) match almost exactly. Only British Columbia is off \u2014 and it's off by a lot: +45.6 percentage points, a single, large, one-directional error, not a small systematic bias. With 1 confirmed error out of 4 checked provinces, this reads as an isolated BC data-lineage problem, not a general NFDB tendency to overstate known-cause rate \u2014 but that's a tentative read from 4 data points, not a full audit. Of the remaining 8 provinces/territories, the Northwest Territories and Yukon have current per-fire datasets of their own but NEITHER records a cause field at all, so their NFDB numbers are structurally unverifiable, not just unverified; Saskatchewan, Manitoba, New Brunswick, Nova Scotia, PEI, and Newfoundland & Labrador have no independent per-fire cause source publicly available at all (see the verification column above for the specific reason in each case)."
+    },
+    "arson_ranking": {
+      "period": "2005-2024",
+      "note": "NFDB codes cause as Human, Lightning, or Unknown \u2014 there is no arson-specific sub-code nationally (BC's own cause sub-category breakdown in Chapter 1 is the only source in this report that isolates arson from other human causes like campfires and equipment). This is HUMAN-caused share of KNOWN-cause fires \u2014 the closest available national proxy, and the one least distorted by a province's own unknown-cause rate.",
+      "ranking": [
+        {
+          "province": "Prince Edward Island",
+          "code": "PE",
+          "human_pct_known": 100.0,
+          "human": 43,
+          "lightning": 0,
+          "small_sample": true
+        },
+        {
+          "province": "Nova Scotia",
+          "code": "NS",
+          "human_pct_known": 98.3,
+          "human": 3133,
+          "lightning": 55,
+          "small_sample": false
+        },
+        {
+          "province": "New Brunswick",
+          "code": "NB",
+          "human_pct_known": 94.1,
+          "human": 4133,
+          "lightning": 259,
+          "small_sample": false
+        },
+        {
+          "province": "Newfoundland & Labrador",
+          "code": "NL",
+          "human_pct_known": 89.1,
+          "human": 1396,
+          "lightning": 170,
+          "small_sample": false
+        },
+        {
+          "province": "Quebec",
+          "code": "QC",
+          "human_pct_known": 65.2,
+          "human": 7581,
+          "lightning": 4047,
+          "small_sample": false
+        },
+        {
+          "province": "Alberta",
+          "code": "AB",
+          "human_pct_known": 64.2,
+          "human": 17446,
+          "lightning": 9733,
+          "small_sample": false
+        },
+        {
+          "province": "Saskatchewan",
+          "code": "SK",
+          "human_pct_known": 53.5,
+          "human": 4754,
+          "lightning": 4135,
+          "small_sample": false
+        },
+        {
+          "province": "British Columbia",
+          "code": "BC",
+          "human_pct_known": 43.2,
+          "human": 15423,
+          "lightning": 20276,
+          "small_sample": false
+        },
+        {
+          "province": "Manitoba",
+          "code": "MB",
+          "human_pct_known": 41.7,
+          "human": 3117,
+          "lightning": 4360,
+          "small_sample": false
+        },
+        {
+          "province": "Ontario",
+          "code": "ON",
+          "human_pct_known": 38.9,
+          "human": 6930,
+          "lightning": 10871,
+          "small_sample": false
+        },
+        {
+          "province": "Yukon",
+          "code": "YT",
+          "human_pct_known": 24.5,
+          "human": 452,
+          "lightning": 1393,
+          "small_sample": false
+        },
+        {
+          "province": "Northwest Territories",
+          "code": "NT",
+          "human_pct_known": 9.5,
+          "human": 379,
+          "lightning": 3615,
+          "small_sample": false
+        }
+      ]
+    },
+    "area_by_cause_ranking": {
+      "period": "2005-2024",
+      "ranking": [
+        {
+          "province": "Prince Edward Island",
+          "code": "PE",
+          "human_pct_of_area": 100.0,
+          "lightning_pct_of_area": 0.0,
+          "unknown_pct_of_area": 0.0,
+          "small_sample": true
+        },
+        {
+          "province": "Nova Scotia",
+          "code": "NS",
+          "human_pct_of_area": 96.42,
+          "lightning_pct_of_area": 0.26,
+          "unknown_pct_of_area": 3.32,
+          "small_sample": false
+        },
+        {
+          "province": "New Brunswick",
+          "code": "NB",
+          "human_pct_of_area": 87.24,
+          "lightning_pct_of_area": 3.34,
+          "unknown_pct_of_area": 9.42,
+          "small_sample": false
+        },
+        {
+          "province": "Newfoundland & Labrador",
+          "code": "NL",
+          "human_pct_of_area": 13.47,
+          "lightning_pct_of_area": 71.17,
+          "unknown_pct_of_area": 15.36,
+          "small_sample": false
+        },
+        {
+          "province": "Manitoba",
+          "code": "MB",
+          "human_pct_of_area": 11.4,
+          "lightning_pct_of_area": 88.27,
+          "unknown_pct_of_area": 0.33,
+          "small_sample": false
+        },
+        {
+          "province": "British Columbia",
+          "code": "BC",
+          "human_pct_of_area": 10.37,
+          "lightning_pct_of_area": 87.89,
+          "unknown_pct_of_area": 1.74,
+          "small_sample": false
+        },
+        {
+          "province": "Saskatchewan",
+          "code": "SK",
+          "human_pct_of_area": 8.05,
+          "lightning_pct_of_area": 91.94,
+          "unknown_pct_of_area": 0.01,
+          "small_sample": false
+        },
+        {
+          "province": "Quebec",
+          "code": "QC",
+          "human_pct_of_area": 5.12,
+          "lightning_pct_of_area": 94.88,
+          "unknown_pct_of_area": 0.0,
+          "small_sample": false
+        },
+        {
+          "province": "Ontario",
+          "code": "ON",
+          "human_pct_of_area": 4.57,
+          "lightning_pct_of_area": 94.91,
+          "unknown_pct_of_area": 0.51,
+          "small_sample": false
+        },
+        {
+          "province": "Alberta",
+          "code": "AB",
+          "human_pct_of_area": 4.4,
+          "lightning_pct_of_area": 61.87,
+          "unknown_pct_of_area": 33.73,
+          "small_sample": false
+        },
+        {
+          "province": "Yukon",
+          "code": "YT",
+          "human_pct_of_area": 0.99,
+          "lightning_pct_of_area": 77.15,
+          "unknown_pct_of_area": 21.87,
+          "small_sample": false
+        },
+        {
+          "province": "Northwest Territories",
+          "code": "NT",
+          "human_pct_of_area": 0.37,
+          "lightning_pct_of_area": 99.6,
+          "unknown_pct_of_area": 0.03,
+          "small_sample": false
+        }
+      ]
+    },
+    "count_vs_area_explainer": {
+      "national_human_pct_of_known_fires": 52.4,
+      "national_human_pct_of_area": 5.7,
+      "finding": "This is a real, well-documented pattern in Canadian wildfire science, not a data error: nationally, 52.4% of fires with a known cause are human-started \u2014 humans DO start the clear majority of individual fires. But those same human-caused fires account for only 5.7% of the AREA burned. The average human-caused fire burns 55.2 ha, while the average lightning fire burns 956.2 ha \u2014 17.3x larger. The mechanism is detection and access, not ignition source: human-caused fires start near roads, towns, and campsites, where they're seen and reached within hours; lightning fires disproportionately start in remote boreal and northern terrain, where a fire can burn for days before anyone spots it and even longer before crews can reach it. CIFFC's and NRCan's own national reporting shows the same pattern every year: humans cause most fires, lightning burns most area. Both numbers in this report are correct \u2014 count and area are answering different questions, not contradicting each other."
     }
   },
   "co2_climate": {
