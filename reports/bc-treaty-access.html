@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>After the Ink Dries | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;--color-cream-dark: #E8E2D5;--color-beige: #D8D1C2;--color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;--color-text-primary: #2D2D2D;--color-text-secondary: #5A5A5A;--color-text-tertiary: #8A8A8A;
+      --color-teal: #3A5F6F;--shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);--radius-md: 0.5rem;--radius-lg: 0.75rem;
+      --accent: #4A6FA5;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .story-nav{font-size:0.75rem;margin:0 0 0.5rem}
+    .story-nav a{color:var(--color-teal);text-decoration:none;font-weight:600}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem;max-width:900px}
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat .big{font-size:2rem;font-weight:800;color:var(--accent);line-height:1.2}
+    @media(min-width:640px){.hero-stat .big{font-size:2.5rem}}
+    .hero-stat .label{font-size:0.75rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;margin-top:4px}
+    .metric-desc{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.5;margin:0 0 12px}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative;margin-bottom:1.5rem}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 8px;color:var(--color-text-primary)}
+    .chart-wrap{position:relative;height:380px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+    .view-toggle{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+    .view-btn{padding:5px 14px;border-radius:9999px;font-size:0.6875rem;font-weight:600;cursor:pointer;border:2px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);transition:all .15s}
+    .view-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .accountability h3{font-size:1.0625rem;font-weight:700;color:var(--accent);margin:0 0 0.75rem}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#e6ecf5;border-color:#c7d3e8;color:#4A6FA5}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+    .entity-tag.warn{background:#fbe4e4;border-color:#f3b8b8;color:#b84c4c}
+    .entity-tag.good{background:#e3f2e8;border-color:#bfe3cb;color:#3f8f5f}
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .flag-restrict{font-size:0.6875rem;color:#b84c4c;font-weight:600}
+    .flag-clear{font-size:0.6875rem;color:#3f8f5f;font-weight:600}
+    .caveat{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.5;background:var(--color-cream-dark);border-radius:var(--radius-md);padding:0.6rem 0.85rem;margin-top:0.5rem}
+    .legal-box{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--color-teal);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .legal-box h3{font-size:1.0625rem;font-weight:700;color:var(--color-teal);margin:0 0 0.75rem}
+    .legal-box p{margin:0 0 0.75rem}
+    .legal-box p:last-child{margin:0}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="../index.html">Statistics</a>
+      <a href="../scorecard-v2.html">Scorecard</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+      <p class="story-nav">&larr; <a href="bc-treaty-land.html">The Land Ledger</a> &middot; Chapter 3 of 3</p>
+
+      <h1 class="page-title">After the Ink Dries</h1>
+      <p class="page-subtitle">Source: Nisga'a, Tsawwassen, Maa-nulth &amp; Tla'amin Final Agreements (primary treaty text) &middot; BC Treaty Commission &middot; BC Public Accounts 2025/26, Note 28</p>
+      <p class="page-desc">The tweet that started this story claimed some treaty lands "could also have limited or NO public access" &mdash; without a source. This chapter checks that claim the only way it can honestly be checked: against BC's four modern treaties that are actually <strong>in effect</strong> (Nisga'a, Tsawwassen, Maa-nulth, Tla'amin) &mdash; not against speculation about deals still being negotiated, and not Yale, whose Final Agreement was ratified but which Note 28 itself says has no agreed effective date (see Chapter 1). The finding is genuinely mixed. Across all four, settlement land converts to ordinary <strong>fee-simple</strong> private land &mdash; the same legal category as any house or farm in BC &mdash; and every one of the four treaties contains explicit clauses that <em>preserve</em> public access beyond what an ordinary landowner would owe anyone. But real, named, treaty-text-documented cases of access being narrowed also exist: the Nisga'a Nation can close certain roads to the public, and Tla'amin designated an entire island as private land with restricted access, on the treaty's own effective date. This is a negotiated, disclosed balance &mdash; not a blank check for closure, and not a guarantee of blanket openness either.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="big">4 of 4</div>
+          <div class="label">Effective treaties checked &mdash; all default to fee simple</div>
+        </div>
+        <div class="hero-stat" style="border-top-color:#B84C4C">
+          <div class="big" style="color:#B84C4C">2</div>
+          <div class="label">Documented access-restriction precedents (Nisga'a roads, Tla'amin's Ahgykson)</div>
+        </div>
+        <div class="hero-stat" style="border-top-color:#3F8F5F">
+          <div class="big" style="color:#3F8F5F">2,185 ha</div>
+          <div class="label">Added to protected status under Maa-nulth &mdash; an access gain, not a loss</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">3.5&times;</div>
+          <div class="label">BC's existing reserve land vs. the pending Note 28 commitment</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">6</div>
+          <div class="label">Stages every treaty passes through &mdash; same process, same legal default</div>
+        </div>
+      </div>
+
+      <div class="legal-box">
+        <h3>What a treaty settlement actually converts land into</h3>
+        <p>None of the four treaties below create a special new category of land exempt from BC's ordinary property system. Settlement land is converted to <strong>fee simple</strong> ownership &mdash; the Nisga'a Final Agreement's own language calls it "the largest estate known in law" &mdash; registered in the provincial Land Title Office exactly like any privately owned house, farm, or forestry lot in BC. It sits alongside the Nation's own law-making authority over that land (zoning, planning, development), but the underlying legal category is not novel and is not reserve land.</p>
+        <p>It is also not an "extinguishment" of Aboriginal rights, in the way 19th- and early-20th-century historic treaties worked. The BC Treaty Commission's own FAQ is explicit: "extinguishment and surrender of rights, in form or result, do not have any place in modern-day Crown&ndash;Indigenous relations." Modern treaties use a <strong>modification</strong> model instead &mdash; the Nisga'a treaty states that Nisga'a Aboriginal rights, including title, "are modified, and continue as modified, as set out in that Agreement." The exchange is defined, certain rights across a settlement area, in place of standing uncertainty about how Aboriginal title applies across a much larger traditional territory.</p>
+      </div>
+
+      <div class="accountability">
+        <h3>Checking the claim, entity by entity</h3>
+        <p><strong>BC Treaty Commission</strong> <span class="entity-tag govt">Sets the process</span><br>
+        The independent body overseeing the 6-stage negotiation process every one of BC's treaty tables sits within, from Statement of Intent through Implementation. The legal default it produces &mdash; fee simple, registered like any private parcel &mdash; is the same for every completed treaty, not something negotiated differently case by case.</p>
+
+        <p><strong>Nisga'a Lisims Government</strong> <span class="entity-tag warn">Real, named restriction</span><br>
+        Under its <em>own</em> treaty (effective May 11, 2000), the Nisga'a Nation may close to the public any Nisga'a road that is not within Nisga'a Village Lands (Chapter 7, para 60(1)) &mdash; a real, in-force clause, and the clearest documented precedent for the tweet's claim. It sits alongside a separate guarantee (Chapter 6) that Nisga'a Public Lands stay open to reasonable public recreational access. This is the Nation exercising an authority it negotiated for itself, not something imposed on it from outside.</p>
+
+        <p><strong>Tla'amin Nation</strong> <span class="entity-tag warn">Real, named restriction</span><br>
+        Under its own treaty (effective April 5, 2016), the entirety of Ahgykson (Harwood Island) was designated Tla'amin Private Land with restricted public access &mdash; on the treaty's own effective date. That designation is disclosed directly in the treaty text itself, not a surprise sprung on anyone afterward. Tla'amin also guarantees public recreational access elsewhere on Tla'amin Public Lands and on the stretch of the Sunshine Coast Trail that crosses its land.</p>
+
+        <p><strong>Maa-nulth First Nations</strong> <span class="entity-tag good">Clearest counter-example</span><br>
+        The clearest documented case of access simply matching ordinary private-land rules: the Final Agreement states each Maa-nulth Nation has "the same rights and obligations in respect of public access... as other owners of estates in fee simple." As part of the same treaty, Thunderbird's Nest (T'iitsk'in Paawats, ~2,185 ha) was added to protected status &mdash; pulled out of the working forest land base &mdash; an access and conservation <em>gain</em>, not a loss.</p>
+
+        <p><strong>The live, unresolved Te'mexw dispute</strong> <span class="entity-tag person">Unverified &mdash; context only</span><br>
+        Te'mexw is not yet an effective treaty (Stage 5 of 6), so it sits outside the "already-effective" precedent above &mdash; but it's the live dispute that the original viral post's map was actually about. On Aug 11, 2026, the BC Conservative Party publicly claimed the Te'mexw Treaty Association would be "under no legal obligation to continue to allow public access to their newly acquired parks." The province's own public position, per Epoch Times reporting the same news cycle (Aug 11&ndash;12, 2026), was that access "would still be safeguarded under the terms of the treaties." Neither claim is independently verified here &mdash; the actual Te'mexw treaty text is not yet public. Presented as two competing claims, not as settled fact either way.</p>
+
+        <div class="quote-block">
+          "The Te'mexw Treaty Association is under no legal obligation to continue to allow public access to their newly acquired parks."
+          <span class="attr">&mdash; BC Conservative Party statement, Aug 11, 2026</span>
+        </div>
+        <div class="quote-block">
+          "Public access and recreational opportunities for the provincial parks would still be safeguarded under the terms of the treaties."
+          <span class="attr">&mdash; BC provincial government, per The Epoch Times, Aug 11&ndash;12, 2026</span>
+        </div>
+
+        <p><strong>Separate context &mdash; do not conflate:</strong> <em>Cowichan Tribes v. Canada (Attorney General)</em>, 2025 BCSC 1490 (decided Aug 7, 2025) found that Aboriginal title can persist over land already held in fee simple, in a Richmond, BC case. That case involves land that was <strong>never</strong> part of any modern BC treaty &mdash; the Cowichan have never signed one. It's a different, unrelated legal question (title uncertainty on non-treaty land), not a precedent about what happens to treaty settlement land. If anything, it illustrates that treaty settlement &mdash; which converts land to fee simple with the Nation's own agreement, in exchange for defined certainty &mdash; is one of the few mechanisms that <em>forecloses</em> this kind of title uncertainty, rather than creating it.</p>
+      </div>
+
+      <div class="view-toggle">
+        <button class="view-btn on" onclick="setView('access')">Access by Treaty</button>
+        <button class="view-btn" onclick="setView('reserve')">Reserve Land Context</button>
+      </div>
+
+      <div class="chart-card">
+        <h3 id="chartTitle">Public Access Precedent, Four Effective Treaties</h3>
+        <p class="metric-desc" id="chartDesc"></p>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title">Public Access Provisions, All Four Effective Treaties</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"metadata":{"title":"The Land Ledger","last_updated":"2026-08-12","sources":["BC Public Accounts 2021/22-2025/26, Note 28 (gov.bc.ca)","BC Treaty Commission Final Agreement fact sheets (gov.bc.ca)","Ministry of Indigenous Relations and Reconciliation, TTA Treaty Area and Treaty Lands map (June 2026)","Statistics Canada Table 32-10-0047-01","Encyclopedia of British Columbia (KnowBC)","CHEK News, Times Colonist, Daily Hive, The Epoch Times (Aug 9-12 2026)"]},"trend":[{"fiscal_year":"2021/22","hectares":129397.0,"nations_count":18},{"fiscal_year":"2022/23","hectares":132980.0,"nations_count":19},{"fiscal_year":"2023/24","hectares":138590.6,"nations_count":20},{"fiscal_year":"2024/25","hectares":137591.3,"nations_count":20},{"fiscal_year":"2025/26","hectares":135425.3,"nations_count":20}],"nations_2025_26":[{"name":"Ditidaht","hectares":3567.0,"status":"Negotiating"},{"name":"Homalco","hectares":707.0,"status":"Negotiating"},{"name":"In-SHUCK-ch (Skatin and Samahquam)","hectares":9474.0,"status":"Negotiating"},{"name":"Kaska Dena Council","hectares":677.0,"status":"Negotiating"},{"name":"Kitselas","hectares":35290.0,"status":"Final Agreement ratified Apr 10, 2025 -- awaiting effective date"},{"name":"Kitsumkalum","hectares":45789.0,"status":"Final Agreement ratified Nov 1, 2025 -- awaiting effective date"},{"name":"K'omoks","hectares":3040.0,"status":"Final Agreement ratified Mar 8, 2025 -- awaiting effective date"},{"name":"Ktunaxa Nation Council","hectares":418.0,"status":"Negotiating"},{"name":"Lake Babine Nation (BC only)","hectares":497.6,"status":"Incremental Treaty Agreement (+ one-time payment of $0.02M)"},{"name":"Lax Kw'alaams First Nation","hectares":4309.0,"status":"Negotiating"},{"name":"Lheidli T'enneh","hectares":3416.0,"status":"Negotiating"},{"name":"Nazko","hectares":172.0,"status":"Negotiating"},{"name":"NStQ (Canoe Creek, Sugar Cane, Canim Lake, Soda Creek)","hectares":3095.0,"status":"Negotiating"},{"name":"Pacheedaht","hectares":1216.0,"status":"Negotiating"},{"name":"Te'mexw (Malahat, Scia'new, Snaw-naw-as, Songhees, T'Sou-ke)","hectares":1916.7,"status":"Stage 5 negotiation -- Victoria/South Island (see Chapter 2)"},{"name":"Tla-o-qui-aht","hectares":47.0,"status":"Negotiating"},{"name":"Wei Wai Kai (Cape Mudge First Nation)","hectares":612.0,"status":"Negotiating"},{"name":"Wei Wai Kum (Campbell River First Nation)","hectares":1276.0,"status":"Negotiating"},{"name":"Wuikinuxv","hectares":13946.0,"status":"Negotiating"},{"name":"Yekooche","hectares":5960.0,"status":"Negotiating"}],"yale":{"name":"Yale First Nation","note28_hectares":1179.0,"fact_sheet_hectares":1966.0,"status":"Final Agreement ratified 2011/2013 -- effective date not yet agreed, 13+ years on","discrepancy_note":"BC Public Accounts Note 28 has listed Yale's commitment as 1,179 ha, unchanged, in every fiscal year from 2021/22 through 2025/26. BC's own 2010 Yale Lands fact sheet states 1,966 ha (217 ha former reserve + 1,749 ha additional Crown land). The discrepancy is unresolved in public documents -- reported here as an open question, not settled."},"note28_total_2025_26":135425.3,"note28_total_incl_yale":136604.3,"completed_treaties":[{"name":"Nisga'a","effective_date":"2000-05-11","hectares":199200.0},{"name":"Tsawwassen","effective_date":"2009-04-03","hectares":724.0},{"name":"Maa-nulth (5 Nations)","effective_date":"2011-04-01","hectares":24500.0},{"name":"Tla'amin","effective_date":"2016-04-05","hectares":8322.0}],"completed_treaties_total_ha":232746.0,"benchmarks":{"acres_total":334642,"km2_total":1354.25,"metro_vancouver_km2":2878.93,"metro_vancouver_pct":47.0,"vancouver_city_km2":115.18,"vancouver_city_multiple":11.8,"stanley_park_ha":404.9,"stanley_park_multiple":334.5,"farmland_value_per_acre_2025":10577,"farmland_value_source":"Statistics Canada, Table 32-10-0047-01 (2025)","farmland_total_value_estimate":3540000000,"farmland_caveat":"Farmland value is a weak proxy for this land -- the Note 28 total is mostly forested/rural Crown land, not agricultural land, and BC farmland values themselves range more than 40x by region ($2,400 to $104,600/acre per Farm Credit Canada's 2025 report). This is an illustrative scale benchmark, not an appraisal."},"reserve_land":{"bc_reserve_hectares":473485.0,"bc_reserve_source":"Encyclopedia of British Columbia (KnowBC) -- secondary reference figure, no single ISC/StatCan provincial rollup located","pending_commitment_hectares":135425.3,"ratio_reserve_to_pending":3.5},"victoria_parcels":[{"parcel":"Hatley Park / Hatley Castle","map_category":"Federal Crown Land","approx_hectares":229.0,"status":"Existing federal Crown land (Dept. of National Defence); proposed transfer to Songhees as treaty settlement land; contested by a separate Esquimalt Nation civil claim filed Mar 27, 2026","in_note28":false,"reason":"Federal land -- outside Note 28's provincial-Crown-land scope entirely"},{"parcel":"New Songhees 1A","map_category":"Songhees Nation Reserve","approx_hectares":null,"status":"Existing Indian Reserve since 1911 (Songhees relocated from Inner Harbour)","in_note28":false,"reason":"Already-held reserve land, not a new commitment"},{"parcel":"Esquimalt 113","map_category":"Provincial Crown Land","approx_hectares":null,"status":"New provincial Crown land parcel near Lampson St.","in_note28":true,"reason":"Genuine new provincial commitment, part of the Te'mexw 1,916.7 ha figure"},{"parcel":"Enterprise Wharf","map_category":"Provincial Crown Land","approx_hectares":null,"status":"Waterfront parking/dock parcel, 1112 Wharf St.","in_note28":true,"reason":"Genuine new provincial commitment"},{"parcel":"Q Lot","map_category":"Provincial Crown Land","approx_hectares":null,"status":"Parking lot, 430 Menzies St. beside the Legislature; assessed at $24.8M (Times Colonist)","in_note28":true,"reason":"Genuine new provincial commitment"},{"parcel":"PCC Pandora","map_category":"Songhees Nation Private Land","approx_hectares":null,"status":"Already privately owned by Songhees Nation (fee simple)","in_note28":false,"reason":"Not Crown land at all"},{"parcel":"Tl'ches -- Chatham Islands 4","map_category":"Songhees Nation Reserve","approx_hectares":null,"status":"Existing Chatham Islands Indian Reserve No. 4","in_note28":false,"reason":"Already-held reserve land"},{"parcel":"Tl'ches -- Discovery Island 3","map_category":"Songhees Nation Reserve","approx_hectares":null,"status":"Likely existing Indian Reserve No. 3 (not independently confirmed against a federal reserve registry)","in_note28":false,"reason":"Already-held reserve land (pending final confirmation)"},{"parcel":"Tl'ches -- Discovery Island Park","map_category":"Provincial Park Land","approx_hectares":null,"status":"Strip of Discovery Island Marine Provincial Park","in_note28":true,"reason":"New commitment, park sub-category"}],"temexw_status":{"member_nations":["Malahat","Scia'new (Beecher Bay)","Snaw-naw-as","Songhees","T'Sou-ke"],"statement_of_intent":"1994-07-15","agreement_in_principle":"2015-04-10","agreement_in_principle_hectares":1565.0,"current_stage":"Stage 5 of 6 (Negotiation to Finalize a Treaty)","map_source":"Ministry of Indigenous Relations and Reconciliation, \"TTA Treaty Area and Treaty Lands\" map package, June 2026 (govTogetherBC engagement site)","esquimalt_claim_filed":"2026-03-27","esquimalt_claim_status":"Ongoing / unresolved as of Aug 12, 2026"},"access_precedent":[{"treaty":"Nisga'a","effective_date":"2000-05-11","default_land_status":"Fee simple","access_summary":"Public access guaranteed on Nisga'a Public Lands for temporary recreational use (Ch. 6). But Nisga'a Nation may close to the public any non-village Nisga'a road (Ch. 7, para 60(1)) -- the clearest documented precedent for restricted access.","restriction_example":true},{"treaty":"Tsawwassen","effective_date":"2009-04-03","default_land_status":"Fee simple","access_summary":"Public rights-of-way written into standard interest documents. Tsawwassen Mills (1.2M sq ft mall) was later built on treaty settlement land removed from the Agricultural Land Reserve -- a real, documented land-use change, though the mall itself remains open to the public.","restriction_example":false},{"treaty":"Maa-nulth (5 Nations)","effective_date":"2011-04-01","default_land_status":"Fee simple, explicit private-land parity","access_summary":"Official text: each Maa-nulth Nation has \"the same rights and obligations in respect of public access... as other owners of estates in fee simple.\" Thunderbird's Nest (2,185 ha) was added to protected status under the treaty -- an access/conservation gain.","restriction_example":false},{"treaty":"Tla'amin","effective_date":"2016-04-05","default_land_status":"Fee simple","access_summary":"Public recreational access guaranteed on Tla'amin Public Lands and the Sunshine Coast Trail. But Ahgykson (Harwood Island) was designated Tla'amin Private Land with restricted public access on the treaty's own effective date -- the clearest named example of access being narrowed.","restriction_example":true}],"treaty_process_stages":["1. Statement of Intent","2. Readiness to Negotiate","3. Framework Agreement","4. Agreement in Principle","5. Finalization -> Final Agreement","6. Implementation"]};
+
+const HECTARES_BY_TREATY = {
+  "Nisga'a": 199200.0,
+  "Tsawwassen": 724.0,
+  "Maa-nulth (5 Nations)": 24500.0,
+  "Tla'amin": 8322.0
+};
+
+const VIEW_DESCRIPTIONS = {
+  access: 'BC’s four already-effective modern treaties, sized by settlement hectares. (Yale is excluded — its Final Agreement was ratified but Note 28 itself states no effective date has been agreed, so it is not yet in force; see Chapter 1.) Red bars (Nisga’a, Tla’amin) are the two treaties with a real, named, treaty-text-documented precedent for restricted public access. Green bars (Tsawwassen, Maa-nulth) have no such documented restriction — access defaults to ordinary private-land rules, plus explicit access-preserving clauses. Hover a bar for the full access summary.',
+  reserve: 'BC’s existing reserve land (≈473,485 ha, a secondary reference figure from the Encyclopedia of British Columbia — no single ISC/StatCan provincial rollup was located) next to the pending Note 28 commitment (135,425 ha, not yet transferred). Important: once treaty settlement land is transferred, it becomes ordinary fee-simple private land, not reserve land — these two figures describe different legal categories of land, not the same pool growing.',
+};
+
+let chart = null;
+let currentView = 'access';
+
+function wrapText(str, maxLen) {
+  const words = str.split(' ');
+  const lines = [];
+  let line = '';
+  words.forEach(w => {
+    if ((line + ' ' + w).trim().length > maxLen) { lines.push(line.trim()); line = w; }
+    else { line = (line + ' ' + w).trim(); }
+  });
+  if (line) lines.push(line);
+  return lines;
+}
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('on'));
+  event.target.classList.add('on');
+  document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS[v] || '';
+  updateChart();
+}
+
+function updateChart() {
+  if (chart) chart.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const title = document.getElementById('chartTitle');
+
+  if (currentView === 'access') {
+    title.textContent = 'Public Access Precedent, Four Effective Treaties';
+    const ap = DATA.access_precedent;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ap.map(a => a.treaty),
+        datasets: [{
+          label: 'Settlement hectares',
+          data: ap.map(a => HECTARES_BY_TREATY[a.treaty] || 0),
+          backgroundColor: ap.map(a => a.restriction_example ? 'rgba(184,76,76,0.75)' : 'rgba(63,143,95,0.65)'),
+          borderColor: ap.map(a => a.restriction_example ? '#B84C4C' : '#3F8F5F'),
+          borderWidth: 1, borderRadius: 3
+        }]
+      },
+      options: { responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false},
+          tooltip:{callbacks:{
+            label: c => c.raw.toLocaleString() + ' ha settlement land',
+            afterLabel: c => {
+              const a = ap[c.dataIndex];
+              return ['', (a.restriction_example ? 'RESTRICTION DOCUMENTED:' : 'No documented restriction:'), ...wrapText(a.access_summary, 46)];
+            }
+          }}},
+        scales:{
+          y:{title:{display:true,text:'Hectares (log scale)',font:{size:11}},type:'logarithmic'},
+          x:{title:{display:true,text:'Treaty',font:{size:11}}}
+        }}
+    });
+    buildAccessTable();
+
+  } else if (currentView === 'reserve') {
+    title.textContent = 'BC Reserve Land vs. Pending Treaty Commitment';
+    const r = DATA.reserve_land;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['BC reserve land (existing, ~1,700 reserves)', 'Pending Note 28 commitment, 2025/26'],
+        datasets: [{
+          label: 'Hectares',
+          data: [r.bc_reserve_hectares, r.pending_commitment_hectares],
+          backgroundColor: ['#8A8A8A', '#4A6FA5'],
+          borderRadius: 3
+        }]
+      },
+      options: { indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw.toLocaleString()+' ha'}}},
+        scales:{ x:{title:{display:true,text:'Hectares',font:{size:11}},beginAtZero:true} } }
+    });
+    buildAccessTable();
+  }
+}
+
+function buildAccessTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Treaty</th><th>Effective Date</th><th>Default Land Status</th><th>Access Summary</th></tr></thead><tbody>';
+  DATA.access_precedent.forEach(a => {
+    const flag = a.restriction_example
+      ? '<span class="flag-restrict">&#9679; restriction documented</span>'
+      : '<span class="flag-clear">&#9679; no documented restriction</span>';
+    html += '<tr><td><strong>' + a.treaty + '</strong><br>' + flag + '</td><td>' + a.effective_date + '</td><td>' + a.default_land_status + '</td><td style="font-size:0.75rem;color:var(--color-text-secondary);max-width:420px">' + a.access_summary + '</td></tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+
+  if (currentView === 'reserve') {
+    const r = DATA.reserve_land;
+    addCaveat('The ' + r.bc_reserve_hectares.toLocaleString() + ' ha reserve-land figure is a secondary reference figure (' + r.bc_reserve_source + '), not an ISC/StatCan-certified number. And treaty settlement land, once transferred, becomes ordinary fee-simple private land — not reserve land — so these are two different legal categories of land, not one pool growing over time.');
+  } else {
+    addCaveat('Bar heights above are settlement-land hectares by treaty (log scale) — color signals whether a real, named access-restriction precedent was found in the treaty text (red) or not (green). This table itself does not change between the two chart views above.');
+  }
+}
+
+function addCaveat(text) {
+  let el = document.getElementById('caveatBox');
+  if (el) el.remove();
+  if (!text) return;
+  el = document.createElement('div');
+  el.id = 'caveatBox';
+  el.className = 'caveat';
+  el.textContent = 'Caveat: ' + text;
+  document.querySelector('.data-table-wrap').insertAdjacentElement('afterend', el);
+}
+
+function copyTable() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push(td.textContent.trim()));
+    rows.push(cells.join('\t'));
+  });
+  navigator.clipboard.writeText(rows.join('\n')).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push('"' + td.textContent.trim().replace(/"/g,'""') + '"'));
+    rows.push(cells.join(','));
+  });
+  const csv = rows.join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bc_treaty_access_precedent.csv';
+  a.click();
+}
+
+document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS.access;
+updateChart();
+</script>
+
+</body>
+</html>

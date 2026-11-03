@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tahltan Territory — Treaty &amp; Resource-Land Investigation</title>
+<style>
+  :root{
+    --bg:#0d1117; --surface:#161b22; --surface2:#1c2128; --border:#30363d;
+    --text:#e6edf3; --muted:#8b949e; --link:#58a6ff;
+    --gov:#f0883e; --fn:#2dd4bf; --company:#58a6ff; --individual:#3fb950; --ngo:#bc8cff;
+    --edge-agreement:#f0883e; --edge-ownership:#58a6ff; --edge-funding:#f85149;
+    --edge-advisory:#8b949e; --edge-revolving:#f85149; --edge-litigation:#bc8cff; --edge-lobbying:#39c5cf;
+    --red:#f85149; --orange:#f0883e; --blue:#58a6ff; --teal:#2dd4bf;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+  body{display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+  header{padding:10px 18px;border-bottom:1px solid var(--border);background:var(--surface);
+    display:flex;align-items:baseline;gap:14px;flex-shrink:0;flex-wrap:wrap;}
+  header h1{font-size:16px;margin:0;font-weight:600;}
+  header .sub{font-size:12px;color:var(--muted);}
+  header .badge{margin-left:auto;font-size:11px;padding:3px 8px;border:1px solid var(--border);
+    border-radius:12px;color:var(--muted);}
+  main{flex:1;display:flex;min-height:0;}
+  #graphPanel{width:60%;position:relative;border-right:1px solid var(--border);background:
+    radial-gradient(circle at 30% 20%, #121821 0%, #0d1117 70%);overflow:hidden;}
+  #graphSvg{width:100%;height:100%;display:block;cursor:grab;}
+  .toolbar{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;
+    z-index:5;pointer-events:none;}
+  .toolbar .filters{display:flex;gap:5px;flex-wrap:wrap;pointer-events:auto;}
+  .filter-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);
+    font-size:11px;padding:5px 9px;border-radius:5px;cursor:pointer;display:flex;align-items:center;gap:5px;
+    transition:background .15s;}
+  .filter-btn:hover{background:var(--surface2);}
+  .filter-btn.active{border-color:currentColor;}
+  .filter-btn .dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+  .legend{position:absolute;bottom:10px;left:10px;background:rgba(22,27,34,.92);border:1px solid var(--border);
+    border-radius:8px;padding:10px 12px;font-size:11px;z-index:5;max-width:230px;backdrop-filter:blur(2px);}
+  .legend h4{margin:0 0 6px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  .legend .row{display:flex;align-items:center;gap:7px;margin:3px 0;}
+  .legend .swatch{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+  .legend .line{width:18px;height:0;border-top-width:2px;flex-shrink:0;}
+  .legend hr{border:none;border-top:1px solid var(--border);margin:7px 0;}
+  #tooltip{position:fixed;pointer-events:none;background:#010409;border:1px solid var(--border);
+    border-radius:6px;padding:8px 10px;font-size:11.5px;max-width:280px;z-index:50;display:none;
+    box-shadow:0 4px 16px rgba(0,0,0,.5);line-height:1.4;}
+  #tooltip .t-title{font-weight:600;margin-bottom:3px;}
+  #tooltip .t-cat{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px;}
+  #detailDrawer{position:absolute;right:0;bottom:0;left:0;max-height:46%;background:rgba(13,17,23,.98);
+    border-top:1px solid var(--border);transform:translateY(100%);transition:transform .2s ease;
+    z-index:20;overflow-y:auto;padding:14px 18px 18px;}
+  #detailDrawer.open{transform:translateY(0);}
+  #detailDrawer .dd-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+  #detailDrawer .dd-title{font-size:14px;font-weight:600;flex:1;}
+  #detailDrawer .dd-close{background:none;border:1px solid var(--border);color:var(--muted);
+    border-radius:5px;width:24px;height:24px;cursor:pointer;font-size:13px;line-height:1;}
+  #detailDrawer .dd-cat{display:inline-block;font-size:10px;padding:2px 7px;border-radius:10px;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
+  #detailDrawer .dd-body{font-size:12.5px;line-height:1.6;color:#c9d1d9;}
+  #detailDrawer .dd-sources{margin-top:10px;font-size:11.5px;}
+  #detailDrawer .dd-sources a{color:var(--link);display:block;margin:2px 0;word-break:break-all;}
+  #detailDrawer .dd-conns{margin-top:10px;}
+  #detailDrawer .conn-item{border:1px solid var(--border);border-radius:6px;padding:6px 8px;margin:5px 0;
+    font-size:11.5px;cursor:pointer;background:var(--surface);}
+  #detailDrawer .conn-item:hover{background:var(--surface2);}
+  #detailDrawer .conn-item .cl{color:var(--muted);font-size:10.5px;}
+  .warn-icon{color:var(--red);font-size:13px;}
+
+  #sidePanel{width:40%;display:flex;flex-direction:column;min-height:0;}
+  .tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;}
+  .tab-btn{flex:1;padding:11px 6px;background:none;border:none;color:var(--muted);cursor:pointer;
+    font-size:12.5px;font-weight:600;border-bottom:2px solid transparent;letter-spacing:.02em;}
+  .tab-btn.active{color:var(--text);border-bottom-color:var(--blue);}
+  .tab-content{flex:1;overflow-y:auto;padding:14px 16px 40px;display:none;}
+  .tab-content.active{display:block;}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;
+    margin-bottom:12px;border-left:3px solid var(--border);}
+  .card.sev-critical{border-left-color:var(--red);}
+  .card.sev-warning{border-left-color:var(--orange);}
+  .card.sev-info{border-left-color:var(--blue);}
+  .card.sev-advocacy{border-left-color:var(--ngo);}
+  .card.hero{border:1px solid var(--teal);border-left:4px solid var(--teal);background:#0f1e1c;}
+  .card h3{margin:0 0 6px;font-size:13.5px;}
+  .card .sev-label{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:6px;}
+  .card p{margin:6px 0;font-size:12.5px;line-height:1.55;color:#c9d1d9;}
+  .card .src{margin-top:8px;font-size:11px;}
+  .card .src a{color:var(--link);margin-right:10px;}
+  .section-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+    margin:18px 0 8px;font-weight:700;}
+  .section-label:first-child{margin-top:0;}
+
+  .tl-item{display:flex;gap:10px;margin-bottom:14px;position:relative;}
+  .tl-dot{width:10px;height:10px;border-radius:50%;margin-top:4px;flex-shrink:0;box-shadow:0 0 0 3px var(--bg);}
+  .tl-item:not(:last-child)::before{content:'';position:absolute;left:4px;top:16px;bottom:-14px;width:1px;
+    background:var(--border);}
+  .tl-date{font-size:11px;color:var(--muted);font-weight:600;}
+  .tl-label{font-size:12.5px;font-weight:600;margin:2px 0;}
+  .tl-desc{font-size:12px;color:#c9d1d9;line-height:1.5;}
+
+  .src-cat{margin-bottom:16px;}
+  .src-cat h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+    margin:0 0 6px;border-bottom:1px solid var(--border);padding-bottom:4px;}
+  .src-cat a{display:block;font-size:11.5px;color:var(--link);margin:4px 0;word-break:break-all;
+    line-height:1.4;}
+  .src-cat a span{color:var(--muted);}
+  .gaps-list{list-style:none;padding:0;margin:0;}
+  .gaps-list li{font-size:12px;color:#c9d1d9;background:var(--surface);border:1px solid var(--border);
+    border-radius:6px;padding:8px 10px;margin-bottom:7px;line-height:1.5;}
+
+  ::-webkit-scrollbar{width:9px;height:9px;}
+  ::-webkit-scrollbar-thumb{background:#30363d;border-radius:5px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+
+  svg text{user-select:none;-webkit-user-select:none;}
+  .node-circle{stroke:#010409;stroke-width:1.5;cursor:pointer;}
+  .node-warn-ring{fill:none;stroke:var(--red);stroke-width:1.6;stroke-dasharray:3,3;}
+  .node-label{font-size:9.5px;fill:#c9d1d9;pointer-events:none;}
+  .edge-line{fill:none;}
+  .edge-hit{fill:none;stroke:transparent;stroke-width:12;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tahltan Territory — Treaty &amp; Resource-Land Investigation</h1>
+  <span class="sub">Nodes: relationships between Crown governments, Tahltan Nation entities, resource companies, officials and advocacy organizations</span>
+  <span class="badge">Investigation date: Aug 12, 2026</span>
+</header>
+
+<main>
+  <div id="graphPanel">
+    <svg id="graphSvg"></svg>
+    <div class="toolbar">
+      <div class="filters" id="filterBar"></div>
+    </div>
+    <div class="legend" id="legendBox"></div>
+    <div id="detailDrawer">
+      <div class="dd-head">
+        <div style="flex:1">
+          <span class="dd-cat" id="ddCat"></span>
+          <div class="dd-title" id="ddTitle"></div>
+        </div>
+        <button class="dd-close" id="ddClose">×</button>
+      </div>
+      <div class="dd-body" id="ddBody"></div>
+      <div class="dd-sources" id="ddSources"></div>
+      <div class="dd-conns" id="ddConns"></div>
+    </div>
+  </div>
+
+  <div id="sidePanel">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="risks">Risks</button>
+      <button class="tab-btn" data-tab="timeline">Timeline</button>
+      <button class="tab-btn" data-tab="sources">Sources</button>
+    </div>
+    <div class="tab-content active" id="tab-risks"></div>
+    <div class="tab-content" id="tab-timeline"></div>
+    <div class="tab-content" id="tab-sources"></div>
+  </div>
+</main>
+
+<div id="tooltip"></div>
+
+<script>
+/* ============================== DATA ============================== */
+
+const CATS = {
+  gov:        {label:'Government / Crown',   color:'#f0883e'},
+  fn:         {label:'First Nation entity',  color:'#2dd4bf'},
+  company:    {label:'Resource company',     color:'#58a6ff'},
+  individual: {label:'Individual',           color:'#3fb950'},
+  ngo:        {label:'NGO / advocacy',       color:'#bc8cff'}
+};
+
+const EDGE_TYPES = {
+  agreement:          {label:'Agreement / consent',      color:'#f0883e', dash:'7,4',  width:2},
+  'agreement-unsigned':{label:'Agreement (unsigned)',     color:'#f0883e', dash:'2,6',  width:1.5, opacity:.55},
+  ownership:          {label:'Ownership / tenure',        color:'#58a6ff', dash:'',     width:2},
+  funding:            {label:'Funding / donation',        color:'#f85149', dash:'',     width:2},
+  advisory:           {label:'Advisory / legal (role)',   color:'#8b949e', dash:'1,4',  width:1.5},
+  revolving:          {label:'Revolving door',             color:'#f85149', dash:'',     width:2.6},
+  litigation:         {label:'Litigation',                 color:'#bc8cff', dash:'7,4',  width:2},
+  lobbying:           {label:'Lobbying contact',           color:'#39c5cf', dash:'5,3',  width:2}
+};
+
+const NODES = [
+// -------- Government / Crown --------
+{id:'gov-bc', label:'Province of British Columbia', cat:'gov',
+ detail:`The Crown government party to every Tahltan agreement in this file: the 2020 Shared Prosperity Agreement, the Nov 2023 Red Chris consent-based decision agreement, the unsigned Foundation Agreement, and the Eskay Creek and Red Chris permit approvals. Represented across these dated instruments by Premier John Horgan (2020 SPA) and Premier David Eby (current); successive Ministers of Indigenous Relations and Reconciliation (Murray Rankin, then Spencer Chandra Herbert); Ministers of Mining and Critical Minerals / Energy and Mines (Bill Bennett, Bruce Ralston, Jagrup Brar); Ministers of Environment (George Heyman, then Tamara Davidson). Tahltan is NOT part of the BC Treaty Commission process — it does not appear in BC Public Accounts 2025/26 Note 28's treaty-land table.`,
+ sources:[{l:'BC Gov News — 2021EMLI0041 (SPA)',u:'https://news.gov.bc.ca/releases/2021EMLI0041-001128'},{l:'BC gov First Nations A-Z listing',u:'https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/consulting-with-first-nations/first-nations-negotiations/first-nations-a-z-listing/tahltan-central-government'}]},
+{id:'gov-canada', label:'Government of Canada', cat:'gov',
+ detail:`Federal Crown party with a smaller, less-documented direct role in Tahltan-specific matters than the Province. Documented involvement: the 2010 Supreme Court of Canada MiningWatch v. Canada ruling on federal environmental-assessment scoping for Red Chris; Red Chris expansion listed on Canada's Major Projects Office national projects list; up to $44.2M (conditional) approved toward electricity transmission capacity supporting Red Chris and KSM (2024 NRCan announcement — REPORTED, original release not independently re-fetched). A July 2, 2026 federal-provincial "cooperative prosperity agreement" was referenced once in a search summary but NOT independently verified — flagged as a gap, not stated as fact here.`,
+ sources:[{l:'CanLII — 2010 SCC 2',u:'https://www.canlii.org/en/ca/scc/doc/2010/2010scc2/2010scc2.html'},{l:'Canada.ca — Major Projects Office, Red Chris',u:'https://www.canada.ca/en/privy-council/major-projects-office/projects/national/red-chris.html'}]},
+{id:'bcgs', label:'BC Geological Survey', cat:'gov',
+ detail:`A branch within the Province's Ministry of Mining and Critical Minerals lineage — an organizational sub-entity of the Province, not a separate government. Publisher of Information Circular 2022-05, "The Golden Triangle of northwestern British Columbia" (8 pages), the primary source of the viral "$1.28 trillion" figure. That figure ($1,280 billion CAD, ≈US$985B at the report's own exchange rate) is an in-situ contained-metal value for the Golden Triangle mining district as a whole — not a Tahltan-specific figure, not a land value, not money changing hands, and includes low-confidence Inferred resources. The circular's full text contains ZERO mentions of "Tahltan," "First Nation," or "Indigenous." Underlying tonnage/grade data credited to DigiGeoData, a private third-party aggregator, not independently generated by BCGS.`,
+ sources:[{l:'BCGS Information Circular 2022-05 (PDF)',u:'https://cmscontent.nrs.gov.bc.ca/geoscience/PublicationCatalogue/InformationCircular/BCGS_IC2022-05.pdf'},{l:'DigiGeoData (underlying dataset)',u:'https://digigeodata.com/area/golden-triangle/'}]},
+
+// -------- First Nation entities --------
+{id:'tcg', label:'Tahltan Central Government (TCG)', cat:'fn',
+ detail:`The central administrative governing body of the Tahltan Nation (≈5,000 members, on- and off-reserve) — the entity that negotiates and signs the Shared Prosperity Agreement, the Foundation Agreement, and every project-specific consent/benefit agreement in this file. Presidents: Chad Norman Day (Jul 2014–Mar 2024, suspended Nov 2023, dismissed Mar 2024) then Kerry Carlick (since a Jun/Jul 2024 election). Not part of the BC Treaty Commission process; pursues negotiated recognition agreements, not litigation, per every source reviewed.`,
+ sources:[{l:'Tahltan Central Government (official)',u:'https://tahltan.org/central-government/'}]},
+{id:'tahltan-band', label:'Tahltan Band Council', cat:'fn',
+ detail:`One of two Indian Act band governments within the Tahltan Nation; co-signatory (with TCG and Iskut Band Council) on the March 2020 Shared Prosperity Agreement. Chief at time of signing: Carmen McPhee. BC government maintains a separate "First Nations A-Z" negotiation listing for Tahltan Band Council, distinct from TCG.`,
+ sources:[{l:'BC gov First Nations A-Z listing',u:'https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/consulting-with-first-nations/first-nations-negotiations/first-nations-a-z-listing/tahltan-band-council'}]},
+{id:'iskut-band', label:'Iskut Band Council', cat:'fn',
+ detail:`The second of two Indian Act band governments within the Tahltan Nation; co-signatory on the March 2020 Shared Prosperity Agreement. Chief at time of signing: Marie Quock.`,
+ sources:[{l:'BC Gov News — 2021EMLI0041',u:'https://news.gov.bc.ca/releases/2021EMLI0041-001128'}]},
+
+// -------- Resource companies --------
+{id:'newmont', label:'Newmont Corporation', cat:'company',
+ detail:`Delaware-incorporated, Denver-HQ, dual-listed NYSE:NEM / TSX:NGT. Operator and 70% owner of Red Chris (acquired via its Nov 2023 acquisition of Newcrest Mining, the Australian company that bought Imperial Metals' 70% stake in Aug 2019). Also 50% JV partner (with Teck) in Galore Creek, and sole operator of Brucejack — which sits in territory asserted by both Tsetsaut Skii km Lax Ha and Tahltan Nations, NOT exclusively Tahltan. Largest reported institutional shareholders: Vanguard Group (≈7.7–12%, sources disagree) and BlackRock (≈6.2–11%, sources disagree) — ordinary diversified institutional holdings, not individual control. Newmont's US domicile (and Newcrest's former Australian domicile) is reported here as ordinary foreign direct investment; no source found alleges state-linked interference tied to Newmont in Tahltan territory.`,
+ sources:[{l:'Newmont — Red Chris operations page',u:'https://operations.newmont.com/canada/red-chris-canada/'},{l:'Newmont — Brucejack CEAA annual report',u:'https://operations.newmont.com/_doc/operation/bluejack/annual-reports/Brucejack%20Mine%202024%20CEAA%20Annual%20Report.pdf'},{l:'StockTitan — Newmont 13G filing summary',u:'https://www.stocktitan.net/sec-filings/NEM/schedule-13g-newmont-corp-de-passive-investment-disclosure-5-cdc12a64aaaf.html'}]},
+{id:'imperial', label:'Imperial Metals Corporation', cat:'company',
+ detail:`30% owner of Red Chris (sold the 70% majority stake in 2019, now held via Newmont). Chairman and largest shareholder (≈40%) is N. Murray Edwards. Imperial Metals also operated the Mount Polley mine (Secwepemc/Xatsull territory, central BC — NOT Tahltan territory) where a 2014 tailings dam failure occurred; included only as company-level risk context, not a Tahltan-territory incident. Referenced as contextual case study in BC's May 2016 Auditor General mining-compliance report.`,
+ sources:[{l:'Imperial Metals — Red Chris page',u:'https://imperialmetals.com/our-operations/red-chris-mine'},{l:'Global News — Red Chris history',u:'https://globalnews.ca/news/11303093/red-chris-mine-history/'}]},
+{id:'teck', label:'Teck Resources Limited', cat:'company',
+ detail:`Vancouver-HQ, TSX/NYSE-listed. 75% operator of Schaft Creek (JV with Copper Fox Metals, 25%) and 50% JV partner (with Newmont) in Galore Creek. Controlled via Class A high-vote shares by the Keevil family through Temagami Mining Ltd. Was the largest single corporate donor to the BC Liberal Party 2005–2015 ($2.8M+); pre-dates BC's Nov 2017 corporate-donation ban. No source ties this donation history to any specific Tahltan-territory decision.`,
+ sources:[{l:'Teck — Galore Creek project page',u:'https://www.teck.com/operations/canada/projects/galore-creek-project/'},{l:'Teck — Schaft Creek solar release (2025)',u:'https://www.teck.com/news/stories/2025/schaft-creek-solar-facility'}]},
+{id:'copperfox', label:'Copper Fox Metals Inc.', cat:'company',
+ detail:`Calgary-HQ, TSX Venture-listed (CUU.V). Holds 25% of the Schaft Creek Joint Venture (Teck 75%, operator), formed Jul 15, 2013. Largest reported shareholder: Ernesto Echavarria (≈57%, REPORTED via aggregator sites, not cross-checked against a SEDI filing) — no indication of billionaire-scale wealth; net worth/citizenship UNVERIFIED, flagged as a research gap.`,
+ sources:[{l:'Copper Fox — Schaft Creek overview',u:'https://copperfoxmetals.com/projects/schaft-creek-project/overview/'}]},
+{id:'skeena', label:'Skeena Gold & Silver (Skeena Resources)', cat:'company',
+ detail:`Vancouver-HQ, TSX/NYSE-listed as SKE. 100% owner of the Eskay Creek Gold-Silver Project. Tahltan Nation voted in Dec 2025 to support an Impact Benefit Agreement (employment, business opportunities, training, elders' facility, financial participation). EA Certificate + federal Impact Assessment Act approval issued Jan 26–28, 2026. Institutional shareholders include BlackRock (≈1.6%, REPORTED) and UBS; a specific Anglo American strategic stake was searched for and NOT confirmed — flagged as a research gap, not stated as fact.`,
+ sources:[{l:'Skeena — Tahltan vote release',u:'https://skeenagoldsilver.com/news-release/skeena-announces-successful-tahltan-nation-vote-supporting-the-eskay-creek-impact-benefit-agreement/'},{l:'GlobeNewswire — EA Certificate',u:'https://www.globenewswire.com/news-release/2026/01/27/3226273/0/en/Skeena-Gold-Silver-Secures-Environmental-Assessment-Certificate-and-Federal-Impact-Assessment-Approval-for-Eskay-Creek.html'}]},
+{id:'seabridge', label:'Seabridge Gold Inc.', cat:'company',
+ detail:`Toronto-HQ, TSX:SEA / NYSE:SA. 100% owner of the KSM (Kerr-Sulphurets-Mitchell) project. Tahltan Nation voted 77.8% in favour of a KSM Impact Benefits/Co-operation Agreement. Also holds a benefits agreement with the Nisga'a Nation; company reports ≈CA$400M directed to Indigenous-affiliated business contracts (company-reported, not independently audited). Named a BC "priority project" (Apr 2026). Subject of a June 2026 BC Supreme Court ruling (2026 BCSC 1042, Burke J.) finding the Province breached its duty to consult a DIFFERENT Nation — the Tsetsaut Skii km Lax Ha — before granting KSM's Substantial Start Determination; NOT a Tahltan party case. Institutional ownership ≈38–44% (sources vary); largest reported institutional holder Kopernik Global Investors (≈7.99%, US-based).`,
+ sources:[{l:'Newsfile — KSM IBA release',u:'https://www.newsfilecorp.com/release/45434/Tahltan-Nation-and-Seabridge-Gold-Execute-FarReaching-Agreement-Covering-Protections-of-Indigenous-Rights-and-the-Environment-and-Shared-Economic-Benefits-for-KSM-Project'},{l:'CBC — TSKLH ruling',u:'https://www.cbc.ca/news/canada/british-columbia/province-consult-duty-gold-mine-9.7229420'}]},
+{id:'kutcho', label:'Kutcho Copper Corp.', cat:'company',
+ detail:`Junior copper-zinc explorer. Its Kutcho project sits ≈100 km east of Dease Lake, WITHIN Tahltan Territory; the company signed exploration/communication agreements with TCG in 2018. Bill Bennett — the former BC Minister of Energy and Mines who personally signed the province's 2017 bilateral Red Chris agreement — joined Kutcho Copper's board of directors after leaving office: the single documented revolving-door finding in this investigation.`,
+ sources:[{l:'Kutcho Copper — 2018 TCG agreement release',u:'https://kutcho.ca/news/2018/kutcho-copper-signs-exploration-and-communication-agreements-with-tahltan-central-government/'},{l:'Mining-technology.com — Kutcho project',u:'https://www.mining-technology.com/projects/kutcho-copper-and-zinc-project-british-columbia-canada/'}]},
+
+// -------- Individuals --------
+{id:'edwards', label:'N. Murray Edwards', cat:'individual',
+ detail:`Canadian billionaire (Forbes 2026: ≈#908 globally, net worth ≈US$4.8B). Chairman of the Board and largest shareholder (≈40% of shares outstanding) of Imperial Metals Corporation, the 30% owner-operator partner at Red Chris; has personally injected capital, provided loans, and guaranteed credit lines to Imperial Metals. Fortune derives primarily from Canadian Natural Resources Ltd. (oil sands) and Ensign Energy — Imperial Metals/Red Chris is one holding among several. Also co-owns the Calgary Flames (NHL). No documented government role or donation tie in this file — reported here purely as a financial-interest-concentration finding.`,
+ sources:[{l:'Forbes profile',u:'https://www.forbes.com/profile/n-murray-edwards/'}]},
+{id:'keevil', label:'Keevil Family (Temagami Mining)', cat:'individual',
+ detail:`Controls Teck Resources via Temagami Mining Ltd's ownership of 55% of Teck's high-vote Class A shares (100 votes/share vs 1 vote/share for Class B) — a controlling, not majority-economic, interest (economic stake reported under 1%). Teck holds 75% of Schaft Creek and 50% of Galore Creek, both in Tahltan territory. Class A shares fully sunset to single-vote Class B by May 12, 2029. Norm Keevil personally donated $65,585 to the BC Liberal Party since 2010 — general provincial political-finance history; no source ties this to any specific Tahltan-territory decision.`,
+ sources:[{l:'Teck — sunset dual-class announcement',u:'https://www.teck.com/news/news-releases/2023/teck-introduces-sunset-for-dual-class-share-structure'},{l:'The Narwhal — Teck largest BC Liberal donor',u:'https://thenarwhal.ca/how-teck-resources-benefits-being-b-c-liberal-s-largest-donor/'}]},
+{id:'bennett', label:'Bill Bennett', cat:'individual', warning:true,
+ detail:`Former BC Minister of Energy and Mines (BC Liberal government). Personally signed the province's foundational 2017 bilateral Tahltan-BC agreement on Red Chris Mine (with TCG President Chad Day). DOCUMENTED REVOLVING-DOOR FINDING: joined the board of Eagle Plains Resources (TSXV:EPL) just three days after leaving cabinet/his MLA seat, and has since also served as a director of Kutcho Copper Corp. — whose Kutcho project sits inside Tahltan Territory and has its own 2018 TCG exploration agreement — plus a director of Ascot Resources Ltd. (Nisga'a Treaty lands, adjacent to but not within core Tahltan territory) and a consultant to Rare Earth Ridge Resources Corp. (same NW-BC mineral belt). As minister at the time of the Auditor General's May 2016 mining-compliance report (which used Red Chris/Imperial Metals as context), he did not resign despite calls to do so. IMPORTANT: no evidence was found of any donation, payment, or arrangement predating his exit from office — this is a documented revolving-door PATTERN, not an in-office financial conflict. Reported factually; not an assertion of wrongdoing.`,
+ sources:[{l:'Mining.com — Bennett joins board',u:'https://www.mining.com/former-bc-mines-minister-now-director-project-generating-junior'},{l:'Eagle Plains — appointment release',u:'https://www.eagleplains.com/news/eagle-plains-announces-appointment-bill-bennett-board-directors-resignation-ron-netolitzky'},{l:'Georgia Straight — Bennett won’t resign',u:'https://www.straight.com/news/691076/bc-energy-and-mines-minister-bill-bennett-wont-resign-wake-damning-auditor-generals'},{l:'LinkedIn — Bill Bennett',u:'https://www.linkedin.com/in/kootenaybillbennett/'}]},
+{id:'rankin', label:'Murray Rankin', cat:'individual',
+ detail:`BC Minister of Indigenous Relations and Reconciliation, Nov 26, 2020–Nov 18, 2024. Co-signed the Nov 1, 2023 Red Chris consent-based decision-making agreement (with George Heyman and TCG President Chad Day) under DRIPA s.7. Named in the June 2021 Shared Prosperity Agreement announcement. Revolving-door check: NONE FOUND — founding partner of Victoria environmental/administrative law firm Arvay Finlay LLP before politics, returned there after leaving the legislature; no mining-company board, consulting, or executive role identified.`,
+ sources:[{l:'BC Gov News — 2023ENV0061',u:'https://news.gov.bc.ca/releases/2023ENV0061-001707'},{l:'Arvay Finlay — Rankin bio',u:'https://arvayfinlay.ca/murray-rankin/'}]},
+{id:'chandra-herbert', label:'Spencer Chandra Herbert', cat:'individual',
+ detail:`BC Minister of Indigenous Relations and Reconciliation since Jul 17, 2025 (current). Named in the June 19, 2026 provincial approval of the Red Chris mine expansion. No revolving-door or prior-employment tie to any named company found in this research pass.`,
+ sources:[{l:'BC Gov News — 2026MCM0029',u:'https://news.gov.bc.ca/releases/2026MCM0029-000727'}]},
+{id:'brar', label:'Jagrup Brar', cat:'individual',
+ detail:`BC Minister of Mining and Critical Minerals since Nov 18, 2024 (current). Co-approved the Eskay Creek EA certificate (with Tamara Davidson) and co-named in the June 19, 2026 Red Chris expansion Mines Act approval. Pre-politics career: Surrey non-profit/public sector (SEEDS, PICS Society) — no mining background identified. Revolving-door check: none found.`,
+ sources:[{l:'BC Gov News — 2026MCM0008',u:'https://news.gov.bc.ca/releases/2026MCM0008-000078'},{l:'Canadianwhoswho — Brar bio',u:'https://canadianwhoswho.ca/bio.php?id=28559'}]},
+{id:'davidson', label:'Tamara Davidson', cat:'individual',
+ detail:`BC Minister of Environment and Parks since Nov 2024 (current). Approved the June 18, 2026 Red Chris EA-certificate amendment (open-pit to underground block-cave transition, 27 legally binding conditions, 12 co-developed with TCG) and co-decided the Eskay Creek certificate. Pre-politics career: 25+ years federal public service (land management, Indigenous relations) and Haida Nation governance — no mining-sector employer identified. Revolving-door check: none found.`,
+ sources:[{l:'BC Gov News — 2026ENV0031',u:'https://news.gov.bc.ca/releases/2026ENV0031-000725'},{l:'ORCBC — Davidson bio',u:'https://www.orcbc.ca/blog/new-leader-of-environment-and-parks-sees-a-lot-of-potential-for-recreation-over-the-next-4-years'}]},
+{id:'heyman', label:'George Heyman', cat:'individual',
+ detail:`BC Minister of Environment and Climate Change Strategy (through 2024). Co-signed the Nov 1, 2023 Red Chris consent-based decision-making agreement. No prior mining-industry employment or post-office mining-company role found in this research pass — reported as an absence-of-evidence gap, not a confirmed clean record.`,
+ sources:[{l:'BC Gov News — 2023ENV0061',u:'https://news.gov.bc.ca/releases/2023ENV0061-001707'}]},
+{id:'cullen', label:'Nathan Cullen', cat:'individual',
+ detail:`BC NDP MLA for Stikine, 2020–2024 (lost seat to Sharon Hartwell in 2024); held Minister of State for Lands and Natural Resource Operations, Municipal Affairs, and Water, Land and Resource Stewardship portfolios. Witnessed the Nov 1, 2023 Tahltan-BC consent-based decision agreement as constituency MLA; named in the June 2021 Shared Prosperity Agreement release. No post-2024 board/consulting/mining-company role identified in this search — flagged as a research gap, not a confirmed clean record.`,
+ sources:[{l:'BC Gov News — 2021EMLI0041',u:'https://news.gov.bc.ca/releases/2021EMLI0041-001128'}]},
+{id:'hartwell', label:'Sharon Hartwell', cat:'individual',
+ detail:`BC Conservative MLA for Bulkley Valley-Stikine (the riding covering Dease Lake, Telegraph Creek and Iskut — the core Tahltan communities), elected 2024 (current); former 12-year mayor of Telkwa. No specific documented role in a Tahltan land/resource agreement found in this search. No mining-industry employment found before or after politics.`,
+ sources:[{l:'Wikipedia — Bulkley Valley-Stikine',u:'https://en.wikipedia.org/wiki/Bulkley_Valley-Stikine'}]},
+{id:'day', label:'Chad Norman Day', cat:'individual',
+ detail:`TCG President, Jul 2014–Mar 2024. Signed the 2017 Red Chris bilateral agreement (with Bill Bennett) and the Nov 1, 2023 consent-based decision-making agreement. Suspended by the TCG board of directors in November 2023 — the same month he signed the Red Chris consent agreement — and formally dismissed March 2024. Sued TCG for wrongful/constructive dismissal (2025 BCSC 1363); court awarded him $320K+ but found no bad faith by the board. Internal governance matter, not a land-rights case; no source draws a causal link between the suspension timing and the agreement he signed the same month.`,
+ sources:[{l:'Prince George Citizen — Day v. TCG ruling',u:'https://www.princegeorgecitizen.com/local-news/judge-awards-ex-tahltan-president-more-than-320k-for-wrongful-dismissal-10965191'},{l:'HR Reporter — case summary',u:'https://www.hrreporter.com/chrr-plus/employment-law-cases/11275'}]},
+{id:'carlick', label:'Kerry Carlick', cat:'individual',
+ detail:`TCG President since a Jul 6, 2024 general election (won a Jun 2024 by-election first). Quoted in the June 19, 2026 Red Chris expansion approval release, formally consenting to the expansion on TCG's behalf.`,
+ sources:[{l:'BC Gov News — 2026MCM0029',u:'https://news.gov.bc.ca/releases/2026MCM0029-000727'}]},
+{id:'stone', label:'Todd Stone', cat:'individual',
+ detail:`AME President & CEO since Aug 5, 2025. Former BC Liberal/BC United MLA for Kamloops–South Thompson (2013–2024); Minister of Transportation and Infrastructure 2013–2017 (NOT Energy/Mines — no direct Tahltan-specific agreement tie found). Ran fourth in the 2018 BC Liberal leadership race; did not seek re-election in 2024. This is structurally the SAME minister-to-mining-sector-leadership pattern already documented for Bill Bennett, but WEAKER: Stone's portfolio was Transportation, not Energy/Mines, and no source ties him to any Tahltan-specific decision, agreement, or lobbying activity. Reported as a governance-pattern observation, not an equivalent finding to Bennett's documented revolving door.`,
+ sources:[{l:'AME — Stone appointment release',u:'https://amebc.ca/news/association-for-mineral-exploration-welcomes-todd-stone-as-new-president-ceo/'},{l:'Wikipedia — Todd Stone',u:'https://en.wikipedia.org/wiki/Todd_Stone'}]},
+{id:'rigaux', label:'Jonas Rigaux', cat:'individual',
+ detail:`Mineral-exploration consultant/prospector with resource-industry experience across BC, Iraq, Suriname, and the Arctic. Appointed to the Association for Mineral Exploration BC (AME) board of directors in 2026, and simultaneously a director of the Public Land Use Society (PLUS). THE KEY CONNECTOR in this investigation's NGO-network research: the clearest documented personnel overlap between AME (a registered Tahltan-specific industry lobbyist) and PLUS (source of the Foundation Agreement FOI reporting). This does not, by itself, mean PLUS's FOI reporting is inaccurate — the withheld/obtained records are independently verifiable facts regardless of board composition — but it is a material fact for assessing PLUS's institutional independence from the mineral-exploration industry.`,
+ sources:[{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'},{l:'PLUS — About Us',u:'https://publiclanduse.ca/about-us/'}]},
+{id:'moyse', label:'Geoffrey Moyse, K.C.', cat:'individual',
+ detail:`Public Land Use Society's Legal & Policy Committee chair. 31 years as a senior BC government lawyer advising successive provincial governments on Aboriginal law (BC Ministry of Attorney General); appointed King's Counsel 2013; now in private practice. Authored a Fraser Institute commentary specifically about the Tahltan-Skeena Eskay Creek deal, "Recent deal highlights B.C. government's costly 'pay to play' approach to land use," framing the DRIPA s.7 consent agreement as a "pay to play" dynamic. Also authored a July 2026 PLUS-hosted piece on a separate, non-Tahltan Haida land deal using similar critical framing — part of a consistent editorial pattern, not a one-off. No tie found to any mining company board or government role beyond his documented prior BC-government legal career.`,
+ sources:[{l:'Fraser Institute commentary',u:'https://www.fraserinstitute.org/commentary/recent-deal-highlights-bc-governments-costly-pay-play-approach-land-use'},{l:'PLUS — About Us',u:'https://publiclanduse.ca/about-us/'}]},
+{id:'mirko', label:'Warren Mirko', cat:'individual',
+ detail:`Public Land Use Society's Executive Director & Founder. 15+ years in public relations, crisis response, and risk management, including work supporting "public protection mandates" at BC Financial Services Authority, Engineers and Geoscientists BC, Technical Safety BC, and Transport Canada. Authored PLUS's own May 19, 2026 FOI press release on the Foundation Agreement using characterization language beyond neutral reporting ("many people will reasonably view that as the gradual splitting of British Columbia"). Also authored a Nov 29, 2025 opinion piece, "Eby government gives Tahltan Nation veto over gold mine development," using "vote buying" framing about a reported $10,000-per-eligible-voter payment ahead of a community ratification vote. His own LinkedIn describes PLUS's work as "collaborating with" AME. This framing context affects how to weigh PLUS's emphasis and editorializing — it does NOT mean the underlying FOI documents PLUS obtained are inaccurate.`,
+ sources:[{l:'Northern Beat — Mirko opinion piece, Nov 29 2025',u:'https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/'},{l:'PLUS — FOI press release, May 19 2026',u:'https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/'},{l:'LinkedIn — Warren Mirko',u:'https://ca.linkedin.com/in/warren-mirko-554024b'}]},
+{id:'skuce', label:'Nikki Skuce', cat:'individual',
+ detail:`Director of the Northern Confluence Initiative (a project on MakeWay's shared platform). Co-Chairs the BC Mining Law Reform network (BCMLR, founded 2019) alongside Jamie Kneen of MiningWatch Canada — described in this investigation's underlying research as "the single most significant documented cross-organization connection found." Former campaigner at ForestEthics (now Stand.earth), working on the Enbridge Northern Gateway opposition and the "Sacred Headwaters" (Mount Klappan) protection campaign. Prior work with One Sky on international environmental-justice programs. Volunteer board member: Langara College, Wet'zin'kwa Community Forest, Bulkley Valley Community Arts Council. Also listed as a team member/associate of West Coast Environmental Law's Environmental Law Centre.`,
+ sources:[{l:'BCMLR — podcast episode with Skuce & Kneen',u:'https://reformbcmining.ca/news/2024/04/podcast-episode-1-the-bc-mining-law-reform-network-w-nikki-skuce-jamie-kneen/'},{l:'Northern Confluence — our mission',u:'https://northernconfluence.ca/about-us/our-mission/'}]},
+{id:'kneen', label:'Jamie Kneen', cat:'individual',
+ detail:`MiningWatch Canada's Outreach Coordinator and Canada Program Co-Lead (western/northern Canada policy and outreach; McGill biology background). Personally posted/hosted the Feb 25, 2005 Tahltan Elders moratorium statement ("Dena nenn Sogga neh 'ine") on MiningWatch's site, and covered the Sept 9, 2006 Iskut blockade (Lillian Moyer's arrest) as contemporaneous news — meaning MiningWatch's documented Tahltan-territory involvement predates the 2010 SCC MiningWatch v. Canada case already in this file by five years. Co-Chairs the BC Mining Law Reform network (BCMLR, founded 2019) with Nikki Skuce of Northern Confluence Initiative.`,
+ sources:[{l:'MiningWatch — 2005 Tahltan Elders statement',u:'https://miningwatch.ca/blog/2005/2/25/tahltan-elders-statement-dena-nenn-sogga-neh-ine-protectors-and-keepers-land'},{l:'MiningWatch — 2006 Iskut blockade coverage',u:'https://miningwatch.ca/news/2006/9/11/grandmother-arrested-iskut-blockade'}]},
+
+// -------- NGO / advocacy --------
+{id:'ame', label:'Association for Mineral Exploration BC (AME)', cat:'ngo',
+ detail:`Mining-industry association. The clearest documented industry-advocacy presence specific to Tahltan territory in this research: registered BC lobbying activity in 2015-16 naming Tahltan/BC discussions directly (see the Bennett connection). Registrant/designated filer Gavin Dirom; in-house lobbyists Rick Conte, Gavin Dirom, Glen Wonders. Traces an institutional lineage to 1912 (Vancouver Mining Club → BC Chamber of Mines → AME, renamed Dec 2000). Board seats confirmed for executives of three of the six companies mapped in this file: Maggie Layman (Manager of Exploration, Teck Resources, Executive Committee), Eric Casey (VP, Skeena Gold & Silver, Treasurer/Executive Committee), Keivan Hirji (Director External Relations, Newmont) — normal trade-association structure, not a conflict. President & CEO since Aug 5, 2025: Todd Stone, a former BC Minister of Transportation and Infrastructure (2013–2017, NOT Energy/Mines) — a former-cabinet-minister-to-industry-CEO pathway structurally similar to, but weaker than, Bill Bennett's documented revolving door.`,
+ sources:[{l:'BC Lobbyist Registry — reg #507066',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=507066'},{l:'BC Lobbyist Registry — reg #554318',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=554318'},{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'},{l:'AME — Stone appointment release',u:'https://amebc.ca/news/association-for-mineral-exploration-welcomes-todd-stone-as-new-president-ceo/'}]},
+{id:'skeenawild', label:'SkeenaWild Conservation Trust', cat:'ngo',
+ detail:`Mining-impacts-focused conservation NGO, founded 2007 in Terrace, BC. CRA charitable BN 832887814RR0001. Published "Key Risks & Lessons at the Red Chris Mine" (~Mar 17, 2025), raising tailings/operational concerns. TCG published a public open-letter response (Apr 4, 2025) on its own website emphasizing its governance/co-management role and ongoing remediation work without directly rebutting SkeenaWild's technical claims — evidence the two positions differ, not evidence of an adversarial relationship. SkeenaWild also sat on the Community Advisory Committee for the Eskay Creek EA, and separately — with the Southeast Alaska Indigenous Transboundary Commission and supported by Ecojustice — filed its own legal challenge against the KSM "Substantially Started" designation (see the skeenawild↔seabridge edge; distinct from the TSKLH case elsewhere in this file). Clearest cumulative funder: the Gordon and Betty Moore Foundation, $2,272,654 across 3 grants since 2010 (VERIFIED, funder's own disclosure). FUNDING COMPOSITION (VERIFIED, Aug 12 2026 follow-up pass — CRA's own bulk open-data CSVs, BN 832887814RR0001 matched by legal name and Terrace BC address; open.canada.ca dataset 80c00cdb-1358-415c-bb8b-0de7f12675b8, not a third-party aggregator): FY2024 total revenue $1,893,814, of which ~86% ($1,628,061) came from the federal government; provincial government ($175,215), municipal government ($16,229), and tax-receipted private donations ($21,271) were all minor by comparison. SkeenaWild's funding is overwhelmingly government-sourced, not funded by the mining industry it monitors — no line item in the filing identifies any mining-company funding. This FY2024 figure and the Moore Foundation's cumulative-since-2010 figure are both true simultaneously (one fiscal year vs. multiple years). Board of 7 trustees; no documented mining/government tie found for any trustee (explicit negative finding; 3 of 7 bios not fully researched). Named/itemized private funders beyond the government and tax-receipted-donation totals above were not retrieved — would require CRA's "Non-Qualified Donees" resource or a Schedule 6 continuity schedule, not examined in this pass.`,
+ sources:[{l:'TCG — open letter response',u:'https://tahltan.org/open-letter-response-to-skeenawilds-red-chris-report/'},{l:'SkeenaWild — Our Story',u:'https://skeenawild.org/our-story/'},{l:'Moore Foundation — SkeenaWild grantee detail',u:'https://www.moore.org/grantee-detail?granteeId=1322'},{l:'SkeenaWild — 2024 Annual Report (PDF)',u:'https://skeenawild.org/wp-content/uploads/2025/01/2024-SkeenaWild-Conservation-Trust-Annual-Report_Website.pdf'},{l:'CRA — 2024 List of Charities open-data dataset',u:'https://open.canada.ca/data/en/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8'}]},
+{id:'klabona', label:'Klabona Keepers', cat:'ngo',
+ detail:`Grassroots movement of Tahltan Elders and community members, distinct from and operating alongside — not identical to — the elected TCG. Formed 2005-2006 as a blockade movement (first blockade against Fortune Minerals 2005; became known as "Klabona Keepers" after blockading Shell's coalbed-methane operations 2006) — no evidence of formal incorporation was found; described everywhere as an informal grassroots collective, not a registered legal entity. Documented campaigns: blockades/resistance contributing to Shell Canada abandoning a coalbed-methane project (2004, ≈4,000 km² of Tahltan land; formally dropped 2012), the defeat of Fortune Minerals' proposed Mount Klappan open-pit coal mine after ≈15 years of opposition, and an Aug 8, 2014 blockade of Imperial Metals' Red Chris Mine itself (see the klabona↔imperial edge). Fiscal sponsorship for donations (tied to "The Klabona Keepers" documentary and youth land-based education program) runs through MakeWay and the Skeena Watershed Conservation Coalition (SWCC). No documented rupture with TCG was found — coverage shows parallel, sometimes overlapping activity, not conflict. As of a Sept 2022 article (the most recent substantive coverage located — flagged as a reporting gap, not confirmed inactivity), monitoring Newmont's mineral-claim purchases near Iskut village.`,
+ sources:[{l:'The Narwhal — Klabona Keepers',u:'https://thenarwhal.ca/klabona-keepers-tahltan-nation/'},{l:'Rivers Without Borders — Iskut-Stikine',u:'https://www.riverswithoutborders.org/iskut-stikine'},{l:'IC Magazine — 2014 Red Chris blockade',u:'https://icmagazine.org/tahltan-elders-blockade-red-chris-mine-mount-polley-breach-25256/'},{l:'Beyond Boarding Collective — Klabona Keepers fiscal sponsorship',u:'http://beyondboardingcollective.com/donatekk'}]},
+{id:'plus', label:'Public Land Use Society (PLUS)', cat:'ngo',
+ detail:`BC advocacy group focused on Crown-land transparency, led by Executive Director & Founder Warren Mirko. Obtained BC government records on the Tahltan Foundation Agreement via a Freedom of Information request; published "FOI Records Obtained by PLUS Show Tahltan-BC Title Talks Cover 11% of Province" (May 19, 2026) — the primary source establishing that the Foundation Agreement is real, in-negotiation, and unsigned, with 400+ pages of related records withheld from disclosure. This is the single most load-bearing source in this investigation for correcting the viral "$1.28T land transfer" claim. FUNDING OPACITY FINDING: no funder or donor disclosure was found anywhere on publiclanduse.ca despite PLUS's central advocacy focus being government transparency, and PLUS's CRA charitable status could not be confirmed either way — a notable contrast given the org's own mission. IDEOLOGICAL-POSITIONING FINDING: PLUS's own leadership (Mirko; Legal & Policy Committee chair Geoffrey Moyse, K.C.) has personally authored, and its platform has republished, content using repeated "pay-to-play"/"rent-seeking"/"vote buying" framing about the Tahltan agreements specifically, called for DRIPA's repeal (Dec 16, 2025 press release), and allied on other campaigns with the Four Wheel Drive Association of BC and ATVBC. This affects how to weigh PLUS's framing and emphasis — it does NOT mean the underlying FOI documents PLUS obtained are inaccurate; the existence and contents of the withheld records are independently verifiable facts separate from PLUS's editorializing about them. A director, Jonas Rigaux, sits simultaneously on AME's board (see the rigaux↔plus/rigaux↔ame edges) — the clearest documented AME↔PLUS personnel overlap found.`,
+ sources:[{l:'PLUS — FOI report, May 19 2026',u:'https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/'},{l:'PLUS — About Us',u:'https://publiclanduse.ca/about-us/'},{l:'PLUS — DRIPA repeal press release, Dec 16 2025',u:'https://publiclanduse.ca/news/'}]},
+{id:'bcconservative', label:'BC Conservative Party', cat:'ngo',
+ detail:`Provincial political party. Published "Massive NDP Land Transfers Could Total Up to 24 Million Acres" on conservativebc.ca, Aug 11, 2026 — the most direct match to the viral claim's phrasing, stating the NDP "plans to hand over up to 96,000 square kilometres... and $1.28 trillion in mineral wealth—to the Tahltan Nation." This is partisan advocacy framing ("hand over," implying a completed transaction) of a negotiation that PLUS's FOI reporting shows is still unsigned and in progress. The post also covers other Nations (Kitsumkalum, Kitselas, Wuikinuxv, In-SHUCK-ch, Te'mexw) alongside Tahltan.`,
+ sources:[{l:'conservativebc.ca — Aug 11, 2026 post',u:'https://conservativebc.ca/massive-ndp-land-transfers-could-total-up-to-24-million-acres/'}]},
+{id:'miningwatch', label:'MiningWatch Canada', cat:'ngo',
+ detail:`National mining-accountability NGO, launched Apr 1, 1999 as a pan-Canadian coalition initiative (founder: Joan Kuyek). Brought MiningWatch Canada v. Canada (Fisheries and Oceans), 2010 SCC 2 — successfully argued federal authorities scoped the Red Chris environmental assessment too narrowly, but the Supreme Court (Rothstein J., unanimous, Jan 21, 2010) declined to order relief halting the mine — a declaratory win with no practical remedy. Its Tahltan-territory involvement actually predates that case by five years: its site hosted the Feb 25, 2005 Tahltan Elders moratorium statement and covered the Sept 2006 Iskut blockade (see the miningwatch↔klabona edge). Deliberately NOT a CRA-registered charity (to preserve advocacy latitude); uses a sister registered charity, the Canary Research Institute for Mining, Environment, and Health (incorporated Nov 3, 2003, CRA BN 871039400RR0001), to issue tax receipts. Operates as a coalition of 22 member organizations, including Rivers Without Borders (see the miningwatch↔riverswithoutborders edge). 2022 financials: total revenue $1,206,807; donors included the 11th Hour Project/Schmidt Family Foundation, Ford Foundation, Inter Pares, New Venture Fund, and the United Church of Canada.`,
+ sources:[{l:'CanLII — 2010 SCC 2',u:'https://www.canlii.org/en/ca/scc/doc/2010/2010scc2/2010scc2.html'},{l:'MiningWatch — 25 years building mining justice',u:'https://www.miningwatch.ca/blog/2024/4/24/25-years-building-mining-justice'},{l:'CanadaHelps — Canary Research Institute',u:'https://www.canadahelps.org/en/charities/canary-research-institute-for-mining-environment-and-health/'},{l:'MiningWatch — Members page',u:'https://www.miningwatch.ca/miningwatch-canada-members'}]},
+{id:'mabc', label:'Mining Association of BC (MABC)', cat:'ngo',
+ detail:`Central BC mining-industry trade association. Founded 1901 per its own LinkedIn company page (REPORTED, not independently cross-checked against a history page — mining.bc.ca does not appear to carry one). HEADLINE FINDING of this investigation's NGO-network research pass: MABC's 48-seat board includes a named seat for every one of the six mining companies already in this file — Newmont, Imperial Metals (two seats), Teck Resources (two seats), Seabridge Gold, Skeena Resources, and Copper Fox Metals — PLUS a seat for Kutcho Copper Corp. held by Bill Bennett, the former BC Minister of Energy and Mines already flagged as this investigation's documented revolving-door finding. This extends that finding from a single company board onto the province's central mining trade-association board. Member-dues funded; specific dues schedule not published. BC Lobbyist Registry registration #1446-2123 (Michael Goehring, President/CEO; active since 2010-05-31; 413 total activity reports) — no Tahltan/Red Chris/Golden Triangle-specific mention found in the registration summary or most recent 12-month activity summary reviewed, though not all 413 reports were read individually.`,
+ sources:[{l:'MABC — About (board list)',u:'https://mining.bc.ca/about'},{l:'MABC — Reconciliation page',u:'https://mining.bc.ca/reconciliation/'},{l:'BC Lobbyist Registry — MABC reg #1446-2123',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=2123&regId=56561664'}]},
+{id:'dsf', label:'David Suzuki Foundation (DSF)', cat:'ngo',
+ detail:`National environmental NGO. CRA charitable registration #12775 6716 RR0001. F2024 revenue ≈$14.761M per Charity Intelligence's T3010-derived breakdown (Canadian donations 82%; government funding negligible at $1K) — a conflicting $24.2M figure exists in a less-sourced aggregator; flagged as an unresolved discrepancy, CRA T3010 should be pulled directly to confirm. Current board (8 members) has NO documented mining, oil & gas, or government-official background — an explicit negative finding. Closest notable member: Stephen Bronfman (Executive Chairman, Claridge Inc., a private investment firm; no extractive-sector holding found in its disclosed portfolio) — also former Chief Revenue Officer of the Liberal Party of Canada and a senior advisor to PM Justin Trudeau, a finance/federal-politics tie, not a resource-industry one. Tahltan-specific activity: a Dec 8, 2022 story, "Tahltan's decades-long struggle to protect Sacred Headwaters," built substantially around promoting "The Klabona Keepers" documentary (co-directed by David Suzuki's grandson Tamo Campos) — editorial/campaign coverage, with no confirmed funding grant to any Tahltan-area group located.`,
+ sources:[{l:'Charity Intelligence — DSF profile',u:'https://www.charityintelligence.ca/charity-details/247-david-suzuki-foundation'},{l:'DSF — Our Board',u:'https://davidsuzuki.org/about/staff-board/our-board/'},{l:'DSF — Sacred Headwaters story',u:'https://davidsuzuki.org/story/tahltans-decades-long-struggle-to-protect-sacred-headwaters/'}]},
+{id:'northernconfluence', label:'Northern Confluence Initiative', cat:'ngo',
+ detail:`A project on MakeWay's (formerly Tides Canada, renamed 2020) shared platform — NOT independently incorporated; MakeWay holds full fiduciary and governance responsibility. Based in Smithers, BC, focused on land-use decisions in northern BC salmon watersheds including mining development. Director: Nikki Skuce, who co-chairs the BC Mining Law Reform network (BCMLR, founded 2019) with Jamie Kneen of MiningWatch Canada. Northern Confluence's own "Partners" page lists SkeenaWild, Salmon Beyond Borders, and MiningWatch Canada together (alongside BCMLR and others) — a direct, documented, primary-source organizational link between three organizations in this investigation. No funding sources, budget, or financial figures specific to Northern Confluence were disclosed on its own site.`,
+ sources:[{l:'Northern Confluence — our mission',u:'https://northernconfluence.ca/about-us/our-mission/'},{l:'Northern Confluence — partners page',u:'https://northernconfluence.ca/about-us/partners/'},{l:'MakeWay — Northern Confluence project listing',u:'https://makeway.org/project/northern-confluence/'}]},
+{id:'riverswithoutborders', label:'Rivers Without Borders', cat:'ngo',
+ detail:`Grew out of 1990s transboundary conservation advocacy in the Alsek-Tatshenshini watershed; formally organized in 1999 as the Transboundary Watershed Alliance (22 founding member groups), renamed Rivers Without Borders in 2007. Fiscally sponsored by Tides Center (a US 501(c)(3)), based in Port Townsend, WA — because it is fiscally sponsored rather than independently incorporated, it does NOT file its own IRS Form 990, so grant-level funding detail is not retrievable via the standard ProPublica Nonprofit Explorer lookup. Executive Director: Will Patric, since 2008. CONFIRMED as a formal dues-paying MEMBER of MiningWatch Canada's 22-organization coalition — the clearest institutional cross-connection found across this investigation's NGO network research. No specific named foundation funder was confirmed in research; funding sources remain a research gap.`,
+ sources:[{l:'Rivers Without Borders — About',u:'https://www.riverswithoutborders.org/about-rivers-without-borders'},{l:'Rivers Without Borders — Our Team',u:'https://www.riverswithoutborders.org/our-team'},{l:'MiningWatch — Members page',u:'https://www.miningwatch.ca/miningwatch-canada-members'}]},
+{id:'salmonbeyondborders', label:'Salmon Beyond Borders', cat:'ngo',
+ detail:`A campaign of SalmonState (parent organization), which is itself fiscally sponsored by the New Venture Fund (a US 501(c)(3) vehicle managed by Arabella Advisors) — not independently incorporated; no separate EIN or Form 990. Founded ≈April 2014 by Jill Weitz "to address proposed mining development in northwestern British Columbia affecting transboundary rivers" (Weitz left for a Tlingit & Haida Tribes role ≈May 2022). Current campaign director: Breanna Walker. SalmonState's disclosed funders (2019–2023, per InfluenceWatch.org — a Capital Research Center-affiliated watchdog site with a critical "dark money" editorial orientation, flagged as a source-orientation caveat): William and Flora Hewlett Foundation (~$200K/yr), Wilburforce Foundation ($405K, 2023), Campion Foundation ($125K 2022/$350K 2019), Wild Salmon Center ($100K, 2023), Environmental Defense Fund ($20K, 2021). Notable adjacency: Wild Salmon Center is both a disclosed funder here and a listed conservation partner of SkeenaWild — a funding/convening-network proximity, not a governance overlap.`,
+ sources:[{l:'InfluenceWatch — SalmonState profile',u:'https://www.influencewatch.org/organization/salmonstate/'},{l:'SalmonState — About',u:'https://salmonstate.org/about-salmonstate'},{l:'SalmonState — Jill Weitz bio',u:'https://salmonstate.org/salmon-stories/jill-weitz'}]},
+{id:'kadesibe', label:"K'adesibe Collective", cat:'ngo',
+ detail:`A group of Tahltan women whose members keep their identities confidential "due to fear of backlash within their community," per The Narwhal's Dec 3, 2025 reporting on the make-or-break Eskay Creek Impact Benefit Agreement vote. Sent a letter to Skeena Resources raising environmental concerns about the Eskay Creek project; per the article, the letter went unanswered. The same article notes general member complaints about feeling "muted or censored" in community meetings. REPORTED (The Narwhal), Dec 3 2025. DISTINCT FROM KLABONA KEEPERS: no source connects the two groups — this is documented as a separate, newer (2025) opposition voice specific to the Eskay Creek vote; do not imply continuity, overlap, or rebranding between them.`,
+ sources:[{l:"The Narwhal — Eskay Creek mine faces make-or-break vote, Dec 3 2025",u:'https://thenarwhal.ca/eskay-creek-mine-skeena-resources-tahltan/'}]},
+{id:'slater', label:'Beverly Slater', cat:'individual',
+ detail:`Former interim President of the Tahltan Central Government. Quoted in The Narwhal's Dec 3, 2025 reporting on the Eskay Creek Impact Benefit Agreement vote, questioning whether the consent process constituted genuine "free, prior and informed consent." REPORTED (The Narwhal), Dec 3 2025. This is a named former TCG official's documented public concern, reported by a credible investigative outlet — it is not an allegation this investigation is making, and it does not mean the Eskay Creek vote (which passed per the official record — see the tcg↔skeena Impact Benefit Agreement edge) was invalid. Both facts are true simultaneously and are presented here without adjudication.`,
+ sources:[{l:"The Narwhal — Eskay Creek mine faces make-or-break vote, Dec 3 2025",u:'https://thenarwhal.ca/eskay-creek-mine-skeena-resources-tahltan/'}]}
+];
+
+const EDGES = [
+{id:'e1', s:'tcg', t:'gov-bc', type:'agreement', label:'Shared Prosperity Agreement',
+ detail:`Signed Mar 30, 2020; publicly announced Jun 10, 2021 (a 15-month gap, flagged as notable by Northern Beat/PLUS since signing occurred days after COVID-19 emergency measures began, legislature not sitting). Parties: TCG, Tahltan Band Council, Iskut Band Council, Province of BC. Covers economic reconciliation funding, land-use planning framework, mineral permitting/placer-mining process changes, wildlife management, ongoing government-to-government partnership. NOT a land transfer. Provincial commitment: $16M economic self-determination + $4M implementation capacity = $20M total.`,
+ sources:[{l:'BC Gov News — 2021EMLI0041',u:'https://news.gov.bc.ca/releases/2021EMLI0041-001128'}]},
+{id:'e2', s:'tcg', t:'gov-bc', type:'agreement', label:'Consent-Based Decision Agreement (Red Chris)',
+ detail:`Signed Nov 1, 2023 under s.7 of BC's Declaration on the Rights of Indigenous Peoples Act (DRIPA) — gives TCG consent authority over future Red Chris decisions, functioning as an effective project-specific veto. Signed by Ministers Murray Rankin and George Heyman, and TCG President Chad Norman Day.`,
+ sources:[{l:'BC Gov News — 2023ENV0061',u:'https://news.gov.bc.ca/releases/2023ENV0061-001707'},{l:'CBC News',u:'https://www.cbc.ca/news/canada/british-columbia/bc-tahltan-nation-agreement-1.7015953'}]},
+{id:'e3', s:'tcg', t:'gov-bc', type:'agreement-unsigned', label:'Foundation Agreement — UNSIGNED',
+ detail:`NOT SIGNED. NOT PUBLICLY RELEASED. Per Public Land Use Society's May 19, 2026 FOI reporting, BC is negotiating a "Foundation Agreement" with TCG covering land transfers, governance restructuring, and recognition of Tahltan Aboriginal Title and Rights across the full 95,933 km² asserted territory (11% of BC). More than 400 pages of related government records were withheld from disclosure; PLUS did not obtain any draft text. Internal government target was Fall 2025 finalization — missed. As of Aug 12, 2026: in negotiation, unsigned, not public. THIS is the actual "land transfer" the viral $1.28T claim refers to — see the Risks tab "Correcting the viral claim" card.`,
+ sources:[{l:'PLUS — FOI report, May 19 2026',u:'https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/'}]},
+{id:'e4', s:'tcg', t:'newmont', type:'agreement', label:'Red Chris & Galore Creek engagement',
+ detail:`Red Chris: operates under an impact-benefit and co-management agreement with the Tahltan Nation; the 2026 underground-expansion approval proceeded through the Nov 2023 consent-based process, with TCG formally consenting (dated ~May 22, per trade press). Galore Creek (Newmont 50% JV with Teck): original 2006 Participation Agreement plus a Nov 2023 BC-TCG decision-making/review agreement for collaborative assessment of proposed project changes.`,
+ sources:[{l:'Canadian Mining Journal',u:'https://www.canadianminingjournal.com/news/newmonts-red-chris-underground-expansion-gets-regulatory-green-light-in-bc/'},{l:'GCMC project page',u:'https://www.gcmc.ca/galore-creek-project/'},{l:'ConstructConnect, Nov 2023',u:'https://canada.constructconnect.com/joc/news/government/2023/11/b-c-and-tahltan-nation-enter-agreement-on-galore-creek-review'}]},
+{id:'e5', s:'tcg', t:'imperial', type:'agreement', label:'Red Chris benefit/co-management agreement',
+ detail:`Imperial Metals (30% owner of Red Chris) operates under the same impact-benefit and co-management agreement with the Tahltan Nation described on the Newmont edge; TCG consented to the June 2026 underground expansion under the Nov 2023 s.7 consent framework.`,
+ sources:[{l:'BC Gov News — 2026MCM0029',u:'https://news.gov.bc.ca/releases/2026MCM0029-000727'}]},
+{id:'e6', s:'tcg', t:'teck', type:'agreement', label:'Galore Creek & Schaft Creek engagement',
+ detail:`Galore Creek (Teck 50% JV with Newmont): 2006 Participation Agreement (technical/regulatory engagement, student bursaries, employment/business opportunities) plus a Nov 2023 BC-TCG review agreement. Schaft Creek (Teck 75% operator, Copper Fox 25%): Teck and the Tahltan Nation Development Corporation (TNDC) partnered on a solar-power facility at the project site (2025), plus educational/youth/cultural support. No dedicated Impact Benefit Agreement specific to Schaft Creek itself was found — the project remains at exploration/PEA stage.`,
+ sources:[{l:'Teck — Galore Creek page',u:'https://www.teck.com/operations/canada/projects/galore-creek-project/'},{l:'Teck — Schaft Creek solar release',u:'https://www.teck.com/news/stories/2025/schaft-creek-solar-facility'}]},
+{id:'e7', s:'tcg', t:'copperfox', type:'agreement', label:'Schaft Creek solar-facility partnership',
+ detail:`Copper Fox holds 25% of the Schaft Creek JV (Teck 75%, operator). The 2025 solar-facility partnership at the Schaft Creek site is documented as a Teck–Tahltan Nation Development Corporation (TNDC) initiative; no separately-confirmed Copper Fox-specific IBA was located — flagged as a gap, included here since Copper Fox is a co-tenure holder of the same project site.`,
+ sources:[{l:'Copper Fox — Schaft Creek overview',u:'https://copperfoxmetals.com/projects/schaft-creek-project/overview/'},{l:'Teck — Schaft Creek solar release',u:'https://www.teck.com/news/stories/2025/schaft-creek-solar-facility'}]},
+{id:'e8', s:'tcg', t:'skeena', type:'agreement', label:'Eskay Creek Impact Benefit Agreement',
+ detail:`Tahltan Nation voted in December 2025 to support an Impact Benefit Agreement covering employment, business opportunities, training, an elders' facility, and financial participation. Environmental Assessment Certificate plus federal Impact Assessment Act approval issued Jan 26–28, 2026.`,
+ sources:[{l:'Skeena — vote announcement',u:'https://skeenagoldsilver.com/news-release/skeena-announces-successful-tahltan-nation-vote-supporting-the-eskay-creek-impact-benefit-agreement/'},{l:'BC Gov News — 2026MCM0008',u:'https://news.gov.bc.ca/releases/2026MCM0008-000078'}]},
+{id:'e9', s:'tcg', t:'seabridge', type:'agreement', label:'KSM Impact Benefits Agreement',
+ detail:`Tahltan Nation voted 77.8% in favour of a KSM Impact Benefits / Co-operation and Benefits Agreement with Seabridge Gold, covering protections of Indigenous rights and the environment plus shared economic benefits.`,
+ sources:[{l:'Seabridge / Newsfile release',u:'https://www.newsfilecorp.com/release/45434/Tahltan-Nation-and-Seabridge-Gold-Execute-FarReaching-Agreement-Covering-Protections-of-Indigenous-Rights-and-the-Environment-and-Shared-Economic-Benefits-for-KSM-Project'}]},
+{id:'e10', s:'kutcho', t:'tcg', type:'agreement', label:'Exploration/communication agreements (2018)',
+ detail:`Kutcho Copper Corp. signed exploration and communication agreements with the Tahltan Central Government in 2018, covering its Kutcho copper-zinc project ≈100 km east of Dease Lake, within Tahltan Territory.`,
+ sources:[{l:'Kutcho Copper — 2018 release',u:'https://kutcho.ca/news/2018/kutcho-copper-signs-exploration-and-communication-agreements-with-tahltan-central-government/'}]},
+
+{id:'e11', s:'newmont', t:'imperial', type:'ownership', label:'Co-owners, Red Chris Mine (70/30)',
+ detail:`Newmont operates and owns 70% of Red Chris; Imperial Metals owns the remaining 30%. Ownership chain: Imperial Metals sold a 70% interest to Newcrest Red Chris Mining Ltd in Aug 2019; Newcrest (then Australian, ASX-listed) was acquired by Newmont in Nov 2023, transferring operatorship to Newmont.`,
+ sources:[{l:'Newmont ops page',u:'https://operations.newmont.com/canada/red-chris-canada/'},{l:'Imperial Metals ops page',u:'https://imperialmetals.com/our-operations/red-chris-mine'},{l:'Global News history',u:'https://globalnews.ca/news/11303093/red-chris-mine-history/'}]},
+{id:'e12', s:'newmont', t:'teck', type:'ownership', label:'Co-owners, Galore Creek (50/50 JV)',
+ detail:`Galore Creek Mining Corporation is a 50:50 joint venture between Teck Resources and Newmont. Newmont acquired its 50% stake for US$275 million from prior JV partner NovaGold.`,
+ sources:[{l:'Teck project page',u:'https://www.teck.com/operations/canada/projects/galore-creek-project/'},{l:'Mining Digital — Newmont acquisition',u:'https://miningdigital.com/automation-and-ai/newmont-mining-acquires-50-stake-galore-creek-partnership-dollar275-million'}]},
+{id:'e13', s:'teck', t:'copperfox', type:'ownership', label:'Co-owners, Schaft Creek (75/25)',
+ detail:`Schaft Creek Joint Venture: Teck Resources 75% (operator), Copper Fox Metals 25%. JV formed July 15, 2013.`,
+ sources:[{l:'Copper Fox — Schaft Creek page',u:'https://copperfoxmetals.com/projects/schaft-creek-project/overview/'}]},
+{id:'e14', s:'edwards', t:'imperial', type:'ownership', label:'Chairman, ~40% largest shareholder',
+ detail:`N. Murray Edwards (Forbes 2026: US$4.8B net worth) is Chairman of the Board and largest shareholder (≈40% of shares outstanding) of Imperial Metals; has personally injected capital, provided loans, and guaranteed credit lines to the company.`,
+ sources:[{l:'Forbes profile',u:'https://www.forbes.com/profile/n-murray-edwards/'}]},
+{id:'e15', s:'keevil', t:'teck', type:'ownership', label:'55% of Class A voting shares (control)',
+ detail:`Keevil family controls Teck via Temagami Mining Ltd's ownership of 55% of Teck's high-vote Class A shares (100 votes/share vs 1 vote/share for Class B) — a controlling, not majority-economic, interest (economic stake reported under 1%). Class A shares fully sunset to single-vote Class B by May 12, 2029.`,
+ sources:[{l:'Teck — sunset announcement',u:'https://www.teck.com/news/news-releases/2023/teck-introduces-sunset-for-dual-class-share-structure'}]},
+
+{id:'e16', s:'bennett', t:'kutcho', type:'revolving', label:'Director, post-office',
+ detail:`Bill Bennett joined Kutcho Copper Corp.'s board of directors after leaving cabinet/his MLA seat. Kutcho's project sits inside Tahltan Territory and has its own 2018 TCG exploration/communication agreement. He also joined Eagle Plains Resources' board just three days after leaving office, plus Ascot Resources Ltd. and a consulting role at Rare Earth Ridge Resources Corp. REVOLVING-DOOR PATTERN, NOT AN IN-OFFICE CONFLICT: no evidence found of any donation, payment, or arrangement predating his exit from office.`,
+ sources:[{l:'Mining.com',u:'https://www.mining.com/former-bc-mines-minister-now-director-project-generating-junior'},{l:'Eagle Plains release',u:'https://www.eagleplains.com/news/eagle-plains-announces-appointment-bill-bennett-board-directors-resignation-ron-netolitzky'},{l:'Kutcho–TCG agreement',u:'https://kutcho.ca/news/2018/kutcho-copper-signs-exploration-and-communication-agreements-with-tahltan-central-government/'}]},
+
+{id:'e17', s:'teck', t:'gov-bc', type:'funding', label:'$2.8M+ to BC Liberal Party, 2005–2015',
+ detail:`Teck Resources was the largest single corporate donor to the BC Liberal Party, giving more than $2.8M between 2005-2015 (over 20x what mining companies gave the BC NDP in the same period). Pre-dates BC's Nov 30, 2017 ban on corporate/union donations. GENERAL PROVINCIAL POLITICAL-FINANCE CONTEXT ONLY — no source ties this to any specific Tahltan-territory decision.`,
+ sources:[{l:'The Narwhal',u:'https://thenarwhal.ca/how-teck-resources-benefits-being-b-c-liberal-s-largest-donor/'},{l:'CCPA Corporate Mapping Project',u:'https://www.policyalternatives.ca/news-research/5-2-million-in-political-donations-and-more-than-22-000-lobbying-contacts/'}]},
+{id:'e18', s:'keevil', t:'gov-bc', type:'funding', label:'$65,585 personal donations to BC Liberal Party',
+ detail:`Norm Keevil (Teck chair) personally donated $65,585 to the BC Liberal Party since 2010. GENERAL PROVINCIAL POLITICAL-FINANCE CONTEXT ONLY — no source ties this to any specific Tahltan-territory decision.`,
+ sources:[{l:'The Narwhal',u:'https://thenarwhal.ca/how-teck-resources-benefits-being-b-c-liberal-s-largest-donor/'}]},
+
+{id:'e19', s:'bennett', t:'gov-bc', type:'advisory', label:'Minister of Energy and Mines (role)',
+ detail:`BC Liberal government, through 2017. Personally signed the 2017 bilateral BC-Tahltan agreement on Red Chris Mine. Normal exercise of ministerial role — reported factually.`,
+ sources:[{l:'BC Gov News — 2017MEM0001',u:'https://news.gov.bc.ca/releases/2017MEM0001-000128'}]},
+{id:'e20', s:'rankin', t:'gov-bc', type:'advisory', label:'Minister of Indigenous Relations and Reconciliation (role)',
+ detail:`Nov 26, 2020–Nov 18, 2024. Normal exercise of ministerial role.`, sources:[{l:'BC Gov News — 2023ENV0061',u:'https://news.gov.bc.ca/releases/2023ENV0061-001707'}]},
+{id:'e21', s:'chandra-herbert', t:'gov-bc', type:'advisory', label:'Minister of Indigenous Relations and Reconciliation (role, current)',
+ detail:`Since Jul 17, 2025 (current). Normal exercise of ministerial role.`, sources:[{l:'BC Gov News — 2026MCM0029',u:'https://news.gov.bc.ca/releases/2026MCM0029-000727'}]},
+{id:'e22', s:'brar', t:'gov-bc', type:'advisory', label:'Minister of Mining and Critical Minerals (role, current)',
+ detail:`Since Nov 18, 2024. Normal exercise of ministerial role.`, sources:[{l:'BC Gov News — 2026MCM0008',u:'https://news.gov.bc.ca/releases/2026MCM0008-000078'}]},
+{id:'e23', s:'davidson', t:'gov-bc', type:'advisory', label:'Minister of Environment and Parks (role, current)',
+ detail:`Since Nov 2024. Normal exercise of ministerial role.`, sources:[{l:'BC Gov News — 2026ENV0031',u:'https://news.gov.bc.ca/releases/2026ENV0031-000725'}]},
+{id:'e24', s:'heyman', t:'gov-bc', type:'advisory', label:'Minister of Environment and Climate Change Strategy (role)',
+ detail:`Through 2024. Normal exercise of ministerial role.`, sources:[{l:'BC Gov News — 2023ENV0061',u:'https://news.gov.bc.ca/releases/2023ENV0061-001707'}]},
+{id:'e25', s:'cullen', t:'gov-bc', type:'advisory', label:'Minister of State / MLA Stikine (role)',
+ detail:`2020-2024. Normal exercise of role.`, sources:[{l:'BC Gov News — 2021EMLI0041',u:'https://news.gov.bc.ca/releases/2021EMLI0041-001128'}]},
+{id:'e26', s:'hartwell', t:'gov-bc', type:'advisory', label:'MLA, Bulkley Valley-Stikine (role, current)',
+ detail:`Since 2024. Riding covers the core Tahltan communities. Normal exercise of role.`, sources:[{l:'Wikipedia — Bulkley Valley-Stikine',u:'https://en.wikipedia.org/wiki/Bulkley_Valley-Stikine'}]},
+{id:'e27', s:'day', t:'tcg', type:'advisory', label:'TCG President (role, 2014–2024)',
+ detail:`Jul 2014–Mar 2024. Normal exercise of role.`, sources:[{l:'Prince George Citizen',u:'https://www.princegeorgecitizen.com/local-news/judge-awards-ex-tahltan-president-more-than-320k-for-wrongful-dismissal-10965191'}]},
+{id:'e28', s:'carlick', t:'tcg', type:'advisory', label:'TCG President (role, current)',
+ detail:`Since Jul 2024. Normal exercise of role.`, sources:[{l:'BC Gov News — 2026MCM0029',u:'https://news.gov.bc.ca/releases/2026MCM0029-000727'}]},
+{id:'e29', s:'gov-bc', t:'bcgs', type:'advisory', label:'Sub-entity (org structure)',
+ detail:`BC Geological Survey is a branch within the Province's Ministry of Mining and Critical Minerals lineage — an organizational sub-entity, not a separate government. Publisher of the $1.28T Golden Triangle figure.`,
+ sources:[{l:'BCGS IC2022-05 (PDF)',u:'https://cmscontent.nrs.gov.bc.ca/geoscience/PublicationCatalogue/InformationCircular/BCGS_IC2022-05.pdf'}]},
+
+{id:'e30', s:'miningwatch', t:'gov-canada', type:'litigation', label:'MiningWatch Canada v. Canada, 2010 SCC 2',
+ detail:`[2010] 1 SCR 6. Rothstein J., unanimous, Jan 21, 2010. Found federal environmental-assessment scoping for Red Chris too narrow (should have triggered a comprehensive study); declined to order relief halting the mine's development — a partial/declaratory win with no practical remedy.`,
+ sources:[{l:'CanLII — 2010 SCC 2',u:'https://www.canlii.org/en/ca/scc/doc/2010/2010scc2/2010scc2.html'}]},
+{id:'e31', s:'day', t:'tcg', type:'litigation', label:'Day v. Tahltan Central Government, 2025 BCSC 1363',
+ detail:`Kirchner J., ruling issued Jul 23, 2025. Internal governance dispute: wrongful/constructive dismissal claim arising from Day's Nov 2023 suspension (same month he signed the Red Chris consent agreement) and Mar 2024 dismissal. Court found the TCG board failed to follow its own Director Accountability Process; awarded Day $320K+, explicitly declined aggravated/punitive damages (no bad faith found). NOT a land-rights case; no source draws a causal link to the Red Chris agreement — none should be inferred from timing alone.`,
+ sources:[{l:'Prince George Citizen',u:'https://www.princegeorgecitizen.com/local-news/judge-awards-ex-tahltan-president-more-than-320k-for-wrongful-dismissal-10965191'},{l:'HR Reporter',u:'https://www.hrreporter.com/chrr-plus/employment-law-cases/11275'}]},
+{id:'e32', s:'seabridge', t:'gov-bc', type:'litigation', label:'Tsetsaut Skii km Lax Ha Nation v. BC, 2026 BCSC 1042',
+ detail:`Burke J. Judicial review of the Province's Jul 2024 grant of a "Substantial Start Determination" for Seabridge's KSM mine. Court found the Province breached its constitutional duty to consult. BROUGHT BY THE TSETSAUT SKII KM LAX HA NATION, A DIFFERENT FIRST NATION FROM TAHLTAN — NOT a Tahltan party case. CanLII citation for this ruling was not located in research; only news coverage confirmed — flagged as a gap.`,
+ sources:[{l:'CBC News',u:'https://www.cbc.ca/news/canada/british-columbia/province-consult-duty-gold-mine-9.7229420'},{l:'National Observer',u:'https://www.nationalobserver.com/2026/06/09/news/bc-court-finds-province-didnt-properly-consult-first-nation-northwest-gold-mine'},{l:'Newswire.ca',u:'https://www.newswire.ca/news-releases/legal-win-for-tsetsaut-skii-km-lax-ha-nation-b-c-supreme-court-strikes-down-substantial-start-determination-for-ksm-mine-and-orders-proper-consultation-quashing-led-to-justice-not-ruling-on-ssd-reasonableness-846724457.html'}]},
+
+{id:'e33', s:'ame', t:'bennett', type:'lobbying', label:'Registered BC lobbying, 2015–2016',
+ detail:`Two registrations: Oct 9, 2015–Apr 6, 2016 (Gavin Dirom, designated filer) listed the activity "Status of the recent Tahltan/BC Government discussions," targeting Minister of Energy & Mines Bill Bennett among others. Apr 29–Oct 26, 2016 (Dirom/Conte/Wonders): Glen Wonders lobbied specifically on "planned exploration activities in the Tahltan First Nation territory and requests to sign exploration agreements."`,
+ sources:[{l:'BC Lobbyist Registry — reg #507066',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=507066'},{l:'BC Lobbyist Registry — reg #554318',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=554318'}]},
+
+{id:'e34', s:'bennett', t:'mabc', type:'advisory', label:'Director, Mining Association of BC (Kutcho Copper Corp. seat)',
+ detail:`Bill Bennett's Kutcho Copper Corp. directorship also carries a named board seat on the Mining Association of BC — the province's central mining-industry trade association. This EXTENDS the already-documented revolving-door pattern (a former Minister of Energy and Mines who signed the 2017 Red Chris bilateral agreement, then joined mining-company boards) from a single company board onto an industry-wide advocacy organization's governance body.`,
+ sources:[{l:'MABC — About (board list)',u:'https://mining.bc.ca/about'}]},
+{id:'e35', s:'mabc', t:'newmont', type:'advisory', label:'MABC board seat — John Mullally (Newmont)',
+ detail:`Newmont holds a named seat on MABC's 48-member board (John Mullally, Executive Committee). Normal trade-association structure — every major operator in this investigation holds a seat — not framed as a conflict.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e36', s:'mabc', t:'imperial', type:'advisory', label:'MABC board seats — Don Parsons & Brian Kynoch (Imperial Metals)',
+ detail:`Imperial Metals holds two named seats on MABC's board (Don Parsons – Mount Polley, Brian Kynoch – Huckleberry). Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e37', s:'mabc', t:'teck', type:'advisory', label:'MABC board seats — Doug Brown & Stephanie Tan (Teck)',
+ detail:`Teck Resources holds two named Executive Committee seats on MABC's board (Doug Brown, Stephanie Tan). Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e38', s:'mabc', t:'seabridge', type:'advisory', label:'MABC board seat — Brent Murphy (Seabridge Gold)',
+ detail:`Seabridge Gold holds a named seat on MABC's board (Brent Murphy). Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e39', s:'mabc', t:'skeena', type:'advisory', label:'MABC board seat — Justin Himmelright (Skeena Resources)',
+ detail:`Skeena Resources (Skeena Gold & Silver) holds a named seat on MABC's board (Justin Himmelright). Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e40', s:'mabc', t:'copperfox', type:'advisory', label:'MABC board seat — Elmer Stewart (Copper Fox Metals)',
+ detail:`Copper Fox Metals holds a named seat on MABC's board (Elmer Stewart). Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e41', s:'mabc', t:'kutcho', type:'advisory', label:'MABC board seat — Bill Bennett (Kutcho Copper Corp.)',
+ detail:`Kutcho Copper Corp. holds a named seat on MABC's board, held by Bill Bennett — see the bennett→mabc edge for the revolving-door framing. As a company seat this is normal trade-association structure; the notable element is specifically who holds it.`,
+ sources:[{l:'MABC — About',u:'https://mining.bc.ca/about'}]},
+{id:'e42', s:'ame', t:'teck', type:'advisory', label:'AME Executive Committee — Maggie Layman (Teck)',
+ detail:`Maggie Layman, Manager of Exploration at Teck Resources, sits on AME's board (Executive Committee). Normal trade-association structure — AME's board is composed of sector executives, as expected — not framed as a conflict.`,
+ sources:[{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'}]},
+{id:'e43', s:'ame', t:'skeena', type:'advisory', label:'AME Executive Committee — Eric Casey (Skeena Gold & Silver)',
+ detail:`Eric Casey, Vice President of Skeena Gold & Silver, sits on AME's board as Treasurer (Executive Committee). Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'}]},
+{id:'e44', s:'ame', t:'newmont', type:'advisory', label:'AME board — Keivan Hirji (Newmont)',
+ detail:`Keivan Hirji, Director of External Relations & Communications at Newmont, sits on AME's board. Normal trade-association structure, not framed as a conflict.`,
+ sources:[{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'}]},
+{id:'e45', s:'rigaux', t:'ame', type:'advisory', label:'Director, AME board (2026)',
+ detail:`Jonas Rigaux was appointed to AME's board of directors in 2026. See the rigaux→plus edge — this is the clearest documented personnel overlap between AME (registered Tahltan-specific lobbyist) and PLUS (source of the Foundation Agreement FOI reporting) found in this investigation.`,
+ sources:[{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'}]},
+{id:'e46', s:'rigaux', t:'plus', type:'advisory', label:'Director, Public Land Use Society',
+ detail:`Jonas Rigaux sits simultaneously on AME's board and PLUS's board — THE CLEAREST DOCUMENTED PERSONNEL OVERLAP between AME (a registered Tahltan-specific industry lobbyist) and PLUS (source of the Foundation Agreement FOI reporting) found in this investigation. Does not by itself mean PLUS's FOI reporting is inaccurate — the underlying obtained records are independently verifiable — but it is material to assessing PLUS's institutional independence from the mineral-exploration industry.`,
+ sources:[{l:'PLUS — About Us',u:'https://publiclanduse.ca/about-us/'},{l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'}]},
+{id:'e47', s:'moyse', t:'plus', type:'advisory', label:'Chair, Legal & Policy Committee',
+ detail:`Geoffrey Moyse, K.C. chairs PLUS's Legal & Policy Committee. Authored a Fraser Institute commentary specifically framing the Tahltan-Skeena Eskay Creek DRIPA consent agreement as "pay to play." Context for weighing PLUS's framing/emphasis — NOT a factual-accuracy problem with the underlying FOI documents PLUS obtained.`,
+ sources:[{l:'Fraser Institute commentary',u:'https://www.fraserinstitute.org/commentary/recent-deal-highlights-bc-governments-costly-pay-play-approach-land-use'}]},
+{id:'e48', s:'mirko', t:'plus', type:'advisory', label:'Executive Director & Founder',
+ detail:`Warren Mirko founded and directs PLUS. Authored the org's own FOI press release ("the gradual splitting of British Columbia") and a separate Nov 29, 2025 opinion piece using "vote buying" framing about a reported per-voter payment ahead of a Tahltan ratification vote. Context for weighing PLUS's framing/emphasis — NOT a factual-accuracy problem with the underlying FOI documents PLUS obtained.`,
+ sources:[{l:'PLUS — FOI press release',u:'https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/'},{l:'Northern Beat — Mirko opinion piece',u:'https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/'}]},
+{id:'e49', s:'stone', t:'ame', type:'advisory', label:'President & CEO since Aug 2025',
+ detail:`Todd Stone became AME's President & CEO effective Aug 5, 2025. Normal exercise of an industry-association executive role.`,
+ sources:[{l:'AME — Stone appointment release',u:'https://amebc.ca/news/association-for-mineral-exploration-welcomes-todd-stone-as-new-president-ceo/'}]},
+{id:'e50', s:'stone', t:'gov-bc', type:'advisory', label:'Former Minister of Transportation and Infrastructure (role, NOT Tahltan-specific)',
+ detail:`Todd Stone served as BC's Minister of Transportation and Infrastructure 2013–2017 — NOT Energy/Mines. No direct Tahltan-specific tie found. Included only because it is structurally the same minister→mining-sector-leadership pattern as Bill Bennett's, though markedly weaker and indirect — do not treat as equivalent to Bennett's documented revolving-door finding.`,
+ sources:[{l:'Wikipedia — Todd Stone',u:'https://en.wikipedia.org/wiki/Todd_Stone'}]},
+{id:'e51', s:'skuce', t:'northernconfluence', type:'advisory', label:'Director',
+ detail:`Nikki Skuce directs the Northern Confluence Initiative, a project on MakeWay's shared platform.`,
+ sources:[{l:'Northern Confluence — our mission',u:'https://northernconfluence.ca/about-us/our-mission/'}]},
+{id:'e52', s:'skuce', t:'kneen', type:'advisory', label:'Co-chairs BC Mining Law Reform network, founded 2019',
+ detail:`Nikki Skuce (Northern Confluence Initiative) and Jamie Kneen (MiningWatch Canada) co-chair the BC Mining Law Reform network (BCMLR), founded 2019 — described in this investigation's underlying research as "the single most significant documented cross-organization connection found."`,
+ sources:[{l:'BCMLR — podcast episode with Skuce & Kneen',u:'https://reformbcmining.ca/news/2024/04/podcast-episode-1-the-bc-mining-law-reform-network-w-nikki-skuce-jamie-kneen/'}]},
+{id:'e53', s:'kneen', t:'miningwatch', type:'advisory', label:'Outreach Coordinator / Canada Program Co-Lead',
+ detail:`Jamie Kneen's staff role at MiningWatch Canada. He personally hosted the 2005 Tahltan Elders moratorium statement and covered the 2006 Iskut blockade on MiningWatch's site.`,
+ sources:[{l:'MiningWatch — personnel page',u:'https://www.miningwatch.ca/'}]},
+{id:'e54', s:'northernconfluence', t:'miningwatch', type:'advisory', label:'Listed as formal partner (Northern Confluence partners page)',
+ detail:`Northern Confluence Initiative's own "Partners" page lists MiningWatch Canada as a formal partner organization, alongside the BC Mining Law Reform network that Northern Confluence's director co-chairs with MiningWatch's Jamie Kneen.`,
+ sources:[{l:'Northern Confluence — partners page',u:'https://northernconfluence.ca/about-us/partners/'}]},
+{id:'e55', s:'northernconfluence', t:'skeenawild', type:'advisory', label:'Listed as formal partner (Northern Confluence partners page)',
+ detail:`Northern Confluence Initiative's own "Partners" page lists SkeenaWild Conservation Trust as a formal partner organization — a direct, documented, primary-source organizational link.`,
+ sources:[{l:'Northern Confluence — partners page',u:'https://northernconfluence.ca/about-us/partners/'}]},
+{id:'e56', s:'northernconfluence', t:'salmonbeyondborders', type:'advisory', label:'Listed as formal partner (Northern Confluence partners page)',
+ detail:`Northern Confluence Initiative's own "Partners" page lists Salmon Beyond Borders as a formal partner organization — a direct, documented, primary-source organizational link.`,
+ sources:[{l:'Northern Confluence — partners page',u:'https://northernconfluence.ca/about-us/partners/'}]},
+{id:'e57', s:'miningwatch', t:'riverswithoutborders', type:'advisory', label:'Formal coalition member (MiningWatch’s 22-member list)',
+ detail:`Rivers Without Borders is a formal, dues-paying member organization of MiningWatch Canada's 22-organization coalition, per MiningWatch's own published members list — the clearest institutional cross-connection found across this investigation's NGO network research.`,
+ sources:[{l:'MiningWatch — Members page',u:'https://www.miningwatch.ca/miningwatch-canada-members'}]},
+{id:'e58', s:'miningwatch', t:'klabona', type:'advisory', label:'Hosted 2005 moratorium statement; covered 2006 blockade',
+ detail:`MiningWatch Canada's website hosted the Feb 25, 2005 Tahltan Elders moratorium statement ("Dena nenn Sogga neh 'ine"), posted by Jamie Kneen, and covered the Sept 2006 Iskut blockade (Lillian Moyer's arrest) as contemporaneous news — meaning MiningWatch's documented Tahltan-territory involvement PREDATES the 2010 SCC MiningWatch v. Canada case already in this file by five years.`,
+ sources:[{l:'MiningWatch — 2005 Tahltan Elders statement',u:'https://miningwatch.ca/blog/2005/2/25/tahltan-elders-statement-dena-nenn-sogga-neh-ine-protectors-and-keepers-land'},{l:'MiningWatch — 2006 Iskut blockade coverage',u:'https://miningwatch.ca/news/2006/9/11/grandmother-arrested-iskut-blockade'}]},
+{id:'e59', s:'klabona', t:'imperial', type:'litigation', label:'Aug 8, 2014: Red Chris Mine blockade (NOT litigation — a direct-action protest)',
+ detail:`Aug 8, 2014: Klabona Keepers blockaded Red Chris Mine (Imperial Metals-operated at the time, pre-Newmont acquisition), three days after Imperial Metals' Mount Polley tailings dam failure, demanding a safety review. This is NOT a court case — it is a direct-action protest, reusing the litigation edge style only for its purple/opposition visual grouping. Then-TCG President Chad Norman Day acknowledged the action while expressing general support for environmental protection; Imperial Metals president Brian Kynoch apologized publicly for Mount Polley the same week.`,
+ sources:[{l:'IC Magazine — Tahltan Elders blockade Red Chris Mine',u:'https://icmagazine.org/tahltan-elders-blockade-red-chris-mine-mount-polley-breach-25256/'}]},
+{id:'e60', s:'dsf', t:'klabona', type:'advisory', label:'Editorial coverage + family proximity, not a funding relationship',
+ detail:`David Suzuki Foundation's Dec 8, 2022 story promotes "The Klabona Keepers" documentary, co-directed by David Suzuki's grandson Tamo Campos. No confirmed DSF grant to Klabona Keepers was located — this is editorial/campaign coverage and a family proximity, explicitly NOT a documented funding relationship.`,
+ sources:[{l:'DSF — Sacred Headwaters story',u:'https://davidsuzuki.org/story/tahltans-decades-long-struggle-to-protect-sacred-headwaters/'}]},
+{id:'e61', s:'skeenawild', t:'seabridge', type:'litigation', label:'Separate legal challenge to KSM "Substantially Started" designation',
+ detail:`SkeenaWild itself — in partnership with the Southeast Alaska Indigenous Transboundary Commission (SEITC) and supported by Ecojustice — filed a SEPARATE legal challenge against the BC Environmental Assessment Office's decision that Seabridge Gold's KSM mine was "Substantially Started," letting the 10-year-old environmental assessment stand without a fresh review. THIS IS DISTINCT from the Tsetsaut Skii km Lax Ha Nation's judicial review of the same Substantial Start Determination already in this file (2026 BCSC 1042, Burke J.) — both target the same KSM SSD but have different plaintiffs; do not conflate the two cases.`,
+ sources:[{l:'SkeenaWild — 2024 Annual Report (PDF)',u:'https://skeenawild.org/wp-content/uploads/2025/01/2024-SkeenaWild-Conservation-Trust-Annual-Report_Website.pdf'}]},
+{id:'e62', s:'kadesibe', t:'skeena', type:'litigation', label:'Unanswered letter raising environmental concerns (Dec 2025)',
+ detail:`Dec 2025: per The Narwhal's Dec 3, 2025 reporting, the K'adesibe Collective sent Skeena Resources a letter raising environmental concerns about the Eskay Creek project; the letter went unanswered. NOT LITIGATION — this is a direct advocacy action, reusing the litigation edge style only for its purple/opposition visual grouping, the same convention already used for the klabona↔imperial 2014 Red Chris blockade edge.`,
+ sources:[{l:"The Narwhal — Eskay Creek mine faces make-or-break vote, Dec 3 2025",u:'https://thenarwhal.ca/eskay-creek-mine-skeena-resources-tahltan/'}]},
+{id:'e63', s:'slater', t:'tcg', type:'advisory', label:'Former interim TCG President (past role); quoted consent-process concern',
+ detail:`Beverly Slater is a former interim President of TCG — a past official role, reported here factually, using the same Advisory/legal edge style as this file's other past-role connections. In The Narwhal's Dec 3, 2025 reporting on the Eskay Creek vote, she is quoted questioning whether the consent process constituted genuine "free, prior and informed consent." A documented public concern raised by a named former official and reported by a credible outlet — not an allegation this investigation is making, and not evidence the vote (which passed per the official record) was invalid.`,
+ sources:[{l:"The Narwhal — Eskay Creek mine faces make-or-break vote, Dec 3 2025",u:'https://thenarwhal.ca/eskay-creek-mine-skeena-resources-tahltan/'}]}
+];
+
+const TIMELINE = [
+{date:'Apr 1, 1999', label:'MiningWatch Canada founded', cat:'ngo',
+ desc:'MiningWatch Canada launches as a pan-Canadian coalition initiative (founder: Joan Kuyek), growing out of environmental/social-justice/Indigenous/labour concern about mining impacts.'},
+{date:'Nov 3, 2003', label:'Canary Research Institute incorporated', cat:'ngo',
+ desc:'MiningWatch\'s sister registered charity (CRA BN 871039400RR0001) incorporated, so MiningWatch — which deliberately avoided charitable registration itself — can issue tax receipts.'},
+{date:'2004–2012', label:'Shell coalbed methane project — opposed, dropped', cat:'ngo',
+ desc:'Klabona Keepers blockades/resistance contribute to Shell Canada abandoning a coalbed-methane project covering ≈4,000 km² of Tahltan land; formally dropped 2012.'},
+{date:'2005', label:'First Fortune Minerals/Mount Klappan blockade', cat:'ngo',
+ desc:'The first blockade against Fortune Minerals\' Mount Klappan coal proposal goes up; the families and Elders who organized it become known as Klabona Keepers after blockading Shell\'s coalbed-methane operations the following year.'},
+{date:'Feb 25, 2005', label:'Tahltan Elders moratorium statement', cat:'ngo',
+ desc:'"Dena nenn Sogga neh \'ine" (Protectors and Keepers of the Land) declares a moratorium on resource development in Tahltan territory; hosted on MiningWatch Canada\'s website by Jamie Kneen the same year — predating the 2010 SCC MiningWatch v. Canada case by five years.'},
+{date:'2005–2006', label:'Original Red Chris approval; Tahltan opposition', cat:'gov',
+ desc:'Original Red Chris mine approval process; Tahltan Nation publicly opposed the approval.'},
+{date:'Sep 9, 2006', label:'Iskut blockade, Lillian Moyer arrested', cat:'ngo',
+ desc:'67-year-old Tahltan Elder Lillian Moyer arrested at a two-month blockade near Iskut opposing bcMetals Corporation\'s Todagin Plateau exploration; covered contemporaneously by MiningWatch Canada.'},
+{date:'2007', label:'SkeenaWild Conservation Trust founded', cat:'ngo',
+ desc:'SkeenaWild founded in Terrace, BC; Greg Knox serves as Executive Director from inception (CRA BN 832887814RR0001).'},
+{date:'Jan 21, 2010', label:'MiningWatch v. Canada, 2010 SCC 2', cat:'litigation',
+ desc:'Supreme Court of Canada (Rothstein J.) finds federal EA scoping for Red Chris too narrow; declines to order relief halting the mine.'},
+{date:'2012', label:'Shell coalbed methane project formally dropped', cat:'ngo',
+ desc:'Shell Canada formally drops its coalbed-methane project covering ≈4,000 km² of Tahltan land, the culmination of the opposition begun in 2004.'},
+{date:'Apr 2014', label:'Salmon Beyond Borders founded', cat:'ngo',
+ desc:'Jill Weitz founds Salmon Beyond Borders (a campaign of SalmonState, fiscally sponsored by New Venture Fund) to address proposed mining development in northwestern BC affecting transboundary rivers.'},
+{date:'Aug 5, 2014', label:'Mount Polley tailings dam failure', cat:'oversight',
+ desc:'Imperial Metals\' Mount Polley mine (Secwepemc/Xatsull territory, central BC — NOT Tahltan territory) suffers a tailings dam failure; included as company-level risk context, three days before the Red Chris blockade below.'},
+{date:'Aug 8, 2014', label:'Klabona Keepers blockade Red Chris Mine', cat:'ngo',
+ desc:'Klabona Keepers blockade Imperial Metals\' Red Chris Mine near Iskut, three days after Mount Polley, demanding a safety review — a direct-action protest, not litigation. Then-TCG President Chad Norman Day acknowledges the action.'},
+{date:'May 2016', label:'BC Auditor General mining-compliance report', cat:'oversight',
+ desc:'Finds inadequate mining-sector compliance/enforcement province-wide; uses Red Chris/Imperial Metals/Mount Polley as context. Minister Bill Bennett does not resign.'},
+{date:'2017', label:'Bennett signs 2017 Red Chris bilateral agreement', cat:'gov',
+ desc:'Minister of Energy and Mines Bill Bennett signs the province’s foundational bilateral BC-Tahltan agreement on Red Chris Mine with TCG President Chad Day.'},
+{date:'2017', label:'Klappan Agreement signed (286,000 ha protected)', cat:'gov',
+ desc:'BC and TCG sign the Klappan Agreement, protecting ≈286,000 hectares — the culmination of ≈15 years of opposition to Fortune Minerals\' Mount Klappan coal proposal.'},
+{date:'Oct 9, 2015 – Apr 6, 2016', label:'AME registers BC lobbying (Tahltan/BC discussions)', cat:'lobbying',
+ desc:'Gavin Dirom (AME) registers, listing "Status of the recent Tahltan/BC Government discussions" as a lobbying activity, targeting Minister Bill Bennett among others.'},
+{date:'Apr 29 – Oct 26, 2016', label:'AME registers again (exploration agreements)', cat:'lobbying',
+ desc:'AME registration; Glen Wonders lobbies on planned exploration activities and requests to sign exploration agreements in Tahltan territory.'},
+{date:'2019', label:'BC Mining Law Reform network founded', cat:'ngo',
+ desc:'The BC Mining Law Reform network (BCMLR) is founded, later co-chaired by Nikki Skuce (Northern Confluence Initiative) and Jamie Kneen (MiningWatch Canada) — described in this investigation\'s research as its single most significant documented cross-organization connection.'},
+{date:'Mar 30, 2020', label:'Shared Prosperity Agreement signed', cat:'gov',
+ desc:'TCG, Tahltan Band Council, Iskut Band Council and the Province of BC sign the Shared Prosperity Agreement (not publicly announced for 15 months).'},
+{date:'Jun 10, 2021', label:'Shared Prosperity Agreement publicly announced', cat:'gov',
+ desc:'BC government publicly announces the March 2020 Shared Prosperity Agreement — a 15-month gap between signing and announcement.'},
+{date:'Sep 2022', label:'The Narwhal\'s Klabona Keepers feature', cat:'ngo',
+ desc:'The Narwhal publishes a feature on Klabona Keepers, reporting they are monitoring Newmont\'s mineral-claim purchases near Iskut village — the most recent substantive third-party coverage of the group located in this research.'},
+{date:'Dec 8, 2022', label:'David Suzuki Foundation Sacred Headwaters story', cat:'ngo',
+ desc:'DSF publishes "Tahltan\'s decades-long struggle to protect Sacred Headwaters," built substantially around promoting "The Klabona Keepers" documentary co-directed by David Suzuki\'s grandson Tamo Campos.'},
+{date:'Sep 26, 2023', label:'Gitxaała v. BC, 2023 BCSC 1680', cat:'litigation',
+ desc:'BC Supreme Court (Ross J.) declares BC’s "free entry" mineral-tenure registration system breaches the duty to consult. Not a Tahltan party case.'},
+{date:'Nov 1, 2023', label:'Red Chris consent-based decision agreement signed', cat:'gov',
+ desc:'BC and TCG sign a consent-based decision-making agreement under DRIPA s.7, covering future Red Chris decisions. Signed by Rankin, Heyman, and TCG President Chad Day.'},
+{date:'Nov 2023', label:'Chad Day suspended by TCG board', cat:'conflict',
+ desc:'TCG board of directors suspends President Chad Norman Day — the same month he signed the Red Chris consent agreement.'},
+{date:'Mar 2024', label:'Chad Day formally dismissed', cat:'conflict',
+ desc:'TCG board formally dismisses Chad Norman Day as President.'},
+{date:'Jul 23, 2025', label:'Day v. TCG, 2025 BCSC 1363', cat:'litigation',
+ desc:'BC Supreme Court (Kirchner J.) rules Chad Day was constructively dismissed; awards $320K+. Internal governance dispute, not a land-rights case.'},
+{date:'Aug 5, 2025', label:'Todd Stone becomes AME CEO', cat:'ngo',
+ desc:'Former BC Minister of Transportation and Infrastructure Todd Stone becomes President & CEO of the Association for Mineral Exploration BC — structurally similar to, but weaker than, Bill Bennett\'s revolving-door pattern.'},
+{date:'Nov 29, 2025', label:'Mirko\'s "vote buying" opinion piece', cat:'ngo',
+ desc:'PLUS Executive Director Warren Mirko publishes "Eby government gives Tahltan Nation veto over gold mine development," using "vote buying" framing about a reported $10,000-per-voter payment ahead of a ratification vote.'},
+{date:'Dec 3, 2025', label:"Narwhal publishes Eskay Creek vote piece", cat:'ngo',
+ desc:"The Narwhal publishes \"Controversial B.C. gold and silver mine in Tahltan territory faces make-or-break vote\" (Steph Kwetásel'wet Wood), documenting the K'adesibe Collective's unanswered letter to Skeena Resources and former interim TCG president Beverly Slater's quoted free/prior/informed-consent concerns about the Eskay Creek vote."},
+{date:'Dec 5, 2025', label:'Gitxaała v. BC, 2025 BCCA 430', cat:'litigation',
+ desc:'BC Court of Appeal (majority: Dickson J.A.) holds BC’s mineral-claims regime inconsistent with UNDRIP Article 32(2) as incorporated via DRIPA. Not a Tahltan party case.'},
+{date:'Dec 16, 2025', label:'PLUS calls for DRIPA repeal', cat:'ngo',
+ desc:'PLUS publishes "Public Land Use Society Says Court Ruling Demonstrates DRIPA Must Be Repealed" — an explicit institutional policy position against the statute under which the Tahltan Section 7 consent agreements were negotiated.'},
+{date:'Dec 2025', label:'Eskay Creek IBA vote', cat:'fn',
+ desc:'Tahltan Nation votes to support the Eskay Creek Impact Benefit Agreement with Skeena Gold & Silver.'},
+{date:'2026', label:'Jonas Rigaux appointed to AME board', cat:'ngo',
+ desc:'Jonas Rigaux — simultaneously a director of PLUS — is appointed to AME\'s board of directors, creating the clearest documented AME↔PLUS personnel overlap found in this investigation.'},
+{date:'Jan 26–28, 2026', label:'Eskay Creek EA Certificate issued', cat:'gov',
+ desc:'Environmental Assessment Certificate plus federal Impact Assessment Act approval issued for Eskay Creek.'},
+{date:'May 19, 2026', label:'PLUS publishes Foundation Agreement FOI report', cat:'ngo',
+ desc:'Public Land Use Society publishes FOI records revealing the unsigned, undisclosed Foundation Agreement covering 11% of BC; 400+ pages withheld.'},
+{date:'Jun 2026', label:'Tsetsaut Skii km Lax Ha Nation v. BC, 2026 BCSC 1042', cat:'litigation',
+ desc:'BC Supreme Court (Burke J.) finds Province breached duty to consult TSKLH re: KSM Substantial Start Determination. Not a Tahltan party case.'},
+{date:'Jun 18–19, 2026', label:'Red Chris expansion approved', cat:'gov',
+ desc:'Province approves Red Chris underground expansion (Mines Act / EMA permit amendments); TCG President Kerry Carlick consents.'},
+{date:'Jul 3, 2026', label:'Northern Beat connects BCGS figure to Tahltan claim', cat:'ngo',
+ desc:'Northern Beat publishes reporting stating Tahltan’s territorial claim covers 70% of the Golden Triangle, correctly attributing the $1.28T figure to BCGS and framing it as an overlap, not a Tahltan-specific valuation.'},
+{date:'Aug 11, 2026', label:'BC Conservative Party "hand over" post', cat:'conflict',
+ desc:'conservativebc.ca publishes advocacy framing merging the $1.28T BCGS figure with the unsigned Foundation Agreement as a completed "hand over" — the likely direct source of the viral claim.'},
+{date:'Aug 12, 2026', label:'This investigation compiled', cat:'oversight',
+ desc:'Research pass completed; dashboard and CONTEXT.md published.'}
+];
+
+const TL_COLORS = {gov:'#f0883e', fn:'#2dd4bf', litigation:'#bc8cff', lobbying:'#39c5cf',
+  oversight:'#8b949e', conflict:'#f85149', ngo:'#bc8cff'};
+
+const SOURCES = {
+'Government / Official':[
+ {l:'BCGS Information Circular 2022-05 (PDF) — primary source of $1.28T figure',u:'https://cmscontent.nrs.gov.bc.ca/geoscience/PublicationCatalogue/InformationCircular/BCGS_IC2022-05.pdf'},
+ {l:'DigiGeoData — underlying tonnage/grade dataset',u:'https://digigeodata.com/area/golden-triangle/'},
+ {l:'BC Gov News 2021EMLI0041 — Shared Prosperity Agreement',u:'https://news.gov.bc.ca/releases/2021EMLI0041-001128'},
+ {l:'BC Gov News 2023ENV0061 — Red Chris consent-based agreement, Nov 2023',u:'https://news.gov.bc.ca/releases/2023ENV0061-001707'},
+ {l:'BC Gov News 2026ENV0003 — Eskay Creek consent-based decision',u:'https://news.gov.bc.ca/releases/2026ENV0003-000074'},
+ {l:'BC Gov News 2026MCM0008 — Eskay Creek EA Certificate',u:'https://news.gov.bc.ca/releases/2026MCM0008-000078'},
+ {l:'BC Gov News 2026MCM0029 — Red Chris expansion approval',u:'https://news.gov.bc.ca/releases/2026MCM0029-000727'},
+ {l:'BC Gov News 2026ENV0031 — Red Chris EA Certificate amendment',u:'https://news.gov.bc.ca/releases/2026ENV0031-000725'},
+ {l:'BC Gov News 2017MEM0001 — 2017 Bennett-signed bilateral agreement',u:'https://news.gov.bc.ca/releases/2017MEM0001-000128'},
+ {l:'BC Gov News 2018IRR0034 — Brucejack revenue sharing (2018)',u:'https://news.gov.bc.ca/releases/2018IRR0034-001215'},
+ {l:'BC Gov News 2017PREM0085 — corporate/union donation ban',u:'https://news.gov.bc.ca/releases/2017PREM0085-001593'},
+ {l:'Canada.ca — Major Projects Office, Red Chris listing',u:'https://www.canada.ca/en/privy-council/major-projects-office/projects/national/red-chris.html'},
+ {l:'BC gov First Nations A-Z listing — Tahltan Central Government',u:'https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/consulting-with-first-nations/first-nations-negotiations/first-nations-a-z-listing/tahltan-central-government'},
+ {l:'BC gov First Nations A-Z listing — Tahltan Band Council',u:'https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/consulting-with-first-nations/first-nations-negotiations/first-nations-a-z-listing/tahltan-band-council'},
+ {l:'BC Auditor General, May 2016 mining-compliance report (PDF)',u:'https://www.oag.bc.ca/app/uploads/sites/963/2024/08/OAGBC-2016-05-01-OAGBC-Mining-Report-FINAL.pdf'},
+ {l:'BC Lobbyist Registry — AME registration #507066 (2015-16)',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=507066'},
+ {l:'BC Lobbyist Registry — AME registration #554318 (2016)',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=554318'},
+ {l:'BC Lobbyist Registry — Jan 2025 mining-sector snapshot',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/rcntGiCmLgs?dt=2025-01&cid=40120&tb=historical'}
+],
+'Company / Registry':[
+ {l:'Newmont — Red Chris operations page',u:'https://operations.newmont.com/canada/red-chris-canada/'},
+ {l:'Imperial Metals — Red Chris page',u:'https://imperialmetals.com/our-operations/red-chris-mine'},
+ {l:'Teck — Galore Creek project page',u:'https://www.teck.com/operations/canada/projects/galore-creek-project/'},
+ {l:'Galore Creek Mining Corporation (GCMC) site',u:'https://www.gcmc.ca/galore-creek-project/'},
+ {l:'Copper Fox — Schaft Creek overview',u:'https://copperfoxmetals.com/projects/schaft-creek-project/overview/'},
+ {l:'Teck — Schaft Creek solar-facility release (2025)',u:'https://www.teck.com/news/stories/2025/schaft-creek-solar-facility'},
+ {l:'Newmont — Brucejack CEAA annual report (PDF)',u:'https://operations.newmont.com/_doc/operation/bluejack/annual-reports/Brucejack%20Mine%202024%20CEAA%20Annual%20Report.pdf'},
+ {l:'Skeena — Eskay Creek Tahltan vote release',u:'https://skeenagoldsilver.com/news-release/skeena-announces-successful-tahltan-nation-vote-supporting-the-eskay-creek-impact-benefit-agreement/'},
+ {l:'GlobeNewswire — Skeena EA Certificate release',u:'https://www.globenewswire.com/news-release/2026/01/27/3226273/0/en/Skeena-Gold-Silver-Secures-Environmental-Assessment-Certificate-and-Federal-Impact-Assessment-Approval-for-Eskay-Creek.html'},
+ {l:'Seabridge / Newsfile — KSM IBA release',u:'https://www.newsfilecorp.com/release/45434/Tahltan-Nation-and-Seabridge-Gold-Execute-FarReaching-Agreement-Covering-Protections-of-Indigenous-Rights-and-the-Environment-and-Shared-Economic-Benefits-for-KSM-Project'},
+ {l:'Kutcho Copper — 2018 TCG agreement release',u:'https://kutcho.ca/news/2018/kutcho-copper-signs-exploration-and-communication-agreements-with-tahltan-central-government/'},
+ {l:'Eagle Plains — Bennett board appointment release',u:'https://www.eagleplains.com/news/eagle-plains-announces-appointment-bill-bennett-board-directors-resignation-ron-netolitzky'},
+ {l:'Teck — sunset dual-class share structure release',u:'https://www.teck.com/news/news-releases/2023/teck-introduces-sunset-for-dual-class-share-structure'},
+ {l:'StockTitan — Newmont Schedule 13G filing summary',u:'https://www.stocktitan.net/sec-filings/NEM/schedule-13g-newmont-corp-de-passive-investment-disclosure-5-cdc12a64aaaf.html'},
+ {l:'Forbes — N. Murray Edwards profile',u:'https://www.forbes.com/profile/n-murray-edwards/'},
+ {l:'Global News — Red Chris ownership history',u:'https://globalnews.ca/news/11303093/red-chris-mine-history/'},
+ {l:'Mining Digital — Newmont Galore Creek acquisition',u:'https://miningdigital.com/automation-and-ai/newmont-mining-acquires-50-stake-galore-creek-partnership-dollar275-million'},
+ {l:'ConstructConnect — Galore Creek review agreement, Nov 2023',u:'https://canada.constructconnect.com/joc/news/government/2023/11/b-c-and-tahltan-nation-enter-agreement-on-galore-creek-review'},
+ {l:'Canadian Mining Journal — Red Chris expansion approval',u:'https://www.canadianminingjournal.com/news/newmonts-red-chris-underground-expansion-gets-regulatory-green-light-in-bc/'},
+ {l:'Mining.com — Red Chris expansion approval',u:'https://www.mining.com/newmonts-red-chris-underground-expansion-gets-regulatory-green-light-in-bc/'},
+ {l:'Mining.com — Bennett joins junior mining board',u:'https://www.mining.com/former-bc-mines-minister-now-director-project-generating-junior'},
+ {l:'LinkedIn — Bill Bennett',u:'https://www.linkedin.com/in/kootenaybillbennett/'},
+ {l:'Mining-technology.com — Kutcho project location',u:'https://www.mining-technology.com/projects/kutcho-copper-and-zinc-project-british-columbia-canada/'},
+ {l:'Innovation News Network — Rare Earth Ridge project location',u:'https://www.innovationnewsnetwork.com/rare-earth-ridge-bringing-out-british-columbias-rare-earth-potential-with-the-mt-major-hart-property/42345/'},
+ {l:'Mining.com — BC creates new mining ministry (Nov 2024 split)',u:'https://www.mining.com/british-columbia-creates-new-mining-ministry-to-tackle-critical-minerals-amid-doubts-over-capacity/'},
+ {l:'Resource World — Rankin quote on Eskay Creek Section 7 agreement',u:'https://resourceworld.com/skeena-praises-groundbreaking-b-c-tahltan-agreement-for-eskay-creek-project-british-columbia/'}
+],
+'News / Media':[
+ {l:'CBC News — BC-Tahltan Red Chris agreement',u:'https://www.cbc.ca/news/canada/british-columbia/bc-tahltan-nation-agreement-1.7015953'},
+ {l:'CBC News — TSKLH v. BC ruling',u:'https://www.cbc.ca/news/canada/british-columbia/province-consult-duty-gold-mine-9.7229420'},
+ {l:'National Observer — TSKLH v. BC ruling',u:'https://www.nationalobserver.com/2026/06/09/news/bc-court-finds-province-didnt-properly-consult-first-nation-northwest-gold-mine'},
+ {l:'Newswire.ca — TSKLH v. BC legal-win release',u:'https://www.newswire.ca/news-releases/legal-win-for-tsetsaut-skii-km-lax-ha-nation-b-c-supreme-court-strikes-down-substantial-start-determination-for-ksm-mine-and-orders-proper-consultation-quashing-led-to-justice-not-ruling-on-ssd-reasonableness-846724457.html'},
+ {l:'Prince George Citizen — Day v. TCG ruling',u:'https://www.princegeorgecitizen.com/local-news/judge-awards-ex-tahltan-president-more-than-320k-for-wrongful-dismissal-10965191'},
+ {l:'HR Reporter — Day v. TCG case summary',u:'https://www.hrreporter.com/chrr-plus/employment-law-cases/11275'},
+ {l:'Georgia Straight — Bennett won’t resign after AG report',u:'https://www.straight.com/news/691076/bc-energy-and-mines-minister-bill-bennett-wont-resign-wake-damning-auditor-generals'},
+ {l:'Newswire.ca — 2005-06 Tahltan opposition to original Red Chris approval',u:'https://www.newswire.ca/news-releases/tahltan-nation-opposes-approval-of-controversial-red-chris-mine-510182361.html'},
+ {l:'ConstructConnect — 2022 Auditor General mining follow-up',u:'https://canada.constructconnect.com/joc/news/government/2022/06/audit-sees-improved-ministry-mine-oversight-in-b-c'},
+ {l:'BLG — summary of 2016 Auditor General mining report',u:'https://www.blg.com/en/insights/2016/05/bc-auditor-general-report-on-mining-sector'},
+ {l:'Wikipedia — Bulkley Valley-Stikine riding',u:'https://en.wikipedia.org/wiki/Bulkley_Valley-Stikine'},
+ {l:'Arvay Finlay — Murray Rankin bio',u:'https://arvayfinlay.ca/murray-rankin/'},
+ {l:'Wikipedia — Murray Rankin',u:'https://en.wikipedia.org/wiki/Murray_Rankin'},
+ {l:'ORCBC — Tamara Davidson bio',u:'https://www.orcbc.ca/blog/new-leader-of-environment-and-parks-sees-a-lot-of-potential-for-recreation-over-the-next-4-years'},
+ {l:'Canadianwhoswho — Jagrup Brar bio',u:'https://canadianwhoswho.ca/bio.php?id=28559'},
+ {l:'Globe and Mail — Ellis Ross profile',u:'https://www.theglobeandmail.com/report-on-business/careers/careers-leadership/the-lunch-ellis-ross/article30106168/'},
+ {l:'Wikipedia — Ellis Ross',u:'https://en.wikipedia.org/wiki/Ellis_Ross'},
+ {l:'Bennett Jones — BC corporate/union donation ban explainer',u:'https://www4.bennettjones.com/Blogs-Section/BC-Bans-Corporate-and-Union-Donations-in-Provincial-and-Municipal-Election-Campaigns'}
+],
+'NGO / Advocacy':[
+ {l:'PLUS — FOI report on unsigned Foundation Agreement, May 19 2026',u:'https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/'},
+ {l:'Northern Beat — Backed by Ottawa reporting, Jul 3 2026',u:'https://northernbeat.ca/news/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest/'},
+ {l:'conservativebc.ca — "hand over" post, Aug 11 2026',u:'https://conservativebc.ca/massive-ndp-land-transfers-could-total-up-to-24-million-acres/'},
+ {l:'JunoNews — republished Northern Beat reporting',u:'https://www.junonews.com/p/tahltan-nation-seeks-title-over-bcs'},
+ {l:'Tahltan Central Government — official site',u:'https://tahltan.org/'},
+ {l:'TCG — open-letter response to SkeenaWild report',u:'https://tahltan.org/open-letter-response-to-skeenawilds-red-chris-report/'},
+ {l:'TCG — mineral-tenure litigation intervention statement (PDF)',u:'https://tahltan.org/wp-content/uploads/2023/09/TAHLTAN-NATION-ASSERTS-INHERENT-RIGHTS-TO-SUCCESSFULLY-PROTECT-CULTURALLY-SENSITIVE-AREA-FROM-PROPOSED-MINING-EXPLORATION.pdf'},
+ {l:'Rivers Without Borders — Iskut-Stikine',u:'https://www.riverswithoutborders.org/iskut-stikine'},
+ {l:'The Narwhal — Klabona Keepers profile',u:'https://thenarwhal.ca/klabona-keepers-tahltan-nation/'},
+ {l:'David Suzuki Foundation — Sacred Headwaters',u:'https://davidsuzuki.org/story/tahltans-decades-long-struggle-to-protect-sacred-headwaters/'},
+ {l:'Mining Association of BC — reconciliation page',u:'https://mining.bc.ca/reconciliation/'},
+ {l:'The Narwhal — Teck as largest BC Liberal donor',u:'https://thenarwhal.ca/how-teck-resources-benefits-being-b-c-liberal-s-largest-donor/'},
+ {l:'CCPA Corporate Mapping Project — donations & lobbying',u:'https://www.policyalternatives.ca/news-research/5-2-million-in-political-donations-and-more-than-22-000-lobbying-contacts/'},
+ {l:'The Narwhal — Teck lobbyist donation "listed in error"',u:'https://thenarwhal.ca/teck-mining-lobbyist-s-donation-bc-liberals-listed-error-company-says/'},
+ {l:'The Narwhal — AG report slams BC mining oversight',u:'https://thenarwhal.ca/auditor-general-report-slams-b-c-s-inadequate-mining-oversight/'}
+],
+'Legal / CanLII':[
+ {l:'CanLII — MiningWatch Canada v. Canada, 2010 SCC 2',u:'https://www.canlii.org/en/ca/scc/doc/2010/2010scc2/2010scc2.html'},
+ {l:'CanLII — Gitxaała v. BC (Chief Gold Commissioner), 2023 BCSC 1680',u:'https://www.canlii.org/en/bc/bcsc/doc/2023/2023bcsc1680/2023bcsc1680.html'},
+ {l:'Fasken — commentary on Gitxaała v. BC, 2025 BCCA 430 (UNDRIP)',u:'https://www.fasken.com/en/knowledge/2025/12/undrip-in-action'},
+ {l:'Blakes — commentary on Gitxaała v. BC, 2025 BCCA 430',u:'https://www.blakes.com/insights/b-c-court-of-appeal-rules-previous-free-entry-mineral-tenure-regime-inconsistent-with-undrip/'}
+],
+'NGO Governance & Cross-Connections':[
+ {l:'SkeenaWild — Our Story (founding)',u:'https://skeenawild.org/our-story/'},
+ {l:'SkeenaWild — Our Team',u:'https://skeenawild.org/our-team/'},
+ {l:'CanadaHelps — SkeenaWild charity profile',u:'https://www.canadahelps.org/en/charities/skeenawild-conservation-trust/'},
+ {l:'CharityData.ca — SkeenaWild (BN 832887814RR0001)',u:'https://www.charitydata.ca/charity/skeenawild-conservation-trust/832887814RR0001/'},
+ {l:'SkeenaWild — 2024 Annual Report (PDF)',u:'https://skeenawild.org/wp-content/uploads/2025/01/2024-SkeenaWild-Conservation-Trust-Annual-Report_Website.pdf'},
+ {l:'Moore Foundation — SkeenaWild grantee detail',u:'https://www.moore.org/grantee-detail?granteeId=1322'},
+ {l:'Sitka Foundation — SkeenaWild grant listing',u:'https://sitkafoundation.org/grant/skeenawild-conservation-trust/'},
+ {l:'Wild Salmon Center — SkeenaWild partnership page',u:'https://wildsalmoncenter.org/partnerships/skeenawild/'},
+ {l:'New Venture Fund — Salmon Beyond Borders case study',u:'https://newventurefund.org/2021/07/14/how-to-forge-local-relationships-and-achieve-state-wide-success/'},
+ {l:'SalmonState — About',u:'https://salmonstate.org/about-salmonstate'},
+ {l:'InfluenceWatch — SalmonState profile',u:'https://www.influencewatch.org/organization/salmonstate/'},
+ {l:'SalmonState — Jill Weitz bio',u:'https://salmonstate.org/salmon-stories/jill-weitz'},
+ {l:'Wikipedia — Rivers Without Borders',u:'https://en.wikipedia.org/wiki/Rivers_Without_Borders'},
+ {l:'Rivers Without Borders — About',u:'https://www.riverswithoutborders.org/about-rivers-without-borders'},
+ {l:'Tides.org — Rivers Without Borders fiscal-sponsorship listing',u:'https://www.tides.org/project/fiscally-sponsored-project/rivers-without-borders/'},
+ {l:'Rivers Without Borders — Our Team',u:'https://www.riverswithoutborders.org/our-team'},
+ {l:'Northern Confluence — Our Mission',u:'https://northernconfluence.ca/about-us/our-mission/'},
+ {l:'MakeWay — Northern Confluence project listing',u:'https://makeway.org/project/northern-confluence/'},
+ {l:'BC Mining Law Reform Network — Skuce & Kneen podcast episode',u:'https://reformbcmining.ca/news/2024/04/podcast-episode-1-the-bc-mining-law-reform-network-w-nikki-skuce-jamie-kneen/'},
+ {l:'West Coast Environmental Law — Nikki Skuce team page',u:'https://envirolawcentre.ca/team/nikki-skuce/'},
+ {l:'Northern Confluence — Partners page',u:'https://northernconfluence.ca/about-us/partners/'},
+ {l:'Briarpatch Magazine — Klabona Keepers origin',u:'https://briarpatchmagazine.com/articles/view/to-take-the-land-away-from-the-children'},
+ {l:'MiningWatch — 2005 Tahltan Elders moratorium statement',u:'https://miningwatch.ca/blog/2005/2/25/tahltan-elders-statement-dena-nenn-sogga-neh-ine-protectors-and-keepers-land'},
+ {l:'MiningWatch — 2006 Iskut blockade coverage',u:'https://miningwatch.ca/news/2006/9/11/grandmother-arrested-iskut-blockade'},
+ {l:'Beyond Boarding Collective — Klabona Keepers fiscal sponsorship',u:'http://beyondboardingcollective.com/donatekk'},
+ {l:'Story Money Impact — Klabona Keepers fundraising report',u:'https://www.storymoneyimpact.com/klabona-keepers-report'},
+ {l:'IC Magazine — 2014 Klabona Keepers Red Chris blockade',u:'https://icmagazine.org/tahltan-elders-blockade-red-chris-mine-mount-polley-breach-25256/'},
+ {l:'Charity Intelligence — David Suzuki Foundation profile',u:'https://www.charityintelligence.ca/charity-details/247-david-suzuki-foundation'},
+ {l:'DSF — Financials',u:'https://davidsuzuki.org/about/financials/'},
+ {l:'DSF — Our Board',u:'https://davidsuzuki.org/about/staff-board/our-board/'},
+ {l:'Wikipedia — Stephen Bronfman',u:'https://en.wikipedia.org/wiki/Stephen_Bronfman'},
+ {l:'DSF — thank-you to Stephen Bronfman & family foundation',u:'https://davidsuzuki.org/story/thank-you-to-stephen-bronfman-and-the-claudine-and-stephen-bronfman-family-foundation/'},
+ {l:'DSF — Ethical Gift Acceptance Policy',u:'https://davidsuzuki.org/about/financials/ethical-gift-acceptance-policy/'},
+ {l:'DSF — Sacred Headwaters story',u:'https://davidsuzuki.org/story/tahltans-decades-long-struggle-to-protect-sacred-headwaters/'},
+ {l:'MiningWatch — 25 years building mining justice',u:'https://www.miningwatch.ca/blog/2024/4/24/25-years-building-mining-justice'},
+ {l:'InfluenceWatch — MiningWatch Canada profile',u:'https://www.influencewatch.org/organization/miningwatch-canada/'},
+ {l:'CanadaHelps — Canary Research Institute',u:'https://www.canadahelps.org/en/charities/canary-research-institute-for-mining-environment-and-health/'},
+ {l:'Canary Research Institute — official site',u:'https://canaryinstitute.ca/'},
+ {l:'MiningWatch — Board of Directors',u:'https://www.miningwatch.ca/miningwatch-canada-board-directors'},
+ {l:'MiningWatch — Members page',u:'https://www.miningwatch.ca/miningwatch-canada-members'},
+ {l:'Mining & Energy — AME turns 100 (founding history)',u:'https://www.miningandenergy.ca/read/bcs-association-for-mineral-exploration-turns-100'},
+ {l:'AME — 2026 board and executive announced',u:'https://amebc.ca/news/ame-2026-board-and-executive-announced/'},
+ {l:'AME — Todd Stone appointment release',u:'https://amebc.ca/news/association-for-mineral-exploration-welcomes-todd-stone-as-new-president-ceo/'},
+ {l:'Wikipedia — Todd Stone',u:'https://en.wikipedia.org/wiki/Todd_Stone'},
+ {l:'AME — board/staff page',u:'https://amebc.ca/about/board-staff/'},
+ {l:'AME — membership/dues page',u:'https://amebc.ca/members-partners/'},
+ {l:'AME — 2015 financial statement (PDF)',u:'https://amebc.ca/wp-content/uploads/2017/04/financial-statement-1.pdf'},
+ {l:'BC Lobbyist Registry — AME current reg #56581766',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=5843&regId=56581766'},
+ {l:'LinkedIn — Mining Association of BC (founding year)',u:'https://ca.linkedin.com/company/mining-association-of-bc'},
+ {l:'MABC — About (48-seat board list)',u:'https://mining.bc.ca/about'},
+ {l:'BC Lobbyist Registry — MABC reg #1446-2123',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=2123&regId=56561664'},
+ {l:'BC Lobbyist Registry — MABC client summary',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/clntSmmry?clientOrgCorpNumber=2123'},
+ {l:'BC Lobbyist Registry — MABC consultant-lobbyist reg (Diana Walls)',u:'https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=2125&regId=56553651'},
+ {l:'PLUS — About Us (board, funding structure)',u:'https://publiclanduse.ca/about-us/'},
+ {l:'LinkedIn — Warren Mirko',u:'https://ca.linkedin.com/in/warren-mirko-554024b'},
+ {l:'Northern Beat — Mirko "vote buying" opinion piece',u:'https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/'},
+ {l:'Fraser Institute — Moyse "pay to play" commentary',u:'https://www.fraserinstitute.org/commentary/recent-deal-highlights-bc-governments-costly-pay-play-approach-land-use'},
+ {l:'Todayville — syndicated "pay $4,000... more than all 5 million British Columbians" framing',u:'https://www.todayville.com/first-resource-agreement-with-bc-under-dripa-appears-to-pay-4000-tahltan-nation-members-more-than-all-5-million-british-columbians/'},
+ {l:'PLUS — "Aboriginal title claims should be proven in courts" (Dehaas repost)',u:'https://publiclanduse.ca/news/aboriginal-title-claims-should-be-proven-in-courts-not-signed-away-by-governments/'}
+],
+'Follow-Up Research Pass (Aug 12, 2026)':[
+ {l:"The Narwhal — Eskay Creek mine faces make-or-break vote (K'adesibe Collective, Beverly Slater), Dec 3 2025",u:'https://thenarwhal.ca/eskay-creek-mine-skeena-resources-tahltan/'},
+ {l:'CRA — 2024 List of Charities open-data dataset (SkeenaWild funding, VERIFIED)',u:'https://open.canada.ca/data/en/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8'},
+ {l:'Elections BC — FRPC contribution-search tool, landing page',u:'https://contributions.electionsbc.gov.bc.ca/pcs/Welcome.aspx'},
+ {l:'Elections BC — FRPC query form (contributor-name search field documented; scripted submission not yet successful)',u:'https://contributions.electionsbc.gov.bc.ca/pcs/Options.aspx'},
+ {l:'Open Government Portal — Lobbying Registrations dataset (download blocked at lobbycanada.gc.ca by Cloudflare)',u:'https://open.canada.ca/data/en/dataset/70ef2117-1095-4d77-80eb-b87f2bada2a4'},
+ {l:'Open Government Portal — Monthly Communication Reports dataset (same Cloudflare block)',u:'https://open.canada.ca/data/en/dataset/a34eb330-7136-4f5e-9f5f-3ba41df58b06'}
+]
+};
+
+const GAPS = [
+'The "70% overlap" claim (Tahltan territory contains 70% of the Golden Triangle) is repeated consistently across secondary sources but no underlying GIS/boundary-overlap source document was located.',
+'Whether the $1.28T figure is being cited by secondary sources as USD or CAD is inconsistent; the primary BCGS document is unambiguous that it is CAD (≈US$985B at the report’s own exchange rate).',
+'The 37.5% BC mineral-tax-revenue-share figure and the $2 billion projected 13-year Tahltan benefit from Eskay Creek were not independently confirmed against a primary document.',
+'A July 2, 2026 federal-provincial "cooperative prosperity agreement" appeared once in a search summary and was not independently verified.',
+'No specific hectare/acreage figure exists publicly for what land the Foundation Agreement would actually transfer — only the 95,933 km² territorial-claim figure is public. PLUS itself states it could not obtain the agreement text.',
+'No BC Public Accounts contingent-liability line item specific to Tahltan was found — flagged as unresolved, not asserted absent.',
+'The DigiGeoData underlying dataset (digigeodata.com/area/golden-triangle/) was not independently audited deposit-by-deposit.',
+'Federal lobbyist registry (lobbycanada.gc.ca) for Teck, Newmont Canada, Seabridge Gold, and Skeena Gold & Silver: CONFIRMED BLOCKED (Aug 12, 2026 follow-up) — a Cloudflare bot-challenge, verified via both WebFetch and a direct curl request with a browser User-Agent (cf-mitigated: challenge header, HTTP 403), including at the bulk-data CDN/download level (lobbycanada.gc.ca/media/... ZIPs). Not a tooling limitation. A future pass needs an authenticated/interactive browser session or a non-flagged residential IP.',
+'RESOLVED for SkeenaWild Conservation Trust (Aug 12, 2026 follow-up, via CRA bulk open-data CSVs — see the skeenawild node): FY2024 revenue $1,893,814, ~86% federal-government-sourced. CRA charity filings (T3010) for any Canadian-registered arm of Rivers Without Borders/Salmon Beyond Borders remain NOT pulled — both are US-fiscally-sponsored (Tides Center / New Venture Fund) and do not file Canadian T3010s, so this path likely does not apply to them.',
+'Eric Sprott’s current shareholding (if any) in Skeena Resources/Skeena Gold & Silver was searched for and NOT confirmed — not included in this dashboard.',
+'Anglo American’s relationship, if any, to Skeena Resources was searched for and NOT confirmed.',
+'Precise institutional ownership percentages for Newmont (Vanguard/BlackRock) vary 6–12% across sources depending on filing date/type — recommend pulling the most recent SEC 13F/13G directly.',
+'A CanLII citation for the Tsetsaut Skii km Lax Ha Nation v. BC ruling (Burke J., ~June 2026) was not retrieved — only news coverage confirms the ruling.',
+'Copper Fox Metals’ largest reported shareholder (Ernesto Echavarria, ≈57%) is sourced only to aggregator sites, not a SEDI insider filing.',
+'Elections BC individual donor-name query: STILL OPEN, but Aug 12, 2026 follow-up located and documented the actual tool — the Financial Reports and Political Contributions System (FRPC) at contributions.electionsbc.gov.bc.ca/pcs/Options.aspx has a genuine contributor-name search field (ctl00$ContentPlaceHolder1$txtContributor). Scripted POST submissions consistently triggered a reproducible server-side "FRPC Exception" error (not a block/403) across multiple attempts — a technical gap, not a content finding. No individual-donor data obtained for Bennett, Edwards, Keevil family, or any mining executive; a future browser-based (non-scripted) session is needed.',
+'Elections Canada political financing database was not queried for Rebecca Alty, Ellis Ross, or federal party donations from named-company executives.',
+'BC Lobbyist Registry was not checked for registered lobbying contacts between the five other named mining companies and named officials beyond the two AME registrations found.',
+'No FOI request was made for named provincial/TCG negotiating teams below minister level — working-level negotiators are not identified in any public release reviewed.',
+'No Federal Court of Canada case involving TCG as a party was found — absence of evidence is not evidence of absence.',
+'Nathan Cullen’s post-2024 professional activity could not be confirmed one way or the other.',
+'The BC Auditor General’s 2022 mining-oversight follow-up report findings were not independently re-verified against the primary document.',
+'The federal NRCan $44.2M / $50M transmission-funding announcement (2024) was referenced via search results; the original canada.ca release was not independently re-fetched.',
+'PLUS\'s funding sources are not disclosed anywhere on publiclanduse.ca and its CRA charitable status could not be confirmed either way — the single largest open gap in the NGO-network research pass.',
+'RESOLVED (Aug 12, 2026 follow-up): SkeenaWild\'s CRA T3010-derived revenue breakdown was retrieved via CRA\'s own bulk open-data CSVs (bypassing the JS-rendered CharityData.ca and CRA charity-search shells that had failed twice) — see the skeenawild node for FY2024 figures. Named/itemized individual or corporate funders beyond the government/tax-receipted-donation categories remain NOT retrieved — would require CRA\'s "Non-Qualified Donees" resource or a Schedule 6 continuity schedule.',
+'Three of SkeenaWild\'s seven trustee bios (Carrie Collingwood, Mariusz Wroblewski, Anne Hill) were not researched before the session\'s search-tool budget was exhausted.',
+'Rivers Without Borders\' specific funders were searched for by name (Wilburforce, Alaska Conservation Foundation, Campbell Foundation) and not confirmed; its fiscal-sponsorship structure (project of Tides Center) means it does not file its own Form 990.',
+'David Suzuki Foundation\'s exact current total revenue is unresolved: $14.761M (Charity Intelligence, T3010-derived) vs. $24.2M (a less-sourced aggregator) — the CRA T3010 filing should be pulled directly to resolve this.',
+'A claimed historical David Suzuki Foundation funding relationship with EnCana Corporation and ATCO Gas could not be traced to any primary or citable secondary source — should not be published without locating the original source.',
+'Klabona Keepers\' formal incorporation status is unconfirmed — no BC Registry Services / Corporations Canada name search was run; sourcing only supports "operates as an informal/grassroots collective."',
+'Klabona Keepers\' 2023–2026 activity status: STILL OPEN. Aug 12, 2026 follow-up checked thenarwhal.ca (site search, tag pages) and tahltan.org (site search, news/press-release feeds) directly — nothing found. No dated, substantive coverage newer than The Narwhal\'s September 2022 feature was located on either site; this is a reporting gap, not evidence of inactivity. The same follow-up found a distinct, newer (2025) opposition voice — the K\'adesibe Collective — but no source connects it to Klabona Keepers.',
+'Foundation Agreement signature status was re-checked Aug 12, 2026 (tahltan.org site search, news.gov.bc.ca release search) with no change found — but this check ran on the SAME CALENDAR DATE as the original research pass (effectively zero elapsed time), so it should be read as a weak same-day negative, not a fresh currency confirmation. Re-run from a genuinely later date.',
+'MABC\'s 413 total lobbying activity reports were not read individually — the "no Tahltan/Golden Triangle mention found" conclusion rests on the registration summary and most recent 12-month activity summary only.',
+'AME\'s current lobbying registration (Todd Stone, active since Feb 2025, 25 activity reports) was not read report-by-report for Tahltan/Golden Triangle-specific content.',
+'MABC\'s separate consultant-lobbyist registration (Diana Walls / Framepoint Public Affairs) was confirmed to exist but its content was not reviewed for Tahltan-specific mentions.',
+'AME\'s and MABC\'s current total annual revenue figures were not obtained; MABC\'s dues schedule was not found published at all.',
+'PLUS\'s exact founding date/year is not published on its own site and was not found elsewhere.',
+'Whether any MiningWatch board/staff member or DSF board member has a documented tie to SkeenaWild, Salmon Beyond Borders, or Northern Confluence specifically (beyond the SWCC/MakeWay shared-infrastructure finding) was checked for and not found — reported as "not found," not "confirmed absent."'
+];
+
+/* ============================== BUILD LEGEND & FILTERS ============================== */
+
+const legendBox = document.getElementById('legendBox');
+{
+  let h = '<h4>Nodes</h4>';
+  for (const k in CATS) h += `<div class="row"><span class="swatch" style="background:${CATS[k].color}"></span>${CATS[k].label}</div>`;
+  h += '<div class="row"><span class="swatch" style="background:#3fb950;box-shadow:0 0 0 2px #f85149;border-radius:50%"></span>⚠ Documented conflict finding</div>';
+  h += '<hr><h4>Edges</h4>';
+  for (const k in EDGE_TYPES) {
+    const e = EDGE_TYPES[k];
+    h += `<div class="row"><span class="line" style="border-top-color:${e.color};border-top-style:${e.dash?'dashed':'solid'}"></span>${e.label}</div>`;
+  }
+  legendBox.innerHTML = h;
+}
+
+const filterBar = document.getElementById('filterBar');
+let activeTypes = new Set(Object.keys(EDGE_TYPES));
+function buildFilters(){
+  let h = `<button class="filter-btn active" data-f="__all__"><span class="dot" style="background:#8b949e"></span>All</button>`;
+  for (const k in EDGE_TYPES) {
+    h += `<button class="filter-btn active" data-f="${k}"><span class="dot" style="background:${EDGE_TYPES[k].color}"></span>${EDGE_TYPES[k].label}</button>`;
+  }
+  filterBar.innerHTML = h;
+  filterBar.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const f = btn.dataset.f;
+      if (f === '__all__') {
+        activeTypes = new Set(Object.keys(EDGE_TYPES));
+        filterBar.querySelectorAll('.filter-btn').forEach(b=>b.classList.add('active'));
+      } else {
+        if (activeTypes.has(f)) { activeTypes.delete(f); btn.classList.remove('active'); }
+        else { activeTypes.add(f); btn.classList.add('active'); }
+        const allBtn = filterBar.querySelector('[data-f="__all__"]');
+        if (activeTypes.size === Object.keys(EDGE_TYPES).length) allBtn.classList.add('active');
+        else allBtn.classList.remove('active');
+      }
+      applyFilters();
+    });
+  });
+}
+buildFilters();
+function applyFilters(){
+  edgeEls.forEach(eo=>{
+    const show = activeTypes.has(eo.d.type);
+    eo.line.style.display = show ? '' : 'none';
+    eo.hit.style.display = show ? '' : 'none';
+    if (eo.warnEl) eo.warnEl.style.display = show ? '' : 'none';
+  });
+}
+
+/* ============================== FORCE SIMULATION ============================== */
+
+const svg = document.getElementById('graphSvg');
+const NS = 'http://www.w3.org/2000/svg';
+const graphPanel = document.getElementById('graphPanel');
+let W = graphPanel.clientWidth, H = graphPanel.clientHeight;
+
+function el(tag, attrs){
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+const edgeLayer = el('g',{id:'edgeLayer'});
+const nodeLayer = el('g',{id:'nodeLayer'});
+svg.appendChild(edgeLayer);
+svg.appendChild(nodeLayer);
+
+// initialize node positions in a circle
+const nodeById = {};
+NODES.forEach((n,i)=>{
+  const angle = (i / NODES.length) * Math.PI * 2;
+  const r = Math.min(W,H) * 0.34;
+  n.x = W/2 + Math.cos(angle) * r + (Math.random()-0.5)*20;
+  n.y = H/2 + Math.sin(angle) * r + (Math.random()-0.5)*20;
+  n.vx = 0; n.vy = 0;
+  n.radius = (n.cat === 'individual' || n.cat === 'ngo') ? 8 : 11;
+  n.fixed = false;
+  nodeById[n.id] = n;
+});
+
+// build SVG node elements
+const nodeEls = [];
+NODES.forEach(n=>{
+  const g = el('g',{class:'node', 'data-id':n.id});
+  const circle = el('circle',{class:'node-circle', r:n.radius, fill:CATS[n.cat].color});
+  g.appendChild(circle);
+  if (n.warning) {
+    const ring = el('circle',{class:'node-warn-ring', r:n.radius+4});
+    g.appendChild(ring);
+    const wtxt = el('text',{class:'node-label warn-icon', x:n.radius+2, y:-n.radius-3});
+    wtxt.textContent = '⚠';
+    g.appendChild(wtxt);
+  }
+  const label = el('text',{class:'node-label', x:n.radius+4, y:4});
+  label.textContent = n.label.length > 26 ? n.label.slice(0,24)+'…' : n.label;
+  g.appendChild(label);
+  svg_nodeInteractions(g, n);
+  nodeLayer.appendChild(g);
+  nodeEls.push({g, circle, n});
+});
+
+// build SVG edge elements
+const edgeEls = [];
+EDGES.forEach(d=>{
+  const et = EDGE_TYPES[d.type];
+  const line = el('line',{class:'edge-line', stroke:et.color, 'stroke-width':et.width,
+    'stroke-dasharray':et.dash, opacity: et.opacity!==undefined?et.opacity:0.85});
+  const hit = el('line',{class:'edge-hit'});
+  let warnEl = null;
+  if (d.type === 'revolving') {
+    warnEl = el('text',{class:'warn-icon', 'text-anchor':'middle'});
+    warnEl.textContent = '⚠';
+  }
+  edgeLayer.appendChild(line);
+  edgeLayer.appendChild(hit);
+  if (warnEl) edgeLayer.appendChild(warnEl);
+  const obj = {line, hit, warnEl, d};
+  hit.addEventListener('mouseenter', (ev)=> showTooltip(ev, `<div class="t-title">${d.label}</div><div class="t-cat">${et.label}</div>${firstLine(d.detail)}`));
+  hit.addEventListener('mousemove', moveTooltip);
+  hit.addEventListener('mouseleave', hideTooltip);
+  hit.addEventListener('click', ()=> openDetailEdge(d));
+  edgeEls.push(obj);
+});
+
+function firstLine(txt){
+  const s = txt.trim().split('. ')[0];
+  return s.length > 140 ? s.slice(0,140)+'…' : s + '.';
+}
+
+function svg_nodeInteractions(g, n){
+  let dragging = false, offX=0, offY=0;
+  g.addEventListener('mouseenter', (ev)=>{
+    if (dragging) return;
+    showTooltip(ev, `<div class="t-title">${n.label}${n.warning?' <span class="warn-icon">⚠</span>':''}</div><div class="t-cat">${CATS[n.cat].label}</div>${firstLine(n.detail)}`);
+  });
+  g.addEventListener('mousemove', moveTooltip);
+  g.addEventListener('mouseleave', hideTooltip);
+  g.addEventListener('mousedown', (ev)=>{
+    dragging = true; n.fixed = true;
+    hideTooltip();
+    const pt = svgPoint(ev);
+    offX = n.x - pt.x; offY = n.y - pt.y;
+    ev.preventDefault();
+  });
+  window.addEventListener('mousemove', (ev)=>{
+    if (!dragging) return;
+    const pt = svgPoint(ev);
+    n.x = pt.x + offX; n.y = pt.y + offY;
+    n.vx = 0; n.vy = 0;
+  });
+  window.addEventListener('mouseup', ()=>{
+    if (dragging) { dragging = false; n.fixed = false; }
+  });
+  g.addEventListener('click', (ev)=>{
+    if (Math.abs(ev.movementX||0) + Math.abs(ev.movementY||0) < 2) openDetailNode(n);
+  });
+}
+
+function svgPoint(ev){
+  const rect = svg.getBoundingClientRect();
+  return { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+}
+
+/* ---- tooltip ---- */
+const tooltip = document.getElementById('tooltip');
+function showTooltip(ev, html){ tooltip.innerHTML = html; tooltip.style.display='block'; moveTooltip(ev); }
+function moveTooltip(ev){
+  tooltip.style.left = (ev.clientX + 16) + 'px';
+  tooltip.style.top = (ev.clientY + 14) + 'px';
+}
+function hideTooltip(){ tooltip.style.display = 'none'; }
+
+/* ---- detail drawer ---- */
+const drawer = document.getElementById('detailDrawer');
+document.getElementById('ddClose').addEventListener('click', ()=> drawer.classList.remove('open'));
+
+function openDetailNode(n){
+  document.getElementById('ddCat').textContent = CATS[n.cat].label;
+  document.getElementById('ddCat').style.background = CATS[n.cat].color+'33';
+  document.getElementById('ddCat').style.color = CATS[n.cat].color;
+  document.getElementById('ddTitle').innerHTML = n.label + (n.warning ? ' <span class="warn-icon">⚠ documented conflict finding</span>' : '');
+  document.getElementById('ddBody').textContent = n.detail;
+  const srcHtml = (n.sources||[]).map(s=>`<a href="${s.u}" target="_blank" rel="noopener">${s.l} ↗</a>`).join('');
+  document.getElementById('ddSources').innerHTML = '<strong style="font-size:11px;color:var(--muted)">SOURCES</strong>' + srcHtml;
+  const conns = EDGES.filter(e=> e.s===n.id || e.t===n.id);
+  let ch = conns.length ? '<strong style="font-size:11px;color:var(--muted)">CONNECTIONS ('+conns.length+')</strong>' : '';
+  conns.forEach(e=>{
+    const other = nodeById[e.s===n.id?e.t:e.s];
+    ch += `<div class="conn-item" data-eid="${e.id}"><div>${e.label}</div><div class="cl">${EDGE_TYPES[e.type].label} · ${other.label}</div></div>`;
+  });
+  document.getElementById('ddConns').innerHTML = ch;
+  document.getElementById('ddConns').querySelectorAll('.conn-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const e = EDGES.find(x=>x.id===item.dataset.eid);
+      if (e) openDetailEdge(e);
+    });
+  });
+  drawer.classList.add('open');
+  highlightNode(n.id);
+}
+
+function openDetailEdge(d){
+  const et = EDGE_TYPES[d.type];
+  document.getElementById('ddCat').textContent = et.label;
+  document.getElementById('ddCat').style.background = et.color+'33';
+  document.getElementById('ddCat').style.color = et.color;
+  document.getElementById('ddTitle').textContent = d.label;
+  document.getElementById('ddBody').textContent = d.detail;
+  const srcHtml = (d.sources||[]).map(s=>`<a href="${s.u}" target="_blank" rel="noopener">${s.l} ↗</a>`).join('');
+  document.getElementById('ddSources').innerHTML = '<strong style="font-size:11px;color:var(--muted)">SOURCES</strong>' + srcHtml;
+  const sN = nodeById[d.s], tN = nodeById[d.t];
+  document.getElementById('ddConns').innerHTML = `<strong style="font-size:11px;color:var(--muted)">PARTIES</strong>
+    <div class="conn-item" data-id="${sN.id}">${sN.label} <span class="cl">${CATS[sN.cat].label}</span></div>
+    <div class="conn-item" data-id="${tN.id}">${tN.label} <span class="cl">${CATS[tN.cat].label}</span></div>`;
+  document.getElementById('ddConns').querySelectorAll('.conn-item').forEach(item=>{
+    item.addEventListener('click', ()=>{ const nn = nodeById[item.dataset.id]; if(nn) openDetailNode(nn); });
+  });
+  drawer.classList.add('open');
+  highlightEdge(d.id);
+}
+
+function highlightNode(id){
+  nodeEls.forEach(o=> o.circle.style.opacity = (o.n.id===id ? 1 : 0.9));
+}
+function highlightEdge(id){}
+
+/* ============================== PHYSICS LOOP ============================== */
+
+const REPULSION = 2600;
+const SPRING_LEN = 130;
+const SPRING_K = 0.02;
+const DAMPING = 0.86;
+const GRAVITY = 0.0009;
+
+function tick(){
+  W = graphPanel.clientWidth; H = graphPanel.clientHeight;
+  const n = NODES;
+  // repulsion
+  for (let i=0;i<n.length;i++){
+    for (let j=i+1;j<n.length;j++){
+      let dx = n[i].x - n[j].x, dy = n[i].y - n[j].y;
+      let d2 = dx*dx + dy*dy;
+      if (d2 < 1) d2 = 1;
+      const d = Math.sqrt(d2);
+      const force = REPULSION / d2;
+      const fx = (dx/d) * force, fy = (dy/d) * force;
+      if (!n[i].fixed){ n[i].vx += fx; n[i].vy += fy; }
+      if (!n[j].fixed){ n[j].vx -= fx; n[j].vy -= fy; }
+    }
+  }
+  // springs
+  EDGES.forEach(e=>{
+    const a = nodeById[e.s], b = nodeById[e.t];
+    let dx = b.x - a.x, dy = b.y - a.y;
+    let d = Math.sqrt(dx*dx+dy*dy) || 1;
+    const force = (d - SPRING_LEN) * SPRING_K;
+    const fx = (dx/d) * force, fy = (dy/d) * force;
+    if (!a.fixed){ a.vx += fx; a.vy += fy; }
+    if (!b.fixed){ b.vx -= fx; b.vy -= fy; }
+  });
+  // gravity to center
+  n.forEach(node=>{
+    if (node.fixed) return;
+    node.vx += (W/2 - node.x) * GRAVITY;
+    node.vy += (H/2 - node.y) * GRAVITY;
+    node.vx *= DAMPING; node.vy *= DAMPING;
+    node.x += node.vx; node.y += node.vy;
+    const pad = node.radius + 10;
+    node.x = Math.max(pad, Math.min(W-pad, node.x));
+    node.y = Math.max(pad, Math.min(H-pad, node.y));
+  });
+  render();
+  requestAnimationFrame(tick);
+}
+
+function render(){
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  nodeEls.forEach(o=>{
+    o.g.setAttribute('transform', `translate(${o.n.x},${o.n.y})`);
+  });
+  edgeEls.forEach(o=>{
+    const a = nodeById[o.d.s], b = nodeById[o.d.t];
+    o.line.setAttribute('x1',a.x); o.line.setAttribute('y1',a.y);
+    o.line.setAttribute('x2',b.x); o.line.setAttribute('y2',b.y);
+    o.hit.setAttribute('x1',a.x); o.hit.setAttribute('y1',a.y);
+    o.hit.setAttribute('x2',b.x); o.hit.setAttribute('y2',b.y);
+    if (o.warnEl){
+      o.warnEl.setAttribute('x', (a.x+b.x)/2);
+      o.warnEl.setAttribute('y', (a.y+b.y)/2);
+    }
+  });
+}
+
+requestAnimationFrame(tick);
+window.addEventListener('resize', ()=>{ W = graphPanel.clientWidth; H = graphPanel.clientHeight; });
+
+/* ============================== TABS ============================== */
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ============================== RISKS TAB ============================== */
+
+(function buildRisks(){
+  const c = document.getElementById('tab-risks');
+  let h = '';
+
+  h += `<div class="card hero">
+    <div class="sev-label">Correcting the viral claim</div>
+    <h3>"$1.28 trillion in minerals" and "the Tahltan land transfer" are two separately-sourced facts, merged into one</h3>
+    <p><strong>Fact 1:</strong> The $1.28 trillion figure comes from BC Geological Survey Information Circular 2022-05, "The Golden Triangle of northwestern British Columbia" — a regional in-situ contained-metal estimate for the whole Golden Triangle mining district as of Dec 31, 2021. It is a Canadian-dollar figure (≈US$985B at the report's own exchange rate), includes low-confidence Inferred resources, and its 8 pages contain zero mentions of "Tahltan," "First Nation," or "Indigenous."</p>
+    <p><strong>Fact 2:</strong> "The Tahltan land transfer" refers to an unsigned, undisclosed "Foundation Agreement" between TCG and the Province — revealed only via Public Land Use Society's May 19, 2026 FOI reporting — covering governance restructuring and Aboriginal Title recognition across the ≈95,933 km² (11% of BC) territory Tahltan asserts. It is NOT an itemized parcel transfer; no acreage figure for actual land to change hands is public anywhere. 400+ pages of related records were withheld from FOI disclosure.</p>
+    <p><strong>The conflation:</strong> Northern Beat (Jul 3, 2026) was the earliest identified reporting to combine the two, correctly attributing the 70%-Golden-Triangle-overlap framing. The most direct source of the "hand over" phrasing is the BC Conservative Party's conservativebc.ca post (Aug 11, 2026), which frames the still-unsigned negotiation as a completed transaction: "the NDP plans to hand over... 96,000 square kilometres... and $1.28 trillion in mineral wealth—to the Tahltan Nation." This is partisan advocacy framing, not a government or Tahltan statement.</p>
+    <div class="src">
+      <a href="https://cmscontent.nrs.gov.bc.ca/geoscience/PublicationCatalogue/InformationCircular/BCGS_IC2022-05.pdf" target="_blank">BCGS IC2022-05 (PDF) ↗</a>
+      <a href="https://publiclanduse.ca/news/plus-foi-records-reveal-bc-negotiating-tahltan-title-land-transfers-and-governance-framework-across-11-of-province/" target="_blank">PLUS FOI report ↗</a>
+      <a href="https://northernbeat.ca/news/backed-by-ottawa-bc-negotiates-governance-negotiates-aboriginal-title-in-mineral-rich-northwest/" target="_blank">Northern Beat ↗</a>
+      <a href="https://conservativebc.ca/massive-ndp-land-transfers-could-total-up-to-24-million-acres/" target="_blank">conservativebc.ca ↗</a>
+    </div>
+  </div>`;
+
+  h += `<div class="section-label">1 · Documented conflicts of interest</div>`;
+  h += `<div class="card sev-critical">
+    <div class="sev-label">Critical — the only entry in this category</div>
+    <h3>Bill Bennett → Kutcho Copper Corp. (revolving door)</h3>
+    <p>Bill Bennett, BC's Minister of Energy and Mines, personally signed the province's 2017 bilateral Red Chris agreement with TCG. After leaving office he joined the boards of Eagle Plains Resources (3 days after leaving cabinet), Kutcho Copper Corp. — whose project sits inside Tahltan Territory with its own 2018 TCG exploration agreement — Ascot Resources Ltd., and consulted for Rare Earth Ridge Resources Corp.</p>
+    <p><strong>This is a revolving-door PATTERN, not an in-office conflict.</strong> No evidence was found of any financial arrangement, payment, or promise predating or during his time as minister. No other named official (Rankin, Chandra Herbert, Brar, Davidson, Heyman, Cullen, Hartwell, Alty, Ross) has a documented prior-employment, consulting, or board tie to any of the seven companies in this file.</p>
+    <div class="src"><a href="https://www.mining.com/former-bc-mines-minister-now-director-project-generating-junior" target="_blank">Mining.com ↗</a><a href="https://www.eagleplains.com/news/eagle-plains-announces-appointment-bill-bennett-board-directors-resignation-ron-netolitzky" target="_blank">Eagle Plains ↗</a></div>
+  </div>`;
+
+  h += `<div class="section-label">2 · Financial interest concentration</div>`;
+  h += `<div class="card sev-warning">
+    <h3>Six mines, concentrated ownership at the top</h3>
+    <p><strong>N. Murray Edwards</strong> — Chairman, ≈40% largest shareholder of Imperial Metals (30% of Red Chris); Forbes 2026 net worth ≈US$4.8B. <strong>Keevil family</strong> — 55% Class A voting control of Teck (75% of Schaft Creek, 50% of Galore Creek), controlling not majority-economic interest, sunsetting by May 2029. <strong>Copper Fox's</strong> reported ≈57% holder Ernesto Echavarria is UNVERIFIED against a SEDI filing.</p>
+    <p>Institutional holders: Newmont's largest are Vanguard (≈7.7–12%) and BlackRock (≈6.2–11%) — sources disagree on exact percentage, treat as a range; Seabridge Gold institutional ownership ≈38–44%, largest single holder Kopernik Global Investors (≈7.99%). These are ordinary diversified holdings, not control positions.</p>
+    <div class="src"><a href="https://www.forbes.com/profile/n-murray-edwards/" target="_blank">Forbes ↗</a><a href="https://www.teck.com/news/news-releases/2023/teck-introduces-sunset-for-dual-class-share-structure" target="_blank">Teck ↗</a></div>
+  </div>`;
+
+  h += `<div class="section-label">3 · Advocacy influence</div>`;
+  h += `<div class="card sev-advocacy">
+    <h3>AME's registered Tahltan-specific lobbying (clearest documented finding)</h3>
+    <p>Association for Mineral Exploration BC registered BC lobbying twice in 2015–16 explicitly naming "Tahltan/BC Government discussions" and requests to sign exploration agreements in Tahltan territory, targeting then-Minister Bill Bennett among others.</p>
+    <p>On the conservation side: SkeenaWild Conservation Trust's Mar 2025 "Key Risks & Lessons at the Red Chris Mine" report drew a TCG open-letter response (Apr 4, 2025) that emphasized TCG's own governance role without directly rebutting the technical concerns — evidence the positions differ, not that they're adversarial. Klabona Keepers, a grassroots Elders' movement distinct from elected TCG, has a documented ≈20-year history: Shell coalbed methane (2004–2012) and Mount Klappan coal (≈15 years of opposition, defeated).</p>
+    <div class="src"><a href="https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=507066" target="_blank">Registry #507066 ↗</a><a href="https://www.lobbyistsregistrar.bc.ca/app/secure/orl/lrs/do/vwRg?cno=194&regId=554318" target="_blank">Registry #554318 ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-advocacy">
+    <h3>A newer, distinct opposition voice raised free/prior/informed-consent concerns about the Eskay Creek vote</h3>
+    <p>The Narwhal's Dec 3, 2025 reporting on the Eskay Creek Impact Benefit Agreement vote documents the <strong>K'adesibe Collective</strong> — Tahltan women who keep their identities confidential "due to fear of backlash within their community" — sending Skeena Resources an unanswered letter raising environmental concerns, and quotes <strong>Beverly Slater</strong>, a former interim TCG president, questioning whether the consent process met genuine "free, prior and informed consent" standards. The same article notes general member complaints about feeling "muted or censored" in community meetings.</p>
+    <p>This is documented public-record reporting by a credible investigative outlet of concerns raised by named-but-anonymous community members and a named former TCG official — <strong>not an allegation this investigation is making</strong>, and it does not mean the Eskay Creek vote (which passed per the official record — see the tcg↔skeena Impact Benefit Agreement edge) was invalid. Both facts are true simultaneously and are presented here without adjudication. <strong>The K'adesibe Collective is explicitly distinct from Klabona Keepers</strong> — no source connects the two groups; do not treat this as a rebrand or continuation.</p>
+    <div class="src"><a href="https://thenarwhal.ca/eskay-creek-mine-skeena-resources-tahltan/" target="_blank">The Narwhal — Eskay Creek vote, Dec 3 2025 ↗</a></div>
+  </div>`;
+
+  h += `<div class="section-label">3B · Industry-association &amp; NGO-network governance (Aug 2026 update)</div>`;
+  h += `<div class="card sev-info">
+    <div class="sev-label">Disclosure, not allegation</div>
+    <h3>SkeenaWild's own funding is overwhelmingly government-sourced</h3>
+    <p>CRA's own bulk open-data filings (BN 832887814RR0001, FY2024, verified directly against CRA's T3010-derived CSVs — not a third-party aggregator) show SkeenaWild Conservation Trust's total revenue was $1,893,814, of which <strong>~86% ($1,628,061) came from the federal government</strong>. Provincial government ($175,215), municipal government ($16,229), and tax-receipted private donations ($21,271) were each minor by comparison. No line item identifies mining-industry funding.</p>
+    <p>A government-funded watchdog monitoring government-approved mining projects is a normal and common structure — this is disclosure/transparency information reported factually, not an allegation. It does not contradict the Moore Foundation's separately-documented $2.27M cumulative funding since 2010 (a multi-year figure, distinct from this single fiscal year).</p>
+    <div class="src"><a href="https://open.canada.ca/data/en/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8" target="_blank">CRA — 2024 List of Charities (open data) ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-warning">
+    <h3>The transparency group's own funding is not transparent</h3>
+    <p>Public Land Use Society (PLUS) — source of the Foundation Agreement FOI reporting — discloses no funders or donors anywhere on publiclanduse.ca, and its CRA charitable status could not be confirmed either way. This is a notable contrast given PLUS's central advocacy focus is government transparency.</p>
+    <div class="src"><a href="https://publiclanduse.ca/about-us/" target="_blank">PLUS — About Us ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-critical">
+    <h3>The revolving-door minister sits on the province's central mining trade-association board too</h3>
+    <p>Bill Bennett's board seat at Kutcho Copper Corp. carries with it a named seat on the Mining Association of BC's 48-member board — extending the existing single-company revolving-door finding onto the province's central mining-industry trade association.</p>
+    <div class="src"><a href="https://mining.bc.ca/about" target="_blank">MABC — About ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-info">
+    <h3>Industry association boards are staffed by the same six companies already in this investigation</h3>
+    <p>AME's and MABC's boards combined hold named seats for all six mapped companies (Newmont, Imperial Metals, Teck, Seabridge Gold, Skeena Resources, Copper Fox Metals) plus Kutcho Copper. <strong>This is normal trade-association structure, explicitly NOT framed as a conflict</strong> — a mineral-sector lobby's board being composed of sector executives is exactly what it is for.</p>
+    <div class="src"><a href="https://amebc.ca/about/board-staff/" target="_blank">AME — board/staff ↗</a><a href="https://mining.bc.ca/about" target="_blank">MABC — About ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-advocacy">
+    <h3>PLUS's leadership has personally authored advocacy content opposing the legal framework the Tahltan agreements were negotiated under</h3>
+    <p>PLUS's Executive Director Warren Mirko ("vote buying," "the gradual splitting of British Columbia") and Legal &amp; Policy Committee chair Geoffrey Moyse, K.C. (a Fraser Institute "pay to play" commentary specifically about the Eskay Creek DRIPA agreement) have both authored content critical of the Tahltan agreements and DRIPA generally; PLUS itself called for DRIPA's repeal (Dec 16, 2025). <strong>This is context for weighing PLUS's framing and emphasis — it does NOT mean the underlying FOI documents PLUS obtained are inaccurate.</strong></p>
+    <div class="src"><a href="https://www.fraserinstitute.org/commentary/recent-deal-highlights-bc-governments-costly-pay-play-approach-land-use" target="_blank">Fraser Institute ↗</a><a href="https://northernbeat.ca/opinion/eby-government-gives-tahltan-nation-veto-over-gold-mine-development/" target="_blank">Northern Beat op-ed ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-advocacy">
+    <h3>Environmental NGOs form a documented advocacy network — but show no financial ties to the mining side</h3>
+    <p>Northern Confluence Initiative's own "Partners" page names SkeenaWild, Salmon Beyond Borders, and MiningWatch Canada together, alongside the BC Mining Law Reform network its director Nikki Skuce co-chairs with MiningWatch's Jamie Kneen. Rivers Without Borders is a formal dues-paying MiningWatch coalition member. <strong>Paired negative finding:</strong> no NGO board, staff, or funder overlap was found with any of the six mining companies or the named officials in this file.</p>
+    <div class="src"><a href="https://northernconfluence.ca/about-us/partners/" target="_blank">Northern Confluence — Partners ↗</a><a href="https://www.miningwatch.ca/miningwatch-canada-members" target="_blank">MiningWatch — Members ↗</a></div>
+  </div>`;
+  h += `<div class="card sev-info">
+    <h3>Grassroots opposition to Red Chris predates every government agreement in this file by years</h3>
+    <p>Klabona Keepers blockaded Red Chris Mine itself on Aug 8, 2014 — a direct-action protest, not litigation — three days after Imperial Metals' Mount Polley tailings dam failure. MiningWatch Canada's documented Tahltan-territory involvement (hosting the 2005 Elders' moratorium statement, covering the 2006 Iskut blockade) predates even the 2010 SCC MiningWatch v. Canada case by five years.</p>
+    <div class="src"><a href="https://icmagazine.org/tahltan-elders-blockade-red-chris-mine-mount-polley-breach-25256/" target="_blank">IC Magazine — 2014 blockade ↗</a><a href="https://miningwatch.ca/blog/2005/2/25/tahltan-elders-statement-dena-nenn-sogga-neh-ine-protectors-and-keepers-land" target="_blank">MiningWatch — 2005 statement ↗</a></div>
+  </div>`;
+
+  h += `<div class="section-label">4 · Foreign involvement</div>`;
+  h += `<div class="card sev-info">
+    <div class="sev-label">Negative finding — reported as such</div>
+    <h3>Ordinary FDI only; no interference finding</h3>
+    <p>Every major operator (Newmont [US-domiciled], Teck, Seabridge Gold, Skeena Gold &amp; Silver, Copper Fox Metals, Imperial Metals [all Canadian]) is a normal, legally-domiciled, publicly traded mining company. Newmont's US domicile, and predecessor Newcrest's former Australian domicile (until its Nov 2023 acquisition by Newmont), are ordinary foreign direct investment, fully disclosed in public filings.</p>
+    <p><strong>No source was found alleging state-linked or government interference specific to Tahltan territory or any of the six named projects.</strong> This absence of evidence is reported as a negative finding, not as a suspicious gap requiring further scrutiny.</p>
+  </div>`;
+
+  h += `<div class="section-label">5 · Process / oversight</div>`;
+  h += `<div class="card sev-warning">
+    <h3>2016 Auditor General report, general litigation, and the Foundation Agreement transparency gap</h3>
+    <p>BC's Auditor General found in May 2016 that mining-sector compliance and enforcement was inadequate <em>province-wide</em>, using Red Chris/Imperial Metals (opened months after the same company's Mount Polley tailings disaster, a different territory) as context — not a Tahltan-specific audit.</p>
+    <p>Two rounds of litigation — Gitxaała v. BC (2023 BCSC 1680; 2025 BCCA 430) — struck down BC's "free entry" mineral-tenure system as inconsistent with the duty to consult and UNDRIP. Tsetsaut Skii km Lax Ha Nation v. BC (2026 BCSC 1042) found a separate duty-to-consult breach at KSM. <strong>None of these are Tahltan-party cases</strong> — they are general mineral-tenure-regime rulings that happen to affect all BC territory, Tahltan's included.</p>
+    <p>The single largest remaining transparency/oversight gap: <strong>the unsigned, undisclosed Foundation Agreement itself</strong> — 400+ pages of related records withheld under FOI, no draft text obtained by anyone outside government and TCG negotiators.</p>
+    <div class="src"><a href="https://www.oag.bc.ca/app/uploads/sites/963/2024/08/OAGBC-2016-05-01-OAGBC-Mining-Report-FINAL.pdf" target="_blank">2016 AG report (PDF) ↗</a></div>
+  </div>`;
+
+  c.innerHTML = h;
+})();
+
+/* ============================== TIMELINE TAB ============================== */
+
+(function buildTimeline(){
+  const c = document.getElementById('tab-timeline');
+  let h = '';
+  TIMELINE.forEach(t=>{
+    h += `<div class="tl-item">
+      <div class="tl-dot" style="background:${TL_COLORS[t.cat]||'#8b949e'}"></div>
+      <div>
+        <div class="tl-date">${t.date}</div>
+        <div class="tl-label">${t.label}</div>
+        <div class="tl-desc">${t.desc}</div>
+      </div>
+    </div>`;
+  });
+  c.innerHTML = h;
+})();
+
+/* ============================== SOURCES TAB ============================== */
+
+(function buildSources(){
+  const c = document.getElementById('tab-sources');
+  let h = '';
+  for (const cat in SOURCES) {
+    h += `<div class="src-cat"><h4>${cat}</h4>`;
+    SOURCES[cat].forEach(s=>{
+      h += `<a href="${s.u}" target="_blank" rel="noopener">${s.l} <span>↗</span></a>`;
+    });
+    h += `</div>`;
+  }
+  h += `<div class="src-cat"><h4>Research Gaps</h4><ul class="gaps-list">`;
+  GAPS.forEach(g=> h += `<li>${g}</li>`);
+  h += `</ul></div>`;
+  c.innerHTML = h;
+})();
+
+</script>
+</body>
+</html>

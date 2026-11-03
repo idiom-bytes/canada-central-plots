@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victoria's Fine Print | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;--color-cream-dark: #E8E2D5;--color-beige: #D8D1C2;--color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;--color-text-primary: #2D2D2D;--color-text-secondary: #5A5A5A;--color-text-tertiary: #8A8A8A;
+      --color-teal: #3A5F6F;--shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);--radius-md: 0.5rem;--radius-lg: 0.75rem;
+      --accent: #4A6FA5;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .story-nav{font-size:0.75rem;margin:0 0 0.5rem}
+    .story-nav a{color:var(--color-teal);text-decoration:none;font-weight:600}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem;max-width:900px}
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat .big{font-size:2rem;font-weight:800;color:var(--accent);line-height:1.2}
+    @media(min-width:640px){.hero-stat .big{font-size:2.5rem}}
+    .hero-stat .label{font-size:0.75rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;margin-top:4px}
+    .metric-desc{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.5;margin:0 0 12px}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative;margin-bottom:1.5rem}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 8px;color:var(--color-text-primary)}
+    .chart-wrap{position:relative;height:380px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+    .view-toggle{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+    .view-btn{padding:5px 14px;border-radius:9999px;font-size:0.6875rem;font-weight:600;cursor:pointer;border:2px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);transition:all .15s}
+    .view-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .accountability h3{font-size:1.0625rem;font-weight:700;color:var(--accent);margin:0 0 0.75rem}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#e6ecf5;border-color:#c7d3e8;color:#4A6FA5}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .flag-yale{font-size:0.6875rem;color:#92400e;font-weight:600}
+    .caveat{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.5;background:var(--color-cream-dark);border-radius:var(--radius-md);padding:0.6rem 0.85rem;margin-top:0.5rem}
+    .legend-key{display:flex;flex-wrap:wrap;gap:10px 16px;margin:8px 0 0;font-size:0.6875rem;color:var(--color-text-secondary)}
+    .legend-key span.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
+    .note28-yes{color:var(--color-teal);font-weight:700}
+    .note28-no{color:var(--color-text-tertiary);font-weight:600}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="../index.html">Statistics</a>
+      <a href="../scorecard-v2.html">Scorecard</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+      <p class="story-nav">&larr; <a href="bc-treaty-land.html">The Land Ledger</a> &middot; Chapter 2 of 3</p>
+
+      <h1 class="page-title">Victoria's Fine Print</h1>
+      <p class="page-subtitle">Source: Ministry of Indigenous Relations and Reconciliation, "TTA Treaty Area and Treaty Lands" map (June 2026) &middot; BC Public Accounts 2025/26, Note 28 &middot; Times Colonist, CHEK News, Victoria News, The Epoch Times (2026)</p>
+      <p class="page-desc">In August 2026, a viral social-media map titled "Songhees Nation Proposed Treaty Lands" &mdash; showing Hatley Castle, downtown Victoria parking lots, and island reserves circled in Crown-land yellow &mdash; was presented as part of the same 135,425-hectare provincial commitment covered in Chapter 1. It isn't, exactly. The map is a real, primary-source government document: the BC Ministry of Indigenous Relations and Reconciliation's own June 2026 treaty-area poster for the Te'mexw Treaty Association's five-Nation table (Malahat, Scia'new, Snaw-naw-as, Songhees, T'Sou-ke). But of the nine parcels named across its Victoria-area panels, only <strong>four</strong> are actual new provincial Crown land commitments of the kind Note 28 counts: Esquimalt 113, Enterprise Wharf, the Q Lot (assessed at $24.8 million per the Times Colonist), and a strip of Discovery Island Marine Provincial Park. Hatley Park &mdash; the map's single largest, most visually dramatic parcel &mdash; is <strong>federal</strong> land owned by the Department of National Defence, entirely outside Note 28's provincial scope, and is now the subject of a separate, unresolved civil claim by Esquimalt Nation. "New Songhees 1A" and the Chatham/Discovery Island reserve parcels are land Songhees already holds; PCC Pandora is private land Songhees already owns outright. Two different documents, two different legal scopes &mdash; conflated into one number.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="big">1,916.7 ha</div>
+          <div class="label">Te'mexw Note 28 commitment (all 5 Nations, territory-wide)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">5</div>
+          <div class="label">Te'mexw member Nations</div>
+        </div>
+        <div class="hero-stat" style="border-top-color:#8A8A8A">
+          <div class="big" style="color:#8A8A8A">229 ha</div>
+          <div class="label">Hatley Park &mdash; federal, not in Note 28</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">Stage 5 of 6</div>
+          <div class="label">BC Treaty Commission negotiation stage</div>
+        </div>
+        <div class="hero-stat" style="border-top-color:#92400e">
+          <div class="big" style="color:#92400e">Mar 27, 2026</div>
+          <div class="label">Esquimalt Nation files claim over Hatley Park</div>
+        </div>
+      </div>
+
+      <div class="accountability">
+        <h3>Who is accountable for this map?</h3>
+        <p><strong>Ministry of Indigenous Relations and Reconciliation</strong> <span class="entity-tag govt">Published the map</span><br>
+        Confirmed as the actual primary source of the viral "Songhees Nation Proposed Treaty Lands" map: PDF metadata shows it was produced in Adobe Illustrator and created June 10, 2026, as page 6 of a 7-page "TTA Treaty Area and Treaty Lands" poster series covering all five Te'mexw member Nations. It is not a Songhees Nation or advocacy-group document &mdash; it is a provincial government treaty-negotiation map, later re-illustrated and shared by news outlets and on social media.</p>
+
+        <p><strong>Te'mexw Treaty Association</strong> <span class="entity-tag govt">The five-Nation table</span><br>
+        The umbrella body for Malahat, Scia'new (Beecher Bay), Snaw-naw-as, Songhees and T'Sou-ke filed its Statement of Intent to negotiate on July 15, 1994. It reached an Agreement-in-Principle on April 10, 2015 (approximately 1,565 ha of Crown land, not including existing Indian Reserves) and is now in Stage 5 of the BC Treaty Commission's 6-stage process. Each of the five Nations will hold its own membership ratification vote on its own final treaty text before this reaches Stage 6 (Implementation).</p>
+
+        <p><strong>Department of National Defence / Government of Canada</strong> <span class="entity-tag govt">Owns Hatley Park</span><br>
+        Hatley Park &mdash; Hatley Castle and the Royal Roads University campus it sits on &mdash; is federal land, approximately 229 hectares, owned by the Department of National Defence. It sits entirely outside Note 28's provincial Crown land scope, but it is a real, actively negotiated line item at the Songhees treaty table, not map background: multiple 2026 news reports describe it as proposed for transfer from Canada to Songhees Nation once the treaty is ratified by Songhees membership.</p>
+
+        <p><strong>Esquimalt Nation</strong> <span class="entity-tag person">Contests the transfer</span><br>
+        A distinct First Nation from Songhees &mdash; both are successor communities of the Lekwungen people, split into separate Indian Act bands in the late 1800s &mdash; Esquimalt Nation filed a civil claim on March 27, 2026 seeking a permanent injunction against designating Hatley Park as Songhees treaty land, and asserting its own Aboriginal title claim over the site. As of August 12, 2026, the claim's outcome has not been reported. This report treats Hatley Park's ultimate disposition as an open legal question, not a settled outcome either way.</p>
+
+        <div class="quote-block">
+          "Public access and recreational opportunities for the provincial parks would still be safeguarded under the terms of the treaties."
+          <span class="attr">&mdash; British Columbia's stated position, as reported by The Epoch Times, Aug 11&ndash;12, 2026 (the province's position as reported, not an independently verified legal guarantee)</span>
+        </div>
+      </div>
+
+      <div class="view-toggle">
+        <button class="view-btn on" onclick="setView('parcels')">Parcel Classification</button>
+        <button class="view-btn" onclick="setView('aip')">AIP vs. Current</button>
+      </div>
+
+      <div class="chart-card">
+        <h3 id="chartTitle">Victoria-Area Parcels by Map Category</h3>
+        <p class="metric-desc" id="chartDesc"></p>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+        <div class="legend-key" id="legendKey"></div>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">All 9 Named Parcels, Songhees Treaty-Area Map (June 2026)</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"metadata":{"title":"The Land Ledger","last_updated":"2026-08-12","sources":["BC Public Accounts 2021/22-2025/26, Note 28 (gov.bc.ca)","BC Treaty Commission Final Agreement fact sheets (gov.bc.ca)","Ministry of Indigenous Relations and Reconciliation, TTA Treaty Area and Treaty Lands map (June 2026)","Statistics Canada Table 32-10-0047-01","Encyclopedia of British Columbia (KnowBC)","CHEK News, Times Colonist, Daily Hive, The Epoch Times (Aug 9-12 2026)"]},"trend":[{"fiscal_year":"2021/22","hectares":129397.0,"nations_count":18},{"fiscal_year":"2022/23","hectares":132980.0,"nations_count":19},{"fiscal_year":"2023/24","hectares":138590.6,"nations_count":20},{"fiscal_year":"2024/25","hectares":137591.3,"nations_count":20},{"fiscal_year":"2025/26","hectares":135425.3,"nations_count":20}],"nations_2025_26":[{"name":"Ditidaht","hectares":3567.0,"status":"Negotiating"},{"name":"Homalco","hectares":707.0,"status":"Negotiating"},{"name":"In-SHUCK-ch (Skatin and Samahquam)","hectares":9474.0,"status":"Negotiating"},{"name":"Kaska Dena Council","hectares":677.0,"status":"Negotiating"},{"name":"Kitselas","hectares":35290.0,"status":"Final Agreement ratified Apr 10, 2025 -- awaiting effective date"},{"name":"Kitsumkalum","hectares":45789.0,"status":"Final Agreement ratified Nov 1, 2025 -- awaiting effective date"},{"name":"K'omoks","hectares":3040.0,"status":"Final Agreement ratified Mar 8, 2025 -- awaiting effective date"},{"name":"Ktunaxa Nation Council","hectares":418.0,"status":"Negotiating"},{"name":"Lake Babine Nation (BC only)","hectares":497.6,"status":"Incremental Treaty Agreement (+ one-time payment of $0.02M)"},{"name":"Lax Kw'alaams First Nation","hectares":4309.0,"status":"Negotiating"},{"name":"Lheidli T'enneh","hectares":3416.0,"status":"Negotiating"},{"name":"Nazko","hectares":172.0,"status":"Negotiating"},{"name":"NStQ (Canoe Creek, Sugar Cane, Canim Lake, Soda Creek)","hectares":3095.0,"status":"Negotiating"},{"name":"Pacheedaht","hectares":1216.0,"status":"Negotiating"},{"name":"Te'mexw (Malahat, Scia'new, Snaw-naw-as, Songhees, T'Sou-ke)","hectares":1916.7,"status":"Stage 5 negotiation -- Victoria/South Island (see Chapter 2)"},{"name":"Tla-o-qui-aht","hectares":47.0,"status":"Negotiating"},{"name":"Wei Wai Kai (Cape Mudge First Nation)","hectares":612.0,"status":"Negotiating"},{"name":"Wei Wai Kum (Campbell River First Nation)","hectares":1276.0,"status":"Negotiating"},{"name":"Wuikinuxv","hectares":13946.0,"status":"Negotiating"},{"name":"Yekooche","hectares":5960.0,"status":"Negotiating"}],"yale":{"name":"Yale First Nation","note28_hectares":1179.0,"fact_sheet_hectares":1966.0,"status":"Final Agreement ratified 2011/2013 -- effective date not yet agreed, 13+ years on","discrepancy_note":"BC Public Accounts Note 28 has listed Yale's commitment as 1,179 ha, unchanged, in every fiscal year from 2021/22 through 2025/26. BC's own 2010 Yale Lands fact sheet states 1,966 ha (217 ha former reserve + 1,749 ha additional Crown land). The discrepancy is unresolved in public documents -- reported here as an open question, not settled."},"note28_total_2025_26":135425.3,"note28_total_incl_yale":136604.3,"completed_treaties":[{"name":"Nisga'a","effective_date":"2000-05-11","hectares":199200.0},{"name":"Tsawwassen","effective_date":"2009-04-03","hectares":724.0},{"name":"Maa-nulth (5 Nations)","effective_date":"2011-04-01","hectares":24500.0},{"name":"Tla'amin","effective_date":"2016-04-05","hectares":8322.0}],"completed_treaties_total_ha":232746.0,"benchmarks":{"acres_total":334642,"km2_total":1354.25,"metro_vancouver_km2":2878.93,"metro_vancouver_pct":47.0,"vancouver_city_km2":115.18,"vancouver_city_multiple":11.8,"stanley_park_ha":404.9,"stanley_park_multiple":334.5,"farmland_value_per_acre_2025":10577,"farmland_value_source":"Statistics Canada, Table 32-10-0047-01 (2025)","farmland_total_value_estimate":3540000000,"farmland_caveat":"Farmland value is a weak proxy for this land -- the Note 28 total is mostly forested/rural Crown land, not agricultural land, and BC farmland values themselves range more than 40x by region ($2,400 to $104,600/acre per Farm Credit Canada's 2025 report). This is an illustrative scale benchmark, not an appraisal."},"reserve_land":{"bc_reserve_hectares":473485.0,"bc_reserve_source":"Encyclopedia of British Columbia (KnowBC) -- secondary reference figure, no single ISC/StatCan provincial rollup located","pending_commitment_hectares":135425.3,"ratio_reserve_to_pending":3.5},"victoria_parcels":[{"parcel":"Hatley Park / Hatley Castle","map_category":"Federal Crown Land","approx_hectares":229.0,"status":"Existing federal Crown land (Dept. of National Defence); proposed transfer to Songhees as treaty settlement land; contested by a separate Esquimalt Nation civil claim filed Mar 27, 2026","in_note28":false,"reason":"Federal land -- outside Note 28's provincial-Crown-land scope entirely"},{"parcel":"New Songhees 1A","map_category":"Songhees Nation Reserve","approx_hectares":null,"status":"Existing Indian Reserve since 1911 (Songhees relocated from Inner Harbour)","in_note28":false,"reason":"Already-held reserve land, not a new commitment"},{"parcel":"Esquimalt 113","map_category":"Provincial Crown Land","approx_hectares":null,"status":"New provincial Crown land parcel near Lampson St.","in_note28":true,"reason":"Genuine new provincial commitment, part of the Te'mexw 1,916.7 ha figure"},{"parcel":"Enterprise Wharf","map_category":"Provincial Crown Land","approx_hectares":null,"status":"Waterfront parking/dock parcel, 1112 Wharf St.","in_note28":true,"reason":"Genuine new provincial commitment"},{"parcel":"Q Lot","map_category":"Provincial Crown Land","approx_hectares":null,"status":"Parking lot, 430 Menzies St. beside the Legislature; assessed at $24.8M (Times Colonist)","in_note28":true,"reason":"Genuine new provincial commitment"},{"parcel":"PCC Pandora","map_category":"Songhees Nation Private Land","approx_hectares":null,"status":"Already privately owned by Songhees Nation (fee simple)","in_note28":false,"reason":"Not Crown land at all"},{"parcel":"Tl'ches -- Chatham Islands 4","map_category":"Songhees Nation Reserve","approx_hectares":null,"status":"Existing Chatham Islands Indian Reserve No. 4","in_note28":false,"reason":"Already-held reserve land"},{"parcel":"Tl'ches -- Discovery Island 3","map_category":"Songhees Nation Reserve","approx_hectares":null,"status":"Likely existing Indian Reserve No. 3 (not independently confirmed against a federal reserve registry)","in_note28":false,"reason":"Already-held reserve land (pending final confirmation)"},{"parcel":"Tl'ches -- Discovery Island Park","map_category":"Provincial Park Land","approx_hectares":null,"status":"Strip of Discovery Island Marine Provincial Park","in_note28":true,"reason":"New commitment, park sub-category"}],"temexw_status":{"member_nations":["Malahat","Scia'new (Beecher Bay)","Snaw-naw-as","Songhees","T'Sou-ke"],"statement_of_intent":"1994-07-15","agreement_in_principle":"2015-04-10","agreement_in_principle_hectares":1565.0,"current_stage":"Stage 5 of 6 (Negotiation to Finalize a Treaty)","map_source":"Ministry of Indigenous Relations and Reconciliation, \"TTA Treaty Area and Treaty Lands\" map package, June 2026 (govTogetherBC engagement site)","esquimalt_claim_filed":"2026-03-27","esquimalt_claim_status":"Ongoing / unresolved as of Aug 12, 2026"},"access_precedent":[{"treaty":"Nisga'a","effective_date":"2000-05-11","default_land_status":"Fee simple","access_summary":"Public access guaranteed on Nisga'a Public Lands for temporary recreational use (Ch. 6). But Nisga'a Nation may close to the public any non-village Nisga'a road (Ch. 7, para 60(1)) -- the clearest documented precedent for restricted access.","restriction_example":true},{"treaty":"Tsawwassen","effective_date":"2009-04-03","default_land_status":"Fee simple","access_summary":"Public rights-of-way written into standard interest documents. Tsawwassen Mills (1.2M sq ft mall) was later built on treaty settlement land removed from the Agricultural Land Reserve -- a real, documented land-use change, though the mall itself remains open to the public.","restriction_example":false},{"treaty":"Maa-nulth (5 Nations)","effective_date":"2011-04-01","default_land_status":"Fee simple, explicit private-land parity","access_summary":"Official text: each Maa-nulth Nation has \"the same rights and obligations in respect of public access... as other owners of estates in fee simple.\" Thunderbird's Nest (2,185 ha) was added to protected status under the treaty -- an access/conservation gain.","restriction_example":false},{"treaty":"Tla'amin","effective_date":"2016-04-05","default_land_status":"Fee simple","access_summary":"Public recreational access guaranteed on Tla'amin Public Lands and the Sunshine Coast Trail. But Ahgykson (Harwood Island) was designated Tla'amin Private Land with restricted public access on the treaty's own effective date -- the clearest named example of access being narrowed.","restriction_example":true}],"treaty_process_stages":["1. Statement of Intent","2. Readiness to Negotiate","3. Framework Agreement","4. Agreement in Principle","5. Finalization -> Final Agreement","6. Implementation"]};
+
+const CATEGORY_COLORS = {
+  "Provincial Crown Land": "#D4A017",
+  "Provincial Park Land": "#8A8A3D",
+  "Federal Crown Land": "#B33A3A",
+  "Songhees Nation Private Land": "#4A6FA5",
+  "Songhees Nation Reserve": "#7B5EA7"
+};
+
+const VIEW_DESCRIPTIONS = {
+  parcels: 'Every parcel named across the Victoria-area panels of the province’s June 2026 Te’mexw treaty-area map, colour-coded to match the map’s own legend. Hover a segment for its status and whether it counts toward the 1,916.7 ha Note 28 figure. Segment size is uniform — it does not represent hectares (only Hatley Park’s size is publicly documented; see the caveat below).',
+  aip: 'Two different documents, ten years apart, both describing the same five-Nation Te’mexw treaty table: the ~1,565 ha estimate from the April 2015 Agreement-in-Principle (which explicitly excluded existing Indian Reserves), and the 1,916.7 ha figure disclosed in BC’s 2025/26 Public Accounts, Note 28. Do not read the difference as "growth of 352 ha" — see the caveat below.'
+};
+
+let chart = null;
+let currentView = 'parcels';
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('on'));
+  event.target.classList.add('on');
+  document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS[v] || '';
+  updateChart();
+}
+
+function updateChart() {
+  if (chart) chart.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const title = document.getElementById('chartTitle');
+  const tableTitle = document.getElementById('tableTitle');
+  const legendKey = document.getElementById('legendKey');
+
+  if (currentView === 'parcels') {
+    title.textContent = 'Victoria-Area Parcels by Map Category';
+    tableTitle.textContent = 'All 9 Named Parcels, Songhees Treaty-Area Map (June 2026)';
+    const p = DATA.victoria_parcels;
+    chart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: p.map(d => d.parcel),
+        datasets: [{
+          data: p.map(() => 1),
+          backgroundColor: p.map(d => CATEGORY_COLORS[d.map_category] || '#B7C4D6'),
+          borderColor: '#FEFEFE', borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: {
+            title: items => p[items[0].dataIndex].parcel,
+            label: c => {
+              const d = p[c.dataIndex];
+              return [d.map_category, 'In Note 28: ' + (d.in_note28 ? 'Yes' : 'No'), d.reason];
+            }
+          }}
+        }
+      }
+    });
+    legendKey.innerHTML = Object.entries(CATEGORY_COLORS).map(([cat,col]) =>
+      '<span><span class="dot" style="background:' + col + '"></span>' + cat + '</span>').join('');
+    buildVictoriaTable();
+    addCaveat('Only Hatley Park’s approximate size (229 ha, per Parks Canada’s National Historic Site designation) is publicly documented. The other eight parcels are shown by category only, not to scale — no public source gives their individual hectare sizes.');
+
+  } else if (currentView === 'aip') {
+    title.textContent = "Te'mexw Treaty-Wide Commitment: 2015 AIP vs. 2025/26 Note 28";
+    tableTitle.textContent = 'All 9 Named Parcels, Songhees Treaty-Area Map (June 2026)';
+    const t = DATA.temexw_status;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2015 Agreement-in-Principle (Stage 4)', '2025/26 Note 28 (Stage 5)'],
+        datasets: [{
+          label: 'Hectares',
+          data: [t.agreement_in_principle_hectares, DATA.nations_2025_26.find(n => n.name.startsWith("Te'mexw")).hectares],
+          backgroundColor: ['#B7C4D6', '#4A6FA5'],
+          borderRadius: 3
+        }]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw.toLocaleString() + ' ha' } } },
+        scales: { x: { title: { display: true, text: 'Hectares (whole 5-Nation Te’mexw table)', font: { size: 11 } }, beginAtZero: true } }
+      }
+    });
+    legendKey.innerHTML = '';
+    buildVictoriaTable();
+    addCaveat('These are two different-stage estimates from two different documents, ten years apart: the 2015 figure is an Agreement-in-Principle-stage estimate that explicitly excluded existing Indian Reserves; the 2025/26 figure is BC’s current Public Accounts, Note 28 disclosure. The exact reconciliation between them — what was added, resized, or reclassified — is not documented in any public source. Do not read this as "the commitment grew by 351.7 ha."');
+  }
+}
+
+function buildVictoriaTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Parcel</th><th>Map Category</th><th>Status</th><th>In Note 28?</th><th>Reason</th></tr></thead><tbody>';
+  DATA.victoria_parcels.forEach(p => {
+    html += '<tr><td>' + p.parcel + '</td>' +
+      '<td><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle;background:' + (CATEGORY_COLORS[p.map_category] || '#B7C4D6') + '"></span>' + p.map_category + '</td>' +
+      '<td style="font-size:0.75rem;color:var(--color-text-secondary)">' + p.status + '</td>' +
+      '<td class="' + (p.in_note28 ? 'note28-yes' : 'note28-no') + '">' + (p.in_note28 ? 'Yes' : 'No') + '</td>' +
+      '<td style="font-size:0.75rem;color:var(--color-text-secondary)">' + p.reason + '</td></tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function addCaveat(text) {
+  let el = document.getElementById('caveatBox');
+  if (el) el.remove();
+  if (!text) return;
+  el = document.createElement('div');
+  el.id = 'caveatBox';
+  el.className = 'caveat';
+  el.textContent = 'Caveat: ' + text;
+  document.querySelector('.data-table-wrap').insertAdjacentElement('afterend', el);
+}
+
+function copyTable() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push(td.textContent.trim()));
+    rows.push(cells.join('\t'));
+  });
+  navigator.clipboard.writeText(rows.join('\n')).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push('"' + td.textContent.trim().replace(/"/g,'""') + '"'));
+    rows.push(cells.join(','));
+  });
+  const csv = rows.join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bc_treaty_victoria_parcels.csv';
+  a.click();
+}
+
+document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS.parcels;
+updateChart();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Commitment | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;--color-cream-dark: #E8E2D5;--color-beige: #D8D1C2;--color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;--color-text-primary: #2D2D2D;--color-text-secondary: #5A5A5A;--color-text-tertiary: #8A8A8A;
+      --color-teal: #3A5F6F;--shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);--radius-md: 0.5rem;--radius-lg: 0.75rem;
+      --accent: #4A6FA5;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--color-teal)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .story-nav{font-size:0.75rem;margin:0 0 0.5rem}
+    .story-nav a{color:var(--color-teal);text-decoration:none;font-weight:600}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem;max-width:900px}
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat .big{font-size:2rem;font-weight:800;color:var(--accent);line-height:1.2}
+    @media(min-width:640px){.hero-stat .big{font-size:2.5rem}}
+    .hero-stat .label{font-size:0.75rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;margin-top:4px}
+    .metric-desc{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.5;margin:0 0 12px}
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative;margin-bottom:1.5rem}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 8px;color:var(--color-text-primary)}
+    .chart-wrap{position:relative;height:380px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+    .view-toggle{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+    .view-btn{padding:5px 14px;border-radius:9999px;font-size:0.6875rem;font-weight:600;cursor:pointer;border:2px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);transition:all .15s}
+    .view-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .accountability h3{font-size:1.0625rem;font-weight:700;color:var(--accent);margin:0 0 0.75rem}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#e6ecf5;border-color:#c7d3e8;color:#4A6FA5}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--color-teal);color:var(--color-white);border-color:var(--color-teal)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+    .flag-yale{font-size:0.6875rem;color:#92400e;font-weight:600}
+    .caveat{font-size:0.75rem;color:var(--color-text-tertiary);line-height:1.5;background:var(--color-cream-dark);border-radius:var(--radius-md);padding:0.6rem 0.85rem;margin-top:0.5rem}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="../index.html">Statistics</a>
+      <a href="../scorecard-v2.html">Scorecard</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+      <p class="story-nav">&larr; <a href="bc-treaty-land.html">The Land Ledger</a> &middot; Chapter 1 of 3</p>
+
+      <h1 class="page-title">The Commitment</h1>
+      <p class="page-subtitle">Source: BC Public Accounts 2021/22&ndash;2025/26, Note 28 &middot; BC Treaty Commission Final Agreement fact sheets</p>
+      <p class="page-desc">Every year, deep in the fine print of British Columbia's Public Accounts, the province discloses a running list: how much Crown land it has committed to First Nations under active treaty negotiations. As of the 2025/26 fiscal year, that list totals <strong>135,425 hectares</strong> &mdash; about 334,600 acres &mdash; across 20 First Nations and treaty tables. That number went viral in August 2026. What usually gets left out: the total has actually <strong>fallen</strong> for two straight years from its 2023/24 peak, and it is dwarfed by the <strong>232,746 hectares</strong> already transferred under BC's four completed, in-effect modern treaties. This chapter is the ledger itself &mdash; verified line by line against the original government documents.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="big">135,425 ha</div>
+          <div class="label">Pending commitment, 2025/26</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">20</div>
+          <div class="label">First Nations / treaty tables</div>
+        </div>
+        <div class="hero-stat" style="border-top-color:#8A8A8A">
+          <div class="big" style="color:#8A8A8A">232,746 ha</div>
+          <div class="label">Already transferred, 4 completed treaties</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">&minus;2.3%</div>
+          <div class="label">Change since 2023/24 peak</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">~$3.5B</div>
+          <div class="label">Illustrative value (see caveat)</div>
+        </div>
+      </div>
+
+      <div class="accountability">
+        <h3>Who is accountable for this number?</h3>
+        <p><strong>BC Ministry of Finance</strong> <span class="entity-tag govt">Discloses the figure</span><br>
+        Publishes the commitment every year in the Public Accounts as a contingent contractual obligation &mdash; Note 28 has appeared, in the same location, for at least the last five fiscal years checked (2021/22&ndash;2025/26). This is the accounting record, not the negotiation itself.</p>
+
+        <p><strong>Ministry of Indigenous Relations and Reconciliation</strong> <span class="entity-tag govt">Negotiates the land</span><br>
+        The provincial ministry at the table for every one of the 20 nations/tables below, and the publisher of the treaty-area maps (see Chapter 2) that put specific parcels on the record.</p>
+
+        <p><strong>Government of Canada</strong> <span class="entity-tag govt">Funds the money, not the land</span><br>
+        Note 28's own text is explicit: "the capital transfer components for all treaty agreements will be, in most cases, entirely provided by Canada." The <em>land</em> is provincial Crown land; the <em>cash</em> that typically accompanies a settlement is a federal cost. Reporting that treats this as one undifferentiated "cost to BC" gets the split backwards.</p>
+
+        <div class="quote-block">
+          "It is expected the capital transfer components for all treaty agreements will be, in most cases, entirely provided by Canada. The current commitments of provincial Crown land for all Final Agreement and Incremental Treaty Agreement tables are as follows..."
+          <span class="attr">&mdash; BC Public Accounts 2025/26, Note 28</span>
+        </div>
+
+        <p><strong>BC Treaty Commission</strong> <span class="entity-tag govt">Independent facilitator</span><br>
+        Oversees the 6-stage negotiation process all 20 tables sit within. A "Final Agreement" is a completed, ratified treaty; an "Incremental Treaty Agreement" is a separate, legally binding pre-treaty land transfer that can happen years before &mdash; or even without &mdash; a Final Agreement. Note 28 combines both categories into one total, which this report keeps distinct where it matters.</p>
+      </div>
+
+      <div class="view-toggle">
+        <button class="view-btn on" onclick="setView('trend')">5-Year Trend</button>
+        <button class="view-btn" onclick="setView('nations')">By Nation</button>
+        <button class="view-btn" onclick="setView('compare')">Pending vs. Already Transferred</button>
+        <button class="view-btn" onclick="setView('benchmarks')">Scale Benchmarks</button>
+      </div>
+
+      <div class="chart-card">
+        <h3 id="chartTitle">Note 28 Total Commitment, FY2021/22&ndash;2025/26</h3>
+        <p class="metric-desc" id="chartDesc"></p>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title" id="tableTitle">All 20 Nations/Tables, 2025/26</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"metadata":{"title":"The Land Ledger","last_updated":"2026-08-12","sources":["BC Public Accounts 2021/22-2025/26, Note 28 (gov.bc.ca)","BC Treaty Commission Final Agreement fact sheets (gov.bc.ca)","Ministry of Indigenous Relations and Reconciliation, TTA Treaty Area and Treaty Lands map (June 2026)","Statistics Canada Table 32-10-0047-01","Encyclopedia of British Columbia (KnowBC)","CHEK News, Times Colonist, Daily Hive, The Epoch Times (Aug 9-12 2026)"]},"trend":[{"fiscal_year":"2021/22","hectares":129397.0,"nations_count":18},{"fiscal_year":"2022/23","hectares":132980.0,"nations_count":19},{"fiscal_year":"2023/24","hectares":138590.6,"nations_count":20},{"fiscal_year":"2024/25","hectares":137591.3,"nations_count":20},{"fiscal_year":"2025/26","hectares":135425.3,"nations_count":20}],"nations_2025_26":[{"name":"Ditidaht","hectares":3567.0,"status":"Negotiating"},{"name":"Homalco","hectares":707.0,"status":"Negotiating"},{"name":"In-SHUCK-ch (Skatin and Samahquam)","hectares":9474.0,"status":"Negotiating"},{"name":"Kaska Dena Council","hectares":677.0,"status":"Negotiating"},{"name":"Kitselas","hectares":35290.0,"status":"Final Agreement ratified Apr 10, 2025 -- awaiting effective date"},{"name":"Kitsumkalum","hectares":45789.0,"status":"Final Agreement ratified Nov 1, 2025 -- awaiting effective date"},{"name":"K'omoks","hectares":3040.0,"status":"Final Agreement ratified Mar 8, 2025 -- awaiting effective date"},{"name":"Ktunaxa Nation Council","hectares":418.0,"status":"Negotiating"},{"name":"Lake Babine Nation (BC only)","hectares":497.6,"status":"Incremental Treaty Agreement (+ one-time payment of $0.02M)"},{"name":"Lax Kw'alaams First Nation","hectares":4309.0,"status":"Negotiating"},{"name":"Lheidli T'enneh","hectares":3416.0,"status":"Negotiating"},{"name":"Nazko","hectares":172.0,"status":"Negotiating"},{"name":"NStQ (Canoe Creek, Sugar Cane, Canim Lake, Soda Creek)","hectares":3095.0,"status":"Negotiating"},{"name":"Pacheedaht","hectares":1216.0,"status":"Negotiating"},{"name":"Te'mexw (Malahat, Scia'new, Snaw-naw-as, Songhees, T'Sou-ke)","hectares":1916.7,"status":"Stage 5 negotiation -- Victoria/South Island (see Chapter 2)"},{"name":"Tla-o-qui-aht","hectares":47.0,"status":"Negotiating"},{"name":"Wei Wai Kai (Cape Mudge First Nation)","hectares":612.0,"status":"Negotiating"},{"name":"Wei Wai Kum (Campbell River First Nation)","hectares":1276.0,"status":"Negotiating"},{"name":"Wuikinuxv","hectares":13946.0,"status":"Negotiating"},{"name":"Yekooche","hectares":5960.0,"status":"Negotiating"}],"yale":{"name":"Yale First Nation","note28_hectares":1179.0,"fact_sheet_hectares":1966.0,"status":"Final Agreement ratified 2011/2013 -- effective date not yet agreed, 13+ years on","discrepancy_note":"BC Public Accounts Note 28 has listed Yale's commitment as 1,179 ha, unchanged, in every fiscal year from 2021/22 through 2025/26. BC's own 2010 Yale Lands fact sheet states 1,966 ha (217 ha former reserve + 1,749 ha additional Crown land). The discrepancy is unresolved in public documents -- reported here as an open question, not settled."},"note28_total_2025_26":135425.3,"note28_total_incl_yale":136604.3,"completed_treaties":[{"name":"Nisga'a","effective_date":"2000-05-11","hectares":199200.0},{"name":"Tsawwassen","effective_date":"2009-04-03","hectares":724.0},{"name":"Maa-nulth (5 Nations)","effective_date":"2011-04-01","hectares":24500.0},{"name":"Tla'amin","effective_date":"2016-04-05","hectares":8322.0}],"completed_treaties_total_ha":232746.0,"benchmarks":{"acres_total":334642,"km2_total":1354.25,"metro_vancouver_km2":2878.93,"metro_vancouver_pct":47.0,"vancouver_city_km2":115.18,"vancouver_city_multiple":11.8,"stanley_park_ha":404.9,"stanley_park_multiple":334.5,"farmland_value_per_acre_2025":10577,"farmland_value_source":"Statistics Canada, Table 32-10-0047-01 (2025)","farmland_total_value_estimate":3540000000,"farmland_caveat":"Farmland value is a weak proxy for this land -- the Note 28 total is mostly forested/rural Crown land, not agricultural land, and BC farmland values themselves range more than 40x by region ($2,400 to $104,600/acre per Farm Credit Canada's 2025 report). This is an illustrative scale benchmark, not an appraisal."},"reserve_land":{"bc_reserve_hectares":473485.0,"bc_reserve_source":"Encyclopedia of British Columbia (KnowBC) -- secondary reference figure, no single ISC/StatCan provincial rollup located","pending_commitment_hectares":135425.3,"ratio_reserve_to_pending":3.5}};
+
+const VIEW_DESCRIPTIONS = {
+  trend: 'The total hectares of provincial Crown land listed as a "current commitment" in Note 28 of BC’s Public Accounts, each fiscal year since 2021/22. This is not a completed transfer — it’s an accounting disclosure of what’s been promised under active Final and Incremental Treaty Agreements.',
+  nations: 'All 20 First Nations/tables in the 2025/26 Note 28 disclosure, ranked by hectares. Yale First Nation is shown separately — its 1,179 ha commitment is disclosed in the same note but excluded from the 20-nation sum, and conflicts with BC’s own 2010 fact sheet (1,966 ha).',
+  compare: 'The pending Note 28 commitment (135,425 ha, not yet transferred) next to land already transferred and in First Nations’ hands under BC’s four completed, in-effect modern treaties. The already-transferred total is about 1.7× larger.',
+  benchmarks: 'Ways to visualize 135,425 hectares. The Metro Vancouver and City of Vancouver comparisons are land-area facts. The $3.5B figure is an illustrative value only — see the caveat below the chart.',
+};
+
+let chart = null;
+let currentView = 'trend';
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('on'));
+  event.target.classList.add('on');
+  document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS[v] || '';
+  updateChart();
+}
+
+function updateChart() {
+  if (chart) chart.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const title = document.getElementById('chartTitle');
+  const tableTitle = document.getElementById('tableTitle');
+
+  if (currentView === 'trend') {
+    title.textContent = 'Note 28 Total Commitment, FY2021/22–2025/26';
+    tableTitle.textContent = 'All 20 Nations/Tables, 2025/26';
+    const t = DATA.trend;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: t.map(d => d.fiscal_year),
+        datasets: [{
+          label: 'Committed hectares',
+          data: t.map(d => d.hectares),
+          backgroundColor: t.map(d => d.fiscal_year === '2023/24' ? 'rgba(74,111,165,0.9)' : 'rgba(74,111,165,0.5)'),
+          borderColor: '#4A6FA5', borderWidth: 1, borderRadius: 3
+        },{
+          label: '# Nations/tables',
+          data: t.map(d => d.nations_count),
+          type: 'line', yAxisID: 'y1',
+          borderColor: '#C49A6C', backgroundColor: 'rgba(196,154,108,0.25)', fill: true, tension: 0.3,
+          pointRadius: 4, pointBackgroundColor: '#C49A6C'
+        }]
+      },
+      options: { responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{position:'top',labels:{font:{size:11}}},
+          tooltip:{callbacks:{label: c => c.datasetIndex===0 ? c.raw.toLocaleString()+' ha' : c.raw+' nations/tables'}}},
+        scales:{
+          y:{title:{display:true,text:'Hectares committed',font:{size:11}},beginAtZero:false},
+          y1:{position:'right',title:{display:true,text:'# Nations/tables',font:{size:11}},beginAtZero:true,grid:{display:false}},
+          x:{title:{display:true,text:'Fiscal year',font:{size:11}}}
+        }}
+    });
+    buildNationsTable();
+
+  } else if (currentView === 'nations') {
+    title.textContent = 'Committed Hectares by Nation, 2025/26 (Yale shown separately)';
+    tableTitle.textContent = 'All 20 Nations/Tables, 2025/26';
+    const sorted = [...DATA.nations_2025_26].sort((a,b) => b.hectares - a.hectares);
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: { labels: sorted.map(n => n.name.length > 28 ? n.name.slice(0,26)+'…' : n.name),
+        datasets: [{ label: 'Hectares', data: sorted.map(n => n.hectares), backgroundColor: '#4A6FA5', borderRadius: 3 }] },
+      options: { indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{
+          title: items => sorted[items[0].dataIndex].name,
+          label: c => c.raw.toLocaleString() + ' ha'}}},
+        scales:{ x:{title:{display:true,text:'Hectares',font:{size:11}},beginAtZero:true}, y:{ticks:{font:{size:9}}} } }
+    });
+    buildNationsTable();
+
+  } else if (currentView === 'compare') {
+    title.textContent = 'Pending Commitment vs. Land Already Transferred';
+    tableTitle.textContent = 'Four Completed, In-Effect Modern Treaties';
+    const ct = DATA.completed_treaties;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Pending (Note 28, 2025/26)', ...ct.map(t=>t.name), 'Already transferred (total)'],
+        datasets: [{
+          label: 'Hectares',
+          data: [DATA.note28_total_2025_26, ...ct.map(t=>t.hectares), DATA.completed_treaties_total_ha],
+          backgroundColor: ['#4A6FA5', ...ct.map(()=> '#B7C4D6'), '#8A8A8A'],
+          borderRadius: 3
+        }]
+      },
+      options: { indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw.toLocaleString()+' ha'}}},
+        scales:{ x:{title:{display:true,text:'Hectares',font:{size:11}},beginAtZero:true}, y:{ticks:{font:{size:10}}} } }
+    });
+    buildCompareTable();
+
+  } else if (currentView === 'benchmarks') {
+    title.textContent = 'Visualizing 135,425 Hectares';
+    tableTitle.textContent = 'Scale Benchmarks';
+    const b = DATA.benchmarks;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['135,425 ha (the commitment)', 'City of Vancouver (×11.8)', 'Metro Vancouver (47%)'],
+        datasets: [{
+          label: 'km²',
+          data: [b.km2_total, b.vancouver_city_km2, b.metro_vancouver_km2],
+          backgroundColor: ['#4A6FA5', '#B7C4D6', '#D8D1C2'],
+          borderRadius: 3
+        }]
+      },
+      options: { indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw.toLocaleString()+' km²'}}},
+        scales:{ x:{title:{display:true,text:'km²',font:{size:11}},beginAtZero:true} } }
+    });
+    buildBenchmarksTable();
+  }
+}
+
+function buildNationsTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Nation / Table</th><th class="num">Hectares</th><th>Status</th></tr></thead><tbody>';
+  const sorted = [...DATA.nations_2025_26].sort((a,b) => b.hectares - a.hectares);
+  sorted.forEach(n => {
+    html += '<tr><td>' + n.name + '</td><td class="num">' + n.hectares.toLocaleString() + '</td><td style="font-size:0.75rem;color:var(--color-text-secondary)">' + n.status + '</td></tr>';
+  });
+  const y = DATA.yale;
+  html += '<tr><td><span class="flag-yale">⚠ ' + y.name + '</span></td><td class="num">' + y.note28_hectares.toLocaleString() + '<span class="flag-yale">*</span></td><td style="font-size:0.75rem;color:var(--color-text-secondary)">' + y.status + '</td></tr>';
+  html += '</tbody><tfoot><tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)">';
+  html += '<td>Total (20-nation table)</td><td class="num" style="color:#4A6FA5;font-size:0.9375rem">' + DATA.note28_total_2025_26.toLocaleString() + ' ha</td><td></td></tr>';
+  html += '<tr><td>Total incl. Yale (full note disclosure)</td><td class="num">' + DATA.note28_total_incl_yale.toLocaleString() + ' ha</td><td style="font-size:0.6875rem;color:var(--color-text-tertiary)">* Yale figure conflicts with BC\'s own 2010 fact sheet (1,966 ha) — unresolved</td></tr>';
+  html += '</tfoot>';
+  table.innerHTML = html;
+}
+
+function buildCompareTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Treaty</th><th>Effective date</th><th class="num">Hectares</th></tr></thead><tbody>';
+  DATA.completed_treaties.forEach(t => {
+    html += '<tr><td>' + t.name + '</td><td>' + t.effective_date + '</td><td class="num">' + t.hectares.toLocaleString() + '</td></tr>';
+  });
+  html += '</tbody><tfoot>';
+  html += '<tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)"><td colspan="2">Already transferred (total)</td><td class="num" style="color:#8A8A8A;font-size:0.9375rem">' + DATA.completed_treaties_total_ha.toLocaleString() + ' ha</td></tr>';
+  html += '<tr style="font-weight:700"><td colspan="2">Pending (Note 28, 2025/26)</td><td class="num" style="color:#4A6FA5;font-size:0.9375rem">' + DATA.note28_total_2025_26.toLocaleString() + ' ha</td></tr>';
+  html += '</tfoot>';
+  table.innerHTML = html;
+  addCaveat('');
+}
+
+function buildBenchmarksTable() {
+  const table = document.getElementById('dataTable');
+  const b = DATA.benchmarks;
+  let html = '<thead><tr><th>Benchmark</th><th class="num">Value</th><th>Source</th></tr></thead><tbody>';
+  html += '<tr><td>Total committed land</td><td class="num">' + b.km2_total.toLocaleString() + ' km² (' + b.acres_total.toLocaleString() + ' acres)</td><td style="font-size:0.75rem">BC Public Accounts 2025/26</td></tr>';
+  html += '<tr><td>As % of Metro Vancouver</td><td class="num">' + b.metro_vancouver_pct + '%</td><td style="font-size:0.75rem">StatCan 2021 Census, Metro Vancouver = ' + b.metro_vancouver_km2.toLocaleString() + ' km²</td></tr>';
+  html += '<tr><td>As multiple of City of Vancouver</td><td class="num">' + b.vancouver_city_multiple + '×</td><td style="font-size:0.75rem">StatCan 2021 Census, Vancouver = ' + b.vancouver_city_km2 + ' km²</td></tr>';
+  html += '<tr><td>As multiple of Stanley Park</td><td class="num">' + b.stanley_park_multiple + '×</td><td style="font-size:0.75rem">City of Vancouver / Park Board, Stanley Park = ' + b.stanley_park_ha.toLocaleString() + ' ha</td></tr>';
+  html += '<tr><td>Illustrative value at farmland benchmark</td><td class="num">~$' + (b.farmland_total_value_estimate/1e9).toFixed(1) + 'B</td><td style="font-size:0.75rem">' + b.farmland_value_source + ', $' + b.farmland_value_per_acre_2025.toLocaleString() + '/acre</td></tr>';
+  html += '</tbody>';
+  table.innerHTML = html;
+  addCaveat(DATA.benchmarks.farmland_caveat);
+}
+
+function addCaveat(text) {
+  let el = document.getElementById('caveatBox');
+  if (el) el.remove();
+  if (!text) return;
+  el = document.createElement('div');
+  el.id = 'caveatBox';
+  el.className = 'caveat';
+  el.textContent = 'Caveat: ' + text;
+  document.querySelector('.data-table-wrap').insertAdjacentElement('afterend', el);
+}
+
+function copyTable() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push(td.textContent.trim()));
+    rows.push(cells.join('\t'));
+  });
+  navigator.clipboard.writeText(rows.join('\n')).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const table = document.getElementById('dataTable');
+  const rows = [];
+  table.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('th, td').forEach(td => cells.push('"' + td.textContent.trim().replace(/"/g,'""') + '"'));
+    rows.push(cells.join(','));
+  });
+  const csv = rows.join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bc_treaty_land_commitment.csv';
+  a.click();
+}
+
+document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS.trend;
+updateChart();
+</script>
+
+</body>
+</html>
