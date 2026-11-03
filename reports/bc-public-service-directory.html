@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Last Census | Canada Central</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --color-cream: #F0ECE3;
+      --color-cream-dark: #E8E2D5;
+      --color-beige: #D8D1C2;
+      --color-beige-dark: #C8C0B0;
+      --color-white: #FEFEFE;
+      --color-text-primary: #2D2D2D;
+      --color-text-secondary: #5A5A5A;
+      --color-text-tertiary: #8A8A8A;
+      --shadow-card: 0 2px 8px 0 rgba(0,0,0,0.08);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --accent: #4A6FA5;
+    }
+    html,body{height:100%;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);display:flex;flex-direction:column}
+    .navbar{padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;background:var(--color-cream);border-bottom:1px solid var(--color-beige)}
+    .navbar-brand{display:flex;align-items:center;gap:0.5rem;font-size:1rem;font-weight:700;color:var(--color-text-primary);text-decoration:none}
+    .navbar-brand:hover{color:var(--accent)}
+    .navbar-links{display:flex;gap:1.5rem;font-size:0.875rem;font-weight:600}
+    .navbar-links a{color:var(--color-text-secondary);text-decoration:none;transition:color .2s}
+    .navbar-links a:hover{color:var(--color-text-primary)}
+    .navbar-links a.active{color:var(--color-text-primary)}
+    .page{flex:1;display:flex;flex-direction:column;padding:1rem;box-sizing:border-box}
+    @media(min-width:640px){.page{padding:1.25rem 1.5rem}}
+    .content{max-width:1400px;margin:0 auto;width:100%}
+    .page-title{font-size:1.5rem;font-weight:700;color:var(--color-text-primary);line-height:1.3;margin:0 0 0.25rem}
+    @media(min-width:640px){.page-title{font-size:1.875rem}}
+    .page-subtitle{font-size:0.75rem;color:var(--color-text-tertiary);margin:0 0 0.5rem}
+    @media(min-width:640px){.page-subtitle{font-size:0.875rem}}
+    .page-desc{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1.5rem;max-width:900px}
+
+    /* Hero stats */
+    .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .hero-stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;text-align:center;border-top:4px solid var(--accent)}
+    .hero-stat .big{font-size:2rem;font-weight:800;color:var(--accent);line-height:1.2}
+    @media(min-width:640px){.hero-stat .big{font-size:2.5rem}}
+    .hero-stat .label{font-size:0.75rem;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;margin-top:4px}
+
+    /* Chart cards */
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-top:4px solid var(--accent);padding:20px;position:relative;margin-bottom:1.5rem}
+    .chart-card h3{font-size:0.9375rem;font-weight:700;margin:0 0 4px;color:var(--color-text-primary)}
+    .metric-desc{font-size:0.75rem;color:var(--color-text-secondary);line-height:1.55;margin:0 0 12px}
+    .chart-wrap{position:relative;height:340px}
+    .chart-wrap canvas{position:absolute;top:0;left:0;right:0;bottom:0}
+
+    /* View toggle */
+    .view-toggle{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+    .view-btn{padding:5px 14px;border-radius:9999px;font-size:0.6875rem;font-weight:600;cursor:pointer;border:2px solid var(--color-beige-dark);background:var(--color-cream);color:var(--color-text-secondary);transition:all .15s}
+    .view-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    /* Accountability section */
+    .accountability{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border-left:4px solid var(--accent);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+    .accountability h3{font-size:1.0625rem;font-weight:700;color:var(--accent);margin:0 0 0.75rem}
+    .accountability p{font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem}
+    .accountability p:last-child{margin:0}
+    .entity-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.6875rem;font-weight:600;margin:2px;background:var(--color-cream);border:1px solid var(--color-beige)}
+    .entity-tag.govt{background:#fde8e8;border-color:#f5c6c6;color:#8B2E2E}
+    .entity-tag.person{background:#fef3cd;border-color:#fde68a;color:#92400e}
+
+    /* Quote */
+    .quote-block{background:var(--color-cream-dark);border-left:3px solid var(--accent);padding:0.75rem 1rem;margin:0.75rem 0;border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.5}
+    .quote-block .attr{font-style:normal;font-weight:600;color:var(--color-text-primary);margin-top:4px;display:block}
+
+    /* Methodology note */
+    .methodology{background:#fdf6ec;border:1px solid #eadfc8;border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.5rem}
+    .methodology h4{margin:0 0 0.4rem;font-size:0.8125rem;font-weight:700;color:#92400e}
+    .methodology p{margin:0 0 0.5rem;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6}
+    .methodology p:last-child{margin:0}
+
+    /* Data table */
+    .table-section{margin-top:0.5rem}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+    .table-title{font-size:1.125rem;font-weight:700;color:var(--color-text-primary);margin:0}
+    .table-actions{display:flex;gap:6px}
+    .btn-sm{padding:5px 12px;border-radius:var(--radius-md);font-size:0.6875rem;font-weight:600;cursor:pointer;border:1px solid var(--color-beige-dark);background:var(--color-beige);color:var(--color-text-primary);transition:all .15s}
+    .btn-sm:hover{background:var(--color-beige-dark)}
+    .btn-sm.copied{background:var(--accent);color:var(--color-white);border-color:var(--accent)}
+    .data-table-wrap{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow-x:auto;border:1px solid var(--color-beige);max-height:520px;overflow-y:auto}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+    .data-table th{position:sticky;top:0;text-align:left;padding:0.75rem 1rem;font-weight:600;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-tertiary);border-bottom:2px solid var(--color-beige);background:var(--color-cream);white-space:nowrap}
+    .data-table th.num{text-align:right}
+    .data-table td{padding:0.625rem 1rem;border-bottom:1px solid var(--color-cream-dark);color:var(--color-text-primary);vertical-align:top}
+    .data-table td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:var(--color-cream)}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="https://canada-central.com">Canada Central</a>
+    <div class="navbar-links">
+      <a href="https://canada-central.com">Home</a>
+      <a href="https://canada-central.com/participation">MP Participation</a>
+      <a href="../index.html">Statistics</a>
+      <a class="active" href="../reports.html">Reports</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content">
+
+      <h1 class="page-title">The Last Census</h1>
+      <p class="page-subtitle">Source: BC Government Directory, last public snapshot April&ndash;July 2026 &middot; Public access restricted 2026-08-18</p>
+      <p class="page-desc">For years, anyone could search dir.gov.bc.ca to find who worked where inside British Columbia's government &mdash; every ministry, branch, and job title, in one public directory published in some form since at least 1930, online since 2007. On <strong>August 18, 2026</strong>, without warning, the province restricted public access &mdash; two days ahead of its own announced August 20 cutoff &mdash; citing cybersecurity threats and employee privacy. No aggregate replacement went up in its place: no public table of headcount by ministry, no published workforce breakdown. This report uses a preserved snapshot of the directory, captured via the Wayback Machine before the takedown and stripped of every individually-identifying field (name, phone, email, street address), to answer a question the government no longer publishes an easy answer to: <strong>who actually works in B.C.'s public service, and what do they do?</strong> It also checks a natural follow-up: is B.C. actually unusual here, or does every province now do this?</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="big">22,441</div>
+          <div class="label">Directory records &mdash; last public count</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">21,833</div>
+          <div class="label">Identifiable staff positions</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">11.1%</div>
+          <div class="label">Work in the single largest ministry (Forests)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="big">1.8%</div>
+          <div class="label">Hold a Communications title (390 people)</div>
+        </div>
+        <div class="hero-stat" style="border-top-color:#8B2E2E">
+          <div class="big" style="color:#8B2E2E">1 of 14</div>
+          <div class="label">Jurisdictions that pulled down an existing public directory</div>
+        </div>
+      </div>
+
+      <!-- Accountability Section -->
+      <div class="accountability">
+        <h3>Who is responsible?</h3>
+        <p><strong>Ministry of Citizens' Services</strong> <span class="entity-tag govt">Owns dir.gov.bc.ca</span><br>
+        This ministry operates the directory platform and made the call to restrict public access, disabling it on August 18, 2026 without advance warning. A ministry spokesperson said the move followed "proactive advice from law enforcement partners, including the RCMP," and that "cyber threat actors" had been taking advantage of the directory's open access. That's a real, legitimate operational concern &mdash; a bulk-downloadable roster of 22,000+ names, direct phone numbers, and office locations is a genuine phishing and social-engineering risk. But the same decision removed the only public way to answer basic accountability questions &mdash; how big is a given ministry, how is staff distributed across functions &mdash; without replacing it with any aggregate, non-identifying alternative.</p>
+
+        <p><strong>BC Public Service Agency</strong> <span class="entity-tag govt">Workforce steward</span><br>
+        The Agency is the province's official steward of public-service workforce data and already publishes some aggregate statistics (e.g. annual headcount totals) through its own channels. It has not published a ministry-by-ministry or function-by-function breakdown comparable to what the directory made freely searchable.</p>
+
+        <p><strong>The licensing question</strong><br>
+        The original directory extract was published under the Open Government Licence &ndash; British Columbia, which explicitly excludes "Personal Information" from its grant but does <em>not</em> exclude business contact information (name, title, work phone, work email) under FOIPPA's standard legal definition. So the underlying data was very likely within the licence's scope even before this report's de-identification step. The province's cybersecurity/privacy rationale for the takedown is a distinct, legitimate operational-risk argument &mdash; not a claim that the data was mishandled or improperly licensed.</p>
+
+        <div class="quote-block">
+          "We think that our public bodies should have a human face." [Calling the removal] "regrettable," while agreeing the phishing threat is serious.
+          <span class="attr">&mdash; Michael Harvey, B.C. Information and Privacy Commissioner &middot; CBC News, August 2026</span>
+        </div>
+        <div class="quote-block">
+          "The public has a right to understand how government is structured, who is responsible for making decisions, and how taxpayer-funded ministries and services are being managed."
+          <span class="attr">&mdash; Jody Toor, B.C. Conservative Citizens' Services Critic &middot; via Black Press Media, 2026-08-18</span>
+        </div>
+        <div class="quote-block">
+          "We're starting to see a fortress mentality take place, and that's not good for business owners."
+          <span class="attr">&mdash; Ryan Mitton, Canadian Federation of Independent Businesses &middot; via Black Press Media, 2026-08-18</span>
+        </div>
+      </div>
+
+      <div class="methodology">
+        <h4>How this report handles the data</h4>
+        <p>Every field that could identify a specific person &mdash; first/last name, direct phone and fax numbers, email address, street address, and postal code &mdash; was permanently removed before this analysis. What remains is job title, ministry, branch, office city/province, and a synthetic record ID. See the <strong>By Job Function</strong> view below for one honest limitation of that trade-off: with names and other identifiers gone, categorizing 22,000+ free-text job titles into functions relies on keyword matching against the title alone, and roughly 30% don't cleanly match a specific category (labeled "Other / Unclassified" rather than forced into one). Office city is also missing for about a third of individual records in the source directory itself &mdash; not a result of de-identification.</p>
+        <p>This is a single snapshot (captured 2026-04-09, with a small number of records refreshed through 2026-07-14), not a time series. There is no earlier public export to compare it against, and with the live directory now down, there is currently no way to produce a fresher one.</p>
+        <p><strong>Is B.C. actually alone in this?</strong> Not literally &mdash; see the <strong>Provincial Comparison</strong> view below. Two jurisdictions (Manitoba, Northwest Territories) don't appear to have ever built a public directory, and Nunavut restricts its directory to signed-in staff. What makes B.C. distinct is that it's the only jurisdiction found where an existing, decades-old <em>public</em> directory was deliberately taken offline in 2026 &mdash; and provincial media directly named Ontario, Saskatchewan, and New Brunswick as far more open by comparison.</p>
+      </div>
+
+      <!-- View Toggles -->
+      <div class="view-toggle">
+        <button class="view-btn on" data-view="ministry" onclick="setView('ministry')">By Ministry</button>
+        <button class="view-btn" data-view="function" onclick="setView('function')">By Job Function</button>
+        <button class="view-btn" data-view="location" onclick="setView('location')">By Location</button>
+        <button class="view-btn" data-view="recency" onclick="setView('recency')">Data Recency</button>
+        <button class="view-btn" data-view="provincial" onclick="setView('provincial')">Provincial Comparison</button>
+      </div>
+
+      <!-- Chart -->
+      <div class="chart-card">
+        <h3 id="chartTitle">Staff by Ministry</h3>
+        <p class="metric-desc" id="chartDesc"></p>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+        <div id="provincialList" style="display:none;margin-top:1rem"></div>
+      </div>
+
+      <div class="methodology" id="sourcesBox" style="display:none">
+        <h4>Sources for the provincial comparison</h4>
+        <ul id="sourcesList" style="margin:0;padding-left:1.1rem;font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.7"></ul>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-section">
+        <div class="table-header">
+          <h2 class="table-title">All 63 Ministries &amp; Government Bodies</h2>
+          <div class="table-actions">
+            <button class="btn-sm" onclick="copyTable()">Copy</button>
+            <button class="btn-sm" onclick="downloadCSV()">Download CSV</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="dataTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const DATA = {"by_ministry":[{"organization":"Ministry of Forests","count":2413},{"organization":"Ministry of Finance","count":1786},{"organization":"Ministry of Health","count":1750},{"organization":"Ministry of Citizens' Services","count":1731},{"organization":"Ministry of Water, Land and Resource Stewardship","count":1577},{"organization":"Ministry of Transportation and Transit","count":1317},{"organization":"Ministry of Environment and Parks","count":1039},{"organization":"Ministry of Public Safety and Solicitor General","count":996},{"organization":"Ministry of Social Development and Poverty Reduction","count":957},{"organization":"Ministry of Children and Family Development","count":829},{"organization":"BC Public Service Agency","count":591},{"organization":"Attorney General","count":573},{"organization":"Ministry of Education and Child Care","count":535},{"organization":"Ministry of Post Secondary Education and Future Skills","count":495},{"organization":"Ministry of Housing and Municipal Affairs","count":462},{"organization":"Ministry of Infrastructure","count":394},{"organization":"Ministry of Labour","count":386},{"organization":"Ministry of Agriculture and Food","count":369},{"organization":"Ministry of Emergency Management and Climate Readiness","count":363},{"organization":"Ministry of Energy and Climate Solutions","count":353},{"organization":"Ministry of Jobs and Economic Growth","count":349},{"organization":"Ministry of Mining and Critical Minerals","count":323},{"organization":"The Judiciary","count":275},{"organization":"Ministry of Indigenous Relations and Reconciliation","count":249},{"organization":"Ministry of Tourism, Arts, Culture and Sport","count":229},{"organization":"The Legislative Assembly","count":201},{"organization":"Royal British Columbia Museum","count":185},{"organization":"Office of the Auditor General","count":125},{"organization":"Destination BC Corp.","count":122},{"organization":"BC Utilities Commission","count":91},{"organization":"Office of the Representative for Children and Youth","count":77},{"organization":"Environmental Appeal Board/Forest Appeals Commission","count":62},{"organization":"British Columbia Assessment Authority","count":59},{"organization":"Office of the Information and Privacy Commissioner","count":56},{"organization":"Office of the Premier and Cabinet Office","count":46},{"organization":"Office of the Police Complaint Commissioner","count":42},{"organization":"The Executive Council","count":42},{"organization":"British Columbia Pension Corporation","count":33},{"organization":"British Columbia Securities Commission","count":32},{"organization":"Intergovernmental Relations Secretariat","count":32},{"organization":"Community Living BC","count":30},{"organization":"Forestry Innovation Investment","count":24},{"organization":"British Columbia Hydro and Power Authority","count":23},{"organization":"Forest Practices Board","count":22},{"organization":"Office of the Lieutenant-Governor","count":21},{"organization":"Agricultural Land Commission","count":19},{"organization":"PavCo (BC Pavilion Corporation)","count":17},{"organization":"Columbia Power Corporation","count":16},{"organization":"Office of the Ombudsperson","count":16},{"organization":"Justice Institute Of British Columbia","count":15},{"organization":"Cabinet Operations","count":13},{"organization":"British Columbia Energy Regulator","count":10},{"organization":"(Unspecified)","count":10},{"organization":"Office of the Human Rights Commissioner","count":9},{"organization":"Transportation Investment Corporation","count":9},{"organization":"Office of the Merit Commissioner","count":8},{"organization":"Infrastructure BC","count":6},{"organization":"Innovate BC","count":5},{"organization":"Legal Services Society","count":4},{"organization":"British Columbia Railway Company","count":4},{"organization":"Office of the Conflict of Interest Commissioner","count":3},{"organization":"British Columbia Investment Management Corporation","count":2},{"organization":"BC Transit","count":1}],"by_job_function":[{"category":"Other / Unclassified","count":6537},{"category":"Management & Project/Business Generalist","count":5840},{"category":"Policy & Economic Analysis","count":1741},{"category":"Finance & Accounting","count":1258},{"category":"Land, Environment & Natural Resources","count":1243},{"category":"Administrative & Program Support","count":959},{"category":"Executive & Senior Management","count":816},{"category":"Legal & Compliance","count":751},{"category":"Information Technology & Data","count":668},{"category":"Enforcement, Inspection & Public Safety","count":584},{"category":"Communications & Public Affairs","count":390},{"category":"Human Resources","count":368},{"category":"Engineering & Infrastructure","count":345},{"category":"Retail & Frontline Operations","count":255},{"category":"Health & Social Services","count":78}],"by_location":[{"city":"Victoria","count":12767},{"city":"Coquitlam","count":183},{"city":"Vancouver","count":165},{"city":"Smithers","count":163},{"city":"Prince George","count":92},{"city":"Kamloops","count":92},{"city":"Surrey","count":91},{"city":"Port McNeill","count":55},{"city":"Burns Lake","count":49},{"city":"Nanaimo","count":38},{"city":"Vanderhoof","count":37},{"city":"Mackenzie","count":36},{"city":"Nelson","count":33},{"city":"Cranbrook","count":33},{"city":"Dawson Creek","count":32},{"city":"100 Mile House","count":26},{"city":"Castlegar","count":24},{"city":"Kelowna","count":22},{"city":"Fort St. John","count":22},{"city":"Revelstoke","count":21},{"city":"Bc","count":20},{"city":"Terrace","count":16},{"city":"Hope","count":16},{"city":"Williams Lake","count":13},{"city":"Pemberton","count":12}],"location_unspecified_count":7378,"by_as_of_date":[{"date":"2026-04-09","count":22337},{"date":"2026-04-10","count":1},{"date":"2026-04-20","count":6},{"date":"2026-04-22","count":1},{"date":"2026-04-25","count":18},{"date":"2026-05-07","count":2},{"date":"2026-05-14","count":1},{"date":"2026-05-15","count":6},{"date":"2026-05-19","count":18},{"date":"2026-06-10","count":24},{"date":"2026-07-09","count":3},{"date":"2026-07-14","count":24}],"by_source":[{"source":"wayback_csv_export_20260409","count":22337},{"source":"wayback_patch:detail:high","count":60},{"source":"wayback_patch:branch:medium","count":32},{"source":"wayback_patch:detail:high:new_since_baseline","count":6},{"source":"wayback_patch:branch:medium:new_since_baseline","count":4},{"source":"wayback_patch:search:medium","count":2}],"ministry_table":[{"organization":"Ministry of Forests","total":2413,"top_function":"Other / Unclassified","top_function_count":812},{"organization":"Ministry of Finance","total":1786,"top_function":"Finance & Accounting","top_function_count":437},{"organization":"Ministry of Health","total":1750,"top_function":"Management & Project/Business Generalist","top_function_count":509},{"organization":"Ministry of Citizens' Services","total":1731,"top_function":"Other / Unclassified","top_function_count":604},{"organization":"Ministry of Water, Land and Resource Stewardship","total":1577,"top_function":"Other / Unclassified","top_function_count":509},{"organization":"Ministry of Transportation and Transit","total":1317,"top_function":"Management & Project/Business Generalist","top_function_count":451},{"organization":"Ministry of Environment and Parks","total":1039,"top_function":"Other / Unclassified","top_function_count":396},{"organization":"Ministry of Public Safety and Solicitor General","total":996,"top_function":"Management & Project/Business Generalist","top_function_count":253},{"organization":"Ministry of Social Development and Poverty Reduction","total":957,"top_function":"Management & Project/Business Generalist","top_function_count":335},{"organization":"Ministry of Children and Family Development","total":829,"top_function":"Management & Project/Business Generalist","top_function_count":307},{"organization":"BC Public Service Agency","total":591,"top_function":"Other / Unclassified","top_function_count":196},{"organization":"Attorney General","total":573,"top_function":"Management & Project/Business Generalist","top_function_count":209},{"organization":"Ministry of Education and Child Care","total":535,"top_function":"Management & Project/Business Generalist","top_function_count":194},{"organization":"Ministry of Post Secondary Education and Future Skills","total":495,"top_function":"Management & Project/Business Generalist","top_function_count":135},{"organization":"Ministry of Housing and Municipal Affairs","total":462,"top_function":"Other / Unclassified","top_function_count":129},{"organization":"Ministry of Infrastructure","total":394,"top_function":"Management & Project/Business Generalist","top_function_count":157},{"organization":"Ministry of Labour","total":386,"top_function":"Enforcement, Inspection & Public Safety","top_function_count":132},{"organization":"Ministry of Agriculture and Food","total":369,"top_function":"Other / Unclassified","top_function_count":155},{"organization":"Ministry of Emergency Management and Climate Readiness","total":363,"top_function":"Other / Unclassified","top_function_count":169},{"organization":"Ministry of Energy and Climate Solutions","total":353,"top_function":"Policy & Economic Analysis","top_function_count":149},{"organization":"Ministry of Jobs and Economic Growth","total":349,"top_function":"Management & Project/Business Generalist","top_function_count":153},{"organization":"Ministry of Mining and Critical Minerals","total":323,"top_function":"Other / Unclassified","top_function_count":82},{"organization":"The Judiciary","total":275,"top_function":"Legal & Compliance","top_function_count":154},{"organization":"Ministry of Indigenous Relations and Reconciliation","total":249,"top_function":"Other / Unclassified","top_function_count":119},{"organization":"Ministry of Tourism, Arts, Culture and Sport","total":229,"top_function":"Other / Unclassified","top_function_count":89},{"organization":"The Legislative Assembly","total":201,"top_function":"Other / Unclassified","top_function_count":137},{"organization":"Royal British Columbia Museum","total":185,"top_function":"Other / Unclassified","top_function_count":83},{"organization":"Office of the Auditor General","total":125,"top_function":"Finance & Accounting","top_function_count":65},{"organization":"Destination BC Corp.","total":122,"top_function":"Management & Project/Business Generalist","top_function_count":62},{"organization":"BC Utilities Commission","total":91,"top_function":"Other / Unclassified","top_function_count":43},{"organization":"Office of the Representative for Children and Youth","total":77,"top_function":"Other / Unclassified","top_function_count":37},{"organization":"Environmental Appeal Board/Forest Appeals Commission","total":62,"top_function":"Management & Project/Business Generalist","top_function_count":31},{"organization":"British Columbia Assessment Authority","total":59,"top_function":"Management & Project/Business Generalist","top_function_count":35},{"organization":"Office of the Information and Privacy Commissioner","total":56,"top_function":"Other / Unclassified","top_function_count":18},{"organization":"Office of the Premier and Cabinet Office","total":46,"top_function":"Management & Project/Business Generalist","top_function_count":16},{"organization":"Office of the Police Complaint Commissioner","total":42,"top_function":"Other / Unclassified","top_function_count":25},{"organization":"The Executive Council","total":42,"top_function":"Other / Unclassified","top_function_count":37},{"organization":"British Columbia Pension Corporation","total":33,"top_function":"Other / Unclassified","top_function_count":32},{"organization":"British Columbia Securities Commission","total":32,"top_function":"Administrative & Program Support","top_function_count":23},{"organization":"Intergovernmental Relations Secretariat","total":32,"top_function":"Management & Project/Business Generalist","top_function_count":15},{"organization":"Community Living BC","total":30,"top_function":"Management & Project/Business Generalist","top_function_count":28},{"organization":"Forestry Innovation Investment","total":24,"top_function":"Management & Project/Business Generalist","top_function_count":9},{"organization":"British Columbia Hydro and Power Authority","total":23,"top_function":"Management & Project/Business Generalist","top_function_count":12},{"organization":"Forest Practices Board","total":22,"top_function":"Management & Project/Business Generalist","top_function_count":8},{"organization":"Office of the Lieutenant-Governor","total":21,"top_function":"Other / Unclassified","top_function_count":12},{"organization":"Agricultural Land Commission","total":19,"top_function":"Other / Unclassified","top_function_count":8},{"organization":"PavCo (BC Pavilion Corporation)","total":17,"top_function":"Management & Project/Business Generalist","top_function_count":6},{"organization":"Columbia Power Corporation","total":16,"top_function":"Engineering & Infrastructure","top_function_count":6},{"organization":"Office of the Ombudsperson","total":16,"top_function":"Management & Project/Business Generalist","top_function_count":6},{"organization":"Justice Institute Of British Columbia","total":15,"top_function":"Executive & Senior Management","top_function_count":8},{"organization":"Cabinet Operations","total":13,"top_function":"Management & Project/Business Generalist","top_function_count":6},{"organization":"British Columbia Energy Regulator","total":10,"top_function":"Executive & Senior Management","top_function_count":4},{"organization":"(Unspecified)","total":10,"top_function":"Executive & Senior Management","top_function_count":3},{"organization":"Office of the Human Rights Commissioner","total":9,"top_function":"Executive & Senior Management","top_function_count":4},{"organization":"Transportation Investment Corporation","total":9,"top_function":"Management & Project/Business Generalist","top_function_count":5},{"organization":"Office of the Merit Commissioner","total":8,"top_function":"Other / Unclassified","top_function_count":3},{"organization":"Infrastructure BC","total":6,"top_function":"Executive & Senior Management","top_function_count":5},{"organization":"Innovate BC","total":5,"top_function":"Other / Unclassified","top_function_count":3},{"organization":"Legal Services Society","total":4,"top_function":"Executive & Senior Management","top_function_count":2},{"organization":"British Columbia Railway Company","total":4,"top_function":"Executive & Senior Management","top_function_count":3},{"organization":"Office of the Conflict of Interest Commissioner","total":3,"top_function":"Other / Unclassified","top_function_count":1},{"organization":"British Columbia Investment Management Corporation","total":2,"top_function":"Other / Unclassified","top_function_count":2},{"organization":"BC Transit","total":1,"top_function":"Other / Unclassified","top_function_count":1}],"provincial_comparison":[{"jurisdiction":"Ontario","tier":"Full public directory","status":"INFO-GO (infogo.gov.on.ca) \u2014 name, position, email, phone, address; updated daily","checked":"2026-08-20"},{"jurisdiction":"New Brunswick","tier":"Full public directory","status":"gnb.ca contacts directory \u2014 searchable by name, department, keyword, no login","checked":"2026-08-20"},{"jurisdiction":"Newfoundland & Labrador","tier":"Full public directory","status":"telephonedirectory.gov.nl.ca \u2014 searchable by name, title, phone, department","checked":"2026-08-20"},{"jurisdiction":"Prince Edward Island","tier":"Full public directory","status":"princeedwardisland.ca employee directory \u2014 searchable by name, phone, email, title","checked":"2026-08-20"},{"jurisdiction":"Saskatchewan","tier":"Full public directory","status":"saskatchewan.ca/government/directory \u2014 official public directory; automated verification blocked by bot-protection, confirmed via provincial media comparison","checked":"2026-08-20"},{"jurisdiction":"Yukon","tier":"Full public directory","status":"find-employee.service.yukon.ca \u2014 searchable by name, title, email, phone","checked":"2026-08-20"},{"jurisdiction":"Federal (Canada)","tier":"Full public directory","status":"GEDS (geds-sage.gc.ca) \u2014 searchable by name, phone, title; some departments incomplete","checked":"2026-08-20"},{"jurisdiction":"Alberta","tier":"Public, limited fields","status":"alberta.ca/staff-directory.cfm \u2014 name and phone only, no email/address, cited cyberattack protection","checked":"2026-08-20"},{"jurisdiction":"Nova Scotia","tier":"Public, limited fields","status":"novascotia.ca employee directory \u2014 phone number only, no email or address","checked":"2026-08-20"},{"jurisdiction":"Quebec","tier":"Public, partial coverage","status":"REPTEL (reptel.gouv.qc.ca) \u2014 some departments/agencies and some employees excluded by policy","checked":"2026-08-20"},{"jurisdiction":"Manitoba","tier":"No public directory found","status":"No province-wide public employee directory found on manitoba.ca; only scattered per-branch listings","checked":"2026-08-20"},{"jurisdiction":"Northwest Territories","tier":"No public directory found","status":"No public employee directory found on gov.nt.ca","checked":"2026-08-20"},{"jurisdiction":"Nunavut","tier":"Internal use only","status":"gov.nu.ca/en/staff-directory requires sign-in; public must email communications@gov.nu.ca","checked":"2026-08-20"},{"jurisdiction":"British Columbia","tier":"Restricted August 2026","status":"Public since at least 1930, online since 2007 \u2014 access restricted 2026-08-18, two days ahead of the announced Aug. 20 cutoff","checked":"2026-08-20"}],"provincial_comparison_summary":{"full_public":7,"public_limited_fields":2,"public_partial_coverage":1,"no_directory_found":2,"internal_only":1,"restricted_2026":1,"note":"B.C. is not literally the only jurisdiction without a fully public directory \u2014 Manitoba and the Northwest Territories appear never to have built one, and Nunavut restricts its directory to signed-in staff. But B.C. is the only jurisdiction found where an existing, decades-old public directory was deliberately taken down in 2026, with provincial media directly naming Ontario, Saskatchewan, and New Brunswick as far more open by comparison, and Alberta as the next-most restrictive."},"hero_stats":{"total_records":22441,"individual_count":21833,"placeholder_count":608,"ministry_count":63,"largest_ministry_name":"Ministry of Forests","largest_ministry_count":2413,"largest_ministry_pct":11.1,"communications_count":390,"communications_pct":1.79},"metadata":{"title":"The Last Census","snapshot_captured":"2026-04-09","as_of_date_range":["2026-04-09","2026-07-14"],"public_access_restricted":"2026-08-18","public_access_cutoff_announced":"2026-08-20","sources":["BC Government Directory bulk export (Wayback Machine capture, 2026-04-09), patched with individually-archived pages through 2026-07-14","Rob Shaw, \"B.C. cutting public access to decades-old government directory,\" Business in Vancouver, 2026-08-18","\"B.C. disables employee directory, leaving public in the dark about who works for gov't,\" Black Press Media (Vancouver Island Free Daily and syndicated outlets), 2026-08-18","\"Transparency issues raised over B.C. gov't decision to remove public employee directory,\" CBC News, 2026-08","Direct verification of provincial/territorial/federal directory status, 2026-08-20 (see provincial_comparison)"]}};
+
+const VIEW_DESCRIPTIONS = {
+  ministry: 'Every ministry and government body in the directory, ranked by staff count. "Staff" excludes 608 fax lines, vacant postings, and generic mailbox rows that aren’t individual people.',
+  function: 'Job titles classified into 14 functional categories by keyword matching (see methodology note above). About 30% of titles don’t match a specific category and are grouped as "Other / Unclassified" rather than forced into one — that’s reported honestly, not hidden.',
+  location: 'Office city, for the ~66% of individual records where one is on file. Government of B.C. employment is heavily concentrated in Victoria; the remainder is spread across regional offices province-wide. About 7,400 records have no city recorded in the source directory.',
+  recency: 'When each record was last confirmed accurate. The vast majority (99.5%) trace to the April 9, 2026 baseline export; a small set of records were individually re-confirmed via later Wayback Machine captures, up to July 14, 2026 — the most current data obtainable now that the live directory is gone.',
+  provincial: 'Directory access status for all 10 provinces, 3 territories, and the federal government, checked live on 2026-08-20. B.C. is the only one found where an existing public directory was deliberately taken offline in 2026 — most others remain fully searchable.',
+};
+
+const TIER_ORDER = ['Full public directory','Public, limited fields','Public, partial coverage','No public directory found','Internal use only','Restricted August 2026'];
+const TIER_COLORS = {
+  'Full public directory': '#4A7C59',
+  'Public, limited fields': '#8B6914',
+  'Public, partial coverage': '#C49A6C',
+  'No public directory found': '#8A8A8A',
+  'Internal use only': '#5A6B7A',
+  'Restricted August 2026': '#8B2E2E',
+};
+
+let chart = null;
+let currentView = 'ministry';
+const ACCENT = '#4A6FA5';
+const PALETTE = ['#4A6FA5','#6B4E2E','#2E4B3E','#8B2E2E','#7C5A9D','#C49A6C','#3A5F6F','#92400e','#5A6B7A','#A05A5A','#4A7C59','#8B6914','#5B7FA5','#6A8A6A'];
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('on', b.dataset.view === v));
+  document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS[v] || '';
+  document.getElementById('provincialList').style.display = v === 'provincial' ? 'block' : 'none';
+  document.getElementById('sourcesBox').style.display = v === 'provincial' ? 'block' : 'none';
+  updateChart();
+  buildTable();
+  if (v === 'provincial') buildProvincialList();
+}
+
+function updateChart() {
+  if (chart) chart.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const title = document.getElementById('chartTitle');
+
+  if (currentView === 'ministry') {
+    title.textContent = 'Staff by Ministry';
+    const top = DATA.by_ministry.slice(0, 20);
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: top.map(r => r.organization),
+        datasets: [{
+          label: 'Staff',
+          data: top.map(r => r.count),
+          backgroundColor: ACCENT,
+          borderRadius: 3
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: false}},
+        scales: {
+          x: {title: {display: true, text: 'Staff (individuals)', font: {size: 11}}, beginAtZero: true},
+          y: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+  } else if (currentView === 'function') {
+    title.textContent = 'Staff by Job Function';
+    const rows = DATA.by_job_function;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: rows.map(r => r.category),
+        datasets: [{
+          label: 'Staff',
+          data: rows.map(r => r.count),
+          backgroundColor: rows.map((r,i) => r.category.startsWith('Other') ? '#8A8A8A' : PALETTE[i % PALETTE.length]),
+          borderRadius: 3
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: false}},
+        scales: {
+          x: {title: {display: true, text: 'Staff (individuals)', font: {size: 11}}, beginAtZero: true},
+          y: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+  } else if (currentView === 'location') {
+    title.textContent = 'Staff by Office City (Top 20 of Known Locations)';
+    const top = DATA.by_location.slice(0, 20);
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: top.map(r => r.city),
+        datasets: [{
+          label: 'Staff',
+          data: top.map(r => r.count),
+          backgroundColor: ACCENT,
+          borderRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: false}},
+        scales: {
+          y: {title: {display: true, text: 'Staff (individuals)', font: {size: 11}}, beginAtZero: true, type: 'logarithmic'},
+          x: {ticks: {font: {size: 9}, maxRotation: 60, minRotation: 40}}
+        }
+      }
+    });
+  } else if (currentView === 'recency') {
+    title.textContent = 'Record Freshness (as-of date)';
+    const rows = DATA.by_as_of_date;
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: rows.map(r => r.date),
+        datasets: [{
+          label: 'Records',
+          data: rows.map(r => r.count),
+          backgroundColor: rows.map(r => r.date === DATA.metadata.snapshot_captured ? '#8A8A8A' : ACCENT),
+          borderRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: false}},
+        scales: {
+          y: {title: {display: true, text: 'Records', font: {size: 11}}, beginAtZero: true, type: 'logarithmic'},
+          x: {ticks: {font: {size: 9}, maxRotation: 60, minRotation: 40}}
+        }
+      }
+    });
+  } else if (currentView === 'provincial') {
+    title.textContent = 'Employee Directory Access, by Jurisdiction (checked 2026-08-20)';
+    const counts = {};
+    TIER_ORDER.forEach(t => counts[t] = 0);
+    DATA.provincial_comparison.forEach(r => counts[r.tier]++);
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: TIER_ORDER,
+        datasets: [{
+          label: '# Jurisdictions',
+          data: TIER_ORDER.map(t => counts[t]),
+          backgroundColor: TIER_ORDER.map(t => TIER_COLORS[t]),
+          borderRadius: 3
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {legend: {display: false}},
+        scales: {
+          x: {title: {display: true, text: '# of 14 jurisdictions (10 provinces + 3 territories + federal)', font: {size: 11}}, beginAtZero: true, ticks: {stepSize: 1}},
+          y: {ticks: {font: {size: 10}}}
+        }
+      }
+    });
+  }
+}
+
+function buildProvincialList() {
+  const el = document.getElementById('provincialList');
+  const sorted = [...DATA.provincial_comparison].sort((a,b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
+  let html = '<p style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 0.75rem">' + DATA.provincial_comparison_summary.note + '</p>';
+  html += '<div style="display:grid;grid-template-columns:1fr;gap:6px">';
+  sorted.forEach(r => {
+    const color = TIER_COLORS[r.tier];
+    html += '<div style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:6px;background:var(--color-cream);border-left:3px solid ' + color + '">';
+    html += '<div style="min-width:150px;font-weight:700;font-size:0.8125rem">' + r.jurisdiction + '</div>';
+    html += '<div style="flex:1"><span style="font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;color:' + color + '">' + r.tier + '</span><br>';
+    html += '<span style="font-size:0.75rem;color:var(--color-text-secondary)">' + r.status + '</span></div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+
+  const sourcesList = document.getElementById('sourcesList');
+  sourcesList.innerHTML = DATA.metadata.sources.map(s => '<li>' + s + '</li>').join('');
+}
+
+function buildTable() {
+  const table = document.getElementById('dataTable');
+  let html = '<thead><tr><th>Ministry / Government Body</th><th class="num">Staff</th><th class="num">Share</th><th>Most Common Job Function</th><th class="num"># In That Function</th></tr></thead><tbody>';
+
+  DATA.ministry_table.forEach(r => {
+    const pct = (r.total / DATA.hero_stats.individual_count * 100).toFixed(1);
+    html += '<tr>';
+    html += '<td><strong>' + r.organization + '</strong></td>';
+    html += '<td class="num">' + r.total.toLocaleString() + '</td>';
+    html += '<td class="num">' + pct + '%</td>';
+    html += '<td style="font-size:0.75rem">' + r.top_function + '</td>';
+    html += '<td class="num">' + r.top_function_count.toLocaleString() + '</td>';
+    html += '</tr>';
+  });
+
+  html += '</tbody><tfoot>';
+  html += '<tr style="background:var(--color-cream);font-weight:700;border-top:2px solid var(--color-beige)">';
+  html += '<td>Total (' + DATA.ministry_table.length + ' ministries/bodies)</td>';
+  html += '<td class="num" style="color:' + ACCENT + ';font-size:0.9375rem">' + DATA.hero_stats.individual_count.toLocaleString() + '</td>';
+  html += '<td class="num">100.0%</td><td colspan="2"></td>';
+  html += '</tr>';
+  html += '</tfoot>';
+  table.innerHTML = html;
+}
+
+function copyTable() {
+  const rows = [['Ministry / Government Body','Staff','Share (%)','Most Common Job Function','# In That Function']];
+  DATA.ministry_table.forEach(r => {
+    const pct = (r.total / DATA.hero_stats.individual_count * 100).toFixed(1);
+    rows.push([r.organization, r.total, pct, r.top_function, r.top_function_count]);
+  });
+  const text = rows.map(r => r.join('\t')).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadCSV() {
+  const rows = [['Ministry / Government Body','Staff','Share (%)','Most Common Job Function','# In That Function']];
+  DATA.ministry_table.forEach(r => {
+    const pct = (r.total / DATA.hero_stats.individual_count * 100).toFixed(1);
+    rows.push(['"'+r.organization+'"', r.total, pct, '"'+r.top_function+'"', r.top_function_count]);
+  });
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bc_public_service_directory_by_ministry.csv';
+  a.click();
+}
+
+// Initialize
+document.getElementById('chartDesc').textContent = VIEW_DESCRIPTIONS[currentView];
+updateChart();
+buildTable();
+</script>
+
+</body>
+</html>
