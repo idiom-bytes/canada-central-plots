@@ -1,0 +1,1000 @@
+{
+  "by_ministry": [
+    {
+      "organization": "Ministry of Forests",
+      "count": 2413
+    },
+    {
+      "organization": "Ministry of Finance",
+      "count": 1786
+    },
+    {
+      "organization": "Ministry of Health",
+      "count": 1750
+    },
+    {
+      "organization": "Ministry of Citizens' Services",
+      "count": 1731
+    },
+    {
+      "organization": "Ministry of Water, Land and Resource Stewardship",
+      "count": 1577
+    },
+    {
+      "organization": "Ministry of Transportation and Transit",
+      "count": 1317
+    },
+    {
+      "organization": "Ministry of Environment and Parks",
+      "count": 1039
+    },
+    {
+      "organization": "Ministry of Public Safety and Solicitor General",
+      "count": 996
+    },
+    {
+      "organization": "Ministry of Social Development and Poverty Reduction",
+      "count": 957
+    },
+    {
+      "organization": "Ministry of Children and Family Development",
+      "count": 829
+    },
+    {
+      "organization": "BC Public Service Agency",
+      "count": 591
+    },
+    {
+      "organization": "Attorney General",
+      "count": 573
+    },
+    {
+      "organization": "Ministry of Education and Child Care",
+      "count": 535
+    },
+    {
+      "organization": "Ministry of Post Secondary Education and Future Skills",
+      "count": 495
+    },
+    {
+      "organization": "Ministry of Housing and Municipal Affairs",
+      "count": 462
+    },
+    {
+      "organization": "Ministry of Infrastructure",
+      "count": 394
+    },
+    {
+      "organization": "Ministry of Labour",
+      "count": 386
+    },
+    {
+      "organization": "Ministry of Agriculture and Food",
+      "count": 369
+    },
+    {
+      "organization": "Ministry of Emergency Management and Climate Readiness",
+      "count": 363
+    },
+    {
+      "organization": "Ministry of Energy and Climate Solutions",
+      "count": 353
+    },
+    {
+      "organization": "Ministry of Jobs and Economic Growth",
+      "count": 349
+    },
+    {
+      "organization": "Ministry of Mining and Critical Minerals",
+      "count": 323
+    },
+    {
+      "organization": "The Judiciary",
+      "count": 275
+    },
+    {
+      "organization": "Ministry of Indigenous Relations and Reconciliation",
+      "count": 249
+    },
+    {
+      "organization": "Ministry of Tourism, Arts, Culture and Sport",
+      "count": 229
+    },
+    {
+      "organization": "The Legislative Assembly",
+      "count": 201
+    },
+    {
+      "organization": "Royal British Columbia Museum",
+      "count": 185
+    },
+    {
+      "organization": "Office of the Auditor General",
+      "count": 125
+    },
+    {
+      "organization": "Destination BC Corp.",
+      "count": 122
+    },
+    {
+      "organization": "BC Utilities Commission",
+      "count": 91
+    },
+    {
+      "organization": "Office of the Representative for Children and Youth",
+      "count": 77
+    },
+    {
+      "organization": "Environmental Appeal Board/Forest Appeals Commission",
+      "count": 62
+    },
+    {
+      "organization": "British Columbia Assessment Authority",
+      "count": 59
+    },
+    {
+      "organization": "Office of the Information and Privacy Commissioner",
+      "count": 56
+    },
+    {
+      "organization": "Office of the Premier and Cabinet Office",
+      "count": 46
+    },
+    {
+      "organization": "Office of the Police Complaint Commissioner",
+      "count": 42
+    },
+    {
+      "organization": "The Executive Council",
+      "count": 42
+    },
+    {
+      "organization": "British Columbia Pension Corporation",
+      "count": 33
+    },
+    {
+      "organization": "British Columbia Securities Commission",
+      "count": 32
+    },
+    {
+      "organization": "Intergovernmental Relations Secretariat",
+      "count": 32
+    },
+    {
+      "organization": "Community Living BC",
+      "count": 30
+    },
+    {
+      "organization": "Forestry Innovation Investment",
+      "count": 24
+    },
+    {
+      "organization": "British Columbia Hydro and Power Authority",
+      "count": 23
+    },
+    {
+      "organization": "Forest Practices Board",
+      "count": 22
+    },
+    {
+      "organization": "Office of the Lieutenant-Governor",
+      "count": 21
+    },
+    {
+      "organization": "Agricultural Land Commission",
+      "count": 19
+    },
+    {
+      "organization": "PavCo (BC Pavilion Corporation)",
+      "count": 17
+    },
+    {
+      "organization": "Columbia Power Corporation",
+      "count": 16
+    },
+    {
+      "organization": "Office of the Ombudsperson",
+      "count": 16
+    },
+    {
+      "organization": "Justice Institute Of British Columbia",
+      "count": 15
+    },
+    {
+      "organization": "Cabinet Operations",
+      "count": 13
+    },
+    {
+      "organization": "British Columbia Energy Regulator",
+      "count": 10
+    },
+    {
+      "organization": "(Unspecified)",
+      "count": 10
+    },
+    {
+      "organization": "Office of the Human Rights Commissioner",
+      "count": 9
+    },
+    {
+      "organization": "Transportation Investment Corporation",
+      "count": 9
+    },
+    {
+      "organization": "Office of the Merit Commissioner",
+      "count": 8
+    },
+    {
+      "organization": "Infrastructure BC",
+      "count": 6
+    },
+    {
+      "organization": "Innovate BC",
+      "count": 5
+    },
+    {
+      "organization": "Legal Services Society",
+      "count": 4
+    },
+    {
+      "organization": "British Columbia Railway Company",
+      "count": 4
+    },
+    {
+      "organization": "Office of the Conflict of Interest Commissioner",
+      "count": 3
+    },
+    {
+      "organization": "British Columbia Investment Management Corporation",
+      "count": 2
+    },
+    {
+      "organization": "BC Transit",
+      "count": 1
+    }
+  ],
+  "by_job_function": [
+    {
+      "category": "Other / Unclassified",
+      "count": 6537
+    },
+    {
+      "category": "Management & Project/Business Generalist",
+      "count": 5840
+    },
+    {
+      "category": "Policy & Economic Analysis",
+      "count": 1741
+    },
+    {
+      "category": "Finance & Accounting",
+      "count": 1258
+    },
+    {
+      "category": "Land, Environment & Natural Resources",
+      "count": 1243
+    },
+    {
+      "category": "Administrative & Program Support",
+      "count": 959
+    },
+    {
+      "category": "Executive & Senior Management",
+      "count": 816
+    },
+    {
+      "category": "Legal & Compliance",
+      "count": 751
+    },
+    {
+      "category": "Information Technology & Data",
+      "count": 668
+    },
+    {
+      "category": "Enforcement, Inspection & Public Safety",
+      "count": 584
+    },
+    {
+      "category": "Communications & Public Affairs",
+      "count": 390
+    },
+    {
+      "category": "Human Resources",
+      "count": 368
+    },
+    {
+      "category": "Engineering & Infrastructure",
+      "count": 345
+    },
+    {
+      "category": "Retail & Frontline Operations",
+      "count": 255
+    },
+    {
+      "category": "Health & Social Services",
+      "count": 78
+    }
+  ],
+  "by_location": [
+    {
+      "city": "Victoria",
+      "count": 12767
+    },
+    {
+      "city": "Coquitlam",
+      "count": 183
+    },
+    {
+      "city": "Vancouver",
+      "count": 165
+    },
+    {
+      "city": "Smithers",
+      "count": 163
+    },
+    {
+      "city": "Prince George",
+      "count": 92
+    },
+    {
+      "city": "Kamloops",
+      "count": 92
+    },
+    {
+      "city": "Surrey",
+      "count": 91
+    },
+    {
+      "city": "Port McNeill",
+      "count": 55
+    },
+    {
+      "city": "Burns Lake",
+      "count": 49
+    },
+    {
+      "city": "Nanaimo",
+      "count": 38
+    },
+    {
+      "city": "Vanderhoof",
+      "count": 37
+    },
+    {
+      "city": "Mackenzie",
+      "count": 36
+    },
+    {
+      "city": "Nelson",
+      "count": 33
+    },
+    {
+      "city": "Cranbrook",
+      "count": 33
+    },
+    {
+      "city": "Dawson Creek",
+      "count": 32
+    },
+    {
+      "city": "100 Mile House",
+      "count": 26
+    },
+    {
+      "city": "Castlegar",
+      "count": 24
+    },
+    {
+      "city": "Kelowna",
+      "count": 22
+    },
+    {
+      "city": "Fort St. John",
+      "count": 22
+    },
+    {
+      "city": "Revelstoke",
+      "count": 21
+    },
+    {
+      "city": "Bc",
+      "count": 20
+    },
+    {
+      "city": "Terrace",
+      "count": 16
+    },
+    {
+      "city": "Hope",
+      "count": 16
+    },
+    {
+      "city": "Williams Lake",
+      "count": 13
+    },
+    {
+      "city": "Pemberton",
+      "count": 12
+    }
+  ],
+  "location_unspecified_count": 7378,
+  "by_as_of_date": [
+    {
+      "date": "2026-04-09",
+      "count": 22337
+    },
+    {
+      "date": "2026-04-10",
+      "count": 1
+    },
+    {
+      "date": "2026-04-20",
+      "count": 6
+    },
+    {
+      "date": "2026-04-22",
+      "count": 1
+    },
+    {
+      "date": "2026-04-25",
+      "count": 18
+    },
+    {
+      "date": "2026-05-07",
+      "count": 2
+    },
+    {
+      "date": "2026-05-14",
+      "count": 1
+    },
+    {
+      "date": "2026-05-15",
+      "count": 6
+    },
+    {
+      "date": "2026-05-19",
+      "count": 18
+    },
+    {
+      "date": "2026-06-10",
+      "count": 24
+    },
+    {
+      "date": "2026-07-09",
+      "count": 3
+    },
+    {
+      "date": "2026-07-14",
+      "count": 24
+    }
+  ],
+  "by_source": [
+    {
+      "source": "wayback_csv_export_20260409",
+      "count": 22337
+    },
+    {
+      "source": "wayback_patch:detail:high",
+      "count": 60
+    },
+    {
+      "source": "wayback_patch:branch:medium",
+      "count": 32
+    },
+    {
+      "source": "wayback_patch:detail:high:new_since_baseline",
+      "count": 6
+    },
+    {
+      "source": "wayback_patch:branch:medium:new_since_baseline",
+      "count": 4
+    },
+    {
+      "source": "wayback_patch:search:medium",
+      "count": 2
+    }
+  ],
+  "ministry_table": [
+    {
+      "organization": "Ministry of Forests",
+      "total": 2413,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 812
+    },
+    {
+      "organization": "Ministry of Finance",
+      "total": 1786,
+      "top_function": "Finance & Accounting",
+      "top_function_count": 437
+    },
+    {
+      "organization": "Ministry of Health",
+      "total": 1750,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 509
+    },
+    {
+      "organization": "Ministry of Citizens' Services",
+      "total": 1731,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 604
+    },
+    {
+      "organization": "Ministry of Water, Land and Resource Stewardship",
+      "total": 1577,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 509
+    },
+    {
+      "organization": "Ministry of Transportation and Transit",
+      "total": 1317,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 451
+    },
+    {
+      "organization": "Ministry of Environment and Parks",
+      "total": 1039,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 396
+    },
+    {
+      "organization": "Ministry of Public Safety and Solicitor General",
+      "total": 996,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 253
+    },
+    {
+      "organization": "Ministry of Social Development and Poverty Reduction",
+      "total": 957,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 335
+    },
+    {
+      "organization": "Ministry of Children and Family Development",
+      "total": 829,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 307
+    },
+    {
+      "organization": "BC Public Service Agency",
+      "total": 591,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 196
+    },
+    {
+      "organization": "Attorney General",
+      "total": 573,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 209
+    },
+    {
+      "organization": "Ministry of Education and Child Care",
+      "total": 535,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 194
+    },
+    {
+      "organization": "Ministry of Post Secondary Education and Future Skills",
+      "total": 495,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 135
+    },
+    {
+      "organization": "Ministry of Housing and Municipal Affairs",
+      "total": 462,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 129
+    },
+    {
+      "organization": "Ministry of Infrastructure",
+      "total": 394,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 157
+    },
+    {
+      "organization": "Ministry of Labour",
+      "total": 386,
+      "top_function": "Enforcement, Inspection & Public Safety",
+      "top_function_count": 132
+    },
+    {
+      "organization": "Ministry of Agriculture and Food",
+      "total": 369,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 155
+    },
+    {
+      "organization": "Ministry of Emergency Management and Climate Readiness",
+      "total": 363,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 169
+    },
+    {
+      "organization": "Ministry of Energy and Climate Solutions",
+      "total": 353,
+      "top_function": "Policy & Economic Analysis",
+      "top_function_count": 149
+    },
+    {
+      "organization": "Ministry of Jobs and Economic Growth",
+      "total": 349,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 153
+    },
+    {
+      "organization": "Ministry of Mining and Critical Minerals",
+      "total": 323,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 82
+    },
+    {
+      "organization": "The Judiciary",
+      "total": 275,
+      "top_function": "Legal & Compliance",
+      "top_function_count": 154
+    },
+    {
+      "organization": "Ministry of Indigenous Relations and Reconciliation",
+      "total": 249,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 119
+    },
+    {
+      "organization": "Ministry of Tourism, Arts, Culture and Sport",
+      "total": 229,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 89
+    },
+    {
+      "organization": "The Legislative Assembly",
+      "total": 201,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 137
+    },
+    {
+      "organization": "Royal British Columbia Museum",
+      "total": 185,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 83
+    },
+    {
+      "organization": "Office of the Auditor General",
+      "total": 125,
+      "top_function": "Finance & Accounting",
+      "top_function_count": 65
+    },
+    {
+      "organization": "Destination BC Corp.",
+      "total": 122,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 62
+    },
+    {
+      "organization": "BC Utilities Commission",
+      "total": 91,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 43
+    },
+    {
+      "organization": "Office of the Representative for Children and Youth",
+      "total": 77,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 37
+    },
+    {
+      "organization": "Environmental Appeal Board/Forest Appeals Commission",
+      "total": 62,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 31
+    },
+    {
+      "organization": "British Columbia Assessment Authority",
+      "total": 59,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 35
+    },
+    {
+      "organization": "Office of the Information and Privacy Commissioner",
+      "total": 56,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 18
+    },
+    {
+      "organization": "Office of the Premier and Cabinet Office",
+      "total": 46,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 16
+    },
+    {
+      "organization": "Office of the Police Complaint Commissioner",
+      "total": 42,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 25
+    },
+    {
+      "organization": "The Executive Council",
+      "total": 42,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 37
+    },
+    {
+      "organization": "British Columbia Pension Corporation",
+      "total": 33,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 32
+    },
+    {
+      "organization": "British Columbia Securities Commission",
+      "total": 32,
+      "top_function": "Administrative & Program Support",
+      "top_function_count": 23
+    },
+    {
+      "organization": "Intergovernmental Relations Secretariat",
+      "total": 32,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 15
+    },
+    {
+      "organization": "Community Living BC",
+      "total": 30,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 28
+    },
+    {
+      "organization": "Forestry Innovation Investment",
+      "total": 24,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 9
+    },
+    {
+      "organization": "British Columbia Hydro and Power Authority",
+      "total": 23,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 12
+    },
+    {
+      "organization": "Forest Practices Board",
+      "total": 22,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 8
+    },
+    {
+      "organization": "Office of the Lieutenant-Governor",
+      "total": 21,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 12
+    },
+    {
+      "organization": "Agricultural Land Commission",
+      "total": 19,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 8
+    },
+    {
+      "organization": "PavCo (BC Pavilion Corporation)",
+      "total": 17,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 6
+    },
+    {
+      "organization": "Columbia Power Corporation",
+      "total": 16,
+      "top_function": "Engineering & Infrastructure",
+      "top_function_count": 6
+    },
+    {
+      "organization": "Office of the Ombudsperson",
+      "total": 16,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 6
+    },
+    {
+      "organization": "Justice Institute Of British Columbia",
+      "total": 15,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 8
+    },
+    {
+      "organization": "Cabinet Operations",
+      "total": 13,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 6
+    },
+    {
+      "organization": "British Columbia Energy Regulator",
+      "total": 10,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 4
+    },
+    {
+      "organization": "(Unspecified)",
+      "total": 10,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 3
+    },
+    {
+      "organization": "Office of the Human Rights Commissioner",
+      "total": 9,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 4
+    },
+    {
+      "organization": "Transportation Investment Corporation",
+      "total": 9,
+      "top_function": "Management & Project/Business Generalist",
+      "top_function_count": 5
+    },
+    {
+      "organization": "Office of the Merit Commissioner",
+      "total": 8,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 3
+    },
+    {
+      "organization": "Infrastructure BC",
+      "total": 6,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 5
+    },
+    {
+      "organization": "Innovate BC",
+      "total": 5,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 3
+    },
+    {
+      "organization": "Legal Services Society",
+      "total": 4,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 2
+    },
+    {
+      "organization": "British Columbia Railway Company",
+      "total": 4,
+      "top_function": "Executive & Senior Management",
+      "top_function_count": 3
+    },
+    {
+      "organization": "Office of the Conflict of Interest Commissioner",
+      "total": 3,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 1
+    },
+    {
+      "organization": "British Columbia Investment Management Corporation",
+      "total": 2,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 2
+    },
+    {
+      "organization": "BC Transit",
+      "total": 1,
+      "top_function": "Other / Unclassified",
+      "top_function_count": 1
+    }
+  ],
+  "provincial_comparison": [
+    {
+      "jurisdiction": "Ontario",
+      "tier": "Full public directory",
+      "status": "INFO-GO (infogo.gov.on.ca) \u2014 name, position, email, phone, address; updated daily",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "New Brunswick",
+      "tier": "Full public directory",
+      "status": "gnb.ca contacts directory \u2014 searchable by name, department, keyword, no login",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Newfoundland & Labrador",
+      "tier": "Full public directory",
+      "status": "telephonedirectory.gov.nl.ca \u2014 searchable by name, title, phone, department",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Prince Edward Island",
+      "tier": "Full public directory",
+      "status": "princeedwardisland.ca employee directory \u2014 searchable by name, phone, email, title",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Saskatchewan",
+      "tier": "Full public directory",
+      "status": "saskatchewan.ca/government/directory \u2014 official public directory; automated verification blocked by bot-protection, confirmed via provincial media comparison",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Yukon",
+      "tier": "Full public directory",
+      "status": "find-employee.service.yukon.ca \u2014 searchable by name, title, email, phone",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Federal (Canada)",
+      "tier": "Full public directory",
+      "status": "GEDS (geds-sage.gc.ca) \u2014 searchable by name, phone, title; some departments incomplete",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Alberta",
+      "tier": "Public, limited fields",
+      "status": "alberta.ca/staff-directory.cfm \u2014 name and phone only, no email/address, cited cyberattack protection",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Nova Scotia",
+      "tier": "Public, limited fields",
+      "status": "novascotia.ca employee directory \u2014 phone number only, no email or address",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Quebec",
+      "tier": "Public, partial coverage",
+      "status": "REPTEL (reptel.gouv.qc.ca) \u2014 some departments/agencies and some employees excluded by policy",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Manitoba",
+      "tier": "No public directory found",
+      "status": "No province-wide public employee directory found on manitoba.ca; only scattered per-branch listings",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Northwest Territories",
+      "tier": "No public directory found",
+      "status": "No public employee directory found on gov.nt.ca",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "Nunavut",
+      "tier": "Internal use only",
+      "status": "gov.nu.ca/en/staff-directory requires sign-in; public must email communications@gov.nu.ca",
+      "checked": "2026-08-20"
+    },
+    {
+      "jurisdiction": "British Columbia",
+      "tier": "Restricted August 2026",
+      "status": "Public since at least 1930, online since 2007 \u2014 access restricted 2026-08-18, two days ahead of the announced Aug. 20 cutoff",
+      "checked": "2026-08-20"
+    }
+  ],
+  "provincial_comparison_summary": {
+    "full_public": 7,
+    "public_limited_fields": 2,
+    "public_partial_coverage": 1,
+    "no_directory_found": 2,
+    "internal_only": 1,
+    "restricted_2026": 1,
+    "note": "B.C. is not literally the only jurisdiction without a fully public directory \u2014 Manitoba and the Northwest Territories appear never to have built one, and Nunavut restricts its directory to signed-in staff. But B.C. is the only jurisdiction found where an existing, decades-old public directory was deliberately taken down in 2026, with provincial media directly naming Ontario, Saskatchewan, and New Brunswick as far more open by comparison, and Alberta as the next-most restrictive."
+  },
+  "hero_stats": {
+    "total_records": 22441,
+    "individual_count": 21833,
+    "placeholder_count": 608,
+    "ministry_count": 63,
+    "largest_ministry_name": "Ministry of Forests",
+    "largest_ministry_count": 2413,
+    "largest_ministry_pct": 11.1,
+    "communications_count": 390,
+    "communications_pct": 1.79
+  },
+  "metadata": {
+    "title": "The Last Census",
+    "snapshot_captured": "2026-04-09",
+    "as_of_date_range": [
+      "2026-04-09",
+      "2026-07-14"
+    ],
+    "public_access_restricted": "2026-08-18",
+    "public_access_cutoff_announced": "2026-08-20",
+    "sources": [
+      "BC Government Directory bulk export (Wayback Machine capture, 2026-04-09), patched with individually-archived pages through 2026-07-14",
+      "Rob Shaw, \"B.C. cutting public access to decades-old government directory,\" Business in Vancouver, 2026-08-18",
+      "\"B.C. disables employee directory, leaving public in the dark about who works for gov't,\" Black Press Media (Vancouver Island Free Daily and syndicated outlets), 2026-08-18",
+      "\"Transparency issues raised over B.C. gov't decision to remove public employee directory,\" CBC News, 2026-08",
+      "Direct verification of provincial/territorial/federal directory status, 2026-08-20 (see provincial_comparison)"
+    ]
+  }
+}
