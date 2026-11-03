@@ -1,0 +1,313 @@
+The US just had its best VC quarter ever. Canada just had its worst deal count in nine years. These are not the same story.
+
+Here's the full breakdown, the findings, and what we should actually do about it. 🧵
+
+───────────────────────────────────────
+PART 1: WHAT THE $267 BILLION ACTUALLY IS
+───────────────────────────────────────
+
+1/ THE HEADLINE NUMBER IS ONE COMPANY
+
+US Q1 2026: $267.2B total venture capital (NVCA).
+
+That is the highest single quarter in US VC history. By a wide margin.
+
+But here's what's inside it:
+
+  OpenAI:                  $122.0B  (46%)
+  Anthropic + xAI + Waymo:  $66.6B  (25%)
+  Databricks + everything else: $78.6B  (29%)
+
+One company — OpenAI — raised 46% of the entire US VC market in a single quarter.
+
+───────────────────────────────────────
+
+[screenshot: 01-us-decomposition]
+
+2/ THE TOP-5 DEALS ACCOUNT FOR 73% OF THE TOTAL
+
+OpenAI, Anthropic, xAI, Waymo, Databricks: $195.6B combined.
+
+That's 73% of the $267B headline.
+
+Strip those five deals and the remaining US market — 4,589 deals — raised $71.6B.
+
+That's elevated but not record-breaking. Deal count actually fell 15% quarter-over-quarter. The headline reflects one extraordinary company, not an extraordinary market.
+
+  Headline gap vs Canada:    396×
+  Ex-top-5 gap vs Canada:   107×
+
+The 396× ratio is real. It is also almost entirely OpenAI.
+
+───────────────────────────────────────
+
+3/ THE THREE VALID COMPARISONS
+
+The "$267B vs $936M" headline mixes incompatible numbers. Here are the three apples-to-apples pairings:
+
+  Scenario 1 — Headline (distorted):
+    US $267.2B vs Canada $674M USD
+    396× gap — includes OpenAI's $122B
+
+  Scenario 2 — Ex top-5 (normalized):
+    US $71.6B vs Canada $674M USD
+    107× gap — baseline market signal
+
+  Scenario 3 — Q1 2025 YoY baseline:
+    US $91.5B vs Canada $907M USD
+    ~101× gap — most honest like-for-like
+
+None of these ratios are small. But the nature of the gap is very different depending on which one you use.
+
+───────────────────────────────────────
+PART 2: CANADA'S REAL PROBLEM
+───────────────────────────────────────
+
+[screenshot: 02-canada-stage-snapshots]
+
+4/ $936M, 104 DEALS — LOWEST COUNT SINCE 2017
+
+Canada Q1 2026:
+  Total:  $936M CAD (CVCA)
+  Deals:  104 — lowest since 2017
+
+This is not a bad quarter. It is a structural deterioration visible in the Q1-to-Q1 series:
+
+  Q1 2023:  $1,208M CAD  |  180 deals
+  Q1 2024:  $1,282M CAD  |  128 deals
+  Q1 2025:  $1,260M CAD  |  116 deals
+  Q1 2026:    $936M CAD  |  104 deals
+
+Three consecutive Q1 deal-count declines. Dollar amounts have also compressed. Q1 is always the softest quarter — the comparison is Q1 vs. Q1. This is not seasonal.
+
+───────────────────────────────────────
+
+5/ GROWTH-STAGE CAPITAL IS EFFECTIVELY GONE
+
+This is the most important number in the report.
+
+Canada Q1 2026 — Growth stage (Series E+):
+  Amount:  $1M CAD
+  Deals:   1 (undisclosed)
+
+Five-year Q1 average for Growth stage: $140M.
+
+One deal. One million dollars. Against a $140M benchmark.
+
+Growth capital is what takes a company from $5M to $50M in revenue — the scaling fuel that turns seed cohorts into internationally competitive businesses. It is not there.
+
+───────────────────────────────────────
+
+6/ THE STAGE BREAKDOWN — WHERE THE MONEY IS (AND ISN'T)
+
+Canada Q1 2026 by stage:
+
+  Seed/Pre-seed:   $185M   (up 83% vs Q1-2025's $101M)
+  Early (A–B):     $651M   (up 73% vs Q1-2025's $376M)
+  Later (C–D):     $248M   |  9 deals  |  $27.6M avg (vs ~$55M historical)
+  Growth (E+):       $1M   |  1 deal
+
+Early stage absorbed 70% of Q1-2026 capital — a record high share.
+
+Canada is producing companies. The early pipeline is genuinely healthy.
+
+But there is nowhere for those companies to go.
+
+───────────────────────────────────────
+
+7/ WAABI AND THE SINGLE-COMPANY PROBLEM
+
+Canada has its own single-outlier story.
+
+Waabi (autonomous driving, Toronto) raised ~$750M USD in Q1-2026 per KPMG.
+
+KPMG's Canada Q1 total: $1,017M CAD = approximately $732M USD at 0.72.
+
+Waabi's round likely accounts for 70%+ of the entire KPMG Canada Q1 figure.
+
+Ex-Waabi: Canada's remaining 103 deals raised an estimated $180–250M CAD — averaging under $2.5M per deal.
+
+Both the US and Canada headlines are, fundamentally, one-company stories. Strip the outlier on each side and the structural gap is even starker.
+
+───────────────────────────────────────
+PART 3: A DECADE IN CONTEXT
+───────────────────────────────────────
+
+[screenshot: 03-normalized-index]
+
+8/ CANADA LED THE US ON INDEXED TERMS IN 2021–2023
+
+This is the fact that never makes the narrative.
+
+Both markets indexed to 2019 = 100:
+
+  Year  | US Index  | CA Index  | Gap
+  ----  | --------  | --------  | ---
+  2019  |   100.0   |   100.0   |  0
+  2020  |   112.1   |    70.2   | US +42
+  2021  |   228.8   |   235.1   | CA +6  ←
+  2022  |   150.9   |   158.8   | CA +8  ←
+  2023  |   106.9   |   108.4   | CA +2  ←
+  2024  |   135.8   |   129.8   | US +6
+  2025  |   216.9   |   122.1   | US +95
+
+Canada's indexed performance was ABOVE the US in 2021, 2022, and 2023.
+
+The correction hit both markets at the same time, in roughly equal proportion.
+
+───────────────────────────────────────
+
+9/ THE GAP OPENED IN 24 MONTHS — NOT A DECADE AGO
+
+The divergence is 2024–2025. Not 2021.
+
+In 2023, both indices were essentially identical: US 107, Canada 108.
+
+By 2025: US 217, Canada 122. A 95-point gap opened in two years.
+
+A gap that opened in 24 months is a capital-availability policy failure. It is not a structural destiny. It is not proof that Canada cannot build great tech companies. Canada led on this index in 2021.
+
+The companies didn't stop existing. The capital did.
+
+───────────────────────────────────────
+
+10/ 2024 GROWTH EQUITY — THE CLIO DISTORTION
+
+2024 Canada growth equity: $1,487M CAD.
+
+Sounds like a recovery.
+
+Clio's $1.24B CAD Series F (Q3-2024) was 84% of that entire annual total.
+
+Ex-Clio: $247M in growth equity for the whole year.
+
+This is the same single-outlier problem as Waabi in Q1-2026. Strip one deal and the structural collapse in growth-stage capital is uninterrupted.
+
+───────────────────────────────────────
+PART 4: FINDINGS
+───────────────────────────────────────
+
+[screenshot: 11-findings]
+11/ FINDING 01 · THE US HEADLINE IS STRUCTURALLY MISLEADING
+
+OpenAI raised $122B — 46% of the entire US Q1 total. Strip the top-5 deals and the US market ran at $71.6B. Deal count fell 15% QoQ (4,594 deals). The headline reflects one extraordinary company, not an extraordinary market.
+
+396× is the headline gap. 107× is the structural gap. Neither is comparable to prior quarters.
+
+───────────────────────────────────────
+
+12/ FINDING 02 · CANADA'S CRISIS IS STRUCTURAL, NOT CYCLICAL
+
+$936M CAD, 104 deals. Lowest deal count since 2017. Three consecutive Q1 declines: 180 → 128 → 116 → 104. Growth-stage: one deal, $1M, vs. $140M five-year Q1 average.
+
+Q1 is compared to Q1. The seasonal adjustment is already built in. This is not seasonal.
+
+───────────────────────────────────────
+
+13/ FINDING 03 · THE GAP OPENED IN 2024 — NOT A DECADE AGO
+
+Canada led the US on indexed VC performance in 2021, 2022, and 2023. The divergence opened in 2024 (US: 136, CA: 130) and exploded in 2025 (US: 217, CA: 122).
+
+A 95-point gap that opened in 24 months is a capital-availability policy failure. It is not evidence that Canada can't build.
+
+───────────────────────────────────────
+
+14/ FINDING 04 · THE CAPITAL CLIFF IS COMING IN 2027–2028
+
+Seed/Pre-seed: up 83% YoY ($185M vs $101M). Early (A–B): up 73% ($651M vs $376M). Canada is producing companies.
+
+But without growth capital to graduate into, today's seed cohort will hit a Series C–E wall in 2027–2028. The crisis is lagged. It is not yet visible in the seed numbers.
+
+───────────────────────────────────────
+
+15/ FINDING 05 · LATER-STAGE DEAL SIZES HAVE COMPRESSED 50%
+
+Later-stage (C–D): $248M across 9 deals in Q1-2026. Average: $27.6M per deal. Historical average: ~$55M per deal.
+
+Companies that are getting funded at later stage are raising half as much as two years ago. The volume is there. The scale is gone. That means slower hiring, slower product cycles, slower market expansion.
+
+───────────────────────────────────────
+
+16/ FINDING 06 · BOTH HEADLINES ARE SINGLE-COMPANY STORIES
+
+US: OpenAI = 46% of the total.
+Canada: Waabi (~$750M USD) = likely 70%+ of KPMG Canada Q1.
+
+Ex-Waabi, Canada's remaining 103 deals raised an estimated $180–250M — under $2.5M per deal on average.
+
+Strip the outlier on each side and the structural story is far starker than the headlines suggest.
+
+───────────────────────────────────────
+PART 5: WHAT SHOULD BE DONE
+───────────────────────────────────────
+
+[screenshot: 17-recommendations]
+17/ RECOMMENDATION 01: VCCI-3 WITH A MANDATORY GROWTH-STAGE ALLOCATION
+
+Commit $2B to a third Venture Capital Catalyst Initiative (Budget 2027), with an explicit mandate that 60% targets growth-stage rounds (Series C–E, >$20M per deal).
+
+VCCI-1 ($450M, 2017) generated $1.6B in total VC deployment — a 3.6× government multiplier. Neither VCCI-1 nor VCCI-2 ($1B, Budget 2024) carried a growth-stage requirement. The fund-of-funds model works. What's missing is the mandate.
+
+Who implements: ISED Canada via BDC. No new legislation required.
+Target: 25 growth-stage Canadian deals per year (≥$20M each) by 2028.
+
+───────────────────────────────────────
+
+18/ RECOMMENDATION 02: PENSION HOME-BIAS CO-INVESTMENT TAX CREDIT
+
+Introduce a 15% upfront income tax credit for Canadian pension plans (CPPIB, OMERS, OTPP, PSP) that co-invest alongside a qualified lead VC in Canadian growth rounds (Series C–E).
+
+Canadian pensions manage $2.5 trillion. A 0.04% domestic growth VC allocation = $1B per year. That's 0.04%.
+
+Precedent: UK Enterprise Investment Scheme (30% tax relief) grew UK VC from £600M (2010) to £6.4B (2022). Quebec's LSVCC credit generates $800M+/year.
+
+Who implements: Finance Canada, Income Tax Act amendment.
+Target: $500M/year in pension-backed Canadian growth VC by 2027.
+
+───────────────────────────────────────
+
+19/ RECOMMENDATION 03: SCALE BDC DIRECT GROWTH EQUITY TO $300M/YEAR
+
+Direct BDC to allocate $300M/year to direct growth equity in Canadian companies at Series C–E, with a 1:1 private capital co-investment requirement. BDC already has a growth equity program — what's needed is a specific annual target and the co-investment condition to maximize private leverage.
+
+Precedent: BDC deployed $200M in growth equity in 2022. Israel's Yozma (1993) used $100M to catalyze $2.3B in private VC within 10 years.
+
+Who implements: BDC Board + Treasury Board direction. No new legislation required.
+Target: 20 growth-stage deals ≥$25M each per year in Canada by 2026.
+
+───────────────────────────────────────
+
+20/ RECOMMENDATION 04: REQUIRE PUBLIC QUARTERLY VC STAGE DATA
+
+Require CVCA — which receives federal funding through VCCI — to publish stage-level VC data quarterly, publicly, within 60 days of quarter end.
+
+The CVCA Q1-2026 full report was not publicly available. All stage-level data in this report came from press releases and media reports. The US NVCA Venture Monitor publishes full stage breakdown within 30 days. For free.
+
+If the government is funding CVCA via VCCI, it can require public reporting as a condition of that funding. This requires no legislation.
+
+Who implements: ISED Canada, via VCCI funding conditions.
+Target: CVCA quarterly stage report public within 60 days, starting Q2-2026.
+
+───────────────────────────────────────
+
+21/ THE DATA
+
+All of this is traceable:
+
+  CVCA Q1-2026 (press): $936M CAD, 104 deals
+  NVCA Q1-2026: $267.2B USD, 4,594 deals
+  OpenAI alone: $122B (46% of US total)
+  Ex-top-5 US: $71.6B
+  Canada growth stage Q1-2026: $1M (1 deal)
+  5-yr Q1 growth avg: $140M
+  Canada indexed above US: 2021, 2022, 2023
+  2025 divergence: US index 217 vs Canada 122
+  VCCI-1 multiplier: 3.6× ($450M → $1.6B deployed)
+  Canadian pension AUM: $2.5 trillion
+
+25 quarters of KPMG/PitchBook data, both countries, same methodology.
+
+Interactive dashboard — full stage breakdown, normalized index, scenario comparisons, findings, and all four recommendations:
+https://plots.canada-central.com/vc-comparison-q1-2026.html
+
+/end

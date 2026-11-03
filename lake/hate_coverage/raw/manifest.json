@@ -1,0 +1,1234 @@
+[
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2016,
+    "items": 47,
+    "new": 47
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2017,
+    "items": 46,
+    "new": 46
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2018,
+    "items": 48,
+    "new": 48
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2019,
+    "items": 48,
+    "new": 48
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2020,
+    "items": 48,
+    "new": 48
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2021,
+    "items": 97,
+    "new": 97
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2022,
+    "items": 47,
+    "new": 46
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2023,
+    "items": 90,
+    "new": 90
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2024,
+    "items": 51,
+    "new": 50
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2025,
+    "items": 69,
+    "new": 69
+  },
+  {
+    "frame": "muslim",
+    "pair": "ideology_term",
+    "query": "islamophobia Canada",
+    "year": 2026,
+    "items": 78,
+    "new": 78
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2016,
+    "items": 46,
+    "new": 44
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2017,
+    "items": 46,
+    "new": 45
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2018,
+    "items": 47,
+    "new": 46
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2019,
+    "items": 46,
+    "new": 45
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2020,
+    "items": 46,
+    "new": 46
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2021,
+    "items": 47,
+    "new": 47
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2022,
+    "items": 61,
+    "new": 60
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2023,
+    "items": 100,
+    "new": 96
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2024,
+    "items": 100,
+    "new": 96
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2025,
+    "items": 100,
+    "new": 96
+  },
+  {
+    "frame": "jewish",
+    "pair": "ideology_term",
+    "query": "antisemitism Canada",
+    "year": 2026,
+    "items": 100,
+    "new": 100
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2016,
+    "items": 46,
+    "new": 39
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2017,
+    "items": 48,
+    "new": 43
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2018,
+    "items": 47,
+    "new": 36
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2019,
+    "items": 48,
+    "new": 40
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2020,
+    "items": 10,
+    "new": 7
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2021,
+    "items": 46,
+    "new": 30
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2022,
+    "items": 47,
+    "new": 35
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2023,
+    "items": 46,
+    "new": 25
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2024,
+    "items": 48,
+    "new": 33
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2025,
+    "items": 48,
+    "new": 30
+  },
+  {
+    "frame": "muslim",
+    "pair": "hate_crime",
+    "query": "anti-Muslim hate crime Canada",
+    "year": 2026,
+    "items": 58,
+    "new": 52
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2016,
+    "items": 42,
+    "new": 25
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2017,
+    "items": 43,
+    "new": 21
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2018,
+    "items": 45,
+    "new": 26
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2019,
+    "items": 46,
+    "new": 25
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2020,
+    "items": 45,
+    "new": 31
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2021,
+    "items": 45,
+    "new": 31
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2022,
+    "items": 46,
+    "new": 23
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2023,
+    "items": 48,
+    "new": 26
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2024,
+    "items": 54,
+    "new": 29
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2025,
+    "items": 100,
+    "new": 66
+  },
+  {
+    "frame": "jewish",
+    "pair": "hate_crime",
+    "query": "anti-Jewish hate crime Canada",
+    "year": 2026,
+    "items": 100,
+    "new": 73
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2016,
+    "items": 46,
+    "new": 38
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2017,
+    "items": 90,
+    "new": 84
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2018,
+    "items": 49,
+    "new": 36
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2019,
+    "items": 46,
+    "new": 38
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2020,
+    "items": 42,
+    "new": 31
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2021,
+    "items": 47,
+    "new": 17
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2022,
+    "items": 45,
+    "new": 28
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2023,
+    "items": 44,
+    "new": 27
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2024,
+    "items": 48,
+    "new": 40
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2025,
+    "items": 48,
+    "new": 41
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_attack",
+    "query": "mosque attack Canada",
+    "year": 2026,
+    "items": 52,
+    "new": 35
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2016,
+    "items": 10,
+    "new": 7
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2017,
+    "items": 36,
+    "new": 26
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2018,
+    "items": 45,
+    "new": 23
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2019,
+    "items": 47,
+    "new": 29
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2020,
+    "items": 38,
+    "new": 27
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2021,
+    "items": 46,
+    "new": 30
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2022,
+    "items": 43,
+    "new": 38
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2023,
+    "items": 45,
+    "new": 37
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2024,
+    "items": 49,
+    "new": 37
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2025,
+    "items": 88,
+    "new": 59
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_attack",
+    "query": "synagogue attack Canada",
+    "year": 2026,
+    "items": 100,
+    "new": 71
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2016,
+    "items": 14,
+    "new": 7
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2017,
+    "items": 15,
+    "new": 10
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2018,
+    "items": 9,
+    "new": 4
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2019,
+    "items": 14,
+    "new": 12
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2020,
+    "items": 7,
+    "new": 2
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2021,
+    "items": 13,
+    "new": 10
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2022,
+    "items": 10,
+    "new": 5
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2023,
+    "items": 16,
+    "new": 14
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2024,
+    "items": 17,
+    "new": 10
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2025,
+    "items": 30,
+    "new": 23
+  },
+  {
+    "frame": "muslim",
+    "pair": "worship_vandalism",
+    "query": "mosque vandalism Canada",
+    "year": 2026,
+    "items": 43,
+    "new": 32
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2016,
+    "items": 6,
+    "new": 0
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2017,
+    "items": 7,
+    "new": 3
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2018,
+    "items": 8,
+    "new": 2
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2019,
+    "items": 8,
+    "new": 4
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2020,
+    "items": 2,
+    "new": 1
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2021,
+    "items": 8,
+    "new": 2
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2022,
+    "items": 7,
+    "new": 4
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2023,
+    "items": 14,
+    "new": 8
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2024,
+    "items": 26,
+    "new": 16
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2025,
+    "items": 43,
+    "new": 20
+  },
+  {
+    "frame": "jewish",
+    "pair": "worship_vandalism",
+    "query": "synagogue vandalism Canada",
+    "year": 2026,
+    "items": 50,
+    "new": 28
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2016,
+    "items": 12,
+    "new": 2
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2017,
+    "items": 27,
+    "new": 9
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2018,
+    "items": 23,
+    "new": 8
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2019,
+    "items": 30,
+    "new": 13
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2020,
+    "items": 16,
+    "new": 2
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2021,
+    "items": 40,
+    "new": 8
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2022,
+    "items": 30,
+    "new": 11
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2023,
+    "items": 44,
+    "new": 9
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2024,
+    "items": 45,
+    "new": 15
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2025,
+    "items": 48,
+    "new": 13
+  },
+  {
+    "frame": "muslim",
+    "pair": "adj_attack",
+    "query": "Islamophobic attack Canada",
+    "year": 2026,
+    "items": 45,
+    "new": 14
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2016,
+    "items": 10,
+    "new": 5
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2017,
+    "items": 23,
+    "new": 12
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2018,
+    "items": 28,
+    "new": 7
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2019,
+    "items": 40,
+    "new": 8
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2020,
+    "items": 23,
+    "new": 6
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2021,
+    "items": 26,
+    "new": 7
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2022,
+    "items": 38,
+    "new": 19
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2023,
+    "items": 45,
+    "new": 11
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2024,
+    "items": 50,
+    "new": 14
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2025,
+    "items": 99,
+    "new": 34
+  },
+  {
+    "frame": "jewish",
+    "pair": "adj_attack",
+    "query": "antisemitic attack Canada",
+    "year": 2026,
+    "items": 100,
+    "new": 38
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2016,
+    "items": 48,
+    "new": 30
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2017,
+    "items": 47,
+    "new": 20
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2018,
+    "items": 42,
+    "new": 27
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2019,
+    "items": 49,
+    "new": 31
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2020,
+    "items": 40,
+    "new": 29
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2021,
+    "items": 46,
+    "new": 16
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2022,
+    "items": 46,
+    "new": 17
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2023,
+    "items": 48,
+    "new": 20
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2024,
+    "items": 47,
+    "new": 26
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2025,
+    "items": 48,
+    "new": 22
+  },
+  {
+    "frame": "muslim",
+    "pair": "targeted",
+    "query": "Muslim community targeted Canada",
+    "year": 2026,
+    "items": 38,
+    "new": 14
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2016,
+    "items": 19,
+    "new": 13
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2017,
+    "items": 13,
+    "new": 7
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2018,
+    "items": 39,
+    "new": 23
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2019,
+    "items": 47,
+    "new": 28
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2020,
+    "items": 33,
+    "new": 20
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2021,
+    "items": 44,
+    "new": 22
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2022,
+    "items": 46,
+    "new": 23
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2023,
+    "items": 46,
+    "new": 11
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2024,
+    "items": 53,
+    "new": 19
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2025,
+    "items": 54,
+    "new": 21
+  },
+  {
+    "frame": "jewish",
+    "pair": "targeted",
+    "query": "Jewish community targeted Canada",
+    "year": 2026,
+    "items": 100,
+    "new": 40
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2016,
+    "items": 47,
+    "new": 15
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2017,
+    "items": 49,
+    "new": 11
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2018,
+    "items": 49,
+    "new": 15
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2019,
+    "items": 49,
+    "new": 19
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2020,
+    "items": 46,
+    "new": 17
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2021,
+    "items": 100,
+    "new": 27
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2022,
+    "items": 47,
+    "new": 4
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2023,
+    "items": 64,
+    "new": 13
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2024,
+    "items": 49,
+    "new": 7
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2025,
+    "items": 59,
+    "new": 9
+  },
+  {
+    "frame": "muslim",
+    "pair": "group_hate",
+    "query": "Muslim hate Canada",
+    "year": 2026,
+    "items": 62,
+    "new": 17
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2016,
+    "items": 47,
+    "new": 16
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2017,
+    "items": 47,
+    "new": 17
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2018,
+    "items": 46,
+    "new": 11
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2019,
+    "items": 46,
+    "new": 17
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2020,
+    "items": 46,
+    "new": 12
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2021,
+    "items": 46,
+    "new": 18
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2022,
+    "items": 48,
+    "new": 12
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2023,
+    "items": 61,
+    "new": 15
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2024,
+    "items": 95,
+    "new": 29
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2025,
+    "items": 100,
+    "new": 23
+  },
+  {
+    "frame": "jewish",
+    "pair": "group_hate",
+    "query": "Jewish hate Canada",
+    "year": 2026,
+    "items": 100,
+    "new": 29
+  }
+]

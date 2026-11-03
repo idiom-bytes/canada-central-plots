@@ -1,0 +1,2466 @@
+Canadian
+Venture Capital
+Market Overview
+Q1 2025
+
+OUR VISION
+A thriving Canadian economy driven by private capital.
+
+OUR MISSION
+CVCA’s mission is to help our members fuel the economy of the future by
+growing the businesses of today. We do this by supporting and connecting
+a vibrant private capital industry with advocacy, research, and education.
+
+CVCA is also the nation’s ultimate resource for data on Canadian private
+capital investments.
+
+Content
+
+ABOUT CVCA..............................................................................................................................................................2
+MESSAGE FROM THE CEO................................................................................................................................. 4
+ABOUT CVCA INTELLIGENCE........................................................................................................................... 5
+Q1 2025 HIGHLIGHTS........................................................................................................................................... 6
+VENTURE CAPITAL HEAT MAP........................................................................................................................ 8
+VENTURE CAPITAL INVESTMENT ACTIVITY: QUARTER OVER QUARTER............................. 10
+VENTURE CAPITAL INVESTMENT ACTIVITY: STAGE BREAKDOWN.......................................... 12
+VENTURE CAPITAL INVESTMENT ACTIVITY: SECTOR BREAKDOWN...................................... 14
+VENTURE CAPITAL INVESTMENT ACTIVITY: ACTIVITY BY DEAL SIZE................................... 16
+TOP DISCLOSED CANADIAN VC DEALS....................................................................................................17
+TOP 10 CANADIAN CITIES/ADMINISTRATIVE CENTRES................................................................. 18
+VENTURE DEBT HEAT MAP.............................................................................................................................20
+VENTURE DEBT ACTIVITY: QUARTER OVER QUARTER................................................................... 21
+VC EXITS.....................................................................................................................................................................22
+MOST ACTIVE VC FIRMS & FUNDS..................................................................................................... 24-25
+OVERALL FIRMS WITH LARGEST FUNDING ROUNDS......................................................................26
+INDEPENDENT FIRMS WITH LARGEST FUNDING ROUNDS..........................................................27
+PARTICIPATING DATA CONTRIBUTORS....................................................................................................28
+CVCA METHODOLOGY.......................................................................................................................................30
+
+Message
+from the CEO
+
+The first quarter of 2025 continues to reflect the evolving dynamics in
+Canadian venture capital. Total investment reached $1.26B across 116 deals,
+down from the previous quarter, but still indicative of sustained investor
+interest in later-stage companies. However, the persistent slowdown in preseed and seed-stage investments, now at levels not seen since 2020, is a
+signal we cannot ignore. These early investments are the pipeline for future
+growth. A weakening at the foundation threatens the innovation economy
+we’ve worked hard to build.
+The absence of IPO activity and continued reliance on M&A for exits
+underscore the shift toward longer private company lifecycles. But the
+broader slowdown in exit activity also reflects growing hesitancy among
+buyers in a macroeconomic climate shaped by global trade tensions, tariffs,
+and supply chain uncertainty. While Canadian innovation continues to attract
+international interest, it’s critical that the full lifecycle of capital formation is
+supported, from early-stage ideation to liquidity, even in a more cautious
+global environment.
+As we release this report, Canada finds itself at a crossroads. The country’s
+innovation economy is being tested, by policy uncertainty, capital access
+friction, and global competition for talent and investment. It’s clear we need
+a more deliberate industrial strategy, one that aligns our public ambitions
+with private sector capabilities. CVCA is actively engaging on these fronts,
+advocating for policies that enable capital formation, support tech adoption,
+and make it easier for institutional capital to fuel Canadian innovation.
+These conversations will be front and centre at Invest Canada ‘25, taking
+place May 27–29 in Calgary. It’s the country’s most important private capital
+event, and a key platform for senior private capital leaders. I hope you will
+join us.
+
+KIM FURLONG
+
+CEO
+
+CANADIAN VENTURE CAPITAL &
+PRIVATE EQUITY ASSOCIATION
+
+4
+
+About
+CVCA Intelligence
+CVCA Intelligence is the most comprehensive source of Canadian private equity and
+venture capital data, powered by the Canadian Venture Capital and Private Equity
+Association (CVCA).
+With features like the investor search function, CVCA Intelligence provides you with
+advanced, real-time access to the most up-to-date and comprehensive Canadian
+private capital data available, refreshed daily and is compatible with all major desktop
+and mobile browsers.
+As a CVCA member, your organization receives a designated number of CVCA
+Intelligence licenses. If you haven’t received access to CVCA Intelligence, contact
+the account owner of your organization’s CVCA membership to find out how to gain
+access. If you still have issues, please contact CVCA’s membership team here.
+Non-members can enjoy unlimited monthly or discounted annual access to high-quality
+industry data and analysis by becoming CVCA Intelligence subscribers. Become a
+CVCA Intelligence subscriber here.
+Access to high-quality data, analysis, and tools is central to our members and the
+industry’s ability to operate in the dynamic private capital environment. We invite
+interested private capital organizations to join us in our efforts. If you would like to have
+your firm included in future reports, please complete this form linked here.
+
+5
+
+Q1 Highlights
+
+The first quarter of 2025 saw $1.26B
+invested across 116 deals, matching
+the dollars invested in Q1 of 2023
+and 2024, with fewer deals closed
+The largest disclosed deal in Q1
+was raised by Montréal-based EV
+charging tech company dcbel, raising
+a $79M later-stage investment
+Exits in Q1 2025 experienced a sharp
+decline, with exit activity pacing
+lower than pre-pandemic
+Q1 2025 has only seen 7 exits via M&A with no
+VC-Backed IPOs since 2023
+
+Ontario, Quebec, and Alberta
+collectively accounted for 90% of
+all dollars invested and 76% of all
+deals closed in Q1, with over $1.1B
+deployed across 88 deals
+With $140M invested, Alberta ranked third
+among provinces for VC activity in Q1 2025,
+surpassing British Columbia, which saw $80M
+invested during the same period
+
+6
+
+Five mega-deals ($50M+) closed in Q1
+2025, representing $576M, or 46% of
+the quarter’s total dollars invested
+While experiencing a 26% drop in
+dollars invested and 17% drop in
+deals closed quarter-over-quarter,
+the impact of recent macroeconomic
+trends remains to be seen
+Investment activity in the ICT sector
+has seen the highest levels invested
+in a first quarter since 2022
+Excluding the outlier years of 2021 and 2022,
+Q1 2025 marks the highest level of first-quarter
+investment activity on record in the ICT sector
+
+Average deal size in Q1 2025
+increased by 22% year-over-year,
+rising from $8.94M in Q1 2024 to
+$10.89M, reflecting a shift toward
+larger transactions despite fewer
+deals closed
+
+Pre-seed activity declined quarterover-quarter, reaching the lowest
+level of dollars invested in a single
+quarter since 2021
+Seed investment activity in Q1 2025 recorded
+the lowest number of deals closed in a quarter
+since 2020 and the third lowest level of dollars
+invested since 2021
+
+Venture debt activity in Q1 2025
+reached a notable level, with $283M
+deployed across 14 transactions
+
+While total dollars invested in Q1 have remained
+relatively flat year-over-year over the past
+two years, the number of deals has declined
+by 21%, indicating a shift toward fewer, larger
+transactions
+
+7
+
+Venture Capital
+Heat Map
+$1.3 Billion
+116 Deals
+
+total invested into
+
+14
+
+12
+
+4
+
+30
+
+3
+
+46
+
+1
+
+2
+
+4
+
+$80M
+
+British
+Columbia
+
+$140M
+Alberta
+
+$11M
+
+Saskatchewan
+
+$1M
+
+NA
+
+Manitoba
+
+$694M
+Ontario
+
+$301M
+
+New Brunswick
+
+$6M
+
+Prince Edward
+Island
+
+Québec
+
+In Q1 2025, total venture capital investment reached $1.26B across 116 deals, with the majority
+of activity concentrated in Ontario and Quebec, which together accounted for 79% of all dollars
+invested and 66% of all deals closed.
+Ontario led the quarter, securing $694M (55% of total dollars invested) across 46 deals (40% of all
+activity), followed by Quebec with $301M across 30 deals.
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+8
+
+$29M
+
+Nova Scotia
+
+British Columbia ranked third by deal count,
+representing 12% of all transactions, with Alberta
+close behind at 10%. However, when measured by
+dollars invested, the order reverses: Alberta took
+third place with $140M (11%), while British Columbia
+followed with $80M (6%).
+Notably, Alberta ranked second for average deal
+size at $11.69M, behind Ontario at $15.08M. This
+uplift reflects the presence of mega-deals (>$50M),
+as investors continue to concentrate capital in fewer,
+higher-value transactions.
+A notable deal that closed this quarter was the
+$52M Series C round raised by Nanoprecise Sci
+Corp, an AI-based predictive maintenance solution
+provider from Edmonton, AB. Yaletown Partners
+and BDC Capital led the equity portion of the deal
+with support from BMO Capital Partners and Export
+Development Canada (EDC), while the debt portion
+was led by CIBC Innovation Banking.
+
+Top Sectors
+per Province
+BY NUMBER OF DEALS
+
+BRITISH COLUMBIA
+
+ALBERTA
+
+ICT
+
+ICT
+
+CLEANTECH
+
+LIFE SCIENCES
+
+LIFE SCIENCES
+
+CLEANTECH
+
+7
+
+3
+
+2
+
+5
+3
+
+2
+
+SASKATCHEWAN
+
+MANITOBA
+
+ICT
+
+ICT
+
+AGRIBUSINESS
+
+LIFE SCIENCES
+
+OTHERS
+
+OTHERS
+
+2
+1
+1
+
+1
+
+1
+
+1
+
+ONTARIO
+
+QUÉBEC
+
+ICT
+
+ICT
+
+OTHERS
+
+LIFE SCIENCES
+
+LIFE SCIENCES
+
+CLEANTECH
+
+29
+8
+7
+
+13
+9
+5
+
+NEW BRUNSWICK
+
+NOVA SCOTIA
+
+OTHERS
+
+LIFE SCIENCES
+
+2
+
+6
+
+CLEANTECH
+
+3
+
+AGRIBUSINESS
+
+2
+
+PRINCE EDWARD ISLAND
+
+NEWFOUNDLAND & LABRADOR
+
+ICT
+
+CLEANTECH
+
+1
+
+2
+
+LIFE SCIENCES
+
+1
+
+OTHERS
+
+1
+
+9
+
+Venture Capital
+Investment Activity
+Quarterly Activity
+260
+
+$6,500
+241
+
+$6,000
+
+240
+215
+
+$5,500
+212
+
+$5,000
+$4,500
+
+212
+
+220
+
+209
+
+187
+
+200
+
+190
+179
+
+185
+
+181
+
+$4,000
+
+162
+151
+
+160
+
+154
+
+161
+
+$3,500
+
+180
+
+146
+
+140
+
+140
+
+120
+
+$3,000
+116
+
+$2,500
+
+100
+
+$2,572
+
+$1,260
+
+$3,156
+
+$1,149
+
+$1,496
+
+$1,305
+
+$2,572
+
+$2,926
+
+$1,715
+
+$1,263
+
+0
+
+$1,048
+
+$500
+
+$2,012
+
+40
+$4,803
+
+$1,000
+$3,303
+
+60
+
+$4,115
+
+$1,500
+
+$5,520
+
+80
+
+$2,466
+
+$2,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+20
+0
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+TOTAL:
+
+TOTAL:
+
+TOTAL:
+
+TOTAL:
+
+TOTAL:
+
+846 DEALS
+$15.4B
+$ Millions Invested
+
+770 DEALS
+$10.4B
+# Deals
+
+690 DEALS
+$7.1B
+Seed
+
+Early Stage
+
+619 DEALS 116 DEALS
+$8.5B
+$1.3B
+Later Stage
+
+Growth
+
+Q1 2025 saw a decline in both dollars invested and deal count when compared with Q4 2024, reflecting
+a slowdown amid growing global trade uncertainties. However, when viewed in the context of previous
+years, investment levels remain consistent with Q1 2023 and Q1 2024, though with fewer deals closed,
+indicating an ongoing shift toward fewer, larger investments in response to market volatility.
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+10
+
+One important note is that many of the deals closed in Q1 2025 were initiated in Q4 2024 or earlier,
+meaning the full impact of current global economic shifts on the Canadian VC landscape has yet to
+materialize. This impact is expected to begin appearing in the data over the course of H1 2025 and
+beyond.
+PitchBook data indicates that while the number of VC investments in the U.S. has declined quarter-overquarter and year-over-year, deal values have increased considerably, reaching levels last seen in Q3 2021.
+The first half of 2025 will be key to observing whether the U.S. investment environment begins to reflect
+the broader impacts of global trade shifts.
+
+US VC DEAL ACTIVITY BY QUARTER (2021-Q1 2025)*
+$120
+
+6,000
+
+5,633
+5,145
+
+$100
+
+4,755
+4,717
+
+5,000
+4,944
+
+4,640
+4,099
+
+4,240
+3,995
+
+$80
+3,880
+
+3,795
+
+3,726
+3,401
+
+$60
+
+4,000
+
+3,453
+
+3,484
+
+3,369
+3,003
+
+3,000
+
+$81.0
+
+$70.5
+
+$45.4
+
+$38.5
+
+$53.9
+
+$36.6
+
+$35.4
+
+$37.4
+
+$42.4
+
+$49.3
+
+$44.5
+
+$77.2
+
+$91.5
+
+$0
+
+$101.0
+
+1,000
+$92.1
+
+$20
+$85.5
+
+2,000
+
+$80.1
+
+$40
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2021
+
+2022
+$ USD Billions Invested
+
+2023
+
+2024
+
+0
+
+2025
+
+Deal Count
+
+* Source: PitchBook
+
+11
+
+Venture Capital
+Investment
+Activity
+Stage Breakdown
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+12
+
+$6,174
+
+VC YEAR-OVER-YEAR STAGE BREAKDOWN (2021-Q1 2025)
+$6,500
+
+390
+360
+
+$5,500
+
+330
+
+$4,926
+
+$6,000
+
+305
+
+$5,000
+
+$4,030
+
+256
+
+254
+
+240
+
+212
+
+$3,000
+
+168
+
+$2,500
+
+119
+81
+
+2021 2022 2023 2024
+
+PRE-SEED
+
+$954
+
+90
+
+52
+
+13
+2021 2022 2023 2024
+
+SEED
+
+Q1
+2025
+
+2021 2022 2023 2024
+
+EARLY
+STAGE
+$ Millions Invested
+
+Q1
+2025
+
+2021 2022 2023 2024
+
+LATER
+STAGE
+
+Q1
+2025
+
+30
+22
+
+12
+
+$91
+
+31
+
+60
+
+$603
+
+58
+
+$349
+
+36
+
+$241
+
+$376
+
+$537
+
+22
+
+Q1
+2025
+
+120
+
+65
+
+$128
+
+$12
+
+$108
+
+$162
+
+$89
+
+$500
+
+$164
+
+$1,000
+
+$851
+
+$791
+
+$1,500
+
+0
+
+150
+
+$1,465
+
+129
+
+180
+
+7
+
+3
+
+2021 2022 2023 2024
+
+$17
+
+121
+
+$2,394
+
+185
+
+157
+
+210
+
+$3,050
+
+$3,500
+
+$3,163
+
+235
+
+$2,184
+
+$4,000
+
+$2,000
+
+270
+
+$3,302
+
+$4,500
+
+300
+
+$4,310
+
+274
+
+1
+
+Q1
+2025
+
+0
+
+GROWTH
+EQUITY
+
+# Deals
+
+VC activity continues to shift towards the later-stages in Q1 2025, continuing with the trend which emerged
+in 2024. Later-stage funding (primarily Series C and D) accounted for 11% of deals and 28% of total venture
+capital invested in the quarter, up from 5% and 22%, respectively, in Q1 2023. This shift coincides with falling
+levels of investment activity in the Pre-Seed and Seed-stages, which fell by 24% and 27% quarter-over-quarter.
+
+13
+
+Venture Capital
+Investment
+Activity
+Sector Breakdown
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+14
+
+$10,000
+
+$9,810
+
+VC YEAR-OVER-YEAR SECTOR INVESTMENT ACTIVITY (2021-Q1 2025)
+500
+
+495
+
+450
+
+$9,000
+426
+
+400
+
+$6,000
+
+$4,000
+
+300
+
+292
+
+$4,000
+
+$5,000
+
+350
+
+333
+
+$4,814
+
+$7,000
+
+$6,504
+
+$8,000
+
+250
+
+200
+157
+
+150
+
+$3,000
+$1,576
+
+2021 2022 2023 2024
+
+ICT
+
+Q1
+2025
+
+2021 2022 2023 2024
+
+Q1
+2025
+
+2021 2022 2023 2024
+
+LIFE SCIENCES
+$ Millions Invested
+
+CLEANTECH
+
+Q1
+2025
+
+49
+
+50
+
+43
+
+2021 2022 2023 2024
+
+$12
+
+12
+
+50
+
+$156
+
+23
+
+0
+
+$218
+
+51
+
+43
+
+$269
+
+64
+
+$238
+
+$1,148
+
+77
+
+$128
+
+$218
+
+$1,151
+
+55
+
+$1,136
+
+100
+$793
+
+58
+
+$1,000
+
+$1,193
+
+$807
+
+$2,000
+
+139
+
+127
+
+$1,122
+
+$1,847
+
+126
+
+4
+
+0
+
+Q1
+2025
+
+AGRIBUSINESS
+
+# Deals
+
+Venture capital investment trends by sector in Q1 2025 remained largely consistent with 2024,
+with ICT leading in both total dollars invested and number of deals, followed by Life Sciences and
+Cleantech.
+The ICT sector attracted $807M across 58 deals, accounting for 64% of all VC dollars invested and
+50% of total deal activity in the quarter.
+Life Sciences secured $218M across 23 deals in Q1 2025, resulting in an average deal size of
+$9.46M, a 16.6% decline from 2024. Similarly, Cleantech recorded $128M across 12 deals, with an
+average deal size of $3.12M, reflecting a 14% decrease from 2024 levels.
+Agribusiness saw a decline compared to Q4 2024, with $12M invested across 4 deals, representing a 50% drop in deal count and a 53% drop in dollars invested. However, activity levels were in
+line with Q1 2024, suggesting the dip may not be indicative of a broader shift.
+
+15
+
+Venture Capital
+Investment Activity
+Year-over-Year Activity by Deal Size
+The distribution of deal sizes in Q1 2025 remained largely consistent to trends observed in Q4 2024, with
+$1M–$5M deals comprising the largest share at 37% of all activity.
+However, a notable shift toward larger deal sizes has begun to emerge in 2025. Deals in the
+$100K–$500K range, which accounted for 15% of all deals in 2024 and a 5-year average of 13%, dropped
+to 9% in Q1 2025. This reduction was offset by an increase in $500K–$1M deals, rising from a 5-year
+average of 8% to 12% this quarter.
+Deals in the $20M-$50M range saw a similar boost of activity, accounting for a share of investment activity
+only ever seen in 2021, accounting for 10% of all deals closed this year so far.
+
+100%
+
+80%
+
+60%
+
+40%
+
+20%
+
+0%
+
+2015
+
+<$100K
+
+2016
+
+2017
+
+$100K-$500K
+
+2018
+$500K-$1M
+
+2019
+
+2020
+$1M-$5M
+
+2021
+
+2022
+$5M-$20M
+
+2023
+
+$20M-$50M
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+16
+
+2024
+
+Q1 2025
+$50M+
+
+Top Disclosed
+Canadian VC Deals
+COMPANY
+
+PROVINCE DISCLOSED VC FIRM(S)
+
+SECTOR
+
+STAGE
+
+$ MIL
+
+QC
+
+IDEALIST CAPITAL,CANADA GROWTH FUND
+
+CLEANTECH
+
+LATER
+STAGE
+
+$79
+
+NANOPRECISE SCI
+CORP
+
+AB
+
+BDC CAPITAL INC., BMO CAPITAL PARTNERS,
+EXPORT DEVELOPMENT CANADA
+(EDC),YALETOWN PARTNERS INC, CIBC
+INNOVATION BANKING
+
+INTERNET
+SOFTWARE &
+SERVICES
+
+LATER
+STAGE
+
+$52
+
+CLUTCH
+
+ON
+
+BMO CAPITAL PARTNERS, ALTOS
+VENTURES,INDUSTRY VENTURES, FJ LABS,
+FLIGHT DECK CAPITAL
+
+RETAIL (BRICK &
+MORTAR)
+
+LATER
+STAGE
+
+$50
+
+PUZZLE MEDICAL
+DEVICES
+
+QC
+
+BDC CAPITAL INC., AQC CAPITAL, LUMIRA
+VENTURES, DESJARDINS CAPITAL,LONGVIEW
+VENTURES, KF MATHESON INVESTMENT
+HOLDINGS
+
+HEALTHCARE/
+LIFE SCIENCES
+
+EARLY
+STAGE
+
+$43
+
+FUNDTHROUGH
+
+ON
+
+URBANA CORPORATION, KLISTER CREDIT CORP.,
+CANADIAN BUSINESS GROWTH FUND (CBGF)
+
+INTERNET SOFTWARE
+& SERVICES
+
+EARLY
+STAGE
+
+$35
+
+ONEVEST
+
+AB
+
+OMERS VENTURES MANAGEMENT INC.,
+SALESFORCE VENTURES,LUGE CAPITAL,
+DELOITTE VENTURES, FIN CAPITAL, PIVOT
+INVESTMENT PARTNER, ALLIANZ LIFE
+VENTURES, TIAA VENTURES
+
+INTERNET
+SOFTWARE &
+SERVICES
+
+EARLY
+STAGE
+
+$29
+
+OPTABLE
+TECHNOLOGIES
+
+QC
+
+DESJARDINS CAPITAL, BRIGHTSPARK VENTURES,
+TELUS GLOBAL VENTURES,HEARST VENTURES,
+DELOITTE VENTURES, ASTERX CAPITAL
+
+INTERNET
+SOFTWARE &
+SERVICES
+
+BRIDGE
+
+$29
+
+MOLECULIGHT INC.
+
+ON
+
+HAYFIN CAPITAL MANAGEMENT LLP
+
+HEALTHCARE/
+LIFE SCIENCES
+
+LATER
+STAGE
+
+$28
+
+GUMLOOP
+
+BC
+
+Y COMBINATOR, FIRST ROUND CAPITAL, NEXUS
+VENTURE PARTNERS
+
+INTERNET
+SOFTWARE &
+SERVICES
+
+EARLY
+STAGE
+
+$25
+
+VENN (FORMERLY
+VAULT PAYMENTS
+INC.)
+
+ON
+
+GRADIENT VENTURES, INTACT VENTURES, LEFT
+LANE CAPITAL, XYZ VENTURE CAPITAL
+
+INTERNET
+SOFTWARE &
+SERVICES
+
+EARLY
+STAGE
+
+$22
+
+DCBEL
+
+17
+17 | TOP 10 DISCLOSED CANADIAN VC DEALS
+
+Top 10
+Canadian Cities/
+Administrative
+Centers
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+18
+
+Total Deals $ Millions
+1. Toronto
+
+29
+
+2. Montreal
+
+20
+
+3. Vancouver
+
+11
+
+$73
+
+4. Calgary
+
+9
+
+$84
+
+5. Ottawa
+
+6
+
+$91
+
+6. Waterloo
+
+4
+
+7. Edmonton
+
+3
+
+8. Halifax
+
+3
+
+9. Regina
+
+3
+
+$8
+
+10. Winnipeg
+
+3
+
+NA
+
+#1 Toronto
+$583 Million
+29 Deals
+
+$583
+$262
+
+$7
+$56
+$25
+
+3
+
+7
+4
+
+9
+
+10
+
+8
+6
+
+5 2
+1
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+19
+
+Venture Debt*
+Heat Map
+
+1
+1
+
+3
+
+$8M
+British
+Columbia
+
+9
+$85M
+
+Alberta
+
+$182m
+
+Ontario
+
+Venture debt activity continued to rise in Q1 2025, with $283M
+invested across 14 transactions, surpassing the five-year quarterly
+average. The dollars deployed through venture debt this quarter
+represent a 229% increase compared to the average Q1 investment
+levels since 2020.
+Amid ongoing valuation pressures and market uncertainty, founders
+are increasingly turning to debt financing as an alternative means to
+support growth while minimizing equity dilution.
+
+$8M
+
+Québec
+
+$283 Million
+14 Deals
+total invested across
+
+* Venture debt financings are not included in the overall Canadian VC activity
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+20
+
+Venture Debt
+Investment Activity
+QUARTERLY VENTURE DEBT FINANCING INVESTMENT
+ACTIVITY (2021-Q1 2025)
+$350
+
+140
+
+$300
+
+120
+
+$250
+
+100
+
+$200
+
+80
+
+$150
+
+60
+
+$100
+
+40
+28
+19
+
+$160
+
+$70
+
+$78
+
+$140
+
+$333
+
+$336
+
+$283
+
+14
+
+$92
+
+11
+
+$114
+
+10
+
+$182
+
+9
+
+$197
+
+9
+
+$308
+
+11
+
+$87
+
+12
+
+$66
+
+11
+
+$152
+
+10
+
+11
+
+$100
+
+$0
+
+12
+
+12
+
+$120
+
+$50
+
+22
+
+17
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2021
+
+2022
+
+2023
+
+$ Millions Invested
+
+2024
+
+6
+
+20
+
+0
+
+2025
+
+# Deals
+
+# ROUNDS
+
+SIZE OF TOTAL ROUNDS*
+(CDN$ MIL)
+
+CIBC INNOVATION BANKING
+
+5
+
+$19
+
+RBCX TECH BANKING
+
+2
+
+$152
+
+DESJARDINS CAPITAL
+
+2
+
+$4
+
+ESPRESSO CAPITAL LTD.
+
+2
+
+$2
+
+MOST ACTIVE FIRMS IN VENTURE DEBT FINANCING ROUNDS
+
+21
+
+Venture Capital
+Exits
+Exit activity stalled in Q1 2025 as companies continued to face valuation challenges amid a backdrop of
+global economic uncertainty. As a result, no IPOs were recorded during the quarter.
+M&A exit activity also slowed, with 7 exits raising $149M, a sharp difference compared to Q1 2024, which
+saw 14 exits totaling $3.3B in proceeds.
+
+$11,000
+
+55
+
+52
+
+50
+
+$8,036
+
+$10,000
+
+$8,000
+
+$6,000
+
+$5,256
+
+$7,000
+34
+
+36
+
+45
+40
+35
+
+35
+
+30
+
+$4,353
+
+$5,000
+
+$3,903
+
+$9,000
+
+$4,000
+
+25
+20
+15
+
+$3,000
+
+2021
+
+2022
+
+2023
+
+2024
+
+Q1
+2025
+
+0
+2021
+
+M&A*
+
+2022
+
+1
+2023
+
+5
+0
+
+0
+
+2024
+
+Q1
+2025
+
+IPO
+
+$ Millions Invested
+
+* Includes transactions with undisclosed values
+
+10
+
+8
+
+$149
+
+$697
+
+$1,000
+$0
+
+7
+
+$266
+
+$2,000
+
+# Deals
+
+** IPO valuation
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+22
+
+0
+
+23
+
+Most Active
+VC Firms & Funds
+# Rounds Size of Total Rounds* ($M)
+BDC Capital
+Golden Triangle Angel Network (GTAN)
+Fonds de solidarité FTQ
+Desjardins Capital
+Export Development Canada (EDC)
+Fondaction
+Deloitte Ventures
+Real Ventures
+Investeco Capital
+Front Row Ventures
+
+20
+5
+4
+4
+3
+3
+3
+3
+3
+3
+
+$298
+$6
+$236
+$9
+$190
+$109
+$74
+$15
+$5
+$3
+
+MOST ACTIVE PRIVATE INDEPENDENT FIRMS
+
+# ROUNDS
+
+SIZE OF TOTAL ROUNDS*
+(CDN$ MIL)
+
+GOLDEN TRIANGLE ANGEL NETWORK (GTAN)
+
+5
+
+$6
+
+REAL VENTURES
+
+3
+
+$15
+
+INVESTECO CAPITAL CORP.
+
+3
+
+$5
+
+FRONT ROW VENTURES
+
+3
+
+$3
+
+ANGES QUÉBEC
+
+3
+
+$2
+
+ANTLER
+
+3
+
+$1
+
+BUILD VENTURES
+
+2
+
+$868
+
+LUMIRA VENTURES
+
+2
+
+$602
+
+INOVIA CAPITAL INC.
+
+2
+
+$343
+
+Y COMBINATOR
+
+2
+
+$131
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+24
+
+# ROUNDS
+
+SIZE OF TOTAL ROUNDS*
+(CDN$ MIL)
+
+FONDS DE SOLIDARITÉ FTQ
+
+4
+
+$236
+
+DESJARDINS CAPITAL
+
+4
+
+$9
+
+DELOITTE VENTURES
+
+3
+
+$74
+
+BMO CAPITAL PARTNERS
+
+2
+
+$29
+
+SALESFORCE VENTURES
+
+2
+
+$29
+
+SCALE GOOD FUND
+
+2
+
+$2
+
+# ROUNDS
+
+SIZE OF TOTAL ROUNDS*
+(CDN$ MIL)
+
+BDC CAPITAL INC.
+
+20
+
+$298
+
+EXPORT DEVELOPMENT CANADA (EDC)
+
+3
+
+$190
+
+FONDACTION
+
+3
+
+$109
+
+MARS INVESTMENT ACCELERATOR FUND (IAF)
+
+3
+
+$2
+
+INVEST NOVA SCOTIA
+
+3
+
+$1
+
+NEW BRUNSWICK INNOVATION FOUNDATION (NBIF)
+
+2
+
+$1
+
+MOST ACTIVE PENSION, RETAIL, CORPORATE
+& OTHER PUBLIC FUNDS
+
+MOST ACTIVE GOVERNMENT FUNDS
+
+* Total deal values - includes all participating investors
+25
+
+Overall Firms
+With Largest Funding Rounds
+# Rounds
+
+Size of Total Rounds* ($M)
+
+Build Ventures
+
+2
+
+Lumira Ventures
+
+2
+
+Inovia Capital Inc.
+
+2
+
+BDC Capital Inc.
+
+20
+
+Fonds de solidarité FTQ
+
+4
+
+Export Development Canada (EDC)
+
+3
+
+Y Combinator
+
+2
+
+$131
+
+Fondaction
+
+3
+
+$109
+
+Deloitte Ventures
+
+3
+
+$74
+
+Diagram Ventures
+
+2
+
+$61
+
+* Total deal values - includes all participating investors
+26
+
+$868
+$602
+$343
+$298
+$236
+$190
+
+Independent Firms
+With Largest Funding Rounds
+# ROUNDS
+
+SIZE OF TOTAL ROUNDS*
+(CDN$ MIL)
+
+BUILD VENTURES
+
+2
+
+$868
+
+LUMIRA VENTURES
+
+2
+
+$602
+
+INOVIA CAPITAL INC.
+
+2
+
+$343
+
+Y COMBINATOR
+
+2
+
+$131
+
+DIAGRAM VENTURES
+
+2
+
+$61
+
+AQC CAPITAL (FORMERLY: ANGES QUÉBEC CAPITAL)
+
+2
+
+$45
+
+TRUE NORTH FUND
+
+2
+
+$19
+
+CYCLE CAPITAL MANAGEMENT
+
+2
+
+$18
+
+PANACHE VENTURES
+
+2
+
+$17
+
+INFORMATION VENTURE PARTNERS INC.
+
+2
+
+$16
+
+FIRM
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+27
+
+Participating
+Data Contributors
+CVCA thanks the following firms who participated in its Q1 2025 survey.
+
+Venture Capital FIRMS
+5G Open Innovation Lab
+
+DigitalDx Ventures
+
+McRock Capital
+
+The51 Food and Agtech Fund
+
+Accelerate Fund
+
+Emerald Technology Ventures
+
+NAventures
+
+The51 Ventures Fund
+
+Accelia Capital
+
+Espresso Capital Ltd.
+
+Tidal Venture Partners
+
+Active Impact Investments
+
+FACIT
+
+New Brunswick Innovation
+Foundation
+
+adMare Bioinnovations
+
+Ferst Capital
+
+Alberta Ecotrust Foundation
+
+Finchley Healthcare Ventures
+
+AmorChem Fund
+
+First Ascent Ventures
+
+Amplitude Ventures
+
+Forum Ventures
+
+Anges Quebec
+
+Front Row Ventures
+
+Anges Québec Capital / AQC
+Capital
+
+Genesys Capital
+
+Antler
+Azure Capital Partners
+BCF Ventures
+BDC Cleantech Practice
+BDC Intellectual PropertyBacked Financing
+
+Good News Ventures
+Grand Ventures
+Graphite Ventures
+GreenSky Capital Inc.
+Highline Beta
+iGan Partners
+
+NGIF Capital
+Nimbus Synergies
+Pangaea Ventures
+Pelorus Venture Capital Ltd.
+Pender Ventures
+Quark Venture
+RBC Capital Partners
+Real Ventures
+Relay Ventures
+Renewal Funds
+Resolve Growth Partners
+Roadmap Capital
+
+TLT East Ventures
+Top Down Ventures
+Trillick Ventures
+Triptyq Capital
+True North Fund
+Uncork Capital
+Version One Ventures
+Vistara Growth
+Volta Labs
+Waterpoint Lane
+White Star Capital
+Yaletown Partners
+
+Round 13 Capital
+
+BKR Capital
+
+InBC Investment Corp.
+
+BlackPines Capital Partners
+
+Information Venture Partners
+
+Boreal Ventures
+
+Innovobot
+
+Build Ventures
+
+inovia Capital
+
+CEMEX Ventures
+
+Invest Nova Scotia
+
+Sectoral Asset Management
+Inc.
+
+Centre for Aging + Brain
+Health Innovation
+
+Investeco Capital Corp
+
+Spring Impact Capital
+
+Lalotte Ventures
+
+CIBC Innovation Banking
+
+Staircase Ventures
+
+Lumira Ventures
+
+CIC Capital Ventures
+
+Startup TNT
+
+Climate Innovation Capital
+
+MaRS Investment Accelerator
+Fund (IAF)
+
+Telegraph Hill Capital
+
+CTI Life Sciences
+
+Math Venture Partners
+
+Sand Hill North
+Sandpiper Ventures
+Scale Good Fund
+
+TELUS Global Ventures
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+28
+
+PRIVATE EQUITY & LSVCC FIRMS
+ARC Financial
+
+Fengate Private Equity
+
+Ardenton Capital
+Corporation
+
+Fulcrum Capital Partners
+
+BDC Growth & Transition
+Capital (BDC GTC)
+BDC Growth Equity
+CAI Capital Partners
+Canadian Business Growth
+Fund
+Clairvest Group Inc.
+Clearspring Capital
+Partners
+Export Development
+Canada (EDC)
+
+Golden Triangle Angel
+Network (GTAN)
+Highland West Capital
+Instar Asset Management
+Inc.
+
+Peloton Capital
+Management
+Persistence Capital
+Partners
+Pillarfour Capital
+PRIVEQ Capital Funds
+
+Waterous Energy Fund
+Weathervane Investments
+Westcap Mgt. Ltd
+Yellow Point Equity
+Partners
+
+Roynat Capital Inc.
+
+Ironbridge Equity Partners
+
+Seafort Capital
+
+Killick Capital Inc.
+
+TerraNova Partners L.P.
+
+McCain Capital Partners
+
+Tricor Pacific Capital Ltd.
+
+Mink Capital
+
+Upper Stage Ventures
+
+Novacap Management Inc.
+
+Vertu Capital
+
+Fondaction
+
+Kensington Capital
+Partners Ltd.
+
+LIMITED PARTNERS
+Alberta Enterprise
+Corporation
+BDC Venture Capital
+Bluesky Equities Ltd.
+Dancap Private Equity Inc
+Desjardins Capital
+Farm Credit Canada
+
+Fonds de solidarité FTQ
+Fonds régionaux de
+solidarité FTQ
+HarbourVest Partners
+(Canada) Ltd
+
+Ontario Teachers' Pension
+Plan (OTPP)
+Teralys Capital
+Venture Ontario
+
+Investissement Quebec
+
+If you would like to have your firm included in future reports,
+please click here.
+
+29
+
+CVCA Methodology:
+Venture Capital
+VENTURE CAPITAL DATA:
+Verified completed equity, quasi-equity venture capital and venture debt deals only (non-equity or
+project-based government funding, pharmaceutical development deals, venture capital-backed
+acquisitions, and angel financing are not included). All figures are in CAD unless otherwise specified.
+
+VC DEVELOPMENT STAGES
+VENTURE DEBT
+
+SHORT-TO-MEDIUM TERM, NON-DILUTIVE DEBT INSTRUMENT WITH NO EQUITY RIDER.
+
+SEED STAGE
+
+COMPANY HAS A CONCEPT OR PRODUCT UNDER DEVELOPMENT, BUT IS PROBABLY NOT
+FULLY OPERATIONAL.
+
+EARLY STAGE
+
+COMPANY HAS A PRODUCT OR SERVICE IN TESTING OR PILOT PRODUCTION. IN SOME
+CASES, THE PRODUCT MAY BE COMMERCIALLY AVAILABLE.
+
+LATER STAGE
+
+PRODUCT OR SERVICE IN PRODUCTION AND COMMERCIALLY AVAILABLE. COMPANY IS
+GENERATING ON-GOING REVENUE, BUT NOT NECESSARILY, PROFITABLE.
+
+GROWTH
+
+SIGNIFICANT MINORITY INVESTMENT TO DRIVE GROWTH AND SCALE WHICH CAN BE
+COMBINED WITH A SECONDARY TRANSACTION TO FACILITATE LIQUIDITY FOR EXISTING
+VC INVESTORS
+
+VC SECTORS
+ICT
+
+COMPUTER HARDWARE AND SOFTWARE AND SERVICES, INTERNET SOFTWARE OR
+SERVICES, ECOMMERCE, ELECTRONIC & SEMICONDUCTOR, MOBILE AND TELECOM
+TECHNOLOGIES AND SERVICES.
+
+LIFE SCIENCES
+
+BIOTECH, MEDICAL DEVICES, PHARMACEUTICALS, EHEALTH, HEALTHCARE PRODUCTS AND
+SERVICES, AND OTHER MEDICAL RELATED PRODUCTS AND SERVICES.
+
+CLEANTECH
+
+ENERGY AND FUEL TECHNOLOGIES, EFFICIENCY AND CONSERVATION, RENEWAL ENERGY,
+ENVIRONMENTAL TECHNOLOGIES AND OTHER ENERGY AND ENVIRONMENTAL PRODUCTS
+AND SERVICES.
+
+AGRIBUSINESS
+
+TRADITIONAL AND ADVANCED AGRICULTURAL TECHNOLOGIES AND SERVICES
+
+Discover comprehensive Canadian VC data on CVCA Intelligence: deals, fundraising, exits and more.
+30
+
+DISCLAIMER
+Please note, historical information provided by CVCA is subject to change. Every effort has been
+made to provide information that is current and accurate. Nevertheless, unintended inaccuracies
+in information may occur. The information contained through CVCA quarterly market reporting
+and CVCA Intelligence has been made available by public sources and third parties, subject to
+continuous change without notice, and therefore, is not warranted as to its merchantability, completeness, accuracy, or up-to-datedness. Any reference to specific investments or investors is for
+appropriate acknowledgment and does not constitute a sponsorship or endorsement.
+
+AUTHORS
+David kornacki
+
+Rutvik Shukla
+
+DIRECTOR, DATA & PRODUCT
+
+RESEARCH ANALYST
+
+dkornacki@cvca.ca
+
+rshukla@cvca.ca
+
+JON JACKSON
+
+IZADELLA STA. ROMANA
+
+DIRECTOR OF COMMUNICATIONS
+
+MARKETING & BRAND MANAGER
+
+jjackson@cvca.ca
+
+istaromana@cvca.ca
+
+31
+
+

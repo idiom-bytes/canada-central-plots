@@ -1,0 +1,10980 @@
+Venture Pulse
+Q1 2026
+Global analysis of venture funding
+
+KPMG. Make the Difference.
+
+April 15, 2026
+
+Welcome message
+Welcome to the Q1’26 edition of KPMG Private Enterprise’s Venture
+Pulse — a quarterly report highlighting the major trends,
+opportunities, and challenges across the venture capital market
+globally and in key jurisdictions around the world.
+
+industry-focused solutions — from autonomous vehicles and robotics
+to legaltech and energy management. Biotech also attracted sizeable
+investments during the quarter, in addition to defense tech and
+AI-adjacent infrastructure.
+
+Global VC investment more than doubled quarter-over-quarter, rising
+from $128.6 billion in Q4’25 to $330.9 billion during Q1’26. The total
+soared past the record set in Q4’21 ($210.8 billion) — a quarter once
+viewed as a nearly unmatchable outlier. That said, the current surge
+in VC funding was largely driven by a handful of multi-billion-dollar
+raises by AI-focused companies. Five US-based companies together
+accounted for $188.6 billion of total global VC investment, led by a
+record-breaking $122 billion raise by OpenAI, a $30 billion raise by
+Anthropic, and a $20 billion raise by xAI — all LLM-focused AI firms.
+
+Global M&A activity appeared very strong in Q1’26, although the vast
+majority of exit value came from the $250 billion acquisition of xAI by
+SpaceX. Meanwhile, global fundraising activity picked up noticeably
+in Q1’26, but only for the largest funds. At the end of Q1’26, total
+fundraising for $1 billion+ funds was already well ahead of the
+$30.8 billion seen during all of 2025.
+
+While the Americas attracted 82% of all VC investment globally
+during Q1’26 ($270.1 billion) driven primarily by activity in the
+US, both Europe and Asia also saw very solid starts to the year.
+Europe attracted $25.7 billion in Q1’26, led by six $1 billion+ funding
+rounds (Nscale — $2 billion, Neura Robotics — $1.8 billion,
+Wayve — $1.5 billion, Cloover — $1.2 billion, Advanced Machine
+Intelligence — $1 billion, and Kraken Technologies — $1 billion).
+Asia, meanwhile, saw $33.6 billion in funding during Q1’26, led by
+$1 billion+ funding rounds in two different jurisdictions: a $2 billion
+raise by China’s Rokid and a $2 billion raise by Singapore-based
+DayOne.
+At a sector level, AI continued to be the predominant theme for VC
+investment during Q1’26. While the large LLMs saw the largest deal
+sizes, VC investors continued to show significant interest in
+
+While Q1’26 was a strong quarter for the VC market globally, the
+conflict in the Middle East is casting a shadow of uncertainty over the
+outlook for the VC market heading into Q2’26. The AI space is
+expected to remain a very robust area of VC investment globally,
+in addition to areas like defense tech and spacetech.
+In this quarter’s edition of Venture Pulse, we examine these and a
+number of other global and regional trends, including:
+•
+
+The increasing size of AI megadeals
+
+•
+
+The growing interest in spacetech and dual-use defense tech
+
+•
+
+The pickup in large-fund fundraising in the US
+
+•
+
+The continuing focus on autonomous driving
+
+You know KPMG. You might not know
+KPMG Private Enterprise.
+KPMG Private Enterprise advisers in KPMG
+firms around the world are dedicated to
+working with you and your business, no matter
+where you are in your growth journey —
+whether you’re looking to reach new heights,
+embrace technology, plan for an exit, or
+manage the transition of wealth of your
+business to the next generation.
+Conor Moore
+
+Global Head, KPMG Private Enterprise,
+KPMG International and Partner
+KPMG in the US
+
+We hope you find this edition of Venture Pulse insightful. If you would
+like to discuss any of the results in more detail, please contact a
+KPMG adviser in your area.
+
+Unless otherwise noted, all currencies reflected throughout this document are in US dollars.
+Data correct as of April 15, 2026, and is subject to change.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+2
+
+Contents
+04
+
+19
+
+34
+
+48
+
+75
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+•
+
+VC investment surges to
+$330.9B amid AI megadeals
+
+•
+
+VC investment hits a record
+$267.2B, led by AI
+
+•
+
+Americas capture 82% of global
+VC investment
+
+•
+
+Europe posts record number of
+$1B+ deals
+
+•
+
+AI dominates deal value, with
+funding highly concentrated at
+the top
+
+•
+
+Four $10B+ AI megadeals
+reshape market dynamics
+
+•
+
+Valuations rebound, skewed by
+US AI megadeals
+
+•
+
+Megadeals skew exit and
+fundraising tallies
+
+Median deal sizes rise across
+stages, driven by late-stage
+rounds
+
+•
+
+•
+
+•
+
+Canada and Mexico shaped by
+outlier transactions
+
+VC activity remains highly
+selective, focused on scale and
+defensibility
+
+•
+
+IPO market pauses amid
+geopolitical conflict
+
+•
+
+AI continues to drive late-stage
+activity and unicorn creation
+
+Defense tech and AI gain
+momentum amid geopolitical
+tensions
+
+•
+
+LPs concentrate capital in
+established, large funds
+
+Fundraising remains sluggish
+despite strong deal value
+
+•
+
+Fundraising rebounds, driven
+primarily by the largest funds
+
+•
+
+•
+
+Geopolitical uncertainty clouds
+the Q2 outlook
+
+•
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+•
+
+VC investment rises on AI,
+semiconductors and
+infrastructure
+
+•
+
+Government and corporate
+capital play an outsized role
+
+•
+
+China stabilizes; Japan
+becomes more selective
+
+•
+
+IPO activity improves in
+Hong Kong (SAR), China
+
+#Q1VC
+3
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Globally, in Q1’26
+VC-backed companies
+raised $330.9 billion
+across 8,464 deals
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+4
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Global VC investment surges to $330.9 billion amid ongoing AI boom
+Global VC investment climbed from $128.6 billion in Q4’25 to $330.9 billion in Q1’26 as investment in the AI space rocketed to an entirely new level on the
+back of a $122 billion raise by OpenAI.
+Strong start to Q1’26, but new wave of uncertainty puts damper on quarter-end
+
+Asia and Europe see solid start to the year, led by multiple $1B+ megadeals in Q1’26
+
+The global VC market got off to a positive start in Q1’26, driven by growing investor optimism and
+the possibility of an improved IPO environment coming out of 2025. A concentration of extraordinarily
+large mega-deals during the quarter propelled VC investment to within reach of Q4’21’s peak high,
+although even excluding these outlier deals total global VC investment was on a positive trajectory.
+
+Both Asia and Europe saw increases in VC investment and a robust number of $1 billion+ megadeals
+during Q1’26. Asia saw a rise from $26.2 billion to $33.6 billion quarter-over-quarter, led by a $2.2 billion
+raise by China-based AI and augmented reality unicorn Rokid, a $2 billion raise by Singapore-based data
+center developer DayOne.
+
+However, the unanticipated conflict in the Middle East in late February injected a fresh dose of
+uncertainty into the market, putting a bit of a damper on the initial optimism. Rapidly rising oil and gas
+prices in many jurisdictions combined with concerns about inflation caused many VC investors to pull
+back during March, although any significant market impacts will likely become more noticeable
+in Q2’26.
+
+Americas attracts four $10 billion+ raises by AI companies during Q1’26 — all in
+the US
+During Q1’26, the Americas saw VC investment rise from $78.6 billion in Q4’25 to $269.8 billion in
+Q1’26. The US alone accounted for $267.2 billion of the Americas’s Q1’26 total, powered largely by
+four $10 billion megadeals that together almost eclipsed the entire total of VC funding raised in the US
+during Q4’26. The AI space accounted for all four of these large megadeals, including a $122 billion
+raise by OpenAI — which was nearly three times larger than its previous $40 billion record-setting
+raise in 2025 — a $30 billion raise by Anthropic, a $20 billion raise by xAI, and a $16 billion raise by
+autonomous vehicle technology company Waymo.
+
+In Europe, VC investment rose from $23.4 billion to $25.7 billion between Q4’25 and Q1’26, led by a
+$2 billion raise by UK-based AI company Nscale, a $1.8 billion deal by Germany-based Neura Robotics,
+a $1.5 billion raise by UK-based autonomous driving firm Wayve, a $1.2 billion raise by Germany-based
+energy contractor management platform Cloover, a $1 billion deal by France’s Advanced Machine
+Intelligence and a $1 billion raise by UK-based distributed energy management company Kraken
+Technologies.
+
+AI continues to attract banner levels of investment across deal stages
+VC investment in AI continued to surge globally in Q1’26. While the biggest funding rounds went to the
+large US-based LLMs, VC investors across jurisdictions showed increasing interest in a wide range of
+AI-related startups, from those focused on semiconductors, data centers, and other AI infrastructure
+plays to those focused on AI platforms, agentic AI, physical AI, and industry and vertical solutions.
+Given the vast scope and potential applicability of AI to different industries and verticals, it is expected
+that AI will remain by far and away the most popular object of VC investment for the foreseeable future.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+5
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Global VC investment surges to $330.9 billion amid ongoing AI boom, cont’d.
+Autonomous vehicle-focused startups attract significant attention in Q1’26
+The autonomous vehicles space has evolved very rapidly over the last few years, with VC-backed
+startups in a number of jurisdictions working to develop and prove out their technologies and
+business cases. During Q1’26, several autonomous vehicle companies attracted large raises,
+including US-based Waymo ($16 billion), UK-based Wayve ($1.5 billion), and China-based Anhui
+Shenji Technology ($317 million). During the quarter, Waymo announced plans to launch driverless
+taxis in the London market before the end of 2026; this could help spur investment further over the
+next few quarters as competition in the space heats up.
+
+Spacetech and defense tech continue to gain traction among VC investors
+Defense tech and spacetech continued to grow on the radar of VC investors in Q1’26. During the
+quarter, China-based reusable rocket firm iSpace raised $723.7 million, while Japan-based space
+infrastructure company Interstellar Technologies raised $284 million. VC investors also showed
+increasing interest in defense tech solutions with dual-use capabilities. During the quarter, satellite
+manufacturer York Space Systems also held a successful IPO, raising $629 million on the NYSE.
+Globally, governments in a number of jurisdictions continued to prioritize these sectors as well,
+with a focus on developing more autonomous defense and space ecosystems. For example,
+Japan identified both the defense industry and aviation and space as key priority sectors in Q4’25,
+while in Q1’26, Canada launched its Defence Industrial Strategy — aimed at building out its
+domestic defense industrial ecosystem. Canada has also increased its emphasis on spacetech
+and defense innovation, with government backing expected to support growing investor interest
+over the coming quarters.
+
+IPO markets see positive start to 2026, but the conflict in the Middle East causes
+swift halt in US
+The US IPO market saw a steady start to the year, with a number of successful IPOs early in the
+quarter, including equipment rental company EquipmentShare, satellite manufacturer York Space
+Systems, and digital asset infrastructure company BitGo, in addition to a number of biotech companies.
+But the conflict in the Middle East brought the IPO market in the US to a grinding halt. Unless the
+conflict is resolved quickly, uncertainties around soaring oil and gas costs and the possibility of
+increasing inflation, the recovery of the IPR market in the US is put into doubt.
+In Asia, the Hong Kong Stock Exchange also saw a number of successful IPOs during Q1’26, including
+the first IPOs of China-based generative AI platform — LLM-focused Zhipu and multi-model AI model
+company MiniMax Group.
+
+Trends to watch for in Q2’26
+Looking ahead to Q2’26, all eyes will be on the conflict in the Middle East as it could
+create significant ripples through the VC market — particularly in the Americas and
+Europe — given the rapid rise in the cost of oil and concerns about inflation. IPO activity
+in the US will likely remain paused — unless the conflict is resolved or de-escalates
+quickly.
+AI is expected to remain very hot across all regions of the world. M&A activity in the space
+will likely increase, particularly as companies look to acquire capabilities and talent.
+defense tech, spacetech, and cybersecurity are also expected to see growing investment
+given current conflicts and the challenging geopolitical environment.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+6
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC investment rebounds to near-peak levels, skewed by AI megadeals
+Global venture financing
+2020–Q1’26
+$350
+
+20,000
+18,000
+
+$300
+
+16,000
+$250
+
+14,000
+12,000
+
+$200
+
+10,000
+$150
+
+8,000
+6,000
+
+$100
+
+4,000
+$79.2
+
+$105.2
+
+$118.4
+
+$165.8
+
+$179.8
+
+$197.7
+
+$210.8
+
+$180.0
+
+$145.7
+
+$109.6
+
+$94.4
+
+$109.3
+
+$87.5
+
+$85.4
+
+$85.7
+
+$82.5
+
+$91.3
+
+$89.9
+
+$128.2
+
+$95.7
+
+$165.0
+
+$121.0
+
+$128.6
+
+$330.9
+
+$0
+
+$78.7
+
+$50
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+Deal value ($B)
+
+2021
+Deal count
+
+2022
+Pre-seed/Seed
+
+2023
+
+2024
+Early VC
+
+2025
+Later VC
+
+2,000
+
+Arguably, Q1'26 was the best quarter
+the global VC market has seen in
+quite a while, even normalizing for
+the big mega-deals. A lot of
+companies are getting funded; they’re
+just getting overshadowed in many
+ways because everyone is focused
+on the big three. But then there’s
+been the last few weeks, and that’s
+throwing a bit of a wrench into things,
+especially on the IPO front. Entering
+Q1’26, there were good expectations
+that we’d see a steady stream of
+IPOs in the first half of the year.
+That’s all very much in doubt now.
+Conor Moore
+
+”
+
+Global Head,
+KPMG Private Enterprise,
+KPMG International & Partner
+KPMG in the US
+
+0
+
+2026
+Venture growth
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+7
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Cautious optimism gains more ground
+Global median deal size ($M) by stage
+
+Global up, flat or down rounds
+
+$30
+
+100%
+
+2020–2026*
+
+2020–2026*
+
+90%
+$25
+
+Up
+
+80%
+$20.0
+
+$20
+
+70%
+60%
+
+$15
+
+50%
+
+Flat
+
+40%
+$10
+$7.0
+$5
+
+$0
+
+2020
+
+2021
+
+Pre-seed/Seed
+
+2022
+Early VC
+
+2023
+
+2024
+Later VC
+
+2025
+
+30%
+
+$5.9
+
+20%
+
+$2.0
+
+10%
+
+2026*
+
+Venture growth
+
+0%
+
+Down
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+8
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Financing sizes tilt back upward across the board
+Global median deal size ($M) by series
+2020–2026*
+$160
+$143.0
+
+$140
+
+$120
+
+$100
+
+$80
+
+$60
+
+$57.6
+
+$40
+$28.6
+$20
+
+$14.3
+
+$0
+
+$3.0
+$0.5
+2020
+
+2021
+Pre-seed
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+2025
+C
+
+2026*
+
+$0.2
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+9
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Valuations sprint past 2021 levels for Series D+
+Global median pre-money valuation ($M) by series
+2020–2026*
+$2,000
+$1,800
+
+$1,790.0
+
+$1,600
+$1,400
+$1,200
+$1,000
+$800
+$600
+$480.0
+
+$400
+
+$179.5
+
+$200
+
+$56.6
+
+$0
+
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+$15.5
+$7.1
+2026*
+$4.0
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: The 2026 data point for pre-seed is based on a non-normative population.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+10
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Growth-stage deals continue resurgence
+Global deal share by series
+
+Global deal share by series
+
+100%
+
+100%
+
+2020–2026*, number of closed deals
+
+2020–2026*, VC invested ($B)
+
+D+
+90%
+80%
+
+C
+
+70%
+
+80%
+
+C
+
+70%
+B
+
+60%
+50%
+
+A
+
+40%
+
+B
+
+60%
+50%
+
+A
+
+40%
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+0%
+
+D+
+90%
+
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+0%
+
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+11
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+AI deployment continues to absorb vast sums
+Global financing trends to VC-backed companies by sector
+
+Global financing trends to VC-backed companies by sector
+
+100%
+
+Transportation
+
+100%
+
+Transportation
+
+90%
+
+Commercial products &
+services
+
+90%
+
+Commercial products &
+services
+
+80%
+
+Consumer goods &
+services
+
+80%
+
+Consumer goods &
+services
+
+70%
+
+Software
+
+70%
+
+Software
+
+60%
+
+Pharma & biotech
+
+60%
+
+Pharma & biotech
+
+50%
+
+Other
+
+50%
+
+Other
+
+40%
+
+Media
+
+40%
+
+Media
+
+30%
+
+IT hardware
+
+30%
+
+IT hardware
+
+20%
+
+HC services & systems
+
+20%
+
+HC services & systems
+
+2020–2026*, number of closed deals
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+2020–2026*, VC invested ($B)
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+12
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+First-time financings remain robust
+Global first-time venture financings of companies
+
+Corporate VC participation in global venture deals
+
+2020–2026*
+
+2020–Q1’26
+$300
+
+5,000
+4,500
+
+$250
+
+20,000
+18,000
+
+$70
+
+4,000
+3,500
+
+$200
+
+$150
+
+$100
+
+16,000
+$60
+14,000
+
+3,000
+
+$50
+
+2,500
+
+$40
+
+2,000
+
+12,000
+10,000
+8,000
+
+$30
+
+1,500
+
+Deal value ($B)
+
+2025
+
+2026
+
+Deal count
+
+$14.6
+
+2024
+
+$56.7
+
+2023
+
+$0
+
+$41.1
+
+2022
+
+$10
+$45.5
+
+2021
+
+4,000
+$60.7
+
+2020
+
+0
+
+$20
+
+$68.5
+
+$62.8
+
+$273.4
+
+$65.7
+
+$49.0
+
+$111.2
+
+$74.7
+
+$42.9
+
+$47.2
+
+$41.1
+
+$41.3
+
+$42.6
+
+$42.1
+
+$61.7
+
+$48.3
+
+$53.7
+
+$71.1
+
+$94.3
+
+$112.2
+
+$112.3
+
+$90.2
+
+$83.7
+
+$63.4
+
+$58.4
+
+$39.9
+
+$38.1
+
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+
+500
+
+6,000
+
+$40.0
+
+1,000
+
+$50
+
+$0
+
+$80
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Deal value ($B)
+
+2,000
+0
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: The capital invested is the sum of all the round values in which corporate venture capital investors participated, not the amount that corporate venture capital arms
+invested themselves. Likewise, deal count is the number of rounds in which corporate venture firms participated. This applies to all subsequent datasets that are similar.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+13
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Exit activity remains highly skewed by outsized AI transactions
+Global venture-backed exit activity
+
+Global unicorn rounds
+
+2020–Q1’26
+
+2020–Q1’26
+$300
+
+300
+
+$500
+
+1,400
+
+$450
+$250
+
+250
+
+$200
+
+200
+
+1,200
+
+$400
+1,000
+
+$350
+$300
+
+$150
+
+150
+
+800
+
+$250
+600
+
+$200
+
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+2020
+
+2021
+
+2022
+
+Deal value ($B)
+
+2023
+
+2024
+
+2025
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: PitchBook defines a unicorn venture financing as a VC round that generates a post-money valuation of $1 billion or more. These are not necessarily
+first-time unicorn financing rounds, but also include further rounds raised by existing unicorns that maintain at least that valuation of $1 billion or more.
+
+$413.5
+
+$184.3
+
+$159.1
+
+$114.4
+
+$99.9
+
+$76.7
+
+$115.6
+
+$80.8
+
+$68.2
+
+$79.8
+
+$82.6
+
+$113.3
+
+$64.0
+
+$87.0
+
+$126.6
+
+$111.2
+
+$135.6
+
+$438.8
+
+$373.2
+
+$359.2
+
+$354.3
+
+$0
+
+$230.3
+
+$100
+$50
+
+0
+
+400
+
+$242.0
+
+$254.4
+
+$43.6
+
+$44.5
+
+$95.4
+
+$24.8
+
+$55.1
+
+$24.1
+
+$22.0
+
+$15.2
+
+$21.0
+
+$19.3
+
+$18.3
+
+$34.8
+
+$21.4
+
+$24.2
+
+$39.5
+
+$54.4
+
+$74.6
+
+$75.1
+
+$64.0
+
+$59.1
+
+$33.3
+
+$31.9
+
+$22.1
+
+$0
+
+50
+$18.1
+
+$50
+
+$150
+
+$89.9
+
+100
+
+$69.6
+
+$100
+
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+2020
+
+2021
+
+2022
+
+Exit value ($B)
+
+2023
+
+2024
+
+2025
+
+200
+
+0
+
+2026
+
+Exit count
+
+Note: Exit value for initial public offerings is based on pre-IPO valuation, not the size of the offering itself. In January 2025, a new extrapolation for M&A exit
+values was also applied.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+14
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Exits start 2026 strong but significant risk factors remain
+Global venture-backed exit activity (#) by type
+
+Global venture-backed exit activity ($B) by type
+
+5,000
+
+$1,800
+
+2020–2026*
+
+2020–2026*
+
+4,500
+
+$1,600
+
+4,000
+
+$1,400
+
+3,500
+
+$1,200
+
+3,000
+$1,000
+2,500
+$800
+
+2,000
+
+$600
+
+1,500
+1,000
+
+$400
+
+500
+
+$200
+
+0
+
+2020
+
+2021
+Acquisition
+
+2022
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+$0
+
+2020
+
+2021
+
+2022
+
+Acquisition
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+15
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Fundraising growth narrows despite strong Q1 performance
+Global venture fundraising
+2020–2026*
+$450
+
+5,000
+
+$400
+
+4,500
+4,000
+
+$350
+
+3,500
+
+$300
+
+3,000
+
+$250
+
+2,500
+$200
+
+2,000
+
+$150
+
+1,500
+
+$282.9
+
+$217.7
+
+$128.9
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Capital raised ($B)
+
+$58.4
+
+$417.5
+
+$0
+
+$386.2
+
+$50
+
+$264.0
+
+$100
+
+2026*
+
+1,000
+500
+0
+
+Fund count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+16
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+LPs keep concentrating on size and experience
+Global venture fundraising (#) by size
+
+Global first-time vs. follow-on venture funds (#)
+
+100%
+
+100%
+
+90%
+
+90%
+
+80%
+
+80%
+
+70%
+
+70%
+
+60%
+
+60%
+
+50%
+
+50%
+
+40%
+
+40%
+
+30%
+
+30%
+
+20%
+
+20%
+
+10%
+
+10%
+
+2020–2026*
+
+2020–2026*
+
+0%
+$1B+
+
+2020
+
+2021
+
+$500M-$1B
+
+2022
+$250M-$500M
+
+2023
+$100M-$250M
+
+2024
+
+2025
+
+$50M-$100M
+
+2026*
+Under $50M
+
+0%
+
+2020
+
+2021
+
+2022
+
+First-time
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Follow-on
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+17
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+AI continues to dominate in record-setting fashion
+Top 10 global financings in Q1’26
+
+1. OpenAI — $122B, San Francisco, US — AI & ML — Late-stage VC
+2. Anthropic — $30.6B, San Francisco, US — AI & ML — Series G
+3. xAI — $20B, Palo Alto, US — AI & ML — Series E
+
+10
+
+4
+6
+
+1
+
+4. Waymo — $16B, Mountain View, US — Transportation — Series D
+
+8
+
+8
+
+5. Databricks — $7B, San Francisco, US — Database software — Late-stage VC
+6. Polymarket — $2.6B, New York, US — Markets — Series D
+7. Shield AI — $2.25B, San Diego, US — AI & ML — Series G
+
+5
+
+8. Rokid — $2B, Hangzhou, China - AI & ML — Late-stage VC
+
+2
+
+8. DayOne — $2B, Singapore — Systems & information management — Series C
+
+3
+
+10. Neura Robotics — $1.8B, Metzingen, Germany — Robotics — Late-stage VC
+
+7
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+18
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+In Q1’26, US VC-backed
+companies raised
+$267.2 billion across
+3,336 deals
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+19
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC investment in US soars to record high of $267.2 billion in Q1’26
+VC investment in the US soared to a record high of $267.2 billion in Q1’26, powered by the $122 billion raise by OpenAI. Even taking this major outlier deal
+out of the mix, VC funding in the US would have reached a new record. The quarter also saw the largest number of $10 billion+ VC megadeals in the US ever;
+in addition to OpenAI, Anthropic raised $30.6 billion, xAI raised $20 billion, and autonomous driving and ride hailing company Waymo raised $16 billion.
+Interest in AI continues to surge in the US
+
+Fundraising activity strengthens in Q1’26
+
+VC investors in the US continued to pour money into the AI space during Q1’26. While the largest
+portion of this investment went to three large LLMs — OpenAI, Anthropic, and xAI — other AI-focused
+companies raised $1 billion+ rounds during the quarter, including data platform company Databricks
+($7 billion), robotics-focused Skild AI ($1.4 billion), chip manufacturer Cerebras Systems ($1.1 billion),
+and spatial intelligence company World Labs ($1 billion).
+
+US-based fundraising activity grew significantly in Q1’26, with $47.8 billion in funds raised by the end
+of Q1’26 — more than half of total raised during each of the last three years. Fundraising was heavily
+concentrated at the top end of the market, with funds over $1 billion driving most of the total raised in
+the US. The growth in fundraising dollars reflects increasing capital intensity-particularly in AI-and the
+belief that more value is accruing in private markets, prompting investors to concentrate capital with
+managers they believe are best positioned to back the next generation of category-defining
+companies.
+
+Industry and vertical solutions remained a significant priority for VC investors during the quarter.
+The large LLMs have also increasingly focused on developing industry-specific solutions; for example,
+during Q1’26, Anthropic launched a legal plug-in aimed at automating activities to help improve
+legal workflows.1
+
+IPO market in the US grinds to a halt amid Middle East conflict
+Entering 2026, a steady stream of IPO exits was expected in the US — and for the first two months
+of the year, activity proved to be solid. In January, construction equipment rental company
+EquipmentShare raised $747 million on the Nasdaq, with shares rising 16.3% on the first day of
+trading, while satellite manufacturer York Space Systems raised $629 million and digital asset
+infrastructure company BitGo raised $212.8 billion — both on the NYSE. Several biotech companies
+also held successful IPOs early in Q1’26, including Eikon Therapeutics, which raised $381 million,
+Aktis Oncology, which raised $318 million, and Veradermics, which raised $256 million.2
+The conflict in the Middle East in late February, however, brought the IPO market in the US to a
+grinding halt. While there is hope that should the conflict be resolved quickly, the IPO market could
+quickly heat back up again, a protracted war would likely put any near-term recovery into doubt given
+increasing market uncertainties and the rapid rise in oil and gas costs.
+
+1 https://claude.com/plugins/legal
+
+2 https://www.sec.gov/search-filings — Form 424B4
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+20
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC investment in US soars to record high of $267.2 billion in Q1’26, cont’d.
+M&A activity remains strong in the US, with growing interest in acqui-hires
+M&A activity in the US continued to grow in Q1’26, although the record-breaking surge in deal value can be attributed to one outlier deal: the acquisition of
+xAI by SpaceX for $250 billion. AI startups continued to be a strong focus for corporate M&A activity, with numerous companies looking for opportunities to
+acquire AI startups in order to embed their solutions into their own offerings.
+The completion of two blockbuster acqui-hires deals in 2025 — the $14.3 billion licensing deal and investment in data labeling and modeling company
+Scale AI by Meta and the $20 billion licensing deal with Groq by Nvidia — has also prompted interest in acqui-hires from other corporates looking to obtain
+in-demand AI talent. Such deals are becoming an alternative to traditional M&A, with acquirers gaining talent and technology or licensing access rather
+than entire legal entity.
+
+Trends to watch for in Q2’26
+There is a looming cloud of uncertainty in the US VC market heading into Q2’26, given the conflict in the Middle East and the sudden surge
+in oil and gas prices. In particular, IPO activity is expected to remain soft; while sectors like cybersecurity and defense tech see exceptions,
+the majority of companies looking for IPO exits will likely delay plans until there is a significant de-escalation in the conflict. Meanwhile, M&A
+activity will likely continue at a solid pace, driven in part by AI-focused acquisitions.
+AI is expected to remain the hottest area of VC investment in the US during Q2’26. Given the level of geopolitical tensions and conflicts,
+defense tech and spacetech continue to be very attractive to VC investors in the US.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+The conflict in the Middle East
+and the related impact on the oil
+market could lead to significant
+challenges in other industries.
+Oil supply shocks have
+significant knock-on impacts.
+Refineries require smooth
+demand to operate effectively,
+and it’s not just increased prices
+at the petrol/gas station.
+Petrochemicals, pesticides, and
+plastics may be impacted, which
+then goes into the food supply
+chain, and so on. If the war
+continues, it’s going to create
+significant challenges for the US
+economy and national security.
+Samuel Lush
+
+Managing Director
+Private Equity Group
+KPMG in the US
+
+”
+
+#Q1VC
+21
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Billions keep flowing toward AI, unchecked
+Venture financing in the US
+2020–Q1’26
+
+$56.0
+
+$36.7
+
+$36.3
+
+$38.3
+
+$38.5
+
+$47.8
+
+$45.5
+
+$80.9
+
+$53.0
+
+$125.9
+
+$70.1
+
+$72.6
+
+$267.2
+
+$0
+
+$39.5
+
+1,000
+$45.3
+
+$50
+$70.8
+
+2,000
+
+$80.6
+
+$100
+
+$100.6
+
+3,000
+
+$90.6
+
+$150
+
+$86.7
+
+4,000
+
+$80.1
+
+$200
+
+$47.8
+
+5,000
+
+$49.0
+
+$250
+
+$39.2
+
+6,000
+
+$39.5
+
+$300
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+Deal value ($B)
+
+2021
+Deal count
+
+2022
+Pre-seed/Seed
+
+2023
+
+2024
+Early VC
+
+2025
+Later VC
+
+0
+
+I think it’s clear that certain
+VCs are doubling down. Part
+of that is you’ve got to keep
+increasing your holds so you
+don’t dilute your ownership
+and returns. Additionally, if
+you were in on any of the
+large deals, you have the
+opportunity for a potentially
+large exit. These big
+investments are really
+centered around a few
+companies as well, which
+suggests VC investors are
+putting money on companies
+they expect to be the winners,
+as opposed to putting those
+kinds of bets on smaller
+players in the space too.
+
+”
+
+Shivani Sopory
+Audit Partner
+KPMG in the US
+
+2026
+Venture growth
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+22
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Optimism is back — but primarily within AI
+Median deal size ($M) by stage in the US
+
+Up, flat or down rounds in the US
+
+$40
+
+100%
+
+2020–2026*
+
+2020–2026*
+
+90%
+
+$35
+
+Up
+
+80%
+$30
+70%
+$25
+
+60%
+$20.0
+
+$20
+
+50%
+
+Flat
+
+40%
+
+$15
+$10.0
+
+$10
+
+$8.2
+
+30%
+20%
+
+$5
+$2.0
+$0
+
+2020
+
+2021
+
+Pre-seed/Seed
+
+2022
+Early VC
+
+2023
+
+2024
+Later VC
+
+2025
+
+2026*
+
+Venture growth
+
+10%
+0%
+
+Down
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+23
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Deal sizes continue to exhibit steady growth beyond late stages
+Median deal size ($M) by series in the US
+2020–2026*
+$200
+$190.0
+$180
+$160
+$140
+$120
+$100
+$80
+
+$75.0
+
+$60
+$40.0
+
+$40
+
+$19.6
+
+$20
+$0
+
+$3.0
+$0.2
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+2025
+C
+
+2026*
+
+$0.2
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: Figures rounded in some cases for legibility.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+24
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Later-stage valuations are blowing past 2021 levels
+Median pre-money valuation ($M) by series in the US
+2020–2026*
+$3,000
+
+$2,500
+
+$2,395.4
+
+$2,000
+
+$1,500
+
+$1,000
+
+$579.0
+
+$500
+
+$203.0
+$0
+
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+$62.0
+$18.4
+$13.0
+2026*
+$6.3
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: The 2026 data point for angel is based on a non-normative population. The Series D+ figure for 2026 is an extreme outlier due to the prevalence of AI mega-rounds; it is based on a population sized 54.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+25
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Pre-seed proportions stay strong as mega-rounds skew VC invested tallies
+Deal share by series in the US
+
+Deal share by series in the US
+
+100%
+
+100%
+
+2020–2026*, VC invested ($B)
+
+2020–2026*, number of closed deals
+
+D+
+90%
+80%
+
+C
+
+70%
+
+80%
+
+C
+
+70%
+B
+
+60%
+50%
+
+A
+
+40%
+
+B
+
+60%
+50%
+
+A
+
+40%
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+0%
+
+D+
+90%
+
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+0%
+
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+26
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+The broadening AI ecosystem sees software dollars invested surge
+Venture financing by sector in the US
+
+Venture financing by sector in the US
+
+2020–2026*, VC invested ($B)
+
+2020–2026*, number of closed deals
+100%
+
+Transportation
+
+100%
+
+Transportation
+
+90%
+
+Commercial products &
+services
+
+90%
+
+Commercial products &
+services
+
+80%
+
+Consumer goods &
+services
+
+80%
+
+Consumer goods &
+services
+
+70%
+
+Software
+
+70%
+
+Software
+
+60%
+
+Pharma & biotech
+
+60%
+
+Pharma & biotech
+
+50%
+
+Other
+
+50%
+
+Other
+
+40%
+
+Media
+
+40%
+
+Media
+
+30%
+
+IT hardware
+
+30%
+
+IT hardware
+
+20%
+
+HC services & systems
+
+20%
+
+HC services & systems
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+27
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+First-time venture financings remain resilient in the US
+Corporate participation in venture deals in the US
+
+First-time venture financings of companies in the US
+
+2020–Q1’26
+
+2020–2026*
+
+$250
+
+1,400
+
+$35
+
+1,200
+
+$30
+
+1,000
+
+$25
+
+6,000
+
+5,000
+
+$200
+
+4,000
+$150
+
+800
+
+$20
+3,000
+
+600
+
+$100
+
+400
+
+$15
+2,000
+$10
+
+Deal value ($B)
+
+2025
+
+2026
+
+Deal count
+
+$8.3
+
+2024
+
+$30.7
+
+2023
+
+$15.6
+
+2022
+
+$16.4
+
+2021
+
+$0
+
+$24.2
+
+2020
+
+0
+
+1,000
+
+$5
+$22.9
+
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+
+200
+
+$14.6
+
+$234.3
+
+$33.6
+
+$38.3
+
+$93.1
+
+$25.3
+
+$51.8
+
+$23.8
+
+$25.1
+
+$18.4
+
+$15.7
+
+$18.3
+
+$15.5
+
+$34.9
+
+$18.4
+
+$20.8
+
+$33.4
+
+$38.6
+
+$50.1
+
+$46.0
+
+$42.0
+
+$40.6
+
+$22.6
+
+$26.5
+
+$20.3
+
+$0
+
+$18.6
+
+$50
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Deal value ($B)
+
+0
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+28
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+SpaceX-xAI merger skews tallies right away
+Venture-backed exit activity in the US
+2020–Q1’26
+$400
+
+600
+
+$350
+
+500
+
+$300
+400
+
+$250
+
+300
+
+$200
+
+$150
+
+200
+
+$100
+100
+$37.8
+
+$115.4
+
+$155.5
+
+$185.7
+
+$235.3
+
+$220.7
+
+$223.4
+
+$53.5
+
+$43.7
+
+$31.7
+
+$22.3
+
+$23.6
+
+$18.9
+
+$48.4
+
+$26.1
+
+$38.5
+
+$40.7
+
+$29.1
+
+$46.6
+
+$59.1
+
+$64.7
+
+$77.6
+
+$85.6
+
+$347.3
+
+$0
+
+$29.0
+
+$50
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Exit value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Exit count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+29
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+M&A boosts exit activity, borne off of SpaceX-xAI merger
+Venture-backed exit activity (#) by type in the US
+
+Venture-backed exit activity ($B) by type in the US
+
+2,500
+
+$1,000
+
+2020–2026*
+
+2020–2026*
+
+$900
+$800
+
+2,000
+
+$700
+$600
+
+1,500
+
+$500
+$400
+
+1,000
+
+$300
+$200
+
+500
+
+$100
+0
+
+2020
+
+2021
+Acquisition
+
+2022
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+$0
+
+2020
+
+2021
+
+2022
+
+Acquisition
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+30
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+The fundraising cycle benefits from flagship fund closes
+US venture fundraising
+2020–2026*
+$250
+
+2,000
+1,800
+
+$200
+
+1,600
+1,400
+
+$150
+
+1,200
+1,000
+
+$100
+
+800
+
+$47.8
+
+600
+
+$169.5
+
+$223.5
+
+$110.1
+
+$106.2
+
+$66.7
+
+$0
+
+$94.0
+
+$50
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Capital raised ($B)
+
+400
+200
+
+2026*
+
+The AI arms race without
+question is upon us in full
+force. It’s dominating every
+conversation. But beyond the
+big ticket LLMs, we’re also
+seeing an increasing evolution
+of opportunities around the
+infrastructure layer
+underpinning it. Greentech and
+energy-focused plays are back
+in fashion, along with chip
+design and manufacturing.
+And upstream, there’s been a
+huge proliferation around
+sector-specific technologies,
+with investors trying to identify
+what the actual defensible
+businesses are.
+
+”
+
+Scott Burger
+
+Partner
+KPMG in the US
+
+0
+
+Fund count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+31
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+LPs prioritize flagship funds, while early-stage vehicles continue to proliferate
+Venture fundraising (#) by size in the US
+
+Venture fundraising ($B) by size in the US
+
+100%
+
+100%
+
+90%
+
+90%
+
+80%
+
+80%
+
+70%
+
+70%
+
+60%
+
+60%
+
+50%
+
+50%
+
+40%
+
+40%
+
+30%
+
+30%
+
+20%
+
+20%
+
+10%
+
+10%
+
+2020–2026*
+
+2020–2026*
+
+0%
+$1B+
+
+2020
+
+2021
+
+$500M-$1B
+
+2022
+$250M-$500M
+
+2023
+
+2024
+
+$100M-$250M
+
+2025
+
+$50M-$100M
+
+2026*
+Under $50M
+
+0%
+$1B+
+
+2020
+
+2021
+
+$500M-$1B
+
+2022
+$250M-$500M
+
+2023
+$100M-$250M
+
+2024
+
+2025
+
+$50M-$100M
+
+2026*
+Under $50M
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+32
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Capital flows increasingly favor existing managers
+First-time vs. follow-on funds (#) in the US
+
+First-time vs. follow-on funds ($B) in the US
+
+100%
+
+100%
+
+90%
+
+90%
+
+80%
+
+80%
+
+70%
+
+70%
+
+60%
+
+60%
+
+50%
+
+50%
+
+40%
+
+40%
+
+30%
+
+30%
+
+20%
+
+20%
+
+10%
+
+10%
+
+2020–2026*
+
+2020–2026*
+
+0%
+
+2020
+
+2021
+First-time
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Follow-on
+
+0%
+
+2020
+
+2021
+
+2022
+
+First-time
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Follow-on
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+33
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+In Q1’26, VC-backed
+companies in the
+Americas raised
+$270.1 billion across
+3,618 deals
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+34
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC investment in Americas skyrockets amid US AI surge
+VC investment in the Americas surged to a new record high of $270.1 billion in Q1’26. This investment was highly centralized in the US market,
+propelled by skyrocketing investment in the AI space, including large funding rounds by LLM players OpenAI ($122 billion), Anthropic ($30.6 billion),
+and xAI ($20 billion). The US accounted for $267.2 billion of VC investment in the Americas during the quarter, including all ten of the largest deals.
+Canada sees one of its largest VC raises ever in Q1’26
+
+Brazil sees soft start to 2026 for VC investment
+
+VC investment in Canada fell in Q1’26, following a very strong finish to 2025, falling from $3.9 billion
+to $1 billion quarter-over-quarter. AI and deeptech attracted the most attention from VC investors, led
+by a $750 million Series C raise by autonomous driving company Waabi — one of the largest VC raises
+ever for a Canadian startup. During the quarter, chip startup Taalas also raised
+$169 million.
+
+VC investment in Brazil started off on a quiet note in Q1’26. A number of factors likely contributed
+to this softness, including the acceleration in dealmaking activity in the second half of 2025 and
+the fact 2026 is an election year, which is causing some speculation as to Brazil’s economic
+outlook and potential changes to tax rates. Despite these uncertainties, VC investors have
+continued to show interest in Brazil. While fintech continues to drive the majority of VC
+investment, interest in the AI space has started to increase. For the moment, much of this
+investment is coming from seed and angel investors, including serial entrepreneurs. The
+evolution of the AI space in Brazil will be interesting to watch over the next few quarters given
+how quickly it has evolved in other markets.
+
+On the exit front, Q1’26 saw Canada-based quantum computing company Xanadu debut on both the
+Nasdaq and the Toronto Stock Exchange (TSX) after a merger with special purpose acquisition
+company Crane Harbor Acquisition Corp. The TSX listing was the first for a Canadian technology
+company since 2021. Whether other Canadian tech startups follow suit will be a key area to watch over
+the next quarter. Q1’26 also saw US-based Ecolab acquire data center cooling technology firm CoolIT
+Systems for $4.7 billion.
+
+VC investment in Mexico holds nearly steady in Q1’26 despite increasing domestic
+uncertainty
+VC investment in Mexico fared relatively well in Q1’26, with $461 million in investment during Q1’26.
+Used care sales platform company Kavak saw the quarter’s largest deal — a $300 million Series F
+round — followed by a $70 million raise by cross-border finance platform Arq, and a $25 million raise by
+logistics and transportation-focused liquidity and payment solutions platform Solvento. Outside of the
+fintech space, deal activity was soft in Mexico, driven by a number of factors, including domestic
+uncertainty, soft growth predictions, and concerns about changing US tariff policies.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+35
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC investment in Americas skyrockets amid US AI surge, cont’d.
+Government investments in Canada expected to drive interest in defense tech
+During Q1’26, the Canadian government launched a Defence Industrial Strategy to transform and
+significantly grow Canada’s defense industry over the next decade, while Canada’s Business
+Development Bank (BDC) announced an expansion of its defense platform — a program aimed at
+providing patient capital to Canadian defense companies — from $4 billion to $6 billion. As a part
+of this initiative, the BDC is creating a StrongNorth Fund — a $300 million VC fund aimed at
+supporting early-stage Canadian companies with the development of defense and dual-use
+technologies. These and other defense procurement, innovation, and infrastructure investments
+by Canada’s government are expected to help drive VC interest into the defense tech space over
+the next year and more.
+
+Health and biotech space continue to attract attention in the Americas
+During Q1’26, the healthtech and biotech sector continued to see traction among VC investors in
+the Americas. VC investors in the US showed particular interest in AI-driven solutions aimed at
+addressing inefficiencies in the payer-provider system. During the quarter, the US also saw a
+number of biotech companies hold successful IPOs, including Eikon Therapeutics, Aktis Oncology,
+and Veradermics.
+
+Fintech remains key sector of investment across Americas, particularly in
+Latin America
+Across the Americas, the fintech sector continued to attract attention in Q1’26, led by a $1 billion
+raise by US-based prediction market platform Kalshi. While crypto firms were hot with VC investors
+in the US, in Latin America, payments companies continued to see the majority of interest and VC
+investment. During Q1’26, Argentina-based digital bank Ualá raised $195 million, while Mexicobased cross-border payments-focused Arq Logistics and transportation payments firm Solvento
+raised $70 million and $25 million respectively.
+
+Americas attracts strong number of unicorn births
+The Americas saw 66 new unicorn births in Q1’26 — compared to the 44 new unicorns in Q4’25,
+a very strong total compared to recent historical trends. AI — focused companies accounted for a
+large share of these new unicorns, including startups like AI mathematician developer Axiom Math
+and industrial robotics company Rhoda AI. The health and biotech sector was also well represented,
+with startups like health advocate network Solace Health and virtual women’s health company Midi
+reaching unicorn status during the quarter.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+36
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC investment in Americas skyrockets amid US AI surge, cont’d.
+Trends to watch for in Q2’26
+Heading into Q2’26, VC investment in AI is expected to remain hot in the Americas, driven largely by the US and, to a smaller degree, Canada. AI adjacent sectors are also expected to garner
+attention, such as energy infrastructure and chip manufacturing. Over the longer term, the convergence of AI and hardware — commonly referred to as ‘physical AI’ will be a key area to watch as
+startups increasingly work to apply AI to the real world.
+In addition to AI, defense tech is expected to be a big ticket for VC investors in Canada over the coming quarters. In Mexico — and across Latin America more broadly — fintech will likely remain the
+priority sector for VC investment, although there is some concern that the arrest of a cartel leader in Mexico during Q1’26 could lead to retributive actions; this could cause some uncertainty in Mexico
+over the next couple of quarters, including around the World Cup.
+The US-Mexico-Canada free trade deal negotiations will also be a critical issue to watch in the Americas over the coming quarters as these negotiations will have a significant impact on investment
+flows between the three countries.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+37
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Q1 2026 VC invested dwarfs historical parallels
+Venture financing in the Americas
+2020–Q1’26
+$300
+
+7,000
+
+6,000
+
+$250
+
+5,000
+$200
+4,000
+$150
+3,000
+$100
+2,000
+
+$41.0
+
+$51.3
+
+$50.8
+
+$85.2
+
+$96.8
+
+$99.9
+
+$108.5
+
+$88.0
+
+$76.3
+
+$50.0
+
+$43.0
+
+$58.4
+
+$39.6
+
+$39.0
+
+$41.7
+
+$40.5
+
+$51.1
+
+$49.4
+
+$84.0
+
+$56.4
+
+$128.8
+
+$74.1
+
+$78.6
+
+$270.1
+
+$0
+
+$41.7
+
+$50
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+Deal value ($B)
+
+2021
+
+2022
+Deal count
+
+Pre-seed/Seed
+
+2023
+
+2024
+Early VC
+
+2025
+Later VC
+
+1,000
+
+0
+
+2026
+
+Venture growth
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+38
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Medians suggest a cautious plateau, beyond AI
+Median deal size ($M) by stage in the Americas
+
+Up, flat or down rounds in the Americas
+
+$40
+
+100%
+
+2020–2026*
+
+2020–2026*
+
+90%
+
+$35
+
+Up
+80%
+
+$30
+
+70%
+$25
+$20.0
+$20
+
+50%
+
+$15
+
+Flat
+
+40%
+
+$10
+
+$8.3
+$8.0
+
+30%
+20%
+
+$5
+$2.0
+$0
+
+60%
+
+2020
+
+2021
+
+Pre-seed/Seed
+
+2022
+Early VC
+
+2023
+
+2024
+Later VC
+
+2025
+
+2026*
+
+Venture growth
+
+Down
+10%
+0%
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+39
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Financing metrics post gains across the board
+Median deal size ($M) by series in the Americas
+2020–2026*
+$200
+$181.5
+
+$180
+$160
+$140
+$120
+$100
+$80
+
+$74.5
+
+$60
+$40.0
+
+$40
+$20
+
+$18.0
+
+$0
+
+$3.0
+$0.3
+2026*
+$0.2
+
+2020
+
+2021
+Pre-seed
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: The 2026 data point for angel is based on a non-normative population.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+40
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Valuations explode at the latest stage
+Median pre-money valuation ($M) by series in the Americas
+2020–2026*
+$3,000
+
+$2,500
+
+$2,395.4
+
+$2,000
+
+$1,500
+
+$1,000
+
+$579.0
+
+$500
+
+$203.0
+$62.5
+
+$0
+
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+$18.0
+$12.1
+$4.5
+2026*
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+41
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Mega-rounds surge even further
+Deal share by series in the Americas
+
+Deal share by series in the Americas
+
+2020–2026*, number of closed deals
+
+2020–2026*, VC invested ($B)
+100%
+
+100%
+D+
+
+90%
+
+90%
+C
+
+80%
+70%
+
+B
+
+C
+
+80%
+70%
+
+B
+60%
+
+60%
+A
+
+50%
+40%
+
+Angel
+
+A
+
+50%
+40%
+
+Angel
+30%
+
+30%
+Seed
+
+20%
+10%
+0%
+
+D+
+
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Seed
+
+20%
+10%
+
+Pre-seed
+0%
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+42
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Software’s proliferation is driven by AI ecosystem expansion
+Venture financing by sector in the Americas
+
+Venture financing by sector in the Americas
+
+2020–2026*, # of closed deals
+
+2020–2026*, VC invested ($B)
+
+100%
+
+Transportation
+
+100%
+
+Transportation
+
+90%
+
+Commercial products &
+services
+
+90%
+
+Commercial products &
+services
+
+80%
+
+Consumer goods &
+services
+
+80%
+
+Consumer goods &
+services
+
+70%
+
+Software
+
+70%
+
+Software
+
+60%
+
+Pharma & biotech
+
+60%
+
+Pharma & biotech
+
+50%
+
+Other
+
+50%
+
+Other
+
+40%
+
+Media
+
+40%
+
+Media
+
+30%
+
+IT hardware
+
+30%
+
+IT hardware
+
+20%
+
+HC services & systems
+
+20%
+
+HC services & systems
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+43
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+After near-record Q4, VC activity subdues
+Venture financing in Canada
+2020–Q1’26
+$6,000
+
+500
+450
+
+$5,000
+
+400
+350
+
+$4,000
+
+300
+$3,000
+
+250
+200
+
+$2,000
+
+$1,017.2
+
+$886.1
+
+$1,309.9
+
+$2,722.1
+
+$4,871.6
+
+$2,669.0
+
+$3,081.6
+
+$3,560.7
+
+$2,136.3
+
+$1,601.8
+
+$2,167.7
+
+$1,417.0
+
+$1,950.3
+
+$1,020.5
+
+$2,103.5
+
+$889.1
+
+$1,564.6
+
+$2,661.0
+
+$1,716.8
+
+$1,247.1
+
+$1,372.0
+
+$2,058.9
+
+$3,923.5
+
+$1,017.2
+
+$0
+
+100
+$1,183.2
+
+$1,000
+
+150
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+Canada has the talent, the
+companies and the ideas
+when it comes to quantum
+computing. Now, the
+government is really trying to
+build the infrastructure, the
+data processing, the latestage funding ecosystem and
+the like, to try and keep
+quantum and AI companies
+here in Canada. It’s a major
+strategic priority, so I don’t see
+interest and investment in the
+space slowing down here
+anytime soon.
+
+”
+
+Ryan Forster
+
+Partner
+KPMG in Canada
+
+50
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+44
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Mexico sees variable yet positive growth in deal value
+Venture financing in Mexico
+2020–Q1’26
+$1,600
+
+80
+
+$1,400
+
+70
+
+$1,200
+
+60
+
+$1,000
+
+50
+
+$800
+
+40
+
+$600
+
+30
+
+$400
+
+20
+
+There’s really a fintech sector
+dominance here in Mexico.
+Nearly every quarter, we see a
+big investment in the space.
+I believe that Mexico, with the
+rest of Latin America, is
+definitely a place where fintech
+truly is a pivotal point of
+investment. It’s also a space
+quite resilient to the geopolitical
+situation. Which is important
+because right now, we’re
+entering negotiations of the
+USMCA. That’s going to be a
+big point of pressure over the
+next while.
+
+”
+
+Guillermo Goñi
+Partner
+KPMG in Mexico
+
+$94.0
+
+$59.0
+
+$642.3
+
+$347.0
+
+$1,224.1
+
+$1,477.2
+
+$377.8
+
+$296.5
+
+$801.5
+
+$804.5
+
+$238.8
+
+$147.0
+
+$175.9
+
+$322.0
+
+$130.0
+
+$62.4
+
+$277.6
+
+$242.2
+
+$680.6
+
+$260.4
+
+$773.5
+
+$228.2
+
+$857.5
+
+$461.2
+
+$0
+
+$81.3
+
+$200
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+10
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+45
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Brazil sees continued healthy VC invested
+Venture financing in Brazil
+2020–Q1’26
+$3,500
+
+250
+
+$3,000
+200
+$2,500
+150
+
+$2,000
+
+$1,500
+
+100
+
+$1,000
+50
+$588.7
+
+$454.0
+
+$788.1
+
+$931.4
+
+$2,978.7
+
+$1,835.2
+
+$2,164.7
+
+$1,817.5
+
+$861.0
+
+$1,140.4
+
+$308.2
+
+$377.7
+
+$307.6
+
+$505.7
+
+$619.8
+
+$412.4
+
+$642.9
+
+$437.4
+
+$450.4
+
+$916.2
+
+$428.3
+
+$1,164.1
+
+$672.6
+
+$428.6
+
+$0
+
+$664.6
+
+$500
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+0
+
+This is an election year in Brazil,
+which means uncertainty is quite
+high. Capital is gradually
+returning, yet with a more
+disciplined lens — prioritizing
+sustainable growth, strong unit
+economics, and governance over
+the "growth at all costs" mindset
+that defined previous cycles. This
+means VC investment will likely
+be relatively soft in Q2’26, but we
+are watching an interesting trend:
+an acceleration on seed
+investment, fostered by rapid
+growth AI startups that are
+creating a strong pipeline for VC.
+Carolina Oliveira
+
+”
+
+Global Lead of
+Emerging Giants,
+KPMG International and
+Partner and Private
+Enterprise Leader,
+KPMG Brazil and
+South America Cluster
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+46
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+The AI concentration intensifies
+Top 10 financings in Q1’26 in the Americas
+6
+2
+5
+1
+
+1. OpenAI — $122B, San Francisco, US — AI & ML — Late-stage VC
+
+9
+
+2. Anthropic — $30.6B, San Francisco, US — AI & ML — Series G
+
+10
+
+3. xAI — $20B, Palo Alto, US — AI & ML — Series E
+
+3
+
+4. Waymo — $16B, Mountain View, US — Transportation — Series D
+
+4
+
+5. Databricks — $7B, San Francisco, US — Database software — Late-stage VC
+
+7
+
+6. Polymarket — $2.6B, New York, US — Markets — Series D
+
+8
+
+7. Shield AI — $2.25B, San Diego, US — AI & ML — Series G
+8. Saronic — $1.75B, Austin, US — Defense tech — Series D
+9. Skild AI — $1.4B, Pittsburgh, US — AI & ML — Series C
+10. Cerebras Systems — $1.1B, Sunnyvale, US — AI & ML — Series H
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+47
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+In Q1’26, European
+VC-backed companies
+raised $25.7 billion
+across 1,939 deals
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+48
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Europe attracts record number of $1 billion+ deals in Q1’26
+VC investment in Europe was relatively strong in Q1’26 ($25.7 billion), driven in part by a number of large AI megadeals. While positive, the final month of
+Q1’26 was markedly less active, driven by uncertainties related to the conflict in the Middle East.
+VC ecosystem in Europe remains highly selective
+
+Fintech experiencing tailwinds in Europe, helped by AI-enablement
+
+There continued to be large amounts of dry powder in Europe’s VC market in Q1’26, in addition
+to low risk appetite on the part of VC investors. As a result, VC investors remained highly
+selective, focusing their funding on a smaller number of large-value deals. Startups looking to
+attract VC funding also increased their level of preparedness, arming themselves with information
+aligned to a more risk-averse market, including sustainable unit economics and solutions
+well-positioned to meet the needs of large, under-addressed markets.
+
+During Q1’26, VC investors in Europe continued to show interest in a broad range of fintechs, with
+fintech valuations holding quite firm despite geopolitical conflicts and changing economic conditions.
+AI helped propel the interest of VC investors — particularly corporates — during the quarter. With
+financial services companies and large fintechs increasingly looking for ways to integrate AI into their
+operational stacks and to use their proprietary data and intelligence to drive value, it is expected that
+AI-focused fintech will remain a key area of interest for VC investors heading into Q2’26.
+
+On the opposite end of the spectrum, startups in less optimal positions continued to face funding
+challenges. This led some to accept more rigorous terms in exchange for VC funding and others to
+look for more creative and non-dilutive funding options, including taking on venture debt.
+
+Defense tech gains steam in Europe, with a growing focus on dual-use
+technologies
+
+Six megadeals signal Europe’s growing global VC clout
+Europe’s Q1’26 venture market was defined by a wave of outsized megadeals, with six companies
+each raising $1 billion or more — a new high for the region. The UK led the way with three of the
+six rounds, while Germany captured two and France one. AI and deep tech were major forces
+behind this surge, led by a $2 billion raise by UK-based Nscale, a $1.8 billion round for Germany’s
+Neura Robotics, a $1.5 billion raise by UK autonomous driving company Wayve, and a $1 billion
+round for France-based AI company Advanced Machine Intelligence. The billion-dollar club was
+rounded out by Germany-based fintech Cloover at $1.2 billion and UK-based energy tech
+company Kraken Technologies at $1 billion, underscoring the breadth of investor appetite across
+AI, robotics, fintech, mobility, and energy innovation.
+
+Over the last two years, defense tech has grown in Europe, with a number of VC firms introducing
+specialist defense funds in order to direct investments. The defense tech sector itself has also expanded
+quite rapidly, with solutions ranging from drone technologies and satellites to the secure networks
+underpinning them. During Q1’26, VC investors in Europe showed growing interest in dual-use
+technologies, including technologies rapidly deployed in Ukraine and relevant to commercial use.
+Governments across Europe continued to ramp up their defense commitments in Q1’26, with many
+showing a preference for sovereign solutions and those where intellectual property is retained
+domestically or within the region. This focus, in partnership with increasing government investment,
+is expected to create opportunities in adjacent areas — like fintech.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+49
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Europe attracts record number of $1 billion+ deals in Q1’26, cont’d.
+UK attracts largest share of VC funding in Europe, including Europe’s largest
+deal in Q1’26.
+The UK attracted the largest share of VC investment in Europe during Q1’26, led by a $1.5 billion
+raise by Wayve and a $1 billion raise by Kraken Technologies. While AI was the largest area of VC
+investment in Q1’26, VC investors in the UK also showed interest in the energy space — in particular,
+infrastructure plays aimed at companies working to address rapidly increasing energy demands from
+either a generation or battery storage angle or by providing solutions able to drive significant energy
+efficiencies. Looking ahead to Q2’26, fintech is expected to see growing VC activity in the UK, in
+addition to dual-use defense tech.
+
+Germany sees third-strongest quarter of VC investment, driven by two $1 billion
+raises
+VC investment in Germany rose from $2.8 billion in Q4’25 to $4.8 in Q1’26, the third-highest
+quarter of investment ever. VC funding remained highly consolidated on large-ticket deals, including
+Neura Robotics ($1.8 billion) and Cloover ($1.2 billion). AI management platform Parloa also raised
+$350 million during the quarter. At an ecosystem level, Germany continued to see a shift in VC
+investment from Berlin to Munich given Munich’s role as a growing hub for defense tech and critical
+infrastructure players. The defense tech sector as a whole has matured rapidly in Germany, with
+some defense techs now looking to make acquisitions in order to extend their own value chain or
+product breadth.
+
+After very strong Q4’25, VC investment in Nordics region takes a breather
+Following a seven-quarter high of $3.2 billion in Q4’25, VC investment in the Nordics region took a bit
+of a breather in Q1’26 — not surprising given the strong end to 2025. A $550 million Series D raise by
+Sweden-based legaltech Legora, an AI platform for lawyers, was the largest deal of the quarter in the
+Nordics region. During Q1’26, Finland-based quantum computing company IQM also announced
+plans for a SPAC merger with Nasdaq-listed Real Asset Acquisition Corp — which could see it
+become the first publicly listed Europe-based quantum computing company.3 The merger is expected
+to be completed in Q2’26.
+
+VC investment in Ireland holds steady
+VC investment in Ireland remained relatively steady quarter-over-quarter, with $212 million in funding
+during Q1'26. VC investors continue to show strong interest in AI-focused start ups, particularly those
+focused on AI applications aimed at specific verticals or industries. Quantum computing also saw
+interest from VC investors with Equal1, a quantum semiconductor company, raising $60 million during
+Q1’26.
+
+3 https://meetiqm.com/press-releases/iqm-a-global-leader-for-quantum-computing-to-become-the-first-listed-european-quantum-company-through-merger-with-real-asset-acquisition-corp/
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+50
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Europe attracts record number of $1 billion+ deals in Q1’26, cont’d.
+Trends to watch for in Q2’26
+One of the biggest concerns in Europe heading into Q1’26 is the conflict in the Middle East and its resonating impact across the Middle East. Should the conflict persist, there could be a noticeable
+pullback in activity, particularly on the part of startups interested in obtaining funding from the Middle East or that were looking to take advantage of growth opportunities in the region. Given the dynamic
+geopolitical situation, VC investors in Europe will likely continue to be highly selective. AI is expected to stay very hot in the eyes of VC investors, in addition to defense tech and energy infrastructure.
+Europe’s IPO market is expected to remain soft throughout Q2’26. On the M&A front, VC-backed companies looking to exit are expected to see increasing interest from PE investors looking for
+opportunities to acquire durable, EBITA-positive businesses.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+51
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+AI helps push up VC invested in another QoQ gain
+Venture financing in Europe
+2020–Q1’26
+$40
+
+5,000
+4,500
+
+$35
+
+4,000
+$30
+3,500
+$25
+
+3,000
+2,500
+
+$20
+
+2,000
+
+$15
+
+1,500
+$10
+
+$17.3
+
+$18.4
+
+$27.3
+
+$34.7
+
+$29.9
+
+$31.4
+
+$36.7
+
+$30.8
+
+$21.5
+
+$16.8
+
+$16.0
+
+$16.8
+
+$19.0
+
+$17.5
+
+$16.4
+
+$18.0
+
+$15.2
+
+$18.9
+
+$17.1
+
+$16.7
+
+$20.8
+
+$23.4
+
+$25.7
+
+$0
+
+$11.8
+
+$5
+
+$12.1
+
+1,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+Deal value ($B)
+
+2021
+
+2022
+Deal count
+
+2023
+Pre-seed/Seed
+
+2024
+Early VC
+
+2025
+Later VC
+
+500
+0
+
+2026
+
+Venture growth
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+52
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Down rounds stay subdued
+Median deal size ($M) by stage in Europe
+
+Up, flat or down rounds in Europe
+
+$18
+
+100%
+
+2020–2026*
+
+2020–2026*
+
+$15.9
+
+$16
+
+90%
+Up
+
+80%
+
+$14
+
+70%
+
+$12
+
+60%
+
+$10
+
+50%
+
+$8
+
+Flat
+
+40%
+
+$6
+
+$5.3
+
+$4
+$2.3
+$2
+
+30%
+20%
+
+$2.5
+
+Down
+
+10%
+$0
+
+2020
+
+2021
+
+Pre-seed/Seed
+
+2022
+Early VC
+
+2023
+
+2024
+Later VC
+
+2025
+
+2026*
+
+Venture growth
+
+0%
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+53
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Across every series, figures remain more than healthy
+Median deal size ($M) by series in Europe
+2020–2026*
+$250
+
+$200.4
+
+$200
+
+$150
+
+$100
+$75.0
+$50
+
+$35.5
+$15.4
+
+$0
+
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+$3.3
+$1.2
+$0.3
+2026*
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+54
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Financing metrics are underpinned by avid AI demand
+Median pre-money valuation ($M) by series in Europe
+2020–2026*
+$3,500
+$3,196.4
+$3,000
+
+$2,500
+
+$2,000
+
+$1,500
+
+$1,000
+$661.5
+$500
+
+$0
+
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+2025
+C
+
+$157.5 $38.7
+$8.4
+$4.3
+$2.4
+2026*
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: All 2026 data points are based on non-normative populations excepting seed and Series A.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+55
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Bifurcation between the earliest and latest stages continues
+Deal share by series in Europe
+
+Deal share by series in Europe
+
+100%
+
+100%
+
+2020–2026*, number of closed deals
+
+2020–2026*, VC invested ($B)
+
+D+
+90%
+
+90%
+
+80%
+
+C
+
+70%
+
+80%
+
+C
+
+70%
+B
+
+60%
+50%
+
+A
+
+40%
+
+B
+
+60%
+50%
+
+A
+
+40%
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+0%
+
+D+
+
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+0%
+
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+56
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+AI pushes software to record proportions
+Venture financings by sector in Europe
+
+Venture financings by sector in Europe
+
+2020–2026*, number of closed deals
+
+2020–2026*, VC invested ($B)
+
+100%
+
+Transportation
+
+100%
+
+Transportation
+
+90%
+
+Commercial products &
+services
+
+90%
+
+Commercial products &
+services
+
+80%
+
+Consumer goods &
+services
+
+80%
+
+Consumer goods &
+services
+
+70%
+
+Software
+
+70%
+
+Software
+
+60%
+
+Pharma & biotech
+
+60%
+
+Pharma & biotech
+
+50%
+
+Other
+
+50%
+
+Other
+
+40%
+
+Media
+
+40%
+
+Media
+
+30%
+
+IT hardware
+
+30%
+
+IT hardware
+
+20%
+
+HC services & systems
+
+20%
+
+HC services & systems
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+57
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+CVCs join into large rounds, even first-time financings
+Corporate VC participation in venture deals in Europe
+
+First-time venture financings of companies in Europe
+
+2020–Q1’26
+
+2020–2026*
+
+$18
+
+1,200
+
+$12
+
+5,000
+4,500
+
+$16
+1,000
+
+$10
+
+800
+
+$8
+
+4,000
+
+$14
+$12
+
+3,500
+3,000
+
+$10
+600
+$8
+
+2,500
+
+$6
+
+2,000
+$6
+
+400
+
+$4
+
+1,500
+
+$4
+
+Deal value ($B)
+
+2025
+
+2026
+
+Deal count
+
+$2.9
+
+2024
+
+$7.8
+
+2023
+
+$6.9
+
+2022
+
+$7.8
+
+2021
+
+$0
+
+$7.7
+
+2020
+
+0
+
+$10.6
+
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+
+1,000
+
+$2
+$5.4
+
+$15.2
+
+$11.2
+
+$10.4
+
+$6.8
+
+$8.1
+
+$7.5
+
+$6.9
+
+$9.0
+
+$7.8
+
+$9.2
+
+$10.8
+
+$7.1
+
+$7.1
+
+$6.6
+
+$9.7
+
+$14.1
+
+$16.2
+
+$14.2
+
+$13.7
+
+$17.1
+
+$8.2
+
+$8.8
+
+$6.0
+
+$0
+
+$4.4
+
+$2
+
+$11.6
+
+200
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Deal value ($B)
+
+500
+0
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+58
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+After regaining ground, exits continue to move at a sedate pace
+Venture-backed exit activity in Europe
+2020–Q1’26
+$100
+
+400
+
+$90
+
+350
+
+$80
+300
+$70
+250
+
+$60
+$50
+
+200
+
+$40
+
+150
+
+$30
+100
+$20
+$10.3
+
+$14.4
+
+$12.9
+
+$36.5
+
+$37.7
+
+$94.3
+
+$36.1
+
+$24.8
+
+$18.0
+
+$15.3
+
+$15.0
+
+$12.6
+
+$10.9
+
+$11.7
+
+$12.9
+
+$11.2
+
+$23.4
+
+$21.5
+
+$16.5
+
+$16.4
+
+$18.3
+
+$29.0
+
+$18.0
+
+$18.7
+
+$0
+
+50
+$9.1
+
+$10
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Exit value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Exit count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+59
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+After a modestly healthy 2025, M&A propels Q1 tallies
+Venture-backed exit activity (#) by type in Europe
+
+Venture-backed exit activity ($B) by type in Europe
+
+1,600
+
+$250
+
+2020–2026*
+
+2020–2026*
+
+1,400
+$200
+1,200
+
+1,000
+
+$150
+
+800
+$100
+
+600
+
+400
+$50
+200
+
+0
+
+2020
+
+2021
+Acquisition
+
+2022
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+$0
+
+2020
+
+2021
+
+2022
+
+Acquisition
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+60
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Fundraising enthusiasm has yet to recover
+European venture fundraising
+2020–2026*
+$45
+
+700
+
+$40
+
+600
+
+$35
+500
+$30
+$25
+
+400
+
+$20
+
+300
+
+$15
+200
+
+$31.1
+
+$27.0
+
+$14.1
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Capital raised ($B)
+
+$4.1
+
+$42.4
+
+$0
+
+$38.0
+
+$5
+
+$32.4
+
+$10
+
+2026*
+
+100
+
+0
+
+Fund count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+61
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Significant LPS pull back at the start of the year
+Venture fundraising (#) by size in Europe
+
+First-time vs. follow-on venture funds (#) in Europe
+
+100%
+
+100%
+
+90%
+
+90%
+
+80%
+
+80%
+
+70%
+
+70%
+
+60%
+
+60%
+
+50%
+
+50%
+
+40%
+
+40%
+
+30%
+
+30%
+
+20%
+
+20%
+
+10%
+
+10%
+
+2020–2026*
+
+0%
+$1B+
+
+2020
+
+2021
+
+$500M-$1B
+
+2022
+$250M-$500M
+
+2020–2026*
+
+2023
+
+2024
+
+$100M-$250M
+
+2025
+
+$50M-$100M
+
+2026*
+Under $50M
+
+0%
+
+2020
+
+2021
+
+2022
+
+First-time
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Follow-on
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+62
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Megadeals propel the UK to largest quarterly sum in years
+Venture financing in the United Kingdom
+2020–Q1’26
+$12
+
+1,400
+
+1,200
+
+$10
+
+1,000
+$8
+800
+$6
+600
+
+Here in the UK, we continue to
+be strong in the fintech space.
+Looking out across the rest of
+the year, we expect this focus to
+continue. We’re also expecting
+to see more VC investment in
+dua-use tech and other defense
+related companies, as they
+really start to grow and scale.
+Nicole Lowe
+
+”
+
+UK Head of Emerging
+Giants
+KPMG in the UK
+
+$4
+400
+$2
+$3.7
+
+$3.7
+
+$4.2
+
+$7.2
+
+$7.7
+
+$8.7
+
+$10.2
+
+$8.8
+
+$10.1
+
+$9.5
+
+$4.8
+
+$5.2
+
+$4.7
+
+$4.6
+
+$5.9
+
+$4.7
+
+$3.6
+
+$7.0
+
+$4.6
+
+$7.1
+
+$5.7
+
+$4.0
+
+$8.0
+
+$7.4
+
+$9.7
+
+$0
+
+200
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($B)
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+63
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+London sets a multiyear high
+Venture financing in London
+2020–Q1’26
+$9
+
+800
+
+$8
+
+700
+
+$7
+
+600
+
+$6
+
+500
+
+$5
+400
+$4
+300
+
+$3
+
+200
+
+$2
+
+”
+
+Patrick Molyneux
+Partner
+KPMG in the UK
+
+100
+$2.2
+
+$2.4
+
+$2.9
+
+$4.8
+
+$4.7
+
+$5.9
+
+$7.1
+
+$5.8
+
+$7.7
+
+$7.4
+
+$2.8
+
+$3.3
+
+$3.0
+
+$3.0
+
+$3.5
+
+$3.3
+
+$1.9
+
+$5.2
+
+$2.8
+
+$5.1
+
+$3.6
+
+$2.4
+
+$5.9
+
+$5.6
+
+$8.3
+
+$1
+$0
+
+As VCs apply greater rigor
+ahead of term sheets and
+reassess risk, companies coming
+to market are better prepared,
+backed by more sustainable unit
+economics, clearer narratives,
+and larger, defensible markets.
+Those that aren’t quite ready are
+choosing to wait. After a
+prolonged downturn, the market
+appears to be moving through
+correction and towards a new
+normal, where fewer but higher
+quality and larger deals are
+getting done.
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($B)
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+64
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Q1 2026 deal values consistent with prior quarters
+Venture financing in Ireland
+2020–Q1’26
+
+$822.4
+
+$341.1
+
+$271.3
+
+$255.0
+
+$212.3
+
+$0
+
+$360.4
+
+20
+
+$342.4
+
+$100
+
+$296.9
+
+40
+$140.7
+
+$200
+$286.8
+
+60
+
+$379.6
+
+$300
+
+$388.7
+
+80
+
+$474.9
+
+$400
+
+$366.0
+
+100
+
+$132.0
+
+$500
+
+$474.1
+
+120
+
+$321.6
+
+$600
+
+$417.2
+
+140
+
+$367.6
+
+$700
+
+$933.4
+
+160
+
+$171.9
+
+$800
+
+$465.4
+
+180
+
+$267.3
+
+$900
+
+$311.9
+
+200
+
+$112.9
+
+$1,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+Q1'26 Irish VC investment
+activity has been consistent
+with previous quarters, with
+fundraises across a variety of
+sectors such as semiconductors,
+energy, fintech and medtech.
+As investors look forward into
+2026, an eye will be kept on the
+broader geopolitical environment
+and any potential downstream
+impacts.
+
+”
+
+Gavin Sheehan
+Partner
+Deal Advisory
+KPMG in Ireland
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+65
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Megadeals boost German VC invested
+Venture financing in Germany
+2020–Q1’26
+$7,000
+
+600
+
+$6,000
+
+500
+
+$5,000
+400
+$4,000
+300
+$3,000
+200
+
+$2,074.8
+
+$1,826.6
+
+$3,265.7
+
+$3,761.8
+
+$3,902.9
+
+$6,593.4
+
+$3,040.8
+
+$5,647.7
+
+$2,553.6
+
+$1,402.8
+
+$2,001.9
+
+$2,276.6
+
+$1,409.8
+
+$2,145.4
+
+$2,825.2
+
+$2,040.5
+
+$2,535.2
+
+$1,540.2
+
+$2,090.9
+
+$3,821.8
+
+$1,008.4
+
+$2,853.7
+
+$4,793.2
+
+$0
+
+$1,986.5
+
+$1,000
+
+$1,302.9
+
+$2,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+2026
+
+100
+
+We’re seeing the early stages
+of a shift in Germany’s VC
+investment landscape. While
+Berlin remains a strong hub
+for digital business models —
+particularly in fintech and
+consumer-facing B2C
+startups — capital is
+increasingly being allocated
+to deep-tech ventures.
+Munich is the first hub to
+benefit from this shift. Its
+strong focus on deep tech,
+especially in defense,
+security, and critical
+infrastructure, aligns closely
+with the geopolitical realities
+shaping global investment
+priorities today.
+
+”
+
+Florian Merkel
+0
+
+Director of Tax,
+Head of Venture
+Services
+KPMG in Germany
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+66
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+A megadeal cannot offset a slower pace of dealmaking
+Venture financing in Berlin
+2020–Q1’26
+$6,000
+
+200
+180
+
+$5,000
+
+160
+140
+
+$4,000
+
+120
+$3,000
+
+100
+80
+
+$2,000
+
+60
+40
+$1,319.8
+
+$839.8
+
+$1,158.7
+
+$1,539.0
+
+$1,383.1
+
+$2,152.4
+
+$4,768.7
+
+$1,610.9
+
+$3,694.8
+
+$706.4
+
+$372.9
+
+$887.6
+
+$1,225.4
+
+$327.3
+
+$372.5
+
+$1,078.2
+
+$629.5
+
+$549.1
+
+$745.9
+
+$569.0
+
+$1,490.2
+
+$322.3
+
+$608.4
+
+$2,142.3
+
+$0
+
+$637.1
+
+$1,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Deal value ($M)
+
+2023
+
+2024
+
+2025
+
+20
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+67
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Austria sees a spurt in VC flow to start 2026
+Venture financing in Austria
+2020–Q1’26
+
+$224.0
+
+$219.4
+
+$40.1
+
+$271.7
+
+$102.8
+
+$186.3
+
+$82.0
+
+$49.8
+
+$91.6
+
+$87.4
+
+$223.2
+
+$0
+
+$120.9
+
+10
+
+$166.3
+
+$100
+
+$74.7
+
+20
+
+$53.8
+
+$200
+
+$266.6
+
+30
+
+$659.3
+
+$300
+
+$74.0
+
+40
+
+$585.9
+
+$400
+
+$519.5
+
+50
+
+$115.0
+
+$500
+
+$68.9
+
+60
+
+$110.6
+
+$600
+
+$42.9
+
+70
+
+$126.6
+
+$700
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+The report rightly highlights the
+surge in AI investment, but I
+think it's worth noting the flip
+side: traditional SaaS business
+models are coming under
+increasing pressure. AI is
+making solutions faster to
+replicate, significantly lowering
+barriers to entry and
+compressing the defensibility
+of pure-software plays. At the
+same time, we're seeing many
+investors pause or redirect
+capital toward asset-heavy
+business models — those that
+are harder to digitalize or
+replicate and offer structurally
+higher barriers to entry. This
+dynamic is worth flagging in
+both the European and Global
+narratives, as it's shaping
+investor behavior beyond just
+the AI hype.
+
+”
+
+Leonardo Peikoff
+Head of Startups
+Manager
+KPMG in Austria
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+68
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Spain sees a healthy VC invested tally
+Venture financing in Spain
+2020–Q1’26
+$1,800
+
+250
+
+$1,600
+200
+
+$1,400
+$1,200
+
+150
+$1,000
+$800
+100
+$600
+$400
+
+$335.0
+
+$526.2
+
+$512.2
+
+$1,647.2
+
+$488.3
+
+$799.3
+
+$1,481.4
+
+$1,091.6
+
+$923.4
+
+$927.1
+
+$700.1
+
+$637.7
+
+$503.1
+
+$551.7
+
+$693.9
+
+$316.7
+
+$645.1
+
+$405.1
+
+$844.1
+
+$858.6
+
+$728.2
+
+$444.1
+
+$524.8
+
+$584.9
+
+$0
+
+$496.0
+
+$200
+
+50
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Deal value ($M)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+69
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Deal flow continues to skew toward stronger value tallies
+Venture financing in France
+2020–Q1’26
+$8
+
+600
+
+$7
+
+500
+
+$6
+400
+
+$5
+
+300
+
+$4
+
+$3
+
+200
+
+$2
+100
+$1.5
+
+$3.1
+
+$2.1
+
+$2.0
+
+$3.8
+
+$4.3
+
+$2.8
+
+$6.7
+
+$3.3
+
+$3.3
+
+$2.1
+
+$2.8
+
+$2.1
+
+$3.1
+
+$1.8
+
+$2.5
+
+$2.5
+
+$2.0
+
+$1.8
+
+$1.7
+
+$1.9
+
+$3.5
+
+$2.5
+
+$2.9
+
+$0
+
+$1.9
+
+$1
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Deal value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+70
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC invested surges thanks to AMI megadeal
+Venture financing in Paris
+2020–Q1’26
+$4,000
+
+300
+
+$3,500
+
+250
+
+$3,000
+200
+
+$2,500
+
+150
+
+$2,000
+
+$1,500
+
+100
+
+$2,493.7
+
+$827.0
+
+$1,068.4
+
+$2,651.7
+
+$2,417.9
+
+$1,482.9
+
+$3,739.3
+
+$2,186.9
+
+$2,379.2
+
+$969.4
+
+$1,430.9
+
+$1,097.3
+
+$640.6
+
+$585.8
+
+$1,607.8
+
+$1,664.7
+
+$1,282.2
+
+$746.7
+
+$1,011.6
+
+$1,053.4
+
+$2,384.1
+
+$1,474.9
+
+$2,270.1
+
+$0
+
+$988.8
+
+$500
+
+$1,078.9
+
+$1,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Deal value ($M)
+
+2023
+
+2024
+
+2025
+
+50
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+71
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Nordics continue to see a healthy tally, though not as strong as previous highs
+Venture financing in the Nordics
+2020–Q1’26
+
+800
+
+$7,000
+
+700
+
+$6,000
+
+600
+
+$5,000
+
+500
+$4,000
+400
+$3,000
+300
+$2,000
+
+$1,022.2
+
+$2,616.0
+
+$2,080.0
+
+$4,589.0
+
+$6,324.0
+
+$2,250.5
+
+$2,639.5
+
+$3,550.7
+
+$2,922.5
+
+$3,086.0
+
+$2,468.6
+
+$1,605.6
+
+$1,760.9
+
+$2,709.0
+
+$3,809.1
+
+$2,201.0
+
+$1,236.7
+
+$1,091.8
+
+$1,748.3
+
+$1,407.1
+
+$930.0
+
+$2,158.7
+
+$3,222.0
+
+$1,626.8
+
+$0
+
+$1,600.4
+
+$1,000
+
+200
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+We saw quite a boom in VC
+investment in the Nordics in
+Q4’25, so it’s not surprising that
+we haven’t seen as many
+megadeals in the first quarter of
+2026. But we still saw some very
+interesting activity — including
+quantum computing company
+IQM’s announcement of a SPAC
+merger. While the deal will take
+some time to close, it’s a big step
+forward for the quantum
+computing sector here.
+
+”
+
+Jussi Paski
+
+Partner, Head of
+Startup & Venture
+KPMG in Finland
+
+100
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+72
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+2026 continues robust stretch of VC activity thus far
+Venture financing in Israel
+2020–Q1’26
+
+300
+
+$4,000
+$3,500
+
+250
+
+$3,000
+200
+
+$2,500
+
+150
+
+$2,000
+$1,500
+
+100
+
+$1,433.4
+
+$1,507.8
+
+$2,339.6
+
+$2,488.8
+
+$2,146.6
+
+$3,720.3
+
+$3,122.6
+
+$2,187.2
+
+$1,752.6
+
+$1,191.3
+
+$913.2
+
+$1,080.1
+
+$1,201.6
+
+$951.3
+
+$1,076.2
+
+$973.4
+
+$1,058.1
+
+$641.4
+
+$1,240.9
+
+$1,737.7
+
+$1,823.0
+
+$1,516.3
+
+$1,457.5
+
+$0
+
+$905.9
+
+$500
+
+$1,217.6
+
+$1,000
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+50
+
+0
+
+2026
+
+Deal count
+
+Israel has been operating under
+sustained geopolitical uncertainty
+for more than two and a half years,
+fostering a high level of resilience
+across its technology ecosystem.
+This resilience was reflected in Q1
+2026, with investments indicating
+the maturation of Israeli tech into a
+broader and more robust
+ecosystem, alongside exits
+reaching record values despite
+ongoing regional conflicts. While
+continued geopolitical tensions —
+including the recent escalation
+involving Iran — do not provide
+supportive growth conditions, the
+sector has demonstrated notable
+adaptability. Looking ahead, there
+is cautious optimism that a period
+of de-escalation could further
+stabilize and potentially strengthen
+the Israeli high-tech industry,
+particularly in defense- and
+security-related
+ed technologies.
+
+”
+
+Dina Pasca-Raz
+Head of Technology
+KPMG in Israel
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+73
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Thematic-driven sectors dominate Q1 rankings
+Top 10 financings in Q1’26 in Europe
+
+1. Nscale — $2B, London, UK — AI & ML — Series C
+
+7
+
+2. Neura Robotics — $1.8B, Metzingen, Germany — Robotics — Late-stage VC
+3. Wayve — $1.5B, London, UK — Automotive — Series D
+
+4
+
+9
+
+4. Cloover — $1.2B, Berlin, Germany — Fintech — Series A
+
+8
+
+3
+
+5. Advanced Machine Intelligence — $1B, Paris, France — AI & ML — Seed
+
+2
+
+5. Kraken Technologies — $1B, London, UK — Energy tech — Late-stage VC
+
+5
+
+1
+
+7. Legora — $550M, Stockholm, Sweden — Legaltech — Series D
+8. Parloa — $350M, Berlin, Germany — AI & ML — Series D
+
+10
+
+9. Roark — $312.6M, London, UK — Aerospace & defense — Series B
+
+5
+
+10. Newcleo — $305.9M, Paris, France — Nuclear tech — Late-stage VC
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+74
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+In Q1’26, VC-backed
+companies in the
+Asia region raised
+$31.8 billion across
+2,724 deals
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+75
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Asia sees VC investment grow as two startups attract $1 billion+ deals
+VC investment in Asia grew from $26.2 billion in Q4’25 to $31.8 billion in Q1’26, driven by a number of large megadeals across the AI, alternative energy,
+and health and biotechnology sectors.
+Diversity of jurisdictions across Asia attracts $1 billion plus megadeals in Q1’26
+
+VC investors in Japan becoming more selective
+
+Q1’26 saw three companies from three different jurisdictions across Asia raise funding rounds of
+more than $1 billion, highlighting the region’s geographic diversity at the top end of the venture market.
+The quarter’s largest deals included a $2 billion raise by China-based Rokid, a $2 billion raise by
+Singapore-based data center infrastructure firm DayOne. In addition, although it was not classified as
+VC deal for this report, Japan-based semiconductor manufacturer Rapidus raised close to $1.8 billion.
+Notably, Rapidus’s funding came largely from major Japanese corporates and the government’s
+Information-Technology Promotion Agency, rather than from traditional venture capital firms.
+
+Outside of the outlier Rapidus deal, VC investment activity in Japan remained relatively stable in
+Q1’26, with VC investors continuing to focus on backing high-performance startups rather than
+high-risk ones. This has created some challenges in Japan’s growing VC ecosystem given the number
+of startups that have sprouted up over the last three years, in part due to government initiatives. While
+the most promising startups have been able to raise follow-on rounds, the funding environment is
+tightening, making it increasingly difficult for startups with weak differentiation to attract additional
+funding.
+
+VC investment in China picks up quarter-over-quarter
+
+Japan’s ecosystem as a whole is maturing as well; rather than simply driving new startup development,
+the question is now turning to how to help Japan’s growing base of startups to scale to levels where
+they are able to compete on the global stage.
+
+VC investment in China rebounded to start 2026, driven by renewed investor interest in AI, deep tech,
+biotech, semiconductors, and space-related innovation. Among the quarter’s largest deals were a
+$2 billion raise by Rokid, a $787 million raise by Earendil Labs, a $723.7 million raise by iSpace, a
+$700 million raise by Moonshot AI, with an additional $1 billion round expected, a $567 million raise by
+Stepfun, and a $428 million raise by Sunrise, highlighting the breadth of capital flowing into China’s
+next generation of technology leadssers. AI was particularly hot, with investor interest clustering
+around large language models, platform AI, and industry applications such as robotics and
+manufacturing automation. Corporate-backed capital also remained influential during the quarter,
+alongside broader state-supported momentum behind hard-tech investing in China.
+
+AI and AI infrastructure attract significant attention across Asia
+AI continued to see significant interest from VC investors in Asia during Q1’26, with a diversity of AI
+and AI infrastructure companies raising large rounds in China, Japan, and Singapore. The quarter saw
+a diversity of AI companies raise large rounds, including Singapore-based data center firm DayOne
+($2 billion), China-based autonomous robotics firm GalBot ($362 million) and autonomous-driving firm
+Anhui Shenji Technology ($318 million).
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+76
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Asia sees VC investment grow as two startups attract $1 billion+ deals, cont’d.
+Japanese government helping drive investment into priority sectors
+
+Japan spurring investment through public-private partnerships
+
+During Q4’25, Japan’s government identified 17 strategic priority sectors for development in order
+to help strengthen its domestic supply chain and economy, particularly given rising risks and the
+uncertain geopolitical environment. These sectors included areas like AI and semiconductors,
+quantum technology, space and aviation, cybersecurity, foodtech, and defense tech.4 During
+Q1’26, companies representing a number of these sectors raised solid VC funding rounds,
+including AI and crypto mining hardware company Lenzo (¥500 million), space infrastructure
+company Interstellar Technologies ($284 million), and energy marketplace Enechain ($70 million).
+
+Japan’s government has put a significant amount of effort into developing private-public partnerships and
+alliances as a key way to build and grow autonomous and domestic ecosystems, particularly in sectors
+like semiconductors that require large amounts of starting capital. The multi-billion raise by Rapidus in
+Q1’26 was a good example of this; the Japanese government, through its Information-Technology
+Promotion Agency, contributed a significant portion of funding to the deal, alongside a number of large
+Japanese corporates. Over time, it is hoped that government investments will help spark increasing
+investment from VC and corporate investors.
+
+HKSE sees several China-based AI startups hold successful IPO exits in Q1’26
+The IPO exit environment in Hong Kong (SAR), China continued to be positive in Q1’26, continuing
+a trend seen during 2025. Early in Q1’26, the HKSE saw the first listings of China-based
+generative AI platforms, including LLM-focused Zhipu AI, which raised $558 million, and multimodel AI model company MiniMax Group, which raised $619 million in its IPO. Several AI
+infrastructure companies also held IPOs in Hong Kong (SAR), China during the quarter. The
+success of these companies could bode well for other China-based startups looking to list this
+year, particularly with PE fund flow still very dry.
+
+Trends to watch for in Q2’26
+Heading into Q2’26, VC investment in Asia is expected to remain relatively steady. AI — including infrastructure, autonomous driving, robotics, and industry solutions is expected to be a key focus of
+investors, in addition to alternative energy and battery storage. Spacetech and defense tech are also expected to see continued interest.
+After an extended cooldown, the VC market in China has stabilized to some degree, which is providing a dose of cautious optimism for VC investors heading into the rest of 2026. In Japan, all
+government priority areas are expected to see increasing interest from investors, although companies with AI at their core and strong industrial value proposition will likely see the most interest.
+
+4 https://www.techinasia.com/news/chinese-ai-firm-minimax-raises-300m-gains-4b-valuation
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+77
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+VC activity surges to start 2026
+Venture financing in Asia
+2020–Q1’26
+$80
+
+6,000
+
+$70
+
+5,000
+
+$60
+4,000
+
+$50
+$40
+
+3,000
+
+$30
+
+2,000
+
+$25.9
+
+$36.3
+
+$48.8
+
+$52.5
+
+$47.5
+
+$66.1
+
+$69.3
+
+$52.8
+
+$36.4
+
+$37.0
+
+$33.1
+
+$33.7
+
+$30.0
+
+$26.7
+
+$24.2
+
+$24.3
+
+$21.6
+
+$24.7
+
+$24.6
+
+$21.0
+
+$18.1
+
+$24.6
+
+$26.2
+
+$31.8
+
+1,000
+$24.3
+
+$0
+
+”
+
+Zoe Shi
+
+$20
+$10
+
+The AI space is very competitive
+here in China, and it has several
+layers, including the LLM
+companies, the platforms, and the
+industry applications. Right now,
+this third area is getting a lot of
+attention, and it’s going to keep
+growing. Over the next few
+quarters, we’re likely going to see
+more and more unicorns in this
+space, although we’re also going
+to see some companies fall
+because they can’t do what they
+need to do to scale and be
+competitive.
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+Deal value ($B)
+
+2021
+Deal count
+
+2022
+Pre-seed/Seed
+
+2023
+
+2024
+Early VC
+
+2025
+Later VC
+
+Partner
+KPMG China
+
+0
+
+2026
+Venture growth
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+78
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Down to flat rounds tick up marginally
+Median deal size ($M) by stage in Asia
+
+Up, flat or down rounds in Asia
+
+$35
+
+100%
+
+2020–2026*
+
+2020–2026*
+
+90%
+
+$30
+
+Up
+
+80%
+$25
+
+$22.4
+
+70%
+60%
+
+$20
+
+50%
+
+$15
+
+Flat
+
+40%
+$10
+
+$7.9
+$7.6
+
+20%
+
+$5
+
+$0
+
+30%
+
+$1.4
+2020
+
+2021
+
+Pre-seed/Seed
+
+2022
+Early VC
+
+2023
+
+2024
+Later VC
+
+2025
+
+2026*
+
+Venture growth
+
+Down
+
+10%
+0%
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+79
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Financing metrics strengthen
+Median deal size ($M) by series in Asia
+2020–2026*
+$70
+
+$60
+$52.3
+
+$50
+
+$40
+
+$30
+$25.8
+$20
+$14.5
+$10
+
+$9.4
+$1.5
+
+$0
+
+2020
+
+2021
+Pre-seed
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+$0.6
+2026*
+$0.3
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+80
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Early 2026 valuation figures indicate increasing confidence
+Median pre-money valuation ($M) by series in Asia
+2020–2026*
+$1,200
+$1,066.4
+$1,000
+
+$800
+
+$600
+
+$400
+$279.2
+$200
+
+$0
+
+2020
+Pre-seed
+
+2021
+
+2022
+Seed
+
+2023
+Angel
+
+2024
+A
+
+B
+
+$62.5
+$28.7
+$8.6
+$4.6
+2026* $3.3
+
+2025
+C
+
+D+
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+Note: All 2026 data points are based on non-normative populations excepting angel and Series A.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+81
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Later-stage rounds surge in proportion of VC invested
+Deal share by series in Asia
+
+Deal share by series in Asia
+
+100%
+
+100%
+
+2020–2026*, number of closed deals
+
+2020–2026*, VC invested ($B)
+
+D+
+90%
+80%
+
+C
+
+70%
+
+80%
+
+C
+
+70%
+B
+
+60%
+50%
+
+A
+
+40%
+
+B
+
+60%
+50%
+
+A
+
+40%
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+0%
+
+D+
+90%
+
+Angel
+
+30%
+20%
+
+Seed
+
+10%
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+0%
+
+Pre-seed
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+82
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Dealmakers double down on IT hardware, driven by chips
+Venture financings by sector in Asia
+
+Venture financings by sector in Asia
+
+2020–2026*, number of closed deals
+
+2020–2026*, VC invested ($B)
+100%
+
+100%
+
+Transportation
+
+90%
+
+Commercial products &
+services
+
+90%
+
+Commercial products &
+services
+
+80%
+
+Consumer goods &
+services
+
+80%
+
+Consumer goods &
+services
+
+70%
+
+Software
+
+70%
+
+Software
+
+60%
+
+Pharma & biotech
+
+60%
+
+Pharma & biotech
+
+50%
+
+Other
+
+50%
+
+Other
+
+40%
+
+Media
+
+40%
+
+Media
+
+30%
+
+IT hardware
+
+30%
+
+IT hardware
+
+20%
+
+HC services & systems
+
+20%
+
+HC services & systems
+
+HC devices & supplies
+
+10%
+
+HC devices & supplies
+
+10%
+0%
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+0%
+
+Transportation
+
+Energy
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+83
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+CVCs kick off 2026 by joining in larger rounds
+Corporate participation in venture deals in Asia
+
+First-time venture financings of companies in Asia
+2020–2026*
+
+2020
+
+2021
+
+2022
+
+Deal value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+$25
+
+5,000
+
+$20
+
+4,000
+
+$15
+
+3,000
+
+$10
+
+2,000
+
+$5
+
+1,000
+
+$0
+
+$2.6
+
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q4 Q1
+
+6,000
+
+$15.5
+
+$22.6
+
+$15.1
+
+$9.5
+
+$14.1
+
+$13.3
+
+$13.7
+
+$10.8
+
+$11.5
+
+$14.0
+
+$0
+
+$13.4
+
+200
+
+$12.3
+
+$5
+
+$17.3
+
+400
+$18.1
+
+$10
+$20.6
+
+600
+
+$20.5
+
+$15
+
+$19.9
+
+800
+
+$34.1
+
+$20
+
+$42.8
+
+1,000
+
+$45.6
+
+$25
+
+$25.2
+
+1,200
+
+$29.0
+
+$30
+
+$31.3
+
+1,400
+
+$22.1
+
+$35
+
+$12.9
+
+1,600
+
+$14.0
+
+$40
+
+$30
+
+$16.3
+
+1,800
+
+7,000
+
+$18.7
+
+$45
+
+$35
+
+$25.5
+
+2,000
+
+$31.6
+
+$50
+
+$18.8
+
+2020–Q1’26
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Deal value ($B)
+
+0
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+84
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Exits moderated after a strong Q4 2025 performance
+Venture-backed exit activity in Asia
+2020–Q1’26
+$140
+
+300
+
+$120
+
+250
+
+$100
+200
+$80
+150
+$60
+100
+$40
+50
+$39.5
+
+$109.0
+
+$54.3
+
+$127.5
+
+$77.3
+
+$48.6
+
+$131.9
+
+$51.0
+
+$45.0
+
+$75.0
+
+$47.7
+
+$26.1
+
+$50.5
+
+$48.3
+
+$36.5
+
+$15.7
+
+$14.4
+
+$24.0
+
+$49.7
+
+$20.7
+
+$29.0
+
+$41.3
+
+$78.2
+
+$43.0
+
+$0
+
+$26.7
+
+$20
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Exit value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Exit count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+85
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Exit avenues remain diversified, while listings drive the most value
+Venture-backed exit activity (#) by type in Asia
+
+Venture-backed exit activity ($B) by type in Asia
+
+1,000
+
+$450
+
+900
+
+$400
+
+2020–2026*
+
+2020–2026*
+
+800
+
+$350
+
+700
+
+$300
+
+600
+$250
+500
+$200
+400
+$150
+
+300
+
+$100
+
+200
+
+$50
+
+100
+0
+
+2020
+
+2021
+Acquisition
+
+2022
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+$0
+
+2020
+
+2021
+
+2022
+
+Acquisition
+
+2023
+Buyout
+
+2024
+
+2025
+
+2026*
+
+Public listing
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+86
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Fundraising remains sluggish
+Venture fundraising in Asia
+2020–2026*
+$180
+
+2,500
+
+$160
+2,000
+
+$140
+$120
+
+1,500
+$100
+$80
+1,000
+$60
+$40
+
+$134.6
+
+$131.3
+
+$78.4
+
+$43.4
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Capital raised ($B)
+
+$6.2
+
+$167.6
+
+$0
+
+$133.4
+
+$20
+
+500
+
+2026*
+
+0
+
+Fund count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+87
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+LPs remain cautious, focused on niche, midsized managers
+Venture fundraising (#) by size in Asia
+
+First-time vs. follow-on venture funds (#) in Asia
+
+100%
+
+100%
+
+90%
+
+90%
+
+80%
+
+80%
+
+70%
+
+70%
+
+60%
+
+60%
+
+50%
+
+50%
+
+40%
+
+40%
+
+30%
+
+30%
+
+20%
+
+20%
+
+10%
+
+10%
+
+2020–2026*
+
+0%
+$1B+
+
+2020
+
+2021
+
+$500M-$1B
+
+2022
+$250M-$500M
+
+2020–2026*
+
+2023
+$100M-$250M
+
+2024
+
+2025
+
+$50M-$100M
+
+2026*
+Under $50M
+
+0%
+
+2020
+
+2021
+
+2022
+
+First-time
+
+2023
+
+2024
+
+2025
+
+2026*
+
+Follow-on
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+88
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+India’s steady flow of VC ticks upward
+Venture financing in India
+2020–Q1’26
+$16
+
+900
+
+$14
+
+800
+700
+
+$12
+
+600
+
+$10
+
+500
+$8
+400
+$6
+
+300
+
+$4
+
+200
+
+$2.0
+
+$4.3
+
+$3.9
+
+$6.9
+
+$4.9
+
+$14.4
+
+$10.5
+
+$10.4
+
+$7.6
+
+$3.6
+
+$3.5
+
+$3.5
+
+$4.2
+
+$4.9
+
+$2.2
+
+$3.1
+
+$6.2
+
+$3.6
+
+$2.9
+
+$3.0
+
+$3.7
+
+$3.3
+
+$5.4
+
+$3.3
+
+$0
+
+100
+
+$3.0
+
+$2
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Deal value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+89
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Deal flow should even out, but large deals push VC invested up
+Venture financing in China
+2020–Q1’26
+$50
+
+3,000
+
+$45
+2,500
+
+$40
+$35
+
+2,000
+
+$30
+1,500
+
+$25
+$20
+
+1,000
+
+$15
+$10
+$19.0
+
+$26.4
+
+$38.3
+
+$34.7
+
+$31.2
+
+$38.2
+
+$46.0
+
+$27.6
+
+$18.5
+
+$25.3
+
+$21.8
+
+$18.6
+
+$16.7
+
+$15.0
+
+$16.6
+
+$16.3
+
+$9.1
+
+$12.1
+
+$14.8
+
+$14.1
+
+$8.7
+
+$15.5
+
+$14.1
+
+$19.7
+
+$0
+
+$12.7
+
+$5
+
+500
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+Deal value ($B)
+
+2023
+
+2024
+
+2025
+
+0
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+90
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+2026 starts off strong in VC invested
+Venture financing in Australia
+2020–Q1’26
+$2,500
+
+300
+
+250
+
+$2,000
+
+200
+$1,500
+150
+$1,000
+100
+
+$434.5
+
+$408.9
+
+$584.0
+
+$802.3
+
+$1,243.0
+
+$2,028.4
+
+$1,320.4
+
+$2,042.3
+
+$1,285.5
+
+$704.7
+
+$1,111.9
+
+$531.9
+
+$951.6
+
+$714.3
+
+$852.4
+
+$753.3
+
+$931.8
+
+$728.1
+
+$817.4
+
+$860.1
+
+$572.6
+
+$827.1
+
+$1,186.8
+
+$1,136.8
+
+$0
+
+$829.6
+
+$500
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($M)
+
+2024
+
+2025
+
+50
+
+0
+
+Following the traditional lull in
+venture capital over Australia’s
+summer months, we are seeing
+real movement in startup funding
+in 2026. Investment in is up
+nearly a third compared to the
+same period in 2025, and the
+founders we speak to are more
+optimistic about their pathways to
+scale, despite global economic
+uncertainty. The Eucalyptus exit,
+which has driven significant
+returns to several Australian
+funds and angel investors, has
+also helped to re-ignite local
+investor interest in early stage
+ventures.
+
+”
+
+Amanda Price
+
+Partner & Head of
+KPMG High Growth
+Ventures
+KPMG Australia
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+91
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+Japan sets a record in VC invested
+Venture financing in Japan
+2020–Q1’26
+$3
+
+450
+400
+350
+300
+
+$2
+
+250
+200
+150
+
+$1
+
+100
+
+$1.2
+
+$1.3
+
+$1.8
+
+$1.4
+
+$1.8
+
+$1.9
+
+$1.6
+
+$1.4
+
+$1.6
+
+$1.5
+
+$1.0
+
+$1.3
+
+$1.7
+
+$1.3
+
+$1.2
+
+$0.9
+
+$1.1
+
+$2.0
+
+$1.0
+
+$1.2
+
+$1.7
+
+$1.2
+
+$1.9
+
+$1.4
+
+$0
+
+$1.2
+
+50
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q1
+
+2020
+
+2021
+
+2022
+
+2023
+
+Deal value ($B)
+
+2024
+
+2025
+
+0
+
+Japan’s declining birthrate, aging
+population, and growing labor
+shortage is going to make AI for
+industrial implementation
+particularly important in the future,
+so we will likely see growing
+interest and investment in related
+sectors, in line with the
+government’s identified national
+priorities. Given the high payback
+risks and long payback period for
+some areas, including deeptech
+and semiconductors, many of
+these future investments will likely
+be collaborative, including
+government support, VCs, banks,
+and corporates.
+
+”
+
+Hiroshi Abe
+
+Executive Board
+Member,
+Partner
+KPMG in Japan
+
+2026
+
+Deal count
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+92
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+AI-empowered businesses, infrastructure & chips surge in top deals
+Top 10 financings in Q1’26 in Asia-Pacific
+6
+10
+1
+
+4
+
+5
+
+3
+
+9
+
+1. Rokid — $2B, Hangzhou, China — AI & ML — Late-stage VC
+
+7
+8
+
+1. DayOne — $2B, Singapore — Systems & information management — Series C
+3. Megazone Cloud — $892.05M, Gwacheon, South Korea — Cloudtech — Series D
+4. Earendil Labs — $787M, Beijing, China — Biotech — Early-stage VC
+5. iSpace — $723.7M, Beijing, China — Spacetech — Series D2
+6. Moonshot AI — $700M, Beijing, China — AI & ML — Late-stage VC
+7. Stepfun — $567M, Shanghai, China — AI & ML — Series B
+
+1
+
+8. Sunrise — $428.8M, Hangzhou, China — Semiconductors — Early-stage VC
+9. Rebellions — $400M, Seongnam, South Korea — Semiconductors —
+Late-stage VC
+10. GalBot — $361.6M, Beijing, China — Robotics — Series D
+
+Source: Venture Pulse, Q1’26, Global Analysis of Venture Funding, KPMG Private Enterprise. *As of March 31, 2026. Data provided by PitchBook, April 15, 2026.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+93
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+KPMG Private Enterprise Emerging Giants network
+From seed to speed, we’re here throughout your journey
+Netherlands
+Germany
+Iceland
+
+Canada
+
+UK
+Ireland
+Channel Islands
+Luxembourg
+US
+Bermuda
+
+Sweden
+Norway
+
+France
+Switzerland
+Portugal
+Spain
+
+Cayman
+Mexico
+
+Austria
+
+Contact us
+
+Denmark
+Finland
+
+Conor Moore
+
+Estonia
+Latvia
+Lithuania
+Poland
+Czechia
+Slovakia
+Ukraine
+Romania
+Turkiye
+
+Israel
+Greece
+Cyprus
+Tunisia Malta
+
+Italy
+
+Venezuela
+
+Global Head,
+KPMG Private Enterprise,
+KPMG International & Partner
+KPMG in the US
+
+China
+
+South Korea
+
+Bangladesh
+
+Taiwan
+(Jurisdiction)
+Hong Kong (SAR), China
+
+India
+Cambodia
+
+Colombia
+
+Japan
+
+Carolina Oliveira
+
+Global Lead of
+Emerging Giants,
+KPMG International and
+Partner and Private
+Enterprise Leader,
+KPMG Brazil and
+South America Cluster
+
+Brazil
+South Africa
+
+Chile
+
+Uruguay
+
+Senior Director,
+Emerging Giants
+Global Network,
+KPMG Private Enterprise
+KPMG International
+
+Vietnam
+Singapore
+
+Peru
+
+Lindsay Hull
+
+Australia
+
+New Zealand
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+94
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+About us
+About KPMG Private Enterprise
+You know KPMG. You might not know KPMG Private Enterprise. KPMG Private Enterprise advisers in KPMG firms around the world are dedicated to working with you and your
+business, no matter where you are in your growth journey — whether you’re looking to reach new heights, embrace technology, plan for an exit, or manage the transition of wealth or
+your business to the next generation. You gain access to KPMG firms’ global resources through a single point of contact — a professional adviser to your company. It is a local touch
+with a global reach.
+KPMG Private Enterprise’s global network of professionals for emerging giants has extensive knowledge and experience working with the startup ecosystem. Whether you are looking
+to establish your operations, raise capital, expand abroad, or simply comply with regulatory requirements — we can help. From seed to speed, we’re here throughout your journey.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+95
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+About the report
+Acknowledgements
+We acknowledge the contribution of the following individuals who assisted in the development of this publication:
+• Conor Moore, Global Head, KPMG Private Enterprise, KPMG International
+• Amy Burnett, Head of KPMG Private Enterprise Access, KPMG in the UK
+• Carolina de Oliveira, Global Lead of Emerging Giants, KPMG International and
+Partner and Private Enterprise Leader, KPMG Brazil and South America Cluster
+
+• Lindsay Hull, Senior Director, Emerging Giants Global Network,
+KPMG Private Enterprise, KPMG International
+• Nicole Lowe, Head of Emerging Giants, KPMG in the UK
+• Patrick Molyneux, Partner, KPMG in the UK
+
+• Dina Pasca-Raz, Partner, KPMG in Israel
+
+• Ryan Forster, Partner, KPMG in Canada
+
+• Florian Merkel, Director of Tax, Head of Venture Services, KPMG in Germany
+
+• Samuel Lush, Managing Director, Private Equity Group, KPMG in the US
+
+• Gavin Sheehan, Partner, KPMG in Ireland
+
+• Sarah Meyers, Associate Director, KPMG Private Enterprise, KPMG
+International
+
+• Guillermo Goñi, Partner, KPMG in Mexico
+• Hiroshi Abe, Executive Board Member, Partner, KPMG in Japan
+• Jussi Paski, Head of Startup and Venture Services, KPMG in Finland
+
+• Scott Burger, Partner, KPMG in the US
+• Shivani Sopory, Partner, KPMG in the US
+• Zoe Shi, Partner, KPMG China
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+96
+
+Global
+
+US
+
+Americas
+
+Europe
+
+Asia
+
+About the report
+Methodology
+KPMG uses PitchBook as the provider of venture data for the Venture Pulse report
+Please note that the MESA and Africa regions are NOT broken out in this report. Accordingly, if you add up the Americas,
+Asia-Pacific and Europe regional totals, they will not match the global total, as the global total considers those other regions.
+Those specific regions were not highlighted in this report due to a paucity of datasets and verifiable trends.
+In addition, particularly within the European region, the Venture Pulse does not contain any transactions that are tracked as
+private equity growth by PitchBook. As such rounds are often conflated with late-stage venture capital in media coverage, there
+can be confusion regarding specific rounds of financing. The key difference is that PitchBook defines a PE growth round as a
+financial investment occurring when a PE investor acquires a minority stake in a privately held corporation. Thus, if the investor is
+classified as PE by PitchBook, and it is the sole participant in the recipient company’s financing, then such a round will usually be
+classified as PE growth, and not included in the Venture Pulse datasets. However, as of the Q4 2022 edition, a new stage for
+venture that was invented by PitchBook to account for growth at late-stage VC will be included, defined as venture growth. That
+same edition saw some minor updates to the wording of the methodology on this page.
+
+Pre-seed/seed: The pre-seed stage encompasses a collection of emergent startups receiving the first check from at
+least one institutional investor to fuel their development growth. For global startups, we reclassify angel deals depending
+on institutional investors’ prior deal participation. Deals that have been tagged as “angel” due to the company’s investor
+base consisting solely of individual investors will now be recategorized into the early-stage or late-stage VC deal
+category based on stage methodologies in place. For startups headquartered in the US and Europe, we define pre-seed
+as a round of financing for a company founded less than two years ago that has not yet received institutional investor
+support. This update was made in the Q4 2023 edition of Venture Pulse and all subsequent editions.
+•
+
+Early-stage: Rounds are generally classified as Series A or B (which we typically aggregate together as early-stage)
+either by the series of stock issued in the financing or, if that information is unavailable, by a series of factors
+including: the age of the company, prior financing history, company status, participating investors, and more.
+
+•
+
+Late-stage: Rounds are generally classified as Series C or D or later (which we typically aggregate together as
+late-stage) either by the series of stock issued in the financing or, if that information is unavailable, by a series of
+factors including: the age of the company, prior financing history, company status, participating investors, and more.
+
+Also, if a company is tagged with any PitchBook vertical, excepting manufacturing and infrastructure, it is kept. Otherwise, the
+following industries are excluded from growth equity financing calculations: buildings and property, thrifts and mortgage finance,
+real estate investment trusts, and oil & gas equipment, utilities, exploration, production and refining. Lastly, the company in
+question must not have had an M&A event, buyout, or IPO completed prior to the round in question. An additional estimated deal
+count for Q2 2025 was provided for this edition due to lags in confirming deals from a variety of investors. The estimate was
+based on PitchBook’s existing venture deal count estimation methodology which utilizes a running calculation based on
+differences between previous editions’ final figures and changes on a quarterly basis, i.e., the delta between final figures pulled at
+the end of Q1 2025 versus Q2 2025, but for the same timeframe. Then, that percentage change is applied to the current quarter’s
+count to attempt to account for any potential lag given the opacity of private markets.
+
+•
+
+Growth: Financings tagged as Series E or later or deals involving companies that are at least seven years old and
+have raised at least six VC rounds will be included in this category, as of the Q4 2022 edition of Venture Pulse
+released in January 2023.
+
+•
+
+Corporate: Corporate rounds of funding for currently venture-backed startups that meet the criteria for other
+PitchBook venture financings are included in the Venture Pulse as of March 2020.
+
+•
+
+Corporate venture capital: Financings classified as corporate venture capital include rounds that saw both firms
+investing via established CVC arms or corporations making equity investments off balance sheets or whatever other
+non-CVC method is employed.
+
+Fundraising
+
+Exits
+
+PitchBook defines VC funds as pools of capital raised for the purpose of investing in the equity of startup companies. In
+addition to funds raised by traditional VC firms, PitchBook also includes funds raised by any institution with the primary
+intent stated above. Funds identifying as growth stage vehicles are classified as PE funds and are not included in this
+report. A fund’s location is determined by the country in which the fund’s investment team is based; if that information is
+not explicitly known, the HQ country of the fund’s general partner is used. Only funds based in the United States that have
+held their final close are included in the fundraising numbers. The entirety of a fund’s committed capital is attributed to the
+year of the final close of the fund. Interim close amounts are not recorded in the year of the interim close.
+
+Deals
+
+PitchBook includes equity investments into startup companies from an outside source. Investment does not necessarily
+have to be taken from an institutional investor. This can include investment from individual angel investors, angel groups,
+seed funds, VC firms, corporate venture firms, corporate investors, and institutions, among others. Investments received
+as part of an accelerator program are not included; however, if the accelerator continues to invest in follow-on rounds,
+those further financings are included. All financings are of companies headquartered in the US, with any reference to
+“ecosystem” defined as the combined statistical area (CSA). PitchBook includes deals that include partial debt and equity.
+
+PitchBook includes the first majority liquidity event for holders of equity securities of venture-backed companies. This
+includes events where there is a public market for the shares (IPO) or the acquisition of majority of the equity by another
+entity (corporate or financial acquisition). This does not include secondary sales, further sales after the initial liquidity
+event, or bankruptcies. M&A value is based on reported or disclosed figures, with no estimation used to assess the value
+of transactions for which the actual deal size is unknown. IPO value is based on the premoney valuation of the company
+at its IPO price. One slight methodology update is the categorical change from “IPO” to “public listings” to accommodate
+the different ways we track VC-backed companies’ transitions to the public markets. To give readers a fuller picture of
+the companies that go public, this updated grouping includes IPOs, direct listings, and reverse mergers via special
+purpose acquisition companies (SPACs).
+In the edition of the KPMG Venture Pulse covering Q1 2020 and all ensuing, PitchBook’s methodology regarding aggregate
+exit values changed. Instead of utilizing the size of an IPO as the exit value, the prevaluation of an IPO, based upon
+ordinary shares outstanding, was utilized. This has led to a significant change in aggregate exit values in all subsequent
+editions yet is more reflective of how the industry views the true size of an exit via public markets. In the edition of the
+KPMG Venture Pulse covering Q1 2021 and all ensuing, the IPO exit type was updated to include all types of public listings,
+including SPACs and other reverse mergers. In January 2025, a new extrapolation for M&A exit values was also applied.
+
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+
+#Q1VC
+97
+
+To connect with a KPMG Private Enterprise adviser in your region, email enterprise@kpmg.com.
+Some or all of the services described herein may not be permissible for KPMG audit clients and their affiliates or related entities.
+kpmg.com/venturepulse
+
+The information contained herein is of a general nature and is not intended to address the circumstances of any particular individual or entity. Although we endeavor to provide accurate and timely
+information, there can be no guarantee that such information is accurate as of the date it is received or that it will continue to be accurate in the future. No one should act on such information
+without appropriate professional advice after a thorough examination of the particular situation.
+© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.
+KPMG refers to the global organization or to one or more of the member firms of KPMG International Limited (“KPMG International”), each of which is a separate legal entity.
+KPMG International Limited is a private English company limited by guarantee and does not provide services to clients. For more details about our structure please visit kpmg.com/governance.
+The KPMG name and logo are trademarks used under license by the independent member firms of the KPMG global organization
+Throughout this document, “we”, “KPMG”, “us” and “our” refers to the KPMG global organization, to KPMG International Limited (“KPMG International”), and/or to one or more of the member firms
+of KPMG International, each of which is a separate legal entity.
+
+

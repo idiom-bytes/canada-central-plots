@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "description": "US venture capital investment by quarter (NVCA/PitchBook Venture Monitor)",
+    "currency": "USD",
+    "unit": "billions",
+    "primary_source": "PitchBook-NVCA Venture Monitor (quarterly reports)",
+    "notes": "Deal counts are estimated by PitchBook at time of publication; deal values are revised upward in subsequent reports as more deals are confirmed. Use most recent report's figure for any given quarter.",
+    "extracted": "2026-05-20"
+  },
+  "data": [
+    { "quarter": "Q1-2020", "value_usd_b": 39.5,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart (NVCA reports do not publish pre-2025 quarterly breakdowns in public text)" },
+    { "quarter": "Q2-2020", "value_usd_b": 39.2,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q3-2020", "value_usd_b": 49.0,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q4-2020", "value_usd_b": 47.8,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q1-2021", "value_usd_b": 80.1,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q2-2021", "value_usd_b": 86.7,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q3-2021", "value_usd_b": 90.6,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q4-2021", "value_usd_b": 100.6, "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q1-2022", "value_usd_b": 80.9,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q2-2022", "value_usd_b": 70.8,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q3-2022", "value_usd_b": 45.3,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q4-2022", "value_usd_b": 39.5,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q1-2023", "value_usd_b": 53.0,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q2-2023", "value_usd_b": 36.7,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q3-2023", "value_usd_b": 36.3,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q4-2023", "value_usd_b": 38.3,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q1-2024", "value_usd_b": 38.5,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q2-2024", "value_usd_b": 47.8,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q3-2024", "value_usd_b": 45.5,  "deals": null,  "confidence": "medium",  "source": "KPMG Q1-2026 chart" },
+    { "quarter": "Q4-2024", "value_usd_b": 77.2,  "deals": null,  "confidence": "medium",  "source": "NVCA Q1-2025: Q1 2025 was 18.5% above Q4 2024, implying Q4 2024 = $91.5B/1.185 ≈ $77.2B. KPMG chart shows ~$80.9B for this position — discrepancy flagged." },
+    { "quarter": "Q1-2025", "value_usd_b": 91.5,  "deals": 3990,  "confidence": "high",    "source": "NVCA Q1-2025 report direct quote: '$91.5 billion was up 18.5% from Q4 2024'. Deal count estimated." },
+    { "quarter": "Q2-2025", "value_usd_b": 69.9,  "deals": 4001,  "confidence": "high",    "source": "NVCA Q2-2025 report direct quote: '$69.9 billion across an estimated 4,001 deals'. Note: KPMG shows $125.9B for this quarter — methodology differs." },
+    { "quarter": "Q3-2025", "value_usd_b": 80.9,  "deals": 4208,  "confidence": "high",    "source": "NVCA Q3-2025 report: '$80.9 billion across an estimated 4,208 deals'." },
+    { "quarter": "Q4-2025", "value_usd_b": 91.6,  "deals": 4482,  "confidence": "high",    "source": "NVCA Q4-2025 report direct quote: '$91.6 billion was deployed across an estimated 4,482 VC deals'." },
+    { "quarter": "Q1-2026", "value_usd_b": 267.2, "deals": 4594,  "confidence": "high",    "source": "NVCA Q1-2026 report direct quote: '$267.2 billion in quarterly deal value'. Deal count estimated." }
+  ],
+  "cross_check": {
+    "2025_annual_sum_from_quarters": 334.1,
+    "2025_annual_nvca_q4_report": 339.4,
+    "2025_annual_nvca_q1_2026_report": 321.6,
+    "note": "Quarterly sum ($91.5+$69.9+$80.9+$91.6=$334.1B) differs from Q4 report annual total ($339.4B) and Q1-2026 report annual total ($321.6B). Normal: PitchBook revises deal counts upward in subsequent reports."
+  }
+}

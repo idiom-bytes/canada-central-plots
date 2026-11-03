@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "description": "Canada venture capital annual totals (CVCA / BDC, CAD)",
+    "currency": "CAD",
+    "unit": "billions",
+    "primary_source": "BDC Canada VC Landscape 2025 (for 2015–2024 history); CVCA Year-End 2024 (for 2020–2024 quarterly detail); CVCA Q1-2025 (for revised 2024 figure)",
+    "notes": "CVCA revised 2024 upward from $7.9B to $8.5B on May 14, 2025. The $8.5B figure is authoritative. 2025 confirmed by user as $8.0B from CVCA Year-End 2025 (not yet in BDC report). 2015–2019 from BDC Figure 2 which uses PitchBook source — may differ slightly from CVCA member data.",
+    "extracted": "2026-05-20"
+  },
+  "data": [
+    { "year": 2015, "value_cad_b": 3.8,  "deals": 470, "confidence": "medium",   "source": "BDC Figure 2 (PitchBook data). CVCA-sourced equivalent not available in extracted documents." },
+    { "year": 2016, "value_cad_b": 3.0,  "deals": 523, "confidence": "medium",   "source": "BDC Figure 2." },
+    { "year": 2017, "value_cad_b": 3.8,  "deals": 531, "confidence": "medium",   "source": "BDC Figure 2." },
+    { "year": 2018, "value_cad_b": 3.8,  "deals": 538, "confidence": "medium",   "source": "BDC Figure 2." },
+    { "year": 2019, "value_cad_b": 6.6,  "deals": 566, "confidence": "medium",   "source": "BDC Figure 2 ($6.6B). CVCA Q1-2024 report cites $6.5B — $100M rounding difference. Use midpoint $6.5–6.6B." },
+    { "year": 2020, "value_cad_b": 4.6,  "deals": 530, "confidence": "high",     "source": "CVCA Year-End 2024 chart + BDC Figure 2 (both confirm $4.6B, 527–530 deals)." },
+    { "year": 2021, "value_cad_b": 15.4, "deals": 842, "confidence": "high",     "source": "CVCA Year-End 2024 + Q1-2025 confirm $15.4B/842–846 deals. BDC shows $15.7B — small methodology difference. Use $15.4B (CVCA preferred)." },
+    { "year": 2022, "value_cad_b": 10.4, "deals": 768, "confidence": "high",     "source": "CVCA Year-End 2024 ($10.4B/768 deals). BDC shows $10.5B/755 deals. Close." },
+    { "year": 2023, "value_cad_b": 7.1,  "deals": 688, "confidence": "high",     "source": "CVCA Year-End 2024 + Q1-2025 confirm $7.1B. Deals: 688–690 range." },
+    { "year": 2024, "value_cad_b": 8.5,  "deals": 619, "confidence": "high",     "source": "CVCA revised figure (published May 2025, per CVCA Q1-2025 report and BDC footnote). Original publication was $7.9B/592 deals." },
+    { "year": 2025, "value_cad_b": 8.0,  "deals": null,"confidence": "high",     "source": "CVCA Year-End 2025 (confirmed by user). KPMG quarterly sum for 2025 = $8.54B CAD — within range given methodology differences." }
+  ],
+  "alt_series_kpmg_pitchbook": {
+    "description": "KPMG/PitchBook Canada annual totals (derived by summing quarterly data from KPMG Q1-2026 report). In CAD millions. Systematically ~10–15% lower than CVCA for 2020–2024.",
+    "data": [
+      { "year": 2020, "value_cad_m": 5936.3, "note": "Q1+Q2+Q3+Q4: 1017.2+886.1+1309.9+2722.1" },
+      { "year": 2021, "value_cad_m": 14182.9,"note": "Q1+Q2+Q3+Q4: 4871.6+2669.0+3081.6+3560.7" },
+      { "year": 2022, "value_cad_m": 7322.8, "note": "Q1+Q2+Q3+Q4: 2136.3+1601.8+2167.7+1417.0" },
+      { "year": 2023, "value_cad_m": 5963.4, "note": "Q1+Q2+Q3+Q4: 1950.3+1020.5+2103.5+889.1" },
+      { "year": 2024, "value_cad_m": 7189.5, "note": "Q1+Q2+Q3+Q4: 1564.6+2661.0+1716.8+1247.1" },
+      { "year": 2025, "value_cad_m": 8537.6, "note": "Q1+Q2+Q3+Q4: 1372.0+2058.9+1183.2+3923.5" }
+    ]
+  }
+}

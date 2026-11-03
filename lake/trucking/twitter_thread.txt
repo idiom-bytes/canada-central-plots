@@ -1,0 +1,157 @@
+https://x.com/dom_lucre/status/2064026216294711399
+Canadian Liberals assembling all of their 37 neurons to debate the merits of Carney's economical and regulatory policies.
+
+
+Canada Heavy-Duty Truck Certification Gap
+Twitter thread — May 2026
+Dashboard: https://plots.canada-central.com/trucking-certification.html
+
+──────────────────────────────────────────────────────────────
+HOOK (no screenshot)
+──────────────────────────────────────────────────────────────
+
+Canada may not be able to import new U.S. heavy-duty trucks in 2027.
+
+Not because of tariffs. Not a trade dispute. Not an emissions disagreement.
+
+Because a regulatory citation hasn't been updated.
+
+🧵
+
+──────────────────────────────────────────────────────────────
+INTRO (no screenshot)
+──────────────────────────────────────────────────────────────
+
+Since 2018, Canada's import regulations for heavy-duty trucks have required U.S. EPA certification.
+
+In February 2026, the EPA formally eliminated its authority to issue those certifications. NHTSA is now the only federal certifier — and Canada's regulations don't reference NHTSA.
+
+~$5B in annual truck purchases. The ordering window is August 2026. ECCC's own regulatory documents acknowledged in April 2024 that amendments would be needed.
+
+Here's what happened.
+
+──────────────────────────────────────────────────────────────
+PART 1: THE GAP
+──────────────────────────────────────────────────────────────
+
+[screenshot: 01-gap]
+1/
+Canada's import regulations require EPA certification for heavy-duty trucks. The U.S. EPA no longer issues those certifications — NHTSA does.
+
+The trucks haven't changed. Safety and emissions standards remain aligned between the two countries. The gap is a single citation in a regulation that hasn't been updated to reflect the change in certifying body.
+
+──────────────────────────────────────────────────────────────
+PART 2: THE DEPENDENCY
+──────────────────────────────────────────────────────────────
+
+[screenshot: 02-dependency]
+2/
+Canada sources 95% of its Class 8 heavy-duty trucks from U.S. manufacturers — Kenworth, Peterbilt, Freightliner, International, Mack.
+
+These are not off-the-lot purchases. Class 8 trucks are built-to-order, 12–18 months in advance.
+
+Missing the ordering window means missing the supply for that model year. There is no substitute.
+
+──────────────────────────────────────────────────────────────
+PART 3: HOW THE GAP WAS CREATED
+──────────────────────────────────────────────────────────────
+
+[screenshot: 03-timeline]
+3/
+May 2018: Canada harmonizes its heavy-duty GHG regulations with U.S. EPA Phase 2 standards.
+
+The key provision: "any engine certified by the EPA may be sold in Canada."
+
+This worked because Phase 1 (2011) and Phase 2 (2016) were joint EPA and NHTSA rules — both agencies co-certified.
+
+4/
+April 2024: The U.S. EPA finalizes Phase 3 GHG standards for 2027+ model trucks — as an EPA-only rule.
+
+NHTSA coordinated but did not co-finalize.
+
+Canada's own Environment department noted in its regulatory filings: "amendments to the HD GHG Emission Regulations will be needed."
+
+No proposed amendments were published.
+
+5/
+February 12, 2026: The U.S. EPA formally rescinds the 2009 Greenhouse Gas Endangerment Finding — the legal foundation for all GHG vehicle certifications.
+
+EPA can no longer legally issue emissions certificates for heavy-duty trucks.
+
+NHTSA becomes the only remaining federal certifier. Canada's regulations still require EPA.
+
+──────────────────────────────────────────────────────────────
+PART 4: THE FINANCIAL SCALE
+──────────────────────────────────────────────────────────────
+
+[screenshot: 06-financial]
+6/
+What's at stake in direct truck purchases:
+
+→ ~17,000–20,000 Class 8 trucks/year in Canada
+→ Average price: ~$265,000 CAD
+→ Annual market: $4.5–5.3B CAD
+
+Essentially 100% of that volume is built-to-order.
+No order placed = no truck for the 2027 model year. No workaround.
+
+7/
+That direct figure is the first layer. The chain continues:
+
+→ ~$595M/yr in incremental fleet operating costs on un-renewed equipment
+→ Estimated $3–6B in freight rate pressure passed to shippers (order-of-magnitude; 5–10% capacity squeeze on a $65B industry)
+→ Construction, mining, forestry, and agriculture absorb higher input costs
+
+──────────────────────────────────────────────────────────────
+PART 5: FINDINGS
+──────────────────────────────────────────────────────────────
+
+[screenshot: 08-findings]
+8/
+FINDING: Canada's 2018 harmonization was not a treaty or bilateral agreement.
+
+It was a unilateral domestic regulation under CEPA, motivated by a non-binding 2016 Obama-Trudeau Joint Statement.
+
+That statement had no ratification, no enforcement mechanism, and does not bind the current U.S. administration.
+
+The U.S. changed its own domestic rules.
+
+9/
+FINDING: ECCC's own regulatory documents acknowledged the gap in April 2024.
+
+Following the Phase 3 rule, ECCC explicitly noted: "amendments to the HD GHG Emission Regulations will be needed in Canada to ensure continued alignment."
+
+April 2024 to August 2026 is over two years. No proposed amendments were published in the Canada Gazette.
+
+10/
+FINDING: The trailer regulations provide relevant precedent.
+
+When U.S. trailer GHG standards were vacated in 2019, Canada did not amend its regulations. It issued a ministerial interim order under CEPA section 163(3) — and has renewed it seven times since.
+
+A ministerial interim order is the fastest available mechanism here. It expires after 12 months and does not constitute a regulatory amendment.
+
+──────────────────────────────────────────────────────────────
+PART 6: WHAT SHOULD HAPPEN
+──────────────────────────────────────────────────────────────
+
+[screenshot: 11-recommendations]
+11/
+When UK Brexit left vehicle type approval regulations citing a body that no longer had authority, targeted statutory instruments (SI 2019/648) updated the certifying body references within 12 months.
+
+Transport Canada has the same mechanism. Amend the Motor Vehicle Safety Act regulations to recognize NHTSA before August 2026. A ministerial interim order is the fastest first step; a full amendment is the durable fix.
+
+12/
+Transport Canada's own 2026 MVSA consultation explicitly debated making foreign standard references "ambulatory" — automatically tracking changes rather than fixed to specific versions.
+
+The current gap is a direct consequence of a fixed EPA citation. Ambulatory references would prevent the next one structurally, without emergency legislation.
+
+──────────────────────────────────────────────────────────────
+CLOSING (no screenshot)
+──────────────────────────────────────────────────────────────
+
+Full timeline, financial breakdown, and the 2018 regulatory context:
+https://plots.canada-central.com/trucking-certification.html
+
+Sources: Canada Gazette SOR/2018-98 · EPA Federal Register (Phase 3, GHG Rescission) · ECCC regulatory filings · Canadian Truck Dealers Association · ACT Research · FleetNerd
+
+/end

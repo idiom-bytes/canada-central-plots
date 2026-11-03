@@ -1,0 +1,240 @@
+The Bloomberg headline says "Canada draws the most foreign investment since 2007."
+
+That's technically true.
+
+But which sectors got the money — and is any of it actually building Canada?
+
+Here's the full breakdown, the findings, and what we should do about it. 🧵
+
+───────────────────────────────────────
+PART 1: WHERE THE MONEY WENT (BY SECTOR)
+───────────────────────────────────────
+
+1/ THE SIX BUCKETS
+
+Statistics Canada breaks FDI inflows into six NAICS industry categories.
+
+2025 totals (C$ billions):
+
+  Manufacturing:              $11.2B  (12%)
+  Trade & Transportation:     $23.6B  (25%)
+  Energy & Mining:             $9.6B  (10%)
+  Finance & Insurance:        $11.1B  (12%)
+  Management of Companies:    $14.5B  (16%)
+  Other Industries:           $23.5B  (25%)
+
+  TOTAL:                      $93.6B
+
+───────────────────────────────────────
+
+2/ MANUFACTURING IS THE STORY — BUT NOT HOW YOU THINK
+
+Manufacturing is the sector you want dominant. Factories. Jobs. Industrial capacity.
+
+In 2025, it was $11.2B — 12% of total inflows. Below average.
+
+In 2024, it spiked to $43.1B. A record. Nearly triple any other year on record.
+
+That was companies front-running US tariffs — racing to establish Canadian manufacturing before the trade wall went up. It evaporated the moment the window closed.
+
+───────────────────────────────────────
+
+3/ THE QUIET SECTOR NOBODY COVERS: MANAGEMENT OF COMPANIES
+
+"Management of Companies and Enterprises" is the line that never gets a headline.
+
+In plain terms: a foreign holding company acquires a Canadian business. No new factory. No new jobs from scratch. Ownership transferred abroad.
+
+  2014: $15.2B
+  2015: $14.0B
+  2022: $14.4B
+  2025: $14.5B
+
+$14–15B in peak years, running consistently. The profit streams of acquired Canadian businesses now flow to foreign balance sheets. That's not investment in Canada. That's divestment of Canada.
+
+───────────────────────────────────────
+
+4/ ENERGY & MINING: THE VOLATILE ONE
+
+Energy & Mining twice went negative — net divestment:
+
+  2017: −$4.9B  (more capital left than entered)
+  2020: −$9.3B  (COVID-driven capital flight from Canadian oil & gas)
+
+When it's positive: foreign entities acquiring Canadian resource assets.
+When it goes negative: they're pulling out.
+
+Neither direction is "Canada wins."
+
+───────────────────────────────────────
+PART 2: THE GREEN / RED BREAKDOWN
+───────────────────────────────────────
+
+5/ THE KISS TEST
+
+Not all FDI is the same. A simple two-bucket split:
+
+GREEN — productive investment:
+  • Manufacturing: builds factories, jobs, industrial capacity
+  • Trade & Transportation: logistics and distribution infrastructure
+
+RED — extractive / control-seeking capital:
+  • Energy & Mining: foreign ownership of Canadian resources
+  • Finance & Insurance: financial flows, often repatriated
+  • Management of Companies: foreign acquisition of existing Canadian businesses
+  • Other: residual bucket including real estate
+
+───────────────────────────────────────
+
+6/ 2025 BY THE SPLIT
+
+  GREEN:  $34.8B  (37%)
+  RED:    $58.8B  (63%)
+
+63 cents of every dollar flowing into Canada in 2025 is not building new Canadian capacity.
+
+It is acquiring control of existing assets, extracting resources, or moving through financial structures.
+
+───────────────────────────────────────
+
+7/ THE FULL HISTORY (2007–2025)
+
+  Year  | Green  | Red    | Green%
+  ----  | -----  | ---    | ------
+  2007  | $73.1B | $52.4B |  58%  ← manufacturing mega-year
+  2008  | $21.7B | $44.0B |  33%
+  2009  | $ 7.0B | $19.0B |  27%
+  2010  | $ 4.3B | $24.9B |  15%
+  2011  | $17.5B | $21.7B |  45%
+  2012  | $22.6B | $20.5B |  53%
+  2013  | $34.1B | $37.3B |  48%
+  2014  | $20.1B | $45.1B |  31%
+  2015  | $12.7B | $43.3B |  23%
+  2016  | $16.0B | $31.8B |  33%
+  2017  | $22.7B | $ 6.9B |  77%  ← energy divestment deflated red
+  2018  | $19.5B | $29.3B |  40%
+  2019  | $17.5B | $49.6B |  26%
+  2020  | $18.3B | $16.0B |  53%  ← COVID cratered energy inflows
+  2021  | $33.0B | $44.0B |  43%
+  2022  | $19.6B | $40.7B |  33%
+  2023  | $26.6B | $38.6B |  41%
+  2024  | $54.6B | $36.9B |  60%  ← tariff arbitrage spike
+  2025  | $34.8B | $58.8B |  37%
+
+Red exceeded green in 14 of 19 years.
+
+───────────────────────────────────────
+PART 3: FINDINGS
+───────────────────────────────────────
+
+8/ FINDING #1: THE RECORD NUMBER IS REAL. THE COMPOSITION ISN'T WHAT IT LOOKS LIKE.
+
+$93.6B is the highest since 2007.
+
+But the productive share — manufacturing plus trade infrastructure — was just $34.8B. 37%.
+
+The headline reflects investor appetite for Canadian assets. It does not reflect investors betting on Canada's industrial future.
+
+───────────────────────────────────────
+
+9/ FINDING #2: 2024'S "GOOD" YEAR WAS A TARIFF SUGAR HIGH
+
+When a single sector triples in one year and collapses the next, that's not a structural shift.
+
+Companies rushed to establish Canadian manufacturing ahead of US tariffs. The window closed. The capital stopped.
+
+The underlying composition of Canadian FDI didn't change. We got a one-time arbitrage play dressed up as a record year.
+
+───────────────────────────────────────
+
+10/ FINDING #3: MANAGEMENT OF COMPANIES IS THE REAL STORY NOBODY IS COVERING
+
+$14–15B per year in foreign holding companies acquiring Canadian businesses.
+
+No new capacity. No new employment. Just Canadian businesses — and their future profit streams — transferred to foreign balance sheets. Consistently. Every year. No coverage.
+
+───────────────────────────────────────
+
+11/ FINDING #4: THE DEFAULT STATE OF CANADIAN FDI IS EXTRACTION
+
+Red > Green in 14 of 19 years.
+
+The exceptions are years with a manufacturing spike (usually tariff-driven) or a collapse in red-category inflows (COVID, energy crashes). Remove those anomalies and the base case is clear:
+
+The majority of foreign capital entering Canada is acquiring control, not building capacity.
+
+───────────────────────────────────────
+PART 4: WHAT SHOULD BE DONE ABOUT IT
+───────────────────────────────────────
+
+12/ RECOMMENDATION 1: TIGHTEN INVESTMENT CANADA ACT REVIEWS FOR COMPANY ACQUISITIONS
+
+The current net benefit review threshold is $1.075B for WTO investors. The vast majority of foreign acquisitions of Canadian businesses pass unscrutinized.
+
+A sector-specific lower threshold — or a mandatory public-interest test for all Management of Companies FDI above $100M — would close this gap.
+
+Foreign holding companies shouldn't be able to buy Canadian businesses at scale with no public-interest review.
+
+───────────────────────────────────────
+
+13/ RECOMMENDATION 2: CONDITION RESOURCE FDI ON DOMESTIC VALUE-ADD
+
+Foreign entities own our oil, gas, and minerals. The profits repatriate abroad.
+
+New resource FDI approvals should carry binding conditions: minimum Canadian processing ratios, mandatory reinvestment thresholds, or royalty structures that increase as value-add declines.
+
+Norway built a sovereign wealth fund from this logic. Canada is still giving the resource away.
+
+───────────────────────────────────────
+
+14/ RECOMMENDATION 3: LOCK IN THE 2024 MANUFACTURING PLANTS BEFORE THEY LEAVE
+
+Companies built Canadian manufacturing capacity in 2024 to dodge US tariffs. That window is closing.
+
+Budget 2026 should deploy targeted retention instruments — multi-year operating cost supports, workforce co-investments, anchor-tenant supply chain incentives — to keep facilities that were established opportunistically before they redomicile back south.
+
+We got the plants. Now we have to keep them.
+
+───────────────────────────────────────
+
+15/ RECOMMENDATION 4: REQUIRE THE GOVERNMENT TO PUBLISH THE PRODUCTIVE-SHARE RATIO
+
+Every Budget and Fall Economic Statement announces total FDI inflows as a win. None of them report what sectors it went into.
+
+Parliament should direct the Minister of Finance to publish the annual green/red sector breakdown in every FDI communication.
+
+A headline number without composition is not transparency. It is marketing.
+
+───────────────────────────────────────
+
+16/ RECOMMENDATION 5: ESTABLISH A PARLIAMENTARY FDI COMPOSITION KPI
+
+The productive share has averaged ~39% over 2007–2025 with no upward trend.
+
+Parliament has no formal mechanism to hold the government accountable for this ratio.
+
+A Finance Committee motion to establish an annual FDI Composition Report — modelled on the Fiscal Monitor — would create the accountability infrastructure that currently does not exist.
+
+Track it. Report it. Answer for it.
+
+───────────────────────────────────────
+
+17/ RECOMMENDATION 6: REBUILD FIPAS AROUND CONTRIBUTION, NOT JUST PROTECTION
+
+Canada's Foreign Investment Promotion and Protection Agreements protect investor rights in Canada.
+
+None of them set minimum thresholds for what investors must contribute.
+
+Future FIPAs — and renegotiation of existing ones — should include binding commitments: employment creation minimums, R&D spending ratios, technology transfer obligations. Investor protection in exchange for investor contribution.
+
+───────────────────────────────────────
+
+18/ THE DATA
+
+All of this is Statistics Canada. Quarterly FDI flows by NAICS sector, 2007–2025.
+Table 36-10-0026-01. Freely available. Never broken down this way in government communications.
+
+Interactive dashboard — sector breakdown, KISS green/red view, findings, recommendations, full data table and CSV:
+https://idiom-bytes.github.io/canada-central-plots/fdi.html
+
+/end

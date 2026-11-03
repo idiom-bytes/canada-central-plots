@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "description": "Canada VC investment by stage, annual (CVCA). CAD millions.",
+    "currency": "CAD",
+    "unit": "millions",
+    "primary_source": "CVCA Year-End 2024, CVCA Q1-2025, BDC Canada VC Landscape 2025",
+    "stage_definitions": {
+      "pre_seed": "CVCA Pre-seed stage (typically <$1M–$2M deal size, pre-product)",
+      "seed": "CVCA Seed stage (typically $2M–$5M, post-revenue)",
+      "early": "CVCA Early Stage — primarily Series A & B",
+      "later": "CVCA Later Stage — primarily Series C & D",
+      "growth": "CVCA Growth Equity — Series E and beyond"
+    },
+    "notes": "2023 stage values partly estimated by back-applying BDC Figure 10 YoY % changes to 2024 CVCA actuals. 2024 pre-seed/seed/later confirmed directly from CVCA text. 2024 growth equity: $1.5B including Clio $1.24B (84% of growth total). Ex-Clio growth equity 2024 = ~$247M.",
+    "extracted": "2026-05-20"
+  },
+  "data": [
+    {
+      "year": 2020,
+      "total_cad_m": 4600,
+      "pre_seed": { "value_cad_m": null, "deals": null, "confidence": "null", "note": "Not available in extracted documents" },
+      "seed":     { "value_cad_m": 603,  "deals": 226,  "confidence": "medium", "source": "CVCA Year-End 2024 chart (approximate read)" },
+      "early":    { "value_cad_m": 1480, "deals": null,  "confidence": "medium", "source": "CVCA Year-End 2024 chart (approximate)" },
+      "later":    { "value_cad_m": 787,  "deals": null,  "confidence": "medium", "source": "CVCA Year-End 2024 chart (approximate)" },
+      "growth":   { "value_cad_m": 220,  "deals": null,  "confidence": "medium", "source": "CVCA Year-End 2024 chart (approximate)" }
+    },
+    {
+      "year": 2021,
+      "total_cad_m": 15400,
+      "pre_seed": { "value_cad_m": 161,  "deals": 120, "confidence": "high",   "source": "CVCA Year-End 2024 direct: 'Pre-seed funding totaled $161M across 120 deals'" },
+      "seed":     { "value_cad_m": 958,  "deals": 304, "confidence": "high",   "source": "CVCA Year-End 2024 direct: '$958M across 304 deals'" },
+      "early":    { "value_cad_m": 4310, "deals": 273, "confidence": "high",   "source": "CVCA Year-End 2024 chart" },
+      "later":    { "value_cad_m": 3050, "deals": 117, "confidence": "high",   "source": "CVCA Year-End 2024 chart" },
+      "growth":   { "value_cad_m": 1809, "deals": 22,  "confidence": "high",   "source": "CVCA Year-End 2024 chart" }
+    },
+    {
+      "year": 2022,
+      "total_cad_m": 10400,
+      "pre_seed": { "value_cad_m": 241,  "deals": 172, "confidence": "high",   "source": "CVCA Year-End 2024 direct" },
+      "seed":     { "value_cad_m": 851,  "deals": 390, "confidence": "high",   "source": "CVCA Year-End 2024 direct" },
+      "early":    { "value_cad_m": 4030, "deals": 256, "confidence": "high",   "source": "CVCA Year-End 2024 chart" },
+      "later":    { "value_cad_m": 2394, "deals": 120, "confidence": "high",   "source": "CVCA Year-End 2024 chart" },
+      "growth":   { "value_cad_m": 328,  "deals": 12,  "confidence": "high",   "source": "CVCA Year-End 2024 chart" }
+    },
+    {
+      "year": 2023,
+      "total_cad_m": 7100,
+      "pre_seed": { "value_cad_m": 163,  "deals": 185, "confidence": "high",   "source": "CVCA Year-End 2024 direct: '$163M across 185 deals'" },
+      "seed":     { "value_cad_m": 927,  "deals": 245, "confidence": "medium", "source": "Derived: BDC states Seed 2024 YoY = -45%, so 2023 = $510M/0.55 = $927M. CVCA chart appears to show similar level to 2021 ($958M) — close." },
+      "early":    { "value_cad_m": 3155, "deals": 235, "confidence": "high",   "source": "CVCA Year-End 2024 chart. BDC derived (−8% from $3,026M 2024... wait: CVCA 2024 early = $2,930M → 2023 = $2,930/0.92 = $3,185M). CVCA chart direct read = $3,155M." },
+      "later":    { "value_cad_m": 2184, "deals": 58,  "confidence": "high",   "source": "CVCA Year-End 2024 direct: 'Later-stage companies secured $2.1B across 52 deals in 2024'... 2023 from chart = $2,184M, 58 deals" },
+      "growth":   { "value_cad_m": 91,   "deals": 3,   "confidence": "high",   "source": "CVCA Year-End 2024 + BDC: '$91M across 3 deals in 2023'" }
+    },
+    {
+      "year": 2024,
+      "total_cad_m": 8500,
+      "pre_seed": { "value_cad_m": 99,   "deals": 115, "confidence": "high",   "source": "CVCA Year-End 2024 direct: '$99M across 115 deals, 19% of deal volume, 1% of dollars'" },
+      "seed":     { "value_cad_m": 510,  "deals": 201, "confidence": "high",   "source": "CVCA Year-End 2024 direct: '$510M across 201 deals, down 47% in value YoY'" },
+      "early":    { "value_cad_m": 2930, "deals": 166, "confidence": "high",   "source": "CVCA Year-End 2024 direct: '$2.9B across 166 deals, 37% of all VC investment'" },
+      "later":    { "value_cad_m": 2129, "deals": 52,  "confidence": "high",   "source": "CVCA Year-End 2024 direct: '$2.1B across 52 deals, 27% of total value'" },
+      "growth":   { "value_cad_m": 1487, "deals": 8,   "confidence": "high",   "source": "BDC direct: '$1.5B across 8 deals; Clio's Series F accounted for 84% ($1.24B)'. CVCA Year-End shows ~$1.5B. Revised CVCA Q1-2025 chart shows $537M — discrepancy may reflect reclassification of Clio deal." },
+      "growth_ex_clio": { "value_cad_m": 247, "deals": 7, "confidence": "high", "source": "BDC: 'excluding Clio, growth equity = $240M invested'" }
+    }
+  ],
+  "quarterly_snapshots": {
+    "description": "Stage breakdowns for specific quarters where available",
+    "data": [
+      {
+        "quarter": "Q1-2024",
+        "source": "CVCA Q1-2024 report",
+        "pre_seed":  { "value_cad_m": 15,  "deals": 11 },
+        "seed":      { "value_cad_m": 104, "deals": 47 },
+        "early":     { "value_cad_m": 576, "deals": 38 },
+        "later":     { "value_cad_m": 278, "deals": 8  },
+        "growth":    { "value_cad_m": 26,  "deals": 3  },
+        "total":     { "value_cad_m": 1282,"deals": 128 }
+      },
+      {
+        "quarter": "Q1-2025",
+        "source": "CVCA Q1-2025 report (approximate chart reads)",
+        "pre_seed":  { "value_cad_m": 12,  "deals": 22 },
+        "seed":      { "value_cad_m": 89,  "deals": 31 },
+        "early":     { "value_cad_m": 376, "deals": 36 },
+        "later":     { "value_cad_m": 349, "deals": 13, "note": "Confirmed: 'later-stage = 28% of $1.26B = ~$353M; 13 deals = 11% of 116'" },
+        "growth":    { "value_cad_m": 17,  "deals": 1  },
+        "total":     { "value_cad_m": 1260,"deals": 116 }
+      },
+      {
+        "quarter": "Q1-2026",
+        "source": "CVCA Q1-2026 (press release / media reports — PDF not publicly available)",
+        "confidence": "medium",
+        "pre_seed_and_seed": { "value_cad_m": 185, "deals": 54,  "note": "Pre-seed and Seed combined" },
+        "early":     { "value_cad_m": 651, "deals": null, "note": "70% of total — record high share" },
+        "later":     { "value_cad_m": 248, "deals": 9,    "note": "Average deal size $27.6M vs ~$55M historical" },
+        "growth":    { "value_cad_m": 1,   "deals": 1,    "note": "Single undisclosed deal. 5-yr Q1 average = $140M (per CVCA via Globe and Mail)" },
+        "total":     { "value_cad_m": 936, "deals": 104,  "note": "Lowest deal count since 2017" }
+      }
+    ]
+  }
+}
