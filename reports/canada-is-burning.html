@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canada Is Letting Itself Burn | Canada Central</title>
+  <meta name="description" content="A three-chapter investigation: Canada's own wildfire records show a two-decade cause-recording gap in BC, an even starker one in Manitoba and an ongoing one in Yukon, and the country's official climate accounting excludes wildfire CO2 entirely -- even in a season that likely out-emitted the whole economy.">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --color-cream:#F0ECE3;--color-cream-dark:#E8E2D5;--color-beige:#D8D1C2;--color-beige-dark:#C8C0B0;
+      --color-white:#FEFEFE;--color-text-primary:#2D2D2D;--color-text-secondary:#5A5A5A;--color-text-tertiary:#8A8A8A;
+      --accent:#2E4B3E;--color-alarm:#8B2E2E;--color-alarm-light:#fde8e8;
+      --shadow-card:0 2px 8px 0 rgba(0,0,0,0.08);--radius-md:0.5rem;--radius-lg:0.75rem;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--color-cream);color:var(--color-text-primary);line-height:1.65}
+    a{color:var(--accent)}
+    .topbar{position:sticky;top:0;z-index:100;background:var(--color-cream);border-bottom:1px solid var(--color-beige);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 1.2rem;gap:1rem}
+    .topbar-brand{font-weight:800;font-size:0.95rem;color:var(--color-text-primary);text-decoration:none}
+    .topbar-jump{font-size:0.8rem;padding:0.35rem 0.6rem;border:1px solid var(--color-beige-dark);border-radius:var(--radius-md);background:var(--color-white);max-width:55vw}
+    @media(min-width:980px){.topbar-jump{display:none}}
+    .topbar-links{font-size:0.8rem;font-weight:600}
+    .topbar-links a{color:var(--color-text-secondary);text-decoration:none;margin-left:1rem}
+
+    .wrap{display:block;max-width:1180px;margin:0 auto;padding:0 1rem}
+    @media(min-width:980px){.wrap{display:grid;grid-template-columns:250px 1fr;gap:2.5rem;padding:0 1.5rem}}
+    .toc{display:none}
+    @media(min-width:980px){.toc{display:block;position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:1.5rem 0;font-size:0.8125rem}}
+    .toc-h{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.6rem}
+    .toc a{display:block;color:var(--color-text-secondary);text-decoration:none;padding:0.3rem 0.6rem;border-left:2px solid transparent;line-height:1.35;margin-bottom:1px}
+    .toc a:hover{color:var(--color-text-primary)}
+    .toc a.active{color:var(--color-alarm);border-left-color:var(--color-alarm);font-weight:700;background:var(--color-alarm-light)}
+    .toc .num{color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;margin-right:0.4rem}
+
+    main{padding:1.5rem 0 4rem;min-width:0}
+    .hero h1{font-size:1.9rem;font-weight:800;line-height:1.12;margin:0.5rem 0 0.75rem}
+    @media(min-width:640px){.hero h1{font-size:2.6rem}}
+    .hero .lede{font-size:1.1rem;color:var(--color-text-secondary);margin:0;max-width:720px}
+    .hero .lede strong{color:var(--color-text-primary)}
+    .kicker{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--color-alarm);margin:0}
+
+    section{scroll-margin-top:70px;padding:2rem 0 0.5rem;border-top:1px solid var(--color-beige);margin-top:2rem}
+    section.lead{border-top:none;margin-top:1.5rem}
+    .ch-num{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin:0 0 0.25rem}
+    h2{font-size:1.5rem;font-weight:800;margin:0 0 0.5rem;line-height:1.2}
+    @media(min-width:640px){h2{font-size:1.8rem}}
+    p{font-size:0.975rem;color:var(--color-text-secondary);margin:0 0 0.9rem}
+    p strong{color:var(--color-text-primary)}
+
+    .disclaimer{background:var(--color-white);border:1px solid var(--color-beige);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem 1.6rem;margin:1rem 0}
+    .disclaimer h2{font-size:1.15rem}
+    .disclaimer ul{margin:0.5rem 0 0;padding-left:1.1rem}
+    .disclaimer li{font-size:0.9rem;color:var(--color-text-secondary);margin:0 0 0.5rem}
+    .disclaimer li strong{color:var(--color-text-primary)}
+
+    .finding{background:linear-gradient(135deg,#2E4B3E,#3F6B56);color:#fff;border-radius:var(--radius-lg);padding:1.6rem 1.75rem;margin:1rem 0;box-shadow:0 4px 20px rgba(46,75,62,.25)}
+    .finding.alarm{background:linear-gradient(135deg,#8B2020,#B83232);box-shadow:0 4px 20px rgba(139,32,32,.25)}
+    .finding-tag{font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#fff;opacity:.85;margin:0 0 0.75rem}
+    .finding-big{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:0}
+    .finding-num{font-size:3rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+    @media(min-width:768px){.finding-num{font-size:4rem}}
+    .finding-label{font-size:0.95rem;opacity:.92;max-width:360px;line-height:1.45;color:#fff}
+    .finding p{font-size:0.9rem;line-height:1.65;color:#fff;opacity:.95;margin:0.9rem 0 0;max-width:720px}
+
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+    @media(min-width:760px){.stats{grid-template-columns:repeat(3,1fr)}}
+    .stat{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:0.9rem 1.1rem;border-top:3px solid var(--accent)}
+    .stat.alarm{border-top-color:var(--color-alarm)}
+    .stat .v{font-size:1.4rem;font-weight:800;color:var(--accent);line-height:1;margin:0}
+    .stat.alarm .v{color:var(--color-alarm)}
+    .stat .l{font-size:0.6875rem;color:var(--color-text-secondary);margin:0.3rem 0 0;line-height:1.4}
+
+    .chart-card{background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.1rem 1.25rem;margin:1rem 0}
+    .chart-card .cap{font-size:0.7rem;color:var(--color-text-tertiary);margin:0.7rem 0 0}
+    .chart-wrap{position:relative;height:260px;width:100%;min-width:0}
+    .chart-wrap canvas{max-width:100%}
+    .deep{display:inline-block;font-size:0.8125rem;font-weight:700;text-decoration:none;color:#fff;background:var(--accent);padding:0.4rem 0.85rem;border-radius:999px;margin:0.35rem 0.35rem 0 0}
+    .deep:hover{background:#233c30}
+    .deep.alarm{background:var(--color-alarm)}
+    .deep.alarm:hover{background:#6e1919}
+    .callout{border-left:4px solid var(--color-alarm);background:var(--color-alarm-light);padding:0.9rem 1.15rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin:0.9rem 0;font-size:0.9rem;color:#6e1919;line-height:1.6}
+    .callout.green{border-left-color:var(--accent);background:#EAF0EC;color:var(--accent)}
+
+    .index-grid{display:grid;grid-template-columns:1fr;gap:0.5rem;margin:0.75rem 0}
+    @media(min-width:680px){.index-grid{grid-template-columns:1fr 1fr 1fr}}
+    .index-grid a{background:var(--color-white);border:1px solid var(--color-beige);border-radius:var(--radius-md);padding:0.6rem 0.85rem;text-decoration:none;color:var(--color-text-primary);font-size:0.85rem;font-weight:600}
+    .index-grid a:hover{border-color:var(--accent)}
+    .index-grid a span{display:block;font-size:0.72rem;color:var(--color-text-tertiary);font-weight:400;margin-top:2px}
+    .foot{font-size:0.7rem;color:var(--color-text-tertiary);line-height:1.6;margin-top:1.5rem;border-top:1px solid var(--color-beige);padding-top:1rem}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-brand" href="https://canada-central.com">Canada Central</a>
+  <select class="topbar-jump" id="jump" aria-label="Jump to section"></select>
+  <span class="topbar-links"><a href="../index.html">Statistics</a><a href="../reports.html">Reports</a></span>
+</div>
+
+<div class="wrap">
+  <nav class="toc" id="toc" aria-label="Table of contents"><p class="toc-h">The investigation</p></nav>
+
+  <main>
+    <div class="hero">
+      <p class="kicker">A three-chapter investigation &middot; Updated August 2026</p>
+      <h1>Canada Is Letting Itself Burn</h1>
+      <p class="lede">Wildfire is treated as a natural disaster Canada responds to, not a national number Canada tracks. This investigation follows that gap through three layers: <strong>what one province's own records show about how fires get recorded</strong>, <strong>what the rest of the country's records show once you look past British Columbia</strong>, and <strong>what all of it adds up to in carbon</strong> &mdash; a quantity nobody puts on Canada's climate ledger at all. Each chapter is a full, sourced dashboard; this page is the map between them.</p>
+    </div>
+
+    <section class="lead" id="method">
+      <div class="disclaimer">
+        <p class="ch-num">Before you read</p>
+        <h2>How this investigation is built</h2>
+        <p>Every figure below comes from a primary dataset — BC Wildfire Service's live incident records, the Canadian National Fire Database (Canadian Forest Service / NRCan), and Environment and Climate Change Canada's National Inventory Report — fetched directly by a pipeline script, not typed in by hand. Where no official multi-year dataset exists (wildfire-specific CO2 estimates, avoided-emissions modeling), that gap is disclosed explicitly rather than papered over, and any scenario math is shown in full, labeled as an estimate, not a government figure.</p>
+        <ul>
+          <li><strong>This is not an arson story.</strong> A 2023 PolitiFact fact-check rated a viral "Canada wildfire arson epidemic" claim False, and this investigation's own numbers agree: humans start the majority of fires by count, but only around 6% of the area that actually burns. The story here is what doesn't get recorded and what doesn't get counted — not who is lighting matches.</li>
+          <li><strong>Every "unknown cause" finding is a data-quality finding, not evidence of a cover-up.</strong> An unrecorded cause could be anything from a genuinely undetermined origin to a resourcing gap in the office that fills out the form.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="ch1">
+      <p class="ch-num">Chapter 1</p>
+      <h2>The Monitoring Gap</h2>
+      <div class="finding">
+        <p class="finding-tag">The core finding</p>
+        <div class="finding-big">
+          <span class="finding-num">7.1%&rarr;38.2%</span>
+          <span class="finding-label">BC's share of wildfires with <strong>no recorded cause</strong>, one year to the next &mdash; 1998 to 1999. It stayed elevated for two decades.</span>
+        </div>
+        <p>British Columbia keeps unusually good wildfire records — every fire since 1950, tagged Person, Lightning, or Unknown. That data shows a sudden, sustained collapse in cause-recording, not an arson wave: the unknown-cause rate was stable at 4-14% for decades, then jumped in a single year and didn't fully recover until the 2020s. Meanwhile, federal agencies responsible for wildfire coordination, satellite mapping, and weather monitoring saw staffing and budget cuts in 2026 — during one of the most intense fire seasons in Canadian history.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chartDecades"></canvas></div>
+        <p class="cap">BC wildfires with no recorded cause, by decade (BC Wildfire Service, live-fetched).</p>
+      </div>
+      <a class="deep" href="wildfire-monitoring-gap.html">Deep dive: The Monitoring Gap &rarr;</a>
+    </section>
+
+    <section id="ch2">
+      <p class="ch-num">Chapter 2</p>
+      <h2>It's Not Just BC</h2>
+      <div class="finding alarm">
+        <p class="finding-tag">The core finding</p>
+        <div class="finding-big">
+          <span class="finding-num">100%</span>
+          <span class="finding-label">of Manitoba's wildfires were coded <strong>"Unknown" cause</strong> for four straight seasons, 2000&ndash;2003 &mdash; then it reverted to normal recording.</span>
+        </div>
+        <p>BC isn't even the province with the most fire — the Northwest Territories and Saskatchewan each burn more land in a typical 20-year window. Using the Canadian National Fire Database (the one dataset with consistent per-fire cause coding nationwide), the same question BC's chapter asked turns up something starker in Manitoba, and an almost identical gap happening right now in Yukon — unresolved as of the most recent complete season.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chartProvRankPreview"></canvas></div>
+        <p class="cap">Share of Canada's area burned by province/territory, 2005-2024 (Canadian National Fire Database).</p>
+      </div>
+      <div class="callout">Yukon's unknown-cause rate hit 97.6% in 2022 and was still at 29.5% in 2025 — unlike BC's, this gap hasn't closed.</div>
+      <a class="deep alarm" href="wildfire-national-causes.html">Deep dive: It's Not Just BC &rarr;</a>
+    </section>
+
+    <section id="ch3">
+      <p class="ch-num">Chapter 3</p>
+      <h2>The Carbon Nobody Counts</h2>
+      <div class="finding">
+        <p class="finding-tag">The core finding</p>
+        <div class="finding-big">
+          <span class="finding-num">3.4&times;</span>
+          <span class="finding-label">2023's wildfire CO2 (peer-reviewed estimate) vs. Canada's <strong>entire</strong> official annual emissions total &mdash; and none of it is counted.</span>
+        </div>
+        <p>Canada's official 2023 greenhouse gas total was 694 megatonnes of CO2 — the number measured against Canada's climate targets. It contains zero tonnes of wildfire CO2: Canada reports wildfire emissions separately under a UN natural-disturbance provision and excludes them from the national count entirely. Independent estimates put 2023's wildfire season alone at 1.76 to 3 billion tonnes. This chapter also runs two honestly-labeled scenarios: cutting arson-style human ignition 90% barely moves the number, because lightning drives the overwhelming majority of area burned — but a cause-agnostic 90% cut via monitoring and rapid response could offset more CO2 than <strong>double</strong> Canada's entire oil &amp; gas sector.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chartEstimatesPreview"></canvas></div>
+        <p class="cap">2023 wildfire CO2 estimates vs. Canada's official national total (694 Mt) and oil &amp; gas sector (208 Mt).</p>
+      </div>
+      <div class="callout green">Because wildfire CO2 isn't counted toward Canada's targets, this is a magnitude comparison for public accountability — not a literal accounting swap. That gap is itself part of the story.</div>
+      <a class="deep" href="wildfire-carbon-emissions.html">Deep dive: The Carbon Nobody Counts &rarr;</a>
+    </section>
+
+    <section id="explore">
+      <p class="ch-num">Explore the evidence</p>
+      <h2>Every chapter, in full</h2>
+      <p>Each view below is a standalone interactive dashboard with its own sources and downloadable data.</p>
+      <div class="index-grid">
+        <a href="wildfire-monitoring-gap.html">The Monitoring Gap<span>BC's 1999 cause-recording cliff, and the 2026 cuts</span></a>
+        <a href="wildfire-national-causes.html">It's Not Just BC<span>Manitoba's blackout, Yukon's ongoing gap, national ranking</span></a>
+        <a href="wildfire-carbon-emissions.html">The Carbon Nobody Counts<span>Official emissions vs. wildfire CO2, and two scenarios</span></a>
+      </div>
+      <p class="foot" id="foot">Sources: BC Wildfire Service (live incident records), Canadian National Fire Database (Canadian Forest Service / NRCan), Statistics Canada, Environment and Climate Change Canada (National Inventory Report), Copernicus Atmosphere Monitoring Service, Byrne et al. (Nature, 2024), and government/union reporting on 2026 monitoring-capacity cuts. Each linked chapter carries its own full citation list. Compiled by Canada Central.</p>
+    </section>
+  </main>
+</div>
+
+<script>
+const CH=[
+  ['method','Before you read'],['ch1','1 · The Monitoring Gap'],
+  ['ch2','2 · It\'s Not Just BC'],['ch3','3 · The Carbon Nobody Counts'],
+  ['explore','Explore the evidence']];
+document.getElementById('toc').insertAdjacentHTML('beforeend',
+  CH.map(([id,t],i)=>`<a href="#${id}" data-id="${id}"><span class="num">${i===0||i===CH.length-1?'·':i}</span>${t.replace(/^\d+ · /,'')}</a>`).join(''));
+const jump=document.getElementById('jump');
+jump.innerHTML='<option>Jump to…</option>'+CH.map(([id,t])=>`<option value="${id}">${t}</option>`).join('');
+jump.onchange=()=>{const el=document.getElementById(jump.value);if(el)el.scrollIntoView();};
+const links={};document.querySelectorAll('.toc a').forEach(a=>links[a.dataset.id]=a);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  Object.values(links).forEach(a=>a.classList.remove('active'));
+  if(links[e.target.id])links[e.target.id].classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+
+const CHARTS=[];
+const mk=(el,cfg)=>{if(el){cfg.options=Object.assign({responsive:true,maintainAspectRatio:false},cfg.options||{});const c=new Chart(el,cfg);CHARTS.push(c);return c;}};
+window.addEventListener('load',()=>{requestAnimationFrame(()=>CHARTS.forEach(c=>{try{c.resize();}catch(e){}}));});
+
+// Chapter 1 preview — BC unknown-cause rate by decade
+const DECADES=[{"decade":"1950s","unknown_pct":16.5},{"decade":"1960s","unknown_pct":10.5},{"decade":"1970s","unknown_pct":6.4},{"decade":"1980s","unknown_pct":6.2},{"decade":"1990s","unknown_pct":9.5},{"decade":"2000s","unknown_pct":51.8},{"decade":"2010s","unknown_pct":49.8},{"decade":"2020s","unknown_pct":29.4}];
+mk(document.getElementById('chartDecades'),{type:'bar',data:{labels:DECADES.map(d=>d.decade),datasets:[{label:'No recorded cause (%)',data:DECADES.map(d=>d.unknown_pct),backgroundColor:DECADES.map(d=>d.unknown_pct>40?'#8B2020':'#2E4B3E'),borderRadius:4}]},
+  options:{plugins:{legend:{display:false}},scales:{y:{max:100,title:{display:true,text:'No recorded cause (%)',font:{size:10}}}}}});
+
+// Chapter 2 preview — provincial area-burned ranking
+const PROV_RANK=[{"province":"Northwest Territories","pct":23.2},{"province":"Saskatchewan","pct":19.8},{"province":"British Columbia","pct":14.8},{"province":"Quebec","pct":13.6},{"province":"Alberta","pct":10.8},{"province":"Manitoba","pct":7.7}];
+mk(document.getElementById('chartProvRankPreview'),{type:'bar',data:{labels:PROV_RANK.map(p=>p.province),datasets:[{label:'% of national area burned, 2005-2024',data:PROV_RANK.map(p=>p.pct),backgroundColor:PROV_RANK.map(p=>p.province==='British Columbia'?'#8B2E2E':'#2E4B3E'),borderRadius:4}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'% of national area burned',font:{size:10}}}}}});
+
+// Chapter 3 preview — 2023 wildfire CO2 estimates vs official totals
+const ESTS=[{"label":"Copernicus CAMS","mt":1760},{"label":"Byrne et al. (Nature)","mt":2374},{"label":"WRI / Global Forest Watch","mt":3000},{"label":"Canada's own NIR (supplementary)","mt":1000}];
+mk(document.getElementById('chartEstimatesPreview'),{type:'bar',data:{labels:ESTS.map(e=>e.label),datasets:[{label:'2023 wildfire CO2 (Mt)',data:ESTS.map(e=>e.mt),backgroundColor:'#8B2E2E',borderRadius:4}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'Mt CO2',font:{size:10}}}}},
+  plugins:[{id:'refLines3',afterDraw(chart){const{ctx,chartArea,scales}=chart;[[694,'#2D2D2D'],[208,'#8A8A8A']].forEach(([val,color])=>{const x=scales.x.getPixelForValue(val);ctx.save();ctx.strokeStyle=color;ctx.setLineDash([5,4]);ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,chartArea.top);ctx.lineTo(x,chartArea.bottom);ctx.stroke();ctx.restore();});}}]});
+</script>
+</body>
+</html>
